@@ -1,2 +1,7 @@
 # carrotstore
-Dự án kho lưu trữ
+Dự án kho lưu trữ các ứng dụng của công ty
+
+Triển khai các dịch vụ trực tuyến
+
+Cách thiết lập sau khi clone về:
+-Thiết lập lại file config.php ở localhost
