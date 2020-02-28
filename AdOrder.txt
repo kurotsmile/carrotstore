@@ -1,0 +1,1 @@
+{"advertisers":[{"advertiser":3,"advertiserName":"Chartboost","order":3,"weight":20},{"advertiser":4,"advertiserName":"UnityAds","order":6,"weight":30}]}
