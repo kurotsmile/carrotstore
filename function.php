@@ -49,36 +49,6 @@ class Cart{
     public $quantity=0;
 }
 
-
-function check_cart_product_existing($arr,$id_product){
-    for($i=0;$i<count($arr);$i++){
-        $product=(array)$arr[$i];
-        if($id_product==$product['product_id']){
-            return true;
-        }
-    }
-    return false;
-}
-
-function update_cart_quantity_add($arr,$id_product){
-    for($i=0;$i<count($arr);$i++){
-        $product=(array)$arr[$i];
-        if($id_product==$product['product_id']){
-            $product['quantity']++;
-        }
-        $arr[$i]=$product;
-    }
-    return $arr;
-}
-
-function update_cart_quantity($arr,$id_product,$quantity){
-    $product=(array)$arr[$id_product];
-    $product['quantity']=$quantity;
-    $arr[$id_product]=$product;
-    return $arr;
-}
-
-
 function lang($key){
     $lang='vi';
     if(isset($_SESSION['lang'])){ $lang=$_SESSION['lang']; }
@@ -123,8 +93,6 @@ function limit_words($string, $word_limit)
 	return $return;
 }
 
-
-
 function thumb($urls,$size,$type=null){
     if(trim($urls)!=''){
         $url_img=URL.'/'.$urls;
@@ -138,15 +106,6 @@ function thumb($urls,$size,$type=null){
     return URL."/thumb.php?src=$url_img&size=$size&trim=1";
 }
 
-function convert_Usd($price,$key_contry){
-    if($key_contry!='en'){
-        return intval($price)/25;
-    }else{
-        return intval($price);
-    }
-}
-
-
 
 function show_name_by_id($id_device,$lang){
     $return=mysql_query("SELECT `name` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_device' LIMIT 1");
@@ -155,54 +114,9 @@ function show_name_by_id($id_device,$lang){
     return $return['name'];
 }
 
-function array_delete($del_val, $array) {
-    if(is_array($del_val)) {
-         foreach ($del_val as $del_key => $del_value) {
-            foreach ($array as $key => $value){
-                if ($value == $del_value) {
-                    unset($array[$key]);
-                }
-            }
-        }
-    } else {
-        foreach ($array as $key => $value){
-            if ($value == $del_val) {
-                unset($array[$key]);
-            }
-        }
-    }
-    return array_values($array);
-}
-
 function strclean($string) {
    $string = str_replace('"', '', $string); // Replaces all spaces with hyphens.
-
    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-}
-
-function get_comapy_product($id_product){
-    $get_data=mysql_query("SELECT * FROM `company` WHERE `product` LIKE '%$id_product%' LIMIT 1");
-    if(mysql_num_rows($get_data)>0){
-        return mysql_fetch_array($get_data);
-    }else{
-        return null;
-    }
-}
-
-function convert_price($cFrom,$cTo,$price){
-    $c=get_contry($cTo);
-    if($cFrom!=$cTo){
-        $get_data=mysql_query("SELECT * FROM `currency` WHERE `key_1` = '$cFrom' AND `key_2` = '$cTo' LIMIT 1");
-        $data=mysql_fetch_array($get_data);
-        if($data[4]=='>'){
-            return number_format(intval($price)/intval($data[3])).$c['3'];
-        }else{
-            return number_format(intval($price)*intval($data[3])).$c['3'];
-        }
-        
-    }else{
-        return number_format($price).$c['3'];
-    }
 }
 
 function check_Order($id_product,$id_user){
@@ -213,38 +127,6 @@ function check_Order($id_product,$id_user){
     }else{
         return null;
     }
-}
-
-function show_box_object($lang_title,$object,$id_user,$file_templace,$url,$paged=1){
-    $result4 = mysql_query("SELECT * FROM `$object` WHERE `users` = '$id_user'");
-    $count_all_product=mysql_num_rows($result4);
-    $product_show_page=9;
-    $num_page=ceil($count_all_product/$product_show_page);
-
-    $offset = ($paged - 1) * $product_show_page;
-
-    $result4 = mysql_query("SELECT * FROM `$object` WHERE `users` = '$id_user' limit $offset,$product_show_page");
-    if(mysql_num_rows($result4)>0){
-        ?>
-        <div class="box_show_<?php echo $object ?>" style="float: left;width: 100%;">
-            <h3 class="title_box_account"><?php echo lang($lang_title); ?></h3>
-            <?php
-            while ($row = mysql_fetch_array($result4)) {
-                include $file_templace;
-            }
-            ?>
-            <div style="width: 100%;float: left;">
-                <strong><?php echo lang('trang');?>:</strong>
-                <?php
-                for($i=1;$i<=$num_page;$i++){
-                    ?>
-                    <button onclick="box_object_account_sel_page('<?php echo $lang_title;?>','<?php echo $object;?>','<?php echo $id_user;?>','<?php echo $file_templace;?>','<?php echo $i;?>')" class="buttonPro small <?php if($i==$paged){ echo 'yellow';}else{ echo 'light_blue';};?> "><?php echo $i;?></button>
-                    <?php
-                }
-                ?>
-            </div>
-        </div>
-    <?php }
 }
 
 function get_star_width($id,$object){
@@ -268,55 +150,6 @@ function get_star_width($id,$object){
     return $width_rate;
 }
 
-function time_ago($date,$granularity=2) {
-    $date = strtotime($date);
-    $retval='';
-    $difference = time() - $date;
-    $periods = array('decade' => 315360000,
-        'tg_nam' => 31536000,
-        'tg_thang' => 2628000,
-        'tg_tuan' => 604800,
-        'tg_ngay' => 86400,
-        'tg_gio' => 3600,
-        'tg_phut' => 60,
-        'tg_giay' => 1);
-
-    foreach ($periods as $key => $value) {
-        if ($difference >= $value) {
-            $time = floor($difference/$value);
-            $difference %= $value;
-            $retval .= ($retval ? ' ' : '').$time.' ';
-            $retval .= lang($key);
-            $granularity--;
-        }
-        if ($granularity == '0') { break; }
-    }
-    return ' '.lang('tg_vao_luc').' '.$retval.' '.lang('tg_truoc');
-}
-
-function show_icon($subject,$url){
-    $arr_url=array();
-    $arr_icon=array();
-
-    $arr_i=mysql_query("SELECT id FROM icon ORDER BY id");
-    while(($row3 = mysql_fetch_array($arr_i,MYSQL_ASSOC))) {
-        array_push($arr_icon,'['.$row3['id'].']');
-    }
-    $arr_u=mysql_query("SELECT CONCAT('<img src=','".$url."','/', urls,' />') as urls FROM icon ORDER BY id");
-    while($row4 = mysql_fetch_array($arr_u,MYSQL_ASSOC)) {
-        array_push($arr_url,$row4['urls']);
-    }
-
-    $arr_i1=mysql_query("SELECT txt FROM icon WHERE txt != ''");
-    while(($row = mysql_fetch_array($arr_i1,MYSQL_ASSOC))) {
-        array_push($arr_icon,$row['txt']);
-    }
-    $arr_u1=mysql_query("SELECT CONCAT('<img src=','".$url."','/', urls,' />') as urls FROM icon WHERE txt != ''");
-    while($row2 = mysql_fetch_array($arr_u1,MYSQL_ASSOC)) {
-        array_push($arr_url,$row2['urls']);
-    }
-    return str_replace($arr_icon,$arr_url,$subject);
-}
 
 function show_share($url){
     $txt_share='<ul id="share_link" title="'.lang("share_tip").'">';
@@ -387,14 +220,14 @@ function get_desc_product_lang($id_product,$key_l,$is_adim_site=false){
 function get_url_icon_product($id_product,$size_img,$is_addmin_site=false){
     $url_img='';
     if($is_addmin_site==true){
-        if(file_exists('../product_data/'.$id_product.'/icon.png')){
-            $url_img=URL.'/product_data/'.$id_product.'/icon.png';
+        if(file_exists('../product_data/'.$id_product.'/icon.jpg')){
+            $url_img=URL.'/product_data/'.$id_product.'/icon.jpg';
         }else{
             $url_img=URL.'/product_data/app_default.png';
         }
     }else{
-        if(file_exists('product_data/'.$id_product.'/icon.png')){
-            $url_img=URL.'/product_data/'.$id_product.'/icon.png';
+        if(file_exists('product_data/'.$id_product.'/icon.jpg')){
+            $url_img=URL.'/product_data/'.$id_product.'/icon.jpg';
         }else{
             $url_img=URL.'/product_data/app_default.png';
         }

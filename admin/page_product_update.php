@@ -71,7 +71,7 @@ if(isset($_POST['type_product'])){
     }
     
     if(isset($_FILES['icon_product'])){
-        $target_file=$path_folder_product.'/'.$id_product.'/icon.png';
+        $target_file=$path_folder_product.'/'.$id_product.'/icon.jpg';
         if (move_uploaded_file($_FILES["icon_product"]["tmp_name"], $target_file)) {
             $msg_alert.=alert("Tệp tin ". basename( $_FILES["icon_product"]["name"]). " đã được tải lên!",'info');
         } else {
@@ -120,8 +120,8 @@ if($id_product!=''){
     $carrot_store=$data_product['carrot_store'];
     $apk_file=$data_product['apk'];
     $slug=$data_product['slug'];
-    if(file_exists($path_folder_product.'/'.$id_product.'/icon.png')){
-        $url_img_icon=$url.'/product_data/'.$id_product.'/icon.png';
+    if(file_exists($path_folder_product.'/'.$id_product.'/icon.jpg')){
+        $url_img_icon=$url.'/product_data/'.$id_product.'/icon.jpg';
     }
 }
 
