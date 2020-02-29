@@ -85,7 +85,7 @@
         </td>
         <td>
                 <label>Chọn nước chuyển sang:</label><br />
-                <select name="lang_to">
+                <select name="lang_to" id="lang_to">
                 <?php
                 $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `key`!='$lang_move'");
                 while($l=mysql_fetch_array($list_country)){
@@ -130,7 +130,7 @@
                 while($l=mysql_fetch_array($list_country)){
                     $key_tip=get_key_lang("key_music",$l['key']);
                     ?>
-                    <span style="display: inline-block;;background-color: black;color:white;cursor: pointer;padding: 3px;margin: 2px;border-radius: 10px;" onclick="$('#inp_text_chat').val('<?php echo $key_tip;?>');"><img style="float: left;margin-right: 5px;" src="<?php echo thumb('app_mygirl/img/'.$l['key'].'.png','20x20'); ?>" /> <?php echo $key_tip;?></span>
+                    <span style="display: inline-block;;background-color: black;color:white;cursor: pointer;padding: 3px;margin: 2px;border-radius: 10px;" onclick="sel_key_chat('<?php echo $l['key']; ?>','<?php echo $key_tip;?>')"><img style="float: left;margin-right: 5px;" src="<?php echo thumb('app_mygirl/img/'.$l['key'].'.png','20x20'); ?>" /> <?php echo $key_tip;?></span>
                     <?php
                 }
                 echo '</div>';
@@ -144,4 +144,11 @@
     </tr>
 </table>
 </form>
+
+<script>
+    function sel_key_chat(key_country,key_chat){
+        $("#lang_to").val(key_country);
+        $('#inp_text_chat').val(key_chat);
+    }
+</script>
  
