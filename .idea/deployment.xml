@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="carrotstore.com" persistUploadOnCheckin="false">
     <serverData>
+      <paths name="Carrot.sytes.net">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../carrot.sytes.net" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="carrotstore.com">
         <serverdata>
           <mappings>
