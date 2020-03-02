@@ -145,6 +145,7 @@ $(document).ready(function() {
     <div style="width: 70%;float: left">
     <?php
                 $type_comment='products';
+                $id_product=$data[0];
                 include "template/field_comment.php";
     ?>
     </div>

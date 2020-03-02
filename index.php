@@ -261,10 +261,10 @@ include "header.php";
                     <?php
                 } else {
                     if (isset($_SESSION['login_google'])) {
-                        $query_account = mysql_query("SELECT `avatar_url` FROM `app_my_girl_user_" . $_SESSION['lang'] . "` WHERE `id_device` ='" . $_SESSION['username_login'] . "' LIMIT 1");
+                        $query_account = mysql_query("SELECT `avatar_url`,`name` FROM `app_my_girl_user_" . $_SESSION['lang'] . "` WHERE `id_device` ='" . $_SESSION['username_login'] . "' LIMIT 1");
                         $data_account = mysql_fetch_array($query_account);
                         ?>
-                        <img class="login_avatar" src="<?php echo $data_account['avatar_url']; ?>"/>
+                        <img class="login_avatar" alt="<?php echo $data_account['name']; ?>" src="<?php echo $data_account['avatar_url']; ?>"/>
                         <?php
                     } else {
                         ?>
@@ -432,7 +432,7 @@ include "script_all_page.php";
     function login_account() {
         swal({
             html: true, title: '<?php echo lang("dang_nhap"); ?>',
-            text: '<div><div id="my-signin2"></div></div>',
+            text: '<div style="width: 240px;margin-left: auto;margin-right: auto;"><div id="my-signin2"></div><img style="margin-top: 15px;" src="<?php echo  $url;?>/images/btn_login_fb.jpg"></div>',
         });
         setTimeout(function () {
             renderButton();

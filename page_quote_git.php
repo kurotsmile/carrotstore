@@ -34,7 +34,7 @@ if($row['effect_customer']!=''){
     </div>
     
     <div class="app_txt" style="float: left;width: 93%;height: 93px;padding: 10px;overflow-y: auto">
-        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>"><img src="<?php echo $img; ?>" style="float: left; margin-right: 3px;margin-bottom: 3px;" /></a>
+        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>"><img  alt="<?php echo $row['chat'];?>" class="lazyload" data-src="<?php echo $img; ?>" style="float: left; margin-right: 3px;margin-bottom: 3px;" /></a>
         <i style="color: #c1c1c1;" class="fa fa-angle-double-left" aria-hidden="true"></i>
         <?php echo $row['chat'];?> 
         <i style="color: #c1c1c1;" class="fa fa-angle-double-right" aria-hidden="true"></i>
