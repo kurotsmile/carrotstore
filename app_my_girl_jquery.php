@@ -948,6 +948,8 @@ if ($func == 'get_chat_by_audio_url') {
             }else{
                 $c->{'error'}='0';
                 $c->data =$data_chat['chat'];
+                $c->{'song_lang'}=$lang;
+                $c->{'id_song'}=$data_chat['id'];
                 $img_url_avatar = 'app_mygirl/app_my_girl_' . $lang . '_img/' . $data_chat['id'] . '.png';
                 $img_url_avatar_sever ='';
                 if (file_exists($img_url_avatar)) {
@@ -986,6 +988,24 @@ if ($func == 'get_chat_by_audio_url') {
         $c->data = "Không tìm thấy đối tượng sử dụng <br/> <i>Nên xóa tệp tin này để đảm bảo tính dư thừa dữ liệu</i>";
         echo 'gettitlecallback(' . json_encode($c) . ')';
     }
+    exit;
+}
+
+if($func=='update_carrotstore_music'){
+    $data_song_id=$_GET['data_song_id'];
+    $data_song_artist=$_GET['data_song_artist'];
+    $data_song_album=$_GET['data_song_album'];
+    $data_song_year=$_GET['data_song_year'];
+    $data_song_genre=$_GET['data_song_genre'];
+    $data_song_lang=$_GET['data_song_lang'];
+    $query_update_music=mysql_query("UPDATE `app_my_girl_".$data_song_lang."_lyrics` SET `artist` = '$data_song_artist',`album` = '$data_song_album',`year` = '$data_song_year',`genre` = '$data_song_genre' WHERE `id_music` = '$data_song_id' LIMIT 1;");
+    if(mysql_error($link)==''){
+        $c->{'error'}='0';
+    }else{
+        $c->{'error'}='1';
+        $c->data=mysql_error($link);
+    }
+    echo 'updatemusiccarrotstorecallback(' . json_encode($c) . ')';
     exit;
 }
 

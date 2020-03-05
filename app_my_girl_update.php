@@ -1172,6 +1172,7 @@ $arr = mysql_fetch_array($result_chat);
                                 class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
                     <?php
                     $txt_lyrics = '';
+                    $data_lyrics='';
                     $show_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE  `id_music` = '$id_music' LIMIT 1");
                     if (mysql_num_rows($show_lyrics) > 0) {
                         $data_lyrics = mysql_fetch_array($show_lyrics);
@@ -1182,6 +1183,7 @@ $arr = mysql_fetch_array($result_chat);
                                 style="height: 240px;"><?php echo $txt_lyrics; ?></textarea>
                 </td>
             </tr>
+
             <tr>
                 <td><label><i class="fa fa-youtube-play" aria-hidden="true"></i> Liên kết Video Youtube</label>:</td>
                 <td>
@@ -1267,6 +1269,33 @@ $arr = mysql_fetch_array($result_chat);
                     <?php } ?>
                 </td>
             </tr>
+
+            <?php
+            if($data_lyrics!='') {
+                ?>
+                <tr>
+                    <td>
+                        <i class="fa fa-info" aria-hidden="true"></i> Các thuột tính âm nhạc khác
+                    </td>
+                    <td>
+                        <?php
+                        unset($data_lyrics['id_music']);
+                        unset($data_lyrics[0]);
+                        unset($data_lyrics[1]);
+                        unset($data_lyrics['lyrics']);
+                        unset($data_lyrics[2]);
+                        unset($data_lyrics[3]);
+                        unset($data_lyrics[4]);
+                        unset($data_lyrics[5]);
+                        foreach ($data_lyrics as $key_info => $key_val) {
+                            echo '<li><b>' . $key_info . '</b> : ' . $key_val . '</li>';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
 
             </tr>
             <?php
