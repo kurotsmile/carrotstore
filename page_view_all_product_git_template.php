@@ -8,7 +8,7 @@ if(trim($row['slug'])!=''){
 ?>
             <div id="row<?php echo $row[0]; ?>" class="app">
                 <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo lang('click_de_xem').' ('.get_name_product_lang($row[0],$_SESSION["lang"]).')';?>"><h1><span class="<?php $data_type=get_row('type',$row['type']);echo $data_type[1]; ?>"></span> <?php echo get_name_product_lang($row[0],$_SESSION["lang"]); ?></h1></a></div>
-                <a href="<?php echo $link_app;?>"><img  alt="<?php echo get_name_product_lang($row[0],$_SESSION["lang"]); ?>" title="<?php echo lang('click_de_xem').' ('.get_name_product_lang($row[0],$_SESSION["lang"]).')';?>" src="<?php echo get_url_icon_product($row[0],'100x100'); ?>" class="app_icon" /></a>
+                <a href="<?php echo $link_app;?>"><img style="float: left;width: 100px;"  alt="<?php echo get_name_product_lang($row[0],$_SESSION["lang"]); ?>" title="<?php echo lang('click_de_xem').' ('.get_name_product_lang($row[0],$_SESSION["lang"]).')';?>" class="lazyload" data-src="<?php echo get_url_icon_product($row[0],'100x100'); ?>" class="app_icon" /></a>
                 <div class="app_txt">
                     <div class="desc">
                     <?php echo limit_words(get_desc_product_lang($row[0],$_SESSION['lang']),20); ?>

@@ -5,12 +5,46 @@
         <item url="file://$PROJECT_DIR$/dist/lazysizes.min.js" />
         <item url="file://$PROJECT_DIR$/dist/sweetalert-dev.min.js" />
         <item url="file://$PROJECT_DIR$/dist/sweetalert.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/Chart.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/external/jquery/jquery.min.js" />
+        <item url="file://$PROJECT_DIR$/js/external/jquery/jquery.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/fizzycam.min.js" />
+        <item url="file://$PROJECT_DIR$/js/highlight.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery-comments.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery-comments.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery-ui.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery-ui.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery.ajaxfileupload.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery.form.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery.form.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jscolor.min.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/okzoom.min.js" />
+        <item url="file://$PROJECT_DIR$/js/okzoom.min.min.js" />
+        <item url="file://$PROJECT_DIR$/js/sol.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/dist/lazysizes.min.js" />
       <root url="file://$PROJECT_DIR$/dist/sweetalert-dev.min.js" />
       <root url="file://$PROJECT_DIR$/dist/sweetalert.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/Chart.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/external/jquery/jquery.min.js" />
+      <root url="file://$PROJECT_DIR$/js/external/jquery/jquery.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/fizzycam.min.js" />
+      <root url="file://$PROJECT_DIR$/js/highlight.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery-comments.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery-comments.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery-ui.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery-ui.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery.ajaxfileupload.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery.form.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery.form.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jscolor.min.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/okzoom.min.js" />
+      <root url="file://$PROJECT_DIR$/js/okzoom.min.min.js" />
+      <root url="file://$PROJECT_DIR$/js/sol.min.js" />
     </CLASSES>
     <SOURCES />
   </library>

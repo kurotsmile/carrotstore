@@ -2,7 +2,7 @@
     $url_song='';
    $id_music=$row['id'];
    $lang_sel=$row['author'];
-    $query_lyrics=mysql_query("SELECT `lyrics` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
+    $query_lyrics=mysql_query("SELECT SUBSTRING(`lyrics`, 1, 110) as l FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
     $data_lyrics=mysql_fetch_array($query_lyrics);
     mysql_free_result($query_lyrics);
     $query_link_video=mysql_query("SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
@@ -68,7 +68,7 @@ mysql_free_result($count_status_3);
     
     <?php if($list_style=='list'){?>
     <a href="#" >
-        <img  onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" alt="<?php echo $row['chat']; ?>" src="<?php echo $url_img_thumb;?>" class="app_icon" style="height: 100px;" />
+        <img  onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" alt="<?php echo $row['chat']; ?>" class="lazyload" data-src="<?php echo $url_img_thumb;?>" class="app_icon" style="height: 100px;float: left;width: 100px;" />
     </a>
     <?php }else{?>
     <a href="<?php echo $url_song;?>" >
@@ -78,9 +78,9 @@ mysql_free_result($count_status_3);
     
     <div class="app_txt">
             <p class="app_address" style="padding: 0px;margin:0px;height: 75px;overflow-y: auto;">
-            <?php if($data_lyrics['lyrics']!=''){?>
+            <?php if($data_lyrics['l']!=''){?>
                 <strong><i class="fa fa-book" aria-hidden="true"></i> <?php echo lang('loi_bai_hat');?></strong><br />
-                <?php echo $data_lyrics['lyrics']; ?>
+                <?php echo $data_lyrics['l'].'...'; ?>
             <?php }else{?>
                 <i class="fa fa-sticky-note-o" aria-hidden="true"></i> <?php echo lang('chua_co_loi_bai_hat');?>
             <?php }?>

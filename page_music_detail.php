@@ -140,10 +140,10 @@ textarea:focus {
 
             <div class="info_music">
                 <?php
-                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> Nghệ sĩ thể hiện:</b>'.$data_lyrics['artist'].'</div>';
-                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> Album:</b>'.$data_lyrics['album'].'</div>';
-                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> Thể loại:</b>'.$data_lyrics['genre'].'</div>';
-                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> Năm xuất bản:</b>'.$data_lyrics['year'].'</div>';
+                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang('song_artist').':</b>'.$data_lyrics['artist'].'</div>';
+                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> '.lang('song_album').':</b>'.$data_lyrics['album'].'</div>';
+                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang('song_genre').':</b>'.$data_lyrics['genre'].'</div>';
+                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang('song_year').':</b>'.$data_lyrics['year'].'</div>';
                 ?>
             </div>
 
