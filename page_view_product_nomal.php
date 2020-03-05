@@ -117,14 +117,14 @@
             ?>
         </ul>
         
-<!-- Trang chi tiết -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:300px"
-     data-ad-client="ca-pub-5388516931803092"
-     data-ad-slot="5771636042"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+    <!-- ADS Trang chi tiết -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:300px"
+         data-ad-client="ca-pub-5388516931803092"
+         data-ad-slot="5771636042"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
     </div>
 

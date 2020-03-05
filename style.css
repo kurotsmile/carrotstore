@@ -106,10 +106,7 @@ label{
 	background: #f2992b;
 }
 
-.info_music .item {
-	float: left;
-	margin-right: 17px;
-}
+
 /* ----- ---- --- -- -  Default buttons - -- --- ---- ----- */
 
 .buttonPro{
@@ -1133,7 +1130,7 @@ tr:nth-child(even) {background-color: white}
     text-align: left;
     margin-right: 18px;
     padding-top: 5px;
-
+	max-width: 230px;
 }
 #form_lang select{
     border: solid 3px #C7C7C7 !important;
