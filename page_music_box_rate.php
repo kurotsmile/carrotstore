@@ -30,36 +30,34 @@ $data_m_0='0';
 $data_m_1='0';
 $data_m_2='0';
 $data_m_3='0';
-$is_ready_data_music='0';
-$check_music_data=mysql_query("SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music'");
-if($check_music_data){
-    if(mysql_num_rows($check_music_data)){
-        $is_ready_data_music='1';
-                $count_status_0=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='0' LIMIT 1");
-                $count_status_1=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='1' LIMIT 1");
-                $count_status_2=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='2' LIMIT 1");
-                $count_status_3=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='3' LIMIT 1");
-                $data_0=mysql_fetch_array($count_status_0);
-                $data_1=mysql_fetch_array($count_status_1);
-                $data_2=mysql_fetch_array($count_status_2);
-                $data_3=mysql_fetch_array($count_status_3);
+$is_ready_data_music='1';
+$count_status_0=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='0' LIMIT 1");
+$count_status_1=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='1' LIMIT 1");
+$count_status_2=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='2' LIMIT 1");
+$count_status_3=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='3' LIMIT 1");
+$data_0=mysql_fetch_array($count_status_0);
+$data_1=mysql_fetch_array($count_status_1);
+$data_2=mysql_fetch_array($count_status_2);
+$data_3=mysql_fetch_array($count_status_3);
                 
-                $data_m_0=$data_0[0];
-                $data_m_1=$data_1[0];
-                $data_m_2=$data_2[0];
-                $data_m_3=$data_3[0];
+$data_m_0=$data_0[0];
+$data_m_1=$data_1[0];
+$data_m_2=$data_2[0];
+$data_m_3=$data_3[0];
+$total_data_m=intval($data_m_0)+intval($data_m_1)+intval($data_m_2)+intval($data_m_3);
 
-                mysql_free_result($count_status_0);
-                mysql_free_result($count_status_1);
-                mysql_free_result($count_status_2);
-                mysql_free_result($count_status_3);
-    }
+mysql_free_result($count_status_0);
+mysql_free_result($count_status_1);
+mysql_free_result($count_status_2);
+mysql_free_result($count_status_3);
+if($total_data_m==0){
+    $is_ready_data_music='0';
 }
 
 ?>
             <div  style="color: #515151;font-size: 11px;font-weight: normal;margin-top: 20px;float: left;width: 100%;background-color: #ffffffa6;padding: 10px;border-radius: 10px;">
                 <i class="fa fa-star-half-o" style="float: left;font-size: 60px;margin-right: 10px;" aria-hidden="true"></i>
-                <strong><?php echo lang('danh_gia'); ?></strong> (<?php echo mysql_num_rows($check_music_data); ?>)<br />
+                <strong><?php echo lang('danh_gia'); ?></strong> (<?php echo $total_data_m; ?>)<br />
                 <i><?php echo lang('dang_gia_music_tip'); ?></i><br />
 
                     <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='0'){ ?>blue<?php }else{?>yellow<?php } ?>" href_url="<?php echo $url_page_cur.'&rate=0'; ?>"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo lang('music_top_0'); ?> (<?php echo $data_m_0; ?>)</span>

@@ -137,7 +137,16 @@ textarea:focus {
                 <br />
                 <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$0.99</span>
             </a>
-            
+
+            <div class="info_music">
+                <?php
+                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> Nghệ sĩ thể hiện:</b>'.$data_lyrics['artist'].'</div>';
+                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> Album:</b>'.$data_lyrics['album'].'</div>';
+                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> Thể loại:</b>'.$data_lyrics['genre'].'</div>';
+                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> Năm xuất bản:</b>'.$data_lyrics['year'].'</div>';
+                ?>
+            </div>
+
             </p>
             <?php echo show_share($url.'/music/'.$id_music.'/'.$lang_sel); ?>
             <?php if($data_lyrics['lyrics']!=''){?>

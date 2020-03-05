@@ -106,7 +106,10 @@ label{
 	background: #f2992b;
 }
 
-
+.info_music .item {
+	float: left;
+	margin-right: 17px;
+}
 /* ----- ---- --- -- -  Default buttons - -- --- ---- ----- */
 
 .buttonPro{
@@ -982,8 +985,6 @@ tr:nth-child(even) {background-color: white}
 .menu_app .app_txt,.menu_app .app_icon,.menu_app .app_type,.menu_app .app_action,.menu_app .app_address,.menu_app .app_star{
     display: none;
 }
-
-
 
 .app .app_title{
     width: 100%;

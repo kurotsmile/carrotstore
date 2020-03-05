@@ -993,10 +993,10 @@ if ($func == 'get_chat_by_audio_url') {
 
 if($func=='update_carrotstore_music'){
     $data_song_id=$_GET['data_song_id'];
-    $data_song_artist=$_GET['data_song_artist'];
-    $data_song_album=$_GET['data_song_album'];
+    $data_song_artist=addslashes($_GET['data_song_artist']);
+    $data_song_album=addslashes($_GET['data_song_album']);
     $data_song_year=$_GET['data_song_year'];
-    $data_song_genre=$_GET['data_song_genre'];
+    $data_song_genre=addslashes($_GET['data_song_genre']);
     $data_song_lang=$_GET['data_song_lang'];
     $query_update_music=mysql_query("UPDATE `app_my_girl_".$data_song_lang."_lyrics` SET `artist` = '$data_song_artist',`album` = '$data_song_album',`year` = '$data_song_year',`genre` = '$data_song_genre' WHERE `id_music` = '$data_song_id' LIMIT 1;");
     if(mysql_error($link)==''){
