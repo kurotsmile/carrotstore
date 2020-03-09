@@ -1277,17 +1277,17 @@ $arr = mysql_fetch_array($result_chat);
                         $data_song_album=$data_lyrics['album'];
                         $data_song_genre=$data_lyrics['genre'];
                         if($data_song_artist!=''){
-                            echo '<li><b>Artist (Nghệ sĩ thể hiện)</b> : ' . $data_song_artist . '</li>';
+                            echo '<li><b>Artist (Nghệ sĩ thể hiện)</b> : <a target="_blank" href="'.$url.'/artist/'.$lang_sel.'/'.$data_song_artist.'">' . $data_song_artist . '</a></li>';
                         }
                         if($data_song_album!=''){
-                            echo '<li><b>Album </b> : ' . $data_song_album . '</li>';
+                            echo '<li><b>Album </b> : <a target="_blank" href="'.$url.'/album/'.$lang_sel.'/'.$data_song_album.'">' . $data_song_album . '</a></li>';
                         }
                         if($data_song_year!=''){
-                            echo '<li><b>Year (Năm xuất bản)</b> : ' . $data_song_year . '</li>';
+                            echo '<li><b>Year (Năm xuất bản)</b> : <a target="_blank" href="'.$url.'/year/'.$lang_sel.'/'.$data_song_year.'">' . $data_song_year . '</a></li>';
                         }
 
                         if($data_song_genre!=''){
-                            echo '<li><b>Genre (Thể loại)</b> : ' . $data_song_genre . '</li>';
+                            echo '<li><b>Genre (Thể loại)</b> : <a target="_blank" href="'.$url.'/index.php?page_view=page_music_genre.php&lang='.$lang_sel.'&genre='.$data_song_genre.'">' . $data_song_genre . '</a></li>';
                         }
                         ?>
                     </td>

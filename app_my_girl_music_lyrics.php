@@ -35,9 +35,9 @@ if ($current_page > $total_page) {
 $start = ($current_page - 1) * $limit;
 
 if ($txt_search == '') {
-    $result_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC LIMIT $start, $limit ");
+    $result_lyrics = mysql_query("SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre` FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC LIMIT $start, $limit ");
 } else {
-    $result_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `lyrics` LIKE '%" . $txt_search . "%' LIMIT $start, $limit ");
+    $result_lyrics = mysql_query("SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre`  FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `lyrics` LIKE '%" . $txt_search . "%' LIMIT $start, $limit ");
 }
 ?>
 <form method="post" id="form_loc" style="width: 500px;">
@@ -97,10 +97,10 @@ if ($txt_msg_error != '') {
     echo show_alert($txt_msg_error, 'alert');
 }
 echo '<table  style="border:solid 1px green">';
-echo '<tr style="border:solid 1px green"><th>id</th><th>Tên bài hát</th><th>Vắn tắt lời bài hát</th><th>Hành động</th></tr>';
+echo '<tr style="border:solid 1px green"><th>id</th><th>Tên bài hát</th><th>Vắn tắt lời bài hát</th><th>Nghệ sĩ</th><th>Album</th><th>Thể loại</th><th>Năm xuất bản</th><th>Hành động</th></tr>';
 while ($row = mysql_fetch_array($result_lyrics)) {
     $is_ready = false;
-    $sql_name_song = mysql_query("SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row[0] . "' LIMIT 1");
+    $sql_name_song = mysql_query("SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row['id_music'] . "' LIMIT 1");
     if (mysql_num_rows($sql_name_song) > 0) {
         $arr_song = mysql_fetch_array($sql_name_song);
         $is_ready = true;
@@ -109,22 +109,23 @@ while ($row = mysql_fetch_array($result_lyrics)) {
     }
 
     ?>
-    <tr <?php if ($is_ready == false) {
-        echo "style='background-color:pink;'";
-    } ?>>
-
+    <tr <?php if ($is_ready == false) {echo "style='background-color:pink;'";} ?>>
         <td><a target="_blank"
-               href="<?php echo $url; ?>/app_my_girl_update.php?id=<?php echo $row[0]; ?>&lang=<?php echo $langsel; ?>"><i class="fa fa-audio-description" aria-hidden="true"></i> <?php echo $row[0]; ?></a>
+               href="<?php echo $url; ?>/app_my_girl_update.php?id=<?php echo $row['id_music']; ?>&lang=<?php echo $langsel; ?>"><i class="fa fa-audio-description" aria-hidden="true"></i> <?php echo $row['id_music']; ?></a>
         </td>
         <td>
             <a target="_blank"
-               href="<?php echo $url; ?>/app_my_girl_update.php?id=<?php echo $row[0]; ?>&lang=<?php echo $langsel; ?>">
+               href="<?php echo $url; ?>/app_my_girl_update.php?id=<?php echo $row['id_music']; ?>&lang=<?php echo $langsel; ?>">
                 <?php
                 if($is_ready==true) {echo $arr_song['chat'];}
                 ?>
             </a>
         </td>
-        <td><?php echo substr($row[1], 0, 60); ?></td>
+        <td><?php echo $row['l']?></td>
+        <td><?php echo $row['artist']; ?></td>
+        <td><?php echo $row['album']; ?></td>
+        <td><?php echo $row['genre']; ?></td>
+        <td><?php echo $row['year']; ?></td>
         <td>
             <a href="<?php echo $url; ?>/app_my_girl_music_lyrics.php?delete=<?php echo $row[0]; ?>&lang=<?php echo $langsel; ?>&page=<?php echo $current_page; ?>"
                class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>

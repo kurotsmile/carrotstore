@@ -149,5 +149,13 @@ include "app_my_girl_template.php";
         </li>
     </a>
 
+    <a href="<?php echo $url;?>/app_my_girl_handling.php?func=seo">
+        <li class="box_tool">
+            <i class="fa fa-search-plus" aria-hidden="true"></i>
+            <b>Tối ưu SEO</b><br />
+            Công cụ tạo Site Map để tăng tỉ lệ tìm kiếm trên google cho các đối tượng của hệ thống
+        </li>
+    </a>
+
 </ul>
 </div>

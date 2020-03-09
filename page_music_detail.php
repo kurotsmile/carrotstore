@@ -17,9 +17,6 @@ exit;
 }
 ?>
 
-
-
-
 <?php
 include "phpqrcode/qrlib.php";
 $id_music=$data_music['id'];
@@ -130,7 +127,7 @@ textarea:focus {
             <?php 
                 QRcode::png($url.'/music/'.$id_music.'/'.$lang_sel, 'phpqrcode/img/music'.$id_music.'_'.$lang_sel.'.png', 'M', 4, 2);
             ?>
-            <img src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" />
+            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" />
             <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                 <span><?php echo lang('download_song');?></span>
@@ -140,10 +137,10 @@ textarea:focus {
 
             <div class="info_music">
                 <?php
-                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang('song_artist').':</b>'.$data_lyrics['artist'].'</div>';
-                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> '.lang('song_album').':</b>'.$data_lyrics['album'].'</div>';
-                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang('song_genre').':</b>'.$data_lyrics['genre'].'</div>';
-                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang('song_year').':</b>'.$data_lyrics['year'].'</div>';
+                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang('song_artist').':</b><a href="'.$url.'/artist/'.$lang_sel.'/'.$data_lyrics['artist'].'">'.$data_lyrics['artist'].'</a></div>';
+                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> '.lang('song_album').':</b><a href="'.$url.'/album/'.$lang_sel.'/'.$data_lyrics['album'].'">'.$data_lyrics['album'].'</a></div>';
+                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang('song_genre').':</b><a href="'.$url.'/index.php?page_view=page_music_genre.php&lang='.$lang_sel.'&genre='.$data_lyrics['genre'].'">'.$data_lyrics['genre'].'</a></div>';
+                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang('song_year').':</b><a href="'.$url.'/year/'.$lang_sel.'/'.$data_lyrics['year'].'">'.$data_lyrics['year'].'</a></div>';
                 ?>
             </div>
 

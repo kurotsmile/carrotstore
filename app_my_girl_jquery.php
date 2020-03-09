@@ -515,7 +515,8 @@ if($func=='show_effect_chat'){
         $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` LIMIT 400");
     }else{
         if($tag=='rand'){
-            $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` ORDER by RAND() LIMIT 200");
+           // $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` ORDER by RAND() LIMIT 200");
+            $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` LIMIT 200");
         }else{
             $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` WHERE `tag` = '$tag' LIMIT 400");
         }

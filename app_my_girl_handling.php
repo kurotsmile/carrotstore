@@ -301,5 +301,9 @@ if($func=='disk_capacity'){
 if($func=='avatar_user_resize'){
     include "app_mygirl_function/avatar_user_resize.php";
 }
+
+if($func=='seo'){
+    include "app_mygirl_function/seo.php";
+}
 ?>
 
