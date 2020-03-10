@@ -992,19 +992,21 @@ if ($func == 'get_chat_by_audio_url') {
                 $c->{'id_song'}=$data_chat['id'];
                 $img_url_avatar = 'app_mygirl/app_my_girl_' . $lang . '_img/' . $data_chat['id'] . '.png';
                 $img_url_avatar_sever ='';
+                $txt_link_video='';
+                $check_video = mysql_query("SELECT * FROM `app_my_girl_video_$lang` WHERE  `id_chat` = '".$data_chat['id']."' LIMIT 1");
+                if (mysql_num_rows($check_video) > 0) {
+                    $data_video = mysql_fetch_array($check_video);
+                    $txt_link_video = $data_video['link'];
+                    parse_str(parse_url($txt_link_video, PHP_URL_QUERY), $my_array_of_vars);
+                    $txt_link_thumb = $my_array_of_vars['v'];
+                    $img_url_avatar_sever='http://img.youtube.com/vi/'.$txt_link_thumb.'/sddefault.jpg';
+                }
+
                 if (file_exists($img_url_avatar)) {
                     $img_url_avatar_sever = $url . '/' . $img_url_avatar;
-                }else{
-                    $txt_link_thumb = '';
-                    $check_video = mysql_query("SELECT * FROM `app_my_girl_video_$lang` WHERE  `id_chat` = '".$data_chat['id']."' LIMIT 1");
-                    if (mysql_num_rows($check_video) > 0) {
-                        $data_video = mysql_fetch_array($check_video);
-                        $txt_link_video = $data_video['link'];
-                        parse_str(parse_url($txt_link_video, PHP_URL_QUERY), $my_array_of_vars);
-                        $txt_link_thumb = $my_array_of_vars['v'];
-                        $img_url_avatar_sever='http://img.youtube.com/vi/'.$txt_link_thumb.'/sddefault.jpg';
-                    }
                 }
+
+                $c->{'linkytb'}=$txt_link_video;
                 $c->{'avatar'}=$img_url_avatar_sever;
                 $txt_lyrics = '';
                 $show_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $lang . "_lyrics` WHERE  `id_music` = '".$data_chat['id']."' LIMIT 1");

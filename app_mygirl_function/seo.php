@@ -39,10 +39,13 @@ mysql_free_result($list_country);
 
 
 $xml.='</urlset>'.PHP_EOL;
-
 $fp = fopen('sitemap_product.xml', 'w');
 fwrite($fp, $xml);
 fclose($fp);
 ?>
 
 <a target="_blank" href="<?php echo $url;?>/sitemap_product.xml">sitemap_product.xml</a>
+
+<?php
+echo '<pre>', htmlentities($xml), '</pre>';
+?>

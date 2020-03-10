@@ -100,8 +100,8 @@
 
                  while($l=mysql_fetch_array($list_country)){
                     $key=$l['key'];
-                    $txt_query.="(SELECT `id`,`disable`,`text`,`chat`,`sex`,`character_sex`,`color`,`author`,`pater`,`id_redirect`,`tip`,`effect`,`ver`,`link`,`os_window`,`os_ios`,`os_android`,`file_url` FROM `app_my_girl_$key` WHERE  `chat` LIKE '%$key_search%' AND  `effect`='2' AND `disable` = '0' limit 21)";
-                    $txt_query_2.=" (SELECT `id`,`disable`,`text`,`chat`,`sex`,`character_sex`,`color`,`author`,`pater`,`id_redirect`,`tip`,`effect`,`ver`,`link`,`os_window`,`os_ios`,`os_android`,`file_url` FROM `app_my_girl_$key` WHERE MATCH (`chat`) AGAINST ('$key_search' IN BOOLEAN MODE) AND  `effect`='2' AND `disable` = '0' limit 21)";
+                    $txt_query.="(SELECT `id`,`disable`,`text`,`chat`,`sex`,`character_sex`,`color`,`author`,`pater`,`id_redirect`,`tip`,`effect`,`ver`,`link`,`os_window`,`os_ios`,`os_android`,`file_url`,`limit_chat` FROM `app_my_girl_$key` WHERE  `chat` LIKE '%$key_search%' AND  `effect`='2' AND `disable` = '0' limit 21)";
+                    $txt_query_2.=" (SELECT `id`,`disable`,`text`,`chat`,`sex`,`character_sex`,`color`,`author`,`pater`,`id_redirect`,`tip`,`effect`,`ver`,`link`,`os_window`,`os_ios`,`os_android`,`file_url`,`limit_chat` FROM `app_my_girl_$key` WHERE MATCH (`chat`) AGAINST ('$key_search' IN BOOLEAN MODE) AND  `effect`='2' AND `disable` = '0' limit 21)";
                     $count_index++;
                     if($count_index!=$count_l){
                         $txt_query.=" UNION ALL ";
