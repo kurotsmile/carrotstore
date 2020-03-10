@@ -511,37 +511,42 @@ if($func=='delete_report'){
 
 if($func=='show_effect_chat'){
     $tag=$_GET['tag'];
+    $limit=200;
+    if($tag==''||$tag=='rand'){
+        $query_count_all_effect = mysql_query("SELECT COUNT(`id`) as c FROM `app_my_girl_effect`");
+    }else{
+        $query_count_all_effect = mysql_query("SELECT COUNT(`id`) as c FROM `app_my_girl_effect` WHERE `tag` = '$tag' ");
+    }
+
+    $data_count_effect = mysql_fetch_array($query_count_all_effect);
+    $total_records = $data_count_effect['c'];
+    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $total_page = ceil($total_records / $limit);
+    if ($current_page > $total_page) {
+        $current_page = $total_page;
+    } else if ($current_page < 1) {
+        $current_page = 1;
+    }
+    $start = ($current_page - 1) * $limit;
+
     if($tag==''){
-        $list_effect=mysql_query("SELECT `id`,`color` FROM `app_my_girl_effect` LIMIT 400");
+        $list_effect=mysql_query("SELECT `id`,`color` FROM `app_my_girl_effect` LIMIT $start, $limit ");
     }else{
         if($tag=='rand'){
-            $limit=200;
-            $query_count_all_effect = mysql_query("SELECT COUNT(`id`) as c FROM `app_my_girl_effect`");
-            $data_count_effect = mysql_fetch_array($query_count_all_effect);
-            $total_records = $data_count_effect[0];
-            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-            $total_page = ceil($total_records / $limit);
-            if ($current_page > $total_page) {
-                $current_page = $total_page;
-            } else if ($current_page < 1) {
-                $current_page = 1;
-            }
-            $start = ($current_page - 1) * $limit;
-           // $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` ORDER by RAND() LIMIT 200");
             $list_effect=mysql_query("SELECT `id`,`color` FROM `app_my_girl_effect`  LIMIT $start, $limit ");
         }else{
-            $list_effect=mysql_query("SELECT `id`,`color` FROM `app_my_girl_effect` WHERE `tag` = '$tag' LIMIT 400");
+            $list_effect=mysql_query("SELECT `id`,`color` FROM `app_my_girl_effect` WHERE `tag` = '$tag' LIMIT $start, $limit ");
         }
     }
     echo '<div><input onchange="search_effect(this);" placeholder="Seach effect"  type="text" value="" style="display:block;background:#c3c3c3" /></div>';
-    if($tag=='rand') {
+    if($total_page>1) {
         echo '<div style="margin-bottom: 5px;">Trang :';
         for ($i = 1; $i <= $total_page; $i++) {
             $colo_btn = 'blue';
             if ($i == $current_page) {
                 $colo_btn = 'black';
             }
-            echo '<span onclick="show_effect_chat(\'rand\',\''.$i.'\')"  class="buttonPro '. $colo_btn.' small">' . $i . '</span>';
+            echo '<span onclick="show_effect_chat(\''.$tag.'\',\''.$i.'\')"  class="buttonPro '. $colo_btn.' small">' . $i . '</span>';
         }
         echo '</div>';
     }
@@ -555,14 +560,14 @@ if($func=='show_effect_chat'){
         }
     }
     echo "</div>";
-    if($tag=='rand') {
+    if($total_page>1) {
         echo '<div style="margin-top: 5px;float: left;width: 100%;">Trang :';
         for ($i = 1; $i <= $total_page; $i++) {
             $colo_btn = 'blue';
             if ($i == $current_page) {
                 $colo_btn = 'black';
             }
-            echo '<span onclick="show_effect_chat(\'rand\',\''.$i.'\')"  class="buttonPro '. $colo_btn.' small">' . $i . '</span>';
+            echo '<span onclick="show_effect_chat(\''.$tag.'\',\''.$i.'\')"  class="buttonPro '. $colo_btn.' small">' . $i . '</span>';
         }
         echo '</div>';
     }

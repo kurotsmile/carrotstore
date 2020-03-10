@@ -520,16 +520,16 @@ if ($_POST) {
                 <td>
                     <input name="effect_customer" type="hidden" id="effect_chat"/>
                     <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect"
-                         onclick="show_effect_chat('');return false;" style="cursor: pointer;"/>
+                         onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
 
                     <button class="buttonPro blue small" id="btn_effect_random"
-                            oncontextmenu="show_effect_chat('rand');return false;"
+                            oncontextmenu="show_effect_chat('rand','');return false;"
                             onclick="sel_effect_random('');return false;">gẫu nhiên
                     </button>
 
                     <?php for ($i = 0; $i < count($arr_tag_effect); $i++) { ?>
                         <button class="buttonPro light_blue small" id="btn_effect_<?php echo $arr_tag_effect[$i]; ?>"
-                                oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>');return false;"
+                                oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>','');return false;"
                                 onclick="sel_effect_random('<?php echo $arr_tag_effect[$i]; ?>');return false;"><?php echo $arr_tag_effect[$i]; ?></button>
                     <?php } ?>
 
@@ -1130,22 +1130,6 @@ if ($key != '') {
                 data: "function=search_effect&txt=" + txt_search, //tham số truyền vào
                 success: function (data, textStatus, jqXHR) {
                     $('#table_effect').html(data);
-                }
-
-            });
-        }
-
-        function show_effect_chat(str_tag) {
-            $.ajax({
-                url: "app_my_girl_jquery.php",
-                type: "get", //kiểu dũ liệu truyền đi
-                data: "function=show_effect_chat&tag=" + str_tag, //tham số truyền vào
-                success: function (data, textStatus, jqXHR) {
-                    swal({
-                        title: "Effect Chat",
-                        html: true,
-                        text: data
-                    });
                 }
 
             });

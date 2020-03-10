@@ -208,6 +208,27 @@ function show_effect_chat(str_tag,str_page) {
 
     });
 }
+
+function sel_effect_random(tag) {
+    $.ajax({
+        url: "app_my_girl_jquery.php",
+        type: "get", //kiểu dũ liệu truyền đi
+        data: "function=select_random_effect&tag=" + tag, //tham số truyền vào
+        success: function (data, textStatus, jqXHR) {
+            var data = $.parseJSON(data);
+
+            $("#id_img_effect").attr('src', '<?php echo $url;?>/app_mygirl/obj_effect/' + data["id"] + '.png');
+            $("#effect_chat").val(data["id"]);
+            if (data["color"] != "") {
+                document.getElementById('chat_color').jscolor.fromString(data["color"]);
+            } else {
+                document.getElementById('chat_color').jscolor.fromString('FFFFFF');
+            }
+            $('#edit_effect').attr('href', '<?php echo $url;?>/app_my_girl_effect.php?edit=' + data["id"] + '').show();
+        }
+
+    });
+}
 </script>
 <?php
 
