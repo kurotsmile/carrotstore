@@ -489,22 +489,22 @@ $arr = mysql_fetch_array($result_chat);
                 if ($arr['effect_customer'] != '') {
                     ?>
                     <img src="<?php echo $url; ?>/app_mygirl/obj_effect/<?php echo $arr['effect_customer']; ?>.png"
-                         id="id_img_effect" onclick="show_effect_chat('');return false;" style="cursor: pointer;"/>
+                         id="id_img_effect" onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
                     <?php
                 } else {
                     ?>
                     <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect"
-                         onclick="show_effect_chat('');return false;" style="cursor: pointer;"/>
+                         onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
                     <?php
                 }
                 ?>
-                <button class="buttonPro blue small" oncontextmenu="show_effect_chat('rand');return false;"
+                <button class="buttonPro blue small" oncontextmenu="show_effect_chat('rand','');return false;"
                         onclick="sel_effect_random('');return false;">gẫu nhiên
                 </button>
 
                 <?php for ($i = 0; $i < count($arr_tag_effect); $i++) { ?>
                     <button class="buttonPro light_blue small"
-                            oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>');return false;"
+                            oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>','');return false;"
                             onclick="sel_effect_random('<?php echo $arr_tag_effect[$i]; ?>');return false;"><?php echo $arr_tag_effect[$i]; ?></button>
                 <?php } ?>
 
@@ -1491,11 +1491,11 @@ if ($type_chat == "chat") {
         });
     }
 
-    function show_effect_chat(str_tag) {
+    function show_effect_chat(str_tag,str_page) {
         $.ajax({
             url: "app_my_girl_jquery.php",
             type: "get", //kiểu dũ liệu truyền đi
-            data: "function=show_effect_chat&tag=" + str_tag,
+            data: "function=show_effect_chat&tag=" + str_tag+"&page="+str_page,
             success: function (data, textStatus, jqXHR) {
                 swal({
                     title: "Effect Chat",

@@ -193,6 +193,21 @@ function goto_create_audio(){
     win.focus();
 }
 
+function show_effect_chat(str_tag,str_page) {
+    $.ajax({
+        url: "app_my_girl_jquery.php",
+        type: "get", //kiểu dũ liệu truyền đi
+        data: "function=show_effect_chat&tag=" + str_tag+"&page="+str_page,
+        success: function (data, textStatus, jqXHR) {
+            swal({
+                title: "Effect Chat",
+                html: true,
+                text: data
+            });
+        }
+
+    });
+}
 </script>
 <?php
 
