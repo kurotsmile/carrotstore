@@ -179,8 +179,8 @@ function show_row_chat_prefab($data, $lang, $txt_fun_other)
             $txt_type_func .= ' <i class="fa fa-lightbulb-o" aria-hidden="true" title="Trò chuyện này được gợi ý cho người dùng"></i> ';
         }
 
-        if ($data[11] != '') {
-            $txt_type_func .= ' <a href="' . $data[11] . '" target="_blank"><i  class="fa fa-link" aria-hidden="true" title="' . $data[11] . '"></i></a> ';
+        if ($data['link'] != '') {
+            $txt_type_func .= ' <a href="' . $data['link'] . '" target="_blank"><i  class="fa fa-link" aria-hidden="true" title="' . $data['link'] . '"></i></a> ';
         }
 
     }
@@ -257,10 +257,10 @@ function show_row_chat_prefab($data, $lang, $txt_fun_other)
     if (isset($_SESSION['off_color'])) {
         $txt_color = '';
     } else {
-        $txt_color = 'background-color:' . $data[5] . ';border-radius:8px;';
+        $txt_color = 'background-color:' . $data['color'] . ';border-radius:8px;';
     }
 
-    return '<tr style="' . $txt_style . '" class="chat_row_' . $id_row . ' ' . $txt_effect_new . '"><td>' . $id_row . '</td><td>' . $txt_type . '</td><td>' . $txt_text . '</td><td style="' . $txt_color . '" >' . limit_words($data[2], 10) . '</td><td>' . $txt_sex . '</td><td>' . $txt_type_func . '</td><td>' . $txt_limit . '</td><td>' . $txt_audio . '</td><td>' . $txt_update . '</td><td>' . $txt_fun_other . '</td></tr>';
+    return '<tr style="' . $txt_style . '" class="chat_row_' . $id_row . ' ' . $txt_effect_new . '"><td>' . $id_row . '</td><td>' . $txt_type . '</td><td>' . $txt_text . '</td><td style="' . $txt_color . '" >' . limit_words($data['chat'], 10) . '</td><td>' . $txt_sex . '</td><td>' . $txt_type_func . '</td><td>' . $txt_limit . '</td><td>' . $txt_audio . '</td><td>' . $txt_update . '</td><td>' . $txt_fun_other . '</td></tr>';
 }
 
 

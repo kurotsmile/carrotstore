@@ -15,7 +15,7 @@
     <span class="buttonPro small blue" onclick="search_yt();return false;" id="btn_check_key">Search Youtube</span>
     <br />
     <?php
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+        $list_country=mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active`='1'");
         while($l=mysql_fetch_array($list_country)){
             echo '<a style="" class="buttonPro small" href="'.$url.'/app_my_girl_add.php?lang='.$l['key'].'&effect=2&actions=9" target="_blank"><img src="'.thumb('app_mygirl/img/'.$l['key'].'.png','10x10').'"/> ( '.$l['key'].' - '.$l['name'].' ) '.get_key_lang('key_music',$l['key']).'</a>';
         }
@@ -92,18 +92,16 @@
     if($key_search!=''){
     echo '<table>';
     $arr_key=array();
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+    $list_country=mysql_query("SELECT `key` FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+    $txt_query='';
+    $txt_query_2='';
+    $count_l=mysql_num_rows($list_country);
+    $count_index=0;
 
-    
-                 $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
-                 $txt_query='';
-                 $txt_query_2='';
-                 $count_l=mysql_num_rows($list_country);
-                 $count_index=0;
                  while($l=mysql_fetch_array($list_country)){
                     $key=$l['key'];
-                    $txt_query.="(SELECT * FROM `app_my_girl_$key` WHERE  `chat` LIKE '%$key_search%' AND  `effect`='2' AND `disable` = '0' limit 21)";
-                    $txt_query_2.=" (SELECT * FROM `app_my_girl_$key` WHERE MATCH (`chat`) AGAINST ('$key_search' IN BOOLEAN MODE) AND  `effect`='2' AND `disable` = '0' limit 21)";
+                    $txt_query.="(SELECT `id`,`disable`,`text`,`chat`,`sex`,`character_sex`,`color`,`author`,`pater`,`id_redirect`,`tip`,`effect`,`ver`,`link`,`os_window`,`os_ios`,`os_android`,`file_url` FROM `app_my_girl_$key` WHERE  `chat` LIKE '%$key_search%' AND  `effect`='2' AND `disable` = '0' limit 21)";
+                    $txt_query_2.=" (SELECT `id`,`disable`,`text`,`chat`,`sex`,`character_sex`,`color`,`author`,`pater`,`id_redirect`,`tip`,`effect`,`ver`,`link`,`os_window`,`os_ios`,`os_android`,`file_url` FROM `app_my_girl_$key` WHERE MATCH (`chat`) AGAINST ('$key_search' IN BOOLEAN MODE) AND  `effect`='2' AND `disable` = '0' limit 21)";
                     $count_index++;
                     if($count_index!=$count_l){
                         $txt_query.=" UNION ALL ";
@@ -119,7 +117,7 @@
             if(mysql_num_rows($result_tip)>0){
                 while($row_music=mysql_fetch_array($result_tip)){
                     $count_error++;
-                    array_push($arr_key,$row_music[2]);
+                    array_push($arr_key,$row_music['chat']);
                     echo show_row_music($row_music,$row_music['author']);
                 }
             }
