@@ -360,32 +360,32 @@ function show_ads_box_main($id_place_ads){
         
         $arr_download=array();
         if($data_product_ads['chplay_store']!=''){ 
-            $txt_download='<a  href="'.$data_product_ads['chplay_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/images/chplay_download.png" /></a>';
+            $txt_download='<a  href="'.$data_product_ads['chplay_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/chplay_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
         
         if($data_product_ads['app_store']!=''){ 
-            $txt_download='<a href="'.$data_product_ads['app_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/images/app_store_download.png" /></a>';
+            $txt_download='<a href="'.$data_product_ads['app_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/app_store_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
         
         if($data_product_ads['galaxy_store']!=''){ 
-            $txt_download='<a href="'.$data_product_ads['galaxy_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/images/galaxy_store_download.png" /></a>';
+            $txt_download='<a href="'.$data_product_ads['galaxy_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/galaxy_store_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
         
         if($data_product_ads['window_store']!=''){ 
-            $txt_download='<a href="'.$data_product_ads['window_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/images/window_store_download.png" /></a>';
+            $txt_download='<a href="'.$data_product_ads['window_store'].'"  target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/window_store_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
         
         if($data_product_ads['apk']!=''){ 
-            $txt_download='<a href="'.$data_product_ads['apk'].'" target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/images/apk_download.png" /></a>';
+            $txt_download='<a href="'.$data_product_ads['apk'].'" target="_blank"><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/apk_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
         
         if(file_exists('product_data/'.$data_product_ads[0].'/ios/app.plist')){
-            $txt_download='<a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/'.$data_product_ads[0].'/ios/app.plist" target="_blank" ><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/images/ipa_download.png" /></a>';
+            $txt_download='<a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/'.$data_product_ads[0].'/ios/app.plist" target="_blank" ><img alt="Download '.get_name_product_lang($id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/ipa_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
         
