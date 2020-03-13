@@ -68,7 +68,7 @@ mysql_free_result($count_status_3);
     
     <?php if($list_style=='list'){?>
     <a href="#" >
-        <img  onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" alt="<?php echo $row['chat']; ?>" class="lazyload" data-src="<?php echo $url_img_thumb;?>" class="app_icon" style="height: 100px;float: left;width: 100px;" />
+        <img  onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" alt="<?php echo $row['chat']; ?>" class="lazyload app_icon" data-src="<?php echo $url_img_thumb;?>"  style="height: 100px;float: left;width: 100px;" />
     </a>
     <?php }else{?>
     <a href="<?php echo $url_song;?>" >

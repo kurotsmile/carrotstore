@@ -30,9 +30,13 @@ $(document).ready(function(){
     
     audioElement.addEventListener("timeupdate",function(){
         $("#currentTime").text("Current second:" + audioElement.currentTime);
-        progressBar(Math.round((audioElement.currentTime/audioElement.duration)*100), $('#progressBar')); 
+        progressBar(Math.round((audioElement.currentTime/audioElement.duration)*100), $('#bar_music_val'));
     });
-    
+
+
+function progressBar(timerbar,emp) {
+    $(emp).css("width",timerbar);
+}
 
 function play_music(s_nam,url_m,url_icon,emp){
     $(".menu_app").removeClass('music_color');

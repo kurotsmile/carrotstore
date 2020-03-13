@@ -349,7 +349,7 @@ function show_ads_box_main($id_place_ads){
     $txt_html.='</div>';
     
     $txt_html.='<div id="player_music">';
-    $txt_html.='<div id="progressBar" style="width: 100%;height: 10px;float: left;background-color: black;border-radius: 0px;" class="round-pink"><div style="float: left;"></div></div>';
+    $txt_html.='<div id="progressBar" style="width: 100%;height: 10px;float: left;background-color: black;border-radius: 0px;" class="round-pink"><div id="bar_music_val" style="float: left;width: 0px;height: 10px;background-color: orange"></div></div>';
     $txt_html.='<img id="player_music_img" style="width: 100px;border-radius: 5px;margin: 2px;float: left;"  class="lazyload" data-src="'.get_url_icon_product($id_product_ads,'50x50').'"/>';
     $txt_html.='<div id="player_music_name" style="width: 173px;float: left;color: yellow;margin: 10px;"></div>';
     $txt_html.='<i style="cursor: pointer;font-size: 20px;float: left;margin: 3px;color: white;" class="fa fa-stop-circle" aria-hidden="true" onclick="pause_music();return false;"></i>';      
