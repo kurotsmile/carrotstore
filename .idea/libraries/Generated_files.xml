@@ -2,6 +2,8 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/../carrot.sytes.net/js/player.min.js" />
+        <item url="file://$PROJECT_DIR$/../carrot.sytes.net/js/siriwave.min.js" />
         <item url="file://$PROJECT_DIR$/dist/lazysizes.min.js" />
         <item url="file://$PROJECT_DIR$/dist/sweetalert-dev.min.js" />
         <item url="file://$PROJECT_DIR$/dist/sweetalert.min.min.js" />
@@ -26,6 +28,7 @@
         <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/build-config.min.js" />
         <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/ckeditor.min.js" />
         <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/config.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/jquery-comments.min.js" />
         <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/en.min.js" />
         <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/vi.min.js" />
         <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/zh-cn.min.js" />
@@ -40,6 +43,8 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/../carrot.sytes.net/js/player.min.js" />
+      <root url="file://$PROJECT_DIR$/../carrot.sytes.net/js/siriwave.min.js" />
       <root url="file://$PROJECT_DIR$/dist/lazysizes.min.js" />
       <root url="file://$PROJECT_DIR$/dist/sweetalert-dev.min.js" />
       <root url="file://$PROJECT_DIR$/dist/sweetalert.min.min.js" />
@@ -64,6 +69,7 @@
       <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/build-config.min.js" />
       <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/ckeditor.min.js" />
       <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/config.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/jquery-comments.min.js" />
       <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/en.min.js" />
       <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/vi.min.js" />
       <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/zh-cn.min.js" />
