@@ -8,10 +8,8 @@ header('Content-type: text/html; charset=utf-8');
 
 session_start();
 
-
 function ip_visitor_country()
 {
-
     $client = @$_SERVER['HTTP_CLIENT_IP'];
     $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
     $remote = $_SERVER['REMOTE_ADDR'];
@@ -56,7 +54,6 @@ if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
     include 'bbit-compress.php';
 }
 
-$url_block = array('page_account.php', 'page_type.php', 'page_contry.php', 'page_type_add.php', 'page_type_update.php');
 
 if (isset($_POST['key_contry'])) {
     $_SESSION['lang'] = $_POST['key_contry'];
@@ -67,8 +64,10 @@ if (isset($_POST['key_contry'])) {
     header("Location: $url_cur");
 }
 include "database.php";
-if (isset($_SESSION['lang'])) {
 
+$lang='en';
+if (isset($_SESSION['lang'])) {
+    $lang=$_SESSION['lang'];
 } else {
     $k = ip_visitor_country();
     $query_key_country = mysql_query("SELECT `key` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
@@ -78,33 +77,16 @@ if (isset($_SESSION['lang'])) {
     } else {
         $_SESSION['lang'] = 'en';
     }
-
-}
-
-if (isset($_SESSION['username_login'])) {
-} else {
-    if (isset($_SESSION['cart'])) {
-
-    } else {
-        $_SESSION['cart'] = array();
-    }
-
-    if (isset($_GET['page_view'])) {
-        $page_view = $_GET['page_view'];
-        if (in_array($page_view, $url_block)) {
-            header('Location: ' . $url . '');
-        }
-    }
+    $lang=$_SESSION['lang'];
 }
 
 include "function.php";
 include "json/json.php";
 include "json/json2.php";
 
-if ($_GET && isset($_GET['page_view'])) {
+$page_file = "page_view.php";
+if(isset($_GET['page_view'])) {
     $page_file = $_GET['page_view'];
-} else {
-    $page_file = "page_view.php";
 }
 
 $error = '';
@@ -115,22 +97,8 @@ if (isset($_POST['logout'])) {
     $url_cur = $_POST['urls'];
     header("Location: $url_cur");
 }
-if (isset($_POST['login'])) {
-    $usernames = $_POST['usernames'];
-    $password = $_POST['password'];
-    $result = mysql_query("SELECT * FROM `accounts` WHERE `usernames` = '$usernames' AND `password` = '$password' LIMIT 1");
-    $data = mysql_fetch_array($result);
-    if ($data) {
-        $_SESSION['username_login'] = $data[0];
-        $url_cur = $_POST['urls'];
-        header("Location: $url_cur");
-    } else {
-        $error = 'loi_dang_nhap';
-    }
 
-}
 include "header.php";
-
 ?>
 
 <div id="header">
@@ -138,6 +106,7 @@ include "header.php";
     <?php
     $type = 'products';
     $icon_search = '<i class="fa fa-product-hunt" aria-hidden="true"></i>';
+
     if (isset($_GET['page_view']) && $_GET['page_view'] == "page_music.php") {
         $type = 'music';
         $icon_search = '<i class="fa fa-music" aria-hidden="true"></i>';
@@ -193,7 +162,7 @@ include "header.php";
         <label for="key_contry"> <?php echo lang('ngon_ngu_hien_thi'); ?>:</label>
         <select id="key_contry" name="key_contry" class="inp" onchange="change_lang()">
             <?php
-            $result = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
+            $result = mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
             while ($row = mysql_fetch_array($result)) {
                 ?>
                 <option value="<?php echo $row['key']; ?>" <?php if ($_SESSION['lang'] == $row['key']) {
@@ -339,7 +308,7 @@ include "header.php";
                href="<?php echo $url; ?>/login" <?php if ($page_file == "page_login.php") {
                 echo 'class="active"';
             } ?>><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap'); ?></a>
-            <a id="show_history" style="float: right;margin-right: 5px;" onclick="login_account();"><i
+            <a id="show_history" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i
                         class="fa fa-google" aria-hidden="true"></i></a>
         <?php } ?>
         <a id="show_history" style="float: right;margin-right: 5px;"

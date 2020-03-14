@@ -33,28 +33,37 @@ include "../function.php";
 include "function.php";  
 include "json.php";
 
+if(isset($_POST['logout'])){
+    unset($_SESSION['user_login']);
+}
+
+if(isset($_SESSION['user_login'])) {
+    $user_login=json_decode($_SESSION['user_login']);
+}
+
 $user_name='';
 $error_login='';
-if(isset($_POST['logout'])){
-    unset($_SESSION['username_login']);
-    unset($_SESSION['admin_login']);
-    unset($_SESSION['login_google']);
-}
+
 
 if(isset($_POST['user_name'])){
     $user_name=$_POST['user_name'];
     $user_pass=$_POST['user_pass'];
     $query_login=mysql_query("SELECT * FROM carrotsy_work.`work_user` WHERE `user_name`='$user_name' AND `user_pass`='$user_pass' LIMIT 1");
     if(mysql_num_rows($query_login)>0){
-        $data_user=mysql_fetch_array($query_login);
-        $_SESSION['username_login']=$data_user['user_id'];
-        $_SESSION['admin_login']=$data_user['user_id'];
+        $data_login_user=mysql_fetch_array($query_login);
+        $user_login=new User_login();
+        $user_login->id=$data_login_user['user_id'];
+        $user_login->name=$user_name;
+        $user_login->type='admin';
+        $user_login->link=$url.'/admin';
+        $user_login->avatar='http://work.carrotstore.com/avatar_user/'.$data_login_user['user_id'].'.png';
+        $user_login->email=$data_login_user['email'];
+        $user_login->lang=$_SESSION['lang'];
+        $_SESSION['user_login']=json_encode($user_login);
     }else{
-        unset($_SESSION['username_login']);
         $error_login=alert("Đăng nhập không thành công! Hãy kiểm tra lại mật khẩu và tên đăng nhập","error");
     }
 }
-
 
 
 
@@ -89,7 +98,7 @@ if($_GET&&isset($_GET['page_view'])){
 </head>
 <body>
 <?php
-if(isset($_SESSION['admin_login'])){
+if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
 ?>
 
 <div id="header">
@@ -113,8 +122,8 @@ if(isset($_SESSION['admin_login'])){
     <a href="<?php echo $url_admin;?>/?page_view=page_trash" <?php if($page_file=='page_trash'){ echo 'class="active"';} ?>>Dọn rác</a>
 
         <form  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
-            <img class="login_avatar"  src="<?php echo get_url_avatar_user($_SESSION['admin_login'],$_SESSION['lang'],'100',true); ?>" />
-            <strong class="username"><a target="_blank" style="float: left;color: yellow;padding: 5px;" href="http://work.carrotstore.com/?page_show=info_user"><?php echo get_username_by_id($_SESSION['admin_login'],true); ?></a></strong>
+            <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />
+            <strong class="username"><a target="_blank" style="float: left;color: yellow;padding: 5px;" href="http://work.carrotstore.com/?page_show=info_user"><?php echo $user_login->name ?></a></strong>
             <input class="buttonPro small blue" type="button" onclick="window.location.replace('<?php echo $url;?>')" value="CarrotStore"/>
             <input style="float: none;" type="submit" value="Đăng xuất" class="buttonPro purple small" id="btn_logout"  />
             <input type="hidden" name="logout" value="1" />
@@ -129,9 +138,9 @@ if(isset($_SESSION['admin_login'])){
 ?>
 
 <div style="float: left;width: 100%;">
-<?php 
-    
-if(isset($_SESSION['admin_login'])){
+<?php
+
+if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     include $page_file.'.php'; 
 }else{    
     include "page_login.php";

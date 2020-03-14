@@ -70,6 +70,30 @@
             }
         });
     }
+
+    function login_admin() {
+        swal({
+                html: true, title: 'Đăng nhập dành cho quản trị viên',
+                text: '<label>Tên đăng nhập</label><input type="text" id="login_admin_username" class="inp_login_admin"><label>Mật khẩu</label><input id="login_admin_password" type="password" class="inp_login_admin">',
+                showCancelButton: true,
+                confirmButtonText: "Đăng nhập",
+                cancelButtonText: "Hủy bỏ",
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    var login_admin_username=$("#login_admin_username").val();
+                    var login_admin_password=$("#login_admin_password").val();
+                    $.ajax({
+                        url: "<?php echo $url;?>/index.php",
+                        type: "post",
+                        data: "function=login_admin&username="+login_admin_username+"&password="+login_admin_password,
+                        success: function (data, textStatus, jqXHR) {
+                            swal("<?php echo lang('dang_nhap');?>", data, "success");
+                        }
+                    });
+                }
+        });
+    }
     
 </script>
 

@@ -8,20 +8,15 @@
 <script>
 $(document).ready(function(){
    $('#comments').comments({
-   <?php
-   if(isset($_SESSION['username_login'])){
-       $usernames=$_SESSION['username_login'];
-       if(isset($_SESSION['login_google'])){ 
-            $data_account=get_account($_SESSION['username_login'],$_SESSION['lang']);
-            echo  "profilePictureURL: '".$data_account['avatar_url']."',";
+       <?php
+       if(isset($user_login)){
+           $usernames=$user_login->id;
+           echo  "profilePictureURL: '".$user_login->avatar."',";
        }else{
-            echo  "profilePictureURL: '".get_url_avatar_user($_SESSION['username_login'],$_SESSION['lang'],'40x40')."',";
+           $usernames='andanh@gmail.com';
+           echo "profilePictureURL: '".thumb('images/avatar_default.png','40x40')."',";
        }
-   }else{
-        $usernames='andanh@gmail.com';
-        echo "profilePictureURL: '".thumb('images/avatar_default.png','40x40')."',";
-   }
-   ?>
+       ?>
    textareaPlaceholderText: '<?php echo lang('nhap_binh_luan'); ?>',
    sendText: '<?php echo lang('dang_binh_luan'); ?>',
    replyText: '<?php echo lang('tra_loi');?>',

@@ -9,18 +9,9 @@
 $(document).ready(function(){
    $('#comments').comments({
    <?php
-   if(isset($_SESSION['username_login'])){
-       $usernames=$_SESSION['username_login'];
-       if(isset($_SESSION['login_google'])){ 
-            $data_account=get_account($_SESSION['username_login'],$_SESSION['lang']);
-            echo  "profilePictureURL: '".$data_account['avatar_url']."',";
-       }else{
-            if(isset($_SESSION['admin_login'])){
-                echo  "profilePictureURL: '".get_url_avatar_user($_SESSION['username_login'],$_SESSION['lang'],'40x40',true)."',";
-            }else{
-                echo  "profilePictureURL: '".get_url_avatar_user($_SESSION['username_login'],$_SESSION['lang'],'40x40')."',";
-            }
-       }
+   if(isset($user_login)){
+       $usernames=$user_login->id;
+       echo  "profilePictureURL: '".$user_login->avatar."',";
    }else{
         $usernames='andanh@gmail.com';
         echo "profilePictureURL: '".thumb('images/avatar_default.png','40x40')."',";
@@ -35,33 +26,32 @@ $(document).ready(function(){
    noCommentsText: '<?php echo lang('khong_co_binh_luan'); ?>',
     getComments: function(success, error) {
         var commentsArray = [
-
-        <?php
-            $result=mysql_query("SELECT * FROM `comment` WHERE `productid` = '$id' AND `type_comment`='$type_comment' AND `lang`='".$_SESSION['lang']."'");
+            <?php
+            $result=mysql_query("SELECT * FROM `comment` WHERE `productid` = '$id_product' AND `type_comment`='$type_comment' AND `lang`='".$_SESSION['lang']."'");
             while ($row = mysql_fetch_array($result)) {
-        ?>
-        {
-            id: '<?php echo $row['id']; ?>',
-            created: '<?php echo $row['created']; ?>',
-            content: '<?php echo trim($row['comment']); ?>',
-            fullname: '<?php echo get_username_by_id($row['username']);?>',
-            <?php
-            $url_avatar=get_url_account_google($row['username'],$lang);
-            if($url_avatar!=''){
+                $comment_user_name='';
+                $comment_user_avatar='';
+
+                if($row['username']=='andanh@gmail.com'){
+                    $comment_user_name=lang("an_danh");
+                    $comment_user_avatar=thumb('images/avatar_default.png','40x40');
+                }else{
+                    $user_comment=json_decode(get_info_user_comment($row['username'],$row['lang']));
+                    $comment_user_name=$user_comment->name;
+                    $comment_user_avatar=$user_comment->avatar;
+                }
             ?>
-            profile_picture_url: '<?php  echo $url_avatar; ?>',
-            <?php
-            }else{
-            ?>
-            profile_picture_url: '<?php  echo get_url_avatar_user($row['username'],$row['lang']); ?>',
-            <?php
-            }
-            ?>
-            upvote_count: <?php echo $row['upvote_count']; ?>,
-            user_has_upvoted: false,
-            parent: <?php if(intval($row['parent'])==0){ echo 'null';}else{echo $row['parent'];} ?>
-        },
-        <?php }?>
+            {
+                id: '<?php echo $row['id']; ?>',
+                created: '<?php echo $row['created']; ?>',
+                content: '<?php echo trim($row['comment']); ?>',
+                fullname: '<?php echo $comment_user_name;?>',
+                profile_picture_url: '<?php  echo $comment_user_avatar; ?>',
+                upvote_count: <?php echo $row['upvote_count']; ?>,
+                user_has_upvoted: false,
+                parent: <?php if(intval($row['parent'])==0){ echo 'null';}else{echo $row['parent'];} ?>
+            },
+            <?php }?>
         ];
         success(commentsArray);
     },

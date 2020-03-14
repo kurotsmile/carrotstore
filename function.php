@@ -1,37 +1,17 @@
 <?php
-class Account_Background{
-    public $position=0;
-    public $image=0;
-    public $size=0;
-}
-
-class Account_info{
-    public $sex='';
-    public $introduire='';
-    public $facebook='';
-    public $twitter='';
-    public $linkedin='';
-    public $skype='';
-}
-
-class Accoun_Data{
-    public $info='';
-    public $cover='';
-}
-
-class Contact_backup{
+Class User_login{
     public $id='';
     public $name='';
-    public $phone='';
-    public $email='';
     public $avatar='';
+    public $type='';
+    public $link='';
+    public $email='';
+    public $lang='';
 }
 
-class Contact_Restore{
-    public $id='';
-    public $date='';
-    public $type='';
-    public $count_contact='';
+Class User_info{
+    public  $name='';
+    public  $avatar='';
 }
 
 if(!class_exists('Address')){
@@ -41,12 +21,6 @@ if(!class_exists('Address')){
     public $lng='107.520';
     public $country='vn';
  }
-}
-
-class Cart{
-    public $id=0;
-    public $product_id=0;
-    public $quantity=0;
 }
 
 function lang($key){
@@ -419,3 +393,19 @@ function get_home_url($url) {
   return $result['host'];
 }
 
+function get_info_user_comment($user_id,$lang){
+    $query_user_comment=mysql_query("SELECT `avatar_url`,`name` FROM `app_my_girl_user_".$lang."` WHERE `id_device` ='".$user_id."' LIMIT 1");
+    if(mysql_num_rows($query_user_comment)>0) {
+        $data_user=mysql_fetch_array($query_user_comment);
+        $user_info=new User_info();
+        $user_info->name=$data_user['name'];
+        if($data_user['avatar_url']!=''){
+            $user_info->avatar=$data_user['avatar_url'];
+        }else{
+            $user_info->avatar=get_url_avatar_user($user_id,$lang,'40x40');
+        }
+        return json_encode($user_info);
+    }else{
+       return null;
+    }
+}

@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <div style="float: left;width:100%">
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
