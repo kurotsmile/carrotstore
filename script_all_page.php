@@ -6,6 +6,10 @@
         });
     }
 
+    function reset_url(){
+        window.location = "<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
+    }
+
     $(window).scroll( function(){
         if($(window).scrollTop()>35){
             $('#go_top').fadeIn(500);
@@ -88,10 +92,27 @@
                         type: "post",
                         data: "function=login_admin&username="+login_admin_username+"&password="+login_admin_password,
                         success: function (data, textStatus, jqXHR) {
-                            swal("<?php echo lang('dang_nhap');?>", data, "success");
+                            if(data=='1') {
+                                swal("Đăng nhập quản trị viên", "Đăng nhập thành công!", "success");
+                                reset_url();
+                            }else{
+                                swal("Đăng nhập quản trị viên", 'đăng nhập không thành công, vui lòng kiểm tra lại mật khẩu và tên đăng nhập', "error");
+                            }
                         }
                     });
                 }
+        });
+    }
+
+    function logout_account() {
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: "function=logout_account",
+            success: function (data, textStatus, jqXHR) {
+                swal("Đăng xuất", "Đã đăng xuất tài khoản của bạn", "success");
+                reset_url();
+            }
         });
     }
     
@@ -116,7 +137,7 @@
     function login_account() {
         swal({
             html: true, title: '<?php echo lang("dang_nhap"); ?>',
-            text: '<div style="width: 240px;margin-left: auto;margin-right: auto;"><div id="my-signin2"></div><img scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;" src="<?php echo $url;?>/images/btn_login_fb.jpg"></div>',
+            text: '<div style="width: 240px;margin-left: auto;margin-right: auto;"><div id="my-signin2"></div><img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;" src="<?php echo $url;?>/images/btn_login_fb.jpg"></div>',
         });
         setTimeout(function () {
             renderButton();
@@ -134,7 +155,7 @@
                 if (goto_user) {
                     window.location = "<?php echo $url;?>/user/" + data + "/<?php echo $_SESSION['lang'];?>";
                 } else {
-                    window.location = "<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
+                    reset_url();
                 }
             }
 
@@ -204,29 +225,6 @@ if ($protocol == 'https') {
     ?>
     <script>
 
-        function facebookLogin() {
-            alert("sdsds");
-            checkLoginState();
-        }
-
-        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-            console.log('statusChangeCallback');
-            console.log(response);                   // The current login status of the person.
-            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-                testAPI();
-            } else {                                 // Not logged into your webpage or we are unable to tell.
-
-            }
-        }
-
-
-        function checkLoginState() {               // Called when a person is finished with the Login Button.
-            FB.getLoginStatus(function (response) {   // See the onlogin handler
-                statusChangeCallback(response);
-            });
-        }
-
-
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '852575091553164',
@@ -252,17 +250,30 @@ if ($protocol == 'https') {
         }(document, 'script', 'facebook-jssdk'));
 
 
-        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-            console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me', function (response) {
-                console.log('Successful login for: ' + response.name);
-            });
-        }
-
         function logoutFP() {
             FB.logout(function (response) {
                 FB.Auth.setAuthResponse(null, 'unknown');
             });
+        }
+
+        function login_facebook(){
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    FB.api('/me', function(response) {
+                        $.ajax({
+                            url: "<?php echo $url;?>/index.php",
+                            type: "post",
+                            data: "function=login_facebook&user_name="+response.name+"&user_id="+response.id+"&user_email="+response.email,
+                            success: function (data, textStatus, jqXHR) {
+                                swal("<?php echo lang('dang_nhap');?>", "<?php echo lang('login_account_succes'); ?>", "success");
+                                reset_url();
+                            }
+                        });
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            },{scope: 'public_profile,email'});
         }
     </script>
     <?php

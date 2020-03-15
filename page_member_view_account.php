@@ -24,7 +24,7 @@ if ($query_account == false || mysql_num_rows($query_account) == 0) {
 include "phpqrcode/qrlib.php";
 $data_user = mysql_fetch_array($query_account);
 $data = json_decode($data_user['data']);
-$url_image_background = $url . '/images/bk_link.png';
+$url_image_background = $url . '/images/bk_link.jpg';
 $bk_size = 'auto';
 $sdt = $data_user['sdt'];
 $name_account = $data_user['name'];

@@ -1,177 +1,5 @@
 <?php
 if($_GET||$_POST){
-    if(isset($_POST['function'])&&$_POST['function']=="add_product"){
-        $ch_product='';
-        $apk_product='';
-        $file_product='';
-        $content='';
-        $ios_product='';
-        $ipa_product='';
-        
-        $name_product=addslashes($_POST['name_product']);
-        $desc_product=addslashes($_POST['descrip_product']);
-        $ico_product=$_POST['ico_product'];
-        $price_product=$_POST['price_product'];
-        $price_country=$_POST['price_country'];
-        $type=$_POST['type'];
-        $pay=$_POST['pay'];
-        $images='';
-        
-        $address=new Address;
-        $address->address=$_POST['address'];
-        $address->lat=$_POST['lat'];
-        $address->lng=$_POST['lng'];
-        $address=json_encode($address,JSON_UNESCAPED_UNICODE);
-        $category=$_POST['category'];
-        
-        $id_user=$_POST['id_user'];
-        if(isset($_POST['ch_product'])) $ch_product=$_POST['ch_product'];
-        if(isset($_POST['apk_product'])) $apk_product=$_POST['apk_product'];
-        if(isset($_POST['file_product'])) $file_product=$_POST['file_product'];
-        if(isset($_POST['noi_dung'])) $content=addslashes($_POST['noi_dung']);
-        if(isset($_POST['ios_product'])) $ios_product=$_POST['ios_product'];
-        if(isset($_POST['ipa_product'])) $ipa_product=$_POST['ipa_product'];
-        if(isset($_POST['images'])) $images=json_encode($_POST['images']);
-        
-        $a=mysql_query("INSERT INTO `products` (`name_product`, `desc_product`, `icon`, `chplay`,`apk`,`content`,`file`,`type`,`users`,`price`,`price_country`,`ios`,`ipa`,`pay`,`address`,`images`,`date`,`category`) VALUES ('$name_product', '$desc_product', '$ico_product', '$ch_product','$apk_product','$content','$file_product','$type','$id_user','$price_product','$price_country','$ios_product','$ipa_product','$pay','$address','$images',NOW(),'$category');");
-        if($a){
-            if(isset($_POST['tags'])){
-                $_POST['tags']=substr($_POST['tags'],0,strlen($_POST['tags'])-1);
-                $arr_tags=explode(',',$_POST['tags']);
-                $id_new=mysql_insert_id();
-                foreach($arr_tags as $tag){
-                    $b=mysql_query("INSERT INTO `product_tag` (`product_id`, `tag`)VALUES ('$id_new', '$tag');");
-                }
-            }
-        }
-        exit;
-    }
-    
-    if(isset($_POST['function'])&&$_POST['function']=="update_product"){
-        $ch_product='';
-        $apk_product='';
-        $file_product='';
-        $content='';
-        $ios_product='';
-        $ipa_product='';
-        $images='';
-        
-        $name_product=addslashes($_POST['name_product']);
-        $desc_product=addslashes($_POST['descrip_product']);
-        $ico_product=$_POST['ico_product'];
-        $price_product=$_POST['price_product'];
-        $price_country=$_POST['price_country'];
-        $type=$_POST['type'];
-        $id_product=$_POST['id'];
-        $id_user=$_POST['id_user'];
-        $pay=$_POST['pay'];
-        
-        $address=new Address;
-        $address->address=$_POST['address'];
-        $address->lat=$_POST['lat'];
-        $address->lng=$_POST['lng'];
-        $address=json_encode($address,JSON_UNESCAPED_UNICODE);
-        $category=$_POST['category'];
-        
-        if(isset($_POST['ch_product'])) $ch_product=$_POST['ch_product'];
-        if(isset($_POST['apk_product'])) $apk_product=$_POST['apk_product'];
-        if(isset($_POST['file_product'])) $file_product=$_POST['file_product'];
-        if(isset($_POST['noi_dung'])) $content=addslashes($_POST['noi_dung']);
-        if(isset($_POST['ios_product'])) $ios_product=$_POST['ios_product'];
-        if(isset($_POST['ipa_product'])) $ipa_product=$_POST['ipa_product'];
-        if(isset($_POST['images'])) $images=json_encode($_POST['images']);
-
-        $a=mysql_query("UPDATE `products` SET `name_product` = '$name_product', `desc_product` = '$desc_product',`icon` = '$ico_product', `chplay` = '$ch_product', `apk` = '$apk_product', `content` = '$content', `file` = '$file_product', `type` = '$type', `users`='$id_user',`price`='$price_product',`price_country`='$price_country' ,`ios` ='$ios_product',`ipa` ='$ipa_product',`pay`='$pay',`address`='$address',`images`='$images',`category`='$category' WHERE `id` = '$id_product';");
-        if($a){
-            if(isset($_POST['tags'])){
-                mysql_query("DELETE FROM `product_tag` WHERE `product_id` = '$id_product'");
-                $_POST['tags']=substr($_POST['tags'],0,strlen($_POST['tags'])-1);
-                $arr_tags=explode(',',$_POST['tags']);
-                $id_new=mysql_insert_id();
-                foreach($arr_tags as $tag){
-                    $b=mysql_query("INSERT INTO `product_tag` (`product_id`, `tag`)VALUES ('$id_product', '$tag');");
-                }
-            }
-        }
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=="buy_product"){
-        $data=get_row('products',$_POST['id']);
-        ?>
-        <input type="hidden" name="cmd" value="_xclick"/>
-        <input type="hidden" name="business" value="<?php echo $paypal_mail_carrot; ?>"/>
-        <input type="hidden" name="amount" id="amount" value="<?php echo convert_Usd($data[10]); ?>" readonly="readonly"/>
-        <input type="hidden" name="currency_code" value="USD"/>
-        <input type="hidden" name="lc" value="AU"/>
-        <input type="hidden" name="bn" value="PP-BuyNowBF"/>
-        <input type="hidden" name="cancel_return"  value="<?php echo $url.'/paycancel';?>"/>
-        <input type="hidden" name="return" value="<?php echo $url.'/paysuccess';?>"/>
-        <input type="hidden" name="item_name" value="<?php echo $data['name_product']; ?>"/>
-        <input type="hidden" name="image_url" id="image_url" value="<?php echo $url;?>/images/paypallogo.png"/>
-        <?php
-        exit;
-    }
-
-
-    if(isset($_GET['function'])&&$_GET['function']=="save_cart"){
-        $id_product=$_GET['id'];
-        $quantity=$_GET['quantitys'];
-        if(isset($_SESSION['username_login'])){
-            $users=$_SESSION['username_login'];
-            $a=mysql_query("UPDATE `cart` SET `quantity` = '$quantity' WHERE `id` = '$id_product'");
-            echo var_dump($a);
-        }else{
-            $arr=$_SESSION['cart'];
-            $arr=update_cart_quantity($arr,$id_product,$quantity);
-            $_SESSION['cart']=$arr;
-        }
-        exit;
-    }
-    
-    if(isset($_GET['function'])&&$_GET['function']=="add_cart"){
-        $id_product=$_GET['id'];
-        if(isset($_SESSION['username_login'])){
-            $users=$_SESSION['username_login'];
-            $check_product=mysql_query("SELECT * FROM `cart` WHERE `id_product` = '$id_product' AND `users` = '$users'");
-            $count_row=mysql_num_rows($check_product);
-            if($count_row==0){
-                mysql_query("INSERT INTO `cart` (`id_product`, `quantity`, `users`) VALUES ('$id_product', '1', '$users');");
-            }else{
-                $quantity=mysql_fetch_array($check_product);
-                $quantity=$quantity[2];
-                $quantity=intval($quantity)+1;
-                mysql_query("UPDATE `cart` SET `quantity` = '$quantity' WHERE `id_product` = '$id_product';");
-            }
-        }else{
-            $arr=$_SESSION['cart'];
-            
-            if(check_cart_product_existing($arr,$id_product)){
-                $arr=update_cart_quantity_add($arr,$id_product);
-            }else{
-                $cart=new Cart;
-                $cart->product_id=$id_product;
-                $cart->quantity=1;
-                array_push($arr,$cart);
-            }
-            $_SESSION['cart']=$arr;
-        }
-        exit;
-    }
-
-    if(isset($_GET['function'])&&$_GET['function']=="delete_cart"){
-        $id_product=intval($_GET['id']);
-        if(isset($_SESSION['username_login'])){
-            mysql_query("DELETE FROM `cart` WHERE ((`id` = '$id_product'));");
-        }else{
-            $arr=$_SESSION['cart'];
-            $arr = array_delete($arr[$id_product],$arr);
-            $_SESSION['cart']=$arr;
-        }
-        exit;
-    }
-    
-
 
     if(isset($_GET['function'])&&$_GET['function']=='add_key'){
         $key_name=$_GET['key_name'];
@@ -294,47 +122,7 @@ if($_GET||$_POST){
         exit; 
     }
     
-    if(isset($_GET['function'])&&$_GET['function']=='search_group_key'){
-        $key=$_GET['key'];
-        if($key!='all'){
-            $result = mysql_query("SELECT * FROM `lang_key` WHERE `key_contry` = '$key'",$link);
-        }else{
-            $result = mysql_query("SELECT * FROM `lang_key`",$link);
-        }
-        ?>
-        <tr>
-            <th style="width: 8%;">QuÃ¡Â»â€˜c gia</th>
-            <th style="width: 15%;">TÃƒÂªn tÃ¡Â»Â« khÃƒÂ³a</th>
-            <th>NÃ¡Â»â„¢i dung</th>
-            <th style="width: 15%;">HÃƒÂ nh Ã„â€˜Ã¡Â»â„¢ng</th>
-        </tr>
-        <?php
-        while ($row = mysql_fetch_array($result)) {
-            ?>
-            <tr id="row<?php echo $row[0]; ?>">
-                <td><?php echo $row[1]; ?></td>
-                <td><?php echo $row[2]; ?></td>
-                <td><?php echo $row[3]; ?></td>
-                <td>
-                    <a href="<?php echo URL.''; ?>/index.php?page_view=page_contry.php&sub_view=page_contry_key_add.php&edit=<?php echo $row[0]; ?>" class="buttonPro small green"><?php echo lang('chinh_sua'); ?></a>
-                    <a href="#" onclick="delete_key(this,<?php echo $row[0]; ?>)" class="buttonPro small red"><?php echo lang('xoa'); ?></a>
-                </td>
-            </tr>
-            <?php
-        }
-        exit; 
-    }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='search_group_member'){
-        $key=$_GET['key'];
-        if($key!='all'){
-            $result = mysql_query("SELECT * FROM `accounts` WHERE `contry` = '$key'",$link);
-        }else{
-            $result = mysql_query("SELECT * FROM `accounts`",$link);
-        }
-        include 'page_member_template.php';
-        exit; 
-    }
+
     
     if(isset($_GET['function'])&&$_GET['function']=='search_member'){
         $key=$_GET['key'];
@@ -347,13 +135,6 @@ if($_GET||$_POST){
         exit; 
     }
     
-    if(isset($_GET['function'])&&$_GET['function']=='search_product_user'){
-        $key=$_GET['key'];
-        $id_user=$_SESSION['username_login'];
-        $result3 = mysql_query("SELECT * FROM `products` WHERE (`content` LIKE '%$key%' OR `name_product` LIKE '%$key%' OR `desc_product` LIKE '%$key%') AND `users` ='$id_user' LIMIT 50",$link);
-            include "page_account_manage_product_template.php";
-        exit; 
-    }
     
     if(isset($_GET['function'])&&$_GET['function']=='load_product'){
         $arr_id=(array)json_decode($_GET['json']);
@@ -721,20 +502,7 @@ if($_GET||$_POST){
         }
         exit;
     }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='lost_password'){
-        $reg_email=$_GET['reg_email'];
-        $result_lost_password=mysql_query("SELECT `password` FROM `accounts` WHERE `usernames` = '$reg_email' LIMIT 1",$link);
-        if(mysql_num_rows($result_lost_password)>0){
-            $pass=mysql_fetch_array($result_lost_password);
-            echo '1';
-            $Body='Your password is:'.$pass[0];
-            mail($reg_email,'Lost password carrotstore',$Body);
-        }else{
-            echo '0';
-        }
-        exit;
-    }
+
     
     if(isset($_POST['function'])&&$_POST['function']=='login_qr'){
         $user_id=$_POST['user_id'];
@@ -748,24 +516,86 @@ if($_GET||$_POST){
         }
         exit;
     }
+
+    if(isset($_POST['function'])&&$_POST['function']=='login_admin'){
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+        $query_login_admin=mysql_query("SELECT * FROM  carrotsy_work.`work_user` WHERE `user_name` = '$username' AND `user_pass` = '$password' LIMIT 1");
+        if(mysql_num_rows($query_login_admin)>0){
+            $data_login_user=mysql_fetch_array($query_login_admin);
+            $user_login=new User_login();
+            $user_login->id=$data_login_user['user_id'];
+            $user_login->name=$username;
+            $user_login->type='admin';
+            $user_login->link=$url.'/admin';
+            $user_login->avatar='http://work.carrotstore.com/avatar_user/'.$data_login_user['user_id'].'.png';
+            $user_login->email=$data_login_user['email'];
+            $user_login->lang=$lang;
+            echo '1';
+            $_SESSION['user_login']=json_encode($user_login);
+        }else{
+            echo '0';
+        }
+        exit;
+    }
+
+    if(isset($_POST['function'])&&$_POST['function']=='logout_account'){
+        unset($_SESSION['user_login']);
+        unset($user_login);
+        exit;
+    }
     
     if(isset($_POST['function'])&&$_POST['function']=='login_google'){
         $user_id=$_POST['user_id'];
         $user_name=$_POST['user_name'];
         $user_email=$_POST['user_email'];
         $user_avatar=$_POST['user_avatar'];
-        
+
         $lang=$_SESSION['lang'];
         $check_login=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
         if(mysql_num_rows($check_login)>0){
-            
+            $query_update_user=mysql_query("UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
         }else{
             $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
         }
-        $_SESSION['username_login']=$user_id;
-        unset($_SESSION['admin_login']);
-        $_SESSION['login_google']=$user_id;
+        $user_login=new User_login();
+        $user_login->id=$user_id;
+        $user_login->name=$user_name;
+        $user_login->type='google';
+        $user_login->link=$url.'/user/'.$user_id.'/'.$lang;
+        $user_login->avatar=$user_avatar;
+        $user_login->email=$user_email;
+        $user_login->lang=$lang;
+        $_SESSION['user_login']=json_encode($user_login);
         echo $user_id;
+        exit;
+    }
+
+    if(isset($_POST['function'])&&$_POST['function']=='login_facebook'){
+        $user_name=$_POST['user_name'];
+        $user_id=$_POST['user_id'];
+        $user_email=$_POST['user_email'];
+        $lang=$_SESSION['lang'];
+        $user_avatar='http://graph.facebook.com/'.$user_id.'/picture?type=normal';
+        if($user_email=='undefined'){
+            $user_email='';
+        }
+
+        $check_login=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
+        if(mysql_num_rows($check_login)>0){
+            $query_update_user=mysql_query("UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
+        }else{
+            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
+        }
+        $user_login=new User_login();
+        $user_login->id=$user_id;
+        $user_login->name=$user_name;
+        $user_login->type='facebook';
+        $user_login->link=$url.'/user/'.$user_id.'/'.$lang;
+        $user_login->avatar='http://graph.facebook.com/'.$user_id.'/picture?type=normal';
+        $user_login->email=$user_email;
+        $user_login->lang=$lang;
+        $_SESSION['user_login']=json_encode($user_login);
         exit;
     }
     
