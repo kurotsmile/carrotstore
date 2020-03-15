@@ -227,15 +227,11 @@ $arr = mysql_fetch_array($result_chat);
 <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
 <script src="<?php echo $url; ?>/js/jscolor.min.min.js"></script>
-<h2><img src="<?php echo $url; ?>/app_mygirl/img/<?php echo $lang_sel; ?>.png"
-         style="width: 20px;margin-right: 2px;float: left;"/> <?php echo $txt_title; ?></h2>
+<h2><img src="<?php echo $url; ?>/app_mygirl/img/<?php echo $lang_sel; ?>.png" style="width: 20px;margin-right: 2px;float: left;"/> <?php echo $txt_title; ?></h2>
 <ul id="menu_page">
     <li>
-        <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $lang_sel; ?>&id_chat_see=<?php echo $id; ?>&type_chat_see=<?php echo $type_chat; ?>&sex=<?php echo $arr['sex']; ?>&character_sex=<?php echo $arr['character_sex']; ?>"
-           class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi theo
-            câu trả lời này</a></li>
-    <?php if (isset($_GET['msg'])) {
-        ?>
+        <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $lang_sel; ?>&id_chat_see=<?php echo $id; ?>&type_chat_see=<?php echo $type_chat; ?>&sex=<?php echo $arr['sex']; ?>&character_sex=<?php echo $arr['character_sex']; ?>" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi theo câu trả lời này</a></li>
+    <?php if (isset($_GET['msg'])) {?>
         <li>
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_msg&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>"
                class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển hoặc sao chép sang
@@ -483,18 +479,15 @@ $arr = mysql_fetch_array($result_chat);
         } ?> >
             <td>effect customer</td>
             <td>
-                <input type="hidden" name="effect_customer" id="effect_chat"
-                       value="<?php echo $arr['effect_customer']; ?>"/>
+                <input type="hidden" name="effect_customer" id="effect_chat"  value="<?php echo $arr['effect_customer']; ?>"/>
                 <?php
                 if ($arr['effect_customer'] != '') {
                     ?>
-                    <img src="<?php echo $url; ?>/app_mygirl/obj_effect/<?php echo $arr['effect_customer']; ?>.png"
-                         id="id_img_effect" onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
+                    <img src="<?php echo $url; ?>/app_mygirl/obj_effect/<?php echo $arr['effect_customer']; ?>.png" id="id_img_effect" onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
                     <?php
                 } else {
                     ?>
-                    <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect"
-                         onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
+                    <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect" onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
                     <?php
                 }
                 ?>
@@ -1060,8 +1053,8 @@ $arr = mysql_fetch_array($result_chat);
                         var lang = "<?php echo $lang_sel;?>";
                         $.ajax({
                             url: "app_my_girl_jquery.php",
-                            type: "post", //kiểu dũ liệu truyền đi
-                            data: "save_lyric=1s&lang=" + lang + "&lyrics=" + txt_lyrics + "&id_music=" + id_music, //tham số truyền vào
+                            type: "post",
+                            data: "save_lyric=1s&lang=" + lang + "&lyrics=" + txt_lyrics + "&id_music=" + id_music,
                             success: function (data, textStatus, jqXHR) {
                                 $("#music_lyrics_contain").val(data);
                                 swal("Đã lưu!", data.substr(0, 20) + "...", "success");
@@ -1086,7 +1079,7 @@ $arr = mysql_fetch_array($result_chat);
                         var lang = "<?php echo $lang_sel;?>";
                         $.ajax({
                             url: "app_my_girl_jquery.php",
-                            type: "post", //kiểu dũ liệu truyền đi
+                            type: "post",
                             data: "save_video=1s&lang=" + lang + "&link=" + txt_lyrics + "&id_music=" + id_music, //tham số truyền vào
                             success: function (data, textStatus, jqXHR) {
                                 var youtube_video_id = data.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
@@ -1124,12 +1117,10 @@ $arr = mysql_fetch_array($result_chat);
                         swal("Âm nhạc", "Đã tạo liên kết chữ cho bài hát", "success");
                         $("#show_link_slug_music").html(data);
                     }
-
                 });
             }
 
             $(document).ready(function () {
-
                 $('#file_upload_avatar_music').ajaxfileupload({
                     action: '<?php echo $url_home;?>/upload.php',
                     params: {
@@ -1146,7 +1137,27 @@ $arr = mysql_fetch_array($result_chat);
                 });
             });
 
+            function  update_info_music() {
+                var song_artist=$("#song_artist").val();
+                var song_album=$("#song_album").val();
+                var song_year=$("#song_year").val();
+                var song_genre=$("#song_genre").val();
+                var id_music =<?php echo $arr['id'];?>;
+                var lang = "<?php echo $lang_sel;?>";
+                $.ajax({
+                    url: "app_my_girl_jquery.php",
+                    type: "post",
+                    data: "function=update_info_music&song_artist="+song_artist+"&song_album="+song_album+"&song_year="+song_year+"&song_genre="+song_genre+"&id_music="+id_music+"&lang="+lang,
+                    success: function (data, textStatus, jqXHR) {
+                        swal("Âm nhạc", "Cập nhật thông tin và các thuột tính bài hát thành công!", "success");
+                    }
+                });
+            }
 
+            function search_info_music(){
+                var txt_chat=$("#chat").val();
+                window.open("https://www.google.com/search?q="+txt_chat,"_blank");
+            }
         </script>
 
         <table style="width: 90%;border: solid 2px #CDCDCD;margin: 10px;box-shadow: 5px 5px 5px #949494;">
@@ -1208,19 +1219,13 @@ $arr = mysql_fetch_array($result_chat);
 
                                 <div style="float: left;margin: 10px;">
                                     <?php if ($txt_link_thumb != '') { ?>
-                                        <a href="<?php echo $txt_link_video; ?>" target="_blank"><img
-                                                    id="ytb_avatar_music"
-                                                    src="http://img.youtube.com/vi/<?php echo $txt_link_thumb; ?>/sddefault.jpg"
-                                                    style="width: 150px;float: left;"/></a>
+                                        <a href="<?php echo $txt_link_video; ?>" target="_blank"><img id="ytb_avatar_music" src="http://img.youtube.com/vi/<?php echo $txt_link_thumb; ?>/sddefault.jpg" style="width: 150px;float: left;"/></a>
                                     <?php } else { ?>
                                         <img id="ytb_avatar_music" src="<?php echo $url; ?>/images/music_default.png"
                                              style="width: 150px;float: left;"/>
                                     <?php } ?>
                                 </div>
-                                <span style="float: left;" class="buttonPro light_blue"
-                                      onclick="save_avatar_music_to_sever();return false;"><i class="fa fa-floppy-o"
-                                                                                              aria-hidden="true"></i> Lưu ảnh đại diện vào máy chủ</span>
-
+                                <span style="float: left;" class="buttonPro light_blue" onclick="save_avatar_music_to_sever();return false;"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu ảnh đại diện vào máy chủ</span>
                             </td>
                             <td>
                                 <strong>Ảnh đại diện âm nhạc từ máy chủ</strong><br/>
@@ -1233,10 +1238,7 @@ $arr = mysql_fetch_array($result_chat);
                                     $img_url_avatar_sever = $url_home . '/' . $img_url_avatar;
                                 }
                                 ?>
-                                <a target="_blank"
-                                   href="http://carrotstore.com/music/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"><img
-                                            style="width: 150px;" id="avatar_music_sever"
-                                            src="<?php echo $img_url_avatar_sever; ?>"/></a>
+                                <a target="_blank" href="http://carrotstore.com/music/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"><img style="width: 150px;" id="avatar_music_sever" src="<?php echo $img_url_avatar_sever; ?>"/></a>
                             </td>
                             <td>
                                 <strong>Tải lên ảnh đại điện</strong><br/>
@@ -1276,20 +1278,14 @@ $arr = mysql_fetch_array($result_chat);
                         $data_song_year=$data_lyrics['year'];
                         $data_song_album=$data_lyrics['album'];
                         $data_song_genre=$data_lyrics['genre'];
-                        if($data_song_artist!=''){
-                            echo '<li><b>Artist (Nghệ sĩ thể hiện)</b> : <a target="_blank" href="'.$url.'/artist/'.$lang_sel.'/'.$data_song_artist.'">' . $data_song_artist . '</a></li>';
-                        }
-                        if($data_song_album!=''){
-                            echo '<li><b>Album </b> : <a target="_blank" href="'.$url.'/album/'.$lang_sel.'/'.$data_song_album.'">' . $data_song_album . '</a></li>';
-                        }
-                        if($data_song_year!=''){
-                            echo '<li><b>Year (Năm xuất bản)</b> : <a target="_blank" href="'.$url.'/year/'.$lang_sel.'/'.$data_song_year.'">' . $data_song_year . '</a></li>';
-                        }
-
-                        if($data_song_genre!=''){
-                            echo '<li><b>Genre (Thể loại)</b> : <a target="_blank" href="'.$url.'/index.php?page_view=page_music_genre.php&lang='.$lang_sel.'&genre='.$data_song_genre.'">' . $data_song_genre . '</a></li>';
-                        }
                         ?>
+                        <ul style="padding: 0px;margin: 0px;margin-top: 3px;margin-bottom: 3px;">
+                            <li><b style="width: 200px;float: left;">Artist (Nghệ sĩ thể hiện)</b> <input style="float: none;width: 300px;" value="<?php echo $data_song_artist;?>" id="song_artist"> <?php if($data_song_artist!=''){echo '<a target="_blank" class="buttonPro small" href="'.$url.'/artist/'.$lang_sel.'/'.$data_song_artist.'"><i class="fa fa-link" aria-hidden="true"></i></a>';}?></li>
+                            <li><b style="width: 200px;float: left;">Album</b> <input style="float: none;width: 300px;" value="<?php echo $data_song_album;?>" id="song_album"> <?php if($data_song_album!=''){echo '<a target="_blank" class="buttonPro small" href="'.$url.'/album/'.$lang_sel.'/'.$data_song_album.'"><i class="fa fa-link" aria-hidden="true"></i></a>';}?></li>
+                            <li><b style="width: 200px;float: left;">Year (Năm xuất bản)</b> <input style="float: none;width: 300px;" value="<?php echo $data_song_year;?>" id="song_year"> <?php if($data_song_year!=''){echo '<a target="_blank" class="buttonPro small" href="'.$url.'/year/'.$lang_sel.'/'.$data_song_year.'"><i class="fa fa-link" aria-hidden="true"></i></a>';}?></li>
+                            <li><b style="width: 200px;float: left;">Genre (Thể loại)</b> <input style="float: none;width: 300px;" value="<?php echo $data_song_genre;?>" id="song_genre"> <?php if($data_song_genre!=''){echo '<a target="_blank" class="buttonPro small"  href="'.$url.'/index.php?page_view=page_music_genre.php&lang='.$lang_sel.'&genre='.$data_song_genre.'"><i class="fa fa-link" aria-hidden="true"></i></a>';} ?></li>
+                            <li><span class="buttonPro small blue" onclick="update_info_music();"><i class="fa fa-plus-circle" aria-hidden="true"></i> Cập nhật các thuột tính âm nhạc</span> <span class="buttonPro small purple" onclick="search_info_music()"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm thông tin (trên google)</span></li>
+                        </ul>
                     </td>
                 </tr>
                 <?php
@@ -1316,25 +1312,10 @@ $arr = mysql_fetch_array($result_chat);
                             $data_2 = mysql_fetch_array($count_status_2);
                             $data_3 = mysql_fetch_array($count_status_3);
                             ?>
-                            <span class="box_feel_music">
-                <i style="font-size: 30px;" class="fa fa-smile-o" aria-hidden="true"></i>
-                <span><?php echo $data_0[0]; ?></span>
-            </span>
-
-                            <span class="box_feel_music">
-                <i style="font-size: 30px;" class="fa fa-frown-o" aria-hidden="true"></i>
-                <span><?php echo $data_1[0]; ?></span>
-            </span>
-
-                            <span class="box_feel_music">
-                <i style="font-size: 30px;" class="fa fa-meh-o" aria-hidden="true"></i>
-                <span><?php echo $data_2[0]; ?></span>
-            </span>
-
-                            <span class="box_feel_music">
-                <i style="font-size: 30px;" class="fa fa-smile-o" aria-hidden="true"></i>
-                <span><?php echo $data_3[0]; ?></span>
-            </span>
+                            <span class="box_feel_music"><i style="font-size: 30px;" class="fa fa-smile-o" aria-hidden="true"></i> <span><?php echo $data_0[0]; ?></span></span>
+                            <span class="box_feel_music"><i style="font-size: 30px;" class="fa fa-frown-o" aria-hidden="true"></i><span><?php echo $data_1[0]; ?></span></span>
+                            <span class="box_feel_music"><i style="font-size: 30px;" class="fa fa-meh-o" aria-hidden="true"></i><span><?php echo $data_2[0]; ?></span></span>
+                            <span class="box_feel_music"><i style="font-size: 30px;" class="fa fa-smile-o" aria-hidden="true"></i><span><?php echo $data_3[0]; ?></span></span>
                             <?php
                         } else {
                             echo '<b>Không có dữ liệu</b>';

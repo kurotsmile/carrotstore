@@ -84,6 +84,10 @@ include "function.php";
 include "json/json.php";
 include "json/json2.php";
 
+if(isset($_SESSION['user_login'])) {
+    $user_login=json_decode($_SESSION['user_login']);
+}
+
 $page_file = "page_view.php";
 if(isset($_GET['page_view'])) {
     $page_file = $_GET['page_view'];
@@ -220,97 +224,16 @@ include "header.php";
             echo 'class="active"';
         } ?>><?php echo lang('gioi_thieu'); ?></a>
 
-
-        <?php if (isset($_SESSION['username_login'])) { ?>
-            <form action="<?php echo $url; ?>/index.php" method="post" id="info_account">
-                <?php
-                if (isset($_SESSION['admin_login'])) {
-                    ?>
-                    <img class="login_avatar" alt="User Avatar"
-                         src="<?php echo get_url_avatar_user($_SESSION['username_login'], $_SESSION['lang'], 100, true); ?>"/>
-                    <?php
-                } else {
-                    if (isset($_SESSION['login_google'])) {
-                        $query_account = mysql_query("SELECT `avatar_url`,`name` FROM `app_my_girl_user_" . $_SESSION['lang'] . "` WHERE `id_device` ='" . $_SESSION['username_login'] . "' LIMIT 1");
-                        $data_account = mysql_fetch_array($query_account);
-                        ?>
-                        <img class="login_avatar" alt="<?php echo $data_account['name']; ?>"
-                             src="<?php echo $data_account['avatar_url']; ?>"/>
-                        <?php
-                    } else {
-                        ?>
-                        <img class="login_avatar"
-                             src="<?php echo get_url_avatar_user($_SESSION['username_login'], $_SESSION['lang']); ?>"/>
-                        <?php
-                    }
-                } ?>
-                <strong class="username">
-                    <?php
-                    if (isset($_SESSION['admin_login'])) {
-                        echo '<a style="float: left;color: yellow;padding: 5px;" href="' . $url . '/admin">';
-                        echo get_username_by_id($_SESSION['username_login'], true);
-                        echo '</a>';
-                    } else {
-                        echo '<a style="float: left;color: yellow;padding: 5px;" href="' . $url . '/user/' . $_SESSION['username_login'] . '/' . $_SESSION['lang'] . '">';
-                        echo get_username_by_id($_SESSION['username_login'], false);
-                        echo '</a>';
-                    }
-                    ?>
-                </strong>
-                <?php
-                if (isset($_SESSION['login_google'])) {
-                    ?>
-                    <span style="float: none;padding: 6px;" class="buttonPro purple " id="btn_logout"
-                          onclick="signOut();"><?php echo lang('dang_xuat'); ?></span>
-                    <script>
-
-                        function onLoad() {
-                            gapi.load('auth2', function () {
-                                gapi.auth2.init();
-                            });
-                        }
-
-                        function signOut() {
-                            var auth2 = gapi.auth2.getAuthInstance();
-                            auth2.signOut().then(function () {
-                                $.ajax({
-                                    url: "<?php echo $url;?>/index.php",
-                                    type: "post",
-                                    data: "function=logout_google",
-                                    success: function (data, textStatus, jqXHR) {
-                                        window.location = "<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
-                                    }
-
-                                });
-                            });
-                        }
-
-                        $(document).ready(function () {
-                            onLoad();
-                        });
-                    </script>
-                <?php
-                }else{
-                ?>
-                <input style="float: none;padding: 6px;" type="submit" value="<?php echo lang('dang_xuat'); ?>"
-                       class="buttonPro purple " id="btn_logout"/>
-                    <?php
-                }
-                ?>
-                <input type="hidden" name="logout" value="1"/>
-                <input type="hidden" value="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>"
-                       name="urls"/>
-            </form>
-            <?php
-        } else {
-            ?>
-            <a id="show_history" style="float: right;margin-right: 5px;"
-               href="<?php echo $url; ?>/login" <?php if ($page_file == "page_login.php") {
-                echo 'class="active"';
-            } ?>><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap'); ?></a>
-            <a id="show_history" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i
-                        class="fa fa-google" aria-hidden="true"></i></a>
-        <?php } ?>
+        <?php
+        if(isset($user_login)){
+            //echo var_dump($user_login);
+            echo '<a style="float: right;margin-right: 5px;"  onclick="logout_account();return false"><i class="fa fa-sign-out" aria-hidden="true"></i></a> ';
+            echo '<a  href="'.$user_login->link.'" style="float:right;padding:0px"><img  style="float: right;margin-right: 5px;margin-top:5px" class="login_avatar" alt="User Avatar" src="'.$user_login->avatar.'"/></a>';
+            echo '<a style="float: right;margin-right: 5px;" href="'.$user_login->link.'">'.$user_login->name.'</a>';
+        }else{
+            echo '<a  style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang('dang_nhap').'</a> ';
+        }
+        ?>
         <a id="show_history" style="float: right;margin-right: 5px;"
            href="<?php echo $url; ?>/index.php?page_view=page_history.php" <?php if ($page_file == "page_history.php") {
             echo 'class="active"';

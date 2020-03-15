@@ -968,6 +968,17 @@ if($func=='create_url_slug_music'){
     exit;
 }
 
+if($func=='update_info_music'){
+    $id_music=$_POST['id_music'];
+    $lang=$_POST['lang'];
+    $song_artist=addslashes($_POST['song_artist']);
+    $song_album=addslashes($_POST['song_album']);
+    $song_year=addslashes($_POST['song_year']);
+    $song_genre=addslashes($_POST['song_genre']);
+    $query_update_info_music=mysql_query("UPDATE `app_my_girl_".$lang."_lyrics` SET `artist` = '$song_artist', `album` = '$song_album', `year` = '$song_year', `genre` = '$song_genre' WHERE `id_music` = '$id_music' LIMIT 1;");
+    exit;
+}
+
 if ($func == 'get_chat_by_audio_url') {
     $url_file=$_GET['url_file'];
     $extrac='';
