@@ -1,9 +1,7 @@
 <?php
 $id_user = $_GET['user'];
-$lang = $_GET['lang'];
-if (isset($_GET['lang'])) $lang_sel = $_GET['lang'];
-$query_account = mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-if ($query_account == false || mysql_num_rows($query_account) == 0) {
+
+if (!isset($data_user)) {
     ?>
     <div id="containt" style="width: 100%;float: left;text-align: center;">
         <p style="float: left;width: 100%;margin-top: 40px;">
@@ -13,8 +11,7 @@ if ($query_account == false || mysql_num_rows($query_account) == 0) {
         </span>
             <br/>
             <br/>
-            <a class="buttonPro" href="<?php echo $url; ?>/member"><i class="fa fa-chevron-circle-left"
-                                                                      aria-hidden="true"></i> <?php echo lang('back_list_account'); ?>
+            <a class="buttonPro" href="<?php echo $url; ?>/member"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang('back_list_account'); ?>
             </a>
         </p>
     </div>
@@ -22,57 +19,26 @@ if ($query_account == false || mysql_num_rows($query_account) == 0) {
     exit;
 }
 include "phpqrcode/qrlib.php";
-$data_user = mysql_fetch_array($query_account);
-$data = json_decode($data_user['data']);
-$url_image_background = $url . '/images/bk_link.jpg';
-$bk_size = 'auto';
+
 $sdt = $data_user['sdt'];
 $name_account = $data_user['name'];
 $address_account = $data_user['address'];
-
-if ($data_user['avatar_url'] != '') {
-    $url_image_background = $data_user['avatar_url'];
-    $url_avatar = $data_user['avatar_url'];
-    $bk_size = 'auto 100%';
-    $is_avatar = '1';
-} else {
-    $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $data_user[0] . '.png';
-    $url_avatar = $url . '/thumb.php?src=' . $url . '/images/avatar_default.png&size=170x170&trim=1';
-    $is_avatar = '0';
-    if (file_exists($url_img)) {
-        $url_image_background = $url . '/' . $url_img;
-        $url_avatar = $url . '/' . $url_img;
-        $bk_size = 'auto 100%';
-        $is_avatar = '1';
-    }
-}
-
 $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
 
+include_once "page_member_header_account.php";
 ?>
+
     <style>
         .track-details:before {
             content: '';
         }
     </style>
-    <div id="account_cover" class="show_bk_account"
-         style="background-image: url('<?php echo $url_image_background; ?>');background-size:<?php echo $bk_size; ?> ">
-        <div class="neon-text">
-            <?php echo $name_account; ?>
-        </div>
 
-        <div id="account_menu">
-            <ul style="margin: 0px;">
-                <li class="active" onclick="account_select_menu('page_member_tap_overview2.php',this);return false;"><i
-                            class="fa fa-cubes"></i> <?php echo lang('tong_quan'); ?></li>
-            </ul>
-        </div>
-    </div>
 
     <div id="post_product">
         <?php
-        if (isset($_SESSION['username_login'])) {
-            if($_SESSION['username_login']==$id_user&&$sdt=='') {
+        if (isset($user_login)) {
+            if($user_login->id==$id_user&&$sdt=='') {
                 ?>
                 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                 <div style="background-color: #3fc73d;padding: 13px;color: white;" id="box_update_phone">
@@ -111,28 +77,28 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
         <div id="box-account-content" style="width:100%;float: left;">
 
             <ul style="float: left;">
-                <li><strong><i class="fa fa-user"></i> <?php echo lang('ten_day_du'); ?>
-                        :</strong> <?php echo $data_user['name']; ?></li>
-                <?php if ($sdt != '') { ?>
-                    <li><strong><i class="fa fa-phone-square"></i> <?php echo lang('so_dien_thoai'); ?>
-                        :</strong> <?php echo $sdt; ?></li><?php } ?>
-                <li><strong><i class="fa fa-globe" aria-hidden="true"></i> <?php echo lang('quoc_gia'); ?>:</strong>
-                    <img style="height: 14px;"
-                         src="<?php echo $url . '/app_mygirl/img/' . $lang . '.png'; ?>"/> <?php echo $lang; ?></li>
-                <li><strong><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo lang('date_start'); ?>
-                        :</strong></strong> <?php echo $data_user['date_start']; ?></li>
-                <li><strong><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang('date_cur'); ?>
-                        :</strong> <?php echo $data_user['date_cur']; ?></li>
-                <li><strong><i class="fa fa-venus-mars" aria-hidden="true"></i> <?php echo lang('gioi_tinh'); ?>
-                        :</strong> <?php echo lang("sex_" . $data_user['sex']); ?></li>
+                <li><strong><i class="fa fa-user"></i> <?php echo lang('ten_day_du'); ?> :</strong> <?php echo $data_user['name']; ?></li>
+                <?php if ($sdt != '') { ?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang('so_dien_thoai'); ?> :</strong> <?php echo $sdt; ?></li><?php } ?>
+                <li>
+                    <strong><i class="fa fa-globe" aria-hidden="true"></i> <?php echo lang('quoc_gia'); ?>:</strong>
+                    <img style="height: 14px;"  src="<?php echo $url . '/app_mygirl/img/' . $lang . '.png'; ?>"/> <?php echo $lang; ?>
+                </li>
+                <li><strong><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo lang('date_start'); ?> :</strong></strong> <?php echo $data_user['date_start']; ?></li>
+                <li><strong><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang('date_cur'); ?> :</strong> <?php echo $data_user['date_cur']; ?></li>
+                <li><strong><i class="fa fa-venus-mars" aria-hidden="true"></i> <?php echo lang('gioi_tinh'); ?> :</strong> <?php echo lang("sex_" . $data_user['sex']); ?></li>
+                <li><strong><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo 'Email'; ?> :</strong> <?php echo  $data_user['email']; ?></li>
                 <li><strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID
                         carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
                     <?php
                     QRcode::png($url_cur_page, 'phpqrcode/img_account/' . $id_user . '_' . $lang_sel . '.png', 'M', 4, 2);
                     ?>
-                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_sel; ?>.png"
-                         style="margin: 2px;"/>
+                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_sel; ?>.png" style="margin: 2px;"/>
                 </li>
+                <?php
+                if($is_me){
+                    echo '<li><a class="buttonPro small yellow" href="'.$url.'/user_edit/'.$id_user.'/'.$lang.'"><i class="fa fa-wrench" aria-hidden="true"></i> '.lang('chinh_sua_thong_tin').'</a></li>';
+                }
+                ?>
                 <?php if ($address_account != '') { ?>
                     <li><strong><i class="fa fa-map-marker"></i> <?php echo lang('dia_chi'); ?>
                         :</strong> <?php echo $address_account; ?></li><?php } ?>
@@ -157,7 +123,7 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
         <?php echo show_share($url_cur_page); ?>
 
         <?php
-        $check_music_data = mysql_query("SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_user' LIMIT 10");
+        $check_music_data = mysql_query("SELECT `id_chat`,`value` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_user' LIMIT 10");
         if (mysql_num_rows($check_music_data)) {
             ?>
             <div style="width: 100%;float: left;">
@@ -170,7 +136,7 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
                     '<i  class="fa fa-smile-o" aria-hidden="true"></i>');
                 while ($row_histore_music = mysql_fetch_array($check_music_data)) {
                     $id_music = $row_histore_music['id_chat'];
-                    $query_music = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$id_music' LIMIT 1");
+                    $query_music = mysql_query("SELECT `chat` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$id_music' LIMIT 1");
                     $data_music = mysql_fetch_array($query_music);
                     ?>
                     <a style="display: block;"
@@ -185,8 +151,7 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
             </div>
         <?php } ?>
 
-        <iframe
-                src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
                 scrolling="no" frameborder="0"
                 style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;">
         </iframe>
@@ -196,7 +161,7 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
     <div id="sidebar_product">
         <h3><i class="fa fa-id-card-o" aria-hidden="true"></i> <?php echo lang('lien_he_cung_ten'); ?></h3>
         <?php
-        $list_contact_same_name = mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user'  LIMIT 10");
+        $list_contact_same_name = mysql_query("SELECT `id_device`,`name`,`sdt` FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user'  LIMIT 10");
         while ($row_contact = mysql_fetch_array($list_contact_same_name)) {
             ?>
             <a style="width: 100%;display: block;"
@@ -232,15 +197,15 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
         echo show_box_ads_page('contact_page');
         ?>
 
-        <!-- Trang chi ti?t -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:300px"
-             data-ad-client="ca-pub-5388516931803092"
-             data-ad-slot="5771636042"></ins>
+        <?php
+        if(get_setting('show_ads')=='1') {
+        ?>
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:300px" data-ad-client="ca-pub-5388516931803092" data-ad-slot="5771636042"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             var arr_id_user = [];
         </script>
+        <?php }?>
 
     </div>
 

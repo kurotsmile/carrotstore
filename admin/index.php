@@ -120,6 +120,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     <a href="<?php echo $url_admin;?>/?page_view=page_country_key_manager" <?php if($page_file=='page_country_key_manager'){ echo 'class="active"';} ?>>Ngôn ngữ hệ thống</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_login_manager" <?php if($page_file=='page_login_manager'){ echo 'class="active"';} ?>>Quản lý đăng nhập</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_trash" <?php if($page_file=='page_trash'){ echo 'class="active"';} ?>>Dọn rác</a>
+    <a href="<?php echo $url_admin;?>/?page_view=page_setting" <?php if($page_file=='page_setting'){ echo 'class="active"';} ?>>Cài đặt</a>
 
         <form  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
             <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />
@@ -160,19 +161,11 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
 </div>
 
 
-		<!-- JavaScript Includes -->
-		<script src="<?php echo $url; ?>/assets/js/jquery.knob.js"></script>
-		<!-- jQuery File Upload Dependencies -->
-		<script src="<?php echo $url; ?>/assets/js/jquery.ui.widget.js"></script>
-		<script src="<?php echo $url; ?>/assets/js/jquery.iframe-transport.js"></script>
-		<script src="<?php echo $url; ?>/assets/js/jquery.fileupload.js"></script>
-		
-		<!-- Our main JS file -->
 <script>
     var URL='<?php echo $url;?>';
 </script>
 <?php
-include "../script_all_page.php";
+//include "../script_all_page.php";
 ?>
 <script src="<?php echo $url; ?>/assets/js/script.js"></script>
 </body>

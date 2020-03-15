@@ -434,7 +434,7 @@ if ($_POST) {
                         </option>
                     </select>
                 </td>
-                <td rowspan="15" style="width: 400px;margin: 2px;">
+                <td class="row_no_music" rowspan="15" style="width: 400px;margin: 2px;">
                     <table style="text-align: center;">
                         <tr>
                             <td>
@@ -492,7 +492,7 @@ if ($_POST) {
             <tr class="chat_1">
                 <td>effect</td>
                 <td>
-                    <select name="effect" onchange="check_function_chat(this.value);return false;" id="effect">
+                    <select name="effect" onchange="check_function_chat(this.value);return false;"  id="effect">
                         <option value="" <?php if (isset($_GET['effect'])) {
                             if ($_GET['effect'] == '0') {
                                 echo 'selected="true"';
@@ -519,13 +519,9 @@ if ($_POST) {
                 <td>effect customer</td>
                 <td>
                     <input name="effect_customer" type="hidden" id="effect_chat"/>
-                    <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect"
-                         onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
+                    <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect" onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
 
-                    <button class="buttonPro blue small" id="btn_effect_random"
-                            oncontextmenu="show_effect_chat('rand','');return false;"
-                            onclick="sel_effect_random('');return false;">gẫu nhiên
-                    </button>
+                    <button class="buttonPro blue small" id="btn_effect_random" oncontextmenu="show_effect_chat('rand','');return false;"  onclick="sel_effect_random('');return false;">gẫu nhiên</button>
 
                     <?php for ($i = 0; $i < count($arr_tag_effect); $i++) { ?>
                         <button class="buttonPro light_blue small" id="btn_effect_<?php echo $arr_tag_effect[$i]; ?>"
@@ -539,7 +535,7 @@ if ($_POST) {
             </tr>
 
 
-            <tr class="chat_1">
+            <tr class="chat_1 row_no_music">
                 <td>vibrate</td>
                 <td>
                     <select name="vibrate">
@@ -560,7 +556,7 @@ if ($_POST) {
                            } ?>"/></td>
             </tr>
 
-            <tr class="chat_1">
+            <tr class="chat_1 row_no_music">
                 <td>q1</td>
                 <td>
                     <input type="text" name="q1" id="q1" value="<?php if (isset($_POST['q1'])) {
@@ -572,7 +568,7 @@ if ($_POST) {
                 </td>
             </tr>
 
-            <tr class="chat_1">
+            <tr class="chat_1 row_no_music">
                 <td>q2</td>
                 <td>
                     <input type="text" name="q2" id="q2" value="<?php if (isset($_POST['q2'])) {
@@ -584,7 +580,7 @@ if ($_POST) {
                 </td>
             </tr>
 
-            <tr class="chat_1">
+            <tr class="chat_1 row_no_music">
                 <td>r1</td>
                 <td><input type="text" name="r1" id="r1" value="<?php if (isset($_POST['r1'])) {
                         echo $_POST['r1'];
@@ -596,7 +592,7 @@ if ($_POST) {
                 </td>
             </tr>
 
-            <tr class="chat_1">
+            <tr class="chat_1 row_no_music">
                 <td>r2</td>
                 <td>
                     <input type="text" name="r2" id="r2" value="<?php if (isset($_POST['r2'])) {
@@ -611,7 +607,7 @@ if ($_POST) {
 
             <?php if (isset($_GET['msg'])) {
             } else { ?>
-                <tr class="chat_1">
+                <tr class="chat_1 row_no_music">
                     <td>link</td>
                     <td><input type="text" name="link" value="<?php if ($link != '') {
                             echo $link;
@@ -632,7 +628,7 @@ if ($_POST) {
             <?php
             if ($type_chat == "chat") {
                 ?>
-                <tr class="chat_1">
+                <tr class="chat_1 row_no_music">
                     <td>Chức năng sever</td>
                     <td>
                         <select name="func_sever">
@@ -748,7 +744,7 @@ if ($_POST) {
             </tr>
 
 
-            <tr class="chat_1">
+            <tr class="chat_1 row_no_music">
                 <td>
                     Hiển thị
                 </td>
@@ -790,7 +786,7 @@ if ($_POST) {
             </tr>
 
 
-            <tr style="background-color: #E1C4FF">
+            <tr class="row_no_music" style="background-color: #E1C4FF">
                 <td>câu trả lời (câu thoại con)<br/> cho câu trò chuyện này</td>
                 <td colspan="2">
                     <button onclick="show_id_chat('<?php echo $lang_sel; ?>','r1',2);return false;"
@@ -804,7 +800,7 @@ if ($_POST) {
             </tr>
 
             <?php if ($type_add == 'chat') { ?>
-                <tr style="background-color: #C0F17E;">
+                <tr class="row_no_music" style="background-color: #C0F17E;">
                     <td>câu trả lời tương tự</td>
                     <td colspan="2">
                         <button class="buttonPro small"
@@ -830,7 +826,7 @@ if ($_POST) {
                 </tr>
             <?php } ?>
 
-            <tr id="box_select">
+            <tr id="box_select" class="row_no_music">
                 <td>Bản lựa chọn</td>
                 <td id="box_select_content">&nbsp;</td>
                 <td>
@@ -855,7 +851,7 @@ if ($_POST) {
                 </td>
             </tr>
 
-            <tr>
+            <tr class="row_no_music">
                 <td>Ngày áp dụng</td>
                 <td colspan="2">
                     <div style="float: left;width: 20%;">
@@ -1001,9 +997,7 @@ if ($key != '') {
 <?php if (isset($_GET['type_question'])) { ?>
     <div class="box_info" id="box_father">
         <h3>Sắp thêm vào câu thoại cha này (Bản dự thảo sắp thêm vào Editor có thể xóa mục này nếu không muốn thêm câu
-            thoại con. câu thoại hiện tại sẽ trở thành câu thoại toàn cục): <a class="buttonPro red small"
-                                                                               onclick="remove_father();return false;">Gỡ
-                bỏ</a></h3>
+            thoại con. câu thoại hiện tại sẽ trở thành câu thoại toàn cục): <a class="buttonPro red small" onclick="remove_father();return false;">Gỡ bỏ</a></h3>
         <table>
             <?php
             $id_father = $_GET['id_question'];
@@ -1164,8 +1158,8 @@ if ($key != '') {
             var lang = "<?php echo $lang_sel;?>";
             $.ajax({
                 url: "app_my_girl_jquery.php",
-                type: "get", //kiểu dũ liệu truyền đi
-                data: "function=add_chat_same&id=" + ids + "&lang=" + lang + "&emp=" + id_emp_add, //tham số truyền vào
+                type: "get",
+                data: "function=add_chat_same&id=" + ids + "&lang=" + lang + "&emp=" + id_emp_add,
                 success: function (data, textStatus, jqXHR) {
                     if (id_emp_add == "table_data_same") {
                         $("#id_redirect").val(ids);
@@ -1174,9 +1168,7 @@ if ($key != '') {
                     } else {
                         $('#' + id_emp_add).append(data);
                     }
-
                 }
-
             });
             swal.close();
         }
@@ -1190,7 +1182,6 @@ if ($key != '') {
 
         function change_action(val) {
             $("#id_img").attr('src', '<?php echo $url;?>/app_mygirl/img/action/' + val + '.png');
-            //$("#id_img_3d").attr('src','<?php echo $url;?>/app_mygirl/img/action3d/0_3d_act_'+val+'.gif');
             $("#action_nv").get(0).selectedIndex = val;
             swal.close();
         }
@@ -1245,17 +1236,26 @@ if ($key != '') {
             $("#box_select_content").sortable();
             $("#box_select_content").disableSelection();
             check_sex();
+            check_show_hide_row_music();
         });
 
 
         function check_function_chat(val_func) {
-            if (val_func == "2") {
-                $('#music_box_data').show();
-            } else {
-                $('#music_box_data').hide();
-            }
+            check_show_hide_row_music();
             check_sex();
         }
+
+        function  check_show_hide_row_music() {
+            var val_funcs=$("#effect").val();
+            if (val_funcs == "2") {
+                $('#music_box_data').show();
+                $('.row_no_music').hide();
+            } else {
+                $('#music_box_data').hide();
+                $('.row_no_music').show();
+            }
+        }
+
 
         function remove_father() {
             $("#box_father").remove();
@@ -1267,7 +1267,7 @@ if ($key != '') {
         function show_type_chat_same(lang, sex, char_sex, key, types, emp) {
             $.ajax({
                 url: "app_my_girl_jquery.php",
-                type: "get", //kiểu dũ liệu truyền đi
+                type: "get",
                 data: "function=show_type_chat_same&lang=" + lang + "&sex=" + sex + "&char_sex=" + char_sex + "&key=" + key + "&type=" + types, //tham số truyền vào
                 success: function (data, textStatus, jqXHR) {
                     $(".btn_type_chat_same").removeClass("yellow");

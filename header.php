@@ -28,7 +28,6 @@ if(isset($_GET['view_product'])){
     $_SESSION['arr_history']=$arr_history;
 }
 
-
 if(isset($_GET['page_view'])&&isset($_GET['view'])){
     if($_GET['view']=='info_music'){
         $slug='';
@@ -47,10 +46,15 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
         $id_music=$data_music['id'];
         $title_page=$data_music['chat'];
         
-        $query_lyrics_desc=mysql_query("SELECT * FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        $query_lyrics_desc=mysql_query("SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if(mysql_num_rows($query_lyrics_desc)){
-            $data_lyrics_des=mysql_fetch_array($query_lyrics_desc);
-            $seo_desc=$data_lyrics_des['lyrics'];
+            $data_lyrics=mysql_fetch_array($query_lyrics_desc);
+            $seo_desc='';
+            if ($data_lyrics['artist'] != '') $seo_desc.=lang('song_artist').':'.$data_lyrics['artist'].' ';
+            if ($data_lyrics['album'] != '') $seo_desc.=lang('song_album').':'. $data_lyrics['album'].' ';
+            if ($data_lyrics['genre'] != '') $seo_desc.=lang('song_genre').':'.$data_lyrics['genre'].' ';
+            if ($data_lyrics['year'] != '') $seo_desc.=lang('song_year').':'.$data_lyrics['year'].' ';
+            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang('loi_bai_hat').' ('.$title_page.') '. $data_lyrics['l'].'... ';
         }
 
         if($data_music['slug']!=''){
@@ -100,8 +104,6 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
     }
 }
 
-
-
 if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_account.php'){
     $lang='vi';
     if(isset($_SESSION['lang'])) $lang=$_SESSION['lang'];
@@ -117,8 +119,12 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     
     $seo_img=$url.'/images/avatar_default.png';
     $url_img='app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png';
-    if(file_exists($url_img)){
-        $seo_img=$url.'/'.$url_img;
+    if ($data_user['avatar_url'] != '') {
+        $seo_img=$data_user['avatar_url'];
+    }else{
+        if(file_exists($url_img)){
+            $seo_img=$url.'/'.$url_img;
+        }
     }
     $seo_url=$url.'/user/'.$id_user.'/'.$lang;
     $item_history=array($id_user,'contact',$date,$lang);

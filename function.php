@@ -409,3 +409,9 @@ function get_info_user_comment($user_id,$lang){
        return null;
     }
 }
+
+function get_setting($key_setting){
+    $query_setiing=mysql_query("SELECT `value` FROM `setting` WHERE `key` = '$key_setting' LIMIT 1");
+    $data_setting=mysql_fetch_array($query_setiing);
+    return $data_setting['value'];
+}
