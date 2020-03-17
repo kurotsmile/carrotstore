@@ -7,7 +7,7 @@
     }
 
     function reset_url(){
-        window.location = "<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
+        window.location = "<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
     }
 
     $(window).scroll( function(){
@@ -235,7 +235,6 @@ if ($protocol == 'https') {
 
 
             FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
-                statusChangeCallback(response);        // Returns the login status.
             });
         };
 

@@ -157,5 +157,13 @@ include "app_my_girl_template.php";
         </li>
     </a>
 
+    <a href="<?php echo $url;?>/app_my_girl_handling.php?func=fix_lyrics">
+        <li class="box_tool">
+            <i class="fa fa-braille" aria-hidden="true"></i>
+            <b>Sửa lỗi lời nhạc</b><br />
+            Thay thế các ký tự đặc biệt trong các lời bài hát để khắc phục lỗi seo trong một số bài hát
+        </li>
+    </a>
+
 </ul>
 </div>

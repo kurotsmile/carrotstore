@@ -305,5 +305,9 @@ if($func=='avatar_user_resize'){
 if($func=='seo'){
     include "app_mygirl_function/seo.php";
 }
+
+if($func=='fix_lyrics'){
+    include "app_mygirl_function/fix_lyrics.php";
+}
 ?>
 

@@ -19,11 +19,14 @@ function write_url_seo($url_seo,$priority,$date_seo){
     return $txt;
 }
 
+$xml_https=$xml;
 $xml.=write_url_seo($url.'/','1.00',$date_now);
+$xml_https.=write_url_seo($urls.'/','1.00',$date_now);
 
 $query_product_seo=mysql_query("SELECT `id`, `slug` FROM `products` WHERE `status` = '1'");
 while ($p=mysql_fetch_array($query_product_seo)) {
     $xml.=write_url_seo($url.'/p/'.$p['slug'],'0.80',$date_now);
+    $xml_https.=write_url_seo($urls.'/p/'.$p['slug'],'0.80',$date_now);
 }
 
 $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
@@ -32,6 +35,7 @@ while($l=mysql_fetch_array($list_country)){
     $query_music_seo=mysql_query("SELECT `slug`, `author` FROM `app_my_girl_".$key_c."` WHERE `effect` = '2' AND `slug` != ''");
     while ($p=mysql_fetch_array($query_music_seo)) {
         $xml.=write_url_seo($url.'/song/'.$p['author'].'/'.$p['slug'],'0.70',$date_now);
+        $xml_https.=write_url_seo($urls.'/song/'.$p['author'].'/'.$p['slug'],'0.70',$date_now);
     }
     mysql_free_result($query_music_seo);
 }
@@ -39,12 +43,20 @@ mysql_free_result($list_country);
 
 
 $xml.='</urlset>'.PHP_EOL;
+$xml_https.='</urlset>'.PHP_EOL;
 $fp = fopen('sitemap_product.xml', 'w');
 fwrite($fp, $xml);
 fclose($fp);
-?>
 
-<a target="_blank" href="<?php echo $url;?>/sitemap_product.xml">sitemap_product.xml</a>
+$fp2 = fopen('sitemap_product_https.xml', 'w');
+fwrite($fp2, $xml_https);
+fclose($fp2);
+?>
+<ul>
+    <li><strong>Các tệp tin Site Map đã được tạo hỗ trợ gia giao thức http và https</strong></li>
+    <li><a target="_blank" href="<?php echo $url;?>/sitemap_product.xml">sitemap_product.xml</a></li>
+    <li><a target="_blank" href="<?php echo $url;?>/sitemap_product_https.xml">sitemap_product_https.xml</a></li>
+</ul>
 
 <?php
 echo '<pre>', htmlentities($xml), '</pre>';

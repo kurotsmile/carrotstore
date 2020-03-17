@@ -1,5 +1,4 @@
 <script>
-
 function show_player_music(show){
     if(show){
          $("#player_music").show();
@@ -110,15 +109,30 @@ if(!isset($query_list_music)){
         $query_list_music=mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' ORDER BY RAND() LIMIT 30");
     }else if($sub_view=='month'){
         $query_list_music=mysql_query("SELECT `chat`.id,`chat`.chat,`chat`.file_url,`chat`.slug,`chat`.author,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 40");
+    }else if($sub_view=='artist') {
+    }else if($sub_view=='year') {
     }else{
         $txt_query_view=" AND `top_music`.`value`='$sub_view' ";
         $query_list_music=mysql_query("SELECT DISTINCT `chat`.id,`chat`.chat,`chat`.file_url,`chat`.slug,`chat`.author FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view LIMIT 40");
     }
 }
 
-$list_style='list';
-while($row=mysql_fetch_array($query_list_music)){
-    include "page_music_git.php";
+
+if($sub_view=='artist'){
+    $query_artis=mysql_query("SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
+    while ($row = mysql_fetch_array($query_artis)) {
+        include "page_music_artist_git.php";
+    }
+}else if($sub_view=='year'){
+    $query_year=mysql_query("SELECT DISTINCT `year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `year`!=''");
+    while ($row = mysql_fetch_array($query_year)) {
+        include "page_music_year_git.php";
+    }
+}else {
+    $list_style = 'list';
+    while ($row = mysql_fetch_array($query_list_music)) {
+        include "page_music_git.php";
+    }
 }
 
 if(!isset($query_list_music)){

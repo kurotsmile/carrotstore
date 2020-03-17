@@ -19,6 +19,11 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
         <div style="float: left;width: 100%;">
             <h2 style="padding-left: 30px;"><?php echo lang('music_same'); ?></h2>
             <?php
+            $label_choi_nhac=lang('choi_nhac');
+            $label_chi_tiet=lang('chi_tiet');
+            $label_loi_bai_hat=lang('loi_bai_hat');
+            $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
+            $label_music_no_rank=lang('music_no_rank');
             while ($row = mysql_fetch_array($list_music)) {
                 include "page_music_git.php";
             }

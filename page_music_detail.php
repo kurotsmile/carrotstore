@@ -23,9 +23,6 @@ $id_music=$data_music['id'];
 $color_music=$data_music['color'];
 $lang_sel=$data_music['author'];
 
-$query_lyrics=mysql_query("SELECT * FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
-$data_lyrics=mysql_fetch_array($query_lyrics);
-mysql_free_result($query_lyrics);
 $query_link_video=mysql_query("SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
 $data_video=mysql_fetch_array($query_link_video);
 if($data_music['file_url']!=''){
@@ -90,9 +87,8 @@ textarea:focus {
         
     <div id="post_product">
         <div style="padding: 20px;float: left;">
-            <?php 
-                if(isset( $_SESSION['username_login'])){
-                    if(isset($_SESSION['admin_login'])){
+            <?php
+            if(isset($user_login)&&$user_login->type=='admin'){
                     ?>
                     <script>
                     function open_edit(){
@@ -102,8 +98,7 @@ textarea:focus {
                     <br />
                     <span class="buttonPro  blue" target="_blank" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa bài hát</span>
                     <?php
-                    }
-                }
+            }
             ?>
 
         <h3>
@@ -296,7 +291,9 @@ textarea:focus {
             echo show_box_ads_page('music_page');
         ?>
 
-        <!-- Trang chi ti?t -->
+        <?php
+        if(get_setting('show_ads')=='1') {
+        ?>
         <ins class="adsbygoogle"
              style="display:inline-block;width:300px;height:300px"
              data-ad-client="ca-pub-5388516931803092"
@@ -304,6 +301,7 @@ textarea:focus {
         <script>
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
+        <?php }?>
         
     </div>
 
@@ -316,6 +314,11 @@ if(mysql_num_rows($list_music)>0){
 <div style="float: left;width: 100%;">
 <h2 style="padding-left: 30px;"><?php echo lang('music_same'); ?></h2>
 <?php
+    $label_choi_nhac=lang('choi_nhac');
+    $label_chi_tiet=lang('chi_tiet');
+    $label_loi_bai_hat=lang('loi_bai_hat');
+    $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
+    $label_music_no_rank=lang('music_no_rank');
     while ($row = mysql_fetch_array($list_music)) {
         include "page_music_git.php";
     }
