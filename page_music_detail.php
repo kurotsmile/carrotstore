@@ -134,7 +134,7 @@ textarea:focus {
                 <?php
                 if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang('song_artist').':</b><a href="'.$url.'/artist/'.$lang_sel.'/'.$data_lyrics['artist'].'">'.$data_lyrics['artist'].'</a></div>';
                 if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> '.lang('song_album').':</b><a href="'.$url.'/album/'.$lang_sel.'/'.$data_lyrics['album'].'">'.$data_lyrics['album'].'</a></div>';
-                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang('song_genre').':</b><a href="'.$url.'/index.php?page_view=page_music_genre.php&lang='.$lang_sel.'&genre='.$data_lyrics['genre'].'">'.$data_lyrics['genre'].'</a></div>';
+                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang('song_genre').':</b><a href="'.$url.'/index.php?page_view=page_music.php&view=genre&lang='.$lang_sel.'&genre='.$data_lyrics['genre'].'">'.$data_lyrics['genre'].'</a></div>';
                 if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang('song_year').':</b><a href="'.$url.'/year/'.$lang_sel.'/'.$data_lyrics['year'].'">'.$data_lyrics['year'].'</a></div>';
                 ?>
             </div>
@@ -271,7 +271,7 @@ textarea:focus {
         <br />
         <a href="<?php echo $url; ?>/music/month"><h3><i class="fa fa-star-half-o" aria-hidden="true"></i> <?php echo lang('music_top_month'); ?></h3></a>
         <?php
-            $query_list_music_top=mysql_query("SELECT `chat`.*,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 10");
+            $query_list_music_top=mysql_query("SELECT `chat`.id,`chat`.chat,`chat`.author,`chat`.slug,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 10");
             while($row_top=mysql_fetch_array($query_list_music_top)){
                 $url_song='';
                 if($row_top['slug']!=''){

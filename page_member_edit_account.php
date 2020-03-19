@@ -8,6 +8,8 @@ if(!$is_me){
     exit;
 }
 ?>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
+<script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
 <div id="post_product">
     <form name="frm" id="frm_update_info" class="frm" action="" method="post">
         <p class="row">
@@ -56,6 +58,11 @@ if(!$is_me){
 </div>
 
 <script>
+
+    $(document).ready(function(){
+        $("#user_address").geocomplete();
+    });
+    
     function update_info_user(){
         $.ajax({
             url: "<?php echo $url;?>/index.php",

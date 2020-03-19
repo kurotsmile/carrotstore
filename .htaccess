@@ -4,6 +4,7 @@ RewriteEngine on
 RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
 RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
 RewriteRule    ^user/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_view_account.php&user=$1&lang=$2
+RewriteRule    ^user_edit/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_edit_account.php&user=$1&lang=$2
 RewriteRule    ^type/([^/]*)/([^/]*)/?$    index.php?page_view=page_view.php&type=$1&view_type=$2    [NC,L]    
 RewriteRule    ^type/([^/]*)/?$    index.php?page_view=page_view.php&type=$1    [NC,L]           
 RewriteRule    ^member  index.php?page_view=page_member.php   [NC,L]    
@@ -13,9 +14,9 @@ RewriteRule    ^music  index.php?page_view=page_music.php   [NC,L]
 RewriteRule    ^song/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&lang=$1&slug=$2
 RewriteRule    ^song/([^/]*)/?$   index.php?page_view=page_music.php&sub_view=$1
 RewriteRule    ^song  index.php?page_view=page_music.php   [NC,L]
-RewriteRule    ^artist/([^/]*)/([^/]*)/?$   index.php?page_view=page_music_artist.php&lang=$1&name_artist=$2
-RewriteRule    ^year/([^/]*)/([^/]*)/?$   index.php?page_view=page_music_year.php&lang=$1&year=$2
-RewriteRule    ^album/([^/]*)/([^/]*)/?$   index.php?page_view=page_music_album.php&lang=$1&year=$2
+RewriteRule    ^artist/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=artist&lang=$1&name_artist=$2
+RewriteRule    ^year/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=year&lang=$1&year=$2
+RewriteRule    ^album/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=album&lang=$1&album=$2
 RewriteRule    ^products   index.php?page_view=page_view.php   [NC,L]     
 RewriteRule    ^product/([^/]*)/([^/]*)/?$   index.php?page_view=page_view.php&view_product=$1&invite=$2    [NC,L]    
 RewriteRule    ^product/([0-9]+)/?$    index.php?page_view=page_view.php&view_product=$1    [NC,L]

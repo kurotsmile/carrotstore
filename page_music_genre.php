@@ -9,15 +9,21 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
         <div class="neon-text">
             <i class="fa fa-stumbleupon" aria-hidden="true"></i> <?php echo $name_genre;?>
         </div>
+
+        <div id="account_menu">
+            <ul style="margin: 0px;">
+                <li <?php  echo 'class="active"'?> ><a href=""><i class="fa fa-music"></i> <?php echo lang('music_same'); ?></a></li>
+            </ul>
+        </div>
     </div>
 
+    <div style="margin-top: 20px;float: left;width: 100%;">
     <?php
     $list_style='same';
     $list_music = mysql_query("SELECT m.`id`, m.`chat`, m.`file_url`, m.`slug`,m.`author` From `app_my_girl_".$lang_genre."` as `m` LEFT JOIN `app_my_girl_".$lang_genre."_lyrics` as `l` ON m.id= l.id_music  WHERE l.genre  LIKE '%".$name_genre."%' ORDER BY RAND() LIMIT 30",$link);
     if(mysql_num_rows($list_music)>0){
         ?>
-        <div style="float: left;width: 100%;">
-            <h2 style="padding-left: 30px;"><?php echo lang('music_same'); ?></h2>
+        <div style="float: left;padding: 10px;">
             <?php
             $label_choi_nhac=lang('choi_nhac');
             $label_chi_tiet=lang('chi_tiet');
@@ -30,4 +36,5 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
             ?>
         </div>
     <?php }?>
+    </div>
 </div>

@@ -13,14 +13,23 @@ if(isset($_GET['sub_view'])){$sub_view=$_GET['sub_view'];}
     <a href="<?php echo $url; ?>/music/1" <?php if($sub_view=='1'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-frown-o" aria-hidden="true"></i> <?php echo lang('music_top_1'); ?></a> 
     <a href="<?php echo $url; ?>/music/2" <?php if($sub_view=='2'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-meh-o" aria-hidden="true"></i> <?php echo lang('music_top_2'); ?></a> 
     <a href="<?php echo $url; ?>/music/3" <?php if($sub_view=='3'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo lang('music_top_3'); ?></a>
-    <a href="<?php echo $url; ?>/music/artist" <?php if($sub_view=='artist'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-user" aria-hidden="true"></i> <?php echo lang('song_artist'); ?></a>
-    <a href="<?php echo $url; ?>/music/year" <?php if($sub_view=='year'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang('song_year'); ?></a>
+    <a href="<?php echo $url; ?>/music/artist" <?php if($sub_view=='artist'||$view=='artist'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-user" aria-hidden="true"></i> <?php echo lang('song_artist'); ?></a>
+    <a href="<?php echo $url; ?>/music/year" <?php if($sub_view=='year'||$view=='year'){ ?>class="active"<?php }?>> <i style="font-size: 15px;" class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang('song_year'); ?></a>
+    <a href="<?php echo $url; ?>/music/genre" <?php if($sub_view=='genre'||$view=='genre'){ ?>class="active"<?php }?>> <i class="fa fa-stumbleupon" aria-hidden="true"></i> <?php echo lang('song_genre'); ?></a>
 </div>
 
 
 <?php
 if($view=='list'){
     include "page_music_list.php";
+}else if($view=='artist'){
+    include "page_music_artist.php";
+}else if($view=='album'){
+    include "page_music_album.php";
+}else if($view=='year'){
+    include "page_music_year.php";
+}else if($view=='genre'){
+    include "page_music_genre.php";
 }else{
     include "page_music_detail.php";
 }

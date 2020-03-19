@@ -79,17 +79,17 @@ mysql_free_result($count_status_3);
     <div class="app_txt">
             <p class="app_address" style="padding: 0px;margin:0px;height: 75px;overflow-y: auto;">
             <?php if($data_lyrics['l']!=''){?>
-                <strong><i class="fa fa-book" aria-hidden="true"></i> <?php echo lang('loi_bai_hat');?></strong><br />
+                <strong><i class="fa fa-book" aria-hidden="true"></i> <?php echo $label_loi_bai_hat;?></strong><br />
                 <?php echo $data_lyrics['l'].'...'; ?>
             <?php }else{?>
-                <i class="fa fa-sticky-note-o" aria-hidden="true"></i> <?php echo lang('chua_co_loi_bai_hat');?>
+                <i class="fa fa-sticky-note-o" aria-hidden="true"></i> <?php echo $label_chua_co_loi_bai_hat;?>
             <?php }?>
             </p>
         <br />
     </div>
     <div class="app_type" style="color: #515151;font-size: 11px;font-weight: normal;">
         <?php if($data_m_0=='0'&&$data_m_1=='0'&&$data_m_2=='0'&&$data_m_3=='0'){?>
-        <span style="font-style: italic;"><i class="fa fa-exclamation" aria-hidden="true"></i> <?php echo lang('music_no_rank'); ?></span> 
+        <span style="font-style: italic;"><i class="fa fa-exclamation" aria-hidden="true"></i> <?php echo $label_music_no_rank; ?></span>
         <?php }else{?>
             <?php if($data_m_0!='0'){ ?><a class="buttonPro small black" href="<?php echo $url; ?>/music/0"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo $data_m_0; ?></a><?php }?>
             <?php if($data_m_1!='0'){ ?><a class="buttonPro small black" href="<?php echo $url; ?>/music/1"><i style="font-size: 15px;" class="fa fa-frown-o" aria-hidden="true"></i> <?php echo $data_m_1; ?></a><?php }?>
@@ -99,9 +99,9 @@ mysql_free_result($count_status_3);
         <?php }?>
     </div>
     <div class="app_action">
-        <a href="<?php echo $url_song;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo lang('chi_tiet'); ?></a>
+        <a href="<?php echo $url_song;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
         <?php if($list_style=='list'){?>
-        <a href="#" onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo lang('choi_nhac');?></a>
+        <a href="#" onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
         <?php if($url_video!=''){ ?><a href="#" onclick="play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
         <?php }?>
     </div>

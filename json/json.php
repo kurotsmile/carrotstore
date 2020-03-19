@@ -184,6 +184,12 @@ if($_GET||$_POST){
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
             $list_style='list';
+            $label_choi_nhac=lang('choi_nhac');
+            $label_chi_tiet=lang('chi_tiet');
+            $label_loi_bai_hat=lang('loi_bai_hat');
+            $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
+            $label_music_no_rank=lang('music_no_rank');
+            
             $result = mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 30",$link);
             while ($row = mysql_fetch_array($result)) {
                include "page_music_git.php";
