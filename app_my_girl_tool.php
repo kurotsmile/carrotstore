@@ -165,5 +165,29 @@ include "app_my_girl_template.php";
         </li>
     </a>
 
+    <a href="<?php echo $url;?>/app_my_girl_view_3d.php">
+        <li class="box_tool">
+            <i class="fa fa-university" aria-hidden="true"></i>
+            <b>Quang cảnh 3D</b><br />
+            Quản lý cả quảng các 3d (view) trong các ứng dụng virtual dạng 3d
+        </li>
+    </a>
+
+    <a href="<?php echo $url;?>/app_my_girl_skin.php">
+        <li class="box_tool">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+            <b> Trang phục</b><br />
+            Quản lý các trang phục trong virtual mini onichan
+        </li>
+    </a>
+
+    <a href="<?php echo $url;?>/app_my_girl_head.php">
+        <li class="box_tool">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <b> Đầu tóc</b><br />
+            Quản lý các kiểu tóc cho các nhân vật Virtual lover Onichan (mini)
+        </li>
+    </a>
+
 </ul>
 </div>

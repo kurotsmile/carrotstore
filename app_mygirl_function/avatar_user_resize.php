@@ -144,6 +144,14 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
             </select>
         </p>
 
+        <p>
+            <label>Chức năng:</label>
+            <select name="type">
+                <option value="0">Tối ưu kích thước ảnh</option>
+                <option value="1">Tối ươu kích thước và Xóa ảnh đại diện không có dữ liệu</option>
+            </select>
+        </p>
+
         <p><br/>
             <input type="submit" value="Bắt đầu tối ưu" class="buttonPro blue"/>
             <input type="hidden" value="avatar_user_resize" name="func"/>
@@ -154,13 +162,37 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
     if (isset($_GET['width'])) {
         $sel_lang = $_GET['lang_sel'];
         $width=$_GET['width'];
+        $type=$_GET['type'];
         $files = glob('app_mygirl/app_my_girl_' . $sel_lang . '_user/*'); // get all file names
+
+        if($type=='0'){
+            echo '<h2>Tối ưu kích thước ảnh</h2>';
+        }else{
+            echo '<h2>Tối ươu kích thước và Xóa ảnh đại diện không có dữ liệu</h2>';
+        }
         foreach ($files as $file) { // iterate files
             if (is_file($file)) {
-                $datasize= getimagesize($file);
-                if($datasize[0]>$width||$datasize[1]>$width){
-                    smart_resize_image($file,"",300,300,false,'file',true,false,90);
-                    echo '<img src="'.$url.'/'.$file.'" style="float:left">';
+                $is_resize=true;
+                $id_user_file=str_replace(".png","",basename($file));
+
+                if($type=='1'){
+                    $query_check_info=mysql_query("SELECT `id_device` FROM `app_my_girl_user_".$sel_lang."` WHERE `id_device` = '$id_user_file' LIMIT 1");
+                    if(mysql_num_rows($query_check_info)>0){
+                        $is_resize=true;
+                        echo 'Tìm thấy dữ liệu  <a  target="_blank" href="'.$url.'/'.$file.'">'.$file.'</a> <a class="buttonPro small" href="http://carrotstore.com/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank">Xem info</a><br/>';
+                    }else{
+                        $is_resize=false;
+                        echo 'Không tìm thấy dữ liệu - <b style="color: red;">Đã xóa file</b> : <a target="_blank" href="'.$url.'/'.$file.'">'.$file.'</a><br/>';
+                        unlink($file);
+                    }
+                }
+
+                if($is_resize==true){
+                    $datasize= getimagesize($file);
+                    if($datasize[0]>$width||$datasize[1]>$width){
+                        smart_resize_image($file,"",300,300,false,'file',true,false,90);
+                        echo 'Đã tối ưu kích thước ảnh : <a href="http://carrotstore.com/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank"><img src="'.$url.'/'.$file.'" style="float:left"></a><br/>';
+                    }
                 }
 
             }

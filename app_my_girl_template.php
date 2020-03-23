@@ -1,5 +1,10 @@
 <?php
-include "config.php";
+$protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
+if ($protocol == 'https') {
+    include "config_https.php";
+} else {
+    include "config.php";
+}
 include "database.php";
 include "function.php";
 include "app_my_girl_function.php";
@@ -569,70 +574,28 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
                 ?>
         </ul>
     </li>
-    <li <?php if ($cur_url == '/app_my_girl_head.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_head.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Đầu
-            tóc</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_skin.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_skin.php"><i class="fa fa-cart-plus" aria-hidden="true"></i> Trang
-            phục</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_ads.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_ads.php"><i class="fa fa-bandcamp" aria-hidden="true"></i> Quảng
-            cáo</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_preson.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_preson.php"><i class="fa fa-heart"></i> Nhân vật</a>
+
+
+    <li <?php if ($cur_url == '/app_my_girl_ads.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_ads.php"><i class="fa fa-bandcamp" aria-hidden="true"></i> Quảng cáo</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_preson.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_preson.php"><i class="fa fa-heart"></i> Nhân vật</a>
         <ul class="sub_menu">
-            <li><a href="<?php echo $url; ?>/app_my_girl_preson_category.php"><i class="fa fa-th-list"
-                                                                                 aria-hidden="true"></i> Quảng lý Chủ đề
-                    nhân vật</a></li>
+            <li><a href="<?php echo $url; ?>/app_my_girl_preson_category.php"><i class="fa fa-th-list" aria-hidden="true"></i> Quảng lý Chủ đề nhân vật</a></li>
         </ul>
     </li>
-    <li <?php if ($cur_url == '/app_my_girl_view_3d.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_view_3d.php"><i class="fa fa-university" aria-hidden="true"></i> Quang
-            cảnh 3D</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_manager_country.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_manager_country.php"><i class="fa fa-globe" aria-hidden="true"></i>
-            Quản lý quốc gia và phiên bản</a>
+
+    <li <?php if ($cur_url == '/app_my_girl_manager_country.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_manager_country.php"><i class="fa fa-globe" aria-hidden="true"></i> Quản lý quốc gia và phiên bản</a>
         <ul class="sub_menu">
-            <li><a href="<?php echo $url; ?>/app_my_girl_create_country.php"><i class="fa fa-eercast"
-                                                                                aria-hidden="true"></i> Tạo quốc gia mới</a>
-            </li>
-            <li><a href="<?php echo $url; ?>/app_my_girl_display_lang.php"><i class="fa fa-tag" aria-hidden="true"></i>
-                    Trường dữ liệu</a></li>
-            <li <?php if ($cur_url == '/app_my_girl_key_lang.php') {
-                echo "class='active'";
-            } ?>><a href="<?php echo $url; ?>/app_my_girl_key_lang.php"><i class="fa fa-eercast" aria-hidden="true"></i>
-                    Từ khóa ngôn ngữ hệ thống</a></li>
-            <li <?php if ($cur_url == '/app_my_girl_display_value.php') {
-                echo "class='active'";
-            } ?>><a href="<?php echo $url; ?>/app_my_girl_display_value.php"><i class="fa fa-gg" aria-hidden="true"></i>
-                    Giao diện ngôn ngữ</a></li>
+            <li><a href="<?php echo $url; ?>/app_my_girl_create_country.php"><i class="fa fa-eercast" aria-hidden="true"></i> Tạo quốc gia mới</a></li>
+            <li><a href="<?php echo $url; ?>/app_my_girl_display_lang.php"><i class="fa fa-tag" aria-hidden="true"></i> Trường dữ liệu</a></li>
+            <li <?php if ($cur_url == '/app_my_girl_key_lang.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_key_lang.php"><i class="fa fa-eercast" aria-hidden="true"></i> Từ khóa ngôn ngữ hệ thống</a></li>
+            <li <?php if ($cur_url == '/app_my_girl_display_value.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_display_value.php"><i class="fa fa-gg" aria-hidden="true"></i> Giao diện ngôn ngữ</a></li>
         </ul>
     </li>
-    <li <?php if ($cur_url == '/app_my_girl_tool.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_tool.php"><i class="fa fa-gavel" aria-hidden="true"></i> Công cụ</a>
-        <ul class="sub_menu">
-            <li <?php if ($cur_url == '/app_my_girl_storage.php') {
-                echo "class='active'";
-            } ?>><a href="<?php echo $url; ?>/app_my_girl_storage.php"><i class="fa fa-archive" aria-hidden="true"></i>
-                    Lưu trữ</a></li>
-            <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_field_music_error"><i
-                            class="fa fa-wrench" aria-hidden="true"></i> Sửa lỗi thiếu trường âm nhạc</a></li>
-            <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=check_music&key_word="><i
-                            class="fa fa-check-circle-o" aria-hidden="true"></i> Kiểm tra tồn tại nhạc</a></li>
-        </ul>
-    </li>
+    <li <?php if ($cur_url == '/app_my_girl_tool.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_tool.php"><i class="fa fa-gavel" aria-hidden="true"></i> Công cụ</a></li>
 </ul>
 
 <div id="dialog" title="Xem quang hệ" style="display: none;" class="notranslate">
-    <p id="dialog_data">This is the default dialog which is useful for displaying information. The dialog window can be
-        moved, resized and closed with the 'x' icon.</p>
+    <p id="dialog_data">Nội dung...</p>
 </div>
 
 
@@ -642,23 +605,17 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
             $(this).find(".sub_menu").toggle();
         });
 
-
         var xhr = new window.XMLHttpRequest();
-
         xhr.upload.addEventListener("progress", function (evt) {
             if (evt.lengthComputable) {
                 var percentComplete = evt.loaded / evt.total;
                 percentComplete = parseInt(percentComplete * 100);
                 console.log(percentComplete);
-
                 if (percentComplete === 100) {
                     alert("Hoàn tất!");
                 }
-
             }
         }, false);
-
-
     });
 
     function show_box(datas) {
