@@ -67,6 +67,17 @@ label{
 	text-align: center;
 }
 
+.app:hover{
+	box-shadow: 0 7px 36px -10px rgba(0, 0, 0, 0.3);
+	background-color: white;
+}
+.app:hover .app_title{
+	background-color: #ffd66f;
+}
+.app:hover .app_icon{
+	transform: scale(1.02,1.02);
+}
+
 #player_music{
     display: none;
 }
@@ -92,6 +103,10 @@ label{
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   text-align: center;
     
+}
+
+.track-details:before {
+	content: '';
 }
 
 ::-webkit-scrollbar {
@@ -842,7 +857,7 @@ input.buttonPro, button.buttonPro{
 #header{
     float: left;
     width: 100%;
-    background-image:url('images/header.jpg');
+	background: linear-gradient(-45deg,#ffffff,#88d2b0,#f9ffdf,#c1ffe7,#83ff52,#ffffff);
 }
 
 #logo{
@@ -957,7 +972,7 @@ tr:nth-child(even) {background-color: white}
 	width: 329px;
     height: 200px;
     float: left;
-    background-color: white;
+    background-color: #fbfefe;
     margin: 4px;
     -webkit-transition: all 1s;
     transition: all 1s;
@@ -1014,8 +1029,10 @@ tr:nth-child(even) {background-color: white}
     width: 100px;
    float: left;
    margin: 2px;
-        -webkit-transition: all 0.8s;
-    transition: all 0.8s;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	transition: all .2s ease-in-out;
 }
 
 .app .app_txt{
@@ -1092,7 +1109,7 @@ tr:nth-child(even) {background-color: white}
       -webkit-transform: rotateY( 180deg );
          -moz-transform: rotateY( 180deg );
            -o-transform: rotateY( 180deg );
-              transform: rotateY( 180deg ); 
+              transform: rotateY( 180deg );
 }
 
 .menu_app .menu_more a{
@@ -1137,7 +1154,7 @@ tr:nth-child(even) {background-color: white}
 	max-width: 230px;
 }
 #form_lang select{
-    border: solid 3px #C7C7C7 !important;
+	border: solid 3px #56a556 !important;
     padding: 6px;
 }
 
@@ -1300,7 +1317,6 @@ tr:nth-child(even) {background-color: white}
 }
 
 #tool_search .inp{
-    border: solid 3px #C7C7C7;
     float: left;
     width: 300px;
     padding: 6px;
@@ -1309,6 +1325,7 @@ tr:nth-child(even) {background-color: white}
 background-image: url("images/search.png");
 background-repeat: no-repeat;
 background-position: right center;
+	border: solid 3px #56a556;
 }
 
 #tool_search .inp:hover{

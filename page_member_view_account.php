@@ -1,6 +1,5 @@
 <?php
 $id_user = $_GET['user'];
-
 if (!isset($data_user)) {
     ?>
     <div id="containt" style="width: 100%;float: left;text-align: center;">
@@ -27,14 +26,6 @@ $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
 
 include_once "page_member_header_account.php";
 ?>
-
-    <style>
-        .track-details:before {
-            content: '';
-        }
-    </style>
-
-
     <div id="post_product">
         <?php
         if (isset($user_login)) {
@@ -86,7 +77,7 @@ include_once "page_member_header_account.php";
                 <li><strong><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo lang('date_start'); ?> :</strong></strong> <?php echo $data_user['date_start']; ?></li>
                 <li><strong><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang('date_cur'); ?> :</strong> <?php echo $data_user['date_cur']; ?></li>
                 <li><strong><i class="fa fa-venus-mars" aria-hidden="true"></i> <?php echo lang('gioi_tinh'); ?> :</strong> <?php echo lang("sex_" . $data_user['sex']); ?></li>
-                <li><strong><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo 'Email'; ?> :</strong> <?php echo  $data_user['email']; ?></li>
+                <?php if($data_user['email']!=''){?><li><strong><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo 'Email'; ?> :</strong> <?php echo  $data_user['email']; ?></li><?php }?>
                 <li><strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID
                         carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
                     <?php
