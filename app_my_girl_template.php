@@ -562,7 +562,7 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
                                                                                      aria-hidden="true"></i> Quảng lý
                     Chủ đề</a></li>
             <?php
-            $get_category_bk = mysql_query('SELECT * FROM `app_my_girl_bk_category`');
+            $get_category_bk = mysql_query('SELECT `id`,`name` FROM `app_my_girl_bk_category`');
             while ($row_cat = mysql_fetch_array($get_category_bk)){
             ?>
             <li><a href="<?php echo $url; ?>/app_my_girl_background.php?cat=<?php echo $row_cat['id'] ?>"> <i

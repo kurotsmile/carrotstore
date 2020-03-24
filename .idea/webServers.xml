@@ -26,6 +26,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="0a0b5222-04f7-446d-872f-f9e1b3ffbf7c" name="Contact App" url="http://ftp.carrotstore.com">
+        <fileTransfer host="ftp.carrotstore.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

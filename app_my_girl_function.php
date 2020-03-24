@@ -432,7 +432,7 @@ function get_key_lang($key, $lang)
 
 function get_user_name_by_id($id_user)
 {
-    $query_login = mysql_query("Select * From `carrotsy_work`.`work_user` WHERE `user_id`='$id_user' Limit 1");
+    $query_login = mysql_query("Select `user_name` From `carrotsy_work`.`work_user` WHERE `user_id`='$id_user' Limit 1");
     if (mysql_num_rows($query_login) > 0) {
         $data_user_login = mysql_fetch_array($query_login);
         return $data_user_login['user_name'];
@@ -620,7 +620,7 @@ function show_row_music($row, $langsel)
     mysql_free_result($check_video);
     $bnt_update_lyric = '<a href="#" class="buttonPro small ' . $color_btn_lyrics . ' btn_add_lyrics_' . $row['id'] . '" onclick="add_music_lyrics(' . $row['id'] . ');return false;"><i class="fa fa-book"></i> Cập nhật lời bài hát</a> <a href="#" class="buttonPro small ' . $color_btn_ytb . ' btn_add_video_' . $row['id'] . '" onclick="add_video_music(' . $row['id'] . ');return false;"><i class="fa fa-youtube-square" aria-hidden="true"></i> Cập nhật video</a>';
     $bnt_del = '<a href="#" class="buttonPro small red " onclick="delete_table(' . $row['id'] . ');return false;"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>';
-    $bnt_view_store = '<a href="' . $url . '/music/' . $row['id'] . '/' . $row['author'] . '" class="buttonPro small ' . $color_btn_view_store . ' " target="_blank"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>';
+    $bnt_view_store = '<a href="/music/'.$row['id'].'/'. $row['author'] . '" class="buttonPro small ' . $color_btn_view_store . ' " target="_blank"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>';
     return show_row_chat_prefab($row, $langsel, $bnt_update_lyric . ' ' . $bnt_del . ' ' . $bnt_view_lyric . ' ' . $btn_search_lyrict . ' ' . $col_rank . ' ' . $bnt_view_store . ' ' . $btn_view_video . mysql_error());
 }
 

@@ -72,12 +72,16 @@ label{
 	background-color: white;
 }
 .app:hover .app_title{
-	background-color: #ffd66f;
+	background: linear-gradient(-120deg,#fff, #fffbd4, #ffcc6c, #ffb224,#FF941C);
 }
 .app:hover .app_icon{
 	transform: scale(1.02,1.02);
 }
 
+.app:hover .app_title a span {
+	transform: rotateZ(50deg);
+	transform: scale(1.3,1.3);
+}
 #player_music{
     display: none;
 }
@@ -1004,12 +1008,13 @@ tr:nth-child(even) {background-color: white}
 
 .app .app_title{
     width: 100%;
-        -webkit-transition: all 0.8s;
-    transition: all 0.8s;
+	-webkit-transition: background 2s;
+    transition: background 2s;
    float: left;
 	border-bottom: solid 2px orange;
-	background-image: url('images/bar_icon_bk.png');
-	background-repeat: no-repeat;
+	background: linear-gradient(-120deg,#fff,#fff,#e9ffd4,#d7ffa6,#9cf769);
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 }
 
 .app .app_title a{
@@ -1024,6 +1029,8 @@ tr:nth-child(even) {background-color: white}
 	margin-right: 15px;
 	text-shadow: 2px 2px 2px #525252;
 	color: white;
+	-webkit-transition: all 1s;
+	transition: all 1s;
 }
 .app .app_icon{
     width: 100px;

@@ -5,7 +5,15 @@
       <paths name="Carrot.sytes.net">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/../carrot.sytes.net" web="/" />
+            <mapping local="E:/carrot.sytes.net" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Contact App">
+        <serverdata>
+          <mappings>
+            <mapping local="E:/work.carrotstore.com" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -23,7 +31,7 @@
       <paths name="work.carrotstore.com">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/../carrot.sytes.net" web="/" />
+            <mapping local="E:/carrot.sytes.net" web="/" />
           </mappings>
         </serverdata>
       </paths>
