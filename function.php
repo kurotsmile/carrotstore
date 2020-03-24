@@ -130,7 +130,7 @@ function show_share($url){
     $txt_share='<ul id="share_link" title="'.lang("share_tip").'">';
     $txt_share.='<li><strong>'.lang('chia_se').'</strong></li>';
     $txt_share.='<li><a href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>';
-    $txt_share.='<li><a href="https://twitter.com/home?status='.$url.'" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>';
+    $txt_share.='<li><a href="https://twitter.com/intent/tweet?url='.$url.'&text=Carrot store &via=carrotstore1&original_referer='.$url.'" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>';
     $txt_share.='<li><a href="http://www.linkedin.com/shareArticle?mini=true&url='.$url.'&title=Share" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>';
     $txt_share.='<li><a href="http://pinterest.com/pin/create/button/?url='.$url.'&description=Share" target="_blank"><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>';
     $txt_share.='<li><a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site '.$url.'" target="_blank"><i class="fa fa-envelope-square" aria-hidden="true"></i> Email</a></li>';

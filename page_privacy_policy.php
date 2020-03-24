@@ -32,7 +32,8 @@
     <i class="fa fa-envelope-o" aria-hidden="true"></i> <b>Mail:</b> <a href="mailto:tranthienthanh93@gmail.com">tranthienthanh93@gmail.com</a><br />
     <i class="fa fa-envelope-o" aria-hidden="true"></i> <b>Mail:</b> <a href="mailto:tranrot93@gmail.com">tranrot93@gmail.com</a><br />
     <i class="fa fa-facebook" aria-hidden="true"></i>  <b>Fan Page:</b> <a href="https://www.facebook.com/virtuallover" target="_blank">https://www.facebook.com/virtuallover</a><br />
-    <i class="fa fa-facebook-official" aria-hidden="true"></i> <b>Facebook:</b> <a href="https://www.facebook.com/kurotsmile" target="_blank">https://www.facebook.com/kurotsmile</a>
+    <i class="fa fa-facebook-official" aria-hidden="true"></i> <b>Facebook:</b> <a href="https://www.facebook.com/kurotsmile" target="_blank">https://www.facebook.com/kurotsmile</a><br />
+    <i class="fa fa-twitter" aria-hidden="true"></i> <b>Twitter:</b> <a href="https://twitter.com/carrotstore1" target="_blank">https://twitter.com/carrotstore1</a>
 </p>
 
 <!--

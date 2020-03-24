@@ -22,7 +22,7 @@ if(isset($_GET['view_product'])){
     $title_page=''.get_name_product_lang($data[0],$_SESSION['lang']);
     $seo_desc=strip_tags (get_desc_product_lang($data[0],$_SESSION['lang']));
     $seo_url=$url.'/product/'.$data['id'];
-    $seo_img=get_url_icon_product_no_thumb($data[0]);
+    $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';;
     $item_history=array($data['id'],'product',$date,$_SESSION['lang']);
     array_push($arr_history,$item_history);
     $_SESSION['arr_history']=$arr_history;
@@ -106,30 +106,35 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
 
 if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_account.php'){
     $lang='vi';
-    if(isset($_SESSION['lang'])) $lang=$_SESSION['lang'];
     if(isset($_GET['lang'])) $lang=$_GET['lang'];
     $id_user=$_GET['user'];
     $query_account=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-    $data_user=mysql_fetch_array($query_account);
-    $title_page=$data_user['name'];
-    $seo_desc='';
-    if($data_user['sdt']!=''){ $seo_desc.=' Phone:'.$data_user['sdt'].' ';}
-    if($data_user['address']!=''){ $seo_desc.=' Address:'.$data_user['address'].' ';}
-    $seo_desc.=' Country:'.$lang.' ';
-    
-    $seo_img=$url.'/images/avatar_default.png';
-    $url_img='app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png';
-    if ($data_user['avatar_url'] != '') {
-        $seo_img=$data_user['avatar_url'];
-    }else{
-        if(file_exists($url_img)){
-            $seo_img=$url.'/'.$url_img;
+    if(mysql_num_rows($query_account)>0) {
+        $data_user = mysql_fetch_array($query_account);
+        $title_page = $data_user['name'];
+        $seo_desc = '';
+        if ($data_user['sdt'] != '') {
+            $seo_desc .= ' Phone:' . $data_user['sdt'] . ' ';
         }
+        if ($data_user['address'] != '') {
+            $seo_desc .= ' Address:' . $data_user['address'] . ' ';
+        }
+        $seo_desc .= ' Country:' . $lang . ' ';
+
+        $seo_img = $url . '/images/avatar_default.png';
+        $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $id_user . '.png';
+        if ($data_user['avatar_url'] != '') {
+            $seo_img = $data_user['avatar_url'];
+        } else {
+            if (file_exists($url_img)) {
+                $seo_img = $url . '/' . $url_img;
+            }
+        }
+        $seo_url = $url . '/user/' . $id_user . '/' . $lang;
+        $item_history = array($id_user, 'contact', $date, $lang);
+        array_push($arr_history, $item_history);
+        $_SESSION['arr_history'] = $arr_history;
     }
-    $seo_url=$url.'/user/'.$id_user.'/'.$lang;
-    $item_history=array($id_user,'contact',$date,$lang);
-    array_push($arr_history,$item_history);
-    $_SESSION['arr_history']=$arr_history;
 }
 
 ?>
@@ -219,18 +224,24 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
         });
     }
     </script>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-5388516931803092",
-              enable_page_level_ads: true
-         });
-    </script>
-    
-    <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>
+
+    <?php
+    if(get_setting('show_ads')=='1') {
+        ?>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-5388516931803092",
+                enable_page_level_ads: true
+            });
+        </script>
+
+        <script async custom-element="amp-auto-ads"
+                src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+        <?php
+    }
+    ?>
 </head>
 <body>
 
