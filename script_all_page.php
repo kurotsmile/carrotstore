@@ -126,7 +126,22 @@
             showCancelButton: false
         })
     }
-    
+
+    function show_box_select_lang(){
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: "function=show_box_select_lang",
+            success: function (data, textStatus, jqXHR) {
+                swal({
+                    html: true, title: '<?php echo lang('ngon_ngu_hien_thi');?>',
+                    text: data,
+                    showCancelButton: false
+                })
+            }
+        });
+    }
 </script>
 
 

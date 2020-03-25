@@ -211,11 +211,11 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     });
     
     function reset_tip(){
-        $('[title]').each(function(){
+        $('a[title],img[title]').each(function(){
             $(this).qtip({ // Grab all elements with a title attribute
                 content: {
                     text: $(this).attr('title'), // Won't work, because "this" is the window element!
-                     title: '<?php echo lang('chu_thich'); ?>',
+                    title: '<?php echo lang('chu_thich'); ?>',
                 },
                 style: {
                     classes: 'qtip-green qtip-shadow',

@@ -81,12 +81,15 @@ if (isset($_SESSION['lang'])) {
 }
 
 include "function.php";
-include "json/json.php";
-include "json/json2.php";
 
 if(isset($_SESSION['user_login'])) {
     $user_login=json_decode($_SESSION['user_login']);
 }
+
+include "json/json.php";
+include "json/json2.php";
+
+
 
 $page_file = "page_view.php";
 if(isset($_GET['page_view'])) {
@@ -129,7 +132,7 @@ include "header.php";
     <div class="" id="tool_search">
         <input type="text" placeholder="<?php echo lang('tip_search'); ?>" onchange="search_product(this.value)"
                name="search" class="inp" id="inp_search"/>
-        <button class="btn"><?php echo $icon_search; ?></button>
+        <!--<button class="btn"><?php echo $icon_search; ?></button>--!>
         <span id="proccess" style="display: none;float: left;"> <?php echo lang('dang_xu_ly'); ?></span>
     </div>
 
@@ -163,7 +166,7 @@ include "header.php";
     <form action="<?php echo $url; ?>/index.php" method="post" id="form_lang">
         <img style="width: 20px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"
              src="<?php echo $url . '/thumb.php?src=' . $url . '/app_mygirl/img/' . $_SESSION['lang'] . '.png&size=20x20&trim=1'; ?>"/>
-        <label for="key_contry"> <?php echo lang('ngon_ngu_hien_thi'); ?>:</label>
+        <label for="key_contry" onclick="show_box_select_lang();"> <?php echo lang('ngon_ngu_hien_thi'); ?>:</label>
         <select id="key_contry" name="key_contry" class="inp" onchange="change_lang()">
             <?php
             $result = mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
