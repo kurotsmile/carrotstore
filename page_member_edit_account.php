@@ -60,10 +60,12 @@ if(!$is_me){
 <script>
 
     $(document).ready(function(){
+        swal('<?php echo lang('chinh_sua_thong_tin'); ?>','<?php echo lang('hoan_tat'); ?>','success');
         $("#user_address").geocomplete();
     });
     
     function update_info_user(){
+        swal_loading();
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",

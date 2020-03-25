@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Contact Store Server/.idea/Contact Store Server.iml" filepath="$PROJECT_DIR$/../Contact Store Server/.idea/Contact Store Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/../carrot.sytes.net/.idea/carrot.sytes.net.iml" filepath="$PROJECT_DIR$/../carrot.sytes.net/.idea/carrot.sytes.net.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/carrotstore.com.iml" filepath="$PROJECT_DIR$/.idea/carrotstore.com.iml" />
       <module fileurl="file://$PROJECT_DIR$/../work.carrotstore.com/.idea/work.carrotstore.com.iml" filepath="$PROJECT_DIR$/../work.carrotstore.com/.idea/work.carrotstore.com.iml" />

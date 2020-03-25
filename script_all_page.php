@@ -62,6 +62,7 @@
     }
 
     function rate_object(objects,star,id){
+        swal_loading();
         $('#loading').fadeIn(100);
         $.ajax({
             url: "<?php echo $url;?>/index.php",
@@ -85,6 +86,7 @@
             },
             function (isConfirm) {
                 if (isConfirm) {
+                    swal_loading();
                     var login_admin_username=$("#login_admin_username").val();
                     var login_admin_password=$("#login_admin_password").val();
                     $.ajax({
@@ -105,6 +107,7 @@
     }
 
     function logout_account() {
+        swal_loading();
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
@@ -114,6 +117,14 @@
                 reset_url();
             }
         });
+    }
+
+    function swal_loading(){
+        swal({
+            html: true, title: '<?php echo lang('dang_xu_ly');?>',
+            text: '<img src="<?php echo $url;?>/images/waiting.gif" alt="Loading"/>',
+            showCancelButton: false
+        })
     }
     
 </script>
@@ -146,6 +157,7 @@
 
     function onSignIn(googleUser, goto_user = true) {
         var profile = googleUser.getBasicProfile();
+        swal_loading();
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
@@ -158,7 +170,6 @@
                     reset_url();
                 }
             }
-
         });
     }
 
@@ -259,6 +270,7 @@ if ($protocol == 'https') {
             FB.login(function (response) {
                 if (response.authResponse) {
                     FB.api('/me', function(response) {
+                        swal_loading();
                         $.ajax({
                             url: "<?php echo $url;?>/index.php",
                             type: "post",
