@@ -79,7 +79,7 @@ label{
 }
 
 .app:hover .app_title a span {
-	transform: rotateZ(50deg);
+	transform: rotateZ(10deg);
 	transform: scale(1.3,1.3);
 }
 #player_music{
@@ -2015,6 +2015,8 @@ pre code{
     width: 100%;float: left;padding-top: 20px;padding-bottom: 20px;
     background: url('images/bk_link.jpg');
 }
+
+
 /* Animation Keyframes*/
 @keyframes music {
     0% { background-color: #d4eeff; }
@@ -2084,4 +2086,76 @@ iframe.fb_customer_chat_bounce_out_v2 {
 	min-width: 200px;
 	float: left;
 	border: solid 2px #ccc;;
+}
+
+#menu_country{
+	width: 100%;
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.item_contry {
+	float: left;
+	width: 100%;
+	margin: 2px;
+	background: linear-gradient(-120deg,#fff,#fff,#e9ffd4,#d7ffa6,#9cf769);
+	color: black;
+	text-align: left;
+	padding-bottom: 3px;
+	padding-top: 2px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+.item_contry.active{
+	background: linear-gradient(-120deg,#fff,#ffffff,#ffecc0,#7effe6,#ffcbf5);
+}
+
+.item_contry img {
+	float: left;margin-left: 6px;margin-right: 6px;
+}
+.item_contry:hover {
+	background: linear-gradient(-120deg, #fff, #fffbd4, #ffcc6c, #ffb224, #ff941c);
+}
+
+.box_login{
+	float: left;width: 50%;
+}
+
+.box_login .title{
+	width: 100%;float:left;text-align: center;
+	font-size: 13px;color: black;
+}
+.box_login .tip,#box_register .tip{
+	font-size: 11px;float: left;width: 100%;margin-top: 5px;
+}
+.box_login #box_login_other{
+	margin-top: 20px;float: left;margin-top: 55px;margin-left: 20px;
+}
+.box_login #box_login_body{
+	float: left;
+	padding: 20px;
+	border-left: solid 2px darkgray;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.box_login #box_login_body label,#box_register label{
+	font-size: 13px;color: black;
+}
+.box_login #box_login_body input{
+	height: 35px;margin-top: 3px;margin-bottom: 10px;display: block;
+}
+
+#box_register{padding: 10px;padding-top: 0px;}
+#box_register input{
+	width: 100%;float: left;display: block;height: 30px;font-size: 14px;
+}
+#box_login_error,#box_register_error {
+	float: left;
+	font-size: 13px;
+	color: red;
+	background-color: antiquewhite;
+	padding: 6px;
+	border-radius: 10px;
+	display: none;width: 100%;
 }

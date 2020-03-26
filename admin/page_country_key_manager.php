@@ -208,7 +208,7 @@ if(isset($_POST['id_delete_key_lang'])){
         <label>Chọn từ khóa để xem</label>
         <select name="edit">
         <?php
-            $query_all_key=mysql_query('SELECT DISTINCT `key` FROM lang_value');
+            $query_all_key=mysql_query('SELECT DISTINCT `key` FROM lang_value ORDER By `key`');
             while($row_key=mysql_fetch_array($query_all_key)){
         ?>
             <option value="<?php echo $row_key[0]?>"><?php echo $row_key[0]?></option>

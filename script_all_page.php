@@ -79,20 +79,17 @@
     function login_admin() {
         swal({
                 html: true, title: 'Đăng nhập dành cho quản trị viên',
-                text: '<label>Tên đăng nhập</label><input type="text" id="login_admin_username" class="inp_login_admin"><label>Mật khẩu</label><input id="login_admin_password" type="password" class="inp_login_admin">',
+                text: '<form style="float: left;width: 100%;" id="frm_login_admin"><input name="function" value="login_admin"><label>Tên đăng nhập</label><input type="text" id="login_admin_username" name="login_admin_username" class="inp_login_admin"><label>Mật khẩu</label><input id="login_admin_password" name="login_admin_password" type="password" class="inp_login_admin"></form>',
                 showCancelButton: true,
                 confirmButtonText: "Đăng nhập",
                 cancelButtonText: "Hủy bỏ",
             },
             function (isConfirm) {
                 if (isConfirm) {
-                    swal_loading();
-                    var login_admin_username=$("#login_admin_username").val();
-                    var login_admin_password=$("#login_admin_password").val();
                     $.ajax({
                         url: "<?php echo $url;?>/index.php",
                         type: "post",
-                        data: "function=login_admin&username="+login_admin_username+"&password="+login_admin_password,
+                        data: $("#frm_login_admin").serializeArray(),
                         success: function (data, textStatus, jqXHR) {
                             if(data=='1') {
                                 swal("Đăng nhập quản trị viên", "Đăng nhập thành công!", "success");
@@ -142,33 +139,129 @@
             }
         });
     }
-</script>
 
+    function  register_account_carrot(emp_btn) {
+        $(emp_btn).removeClass("blue");
+        $(emp_btn).addClass("yellow");
+        $(emp_btn).html('<i class="fa fa-spinner" aria-hidden="true"></i> <?php echo lang('dang_xu_ly');?>...');
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: $("#box_register").serializeArray(),
+            success: function (data, textStatus, jqXHR) {
+                $(emp_btn).removeClass("yellow");
+                $(emp_btn).addClass("blue");
+                $(emp_btn).html('<i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?>');
+                if(data,toString()=="add_account_success"){
 
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-71562306-1', 'auto');
-    ga('send', 'pageview');
+                }else{
+                    $("#box_register_error").html(data.toString());
+                    $("#box_register_error").show();
+                }
+            }
+        });
+    }
+
+    function login_account_carrot(emp_btn) {
+        var user_phone_login=$("#user_phone_login").val();
+        var user_password_login=$("#user_password_login").val();
+
+        $(emp_btn).removeClass("blue");
+        $(emp_btn).addClass("yellow");
+        $(emp_btn).html('<i class="fa fa-spinner" aria-hidden="true"></i> <?php echo lang('dang_xu_ly');?>...');
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: "function=login_account_carrot&user_phone_login="+user_phone_login+"&user_password_login="+user_password_login,
+            success: function (data, textStatus, jqXHR) {
+                $(emp_btn).removeClass("yellow");
+                $(emp_btn).addClass("blue");
+                $(emp_btn).html('<i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?>');
+                if(data.toString()=="ready_account"){
+                    swal_loading();
+                    reset_url();
+                }else {
+                    $("#box_login_error").html(data.toString());
+                    $("#box_login_error").show();
+                }
+            }
+        });
+    }
+
+    function show_box_register(){
+        var html_box_register='<div style="width: 100%;">';
+        html_box_register=html_box_register+'<form id="box_register">';
+
+        html_box_register=html_box_register+'<i class="tip"><?php echo lang('dang_ky_carrot_tip');?></i><br/>';
+        html_box_register=html_box_register+'<strong id="box_register_error"></strong>';
+        html_box_register=html_box_register+'<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang('so_dien_thoai');?></label><br/>';
+        html_box_register=html_box_register+'<input id="user_phone_register" name="user_phone_register" type="text"></input>';
+        html_box_register=html_box_register+'<label><i class="fa fa-user"></i> <?php echo lang('ten_day_du');?></label><br/>';
+        html_box_register=html_box_register+'<input id="user_name_register" name="user_name_register" type="text"></input>';
+        html_box_register=html_box_register+'<label><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo lang('dia_chi');?></label><br/>';
+        html_box_register=html_box_register+'<input id="user_address_register" name="user_address_register" type="text"></input>';
+        html_box_register=html_box_register+'<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau');?></label><br/>';
+        html_box_register=html_box_register+'<input id="user_password_register" name="user_password_register" type="password"></input><br/>';
+        html_box_register=html_box_register+'<span class="buttonPro green large" onclick="register_account_carrot(this)"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang("hoan_tat");?></span>';
+        html_box_register=html_box_register+'<input name="function" value="register_account_carrot" type="hidden"></input>';
+        html_box_register=html_box_register+'</form>';
+        html_box_register=html_box_register+'<div style="float: left;width: 100%;">';
+        html_box_register=html_box_register+'<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>  <span class="buttonPro light_blue" onclick="login_account();return false"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>';
+        html_box_register=html_box_register+'</div>';
+
+        html_box_register=html_box_register+'</div>';
+        swal({html: true, title: '<?php echo lang("dang_ky"); ?>', text: html_box_register, showConfirmButton: false,});
+    }
+
 
     function login_account() {
-        swal({
-            html: true, title: '<?php echo lang("dang_nhap"); ?>',
-            text: '<div style="width: 240px;margin-left: auto;margin-right: auto;"><div id="my-signin2"></div><img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;" src="<?php echo $url;?>/images/btn_login_fb.jpg"></div>',
-        });
-        setTimeout(function () {
-            renderButton();
-        }, 100);
+        var html_box_login='<div style="width: 100%;">';
+        html_box_login=html_box_login+'<div class="box_login">';
+        html_box_login=html_box_login+'<strong class="title"><?php echo lang('dang_nhap_mxh');?></strong>';
+        html_box_login=html_box_login+'<div id="box_login_other">';
+        html_box_login=html_box_login+'<div id="my-signin2"></div>';
+        html_box_login=html_box_login+'<img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;width: 200px;height: 40px;" src="<?php echo $url;?>/images/btn_login_fb.jpg">';
+        html_box_login=html_box_login+'</div>';
+        html_box_login=html_box_login+'</div>';
+
+        html_box_login=html_box_login+'<div class="box_login">';
+        html_box_login=html_box_login+'<strong class="title"><?php echo lang('dang_nhap_carrot');?></strong>';
+        html_box_login=html_box_login+'<i class="tip"><?php echo lang('dang_nhap_carrot_tip');?></i>';
+        html_box_login=html_box_login+'<div style="float: left;padding: 20px;" id="box_login_body">';
+        html_box_login=html_box_login+'<div><img src="<?php echo $url;?>/images/icon.png"/></div>';
+        html_box_login=html_box_login+'<strong id="box_login_error"></strong>';
+        html_box_login=html_box_login+'<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang('so_dien_thoai');?></label><br/>';
+        html_box_login=html_box_login+'<input id="user_phone_login" name="user_phone_login" type="text"></input>';
+        html_box_login=html_box_login+'<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau');?></label><br/>';
+        html_box_login=html_box_login+'<input id="user_password_login"  name="user_password_login" type="password"></input>';
+        html_box_login=html_box_login+'<span class="buttonPro blue" onclick="login_account_carrot(this)"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>';
+        html_box_login=html_box_login+'</div>';
+        html_box_login=html_box_login+'</div>';
+
+        html_box_login=html_box_login+'<div style="float: left;width: 100%;">';
+        html_box_login=html_box_login+'<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>  <span class="buttonPro light_blue" onclick="show_box_register();"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang("dang_ky");?></span>';
+        html_box_login=html_box_login+'</div>';
+
+        html_box_login=html_box_login+'</div>';
+        swal({html: true, title: '<?php echo lang("dang_nhap"); ?>', text: html_box_login, showConfirmButton: false,});
+        setTimeout(function () {renderButton();}, 100);
     }
+
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                    ga('create', 'UA-71562306-1', 'auto');
+                    ga('send', 'pageview');
+
+
 
     function onSignIn(googleUser, goto_user = true) {
         var profile = googleUser.getBasicProfile();
@@ -190,7 +283,7 @@
 
     <?php
     if($page_file != 'page_remove_block_ads.php'){
-    ?>
+     ?>
     var adBlockEnabled = false;
     var testAd = document.createElement('div');
     testAd.innerHTML = '&nbsp;';
@@ -236,14 +329,16 @@
     function renderButton() {
         gapi.signin2.render('my-signin2', {
             'scope': 'profile email',
-            'width': 240,
-            'height': 50,
+            'width': 200,
+            'height': 40,
             'longtitle': true,
             'theme': 'dark',
             'onsuccess': onSuccess,
             'onfailure': onFailure
         });
     }
+
+
 
 </script>
 <?php

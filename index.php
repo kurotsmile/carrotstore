@@ -55,14 +55,15 @@ if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
 }
 
 
-if (isset($_POST['key_contry'])) {
-    $_SESSION['lang'] = $_POST['key_contry'];
+if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
+    if(isset($_POST['key_contry'])){ $_SESSION['lang'] = $_POST['key_contry'];}
+    if(isset($_GET['key_contry'])){ $_SESSION['lang'] = $_GET['key_contry'];}
     $url_cur = $_POST['urls'];
-    unset($_SESSION['username_login']);
-    unset($_SESSION['login_google']);
-    unset($_SESSION['admin_login']);
+    unset($_SESSION['user_login']);
+    unset($user_login);
     header("Location: $url_cur");
 }
+
 include "database.php";
 
 $lang='en';

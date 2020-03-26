@@ -64,19 +64,7 @@ if($_GET||$_POST){
                 include "page_view_all_product_git.php";
             }
         }
-        
-        
-        if($type=='place'){
-            $result = mysql_query("SELECT * FROM `$type` WHERE `address` LIKE '%$key%' OR `describe` LIKE '%$key%' OR `name` LIKE '%$key%' LIMIT 50",$link);
-            if(isset($_SESSION['view_type'])){
-                $view_type=$_SESSION['view_type'];
-                while ($row = mysql_fetch_array($result)) {
-                    include "page_place_view_git_teamplate.php";
-                }
-            }else{
-                include "page_place_view_git.php";
-            }
-        }
+
 
         if($type=='accounts'){
             $lang_sel='vi';
@@ -213,22 +201,7 @@ if($_GET||$_POST){
         exit; 
     }
 
-    if(isset($_GET['function'])&&$_GET['function']=='order_product'){
-        $id=$_GET['id'];
-        $quantity=$_GET['quantity'];
-        $product=get_row('products',$id);
-        $price=convert_price($product[11],'en',$product[10]);
-        $users='';
-        if(isset($_SESSION['username_login'])){
-            $users=$_SESSION['username_login'];
-        }else{
-            $users= $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
-        }
-        $productid=$product[0];
-        mysql_query("INSERT INTO `order` (`product`, `quantity`, `price`, `status`, `users`)VALUES ('$productid', '$quantity', '$price', '1', '$users');");
-        echo $product[10];
-        exit;
-    }
+
     
     if(isset($_GET['function'])&&$_GET['function']=='show_address'){
         $lat=$_GET['lat'];
@@ -272,24 +245,8 @@ if($_GET||$_POST){
         echo '<img style="width:100%" src="'.$url.'/phpqrcode/'.$type.''.$product[0].'.png"/>';
         exit;
     }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='show_app'){
-        $row=get_row('products',$_GET['id']);
-        include 'page_view_all_product_git_template.php';
-        exit; 
-    }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='show_place'){
-        $row=get_row('place',$_GET['id']);
-        include 'page_place_view_git_teamplate.php';
-        exit; 
-    }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='show_company'){
-        $row=get_row('company',$_GET['id']);
-        include 'page_company_view_git_template.php';
-        exit; 
-    }
+
+
     
     if(isset($_POST['function'])&&$_POST['function']=='comment'){
         $id=$_POST["id"];
@@ -316,143 +273,8 @@ if($_GET||$_POST){
     }
 
 
-    if(isset($_POST['function'])&&$_POST['function']=='appfunction'){
-        echo var_dump($_POST);
-        include_once($_POST['urls']);
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='insert_data'){
-        $edit=0;
-        unset($_POST['function']);
-        $table=$_POST['table'];
-        unset($_POST['table']);
-        $success=$_POST['success'];
-        unset($_POST['success']);
-        $error=$_POST['error'];
-        unset($_POST['error']);
-
-        if(isset($_POST['id'])){
-            $edit=$_POST['id'];
-            unset($_POST['id']);
-        }
-        $data = $_POST;
-            foreach($data as $field => $value)
-            {
-                if (is_numeric($value))
-                    $values[] = $value;
-                else
-                    $values[] = "'".mysql_real_escape_string($value)."'";
-            }
-            $fields_sql = implode(',', array_keys($data));
-            $values_sql = implode(',', $values);
-
-        if($edit==0){
-            $result_ist=mysql_query("INSERT INTO `$table` ($fields_sql) VALUES ($values_sql)");
-        }else{
-            foreach($data as $field => $value)
-            {
-              $a= mysql_query("UPDATE `$table` SET `$field` = '$value' WHERE `id` = '$edit'");
-            }
-        }
-        echo $success;
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='delete_data'){
-        $id=$_POST['id'];
-        $table=$_POST['table'];
-        $result3 = mysql_query("DELETE FROM `$table` WHERE `id` = '$id'");
-        if($table=='products'){
-            delete_dir("product_data/".$id);
-        }
-        
-        if($table=="place"){
-             mysql_query("DELETE FROM `place_menu_item` WHERE `place_id` = '$id'");
-             mysql_query("DELETE FROM `place_time` WHERE `place_id` = '$id'");
-             $data_old=get_row('place',$id);
-             if($data_old['images']!=''){
-                 $fodel_img=json_decode($data_old['images']);
-                 foreach($fodel_img as $imgs){
-                    unlink($imgs);
-                 }
-             }
-        }
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='autocoment'){
-        $tags=$_POST['keyword'];
-        $type_tags=$_POST['type_tag'];
-        $result=mysql_query("SELECT DISTINCT(tag) FROM ".$type_tags."_tag WHERE tag LIKE '%$tags%'");
-        while ($tag = mysql_fetch_array($result)) {
-            echo '<li onclick="select_tag(\''.$tag[0].'\')">'.$tag[0].'</li>';
-        }
-        exit;
-    }
 
 
-    if(isset($_POST['function'])&&$_POST['function']=='update_userr_number_phone'){
-        $user_id=$_POST['user_id'];
-        $user_phone=$_POST['user_phone'];
-        $lang=$_SESSION['lang'];
-        $json_return=array();
-        if(is_numeric ( $user_phone )&&strlen($user_phone)>8 ){
-            $query_update=mysql_query("UPDATE `app_my_girl_user_$lang` SET `sdt` = '$user_phone' WHERE `id_device` = '$user_id' LIMIT 1;");
-            $json_return=array('success',lang('account_update_phone_success'));
-        }else{
-            $json_return=array('error',lang('account_update_phone_error'));
-        }
-        echo json_encode($json_return);
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='box_object_account_sel_page'){
-        $lang_title=$_POST['lang_title'];
-        $objects=$_POST['objects'];
-        $id_user=$_POST['id_user'];
-        $file_templace=$_POST['file_templace'];
-        $paged=$_POST['paged'];
-        $url=$_POST['url'];
-        show_box_object($lang_title,$objects,$id_user,$file_templace,$url,$paged);
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='account_select_menu'){
-        $id_user=$_POST['id_user'];
-        $files=$_POST['files'];
-        include "$files";
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='account_upadate_info'){
-        $user=$_SESSION['username_login'];
-        $fullname=json_encode($_POST['ac_fullname'],JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-        $phone=json_encode($_POST['ac_phone'],JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-        $contry=$_POST['ac_contry'];
-        $address=new Address;
-        $address->address=$_POST['ac_address'];
-        if(isset($_POST['lat'])){$address->lat=$_POST['lat'];}
-        if(isset($_POST['lng'])){$address->lng=$_POST['lng'];}
-        $reg_address=json_encode($address,JSON_UNESCAPED_UNICODE);
-
-        $get_account_data=mysql_query("SELECT `data` FROM `accounts` WHERE `usernames` = '$user'");
-        $get_account_data=mysql_fetch_array($get_account_data);
-        $get_account_data=$get_account_data[0];
-        $info=new Account_info();
-        $info->sex=$_POST['sex'];
-        $info->introduire=$_POST['introduction'];
-        $acc=new Accoun_Data();
-        if($get_account_data==''){
-            $acc->info=$info;
-        }else{
-            $acc=(object)json_decode($get_account_data,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-            $acc->info=$info;
-        }
-         $acc=json_encode($acc,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
-        $update_query=mysql_query("UPDATE `accounts` SET  `address`='$reg_address',`fullname`='$fullname',`phone`='$phone', `data` = '$acc',`contry`='$contry' WHERE `usernames` = '$user'");
-        exit;
-    }
 
     if(isset($_POST['function'])&&$_POST['function']=='get_member'){
         $user=$_SESSION['username_login'];
@@ -524,8 +346,8 @@ if($_GET||$_POST){
     }
 
     if(isset($_POST['function'])&&$_POST['function']=='login_admin'){
-        $username=$_POST['username'];
-        $password=$_POST['password'];
+        $username=$_POST['login_admin_username'];
+        $password=$_POST['login_admin_password'];
         $query_login_admin=mysql_query("SELECT * FROM  carrotsy_work.`work_user` WHERE `user_name` = '$username' AND `user_pass` = '$password' LIMIT 1");
         if(mysql_num_rows($query_login_admin)>0){
             $data_login_user=mysql_fetch_array($query_login_admin);
@@ -587,7 +409,7 @@ if($_GET||$_POST){
             $user_email='';
         }
 
-        $check_login=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
+        $check_login=mysql_query("SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
         if(mysql_num_rows($check_login)>0){
             $query_update_user=mysql_query("UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
         }else{
@@ -646,6 +468,90 @@ if($_GET||$_POST){
         echo show_share($new_url_link.'/'.$lang);
         exit;
     }
-    
+
+    if(isset($_POST['function'])&&$_POST['function']=='show_box_select_lang'){
+        $query_country=mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
+        echo '<div id="menu_country">';
+        while ($row_country=mysql_fetch_array($query_country)){
+            $css_active='';
+            if($row_country['key']==$lang){
+                $css_active='active';
+            }
+            echo '<a class="item_contry '.$css_active.'" href="'.$url.'?key_contry='.$row_country['key'].'"><img src="'.$url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$row_country['key'].'.png&size=20x20&trim=1"/> '.$row_country['name'].'</a>';
+        }
+        echo '</div>';
+        exit;
+    }
+
+    if(isset($_POST['function'])&&$_POST['function']=='login_account_carrot'){
+        $user_phone_login=$_POST['user_phone_login'];
+        $user_password_login=$_POST['user_password_login'];
+
+        $txt_error='';
+        if($user_phone_login==''){
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> phone not null';
+        }
+
+        if($user_password_login==''){
+            $txt_error.='password not null';
+        }
+
+        if($txt_error=='') {
+            $check_login = mysql_query("SELECT `id_device`,`name`,`email`,`sdt` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_login' AND `password`='$user_password_login' ");
+            if (mysql_num_rows($check_login) > 0) {
+                $data_login_user = mysql_fetch_array($check_login);
+                $user_login = new User_login();
+                $user_login->id = $data_login_user['id_device'];
+                $user_login->name = $data_login_user['name'];
+                $user_login->type = 'carrot';
+                $user_login->link = $url . '/user/' . $data_login_user['id_device'] . '/' . $lang;
+                $user_login->avatar = get_url_avatar_user($data_login_user['id_device']);
+                $user_login->email = $data_login_user['email'];
+                $user_login->lang = $lang;
+                $_SESSION['user_login'] = json_encode($user_login);
+                echo 'ready_account';
+            } else {
+                echo "Lỗi";
+            }
+        }else{
+            echo $txt_error;
+        }
+        exit;
+    }
+
+    if(isset($_POST['function'])&&$_POST['function']=='register_account_carrot'){
+        $user_phone_register=$_POST['user_phone_register'];
+        $user_name_register=$_POST['user_name_register'];
+        $user_address_register=$_POST['user_address_register'];
+        $user_password_register=$_POST['user_password_register'];
+        $id_device=$_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
+
+        $txt_error='';
+
+        if($user_phone_register==''){
+            $txt_error='name_regiter_not_null';
+        }
+
+        if($user_name_register==''){
+            $txt_error='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_ten');
+        }
+
+        if($user_address_register==''){
+            $txt_error='name_regiter_not_null';
+        }
+
+        if($user_password_register==''){
+            $txt_error='name_regiter_not_null';
+        }
+
+        if($txt_error==''){
+            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`) VALUES ('$id_device','$user_name_register','0',NOW(),NOW(),0);");
+            echo 'add_account_success';
+        }else{
+            echo $txt_error;
+        }
+        exit;
+    }
+
 }
 ?>
