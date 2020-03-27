@@ -25,27 +25,11 @@
     };
 
 
-    function delete_data(emp,row,mysql_table){
-        swal({
-                title: "<?php echo lang('hoi_xoa'); ?>",
-                type: "warning",
-                showCancelButton: true,
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true, },
-            function(){
-                $.ajax({
-                    url: "<?php echo $url;?>/index.php",
-                    type: "post",
-                    data: "function=delete_data&id="+row+"&table="+mysql_table,
-                    success: function(data, textStatus, jqXHR)
-                    {
-                        swal('<?php echo lang('xoa_thanh_cong'); ?>');
-                        $(emp).parent().parent().remove();
-                    }
-                });
-            });
+    function change_lang_store(key_lang) {
+        $("#sel_key_contry").val(key_lang);
+        $("#menu_country").submit();
+        swal_loading();
     }
-
 
     function show_header_carrot(emp){
         var var_show=$(emp).data("show");
@@ -126,10 +110,11 @@
 
     function show_box_select_lang(){
         swal_loading();
+        var urls="<?php echo "http".(($_SERVER['SERVER_PORT'] == 443) ? "s" : "")."://".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];?>";
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
-            data: "function=show_box_select_lang",
+            data: "function=show_box_select_lang&urls="+urls,
             success: function (data, textStatus, jqXHR) {
                 swal({
                     html: true, title: '<?php echo lang('ngon_ngu_hien_thi');?>',
@@ -143,7 +128,7 @@
     function  register_account_carrot(emp_btn) {
         $(emp_btn).removeClass("blue");
         $(emp_btn).addClass("yellow");
-        $(emp_btn).html('<i class="fa fa-spinner" aria-hidden="true"></i> <?php echo lang('dang_xu_ly');?>...');
+        $(emp_btn).html("<i class='fa fa-spinner' aria-hidden='true'></i> <?php echo lang('dang_xu_ly');?>...");
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
@@ -151,9 +136,10 @@
             success: function (data, textStatus, jqXHR) {
                 $(emp_btn).removeClass("yellow");
                 $(emp_btn).addClass("blue");
-                $(emp_btn).html('<i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?>');
-                if(data,toString()=="add_account_success"){
-
+                $(emp_btn).html("<i class='fa fa-sign-in' aria-hidden='true'></i> <?php echo lang('dang_nhap');?>");
+                if(data=="add_account_success"){
+                    swal("<?php echo lang('dang_ky') ?>","<?php echo lang('thanh_cong') ?>","success");
+                    setTimeout(function () {login_account();}, 2000);
                 }else{
                     $("#box_register_error").html(data.toString());
                     $("#box_register_error").show();
@@ -168,7 +154,7 @@
 
         $(emp_btn).removeClass("blue");
         $(emp_btn).addClass("yellow");
-        $(emp_btn).html('<i class="fa fa-spinner" aria-hidden="true"></i> <?php echo lang('dang_xu_ly');?>...');
+        $(emp_btn).html("<i class='fa fa-spinner' aria-hidden='true'></i> <?php echo lang('dang_xu_ly');?>...");
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
@@ -176,7 +162,7 @@
             success: function (data, textStatus, jqXHR) {
                 $(emp_btn).removeClass("yellow");
                 $(emp_btn).addClass("blue");
-                $(emp_btn).html('<i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?>');
+                $(emp_btn).html("<i class='fa fa-sign-in' aria-hidden='true'></i> <?php echo lang('dang_nhap');?>");
                 if(data.toString()=="ready_account"){
                     swal_loading();
                     reset_url();

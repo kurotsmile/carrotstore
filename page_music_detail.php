@@ -92,7 +92,7 @@ textarea:focus {
                     ?>
                     <script>
                     function open_edit(){
-                        window.open("<?php echo $url;?>/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
+                        window.open("http://carrotstore.com/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
                     }
                     </script>
                     <br />

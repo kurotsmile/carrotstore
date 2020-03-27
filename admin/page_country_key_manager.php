@@ -111,15 +111,16 @@ if(isset($_POST['id_delete_key_lang'])){
                             
                         ?>
                             <?php if($value_is_null=="0"){?>
-                                <input type="text" name="value_<?php echo $key_lang?>" value="" />
+                                <input type="text" class="inp_val" name="value_<?php echo $key_lang?>" value="" />
                                 <input type="hidden" name="type_act_<?php echo $key_lang?>" value="1" />
                             <?php }else{?>
-                                <input type="text" name="value_<?php echo $key_lang?>" value="<?php echo $data_value[0]; ?>" />
+                                <input type="text" class="inp_val" name="value_<?php echo $key_lang?>" value="<?php echo $data_value[0]; ?>" />
                             <?php }?>
                         <?php
                             mysql_free_result($query_get_value);
                     }
                     ?>
+
                 </td>
                </tr>
             <?php
@@ -127,6 +128,7 @@ if(isset($_POST['id_delete_key_lang'])){
                 mysql_free_result($list_country);
             ?>
              </table>
+            <span class="buttonPro small" onclick="$('.inp_val').val('')"><i class="fa fa-refresh" aria-hidden="true"></i> Làm mới các trường</span>
         </td>
        </tr>
     </table>
@@ -199,6 +201,7 @@ if(isset($_POST['id_delete_key_lang'])){
     </div>
 </form>
 
+
 <form id="form_loc"  method="get" enctype="multipart/form-data" name="edit" >
     <div style="display: inline-block;float: left;margin: 2px;">
         <strong>Xem từ khóa</strong>
@@ -224,6 +227,8 @@ if(isset($_POST['id_delete_key_lang'])){
         <button class="buttonPro yellow">Xem</button>
     </div>
 </form>
+
+
 
 <?php
 if(isset($_GET['del'])){

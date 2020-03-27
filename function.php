@@ -29,7 +29,7 @@ function lang($key){
     $return=mysql_query("SELECT `value` FROM `lang_value` WHERE `key` = '$key' AND `lang`='$lang' LIMIT 1");
     $data=mysql_fetch_array($return);
     if($data){
-        return $data[0];
+        return addslashes($data[0]);
     }else{
         return $key;
     }

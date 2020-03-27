@@ -470,16 +470,19 @@ if($_GET||$_POST){
     }
 
     if(isset($_POST['function'])&&$_POST['function']=='show_box_select_lang'){
+        $urls = $_POST['urls'];
         $query_country=mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
-        echo '<div id="menu_country">';
+        echo '<form id="menu_country" method="post">';
         while ($row_country=mysql_fetch_array($query_country)){
             $css_active='';
             if($row_country['key']==$lang){
                 $css_active='active';
             }
-            echo '<a class="item_contry '.$css_active.'" href="'.$url.'?key_contry='.$row_country['key'].'"><img src="'.$url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$row_country['key'].'.png&size=20x20&trim=1"/> '.$row_country['name'].'</a>';
+            echo '<span class="item_contry '.$css_active.'" onclick="change_lang_store(\''.$row_country['key'].'\')"><img src="'.$url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$row_country['key'].'.png&size=20x20&trim=1"/> '.$row_country['name'].'</span>';
         }
-        echo '</div>';
+        echo '<input type="hidden" id="sel_key_contry" name="key_contry">';
+        echo '<input type="hidden" name="urls" value="'.$urls.'">';
+        echo '</form>';
         exit;
     }
 
@@ -489,11 +492,11 @@ if($_GET||$_POST){
 
         $txt_error='';
         if($user_phone_login==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> phone not null';
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('account_update_phone_error');
         }
 
-        if($user_password_login==''){
-            $txt_error.='password not null';
+        if($user_password_login==''&&$txt_error==''){
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_dang_nhap');
         }
 
         if($txt_error=='') {
@@ -511,7 +514,7 @@ if($_GET||$_POST){
                 $_SESSION['user_login'] = json_encode($user_login);
                 echo 'ready_account';
             } else {
-                echo "Lỗi";
+                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_dang_nhap');
             }
         }else{
             echo $txt_error;
@@ -528,24 +531,21 @@ if($_GET||$_POST){
 
         $txt_error='';
 
-        if($user_phone_register==''){
-            $txt_error='name_regiter_not_null';
-        }
-
         if($user_name_register==''){
-            $txt_error='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_ten');
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_ten');
         }
 
-        if($user_address_register==''){
-            $txt_error='name_regiter_not_null';
+        if(!is_numeric($user_phone_register)&&$txt_error==''){
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('account_update_phone_error');
         }
 
-        if($user_password_register==''){
-            $txt_error='name_regiter_not_null';
+
+        if($user_password_register==''&&$txt_error==''){
+            $txt_error.='name_regiter_not_null';
         }
 
         if($txt_error==''){
-            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`) VALUES ('$id_device','$user_name_register','0',NOW(),NOW(),0);");
+            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`,`sdt`, `sex`, `date_start`, `date_cur`, `status`,`password`) VALUES ('$id_device','$user_name_register','$user_phone_register','0',NOW(),NOW(),0,'$user_password_register');");
             echo 'add_account_success';
         }else{
             echo $txt_error;

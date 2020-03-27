@@ -1408,11 +1408,11 @@ background-position: right center;
     background-color:  #3fc73d;
     color: white;
     padding: 8px;
-    margin: 6px;
+    margin: 6px;margin-left: 3px;margin-right: 3px;
     float: right;
     min-width: 190px;
     border-top-left-radius: 14px;
-    border-bottom-right-radius: 14px;
+    border-bottom-right-radius: 14px;cursor: pointer;
 }
 
 #add_place{

@@ -58,7 +58,8 @@ if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
 if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
     if(isset($_POST['key_contry'])){ $_SESSION['lang'] = $_POST['key_contry'];}
     if(isset($_GET['key_contry'])){ $_SESSION['lang'] = $_GET['key_contry'];}
-    $url_cur = $_POST['urls'];
+    if(isset($_POST['urls'])){ $url_cur = $_POST['urls'];}
+    if(isset($_GET['urls'])){ $url_cur = $_GET['urls'];}
     unset($_SESSION['user_login']);
     unset($user_login);
     header("Location: $url_cur");
@@ -164,38 +165,21 @@ include "header.php";
         });
     </script>
 
-    <form action="<?php echo $url; ?>/index.php" method="post" id="form_lang">
-        <img style="width: 20px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"
-             src="<?php echo $url . '/thumb.php?src=' . $url . '/app_mygirl/img/' . $_SESSION['lang'] . '.png&size=20x20&trim=1'; ?>"/>
-        <label for="key_contry" onclick="show_box_select_lang();"> <?php echo lang('ngon_ngu_hien_thi'); ?>:</label>
-        <select id="key_contry" name="key_contry" class="inp" onchange="change_lang()">
-            <?php
-            $result = mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
-            while ($row = mysql_fetch_array($result)) {
-                ?>
-                <option value="<?php echo $row['key']; ?>" <?php if ($_SESSION['lang'] == $row['key']) {
-                    echo 'selected="true"';
-                } ?> ><?php echo $row['name']; ?></option>
-                <?php
-            }
-            ?>
-        </select>
-        <input type="hidden" value="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" name="urls"/>
-    </form>
-    <script>
-        function change_lang() {
-            $('#form_lang').submit();
-        }
-    </script>
+    <div id="add_company" onclick="show_box_select_lang();">
+        <?php
+        $query_name_country=mysql_query("SELECT `name` FROM `app_my_girl_country` WHERE `key`='$lang' LIMIT 1", $link);
+        $data_name_country=mysql_fetch_array($query_name_country);
+        ?>
+        <img style="width: 39px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"  src="<?php echo $url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$lang.'.png&size=39x39&trim=1'; ?>"/>
+        <strong style="font-size: 15px;width: 100px;"><?php echo $data_name_country['name']; ?></strong><br/>
+        <span  style="font-size: 70%;"><?php echo lang('ngon_ngu_hien_thi'); ?></span>
+    </div>
 
-
-    <a id="add_company" href="https://www.paypal.me/kurotsmile" target="_blank"
-       title="<?php echo lang('chu_thich_ung_ho'); ?>">
+    <a id="add_company" href="https://www.paypal.me/kurotsmile" target="_blank" title="<?php echo lang('chu_thich_ung_ho'); ?>">
         <i class="fa fa-heart-o fa-3x" style="float: left;margin-right: 10px;" aria-hidden="true"></i>
         <strong style="font-size: 15px;width: 100px;"><?php echo lang('ung_ho'); ?></strong><br/>
         <span><?php echo lang('ung_ho_tip'); ?></span>
     </a>
-
 
     <!-- Carrotstore - header -->
     <div id="sell_product" style="width: auto;padding: 0px;margin: 0px;;margin-top: 7px;background: none;">
