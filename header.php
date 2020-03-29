@@ -142,7 +142,10 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
 <html lang="<?php echo $_SESSION['lang']; ?>">
 <head>
     <title><?php echo $title_page; ?></title>
-	<meta name="author" content="Trần Thiện Thanh" />
+    <meta name="robots" content="max-image-preview:standard">
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="content-language" content="<?php echo $lang;?>" />
+    <meta name="Googlebot" content="index,follow,archive" />
 
     <meta property="og:title" content="<?php echo $title_page;?>" /> 
     <meta property="og:image" content="<?php echo $seo_img; ?>" />
@@ -165,11 +168,13 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta property="og:url" content="<?php echo $seo_url; ?>" />
     <meta property="og:image" content="<?php echo $seo_img; ?>" />
     <meta property="og:description" content="<?php echo $seo_desc;?>" />
-    <meta property="og:site_name" content="kurotsmile" />
+    <meta property="og:site_name" content="carrotstore.com" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
     <meta property="og:image:alt" content="<?php echo $title_page;?>" />
+
+
 
     <link href="<?php echo $url; ?>/style.min.css" rel="stylesheet" />
     <link hreflang="<?php echo $_SESSION['lang'];?>"/>

@@ -93,11 +93,12 @@ $(window).scroll(function() {
 function play_video(id_video){
     $(".menu_app").removeClass('music_color');
     $("#player_music").hide();
-    $("#body_ads").hide();
-    $("#box_ads_app").show('100');
-    $("#ads_video").show(); 
-    $("#ads_video").html('<iframe width="100%" height="120px" src="https://www.youtube.com/embed/'+id_video+'?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
     audioElement.pause();
+    swal({
+            html: true, title: '<i class="fa fa-youtube-square" aria-hidden="true" "></i>',
+            text: '<iframe width="100%" height="360px" src="https://www.youtube.com/embed/'+id_video+'?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    });
+    show_player_music(false);
 }
 </script>
 

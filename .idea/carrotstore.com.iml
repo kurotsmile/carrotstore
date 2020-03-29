@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="carrot.sytes.net" />
     <orderEntry type="module" module-name="work.carrotstore.com" />
+    <orderEntry type="module" module-name="Contact Store Server" />
   </component>
 </module>

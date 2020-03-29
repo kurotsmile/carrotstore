@@ -2159,3 +2159,18 @@ iframe.fb_customer_chat_bounce_out_v2 {
 	border-radius: 10px;
 	display: none;width: 100%;
 }
+
+#frm_update_info{
+	width: 100%;float: left;
+}
+
+#frm_update_info .row{
+	width: 40%;padding: 10px;float: left;
+}
+#frm_update_info .row .avatar {
+	border: dashed 3px lightgrey;
+	padding: 5px;
+	margin: 10px;
+	cursor: pointer;
+	width: 200px;height: 200px;
+}

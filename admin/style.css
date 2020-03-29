@@ -794,7 +794,7 @@ input.buttonPro, button.buttonPro{
 #header{
     float: left;
     width: 100%;
-    background-image:url('../images/header.jpg');
+	background: linear-gradient(-45deg,#b50202,#ff93e3,#dca3ff,#ffd7c1,#ffcf52,#fff);
 }
 
 #logo{

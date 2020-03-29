@@ -426,14 +426,7 @@ if($_GET||$_POST){
         $_SESSION['user_login']=json_encode($user_login);
         exit;
     }
-    
-    if(isset($_POST['function'])&&$_POST['function']=='logout_google'){
-        unset($_SESSION['username_login']);
-        unset($_SESSION['admin_login']);
-        unset($_SESSION['login_google']);
-        exit;
-    }
-    
+
     if(isset($_POST['function'])&&$_POST['function']=='add_lyrics_music'){
         $contain=$_POST['contain'];
         $id_music=$_POST['id_music'];
@@ -508,7 +501,7 @@ if($_GET||$_POST){
                 $user_login->name = $data_login_user['name'];
                 $user_login->type = 'carrot';
                 $user_login->link = $url . '/user/' . $data_login_user['id_device'] . '/' . $lang;
-                $user_login->avatar = get_url_avatar_user($data_login_user['id_device']);
+                $user_login->avatar = get_url_avatar_user($data_login_user['id_device'],$lang);
                 $user_login->email = $data_login_user['email'];
                 $user_login->lang = $lang;
                 $_SESSION['user_login'] = json_encode($user_login);
@@ -527,7 +520,7 @@ if($_GET||$_POST){
         $user_name_register=$_POST['user_name_register'];
         $user_address_register=$_POST['user_address_register'];
         $user_password_register=$_POST['user_password_register'];
-        $id_device=$_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
+        $id_device=uniqid().uniqid();
 
         $txt_error='';
 
@@ -541,12 +534,17 @@ if($_GET||$_POST){
 
 
         if($user_password_register==''&&$txt_error==''){
-            $txt_error.='name_regiter_not_null';
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_mat_khau');
         }
 
         if($txt_error==''){
-            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`,`sdt`, `sex`, `date_start`, `date_cur`, `status`,`password`) VALUES ('$id_device','$user_name_register','$user_phone_register','0',NOW(),NOW(),0,'$user_password_register');");
-            echo 'add_account_success';
+            $check_login = mysql_query("SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_register' AND `password`='$user_password_register' LIMIT 1");
+            if(mysql_num_rows($check_login)>0){
+                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_tai_khoan_da_ton_tai');
+            }else {
+                $query_add_user = mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`,`sdt`, `sex`, `date_start`, `date_cur`, `status`,`password`) VALUES ('$id_device','$user_name_register','$user_phone_register','0',NOW(),NOW(),0,'$user_password_register');");
+                echo 'add_account_success';
+            }
         }else{
             echo $txt_error;
         }

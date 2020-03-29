@@ -7,11 +7,19 @@ include_once "page_member_header_account.php";
 if(!$is_me){
     exit;
 }
+
 ?>
+<script src="<?php echo $url;?>/js/jquery.ajaxfileupload.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
 <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
-<div id="post_product">
-    <form name="frm" id="frm_update_info" class="frm" action="" method="post">
+    <form name="frm" id="frm_update_info" class="frm" action="" method="post" enctype="multipart/form-data">
+        <p class="row">
+            <label><i class="fa fa-picture-o" aria-hidden="true"></i> Ảnh đại diện</label><br/>
+            <img class="avatar" id="img_user_avatar" src="<?php echo get_url_avatar_user($id_user,$lang,'200x200');?>"/>
+            <br/>
+            <input name="user_avatar" id="user_avatar" type="file" >
+        </p>
+
         <p class="row">
             <label><i class="fa fa-user"></i> <?php echo lang('ten_day_du'); ?></label>
             <input name="user_name" id="user_name" value="<?php echo $data_user['name'];?>" class="inp">
@@ -49,10 +57,17 @@ if(!$is_me){
         </p>
 
         <p class="row">
+            <label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau'); ?></label>
+            <input name="user_password" id="user_password" value="<?php echo $data_user['password'];?>" type="password"  class="inp"><br/>
+            <i><img src="<?php echo $url.'/images/icon.png'?>"> Tạo mật khẩu giúp bạn đăng nhập tài khoản carrot với số điện thoại</i>
+        </p>
+
+        <p class="row">
             <span onclick="update_info_user();return false;" class="buttonPro green" ><i class="fa fa-pencil-square" aria-hidden="true"></i> <?php echo lang('hoan_tat'); ?></span>
             <input type="hidden" name="user_id" value="<?php echo $id_user;?>">
             <input type="hidden" name="user_lang" value="<?php echo $lang;?>">
             <input type="hidden" name="user_avatar" value="<?php echo $data_user['avatar_url'];?>">
+            <input type="hidden" name="function" value="update_info_user">
         </p>
     </form>
 </div>
@@ -60,8 +75,22 @@ if(!$is_me){
 <script>
 
     $(document).ready(function(){
-        swal('<?php echo lang('chinh_sua_thong_tin'); ?>','<?php echo lang('hoan_tat'); ?>','success');
         $("#user_address").geocomplete();
+        $('#user_avatar').ajaxfileupload({
+            action: '<?php echo URL . '/app_my_girl_upload_temp.php';?>',
+            params: {
+                id_user: '<?php echo  $id_user;?>',
+                lang:'<?php echo $lang; ?>'
+            },
+            onStart: function () {
+                swal_loading();
+            }
+            ,
+            onComplete: function (response) {
+                swal.close();
+                $("#img_user_avatar").attr("src","<?php echo $url;?>/app_mygirl/app_my_girl_<?php echo $lang;?>_user/<?php echo $id_user;?>.png");
+            }
+        });
     });
     
     function update_info_user(){
@@ -69,9 +98,10 @@ if(!$is_me){
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
-            data: "function=update_info_user&"+$("#frm_update_info").serialize(),
+            data: $("#frm_update_info").serialize(),
             success: function(data, textStatus, jqXHR)
             {
+                alert(data);
                 swal('<?php echo lang('chinh_sua_thong_tin'); ?>','<?php echo lang('hoan_tat'); ?>','success');
             }
         });

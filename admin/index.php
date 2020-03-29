@@ -80,7 +80,7 @@ if($_GET&&isset($_GET['page_view'])){
 <html lang="en-US">
 <head>
 	<meta name="author" content="Trần Thiện Thanh" />
-    <link href="<?php echo $url_admin; ?>/style.css" rel="stylesheet" />
+    <link href="<?php echo $url_admin; ?>/style.min.css" rel="stylesheet" />
 	<title>Carrot - Admin </title>
     <meta charset="utf-8"/>
     <meta name="title" content="<?php echo $title_page; ?>" />
@@ -167,7 +167,6 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
 <?php
 //include "../script_all_page.php";
 ?>
-<script src="<?php echo $url; ?>/assets/js/script.js"></script>
 </body>
 </html>
 <?php

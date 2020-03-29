@@ -9,22 +9,15 @@ if (isset($user_login)) {
     }
 }
 
-if ($data_user['avatar_url'] != '') {
-    $url_image_background = $data_user['avatar_url'];
-    $url_avatar = $data_user['avatar_url'];
-    $bk_size = 'auto 100%';
-    $is_avatar = '1';
-} else {
-    $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $data_user[0] . '.png';
-    $url_avatar = $url . '/thumb.php?src=' . $url . '/images/avatar_default.png&size=170x170&trim=1';
-    $is_avatar = '0';
-    if (file_exists($url_img)) {
-    $url_image_background = $url . '/' . $url_img;
-    $url_avatar = $url . '/' . $url_img;
-    $bk_size = 'auto 100%';
-    $is_avatar = '1';
-    }
-}
+
+
+
+
+$url_image_background = get_url_avatar_user($id_user,$lang,'300x300');
+$bk_size = 'auto 100%';
+
+
+
 
 ?>
 <div id="account_cover" class="show_bk_account"
