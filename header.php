@@ -195,8 +195,6 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="745653792874-8tn5rob2rdbkn6hkqhk6l10dv8t3etpu.apps.googleusercontent.com"/>
     <script src="<?php echo $url;?>/dist/lazysizes.min.js" async"></script>
-    
-
     <script src="<?php echo $url; ?>/js/jquery.form.min.js" async defer></script>
     <script>
     $(document).ready(function(){

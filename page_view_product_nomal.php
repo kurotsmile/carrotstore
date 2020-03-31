@@ -1,4 +1,7 @@
-
+<?php
+$query_type=mysql_query("SELECT `css_icon` FROM `type` WHERE `id` = '".$data['type']."' LIMIT 1");
+$data_type=mysql_fetch_array($query_type);
+?>
 <div style="float: left;width:100%">
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
         <h2><?php echo get_name_product_lang($data[0],$_SESSION['lang']);?></h2>
@@ -14,7 +17,7 @@
    
             
             <strong><?php echo lang('loai'); ?>:</strong>
-            <a style="color: orangered;font-weight: bold;" href="<?php echo $url; ?>/type/<?php echo $data["type"]; ?>"> <span class="<?php $data_type=get_row('type',$data["type"]);echo $data_type[1]; ?>"></span> <?php echo lang($data["type"]);?></a>
+            <a style="color: orangered;font-weight: bold;" href="<?php echo $url; ?>/type/<?php echo $data["type"]; ?>"> <span class="<?php echo $data_type[0]; ?>"></span> <?php echo lang($data["type"]);?></a>
             
             <br />
             <span class="product_view" > <i class="fa fa-eye"></i> <strong><?php echo lang('luot_xem');?></strong>:<?php
@@ -145,14 +148,14 @@ $(document).ready(function() {
 </script>
 
 <div style="width: 100%;float: left">
-    <div style="width: 70%;float: left">
+    <div id="box_comments" style="width: 70%;float: left">
     <?php
                 $type_comment='products';
                 $id_product=$data[0];
                 include "template/field_comment.php";
     ?>
     </div>
-    <div style="width:30%;float: left;padding-top: 20px">
+    <div id="box_rates" style="width:30%;float: left;padding-top: 20px">
     <?php
         $type_rate='product';
         include "template/field_rate.php";

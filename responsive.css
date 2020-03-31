@@ -24,108 +24,141 @@
     body{
         overflow-x: hidden;
     }
-    
+    #header {
+        text-align: center;margin-top: 35px;padding-top: 10px;
+    }
+    #logo {
+        float: none;
+    }
     #tool_search {
+        float: none;
         margin-top: 0px;
+        margin-bottom: 16px;
     }
-    
     #tool_search .inp {
-        width: 239px;
-        margin-left: 8px;
+        float: none;
     }
-    
-    #form_lang {
+
+    #add_company {
         float: left;
-        text-align: center;
-        width: 95%;
-        padding: 9px;
-        padding-bottom: 0px;
+        width: 50%;padding: 0px;margin: 0px;text-align: center;min-width: auto;
+        border-top-left-radius:unset; border-bottom-right-radius: unset;
+        margin-bottom: 10px;color: black;background-color: unset;
     }
 
-    #sell_product{
-        display:none;
-    }
-    
-    #shopping_cart,#add_company,#add_place {
-        float: left;
-        width: 91%;
-    }
-    
-    .app {
-    width: 96%;
-    }
-    
-    .row_b,.col2{
-        width: 100%;
-        padding: 3px !important;
-        margin: 0px;
+    #add_company i,#add_company img{
+        float: none; float: none !important;width: 29px !important;font-size: 29px;
     }
 
-    .app .app_txt {
-     width: 215px;
+    #add_company strong{
+        float: left;width: 100% !important;
     }
 
-    #show_history{
-        display: none;
+    #go_top {display: none !important;}
+    #btn_menu_mobile{
+        display: block;
     }
+    #bar_menu {
+        position: fixed;top: 0px; z-index: 200;
+    }
+    #bar_menu a{display: none;width: 100%;float: left !important;text-align: left;}
+    #bar_menu a.active{display: block !important;width: auto;background: unset;}
+    #bar_menu #btn_menu_mobile{display: block !important;width: auto;margin-top: 0px;float: right !important;}
+    #bar_menu_sub {text-align: center;}
+    #bar_menu_sub li {float: none;display: inline-block;margin-top: 8px;}
+    #btn_login_acc,#show_history{display: none !important;}
+    .box_get_info_contact {width: 100px;height: 100px;}
+    .box_get_info_contact i{    margin-top: 15px !important;}
+#form_lang {
+    float: left;
+    text-align: center;
+    width: 95%;
+    padding: 9px;
+    padding-bottom: 0px;
+}
 
-    #bar_menu a {
-        font-size: 13px;
-        padding-top: 6px;
-        padding-bottom: 6px;
-        border-radius: 40px;
+#sell_product{
+    display:none;
+}
+
+
+.app {
+width: 96%;
+}
+    .app.artist {
+        width: 170px;
     }
-    
-    #box-account-info{
-        position: static;
-        width: 100%;
-    }
-    #account_menu{
-        position: absolute;
-        top: 547px;
-        display: none;
-    }
-    #account_menu ul{
-        margin-left: 0px;
-    }
-    #account_avatar_page{
-        margin: 0px;position: static;    
-        margin-left: 28%;
-        margin-right: 40%;
-    }
-    
-    #box-account-info .acc_username{
-        margin: 0px;position: static;
-        font-size: 18px;
-    }
-    
-    #box-account-info .acc_info{
-        margin: 0px;   
-    }
-    #account_menu ul li{
-        width: 90%;
-    }
-    
-    .box_info_acc_left{
-        padding:10px;
-    }
-    #box-account-info{
-        position: static !important;
-    }
-    #box-account-content{
-        width: 100%;
-        margin-left: 0px;
-    }
-    
-    #post_product{
-        width: 95%;
-        padding: 3px;
-    }
-    
-    .audiojs { width: 300px !important;}
-    .track-details {width: 300px;}
-    .audiojs .scrubber {width: 268px;}
-    #sidebar_product {
-        width: 85%;
-    }
+.row_b,.col2{
+    width: 100%;
+    padding: 3px !important;
+    margin: 0px;
+}
+
+.app .app_txt {
+ width: 215px;
+}
+
+#show_history{
+    display: none;
+}
+
+#bar_menu a {
+    font-size: 13px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 40px;
+}
+
+#box-account-info{
+    position: static;
+    width: 100%;
+}
+#account_menu{
+    position: absolute;
+    top: 547px;
+    display: none;
+}
+#account_menu ul{
+    margin-left: 0px;
+}
+#account_avatar_page{
+    margin: 0px;position: static;
+    margin-left: 28%;
+    margin-right: 40%;
+}
+
+#box-account-info .acc_username{
+    margin: 0px;position: static;
+    font-size: 18px;
+}
+
+#box-account-info .acc_info{
+    margin: 0px;
+}
+#account_menu ul li{
+    width: 90%;
+}
+
+.box_info_acc_left{
+    padding:10px;
+}
+#box-account-info{
+    position: static !important;
+}
+#box-account-content{
+    width: 100%;
+    margin-left: 0px;
+}
+
+#post_product{
+    width: 95%;
+    padding: 3px;
+}
+#inp_link, .inp_link_show{width: 65% !important;float: none;}
+.audiojs { width: 300px !important;}
+.track-details {width: 300px;}
+.audiojs .scrubber {width: 268px;}
+#sidebar_product {width: 85%;}
+#box_comments{width: 100% !important;}
+#box_rates{ width: 100% !important;text-align: center;}
 }

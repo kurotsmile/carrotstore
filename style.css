@@ -2198,3 +2198,13 @@ iframe.fb_customer_chat_bounce_out_v2 {
 #list_info_contact li strong i{
 	color: #0da00a;font-size: 20px;
 }
+
+#btn_menu_mobile{
+	display: none;
+	float: right;
+	margin-top: 9px;
+	color: white;
+	margin-right: 12px;
+	font-size: 15px;
+	text-shadow: 2px 2px 2px #757575;
+ }

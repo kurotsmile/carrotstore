@@ -25,6 +25,12 @@ $address_account = $data_user['address'];
 $url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
 
 include_once "page_member_header_account.php";
+
+$array_contact_same_name=array();
+$list_contact_same_name = mysql_query("SELECT id_device,name,sex,sdt,address,avatar_url FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user' AND `status`='0' ORDER BY RAND()  LIMIT 10");
+while ($row_contact_same=mysql_fetch_array($list_contact_same_name)){
+    array_push($array_contact_same_name,$row_contact_same);
+}
 ?>
     <div id="post_product">
         <?php
@@ -153,8 +159,8 @@ include_once "page_member_header_account.php";
     <div id="sidebar_product">
         <h3><i class="fa fa-id-card-o" aria-hidden="true"></i> <?php echo lang('lien_he_cung_ten'); ?></h3>
         <?php
-        $list_contact_same_name = mysql_query("SELECT `id_device`,`name`,`sdt` FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user'  LIMIT 10");
-        while ($row_contact = mysql_fetch_array($list_contact_same_name)) {
+        for ($i_contact=0;$i_contact<sizeof($array_contact_same_name);$i_contact++){
+            $row_contact = $array_contact_same_name[$i_contact];
             ?>
             <a style="width: 100%;display: block;"
                href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang; ?>"
@@ -170,7 +176,7 @@ include_once "page_member_header_account.php";
         <?php if ($sdt != '') { ?>
             <h3><i class="fa fa-plug" aria-hidden="true"></i> <?php echo lang('lien_he_lien_quan'); ?></h3>
             <?php
-            $list_contact_same_phone = mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `sdt`= '$sdt'  LIMIT 10");
+            $list_contact_same_phone = mysql_query("SELECT `id_device`,`name`,`sdt` FROM `app_my_girl_user_$lang` WHERE `sdt`= '$sdt'  LIMIT 5");
             while ($row_contact = mysql_fetch_array($list_contact_same_phone)) {
                 ?>
                 <a style="width: 100%;display: block;"
@@ -202,13 +208,13 @@ include_once "page_member_header_account.php";
     </div>
 
 <?php
-$list_contact_same_name = mysql_query("SELECT id_device,name,sex,sdt,address,avatar_url FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user' AND `status`='0' ORDER BY RAND()  LIMIT 10");
-if (mysql_num_rows($list_contact_same_name) > 0) {
+if (sizeof($array_contact_same_name)> 0) {
     ?>
     <div style="float: left;width: 100%;">
         <h2 style="padding-left: 30px;"><?php echo lang('lien_he_cung_ten'); ?></h2>
         <?php
-        while ($row = mysql_fetch_array($list_contact_same_name)) {
+        for($i_contact=0;$i_contact<sizeof($array_contact_same_name);$i_contact++){
+            $row =$array_contact_same_name[$i_contact];
             include "page_member_view_git.php";
         }
         ?>

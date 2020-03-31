@@ -35,13 +35,6 @@ function lang($key){
     }
 }
 
-function get_row($table,$id){
-    $return=mysql_query("SELECT * FROM `$table` WHERE `id` = '$id' LIMIT 1");
-    $data=mysql_fetch_array($return);
-    mysql_free_result($return);
-    return $data;
-}
-
 function get_account($user_id,$lang){
     $return=mysql_query("SELECT * FROM `app_my_girl_user_".$lang."` WHERE `id_device` ='".$user_id."' LIMIT 1");
     return mysql_fetch_array($return);
@@ -221,7 +214,7 @@ function get_url_icon_product_no_thumb($id_product){
     return $url_img;
 }
 
-function get_url_avatar_user($id_user,$lang,$size=100,$is_admin=false){
+function get_url_avatar_user($id_user,$lang,$size=100,$is_admin=false,$sex_avatar=''){
     $url_img='app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png';
     $url_avatar=URL.'/thumb.php?src='.URL.'/images/avatar_default.png&size='.$size.'&trim=1';
     if($is_admin){
@@ -229,6 +222,19 @@ function get_url_avatar_user($id_user,$lang,$size=100,$is_admin=false){
     }else{
         if(file_exists($url_img)){
             $url_avatar=URL.'/thumb.php?src='.URL.'/'.$url_img.'&size='.$size.'&trim=1';
+        }else{
+            $url_avatar_gg= get_url_account_google($id_user,$lang);
+            if($url_avatar_gg!=null){
+                $url_avatar=$url_avatar_gg;
+            }else{
+                if($sex_avatar!=''){
+                    if($sex_avatar=='0'){
+                        $url_avatar=URL.'/thumb.php?src='.URL.'/images/avatar_boy.jpg&size='.$size.'&trim=1';
+                    }else{
+                        $url_avatar=URL.'/thumb.php?src='.URL.'/images/avatar_girl.jpg&size='.$size.'&trim=1';
+                    }
+                }
+            }
         }
     }
     return $url_avatar;

@@ -180,17 +180,7 @@ include "header.php";
         <strong style="font-size: 15px;width: 100px;"><?php echo lang('ung_ho'); ?></strong><br/>
         <span><?php echo lang('ung_ho_tip'); ?></span>
     </a>
-
-    <!-- Carrotstore - header -->
-    <div id="sell_product" style="width: auto;padding: 0px;margin: 0px;;margin-top: 7px;background: none;">
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:50px"
-             data-ad-client="ca-pub-5388516931803092"
-             data-ad-slot="5904401947"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
+    
 
     <div id="bar_menu">
         <a href="<?php echo $url; ?>/products" <?php if ($page_file == "page_view.php") {
@@ -214,18 +204,18 @@ include "header.php";
 
         <?php
         if(isset($user_login)){
-            //echo var_dump($user_login);
             echo '<a style="float: right;margin-right: 5px;"  onclick="logout_account();return false"><i class="fa fa-sign-out" aria-hidden="true"></i></a> ';
             echo '<a  href="'.$user_login->link.'" style="float:right;padding:0px"><img  style="float: right;margin-right: 5px;margin-top:5px" class="login_avatar" alt="User Avatar" src="'.$user_login->avatar.'"/></a>';
             echo '<a style="float: right;margin-right: 5px;" href="'.$user_login->link.'">'.$user_login->name.'</a>';
         }else{
-            echo '<a  style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang('dang_nhap').'</a> ';
+            echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang('dang_nhap').'</a> ';
         }
         ?>
         <a id="show_history" style="float: right;margin-right: 5px;"
            href="<?php echo $url; ?>/index.php?page_view=page_history.php" <?php if ($page_file == "page_history.php") {
             echo 'class="active"';
         } ?>><i class="fa fa-history"></i></a>
+        <a onclick="show_menu_mobile();" id="btn_menu_mobile"><i class="fa fa-bars" aria-hidden="true"></i></a>
     </div>
 </div>
 

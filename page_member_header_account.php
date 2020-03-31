@@ -9,15 +9,8 @@ if (isset($user_login)) {
     }
 }
 
-
-
-
-
-$url_image_background = get_url_avatar_user($id_user,$lang,'300x300');
+$url_image_background = get_url_avatar_user($id_user,$lang,'300x300',false,$data_user['sex']);
 $bk_size = 'auto 100%';
-
-
-
 
 ?>
 <div id="account_cover" class="show_bk_account"

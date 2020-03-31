@@ -71,7 +71,7 @@
     <div class="app_action">
         <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang_sel;?>" class="buttonPro small "><?php echo lang('chi_tiet'); ?></a>
         <a href="callto://+<?php echo $row['sdt']; ?>" class="buttonPro small "><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang('goi_dien'); ?></a>
-        <button onclick="show_menu_app(this);return false;" class="buttonPro <?php //if(isset($_SESSION['username_login'])&&$_SESSION['username_login']==$row[4]){ echo 'orange'; }else{ echo 'red'; }?> small btn_more"><i class="fa fa-ellipsis-h"></i></button>
+        <button onclick="show_menu_app(this);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
     </div>
 
     <div class="menu_more">

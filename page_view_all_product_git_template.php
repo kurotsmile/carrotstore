@@ -5,9 +5,11 @@ if(trim($row['slug'])!=''){
 }else{
     $link_app=$url.'/product/'.$row[0];
 }
+$query_type=mysql_query("SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
+$data_type=mysql_fetch_array($query_type);
 ?>
             <div id="row<?php echo $row[0]; ?>" class="app">
-                <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo lang('click_de_xem').' ('.get_name_product_lang($row[0],$_SESSION["lang"]).')';?>"><h1><span class="<?php $data_type=get_row('type',$row['type']);echo $data_type[1]; ?>"></span> <?php echo get_name_product_lang($row[0],$_SESSION["lang"]); ?></h1></a></div>
+                <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo lang('click_de_xem').' ('.get_name_product_lang($row[0],$_SESSION["lang"]).')';?>"><h1><span class="<?php echo $data_type['css_icon'];?>"></span> <?php echo get_name_product_lang($row[0],$_SESSION["lang"]); ?></h1></a></div>
                 <a href="<?php echo $link_app;?>"><img style="float: left;width: 100px;"  alt="<?php echo get_name_product_lang($row[0],$_SESSION["lang"]); ?>" title="<?php echo lang('click_de_xem').' ('.get_name_product_lang($row[0],$_SESSION["lang"]).')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row[0],'100x100'); ?>" class="app_icon" /></a>
                 <div class="app_txt">
                     <div class="desc">
