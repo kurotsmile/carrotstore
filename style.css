@@ -2174,3 +2174,27 @@ iframe.fb_customer_chat_bounce_out_v2 {
 	cursor: pointer;
 	width: 200px;height: 200px;
 }
+
+.box_get_info_contact{
+	 width: 164px;
+	 height: 164px;
+	 float: left;
+	 margin: 5px;
+	 background-color: #3fc73d;
+	 text-align: center;
+	 color: white;
+	 border-radius: 10px;
+	 border: solid 5px #b6e3d0;
+ }
+.box_get_info_contact:hover{
+	background-color: yellow;color: black;
+}
+#list_info_contact{
+	float: left;list-style: none;
+}
+#list_info_contact li{
+	margin:1px;width: 90%;float: left;
+}
+#list_info_contact li strong i{
+	color: #0da00a;font-size: 20px;
+}

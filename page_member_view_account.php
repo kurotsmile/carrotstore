@@ -67,7 +67,7 @@ include_once "page_member_header_account.php";
         ?>
         <div id="box-account-content" style="width:100%;float: left;">
 
-            <ul style="float: left;">
+            <ul id="list_info_contact">
                 <li><strong><i class="fa fa-user"></i> <?php echo lang('ten_day_du'); ?> :</strong> <?php echo $data_user['name']; ?></li>
                 <?php if ($sdt != '') { ?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang('so_dien_thoai'); ?> :</strong> <?php echo $sdt; ?></li><?php } ?>
                 <li>
@@ -83,7 +83,8 @@ include_once "page_member_header_account.php";
                     <?php
                     QRcode::png($url_cur_page, 'phpqrcode/img_account/' . $id_user . '_' . $lang_sel . '.png', 'M', 4, 2);
                     ?>
-                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_sel; ?>.png" style="margin: 2px;"/>
+                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_sel; ?>.png" class="box_get_info_contact"/>
+                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang_sel;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang('download_vcf');?></span></a>
                 </li>
                 <?php
                 if($is_me){
