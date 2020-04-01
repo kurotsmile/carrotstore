@@ -25,7 +25,8 @@
         overflow-x: hidden;
     }
     #header {
-        text-align: center;margin-top: 35px;padding-top: 10px;
+        border-top: solid 5px green;
+        text-align: center;padding-top: 10px;
     }
     #logo {
         float: none;
@@ -59,7 +60,7 @@
         display: block;
     }
     #bar_menu {
-        position: fixed;top: 0px; z-index: 200;
+        position: static;top: 0px; z-index: 200;
     }
     #bar_menu a{display: none;width: 100%;float: left !important;text-align: left;}
     #bar_menu a.active{display: block !important;width: auto;background: unset;}
@@ -161,4 +162,5 @@ width: 96%;
 #sidebar_product {width: 85%;}
 #box_comments{width: 100% !important;}
 #box_rates{ width: 100% !important;text-align: center;}
+.row_info_link{width: 90% !important;}
 }

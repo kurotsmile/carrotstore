@@ -38,11 +38,11 @@ $count_toal_link=$count_toal_link['c'];
 </div>
 
 <div style="float: left;width: 100%;margin-top: 60px;text-align: center;">
-    <div style="width: 5%;float: left;">&nbsp;</div>
-    <div style="width: 28%;float: left;padding: 10px;">
+    <div class="row_info_link" style="width: 5%;float: left;">&nbsp;</div>
+    <div class="row_info_link" style="width: 28%;float: left;padding: 10px;">
                 <?php
-                if(isset($_SESSION['login_google'])){
-                    $data_cur_user=get_account($_SESSION['username_login'],$_SESSION['lang']);
+                if(isset($user_login)){
+                    $data_cur_user=get_account($user_login->id,$_SESSION['lang']);
                 ?>
                   <strong><?php echo $data_cur_user['name']; ?></strong><br />
                   <img src="<?php echo $data_cur_user['avatar_url']; ?>" />
@@ -59,7 +59,7 @@ $count_toal_link=$count_toal_link['c'];
                 ?>
     </div>
     
-    <div style="width: 28%;float: left;padding: 10px;">
+    <div class="row_info_link" style="width: 28%;float: left;padding: 10px;">
         <i style="font-size: 30px;margin-bottom: 20px;" class="fa fa-line-chart" aria-hidden="true"></i><br />
         <?php
         echo str_replace("{num_link}",'<b>'.$count_toal_link.'</b>',lang('shorten_link_tip_2'));
@@ -69,7 +69,7 @@ $count_toal_link=$count_toal_link['c'];
         <a href="<?php echo $url;?>/links"><i class="fa fa fa-list" aria-hidden="true"></i> <?php echo lang('shorten_link_list'); ?></a>
     </div>
     
-    <div style="width: 28%;float: left;padding: 10px;">
+    <div class="row_info_link" style="width: 28%;float: left;padding: 10px;">
             <i style="font-size: 30px;margin-bottom: 20px;" class="fa fa-motorcycle" aria-hidden="true"></i><br />
             <?php echo lang('shorten_link_tip_3');?>
             <div style="width: 100%;float: left;margin-top: 5px;">
@@ -85,7 +85,7 @@ $count_toal_link=$count_toal_link['c'];
             <?php if($data_p['huawei_store']!=''){ ?><a href="<?php echo $data_p['huawei_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/huawei_store_download.png';?>" /></a><?php }?>
             </div>
     </div>
-    <div style="width: 5%;float: left;">&nbsp;</div>
+    <div class="row_info_link" style="width: 5%;float: left;">&nbsp;</div>
 </div>
 
 <script>

@@ -4,7 +4,9 @@ include "app_my_girl_template.php";
 $sel_lang='vi';
 $sel_sex_user='-1';
 $sel_sex_char='-1';
-$count_lenth=100;
+$check_key_tip='1';
+
+$count_lenth=500;
 if(isset($_GET['skip'])){
     $skip=$_GET['skip'];
     if($skip=='0'){
@@ -15,7 +17,7 @@ if(isset($_GET['skip'])){
         $_SESSION['mission_count']=$count_lenth;
     }
 }else{
-    $_SESSION['mission_count']=100;
+    $_SESSION['mission_count']=$count_lenth;
 }
 
 
@@ -27,6 +29,7 @@ if(isset($_POST['sel_lang'])){
     $sel_sex_user=$_SESSION['sel_sex_user'];
     $_SESSION['sel_sex_char']=$_POST['sel_sex_char'];
     $sel_sex_char=$_SESSION['sel_sex_char'];
+    $check_key_tip=$_POST['check_key_tip'];
     echo 'Thay đổi thành công!!!';
 }
 
@@ -51,7 +54,20 @@ if($sel_sex_char!='-1'){
     $sql_query_sex_char=" AND `character_sex`='$sel_sex_char' ";
 }
 
-$query_get_chat=mysql_query("SELECT * FROM `app_my_girl_key` WHERE `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
+if($check_key_tip=='1') {
+    $arr_tip_key = array();
+    $query_tip_chat = mysql_query("SELECT `text` FROM `app_my_girl_" . $sel_lang . "` WHERE `tip` = '1' $sql_query_sex_char");
+    while ($row_tip = mysql_fetch_array($query_tip_chat)) {
+        array_push($arr_tip_key, $row_tip['text']);
+    }
+}
+
+if($check_key_tip=='1') {
+    $query_get_chat = mysql_query("SELECT * FROM `app_my_girl_key` WHERE char_length(`key`) <20 AND `key` NOT IN ( '" . implode("', '", $arr_tip_key) . "' ) AND `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
+}else{
+    $query_get_chat = mysql_query("SELECT * FROM `app_my_girl_key` WHERE  char_length(`key`) <20 AND `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
+}
+
 $data_chat=mysql_fetch_array($query_get_chat);
 $id_device=$data_chat['id_device'];
 $sex=$data_chat['sex'];
@@ -61,10 +77,10 @@ $link_edit_show_chat='';
 if($data_chat['id_question']!=''){
     $id_father=$data_chat['id_question'];
     if($data_chat['type_question']=='chat'){
-        $query_father_chat=mysql_query("SELECT * FROM `app_my_girl_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
+        $query_father_chat=mysql_query("SELECT `chat` FROM `app_my_girl_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
         $link_edit_show_chat=$url."/app_my_girl_update.php?id=$id_father&lang=$sel_lang";
     }else{
-        $query_father_chat=mysql_query("SELECT * FROM `app_my_girl_msg_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
+        $query_father_chat=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
         $link_edit_show_chat=$url."/app_my_girl_update.php?id=$id_father&lang=$sel_lang&msg=1";
     }
     $data_father=mysql_fetch_array($query_father_chat);
@@ -73,7 +89,7 @@ if($data_chat['id_question']!=''){
 ?>
 <div class="body">
 <div style="float: left;width:100%;font-size: 20px;">
-    Hoàn Thành <strong><?php echo $count_lenth;?></strong> tác vụ ngẫu nhiên này <br />
+    Trả lời trò chuyện của người dùng
 </div>
     
 <form style="margin: 5px;float: left;width: 80%;background-color: whitesmoke;padding: 10px;" action="" method="post">
@@ -106,6 +122,14 @@ if($data_chat['id_question']!=''){
             <option value="1" <?php if($sel_sex_char=='1'){?> selected="true"<?php }?>>Nữ</option>
         </select>
     </div>
+
+    <div style="float: left;width: 160px;margin: 3px;">
+        Loại trừ từ khóa gợi ý
+        <select name="check_key_tip">
+            <option value="1" <?php if($check_key_tip=='1'){?> selected="true" <?php }?>>Bật</option>
+            <option value="0" <?php if($check_key_tip=='0'){?> selected="true" <?php }?>>Tắt</option>
+        </select>
+    </div>
     
     <div style="float: left;width: 100px;margin: 3px;">
         <button class="buttonPro small" >Thay đổi</button>
@@ -113,8 +137,8 @@ if($data_chat['id_question']!=''){
 </form>
 
 
-
-<div  style="width: 600px;border: solid 4px #DFDFDF;margin: 3px; float: left;text-align: center;background-color: #F2F2F2;">
+<div style="float: left;width: 100%">
+<div  style="width: 50%;border: solid 4px #DFDFDF;margin: 3px; float: left;text-align: center;background-color: #F2F2F2;">
 <?php if($count_lenth>=1){?>
     <div style="padding-top: 20px;padding-bottom: 20px;background-color: #DFDFDF;width: 100%;float: left;">Trả lời câu hỏi của người dùng</div>
     <div style="text-align: center;width: 95%;padding: 10px;">
@@ -143,6 +167,22 @@ if($data_chat['id_question']!=''){
     <strong><i class="fa fa-thumbs-up" aria-hidden="true"></i> Đã xong! Làm tốt lắm</strong>
 <?php }?>
 </div>
+
+    <div class="contain notranslate" style="background-color: #fefff5;padding: 0px;width: 40%;float: left" id="form_loc">
+        <div style="width: 100%;float: left;background-color: #6edfff;">
+            <strong style="padding: 10px;float: left;"><i class="fa fa-info-circle" aria-hidden="true"></i> Những lưu ý khi trả lời những câu trò chuyện của người dùng</strong>
+        </div>
+        <div style="float: left;padding: 10px;overflow-y: scroll;max-height: 200px;">
+            <ul style="list-style: lower-latin;">
+                <li>Đúng chính tả,ngữ pháp. không được viết tắt</li>
+                <li>Cố gắng khai thát và tưởng tượng ra những câu trả lời thú vị . Thỉnh thoản dùng từ khóa <b>{ten_user}</b> để gọi tên người dùng vào câu trả lời trả lời (vd <a href="<?php echo $url;?>/app_my_girl_update.php?id=71022&lang=vi" target="_blank">như câu trò chuyện này - bấm vào để xem</a>)</li>
+                <li>Chọn giới hạn mức độ thô tục cho phù hợp với nội dung (mức 1:Nhiêm ngặc- không có tình dục,ma túy,thuốt,súng,bom,mìn,bạo lực,kích động người dùng,mức 2:cho phép tình dục thô tục nhẹ,mức 3:có tình dục vừa phải,thô tục mức độ vừa phải,mức 4:có tình dục nặng,thô tục nặng)</li>
+                <li>Thỉnh thoản thêm những câu trò chuyện hỏi lại người dùng sau câu trả lời để tăng tính tương tác trò chuyện liền mạch (vd <a href="<?php echo $url;?>/app_my_girl_update.php?id=70966&lang=vi" target="_blank">như câu trò chuyện này - bấm vào để xem</a>) và lôi kéo người dùng đánh giá ứng dụng, hoặc bấm vào quảng cáo hoặc like fanpage (vd <a href="<?php echo $url;?>/app_my_girl_update.php?id=70401&lang=vi" target="_blank">như câu trò chuyện này - bấm vào để xem</a>)</li>
+                <li>Nếu người dùng nhờ mở hay bật tắt chức năng nào đó thì hãy chọn đúng chức năng <b>(effect)</b> liên quan khi nội dung câu dạy có đề cập tới (vd: "mở đèn pin giúp tôi"  nên thiết đặt chức năng tắt đèn pin "Tắt đèn phin" , "mở bài hát khác"  "Mở nhạc khác",Nếu người dùng muốn nhân vật cởi áo quần hoặc cho xem các bộ phận nhạy cảm trên cơ thể thì chọn  "Mở shop trang phục (ver 2 - 3D) (app) , nhằm tăng tỉ lệ mua hàng trong ứng dụng" v.v... ) nhớ kèm theo nội dung trả (chat) lời bình thường như người thật (vd <a href="<?php echo $url;?>/app_my_girl_update.php?id=61262&lang=vi" target="_blank">như câu trò chuyện này - bấm vào để xem</a>)</li>
+                <li>Khi gặp những câu trả lời khó, hoặc không biết giải quyết thì có thể bỏ qua hoặc nhắn tin quản trị viên để được giúp đỡ tư vấn <i class="fa fa-smile-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+ </div>
 
 <?php
 mysql_free_result($query_get_chat);
@@ -175,7 +215,6 @@ function translate(s_from,s_to,s_show,emp_show){
             {
                 $(emp_show).html(data);
             }
-        
         });
 }
 

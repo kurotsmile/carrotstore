@@ -235,13 +235,12 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: "ca-pub-5388516931803092",
-                enable_page_level_ads: true
+                enable_page_level_ads: true,
+                overlays: {bottom: true}
             });
         </script>
 
-        <script async custom-element="amp-auto-ads"
-                src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-        </script>
+
         <?php
     }
     ?>

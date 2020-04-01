@@ -33,44 +33,7 @@ while ($row_contact_same=mysql_fetch_array($list_contact_same_name)){
 }
 ?>
     <div id="post_product">
-        <?php
-        if (isset($user_login)) {
-            if($user_login->id==$id_user&&$sdt=='') {
-                ?>
-                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                <div style="background-color: #3fc73d;padding: 13px;color: white;" id="box_update_phone">
-                    <strong><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang('account_update_phone');?></strong>
-                    <br/><br/>
-                    <i><?php echo lang('account_update_phone_tip');?></i>
-                    <input type="text" name="user_phone" id="user_phone" class="inp" style="width: 80%;margin: 3px;margin-bottom: 8px;"><br>
-                    <span class="buttonPro black" onclick="update_number_phone();"><i class="fa fa-check-circle" aria-hidden="true"></i> <?php echo lang('hoan_tat');?></span>
-                </div>
-                <script>
-                    $(document).ready(function(){
-                        $("#box_update_phone").effect("shake");
-                    });
 
-                    function update_number_phone(){
-                        var user_phone=$("#user_phone").val();
-                        swal("<?php echo lang('account_update_phone');?>","<?php echo lang('dang_xu_ly');?>");
-                        $.ajax({
-                            url: "<?php echo $url;?>/index.php",
-                            type: "post",
-                            data: "function=update_userr_number_phone&user_id=<?php echo $id_user;?>&user_phone="+user_phone,
-                            success: function (data, textStatus, jqXHR) {
-                                var obj_data = JSON.parse(data);
-                                swal("<?php echo lang('account_update_phone');?>", obj_data[1], obj_data[0]);
-                                if(obj_data[0]=='success'){
-                                    $('#box_update_phone').hide();
-                                }
-                            }
-                        });
-                    }
-                </script>
-                <?php
-            }
-        }
-        ?>
         <div id="box-account-content" style="width:100%;float: left;">
 
             <ul id="list_info_contact">
@@ -106,6 +69,15 @@ while ($row_contact_same=mysql_fetch_array($list_contact_same_name)){
                     $data_contact = mysql_fetch_array($contact_query);
                     $data_contact = $data_contact['data'];
                     $data_contact = json_decode($data_contact);
+                    unset($data_contact->func);
+                    unset($data_contact->user_phone);
+                    unset($data_contact->id_device);
+                    unset($data_contact->lang);
+                    unset($data_contact->account_name);
+                    unset($data_contact->style_view);
+                    unset($data_contact->sex);
+                    unset($data_contact->user_password);
+                    unset($data_contact->id_lang);
                     foreach ($data_contact as $k => $v) {
                         echo '<li><b>' . $k . ':</b> ' . $v . '</li>';
                     }
@@ -148,6 +120,51 @@ while ($row_contact_same=mysql_fetch_array($list_contact_same_name)){
                 ?>
             </div>
         <?php } ?>
+
+        <?php
+        if (isset($user_login)) {
+            if($user_login->id==$id_user) {
+        ?>
+                <script src="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.js"></script>
+                <script src="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.js"></script>
+                <script>
+                    $(function() {
+                        $('#features-carousel').utilCarousel({
+                            responsiveMode : 'itemWidthRange',
+                            itemWidthRange : [200, 300],
+                            pagination:true
+                        });
+                    });
+                </script>
+                <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.css" />
+                <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.skins.css" />
+                <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/magnific-popup.css" />
+
+                <div class="container" style="float: left;width: 100%;">
+                    <div id="features-carousel" class="util-theme-default util-carousel features-carousel">
+                        <div class="item">
+                            <i class="fa fa-address-book"></i>
+                            <h3>Backup Contact</h3>
+                            <p>
+                                Fully responsive in tow mode: breakpoints and item width range.
+                            </p>
+                        </div>
+
+                        <div class="item">
+                            <i class="fa fa-play"></i>
+                            <h3>Music Playlist</h3>
+                            <p>
+                                Fully responsive in tow mode: breakpoints and item width range.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        <?php
+            }
+        }
+        ?>
+
+
 
         <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
                 scrolling="no" frameborder="0"
