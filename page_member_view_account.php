@@ -121,51 +121,6 @@ while ($row_contact_same=mysql_fetch_array($list_contact_same_name)){
             </div>
         <?php } ?>
 
-        <?php
-        if (isset($user_login)) {
-            if($user_login->id==$id_user) {
-        ?>
-                <script src="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.js"></script>
-                <script src="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.js"></script>
-                <script>
-                    $(function() {
-                        $('#features-carousel').utilCarousel({
-                            responsiveMode : 'itemWidthRange',
-                            itemWidthRange : [200, 300],
-                            pagination:true
-                        });
-                    });
-                </script>
-                <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.css" />
-                <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.skins.css" />
-                <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/magnific-popup.css" />
-
-                <div class="container" style="float: left;width: 100%;">
-                    <div id="features-carousel" class="util-theme-default util-carousel features-carousel">
-                        <div class="item">
-                            <i class="fa fa-address-book"></i>
-                            <h3>Backup Contact</h3>
-                            <p>
-                                Fully responsive in tow mode: breakpoints and item width range.
-                            </p>
-                        </div>
-
-                        <div class="item">
-                            <i class="fa fa-play"></i>
-                            <h3>Music Playlist</h3>
-                            <p>
-                                Fully responsive in tow mode: breakpoints and item width range.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-        <?php
-            }
-        }
-        ?>
-
-
-
         <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
                 scrolling="no" frameborder="0"
                 style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;">
@@ -225,6 +180,8 @@ while ($row_contact_same=mysql_fetch_array($list_contact_same_name)){
     </div>
 
 <?php
+include "page_member_footer_account.php";
+
 if (sizeof($array_contact_same_name)> 0) {
     ?>
     <div style="float: left;width: 100%;">

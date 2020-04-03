@@ -37,23 +37,22 @@ $count_toal_link=$count_toal_link['c'];
     <div style="width: 10%;float: left;">&nbsp;</div>
 </div>
 
-<div style="float: left;width: 100%;margin-top: 60px;text-align: center;">
+<div id="row_all_info_link" style="float: left;width: 100%;margin-top: 60px;text-align: center;">
     <div class="row_info_link" style="width: 5%;float: left;">&nbsp;</div>
     <div class="row_info_link" style="width: 28%;float: left;padding: 10px;">
                 <?php
                 if(isset($user_login)){
-                    $data_cur_user=get_account($user_login->id,$_SESSION['lang']);
                 ?>
-                  <strong><?php echo $data_cur_user['name']; ?></strong><br />
-                  <img src="<?php echo $data_cur_user['avatar_url']; ?>" />
+                  <strong><?php echo $user_login->name; ?></strong><br />
+                  <img src="<?php echo $user_login->avatar; ?>" />
                   <br />
-                  <a href="<?php echo $url;?>/links/<?php echo $data_cur_user['id_device'] ?>"> <?php echo lang('shorten_link_my_list');?></a>
+                  <a href="<?php echo $url;?>/links/<?php echo $user_login->id;?>"> <?php echo lang('shorten_link_my_list');?></a>
                 <?php
                 }else{
                 ?>
                     <i style="font-size: 30px;margin-bottom: 20px;" class="fa fa-sign-in" aria-hidden="true"></i><br />
-                    <?php echo lang('shorten_link_tip_1'); ?>
-                    <div style="text-align:-webkit-center;margin-top: 20px;" class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <?php echo lang('shorten_link_tip_1'); ?><br/>
+                    <span class="buttonPro green" onclick="login_account();"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>
                 <?php
                 }
                 ?>
@@ -74,8 +73,7 @@ $count_toal_link=$count_toal_link['c'];
             <?php echo lang('shorten_link_tip_3');?>
             <div style="width: 100%;float: left;margin-top: 5px;">
             <?php
-            //echo '<img style="margin:5px;float:left;" src="'.get_url_icon_product('137','100x100',false).'"/>';
-            $query_product=mysql_query("SELECT * FROM `products` WHERE `id` = '137' LIMIT 1");
+            $query_product=mysql_query("SELECT `chplay_store`,`app_store`,`app_store`,`window_store`,`huawei_store`,`galaxy_store` FROM `products` WHERE `id` = '137' LIMIT 1");
             $data_p=mysql_fetch_array($query_product);
             ?>
             <?php if($data_p['chplay_store']!=''){ ?><a href="<?php echo $data_p['chplay_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/chplay_download.png';?>" /></a><?php }?>

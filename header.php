@@ -196,6 +196,8 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta name="google-signin-client_id" content="745653792874-8tn5rob2rdbkn6hkqhk6l10dv8t3etpu.apps.googleusercontent.com"/>
     <script src="<?php echo $url;?>/dist/lazysizes.min.js" async"></script>
     <script src="<?php echo $url; ?>/js/jquery.form.min.js" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
+    <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
     <script>
     $(document).ready(function(){
         reset_tip();
@@ -211,6 +213,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                     at: 'bottom right',
                 }
             });
+        $("#user_address_register").geocomplete();
     });
     
     function reset_tip(){

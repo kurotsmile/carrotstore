@@ -156,7 +156,7 @@ if($_GET||$_POST){
             $lang_sel=$_SESSION['lang'];
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
-            $result = mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 30",$link);
+            $result = mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 20",$link);
             while ($row = mysql_fetch_array($result)) {
                include "page_member_view_git.php";
             }
@@ -178,7 +178,7 @@ if($_GET||$_POST){
             $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
             $label_music_no_rank=lang('music_no_rank');
             
-            $result = mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 30",$link);
+            $result = mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20",$link);
             while ($row = mysql_fetch_array($result)) {
                include "page_music_git.php";
             }
@@ -193,7 +193,7 @@ if($_GET||$_POST){
             $lang_sel=$_SESSION['lang'];
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
-            $result = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 30",$link);
+            $result = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20",$link);
             while ($row = mysql_fetch_array($result)) {
                include "page_quote_git.php";
             }
@@ -445,8 +445,8 @@ if($_GET||$_POST){
         $link=$_POST['link'];
         $lang=$_SESSION['lang'];
         $user_id='';
-        if(isset($_SESSION['username_login'])){
-            $user_id=$_SESSION['username_login'];
+        if(isset($user_login)){
+            $user_id=$user_login->id;
         }
         $query_add_link_shorten=mysql_query("INSERT INTO `link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link', '$user_id', '', '0',NOW(),'$lang');");
         $new_id_link=mysql_insert_id();

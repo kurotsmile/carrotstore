@@ -39,6 +39,7 @@
 <!--
 <img src="images/bk_rot_lieu.png" style="width: 320px;border-radius: 20px;box-shadow: 2px 2px 2px grey;" />
 !-->
-
+    Thanks,<br/>
+<img src="<?php echo $url;?>/images/signature.png">
 
 </div>

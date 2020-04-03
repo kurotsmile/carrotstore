@@ -42,10 +42,9 @@ if($id_user!=''){
         <strong><b><?php echo mysql_num_rows($query_list_link);?></b> <?php echo lang('shorten_link_create') ?></strong><br />
         <a class="buttonPro small blue" href="<?php echo $url;?>/link"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo lang('shorten_link_btn'); ?></a>
         <?php
-        if($_SESSION['login_google']){
-            $data_user=get_account($_SESSION['login_google'],$_SESSION['lang']);
+        if(isset($user_login)){
         ?>
-        <a href="<?php echo $url;?>/links/<?php echo $_SESSION['login_google']; ?>" class="buttonPro small blue"><img src="<?php echo $data_user['avatar_url'];?>" style="width: 13px;" /> <?php echo $data_user['name'] ?> : <?php echo lang('shorten_link_my_list'); ?></a>
+        <a href="<?php echo $url;?>/links/<?php echo $user_login->id; ?>" class="buttonPro small blue"><img src="<?php echo $user_login->avatar;?>" style="width: 13px;" /> <?php echo $user_login->name;?> : <?php echo lang('shorten_link_my_list'); ?></a>
         <?php
         }
         ?>

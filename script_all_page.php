@@ -31,12 +31,14 @@
                     $(this).css("display", "block");
             });
             is_show_menu_mobile=false;
+            $("#btn_menu_mobile").html("<i class='fa fa-times' aria-hidden='true'></i>");
         }else
         {
             $("#bar_menu a" ).each(function( index ) {
                 $(this).css("display", "none");
             });
             is_show_menu_mobile=true;
+            $("#btn_menu_mobile").html("<i class='fa fa-bars' aria-hidden='true'></i>");
         }
     }
 
@@ -220,6 +222,10 @@
 
         html_box_register = html_box_register + '</div>';
         swal({html: true, title: '<?php echo lang("dang_ky"); ?>', text: html_box_register, showConfirmButton: false,});
+
+        setTimeout(function () {
+            $("#user_address_register").geocomplete();
+        }, 500);
     }
 
 
@@ -243,7 +249,7 @@
         html_box_login = html_box_login + '<input id="user_phone_login" name="user_phone_login" type="text"></input>';
         html_box_login = html_box_login + '<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau');?></label><br/>';
         html_box_login = html_box_login + '<input id="user_password_login"  name="user_password_login" type="password"></input>';
-        html_box_login = html_box_login + '<span class="buttonPro blue" onclick="login_account_carrot(this)"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>';
+        html_box_login = html_box_login + '<span class="buttonPro large blue" onclick="login_account_carrot(this)"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>';
         html_box_login = html_box_login + '</div>';
         html_box_login = html_box_login + '</div>';
 
@@ -295,7 +301,7 @@
         if (adBlockEnabled) {
             swal({
                     title: "<?php echo lang("adblock_title"); ?>",
-                    text: "<img alt='<?php echo lang("adblock_title");?>' style="width:100%" src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang("adblock_msg");?>",
+                    text: "<img alt='<?php echo lang("adblock_title");?>' style='width:100%' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang("adblock_msg");?>",
                     html: true,
                     showCancelButton: true,
                     cancelButtonClass: "btn-info",

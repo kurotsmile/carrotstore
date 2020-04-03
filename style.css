@@ -2208,3 +2208,7 @@ iframe.fb_customer_chat_bounce_out_v2 {
 	font-size: 15px;
 	text-shadow: 2px 2px 2px #757575;
  }
+
+.pac-container {
+	z-index: 100000 !important;
+}

@@ -10,12 +10,10 @@ if(!$is_me){
 
 ?>
 <script src="<?php echo $url;?>/js/jquery.ajaxfileupload.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
-<script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
     <form name="frm" id="frm_update_info" class="frm" action="" method="post" enctype="multipart/form-data">
-        <p class="row">
-            <label><i class="fa fa-picture-o" aria-hidden="true"></i> Ảnh đại diện</label><br/>
-            <img class="avatar" id="img_user_avatar" src="<?php echo get_url_avatar_user($id_user,$lang,'200x200');?>"/>
+        <p class="row" style="text-align: center">
+            <label><i class="fa fa-picture-o" aria-hidden="true"></i> <?php echo lang('avatar');?></label><br/>
+            <img class="avatar" onclick="$('#user_avatar').click();" id="img_user_avatar" src="<?php echo get_url_avatar_user($id_user,$lang,'200x200');?>"/>
             <br/>
             <input name="user_avatar" id="user_avatar" type="file" >
         </p>
@@ -38,6 +36,8 @@ if(!$is_me){
             <input name="user_sdt" id="user_sdt" value="<?php echo $data_user['sdt'];?>"  class="inp">
         </p>
 
+
+
         <p class="row">
             <label><i class="fa fa-map-marker"></i> <?php echo lang('dia_chi'); ?></label>
             <input name="user_address" id="user_address" value="<?php echo $data_user['address'];?>"  class="inp">
@@ -47,6 +47,8 @@ if(!$is_me){
             <label><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo 'Email'; ?></label>
             <input name="user_email" id="user_email" value="<?php echo $data_user['email'];?>"  class="inp">
         </p>
+
+
 
         <p class="row">
             <label><i class="fa fa-certificate" aria-hidden="true"></i> <?php echo lang('user_status'); ?></label>
@@ -59,11 +61,12 @@ if(!$is_me){
         <p class="row">
             <label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau'); ?></label>
             <input name="user_password" id="user_password" value="<?php echo $data_user['password'];?>" type="password"  class="inp"><br/>
-            <i><img src="<?php echo $url.'/images/icon.png'?>"> Tạo mật khẩu giúp bạn đăng nhập tài khoản carrot với số điện thoại</i>
+            <i><img src="<?php echo $url.'/images/icon.png'?>"> <?php echo lang('password_tip'); ?></i>
         </p>
 
-        <p class="row">
-            <span onclick="update_info_user();return false;" class="buttonPro green" ><i class="fa fa-pencil-square" aria-hidden="true"></i> <?php echo lang('hoan_tat'); ?></span>
+
+        <p class="row" style="width: 60%;border: none;text-align: center">
+            <span onclick="update_info_user();return false;" class="buttonPro green large" ><i class="fa fa-pencil-square" aria-hidden="true"></i> <?php echo lang('hoan_tat'); ?></span>
             <input type="hidden" name="user_id" value="<?php echo $id_user;?>">
             <input type="hidden" name="user_lang" value="<?php echo $lang;?>">
             <input type="hidden" name="user_avatar" value="<?php echo $data_user['avatar_url'];?>">
@@ -101,9 +104,12 @@ if(!$is_me){
             data: $("#frm_update_info").serialize(),
             success: function(data, textStatus, jqXHR)
             {
-                alert(data);
                 swal('<?php echo lang('chinh_sua_thong_tin'); ?>','<?php echo lang('hoan_tat'); ?>','success');
             }
         });
     }
 </script>
+
+<?php
+include "page_member_footer_account.php";
+?>

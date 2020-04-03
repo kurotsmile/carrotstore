@@ -96,10 +96,9 @@ $data_link=mysql_fetch_array($query_link);
             <td colspan="2">
                 <a class="buttonPro blue" href="<?php echo $url;?>/links"><i class="fa fa-list" aria-hidden="true"></i> <?php echo lang('shorten_link_list'); ?></a>
                 <?php
-                    if(isset($_SESSION['login_google'])){
-                    $data_user=get_account($_SESSION['login_google'],$_SESSION['lang']);
+                if(isset($user_login)){
                 ?>
-                <a href="<?php echo $url;?>/links/<?php echo $_SESSION['login_google']; ?>" class="buttonPro blue"><img src="<?php echo $data_user['avatar_url'];?>" style="width: 13px;" /> <?php echo $data_user['name'] ?> : <?php echo lang('shorten_link_my_list'); ?></a>
+                <a href="<?php echo $url;?>/links/<?php echo $user_login->id; ?>" class="buttonPro blue"><img src="<?php echo $user_login->avatar;?>" style="width: 13px;" /> <?php echo $user_login->name;?> : <?php echo lang('shorten_link_my_list'); ?></a>
                 <?php
                 }
                 ?>
