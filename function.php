@@ -23,9 +23,15 @@ if(!class_exists('Address')){
  }
 }
 
-function lang($key){
-    $lang='vi';
-    if(isset($_SESSION['lang'])){ $lang=$_SESSION['lang']; }
+function lang($key,$lang_sel=null){
+    if($lang_sel==null) {
+        $lang = 'vi';
+        if (isset($_SESSION['lang'])) {
+            $lang = $_SESSION['lang'];
+        }
+    }else{
+        $lang=$lang_sel;
+    }
     $return=mysql_query("SELECT `value` FROM `lang_value` WHERE `key` = '$key' AND `lang`='$lang' LIMIT 1");
     $data=mysql_fetch_array($return);
     if($data){

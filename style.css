@@ -2212,3 +2212,103 @@ iframe.fb_customer_chat_bounce_out_v2 {
 .pac-container {
 	z-index: 100000 !important;
 }
+
+.tag_number{
+	font-size: 13px;color: orange;font-weight: bold;background-color: #545454;padding: 4px;border-radius: 12px;display: inline-block;
+}
+
+.table_msg_box tr:nth-child(even) {background-color: #caffa7;}
+#container-title #title{padding: 28px;font-size: 16px;font-weight: bold;}
+.features-carousel .item .icon{font-size: 40px;width: 70px;height: 70px;line-height: 70px;background-color: #4CAE4C;color: #fff;border-radius: 50%;}
+#list_my_music{float: left;width: 100%;}
+.util-item{margin-right: 0px !important;margin-left: 0px !important;}
+.features-carousel .item.item-playlist{min-height: 200px;}
+#kr_player_music{
+	background-color: #3fc73d;float: left;width: 100%;color: whitesmoke;border-radius: 17px;
+}
+#kr_player_music .box_area{
+	float: left;width: 20%;
+}
+#kr_player_music .box_area.left{
+	width: 9%;text-align: center;
+}
+#kr_player_music .box_area.mid{
+	width: 70%;text-align: center;
+}
+#kr_player_music .box_area.volume{
+	text-align: center;
+	width: 10%;
+}
+#kr_player_music .box_area.timer{
+	width: 10%;text-align: center;
+}
+#kr_player_music .btn_play{
+	font-size: 47px;margin: 20px;
+}
+#kr_player_name_song {
+	margin-top: 11px;height: 18px;
+}
+#kr_player_music .kr_timer{
+	margin-top: 35px;text-align: center;
+}
+#kr_player_music .bar_timer{
+	width: 100%;height: 5px;background-color: green;margin-top: 11px;border-radius: 10px;margin-bottom: 10px;
+}
+#kr_player_music #slider_timer_val{
+	margin-top: 11px;display: none;margin-bottom: 12px;
+}
+#kr_player_music .slidecontainer_volume{
+	margin-top: 32px;float: left;width: 100%;margin-bottom: 10px;
+}
+input#slider_volume,input#slider_timer_val {
+	outline: none;-webkit-appearance: none;width: 100%;height: 5px;background: #008000;border-radius: 10px;outline: none;
+}
+
+input#slider_volume::-webkit-slider-thumb,input#slider_timer_val::-webkit-slider-thumb {
+	-webkit-appearance: none;appearance: none;width: 15px;height: 15px;border-radius: 50%;background:  white;cursor: pointer;
+}
+
+input#slider_volume::-moz-range-thumb,input#slider_timer_val::-moz-range-thumb {
+	width: 15px;height: 15px;border-radius: 50%;background:  white;cursor: pointer;
+}
+
+#kr_timer_length{color: #2a7534;}
+
+#kr_player_music .box_area progress[value] {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #008000;
+	color: blue;
+	border-radius: 10px;
+	height: 5px;
+}
+#kr_player_music .box_area progress[value]::-webkit-progress-bar {
+	background-color: #008000;
+	color: blue;
+	border-radius: 10px;
+}
+#kr_player_music .box_area progress::-webkit-progress-value {
+	background-color: white;
+	border-radius: 10px;
+}
+.btn_control{cursor: pointer;display: inline-block;transition: color 2s}
+.btn_control:hover{color: orange;}
+#box_lyrics{
+	float: left;width: 100%;background-color: white;border-radius: 10px;padding: 10px;font-size: 11px;display: none;
+}
+textarea {
+	border: 1px solid #00AE00;
+}
+textarea:focus {
+	border: 1px solid #9ae66a;
+	box-shadow: 0 0 0 0.2rem #9ae66a;
+}
+.item_playlis{
+	cursor: pointer;border-radius: 20px;width: 100%;display: inline-table;
+}
+.item_playlis.active{
+	background: linear-gradient(-45deg,#fff,#b5ebff,#f9ffdf,#ffedfb,#83f328,#3fc73d)
+}
+.btn_backward,.btn_control,.btn_next{
+	margin-left: 3px;margin-right: 3px;
+}

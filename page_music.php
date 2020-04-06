@@ -33,4 +33,75 @@ if($view=='list'){
 }else{
     include "page_music_detail.php";
 }
+
+if(isset($user_login)){
 ?>
+<script>
+    function save_playlist_music(id_music,lang,id_user){
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/json/json_account.php",
+            type: "post",
+            data: "function=save_playlist_music&id_music="+id_music+"&lang="+lang+"&id_user="+id_user,
+            success: function (data, textStatus, jqXHR) {
+                var obj = JSON.parse(data);
+                if(obj["type"]=='0'){
+                    swal("<?php echo lang('song_add_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
+                }else{
+                    swal({html: true, title: '<?php echo lang("song_add_playlist"); ?>', text: obj["msg"], showConfirmButton: false});
+                }
+            }
+        });
+    }
+
+    function delete_playlist_music(id_playlis,lang){
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/json/json_account.php",
+            type: "post",
+            data: "function=delete_playlist_music&id="+id_playlis+"&lang="+lang,
+            success: function (data, textStatus, jqXHR) {
+                swal("<?php echo lang('song_add_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
+            }
+        });
+    }
+
+    function add_song_to_playlist(id_playlist,id_music,lang) {
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/json/json_account.php",
+            type: "post",
+            data: "function=add_song_to_playlist&id_playlist="+id_playlist+"&lang="+lang+"&id_music="+id_music,
+            success: function (data, textStatus, jqXHR) {
+                swal("<?php echo lang('song_add_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
+            }
+        });
+    }
+
+    function create_playlist(id_music,lang,user_id){
+        swal({
+                title: "<?php echo lang('create_playlist'); ?>",
+                text: "<?php echo lang('create_playlist_tip'); ?>",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+            },
+            function(inputValue){
+                if (inputValue === false) {return  false;}
+                if (inputValue === "") {
+                    swal.showInputError("<?php echo lang('error_name_playlist_null');?>");
+                    return false
+                }
+
+                $.ajax({
+                    url: "<?php echo $url;?>/json/json_account.php",
+                    type: "post",
+                    data: "function=create_playlist&name_playlist="+inputValue+"&lang="+lang+"&id_music="+id_music+"&user_id="+user_id,
+                    success: function (data, textStatus, jqXHR) {
+                        swal("<?php echo lang('create_playlist'); ?>", "<?php echo lang('thanh_cong') ?>", "success");
+                    }
+                });
+        });
+    }
+</script>
+<?php } ?>

@@ -26,3 +26,5 @@ if(isset($_POST['function'])&&$_POST['function']=='update_info_user'){
     echo var_dump($_POST);
     exit;
 }
+
+

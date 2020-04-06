@@ -34,12 +34,12 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
-      <webServer id="0fd3e6a1-c514-45f2-bf35-9abb006e3b37" name="Carrot-googleHost">
-        <fileTransfer host="" port="22" accessType="SFTP">
+      <webServer id="985e6c16-201c-4ca8-9e1a-8df3be81f942" name="Music App Manager" url="http://ftp.carrotstore.com">
+        <fileTransfer host="ftp.carrotstore.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="22" />
+          <option name="port" value="21" />
         </fileTransfer>
       </webServer>
     </option>

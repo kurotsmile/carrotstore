@@ -70,6 +70,13 @@
     #btn_login_acc,#show_history{display: none !important;}
     .box_get_info_contact {width: 100px;height: 100px;}
     .box_get_info_contact i{    margin-top: 15px !important;}
+
+    #kr_player_music .box_area.left{width: 24%;}
+    #kr_player_music .box_area.mid{width: 47%;}
+    #kr_player_music .box_area.timer{width: 100%;}
+    #kr_player_music .kr_timer{margin-top:0px;margin-bottom: 20px;}
+    #kr_player_music .box_area.volume{width: 24%;}
+
 #form_lang {
     float: left;
     text-align: center;
@@ -163,4 +170,6 @@ width: 96%;
 #box_comments{width: 100% !important;}
 #box_rates{ width: 100% !important;text-align: center;}
 .row_info_link{width: 90% !important;}
+    .neon-text{font-size: 100%}
 }
+

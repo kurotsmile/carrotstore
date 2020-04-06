@@ -2,13 +2,6 @@
 <project version="4">
   <component name="PublishConfigData" serverName="carrotstore.com" persistUploadOnCheckin="false">
     <serverData>
-      <paths name="Carrot-googleHost">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="Carrot.sytes.net">
         <serverdata>
           <mappings>
@@ -20,6 +13,13 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$/../work.carrotstore.com" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Music App Manager">
+        <serverdata>
+          <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
