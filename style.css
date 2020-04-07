@@ -2226,6 +2226,9 @@ iframe.fb_customer_chat_bounce_out_v2 {
 #kr_player_music{
 	background-color: #3fc73d;float: left;width: 100%;color: whitesmoke;border-radius: 17px;
 }
+#kr_player_music.error{
+	background-color: #ff8080;
+}
 #kr_player_music .box_area{
 	float: left;width: 20%;
 }
