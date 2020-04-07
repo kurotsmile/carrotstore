@@ -23,10 +23,9 @@ if(isset($_GET['delete'])){
             $category_obj='';
             
             if($type_history=='product'){
-                $obj=get_row('products',$id_history);
                 $url_icon=get_url_icon_product($id_history,30);
                 $name_obj=get_name_product_lang($id_history,$_SESSION['lang']);
-                $url_obj=$url.'/product/'.$obj[0];
+                $url_obj=$url.'/product/'.$id_history;
                 $category_obj='mua_sp';
             }
             

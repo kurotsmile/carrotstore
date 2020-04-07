@@ -58,13 +58,14 @@ if($function=='save_playlist_music'){
     $alert=New Alert();
     $id_music=$_POST['id_music'];
     $lang=$_POST['lang'];
+    $lang_music=$_POST['lang_music'];
     $id_user=$_POST['id_user'];
     $query_playlist=mysql_query("SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
     if(mysql_num_rows($query_playlist)==0){
         $new_id_playlist=uniqid().''.uniqid();
         $item_playlist=new Item_playlis();
         $item_playlist->id=$id_music;
-        $item_playlist->lang=$lang;
+        $item_playlist->lang=$lang_music;
         $array_playlist=array($item_playlist);
         $data_playlist=json_encode($array_playlist);
         $name_playlist=lang('my_playlist',$lang);
@@ -75,9 +76,9 @@ if($function=='save_playlist_music'){
         $txt_show='<table class="table_msg_box">';
         while($item_playlist=mysql_fetch_array($query_playlist)){
             $txt_show.='<tr>';
-            $txt_show.='<td style="width: 50%;"><span class="tag_number"><a href="'.$url.'/playlist/'.$item_playlist['id'].'/'.$lang.'">'.$item_playlist['length'].' x <i class="fa fa-music" aria-hidden="true"></i></span> <i class="fa fa-list-alt" aria-hidden="true"></i> '.$item_playlist['name'].'</a></td>';
+            $txt_show.='<td style="width: 50%;"><span class="tag_number">'.$item_playlist['length'].' x <i class="fa fa-music" aria-hidden="true"></i></span> <a href="'.$url.'/playlist/'.$item_playlist['id'].'/'.$lang.'"><i class="fa fa-list-alt" aria-hidden="true"></i> '.$item_playlist['name'].'</a></td>';
             $txt_show.='<td>';
-            $txt_show.='<span class="buttonPro small blue" onclick="add_song_to_playlist(\''.$item_playlist['id'].'\',\''.$id_music.'\',\''.$lang.'\')"><i class="fa fa-plus-circle" aria-hidden="true"></i> '.lang('add_song_to_playlist',$lang).'</span>';
+            $txt_show.='<span class="buttonPro small blue" onclick="add_song_to_playlist(\''.$item_playlist['id'].'\',\''.$id_music.'\',\''.$lang.'\',\''.$lang_music.'\')"><i class="fa fa-plus-circle" aria-hidden="true"></i> '.lang('add_song_to_playlist',$lang).'</span>';
             $txt_show.='<span class="buttonPro small red" onclick="delete_playlist_music(\''.$item_playlist['id'].'\',\''.$lang.'\')"><i class="fa fa-trash" aria-hidden="true"></i> '.lang('delete',$lang).'</span>';
             $txt_show.='</td>';
             $txt_show.='</tr>';
@@ -102,6 +103,7 @@ if($function=='add_song_to_playlist'){
     $id_playlist=$_POST['id_playlist'];
     $id_music=$_POST['id_music'];
     $lang=$_POST['lang'];
+    $lang_music=$_POST['lang_music'];
 
     $query_playlist=mysql_query("SELECT `data` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id_playlist' LIMIT 1");
     $data_playlist=mysql_fetch_array($query_playlist);
@@ -119,7 +121,7 @@ if($function=='add_song_to_playlist'){
 
     $item_playlist = new Item_playlis();
     $item_playlist->id = $id_music;
-    $item_playlist->lang = $lang;
+    $item_playlist->lang = $lang_music;
     array_push($array_playlist,$item_playlist);
 
     $data_playlist = json_encode($array_playlist);
@@ -174,7 +176,28 @@ if($function=='update_playlist'){
     $data_playlist_new=json_encode($arr_new_list);
     $length_playlist_new=count($arr_new_list);
     $query_update_playlist=mysql_query("UPDATE carrotsy_music.`playlist_$lang_playlist` SET `data`='$data_playlist_new', `length` ='$length_playlist_new' WHERE `id`='$id_playlist'");
+    echo $data_playlist_new;
     exit;
 }
 
+if($function=='edit_name_playlist'){
+    $name_playlist=$_POST['name_playlist'];
+    $lang=$_POST['lang'];
+    $id_playlist=$_POST['id_playlist'];
+    $query_update=mysql_query("UPDATE carrotsy_music.`playlist_$lang` SET `name` = '$name_playlist' WHERE `id` = '$id_playlist'");
+}
+
+
+if($function=='show_all_playlist'){
+    $lang=$_POST['lang'];
+    $id_user=$_POST['id_user'];
+    $query_playlist=mysql_query("SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
+    $txt_show='<div>';
+    while($item_playlist=mysql_fetch_array($query_playlist)){
+            $txt_show.='<div><a href="'.$url.'/playlist/'.$item_playlist['id'].'/'.$lang.'"><i class="fa fa-list-alt" aria-hidden="true"></i> '.$item_playlist['name'].'</a> <span class="tag_number"><i class="fa fa-music" aria-hidden="true"></i> x '.$item_playlist['length'].'</span></div>';
+    }
+    $txt_show.='</div>';
+    echo $txt_show;
+    exit;
+}
 ?>

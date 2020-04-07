@@ -30,6 +30,8 @@ if($view=='list'){
     include "page_music_year.php";
 }else if($view=='genre'){
     include "page_music_genre.php";
+}else if($view=='playlist'){
+    include "page_music_playlist.php";
 }else{
     include "page_music_detail.php";
 }
@@ -37,12 +39,12 @@ if($view=='list'){
 if(isset($user_login)){
 ?>
 <script>
-    function save_playlist_music(id_music,lang,id_user){
+    function save_playlist_music(id_music,lang_music,lang_playlist,id_user){
         swal_loading();
         $.ajax({
             url: "<?php echo $url;?>/json/json_account.php",
             type: "post",
-            data: "function=save_playlist_music&id_music="+id_music+"&lang="+lang+"&id_user="+id_user,
+            data: "function=save_playlist_music&id_music="+id_music+"&lang="+lang_playlist+"&id_user="+id_user+"&lang_music="+lang_music,
             success: function (data, textStatus, jqXHR) {
                 var obj = JSON.parse(data);
                 if(obj["type"]=='0'){
@@ -54,24 +56,14 @@ if(isset($user_login)){
         });
     }
 
-    function delete_playlist_music(id_playlis,lang){
-        swal_loading();
-        $.ajax({
-            url: "<?php echo $url;?>/json/json_account.php",
-            type: "post",
-            data: "function=delete_playlist_music&id="+id_playlis+"&lang="+lang,
-            success: function (data, textStatus, jqXHR) {
-                swal("<?php echo lang('song_add_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
-            }
-        });
-    }
 
-    function add_song_to_playlist(id_playlist,id_music,lang) {
+
+    function add_song_to_playlist(id_playlist,id_music,lang,lang_music) {
         swal_loading();
         $.ajax({
             url: "<?php echo $url;?>/json/json_account.php",
             type: "post",
-            data: "function=add_song_to_playlist&id_playlist="+id_playlist+"&lang="+lang+"&id_music="+id_music,
+            data: "function=add_song_to_playlist&id_playlist="+id_playlist+"&lang="+lang+"&id_music="+id_music+"&lang_music="+lang_music,
             success: function (data, textStatus, jqXHR) {
                 swal("<?php echo lang('song_add_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
             }
@@ -85,6 +77,7 @@ if(isset($user_login)){
                 type: "input",
                 showCancelButton: true,
                 closeOnConfirm: false,
+                cancelButtonText: "<?php echo lang('back')?>",
             },
             function(inputValue){
                 if (inputValue === false) {return  false;}

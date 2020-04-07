@@ -54,7 +54,6 @@ if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
     include 'bbit-compress.php';
 }
 
-
 if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
     if(isset($_POST['key_contry'])){ $_SESSION['lang'] = $_POST['key_contry'];}
     if(isset($_GET['key_contry'])){ $_SESSION['lang'] = $_GET['key_contry'];}
@@ -207,6 +206,12 @@ include "header.php";
             echo '<a style="float: right;margin-right: 5px;"  onclick="logout_account();return false"><i class="fa fa-sign-out" aria-hidden="true"></i></a> ';
             echo '<a  href="'.$user_login->link.'" style="float:right;padding:0px"><img  style="float: right;margin-right: 5px;margin-top:5px" class="login_avatar" alt="User Avatar" src="'.$user_login->avatar.'"/></a>';
             echo '<a style="float: right;margin-right: 5px;" href="'.$user_login->link.'">'.$user_login->name.'</a>';
+            $query_playlist_music=mysql_query("SELECT COUNT(`id`) FROM carrotsy_music.`playlist_".$user_login->lang."` WHERE `user_id`='".$user_login->id."' LIMIT 1");
+            $count_playlist=mysql_fetch_array($query_playlist_music);
+            $count_playlist=$count_playlist[0];
+            if($count_playlist>0) {
+                echo '<a style="float: right;margin-right: 5px;"  onclick="show_all_playlist();return false"><i class="fa fa-music" aria-hidden="true"></i></a> ';
+            }
         }else{
             echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang('dang_nhap').'</a> ';
         }

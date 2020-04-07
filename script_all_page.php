@@ -142,6 +142,13 @@
         });
     }
 
+    function box_share(emp) {
+        var width = 500;
+        var height = 500;
+        var link_shar=$(emp).attr("href");
+        window.open(link_shar, 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
+    }
+
 
     <?php
     if(!isset($user_login)){
@@ -281,6 +288,53 @@
             }
         });
     }
+    <?php
+    }
+    else{?>
+
+    function show_all_playlist() {
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/json/json_account.php",
+            type: "post",
+            data: "function=show_all_playlist&id_user=<?php echo $user_login->id;?>&lang=<?php echo $user_login->lang;?>",
+            success: function (data, textStatus, jqXHR) {
+                swal({
+                    title: "<?php echo lang("my_playlist"); ?>",
+                    text: data,
+                    html: true
+                });
+            }
+        });
+
+    }
+
+    function delete_playlist_music(id_playlis,lang){
+        swal({
+                title: "<?php echo lang('delete');?>",
+                text: "<?php echo lang('delete_tip');?>",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: '<?php echo lang('box_yes');?>',
+                cancelButtonText: "<?php echo lang('box_no');?>",
+                closeOnConfirm: false,
+            },
+            function(isConfirm){
+                if (isConfirm){
+                    swal_loading();
+                    $.ajax({
+                        url: "<?php echo $url;?>/json/json_account.php",
+                        type: "post",
+                        data: "function=delete_playlist_music&id="+id_playlis+"&lang="+lang,
+                        success: function (data, textStatus, jqXHR) {
+                            swal("<?php echo lang('my_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
+                        }
+                });
+            }
+        });
+    }
+
     <?php
     }
     ?>

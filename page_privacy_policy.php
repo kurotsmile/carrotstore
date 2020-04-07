@@ -1,7 +1,7 @@
 
 <div style="width: 90%;padding: 10px;margin-left: auto;margin-right: auto;">
 <p>
-    <h2><i class="fa fa-universal-access" aria-hidden="true"></i> <?php echo lang('gioi_thieu'); ?></h2>
+    <h2><i class="fa fa-universal-access icon_green" aria-hidden="true"></i> <?php echo lang('gioi_thieu'); ?></h2>
 </p>
 
 <p>
@@ -10,7 +10,7 @@
 
 
 <p>
-    <h2><i class="fa fa-user-secret" aria-hidden="true"></i> <?php echo lang('chinh_sach');?></h2>
+    <h2><i class="fa fa-user-secret icon_green" aria-hidden="true"></i> <?php echo lang('chinh_sach');?></h2>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 </ul>
 
 <p>
-    <h2><i class="fa fa-user-circle" aria-hidden="true"></i> <?php echo lang('lien_he'); ?></h2>
+    <h2><i class="fa fa-user-circle icon_green" aria-hidden="true"></i> <?php echo lang('lien_he'); ?></h2>
 </p>
 
 <p>
@@ -33,7 +33,8 @@
     <i class="fa fa-envelope-o" aria-hidden="true"></i> <b>Mail:</b> <a href="mailto:tranrot93@gmail.com">tranrot93@gmail.com</a><br />
     <i class="fa fa-facebook" aria-hidden="true"></i>  <b>Fan Page:</b> <a href="https://www.facebook.com/virtuallover" target="_blank">https://www.facebook.com/virtuallover</a><br />
     <i class="fa fa-facebook-official" aria-hidden="true"></i> <b>Facebook:</b> <a href="https://www.facebook.com/kurotsmile" target="_blank">https://www.facebook.com/kurotsmile</a><br />
-    <i class="fa fa-twitter" aria-hidden="true"></i> <b>Twitter:</b> <a href="https://twitter.com/carrotstore1" target="_blank">https://twitter.com/carrotstore1</a>
+    <i class="fa fa-twitter" aria-hidden="true"></i> <b>Twitter:</b> <a href="https://twitter.com/carrotstore1" target="_blank">https://twitter.com/carrotstore1</a><br />
+    <i class="fa fa-skype" aria-hidden="true"></i> <b>Skype:</b> <a href="skype:kurotsmile2?call" >kurotsmile2</a>
 </p>
 
 <!--

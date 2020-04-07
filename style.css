@@ -2233,7 +2233,7 @@ iframe.fb_customer_chat_bounce_out_v2 {
 	width: 9%;text-align: center;
 }
 #kr_player_music .box_area.mid{
-	width: 70%;text-align: center;
+	width: 65%;text-align: center;margin-right: 3%;
 }
 #kr_player_music .box_area.volume{
 	text-align: center;
@@ -2304,11 +2304,23 @@ textarea:focus {
 	box-shadow: 0 0 0 0.2rem #9ae66a;
 }
 .item_playlis{
-	cursor: pointer;border-radius: 20px;width: 100%;display: inline-table;
+	cursor: pointer;border-radius: 20px;width: 100%;display: inline-table;line-height: 29px;
 }
 .item_playlis.active{
-	background: linear-gradient(-45deg,#fff,#b5ebff,#f9ffdf,#ffedfb,#83f328,#3fc73d)
+	background: linear-gradient(-45deg,#ffb6b6,#d3f3ff,#f9ffdf,#ffedfb,#83f328,#3fc73d);
 }
+
 .btn_backward,.btn_control,.btn_next{
 	margin-left: 3px;margin-right: 3px;
 }
+.item_playlist_name{
+	float: left;margin-left: 5px;
+}
+.item_playlist_icon{
+	float: left;margin-top: 9px;margin-left: 7px;margin-right: 10px;
+}
+
+.icon_green{
+	color: green;
+}
+

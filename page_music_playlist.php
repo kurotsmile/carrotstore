@@ -26,7 +26,7 @@ if(file_exists("app_mygirl/app_my_girl_$lang_music/$id_music.mp3")){
 $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
 
 $list_song=array();
-
+$label_delete=lang('delete');
 ?>
 
     <div id="account_cover" class="show_bk_account" style="background-image: url('<?php echo $url_img_thumb; ?>');background-size:auto 100% ">
@@ -62,14 +62,14 @@ $list_song=array();
                 $lang_music=$obj_music->lang;
                 $url_mp3='';
                 $name_mp3='';
-                $query_music=mysql_query("SELECT `file_url`,`chat` FROM `app_my_girl_$lang_music` WHERE `id` = '$id_music' LIMIT 50");
+                $query_music=mysql_query("SELECT `file_url`,`chat` FROM `app_my_girl_$lang_music` WHERE `id` = '$id_music' LIMIT 1");
                 $data_music=mysql_fetch_array($query_music);
                 if(file_exists("app_mygirl/app_my_girl_$lang_music/$id_music.mp3")){
                     $url_mp3 =$url."/app_mygirl/app_my_girl_$lang_music/$id_music.mp3";
                 }else {
-                    $url_mp3 = $url.'/'.$data_music['file_url'];
+                    $url_mp3 =$data_music['file_url'];
                 }
-
+                
                 $song=new Song();
                 $song->id=$id_music;
                 $song->name=addslashes($data_music['chat']);
@@ -77,14 +77,32 @@ $list_song=array();
                 array_push($list_song,$song);
         ?>
         <tr class="item_playlis item_play_<?php echo $i;?>"  index="<?php echo $i;?>">
-            <td><i class="fa fa-music" aria-hidden="true"></i> <?php echo $data_music['chat']; ?></td>
+            <td><i class="fa fa-music item_playlist_icon" aria-hidden="true"></i> <span class="item_playlist_name"><?php echo $data_music['chat']; ?></span></td>
             <td style="text-align: right">
                 <a target="_blank" href="<?php echo $url;?>/music/<?php echo $id_music;?>/<?php echo $lang_music;?>" class="buttonPro small light_blue"><i class="fa fa-info" aria-hidden="true"></i></a>
-                <span class="buttonPro small red" onclick="update_playlist(this,'<?php echo $id_music;?>','<?php echo $lang_music;?>');return false;"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo lang('delete');?></span>
+                <span class="buttonPro small red" onclick="update_playlist(this,'<?php echo $id_music;?>','<?php echo $lang_music;?>');return false;"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span>
             </td>
         </tr>
         <?php }?>
     </table>
+
+    </div>
+
+    <div id="sidebar_product">
+        <?php
+        echo show_box_ads_page('music_page');
+        ?>
+        <?php
+        if(get_setting('show_ads')=='1') {
+            ?>
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:300px"
+                 data-ad-client="ca-pub-5388516931803092"
+                 data-ad-slot="5771636042"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        <?php }?>
 
     </div>
 </div>

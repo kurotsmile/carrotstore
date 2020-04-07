@@ -128,11 +128,12 @@ function get_star_width($id,$object){
 function show_share($url){
     $txt_share='<ul id="share_link" title="'.lang("share_tip").'">';
     $txt_share.='<li><strong>'.lang('chia_se').'</strong></li>';
-    $txt_share.='<li><a href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>';
-    $txt_share.='<li><a href="https://twitter.com/intent/tweet?url='.$url.'&text=Carrot store &via=carrotstore1&original_referer='.$url.'" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>';
-    $txt_share.='<li><a href="http://www.linkedin.com/shareArticle?mini=true&url='.$url.'&title=Share" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>';
-    $txt_share.='<li><a href="http://pinterest.com/pin/create/button/?url='.$url.'&description=Share" target="_blank"><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>';
-    $txt_share.='<li><a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site '.$url.'" target="_blank"><i class="fa fa-envelope-square" aria-hidden="true"></i> Email</a></li>';
+    $txt_share.='<li><a onclick="box_share(this);return false;" href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>';
+    $txt_share.='<li><a onclick="box_share(this);return false;"  href="https://twitter.com/intent/tweet?url='.$url.'&text=Carrot store &via=carrotstore1&original_referer='.$url.'" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>';
+    $txt_share.='<li><a onclick="box_share(this);return false;"  href="http://www.linkedin.com/shareArticle?mini=true&url='.$url.'&title=Share" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>';
+    $txt_share.='<li><a onclick="box_share(this);return false;"  href="http://pinterest.com/pin/create/button/?url='.$url.'&description=Share" target="_blank"><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>';
+    $txt_share.='<li><a onclick="box_share(this);return false;"  href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site '.$url.'" target="_blank"><i class="fa fa-envelope-square" aria-hidden="true"></i> Email</a></li>';
+    $txt_share.='<li><a onclick="box_share(this);return false;"  href="https://mail.google.com/mail/u/2/?hl=vi&view=cm&fs=1&tf=1&su=I wanted you to see this site&amp;body=Check out this site '.$url.'" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i> Gmail</a></li>';
     $txt_share.='</ul>';
     return $txt_share;
 }
@@ -264,7 +265,7 @@ function delete_dir($src) {
 }
 
 function box_ads($id_product,$lang){
-    $query_product_ads=mysql_query("SELECT * FROM `products` WHERE `id` = '$id_product' LIMIT 1");
+    $query_product_ads=mysql_query("SELECT `id`,`chplay_store`,`app_store`,`galaxy_store`,`window_store`,`apk` FROM `products` WHERE `id` = '$id_product' LIMIT 1");
     $product_ads=mysql_fetch_array($query_product_ads);
     $html_txt='';
     $html_txt.='<div id="box_ads_app" style="background-color: #3FC73D;width: 100%;height: auto;float: left;margin-bottom: 20px;padding-bottom: 5px;">';
@@ -306,8 +307,8 @@ function box_ads($id_product,$lang){
             array_push($arr_download,$txt_download);
         }
         
-        if(file_exists('product_data/'.$product_ads[0].'/ios/app.plist')){
-            $txt_download='<a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/'.$product_ads[0].'/ios/app.plist" target="_blank" ><img alt="Download '.get_name_product_lang($id_product,$lang).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;" class="lazyload" data-src="'.URL.'/images/ipa_download.png" /></a>';
+        if(file_exists('product_data/'.$id_product.'/ios/app.plist')){
+            $txt_download='<a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/'.$id_product.'/ios/app.plist" target="_blank" ><img alt="Download '.get_name_product_lang($id_product,$lang).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;" class="lazyload" data-src="'.URL.'/images/ipa_download.png" /></a>';
             array_push($arr_download,$txt_download);
         }
         
@@ -388,7 +389,7 @@ function show_ads_box_main($id_place_ads){
 
 
 function show_box_ads_page($id_ads_place){
-    $query_product_main=mysql_query("SELECT * FROM `ads` WHERE `id_ads` = '$id_ads_place' LIMIT 1");
+    $query_product_main=mysql_query("SELECT `id_product_main`,`id_product`,`tip_download` FROM `ads` WHERE `id_ads` = '$id_ads_place' LIMIT 1");
     $data_place_ads=mysql_fetch_array($query_product_main);
     $txt_html='<div style="float:left;margin-bottom: 10px;"><i class="fa fa-futbol-o" aria-hidden="true"></i> '.lang($data_place_ads['tip_download']).'</div>';
     $txt_html.=box_ads($data_place_ads['id_product_main'],$_SESSION['lang']);

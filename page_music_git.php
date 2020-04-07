@@ -91,18 +91,22 @@ mysql_free_result($count_status_3);
         <?php if($data_m_0=='0'&&$data_m_1=='0'&&$data_m_2=='0'&&$data_m_3=='0'){?>
         <span style="font-style: italic;"><i class="fa fa-exclamation" aria-hidden="true"></i> <?php echo $label_music_no_rank; ?></span>
         <?php }else{?>
-            <?php if($data_m_0!='0'){ ?><a class="buttonPro small black" href="<?php echo $url; ?>/music/0"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo $data_m_0; ?></a><?php }?>
-            <?php if($data_m_1!='0'){ ?><a class="buttonPro small black" href="<?php echo $url; ?>/music/1"><i style="font-size: 15px;" class="fa fa-frown-o" aria-hidden="true"></i> <?php echo $data_m_1; ?></a><?php }?>
-            <?php if($data_m_2!='0'){ ?><a class="buttonPro small black" href="<?php echo $url; ?>/music/2"><i style="font-size: 15px;" class="fa fa-meh-o" aria-hidden="true"></i> <?php echo $data_m_2; ?></a><?php }?>
-            <?php if($data_m_3!='0'){ ?><a class="buttonPro small black" href="<?php echo $url; ?>/music/3"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo $data_m_3; ?></a><?php }?>
+            <?php if($data_m_0!='0'){ ?><a  href="<?php echo $url; ?>/music/0"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo $data_m_0; ?></a><?php }?>
+            <?php if($data_m_1!='0'){ ?><a href="<?php echo $url; ?>/music/1"><i style="font-size: 15px;" class="fa fa-frown-o" aria-hidden="true"></i> <?php echo $data_m_1; ?></a><?php }?>
+            <?php if($data_m_2!='0'){ ?><a href="<?php echo $url; ?>/music/2"><i style="font-size: 15px;" class="fa fa-meh-o" aria-hidden="true"></i> <?php echo $data_m_2; ?></a><?php }?>
+            <?php if($data_m_3!='0'){ ?><a  href="<?php echo $url; ?>/music/3"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo $data_m_3; ?></a><?php }?>
             <?php if(isset($row['c'])){?><i class="fa fa-star-half-o" aria-hidden="true"></i> <?php echo $row['c']; ?><?php }?>
         <?php }?>
     </div>
     <div class="app_action">
         <a href="<?php echo $url_song;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
         <?php if($list_style=='list'){?>
-        <a href="#" onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
-        <?php if($url_video!=''){ ?><a href="#" onclick="play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
+            <a href="#" onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
+            <?php if($url_video!=''){ ?><a href="#" onclick="play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
+        <?php }?>
+
+        <?php if(isset($user_login)){?>
+            <span href="#" onclick="save_playlist_music('<?php echo $id_music;?>','<?php echo $lang_sel;?>','<?php echo $lang;?>','<?php echo $user_login->id;?>');return false;" class="buttonPro small light_blue"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
         <?php }?>
     </div>
 

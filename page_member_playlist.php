@@ -28,7 +28,7 @@ $label_view=lang('chi_tiet');
                 <p>
                     <?php echo $row_playlist['length']; ?><br>
                     <a href="<?php echo $url;?>/playlist/<?php echo $row_playlist['id'];?>/<?php echo $lang;?>" class="buttonPro small light_blue"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <?php echo $label_view;?></a><br/>
-                    <span class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span><br/>
+                    <span class="buttonPro small red" onclick="delete_playlist_music('<?php echo $row_playlist['id'];?>','<?php echo $lang;?>');"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span><br/>
                     <span class="buttonPro small yellow" onclick="edit_name_playlist('<?php echo  $row_playlist['id']; ?>','<?php echo $lang;?>');"><i class="fa fa-edit" aria-hidden="true"></i> <?php echo $label_edit;?></span>
                 </p>
             </div>

@@ -184,7 +184,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta charset="utf-8"/>
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
-    <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.png"/>
+    <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico"/>
     <script src="<?php echo $url; ?>/js/jquery.js"></script>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js" async></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
@@ -199,6 +199,8 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
     <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
     <script>
+    var shortcut_key_music=true;
+
     $(document).ready(function(){
         reset_tip();
              $('#logo').qtip({
@@ -213,11 +215,10 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                     at: 'bottom right',
                 }
             });
-        $("#user_address_register").geocomplete();
     });
     
     function reset_tip(){
-        $('a[title],img[title]').each(function(){
+        $('a[title],img[title],#share_link').each(function(){
             $(this).qtip({ // Grab all elements with a title attribute
                 content: {
                     text: $(this).attr('title'), // Won't work, because "this" is the window element!
@@ -230,6 +231,8 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
         });
     }
     </script>
+
+    <script data-cfasync="false" type="text/javascript">(function(s,o,l,v,e,d){if(s[o]==null&&s[l+e]){s[o]="loading";s[l+e](d,l=function(){s[o]="complete";s[v+e](d,l,!1)},!1)}})(document,"readyState","add","remove","EventListener","DOMContentLoaded");(function(){var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.engine.4dsply.com/Scripts/infinity.js.aspx?guid=29e6e461-0298-4c1b-b1c2-723d32e5a3fd";s.id="infinity";s.setAttribute("data-guid","29e6e461-0298-4c1b-b1c2-723d32e5a3fd");s.setAttribute("data-version","async");var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e)})();</script>
 
     <?php
     if(get_setting('show_ads')=='1') {
