@@ -176,7 +176,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
 
 
 
-    <link href="<?php echo $url; ?>/style.min.css" rel="stylesheet" />
+    <link href="<?php echo $url; ?>/style.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
     <link hreflang="<?php echo $_SESSION['lang'];?>"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="<?php echo $seo_desc; ?>"/>
@@ -184,11 +184,11 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta charset="utf-8"/>
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
-    <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico"/>
+    <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico?v=<?php echo $ver;?>"/>
     <script src="<?php echo $url; ?>/js/jquery.js"></script>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js" async></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/responsive.min.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/responsive.min.css?v=<?php echo $ver;?>"/>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link type="text/css" rel="stylesheet" href="<?php echo $url; ?>/libary/jquery.qtip.min.css" />
     <script type="text/javascript" src="<?php echo $url; ?>/libary/jquery.qtip.min.js" async defer></script>

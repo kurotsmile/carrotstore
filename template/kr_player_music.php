@@ -1,4 +1,4 @@
-<div id="kr_player_music">
+<div id="kr_player_music" oncontextmenu="kr_show_mini_player();return false">
     <div class="box_area left">
         <div class="btn_play btn_control" id="kr_btn_play"><i class="fa fa-pause-circle" aria-hidden="true"></i></div>
     </div>
@@ -27,6 +27,8 @@
 </div>
 
 <script>
+    var top_bar_player=false;
+    var top_x_player=500;
     const kr_audio = document.createElement('audio');
     kr_audio.autoplay=true;
 
@@ -40,7 +42,7 @@
     }
 
     $(document).ready(function() {
-
+        top_x_player=$("#kr_player_music").offset().top;
         kr_audio.setAttribute('src', '<?php echo $url_mp3; ?>');
         kr_audio.addEventListener('ended', function() {
             <?php if($is_playlist){?>
@@ -57,6 +59,26 @@
             $("#kr_timer_currentTime").html(readableDuration(kr_audio.currentTime));
             $('#bar_timer_val').val(kr_audio.currentTime);
         });
+
+        kr_audio.addEventListener('error', function failed(e) {
+            // audio playback failed - show a message saying why
+            // to get the source of the audio element use $(this).src
+            switch (e.target.error.code) {
+                case e.target.error.MEDIA_ERR_ABORTED:
+                    break;
+                case e.target.error.MEDIA_ERR_NETWORK:
+                    break;
+                case e.target.error.MEDIA_ERR_DECODE:
+                    break;
+                case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                    $("#kr_player_music").addClass("error");
+                    $("#kr_btn_play").html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+                    break;
+                default:
+                    break;
+            }
+        }, true);
+
         $('#kr_btn_play').click(function() {
             kr_play_or_pause();
         });
@@ -102,6 +124,10 @@
         $("#inp_search").focusout(function () {
             shortcut_key_music=true;
         });
+
+        kr_audio.error = function() {
+            console.log("Error thanh s" + videoElement.error.code + "; details: " + videoElement.error.message);
+        }
     });
 
     function kr_play_or_pause(){
@@ -147,6 +173,25 @@
                 kr_mute();
                 event.preventDefault();
                 return false;
+            }
+        }
+    });
+
+    function  kr_show_mini_player() {
+
+    }
+
+
+    $(window).scroll( function(){
+        if($(window).scrollTop()>top_x_player) {
+            if (top_bar_player == false) {
+                $("#kr_player_music").addClass("top_bar");
+                top_bar_player=true;
+            }
+        }else{
+            if (top_bar_player ==true) {
+                $("#kr_player_music").removeClass("top_bar");
+                top_bar_player=false;
             }
         }
     });

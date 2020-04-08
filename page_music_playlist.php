@@ -8,7 +8,7 @@ Class Song{
 
 $id=$_GET['id'];
 $lang=$_GET['lang'];
-$query_list_playlist=mysql_query("SELECT `data`,`name` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id' LIMIT 1");
+$query_list_playlist=mysql_query("SELECT `data`,`name`,`user_id` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id' LIMIT 1");
 $data_playlist_sel=mysql_fetch_array($query_list_playlist);
 $data_playlist=json_decode($data_playlist_sel['data']);
 
@@ -26,7 +26,14 @@ if(file_exists("app_mygirl/app_my_girl_$lang_music/$id_music.mp3")){
 $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
 
 $list_song=array();
-$label_delete=lang('delete');
+
+$is_me=false;
+if(isset($user_login)){
+    if($data_playlist_sel['user_id']==$user_login->id){
+        $is_me=true;
+        $label_delete=lang('delete');
+    }
+}
 ?>
 
     <div id="account_cover" class="show_bk_account" style="background-image: url('<?php echo $url_img_thumb; ?>');background-size:auto 100% ">
@@ -80,7 +87,7 @@ $label_delete=lang('delete');
             <td><i class="fa fa-music item_playlist_icon" aria-hidden="true"></i> <span class="item_playlist_name"><?php echo $data_music['chat']; ?></span></td>
             <td style="text-align: right">
                 <a target="_blank" href="<?php echo $url;?>/music/<?php echo $id_music;?>/<?php echo $lang_music;?>" class="buttonPro small light_blue"><i class="fa fa-info" aria-hidden="true"></i></a>
-                <span class="buttonPro small red" onclick="update_playlist(this,'<?php echo $id_music;?>','<?php echo $lang_music;?>');return false;"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span>
+                <?php if($is_me){?><span class="buttonPro small red" onclick="update_playlist(this,'<?php echo $id_music;?>','<?php echo $lang_music;?>');return false;"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span><?php }?>
             </td>
         </tr>
         <?php }?>
@@ -114,18 +121,33 @@ $label_delete=lang('delete');
     function update_playlist(emp,id_delete,lang_delete){
         $("#id_song_delete").val(id_delete);
         $("#lang_song_delete").val(lang_delete);
-        swal_loading();
-        $.ajax({
-            url: "<?php echo $url;?>/json/json_account.php",
-            type: "POST",
-            data: $("#frm_update_play_list").serialize(),
-            success: function (data, textStatus, jqXHR) {
-                $("#data_txt").val(data);
-                $(emp).parent().parent().remove();
-                swal("<?php echo lang("my_playlist"); ?>","<?php echo lang('delete_song_success');?>","success");
-                return false;
-            }
-        });
+        swal({
+                title: "<?php echo lang('delete');?>",
+                text: "<?php echo lang('delete_tip');?>",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: '<?php echo lang('box_yes');?>',
+                cancelButtonText: "<?php echo lang('box_no');?>",
+                closeOnConfirm: false,
+            },
+            function(isConfirm){
+                if (isConfirm){
+                    swal_loading();
+                    $.ajax({
+                        url: "<?php echo $url;?>/json/json_account.php",
+                        type: "POST",
+                        data: $("#frm_update_play_list").serialize(),
+                        success: function (data, textStatus, jqXHR) {
+                            $("#data_txt").val(data);
+                            $(emp).parent().parent().remove();
+                            swal("<?php echo lang("my_playlist"); ?>","<?php echo lang('delete_song_success');?>","success");
+                            return false;
+                        }
+                    });
+                }
+            });
+
         return false;
     }
 

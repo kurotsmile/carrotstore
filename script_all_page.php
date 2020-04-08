@@ -207,6 +207,7 @@
     }
 
     function show_box_register() {
+        shortcut_key_music=false;
         var html_box_register = '<div style="width: 100%;">';
         html_box_register = html_box_register + '<form id="box_register">';
 
@@ -237,6 +238,7 @@
 
 
     function login_account() {
+        shortcut_key_music=false;
         var html_box_login = '<div style="width: 100%;">';
         html_box_login = html_box_login + '<div class="box_login">';
         html_box_login = html_box_login + '<strong class="title"><?php echo lang('dang_nhap_mxh');?></strong>';
@@ -328,6 +330,7 @@
                         type: "post",
                         data: "function=delete_playlist_music&id="+id_playlis+"&lang="+lang,
                         success: function (data, textStatus, jqXHR) {
+                            $(".list_playlist_"+id_playlis).hide();
                             swal("<?php echo lang('my_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
                         }
                 });
