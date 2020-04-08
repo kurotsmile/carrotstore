@@ -9,5 +9,4 @@ $mysql_pass='28091993';
 $mysql_user='carrotsy_carrot';
 $mysql_database='carrotsy_virtuallover';
 $key_api_google='AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I';
-
-$ver=1;
+$ver=2;
