@@ -1512,7 +1512,7 @@ background-position: right center;
     position: fixed;
     bottom: 10px;
     right: 15px;
-    background-color: green;
+	backdrop-filter: saturate(28%) blur(10px);background-color: #3fc73dab;
     padding: 10px;
     -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.75);
@@ -2226,7 +2226,7 @@ iframe.fb_customer_chat_bounce_out_v2 {
 
 #kr_player_music{background-color: #3fc73d;float: left;width: 100%;color: whitesmoke;border-radius: 17px;}
 #kr_player_music.error{background-color: #ff8080;}
-#kr_player_music.top_bar {position: fixed;top: 0px;left: 0px;border-radius: unset;box-shadow: 0px 5px 10px #2429298f;}
+#kr_player_music.top_bar {position: fixed;top: 0px;left: 0px;border-radius: unset;box-shadow: 0px 5px 10px #2429298f;backdrop-filter: saturate(28%) blur(10px);background-color: #3fc73dab;}
 #kr_player_music .box_area{float: left;width: 20%;}
 #kr_player_music .box_area.left{width: 9%;text-align: center;}
 #kr_player_music .box_area.mid{width: 65%;text-align: center;margin-right: 3%;}
