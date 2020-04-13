@@ -52,25 +52,6 @@ if(file_exists($filename_img_avatar)){
 
 $txt_title=$data_music['chat'];  
 ?>
-
-    <style>
-p { clear: both; }
-.audiojs .progress{background: <?php echo $data_music['color']; ?>  !important;}
-#audiojs_wrapper1{display: none;}
-.track-details.vol:before {
-    content: '';
-}
-#box_lyrics{
-    float: left;width: 100%;background-color: white;border-radius: 10px;padding: 10px;font-size: 11px;display: none;
-}
-textarea {
-    border: 1px solid #00AE00;
-}
-textarea:focus {
-    border: 1px solid #9ae66a;
-    box-shadow: 0 0 0 0.2rem #9ae66a;
-}
-</style>
 <div id="containt" style="width: 100%;float: left;"> 
     
     <div id="account_cover" class="show_bk_account" style="background-image: url('<?php echo $url_img_thumb; ?>');background-size:auto 100% ">
@@ -104,103 +85,10 @@ textarea:focus {
         <?php echo lang('loi_bai_hat');?> "<?php echo $data_music['chat'];?>"
         </h3>
 
-
-            <div id="kr_player_music">
-                <div class="box_area left">
-                    <div class="btn_play" id="kr_btn_play"><i class="fa fa-pause-circle" aria-hidden="true"></i></div>
-                </div>
-
-                <div class="box_area mid" id="kr_player_music_box_mid">
-                    <progress class="bar_timer" id="bar_timer_val" ></progress>
-                    <input type="range"  id="slider_timer_val"/>
-                    <div class="btn_refresh" id="kr_btn_refresh"><i class="fa fa-refresh" aria-hidden="true"></i></div>
-                </div>
-
-                <div class="box_area volume">
-                    <div class="slidecontainer_volume">
-                        <input type="range" min="1" max="100" value="90"  id="slider_volume"/>
-                    </div>
-                    <div class="btn_mute" id="kr_btn_mute"><i class="fa fa-volume-up" aria-hidden="true"></i></div>
-                </div>
-
-                <div class="box_area timer">
-                    <div class="kr_timer">
-                        <span id="kr_timer_currentTime">00:00</span> / <span id="kr_timer_length">00:00</span>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                function readableDuration(seconds) {
-                    sec = Math.floor( seconds );
-                    min = Math.floor( sec / 60 );
-                    min = min >= 10 ? min : '0' + min;
-                    sec = Math.floor( sec % 60 );
-                    sec = sec >= 10 ? sec : '0' + sec;
-                    return min + ':' + sec;
-                }
-
-                $(document).ready(function() {
-                    var kr_audio = document.createElement('audio');
-                    kr_audio.autoplay=true;
-                    kr_audio.setAttribute('src', '<?php echo $url_mp3; ?>');
-                    kr_audio.addEventListener('ended', function() {this.play();}, false);
-                    kr_audio.addEventListener("canplay",function(){
-                        $("#kr_timer_length").html(readableDuration(kr_audio.duration));
-                        $("#bar_timer_val").attr("max",kr_audio.duration);
-                    });
-                    kr_audio.addEventListener("timeupdate",function(){
-                        $("#kr_timer_currentTime").html(readableDuration(kr_audio.currentTime));
-                        $('#bar_timer_val').val(kr_audio.currentTime);
-                    });
-                    $('#kr_btn_play').click(function() {
-                        if(kr_audio.paused) {
-                            kr_audio.play();
-                            $("#kr_btn_play").html('<i class="fa fa-pause-circle" aria-hidden="true"></i>');
-                        }else{
-                            kr_audio.pause();
-                            $("#kr_btn_play").html('<i class="fa fa-play-circle" aria-hidden="true"></i>');
-                        }
-                    });
-
-                    $('#kr_btn_mute').click(function() {
-                        if(kr_audio.muted) {
-                            kr_audio.muted=false;
-                            $("#kr_btn_mute").html('<i class="fa fa-volume-up" aria-hidden="true"></i>');
-                        }else{
-                            kr_audio.muted=true;
-                            $("#kr_btn_mute").html('<i class="fa fa-volume-off" aria-hidden="true"></i>');
-                        }
-                    });
-
-                    $('#kr_btn_refresh').click(function() {
-                        $("#slider_timer_val").val(0);
-                        kr_audio.currentTime = 0;
-                    });
-
-                    $('#slider_volume').change(function() {
-                        kr_audio.volume =parseInt($("#slider_volume").val()) / 100;
-                    });
-
-                    $("#kr_player_music_box_mid").mouseover(function () {
-                        $("#bar_timer_val").hide();
-                        $("#slider_timer_val").show();
-                        $('#slider_timer_val').val(kr_audio.currentTime);
-                        $("#slider_timer_val").attr("max",kr_audio.duration);
-                    });
-
-                    $("#kr_player_music_box_mid").mouseout(function () {
-                        $("#bar_timer_val").show();
-                        $("#slider_timer_val").hide();
-                    });
-
-                    $("#slider_timer_val").change(function () {
-                        kr_audio.currentTime = $("#slider_timer_val").val()
-                    });
-                });
-
-            </script>
-            
+            <?php
+            $is_playlist=false;
+            include_once "template/kr_player_music.php";
+            ?>
             <p style="float: left;width: 100%;display: block;">
             <?php 
                 QRcode::png($url.'/music/'.$id_music.'/'.$lang_sel, 'phpqrcode/img/music'.$id_music.'_'.$lang_sel.'.png', 'M', 4, 2);
@@ -216,7 +104,7 @@ textarea:focus {
             <?php
                 $txt_function='onclick="login_account();"';
                 if(isset($user_login)){
-                    $txt_function='onclick="save_playlist_music(\''.$id_music.'\',\''.$lang_sel.'\',\''.$user_login->id.'\');"';
+                    $txt_function='onclick="save_playlist_music(\''.$id_music.'\',\''.$lang_sel.'\',\''.$user_login->lang.'\',\''.$user_login->id.'\');"';
                 }
             ?>
 
@@ -308,7 +196,7 @@ textarea:focus {
                 <div style="float: left;width: 100%;">
                     <i class="fa fa-sticky-note-o" aria-hidden="true"></i> <?php echo lang('chua_co_loi_bai_hat');?>
                     <br />
-                    <span class="buttonPro black" id="btn_add_lyrics" onclick="$('#box_lyrics').show(300);$('#btn_add_lyrics').hide();"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo lang('dong_gop_loi_nhac'); ?></span>
+                    <span class="buttonPro black" id="btn_add_lyrics" onclick="show_add_lyrics();"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo lang('dong_gop_loi_nhac'); ?></span>
                     <div id="box_lyrics">
                         <div class="title" style="margin-bottom: 10px;float: left;">
                             <i style="font-size: 60px;float: left;margin-right: 10px;" class="fa fa-file-text-o" aria-hidden="true"></i> <strong><?php echo lang('dong_gop_loi_nhac'); ?></strong><br />
@@ -318,12 +206,13 @@ textarea:focus {
                     </textarea>
                     <br />
                     <span class="buttonPro green" onclick="add_lyrics_music();"><i class="fa fa-paper-plane" aria-hidden="true"></i>  <?php echo lang('add_lyrics_send'); ?></span>
-                    <span class="buttonPro blue" onclick="$('#box_lyrics').hide(300);$('#btn_add_lyrics').show();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>
+                    <span class="buttonPro blue" onclick="hide_add_lyrics();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>
                     </div>
                 </div>
                 
                 <script>
                     function add_lyrics_music(){
+                        shortcut_key_music=false;
                         var contain_lyrics=$("#lyric_contain").val();
                         if(contain_lyrics.trim()==""){
                              swal("<?php echo lang('loi'); ?>","<?php echo lang('add_lyrics_error'); ?>", "error");
@@ -338,11 +227,24 @@ textarea:focus {
                                         swal("<?php echo lang('thanh_cong'); ?>","<?php echo lang('add_lyrics_success'); ?>", "success");
                                         $('#box_lyrics').hide();
                                         $('#btn_add_lyrics').hide();
+                                        shortcut_key_music=true;
                                     }                                    
                                 }
                             });
                         }
 
+                    }
+
+                    function hide_add_lyrics(){
+                        shortcut_key_music=true;
+                        $('#box_lyrics').hide(300);
+                        $('#btn_add_lyrics').show();
+                    }
+
+                    function show_add_lyrics(){
+                        shortcut_key_music=false;
+                        $('#box_lyrics').show(300);
+                        $('#btn_add_lyrics').hide();
                     }
                 </script>
             <?php }?>
