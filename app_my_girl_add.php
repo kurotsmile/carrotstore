@@ -185,11 +185,19 @@ if ($_POST) {
         echo "<b>Chat</b>:" . $result_chat['chat'] . '<br/>';
         echo "<b>Face</b>:" . $result_chat['face'] . '<br/>';
         echo "<b>Action</b>:" . $result_chat['face'] . '<br/>';
-        ?>
-        <a href="http://work.carrotstore.com/?id_object=<?php echo $id_new; ?>&lang=<?php echo $lang_sel; ?>&type_chat=<?php echo $type_chat; ?>&type_action=add"
-           target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn
-            làm việc (Editor)</a><br/>
-        <?php
+        if ($result_chat['effect'] == '49') {
+            ?>
+            <a href="http://work.carrotstore.com/?id_object=<?php echo $id_new; ?>&lang=<?php echo $lang_sel; ?>&type_chat=story&type_action=add"
+               target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào
+                bàn làm việc (Editor)</a><br/>
+            <?php
+        }else{
+            ?>
+            <a href="http://work.carrotstore.com/?id_object=<?php echo $id_new; ?>&lang=<?php echo $lang_sel; ?>&type_chat=<?php echo $type_chat; ?>&type_action=add"
+               target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào
+                bàn làm việc (Editor)</a><br/>
+            <?php
+        }
         if ($result_chat['effect'] == '2') {
             ?>
             <a href="<?php echo $url.'/music/'.$id_new; ?>/<?php echo $lang_sel; ?>" target="_blank"
