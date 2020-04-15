@@ -45,6 +45,7 @@
         <item url="file://E:/work.carrotstore.com/js/plugins/link/dialogs/link.min.js" />
         <item url="file://E:/work.carrotstore.com/js/styles.min.js" />
         <item url="file://E:/work.carrotstore.com/js/vendor/promise.min.js" />
+        <item url="file://E:/work.carrotstore.com/js/work.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -91,6 +92,7 @@
       <root url="file://E:/work.carrotstore.com/js/plugins/link/dialogs/link.min.js" />
       <root url="file://E:/work.carrotstore.com/js/styles.min.js" />
       <root url="file://E:/work.carrotstore.com/js/vendor/promise.min.js" />
+      <root url="file://E:/work.carrotstore.com/js/work.min.js" />
     </CLASSES>
     <SOURCES />
   </library>
