@@ -12,11 +12,6 @@ $query_count_comment=mysql_query("SELECT COUNT(DISTINCT `id_device`) FROM carrot
 $count_comment=mysql_fetch_array($query_count_comment);
 $count_comment=$count_comment[0];
 
-if(file_exists('app_mygirl/app_my_girl_'.$lang_sel.'/'.$row['id'].'.mp3')){
-    $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang_sel.'/'.$row['id'].'.mp3';
-}else{
-    $url_mp3='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($row['chat']).'&client=tw-ob&q='.urldecode($row['chat']).'&tl='.$lang_sel;
-}
 
 $img=$url.'/app_mygirl/obj_effect/927.png';
 if($row['effect_customer']!=''){
@@ -45,8 +40,8 @@ if($row['effect_customer']!=''){
     </div>
     
     <div class="app_action">
-        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo lang('chi_tiet'); ?></a>
-        <a href="#" class="buttonPro small grey" onclick="speech_quote('<?php echo $url_mp3;?>');return false;"><i class="fa fa-volume-up" aria-hidden="true"></i> <?php echo lang('doc_cham_ngon'); ?></a>
+        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_detail; ?></a>
+        <a href="#"  class="btn_speed_quote_<?php echo $row['id'];?> buttonPro small grey btn_speed" onclick="speech_quote('<?php echo $row['id'];?>');return false;"><i class="fa fa-volume-up" aria-hidden="true"></i> <?php echo $label_speed_quote; ?></a>
     </div>
 
     <script>
