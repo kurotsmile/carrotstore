@@ -32,11 +32,7 @@ $app=new App();
 
 if($func=='list_ads'){
     $os=$_POST['os'];
-    if($os=='android'){
-        $query_list_ads=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `android` != ''  ORDER BY RAND() LIMIT 10");
-    }else{
-        $query_list_ads=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `ios` != '' ORDER BY RAND() LIMIT 10");
-    }
+    $query_list_ads=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
     while($row_ads=mysql_fetch_array($query_list_ads)){
         $item=new Item();
         $item->id=thumb($urls.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png','80');

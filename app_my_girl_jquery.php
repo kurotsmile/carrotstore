@@ -987,6 +987,7 @@ if($func=='update_info_music'){
         $song_genre = addslashes(trim($_POST['genre']));
         echo json_encode($_POST);
     }
+    $song_genre=str_replace("&"," and ",$song_genre);
     $query_update_info_music=mysql_query("UPDATE `app_my_girl_".$lang."_lyrics` SET `artist` = '$song_artist', `album` = '$song_album', `year` = '$song_year', `genre` = '$song_genre' WHERE `id_music` = '$id_music' LIMIT 1;");
     exit;
 }
