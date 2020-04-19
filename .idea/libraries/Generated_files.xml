@@ -2,7 +2,10 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://E:/Contact Store Server/jquery-3.3.1.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../Contact Store Server/jquery-3.3.1.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../Shorten-links-Ext-Chrome/js/app.min.js" />
+        <item url="file://$PROJECT_DIR$/../Shorten-links-Ext-Chrome/js/background.min.js" />
+        <item url="file://$PROJECT_DIR$/../Shorten-links-Ext-Chrome/js/jquery.min.js" />
         <item url="file://$PROJECT_DIR$/dist/lazysizes.min.js" />
         <item url="file://$PROJECT_DIR$/dist/sweetalert-dev.min.js" />
         <item url="file://$PROJECT_DIR$/dist/sweetalert.min.min.js" />
@@ -29,27 +32,30 @@
         <item url="file://$PROJECT_DIR$/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.min.js" />
         <item url="file://$PROJECT_DIR$/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.min.js" />
         <item url="file://$PROJECT_DIR$/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.source.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/adapters/jquery.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/build-config.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/ckeditor.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/config.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/jquery-comments.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/lang/en.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/lang/vi.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/lang/zh-cn.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/lang/zh.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/plugins/about/dialogs/about.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/plugins/clipboard/dialogs/paste.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/plugins/dialog/dialogDefinition.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/plugins/link/dialogs/anchor.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/plugins/link/dialogs/link.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/styles.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/vendor/promise.min.js" />
-        <item url="file://E:/work.carrotstore.com/js/work.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/adapters/jquery.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/build-config.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/ckeditor.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/config.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/jquery-comments.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/en.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/vi.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/zh-cn.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/zh.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/about/dialogs/about.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/clipboard/dialogs/paste.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/dialog/dialogDefinition.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/link/dialogs/anchor.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/link/dialogs/link.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/styles.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/vendor/promise.min.js" />
+        <item url="file://$PROJECT_DIR$/../work.carrotstore.com/js/work.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://E:/Contact Store Server/jquery-3.3.1.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../Contact Store Server/jquery-3.3.1.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../Shorten-links-Ext-Chrome/js/app.min.js" />
+      <root url="file://$PROJECT_DIR$/../Shorten-links-Ext-Chrome/js/background.min.js" />
+      <root url="file://$PROJECT_DIR$/../Shorten-links-Ext-Chrome/js/jquery.min.js" />
       <root url="file://$PROJECT_DIR$/dist/lazysizes.min.js" />
       <root url="file://$PROJECT_DIR$/dist/sweetalert-dev.min.js" />
       <root url="file://$PROJECT_DIR$/dist/sweetalert.min.min.js" />
@@ -76,23 +82,23 @@
       <root url="file://$PROJECT_DIR$/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.min.js" />
       <root url="file://$PROJECT_DIR$/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.min.js" />
       <root url="file://$PROJECT_DIR$/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.source.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/adapters/jquery.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/build-config.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/ckeditor.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/config.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/jquery-comments.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/lang/en.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/lang/vi.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/lang/zh-cn.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/lang/zh.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/plugins/about/dialogs/about.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/plugins/clipboard/dialogs/paste.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/plugins/dialog/dialogDefinition.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/plugins/link/dialogs/anchor.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/plugins/link/dialogs/link.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/styles.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/vendor/promise.min.js" />
-      <root url="file://E:/work.carrotstore.com/js/work.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/adapters/jquery.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/build-config.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/ckeditor.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/config.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/jquery-comments.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/en.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/vi.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/zh-cn.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/lang/zh.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/about/dialogs/about.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/clipboard/dialogs/paste.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/dialog/dialogDefinition.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/link/dialogs/anchor.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/plugins/link/dialogs/link.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/styles.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/vendor/promise.min.js" />
+      <root url="file://$PROJECT_DIR$/../work.carrotstore.com/js/work.min.js" />
     </CLASSES>
     <SOURCES />
   </library>
