@@ -1,6 +1,6 @@
 <div id="row<?php echo $row[0]; ?>" class="app" >
     <div class="app_title">
-        <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>">
+        <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang;?>">
             <h1>
                 <?php
                         if($row['sex']=='0'){
@@ -16,7 +16,7 @@
             </h1>
         </a>
     </div>
-    <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang_sel;?>">
+    <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang;?>">
         <?php
             $url_img='app_mygirl/app_my_girl_'.$lang_sel.'_user/'.$row[0].'.png';
             if(file_exists($url_img)){
@@ -76,6 +76,7 @@
 
     <div class="menu_more">
         <a class="buttonPro orange" href="callto://+<?php echo $row['sdt']; ?>" ><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang('goi_dien'); ?></a>
+        <a class="buttonPro orange" href="<?php echo  $url;?>/download_vcf.php?id_user=<?php echo $row[0]; ?>&lang=<?php echo $lang_sel;?>" ><i class="fa fa-download" aria-hidden="true"></i> <?php echo lang('download_vcf'); ?></a>
         <a href="#" style="width: auto" onclick="$(this).parent().parent().removeClass('menu_app');return false;" class="buttonPro small"><i class="fa fa-arrow-circle-o-left"></i></a>
     </div>
     
