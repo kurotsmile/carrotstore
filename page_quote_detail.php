@@ -1,15 +1,15 @@
 <?php
 $id_quote=$_GET['id'];
 $lang=$_GET['lang'];
-$query_quote=mysql_query("SELECT * FROM `app_my_girl_".$lang."` WHERE `id` = '$id_quote' LIMIT 1");
-$data_quote=mysql_fetch_array($query_quote);
-$query_like=mysql_query("SELECT * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
-$query_distlike=mysql_query("SELECT  * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
-$query_comment=mysql_query("SELECT * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
-$url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$row['id'].'.mp3';
+$query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang."` WHERE `id` = '$id_quote' LIMIT 1");
+$data_quote=mysqli_fetch_assoc($query_quote);
+$query_like=mysqli_query($link,"SELECT * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
+$query_distlike=mysqli_query($link,"SELECT  * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
+$query_comment=mysqli_query($link,"SELECT * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
+$url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$data_quote['id'].'.mp3';
 $img=$url.'/app_mygirl/obj_effect/927.png';
-if($row['effect_customer']!=''){
-    $img=$url.'/app_mygirl/obj_effect/'.$row['effect_customer'].'.png';
+if($data_quote['effect_customer']!=''){
+    $img=$url.'/app_mygirl/obj_effect/'.$data_quote['effect_customer'].'.png';
 }
 
 ?>
@@ -23,12 +23,12 @@ if($row['effect_customer']!=''){
     ?>
     <i class="fa fa-quote-right" aria-hidden="true"></i>
     <?php
-    echo show_share($url.'/quote/'.$id_quote.'/'.$lang);
+    echo show_share($link,$url.'/quote/'.$id_quote.'/'.$lang);
     ?>
     </p>
     <br />
     <p style="width: 100%;float: left;">
-        <i class="fa fa-commenting" aria-hidden="true"></i> <?php echo mysql_num_rows($query_comment); ?> | <i class="fa fa-thumbs-up" aria-hidden="true"></i> <?php echo mysql_num_rows($query_like); ?> | <i class="fa fa-thumbs-down" aria-hidden="true"></i> <?php echo mysql_num_rows($query_distlike); ?>
+        <i class="fa fa-commenting" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_comment); ?> | <i class="fa fa-thumbs-up" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_like); ?> | <i class="fa fa-thumbs-down" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_distlike); ?>
     </p>
     
     <p style="width: 100%;float: left;">
@@ -47,7 +47,7 @@ if($row['effect_customer']!=''){
     
     <div id="sidebar_product">
         <?php
-            echo show_box_ads_page('quote_page');
+            echo show_box_ads_page($link,'quote_page');
         ?>
         
         <!-- Trang chi ti?t -->
@@ -63,13 +63,13 @@ if($row['effect_customer']!=''){
     </div>
     
 <?php
-$list_quote=mysql_query("SELECT * FROM `app_my_girl_".$_SESSION['lang']."` WHERE  `effect`='36' LIMIT 10",$link);
-if(mysql_num_rows($list_quote)>0){
+$list_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_".$_SESSION['lang']."` WHERE  `effect`='36' LIMIT 10");
+if(mysqli_num_rows($list_quote)>0){
 ?>
 <div style="float: left;width: 100%;">
 <h2 style="padding-left: 30px;"><?php echo lang($link,'quote_more'); ?></h2>
 <?php
-while ($row = mysql_fetch_array($list_quote)) {
+while ($row = mysqli_fetch_array($list_quote)) {
     include "page_quote_git.php";
 }
 ?>

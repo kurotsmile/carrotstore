@@ -89,8 +89,8 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
     if($_GET['view']=='info_quote'){
         $id=$_GET['id'];
         $lang_sel=$_GET['lang'];
-        $query_quote=mysqli_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
-        $data_quote=mysqli_fetch_array($query_quote);
+        $query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
+        $data_quote=mysqli_fetch_assoc($query_quote);
         $title_page=$data_quote['chat'];
         $seo_desc=$title_page;
         

@@ -1,15 +1,15 @@
 <?php
 $id_quote=$row['id'];
-$query_count_like=mysql_query("SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
-$count_like=mysql_fetch_array($query_count_like);
+$query_count_like=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
+$count_like=mysqli_fetch_array($query_count_like);
 $count_like=$count_like[0];
 
-$query_count_distlike=mysql_query("SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
-$count_distlike=mysql_fetch_array($query_count_distlike);
+$query_count_distlike=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
+$count_distlike=mysqli_fetch_array($query_count_distlike);
 $count_distlike=$count_distlike[0];
 
-$query_count_comment=mysql_query("SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
-$count_comment=mysql_fetch_array($query_count_comment);
+$query_count_comment=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
+$count_comment=mysqli_fetch_array($query_count_comment);
 $count_comment=$count_comment[0];
 
 
@@ -23,7 +23,7 @@ if($row['effect_customer']!=''){
         <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>">
             <h1 style="font-size: -1vw;">
                 <i class="fa fa-quote-left" aria-hidden="true"></i>  &nbsp;&nbsp;
-                <?php echo limit_words($row['chat'],7); echo mysql_error();?>
+                <?php echo limit_words($row['chat'],7);?>
             </h1>
         </a>
     </div>

@@ -191,9 +191,11 @@ if($_GET||$_POST){
         if(isset($_SESSION['lang'])){
             $lang_sel=$_SESSION['lang'];
         }
+        $label_detail=lang($link,'chi_tiet');
+        $label_speed_quote=lang($link,'doc_cham_ngon');
         if(count($arr_id)<intval($_GET['lenguser'])){
-            $result = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20");
-            while ($row = mysql_fetch_array($result)) {
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_assoc($result)) {
                include "page_quote_git.php";
             }
         }

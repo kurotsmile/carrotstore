@@ -23,8 +23,8 @@
 $view='list';
 if(isset($_GET['view'])){ $view=$_GET['view'];}
 
-$label_detail=lang('chi_tiet');
-$label_speed_quote=lang('doc_cham_ngon');
+$label_detail=lang($link,'chi_tiet');
+$label_speed_quote=lang($link,'doc_cham_ngon');
 if($view=='list'){
     include "page_quote_list.php";
 }else{

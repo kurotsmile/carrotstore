@@ -23,8 +23,8 @@ var myJsonString='';
 var arr_id_quote=[];
 
     <?php
-    $query_count_quote=mysql_query("SELECT COUNT(`id`) as c FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id_redirect` = '' AND `chat`!=''");
-    $data_count_quote=mysql_fetch_array($query_count_quote);
+    $query_count_quote=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id_redirect` = '' AND `chat`!=''");
+    $data_count_quote=mysqli_fetch_assoc($query_count_quote);
     $count_p=$data_count_quote['c'];
     ?>
 var count_p=<?php echo $count_p;?>;
@@ -54,14 +54,15 @@ $(window).scroll(function() {
 <div id="containt" style="width: 100%;float: left;">
 <?php
 if(!isset($list_quocte)){
-    $list_quote=mysql_query("SELECT `chat`, `id`,`effect_customer`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id_redirect` = '' AND `chat`!='' ORDER BY RAND() LIMIT 50");
+    $list_quote=mysqli_query($link,"SELECT `chat`, `id`,`effect_customer`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id_redirect` = '' AND `chat`!='' ORDER BY RAND() LIMIT 50");
 }
-while($row=mysql_fetch_array($list_quote)){
+
+while($row=mysqli_fetch_assoc($list_quote)){
     include "page_quote_git.php";
 }
 ?>
 </div>
 
 <?php
-echo show_ads_box_main('quote_page');
+echo show_ads_box_main($link,'quote_page');
 ?>
