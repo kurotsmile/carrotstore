@@ -12,7 +12,7 @@ if (isset($_GET['lang'])) {
 
 if (isset($_GET['delete'])) {
     $id_delete = $_GET['delete'];
-    $msql_delete_one = mysql_query("DELETE FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `id_music` = '$id_delete' ");
+    $msql_delete_one = mysqli_query($link,"DELETE FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `id_music` = '$id_delete' ");
     $txt_msg_error = 'Xóa thành công lời bái hát của bài nhạc có id:' . $id_delete;
 }
 
@@ -22,8 +22,8 @@ if (isset($_POST['loc'])) {
     $txt_search = addslashes($_POST['txt_seacrh']);
 }
 
-$query_count_all = mysql_query("SELECT COUNT(`id_music`) FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC");
-$data_all_lyrics = mysql_fetch_array($query_count_all);
+$query_count_all = mysqli_query($link,"SELECT COUNT(`id_music`) FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC");
+$data_all_lyrics = mysqli_fetch_array($query_count_all);
 $total_records = $data_all_lyrics[0];
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $total_page = ceil($total_records / $limit);
@@ -35,9 +35,9 @@ if ($current_page > $total_page) {
 $start = ($current_page - 1) * $limit;
 
 if ($txt_search == '') {
-    $result_lyrics = mysql_query("SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre` FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC LIMIT $start, $limit ");
+    $result_lyrics = mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre` FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC LIMIT $start, $limit ");
 } else {
-    $result_lyrics = mysql_query("SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre`  FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `lyrics` LIKE '%" . $txt_search . "%' LIMIT $start, $limit ");
+    $result_lyrics = mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre`  FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `lyrics` LIKE '%" . $txt_search . "%' LIMIT $start, $limit ");
 }
 ?>
 <form method="post" id="form_loc" style="width: 500px;">
@@ -47,8 +47,8 @@ if ($txt_search == '') {
         <select name="lang">
             <option value="" selected="true" <?php if ($langsel == "") { ?> selected="true"<?php } ?>>Tất cả</option>
             <?php
-            $query_list_lang = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-            while ($row_lang = mysql_fetch_array($query_list_lang)) {
+            $query_list_lang = mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+            while ($row_lang = mysqli_fetch_array($query_list_lang)) {
                 ?>
                 <option value="<?php echo $row_lang['key']; ?>" <?php if ($langsel == $row_lang['key']) { ?> selected="true"<?php } ?>><?php echo $row_lang['name']; ?></option>
             <?php } ?>
@@ -69,7 +69,7 @@ if ($txt_search == '') {
 
 <div id="form_loc" style="font-size: 11px;">
     <div style="display: inline-block;float: left;margin: 2px;">
-        <i class="fa fa-audio-description" aria-hidden="true"></i> Hiển thị <?php echo mysql_num_rows($result_lyrics); ?>
+        <i class="fa fa-audio-description" aria-hidden="true"></i> Hiển thị <?php echo mysqli_num_rows($result_lyrics); ?>
         /<?php echo $total_records; ?> lời bài hát
     </div>
 </div>
@@ -98,11 +98,11 @@ if ($txt_msg_error != '') {
 }
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id</th><th>Tên bài hát</th><th>Vắn tắt lời bài hát</th><th>Nghệ sĩ</th><th>Album</th><th>Thể loại</th><th>Năm xuất bản</th><th>Hành động</th></tr>';
-while ($row = mysql_fetch_assoc($result_lyrics)) {
+while ($row = mysqli_fetch_assoc($result_lyrics)) {
     $is_ready = false;
-    $sql_name_song = mysql_query("SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row['id_music'] . "' LIMIT 1");
-    if (mysql_num_rows($sql_name_song) > 0) {
-        $arr_song = mysql_fetch_array($sql_name_song);
+    $sql_name_song = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row['id_music'] . "' LIMIT 1");
+    if (mysqli_num_rows($sql_name_song) > 0) {
+        $arr_song = mysqli_fetch_array($sql_name_song);
         $row['name']=$arr_song['chat'];
         $is_ready = true;
     } else {
@@ -132,10 +132,10 @@ while ($row = mysql_fetch_assoc($result_lyrics)) {
         </td>
     </tr>
     <?php
-    mysql_free_result($sql_name_song);
+    mysqli_free_result($sql_name_song);
 }
 echo '</table>';
-mysql_free_result($result_lyrics);
+mysqli_free_result($result_lyrics);
 ?>
 <script>
     function update_info_music(id_music){

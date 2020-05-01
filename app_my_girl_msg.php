@@ -31,12 +31,12 @@ if(isset($_POST['loc'])){
     $func=$_POST['func'];
     $character_sex=$_POST['character_sex'];
     if($func!=''){
-        $result_tip=mysql_query("SELECT * FROM `app_my_girl_msg_$langsel` WHERE `sex` = '$sexsel' AND `func` = '$func' AND `character_sex`='$character_sex' $txt_sql_disable ORDER BY `id` DESC");
+        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `sex` = '$sexsel' AND `func` = '$func' AND `character_sex`='$character_sex' $txt_sql_disable ORDER BY `id` DESC");
     }else{
-        $result_tip=mysql_query("SELECT * FROM `app_my_girl_msg_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$character_sex' $txt_sql_disable ORDER BY `id` DESC");
+        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$character_sex' $txt_sql_disable ORDER BY `id` DESC");
     }
 }else{
-    $result_tip=mysql_query("SELECT * FROM `app_my_girl_msg_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$character_sex' $txt_sql_disable ORDER BY `id` DESC");
+    $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$character_sex' $txt_sql_disable ORDER BY `id` DESC");
 }
 ?>
 <form method="post" id="form_loc">
@@ -60,8 +60,8 @@ if(isset($_POST['loc'])){
     <label>Ngôn ngữ:</label> 
     <select name="lang">
     <?php     
-    $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-    while($row_lang=mysql_fetch_array($query_list_lang)){?>
+    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    while($row_lang=mysqli_fetch_array($query_list_lang)){?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
@@ -90,7 +90,7 @@ if(isset($_POST['loc'])){
 <?php
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id</th><th>func</th><th>chat</th><th>Character sex</th><th>Ver 1</th><th>Ver 2</th><th>Giới hạng</th><th>Audio</th><th>Disable</th><th>Action</th></tr>';
-        while ($row = mysql_fetch_array($result_tip)) {
+        while ($row = mysqli_fetch_array($result_tip)) {
             show_row_msg_prefab($row,$langsel);
         }
 echo '</table>';

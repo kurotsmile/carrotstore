@@ -5,12 +5,12 @@
         if(isset($_POST['frm_country_work'])){
             $id_user=$data_user_carrot['user_id'];
             $country_work=json_encode($_POST['country_work']);
-            $query_update_user=mysql_query("UPDATE carrotsy_work.`work_user` SET `country_work` = '$country_work' WHERE `user_id` = '$id_user';");
+            $query_update_user=mysqli_query($link,"UPDATE carrotsy_work.`work_user` SET `country_work` = '$country_work' WHERE `user_id` = '$id_user';");
         }
 
         $id_user=$data_user_carrot['user_id'];
-        $query_user_login=mysql_query("SELECT * FROM carrotsy_work.`work_user` WHERE `user_id` = '$id_user' LIMIT 1");
-        $data_user_carrot=mysql_fetch_array($query_user_login);
+        $query_user_login=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_user` WHERE `user_id` = '$id_user' LIMIT 1");
+        $data_user_carrot=mysqli_fetch_array($query_user_login);
 
         $arr_country=array();
         if(isset($data_user_carrot['country_work'])){
@@ -29,8 +29,8 @@
                     <th>Hiển thị / không hiển thị</th>
                 </tr>
                 <?php
-                $list_country = mysql_query("SELECT * FROM `app_my_girl_country`");
-                while ($l = mysql_fetch_array($list_country)) {
+                $list_country = mysqli_query($link,"SELECT * FROM `app_my_girl_country`");
+                while ($l = mysqli_fetch_assoc($list_country)) {
                     $key = $l['key'];
                     ?>
                     <tr>
