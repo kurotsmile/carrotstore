@@ -157,21 +157,21 @@ function get_name_product_lang($link,$id_product,$key_l,$is_adim_site=false){
     mysqli_free_result($query_data);
 }
 
-function get_username_by_id($id_user,$is_admin=false){
+function get_username_by_id($link,$id_user,$is_admin=false){
     $lang=$_SESSION['lang'];
     $txt_name='';
     if($is_admin){
-        $query_name=mysql_query("SELECT `user_name` FROM carrotsy_work.`work_user` WHERE `user_id` = '$id_user' LIMIT 1");
-        $data_name=mysql_fetch_array($query_name);
+        $query_name=mysqli_query($link,"SELECT `user_name` FROM carrotsy_work.`work_user` WHERE `user_id` = '$id_user' LIMIT 1");
+        $data_name=mysqli_fetch_array($query_name);
         $txt_name=$data_name['user_name'];
     }else{
-        $query_name=mysql_query("SELECT `name` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-        $data_name=mysql_fetch_array($query_name);
+        $query_name=mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
+        $data_name=mysqli_fetch_array($query_name);
         $txt_name=$data_name['name'];
     }
     
     if($txt_name==''){
-        $txt_name=lang('an_danh');
+        $txt_name=lang($link,'an_danh');
     }
     return $txt_name;
 }

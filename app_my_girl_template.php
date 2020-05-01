@@ -30,8 +30,8 @@ if (isset($_SESSION['lang_2'])) {
 if (isset($_SESSION['is_login_user'])) {
     $data_user_carrot = $_SESSION['data_user'];
     $id_user = $data_user_carrot['user_id'];
-    $query_user_login = mysql_query("SELECT * FROM carrotsy_work.`work_user` WHERE `user_id` = '$id_user' LIMIT 1");
-    $data_user_carrot = mysql_fetch_array($query_user_login);
+    $query_user_login = mysqli_query($link,"SELECT * FROM carrotsy_work.`work_user` WHERE `user_id` = '$id_user' LIMIT 1");
+    $data_user_carrot = mysqli_fetch_assoc($query_user_login);
 }
 
 if (isset($_GET['logout'])) {
@@ -44,9 +44,9 @@ if (isset($_GET['logout'])) {
 if (isset($_POST['login_act'])) {
     $login_user = $_POST['user_name'];
     $login_pass = $_POST['passw'];
-    $query_login = mysql_query("Select * From  `carrotsy_work`.`work_user` WHERE `user_name`='$login_user' AND `user_pass`='$login_pass' Limit 1");
-    if (mysql_num_rows($query_login) > 0) {
-        $data_user_carrot = mysql_fetch_array($query_login);
+    $query_login = mysqli_query($link,"Select * From  `carrotsy_work`.`work_user` WHERE `user_name`='$login_user' AND `user_pass`='$login_pass' Limit 1");
+    if (mysqli_num_rows($query_login) > 0) {
+        $data_user_carrot = mysqli_fetch_assoc($query_login);
         $_SESSION['data_user'] = $data_user_carrot;
         $_SESSION['is_login_user'] = $_POST['user_name'];
         $_SESSION['id_login_user'] = $data_user_carrot['user_pass'];
@@ -55,8 +55,7 @@ if (isset($_POST['login_act'])) {
         $error_login_user = "Username or password not match!";
         unset($_POST);
     }
-    echo mysql_error();
-    mysql_free_result($query_login);
+    mysqli_free_result($query_login);
 }
 
 $cur_url = $_SERVER['REQUEST_URI'];
@@ -562,15 +561,15 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
                                                                                      aria-hidden="true"></i> Quảng lý
                     Chủ đề</a></li>
             <?php
-            $get_category_bk = mysql_query('SELECT `id`,`name` FROM `app_my_girl_bk_category`');
-            while ($row_cat = mysql_fetch_array($get_category_bk)){
+            $get_category_bk = mysqli_query($link,'SELECT `id`,`name` FROM `app_my_girl_bk_category`');
+            while ($row_cat = mysqli_fetch_array($get_category_bk)){
             ?>
             <li><a href="<?php echo $url; ?>/app_my_girl_background.php?cat=<?php echo $row_cat['id'] ?>"> <i
                             class="fa fa-bars"
-                            aria-hidden="true"></i> <?php echo get_key_lang($row_cat['name'], 'vi'); ?></a>
+                            aria-hidden="true"></i> <?php echo get_key_lang($link,$row_cat['name'], 'vi'); ?></a>
                 <?php
                 }
-                mysql_free_result($get_category_bk);
+                mysqli_free_result($get_category_bk);
                 ?>
         </ul>
     </li>

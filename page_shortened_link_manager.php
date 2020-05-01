@@ -4,9 +4,9 @@ if(isset($_GET['id_user'])){
     $id_user=$_GET['id_user'];
 }
 if($id_user!=''){
-    $query_list_link=mysql_query("SELECT * FROM `link` WHERE `id_user` = '$id_user'");
+    $query_list_link=mysqli_query($link,"SELECT * FROM `link` WHERE `id_user` = '$id_user'");
 }else{
-    $query_list_link=mysql_query("SELECT * FROM `link` WHERE `status`='0' ORDER BY `date` DESC LIMIT 50");
+    $query_list_link=mysqli_query($link,"SELECT * FROM `link` WHERE `status`='0' ORDER BY `date` DESC LIMIT 50");
 }
 ?>
 <style>
@@ -16,7 +16,7 @@ if($id_user!=''){
 </style>
 <?php
 if($id_user!=''){
-    $data_user=get_account($id_user,$_SESSION['lang']);
+    $data_user=get_account($link,$id_user,$_SESSION['lang']);
 ?>
 <div id="bk_link">
     <div style="width: 10%;float: left;">&nbsp;</div>
@@ -39,7 +39,7 @@ if($id_user!=''){
     <div style="width: 10%;float: left;text-align: center;"><i style="font-size: 50px;margin-top: 26px;" class="fa fa fa-list" aria-hidden="true"></i></div>
     <div style="width: 70%;float: left;text-align: left;" id="link_create">
         <h2><?php echo lang($link,'shorten_link_list'); ?></h2>
-        <strong><b><?php echo mysql_num_rows($query_list_link);?></b> <?php echo lang($link,'shorten_link_create') ?></strong><br />
+        <strong><b><?php echo mysqli_num_rows($query_list_link);?></b> <?php echo lang($link,'shorten_link_create') ?></strong><br />
         <a class="buttonPro small blue" href="<?php echo $url;?>/link"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_btn'); ?></a>
         <?php
         if(isset($user_login)){
@@ -58,7 +58,7 @@ if($id_user!=''){
 <div id="containt" style="width: 100%;float: left;">
 <?php
 
-while($row=mysql_fetch_array($query_list_link)){
+while($row=mysqli_fetch_assoc($query_list_link)){
     ?>
     <div id="row<?php echo $row['id']; ?>" class="app">
         
@@ -99,5 +99,5 @@ while($row=mysql_fetch_array($query_list_link)){
 ?>
 </div>
 <?php
-echo show_ads_box_main('link_page');
+echo show_ads_box_main($link,'link_page');
 ?>

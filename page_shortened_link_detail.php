@@ -1,8 +1,8 @@
 <?php
 include "phpqrcode/qrlib.php";
 $id_link=$_GET['id'];
-$query_link=mysql_query("SELECT * FROM `link` WHERE `id` = '$id_link' LIMIT 1");
-$data_link=mysql_fetch_array($query_link);
+$query_link=mysqli_query($link,"SELECT * FROM `link` WHERE `id` = '$id_link' LIMIT 1");
+$data_link=mysqli_fetch_assoc($query_link);
 ?>
 <style>
 #share_link{
@@ -59,15 +59,15 @@ $data_link=mysql_fetch_array($query_link);
             
             <?php
             if(isset($_SESSION['login_google'])){
-                $data_user_link=get_account($data_link['id_user'],$data_link['lang']);
+                $data_user_link=get_account($link,$data_link['id_user'],$data_link['lang']);
             ?>
                 <a href="<?php echo $url;?>/user/<?php echo $data_link['id_user'] ?>/<?php echo $data_link['lang'];?>"><img src="<?php echo $data_user_link['avatar_url']; ?>" /></a>
             <?php
             }else{
             ?>
-                <img src="<?php echo get_url_avatar_user($data_link['id_user'],$data_link['lang'],'80');?>" />
+                <img src="<?php echo get_url_avatar_user($link,$data_link['id_user'],$data_link['lang'],'80');?>" />
             <?php }?>
-            <?php echo get_username_by_id($data_link['id_user']); ?>
+            <?php echo get_username_by_id($link,$data_link['id_user']); ?>
             </td>
         </tr>
         <?php
@@ -85,11 +85,11 @@ $data_link=mysql_fetch_array($query_link);
         </tr>
         <?php }?>
         <tr>
-            <td><?php echo lang($link,'shorten_link_status');?></td><td><?php echo lang("shorten_link_status_".$data_link['status']); ?></td>
+            <td><?php echo lang($link,'shorten_link_status');?></td><td><?php echo lang($link,"shorten_link_status_".$data_link['status']); ?></td>
         </tr>
         <tr>
             <td colspan="2">
-                <?php echo show_share($url.'/l/'.$data_link['id']);?>
+                <?php echo show_share($link,$url.'/l/'.$data_link['id']);?>
             </td>
         </tr>
         <tr>

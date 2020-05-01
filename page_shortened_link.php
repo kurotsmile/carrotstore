@@ -1,6 +1,6 @@
 <?php
-$query_count_link=mysql_query("SELECT COUNT(`link`) as c FROM `link`");
-$count_toal_link=mysql_fetch_array($query_count_link);
+$query_count_link=mysqli_query($link,"SELECT COUNT(`link`) as c FROM `link`");
+$count_toal_link=mysqli_fetch_assoc($query_count_link);
 $count_toal_link=$count_toal_link['c'];
 ?>
 <style>
@@ -61,7 +61,7 @@ $count_toal_link=$count_toal_link['c'];
     <div class="row_info_link" style="width: 28%;float: left;padding: 10px;">
         <i style="font-size: 30px;margin-bottom: 20px;" class="fa fa-line-chart" aria-hidden="true"></i><br />
         <?php
-        echo str_replace("{num_link}",'<b>'.$count_toal_link.'</b>',lang('shorten_link_tip_2'));
+        echo str_replace("{num_link}",'<b>'.$count_toal_link.'</b>',lang($link,'shorten_link_tip_2'));
         ?>
         <br />
         <br />
@@ -73,8 +73,8 @@ $count_toal_link=$count_toal_link['c'];
             <?php echo lang($link,'shorten_link_tip_3');?>
             <div style="width: 100%;float: left;margin-top: 5px;">
             <?php
-            $query_product=mysql_query("SELECT `chplay_store`,`app_store`,`app_store`,`window_store`,`huawei_store`,`galaxy_store` FROM `products` WHERE `id` = '137' LIMIT 1");
-            $data_p=mysql_fetch_array($query_product);
+            $query_product=mysqli_query($link,"SELECT `chplay_store`,`app_store`,`app_store`,`window_store`,`huawei_store`,`galaxy_store` FROM `products` WHERE `id` = '137' LIMIT 1");
+            $data_p=mysqli_fetch_array($query_product);
             ?>
             <?php if($data_p['chplay_store']!=''){ ?><a href="<?php echo $data_p['chplay_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/chplay_download.png';?>" /></a><?php }?>
             <?php if($data_p['app_store']!=''){ ?><a href="<?php echo $data_p['app_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/app_store_download.png';?>" /></a><?php }?>

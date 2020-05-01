@@ -414,19 +414,19 @@ function show_alert($msg, $type)
     echo '</div>';
 }
 
-function get_key_lang($key, $lang)
+function get_key_lang($link,$key, $lang)
 {
     $val = '';
-    $query_get_value = mysql_query("SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
+    $query_get_value = mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
 
-    if (mysql_num_rows($query_get_value) > 0) {
-        $data_val = mysql_fetch_array($query_get_value);
+    if (mysqli_num_rows($query_get_value) > 0) {
+        $data_val = mysqli_fetch_array($query_get_value);
         $val = $data_val[0];
     } else {
         $val = $key;
     }
 
-    mysql_free_result($query_get_value);
+    mysqli_free_result($query_get_value);
     return $val;
 }
 

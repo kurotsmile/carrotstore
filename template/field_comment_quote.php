@@ -28,8 +28,8 @@ $(document).ready(function(){
         var commentsArray = [
 
         <?php
-            while ($row_comment = mysql_fetch_array($query_comment)) {
-            $data_user_comment=get_account($row_comment[0],$lang);
+            while ($row_comment = mysqli_fetch_array($query_comment)) {
+            $data_user_comment=get_account($link,$row_comment[0],$lang);
         ?>
         {
             id: '<?php echo $row_comment[0]; ?>',
