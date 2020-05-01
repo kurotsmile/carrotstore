@@ -1,12 +1,12 @@
 <?php
-$link = mysql_connect($mysql_host, $mysql_user,$mysql_pass);
+$link = mysqli_connect($mysql_host, $mysql_user,$mysql_pass);
 if (!$link) {
-    die('Could not connect: ' . mysql_error());
+    die('Could not connect: ' . mysqli_error());
 }
-mysql_selectdb($mysql_database);
-mysql_set_charset("utf8", $link);
-mysql_query("SET NAMES 'utf8';",$link); 
-mysql_query("SET CHARACTER SET 'utf8';",$link); 
-mysql_query("SET SESSION collation_connection = 'utf8_general_ci';",$link); 
+mysqli_select_db($link,"carrot");
+mysqli_set_charset($link,"utf8");
+mysqli_query($link,"SET NAMES 'utf8';"); 
+mysqli_query($link,"SET CHARACTER SET 'utf8';"); 
+mysqli_query($link,"SET SESSION collation_connection = 'utf8_general_ci';"); 
 
 ?>

@@ -1,7 +1,7 @@
 <div style="padding: 30px;float: left;">
     <p style="text-align: center;float: left;width: 95%;">
-        <h1><?php echo lang('cam_on_dat_hang'); ?></h1>
-        <p><?php echo lang('tip_cam_on');?></p>
+        <h1><?php echo lang($link,'cam_on_dat_hang'); ?></h1>
+        <p><?php echo lang($link,'tip_cam_on');?></p>
     </p>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">

@@ -55,19 +55,19 @@ include "page_member_footer_account.php";
 
     function edit_name_playlist(id_playlist,lang){
         swal({
-                title: "<?php echo lang('my_playlist'); ?>",
-                text: "<?php echo lang('my_playlist_rename_tip'); ?>",
+                title: "<?php echo lang($link,'my_playlist'); ?>",
+                text: "<?php echo lang($link,'my_playlist_rename_tip'); ?>",
                 type: "input",
                 showCancelButton: true,
                 closeOnConfirm: false,
-                cancelButtonText: "<?php echo lang('back');?>",
+                cancelButtonText: "<?php echo lang($link,'back');?>",
             },
             function(inputValue) {
                 if (inputValue === false) {
                     return false;
                 }
                 if (inputValue === "") {
-                    swal.showInputError("<?php echo lang('error_name_playlist_null');?>");
+                    swal.showInputError("<?php echo lang($link,'error_name_playlist_null');?>");
                     return false
                 }
                 swal_loading();
@@ -76,7 +76,7 @@ include "page_member_footer_account.php";
                     type: "post",
                     data: "function=edit_name_playlist&name_playlist=" + inputValue + "&lang=" + lang + "&id_playlist=" + id_playlist,
                     success: function (data, textStatus, jqXHR) {
-                        swal("<?php echo lang('update_playlist'); ?>", "<?php echo lang('thanh_cong') ?>", "success");
+                        swal("<?php echo lang($link,'update_playlist'); ?>", "<?php echo lang($link,'thanh_cong') ?>", "success");
                     }
                 });
         });

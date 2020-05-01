@@ -1,6 +1,6 @@
 <?php
 $title_page='Carrot Store';
-$seo_desc=lang('gioi_thieu_tip');
+$seo_desc=lang($link,'gioi_thieu_tip');
 $seo_url=$url;
 $seo_img=$url.'/images/logo.png';
 
@@ -13,14 +13,14 @@ if(isset($_SESSION['arr_history'])){
 if(isset($_GET['view_product'])){
     if($_GET['slug']){
         $slug=$_GET['view_product'];
-        $result=mysql_query("SELECT * FROM `products` WHERE `slug` = '$slug' LIMIT 1");
+        $result=mysqli_query($link,"SELECT * FROM `products` WHERE `slug` = '$slug' LIMIT 1");
     }else{
         $id=$_GET['view_product'];
-        $result=mysql_query("SELECT * FROM `products` WHERE `id` = '$id' LIMIT 1");
+        $result=mysqli_query($link,"SELECT * FROM `products` WHERE `id` = '$id' LIMIT 1");
     }
-    $data=mysql_fetch_array($result);
-    $title_page=''.get_name_product_lang($data[0],$_SESSION['lang']);
-    $seo_desc=strip_tags (get_desc_product_lang($data[0],$_SESSION['lang']));
+    $data=mysqli_fetch_assoc($result);
+    $title_page=''.get_name_product_lang($link,$data['id'],$_SESSION['lang']);
+    $seo_desc=strip_tags (get_desc_product_lang($link,$data['id'],$_SESSION['lang']));
     $seo_url=$url.'/product/'.$data['id'];
     $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';;
     $item_history=array($data['id'],'product',$date,$_SESSION['lang']);
@@ -108,9 +108,9 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     $lang='vi';
     if(isset($_GET['lang'])) $lang=$_GET['lang'];
     $id_user=$_GET['user'];
-    $query_account=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-    if(mysql_num_rows($query_account)>0) {
-        $data_user = mysql_fetch_array($query_account);
+    $query_account=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
+    if(mysqli_num_rows($query_account)>0) {
+        $data_user = mysqli_fetch_assoc($query_account);
         $title_page = $data_user['name'];
         $seo_desc = '';
         if ($data_user['sdt'] != '') {
@@ -205,7 +205,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
         reset_tip();
              $('#logo').qtip({
                 content: {
-                    title:"<?php echo lang('home_url'); ?>",
+                    title:"<?php echo lang($link,'home_url'); ?>",
                     text:"<img src='<?php echo $url; ?>/images/home_url.png' style='width:100%'>"
                 },
                 style: {
@@ -222,7 +222,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
             $(this).qtip({ // Grab all elements with a title attribute
                 content: {
                     text: $(this).attr('title'), // Won't work, because "this" is the window element!
-                    title: '<?php echo lang('chu_thich'); ?>',
+                    title: '<?php echo lang($link,'chu_thich'); ?>',
                 },
                 style: {
                     classes: 'qtip-green qtip-shadow',
@@ -233,7 +233,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     </script>
 
     <?php
-    if(get_setting('show_adsupply')=='1') {
+    if(get_setting($link,'show_adsupply')=='1') {
         ?>
         <script data-cfasync="false" type="text/javascript">(function (s, o, l, v, e, d) {
                 if (s[o] == null && s[l + e]) {
@@ -260,7 +260,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     ?>
 
     <?php
-    if(get_setting('show_ads')=='1') {
+    if(get_setting($link,'show_ads')=='1') {
         ?>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>

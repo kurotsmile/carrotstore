@@ -13,8 +13,8 @@ if(isset($_GET['rate'])){
 ?>
 <script>
     swal({
-        title: "<?php echo lang('danh_gia');?>",
-        text: "<?php echo lang('danh_gia_done');?>",
+        title: "<?php echo lang($link,'danh_gia');?>",
+        text: "<?php echo lang($link,'danh_gia_done');?>",
         type: "success",
     });
 </script>
@@ -57,13 +57,13 @@ if($total_data_m==0){
 ?>
             <div  style="color: #515151;font-size: 11px;font-weight: normal;margin-top: 20px;float: left;width: 100%;background-color: #ffffffa6;padding: 10px;border-radius: 10px;">
                 <i class="fa fa-star-half-o" style="float: left;font-size: 60px;margin-right: 10px;" aria-hidden="true"></i>
-                <strong><?php echo lang('danh_gia'); ?></strong> (<?php echo $total_data_m; ?>)<br />
-                <i><?php echo lang('dang_gia_music_tip'); ?></i><br />
+                <strong><?php echo lang($link,'danh_gia'); ?></strong> (<?php echo $total_data_m; ?>)<br />
+                <i><?php echo lang($link,'dang_gia_music_tip'); ?></i><br />
 
-                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='0'){ ?>blue<?php }else{?>yellow<?php } ?>" href_url="<?php echo $url_page_cur.'&rate=0'; ?>"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo lang('music_top_0'); ?> (<?php echo $data_m_0; ?>)</span>
-                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='1'){ ?>blue<?php }else{?>yellow<?php } ?>"  href_url="<?php echo $url_page_cur.'&rate=1'; ?>"><i style="font-size: 15px;" class="fa fa-frown-o" aria-hidden="true"></i> <?php echo lang('music_top_1'); ?> (<?php echo $data_m_1; ?>)</span>
-                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='2'){ ?>blue<?php }else{?>yellow<?php } ?>"  href_url="<?php echo $url_page_cur.'&rate=2'; ?>"><i style="font-size: 15px;" class="fa fa-meh-o" aria-hidden="true"></i> <?php echo lang('music_top_2'); ?> (<?php echo $data_m_2; ?>)</span>
-                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='3'){ ?>blue<?php }else{?>yellow<?php } ?>"  href_url="<?php echo $url_page_cur.'&rate=3'; ?>"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo lang('music_top_3'); ?> (<?php echo $data_m_3; ?>)</span>
+                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='0'){ ?>blue<?php }else{?>yellow<?php } ?>" href_url="<?php echo $url_page_cur.'&rate=0'; ?>"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_0'); ?> (<?php echo $data_m_0; ?>)</span>
+                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='1'){ ?>blue<?php }else{?>yellow<?php } ?>"  href_url="<?php echo $url_page_cur.'&rate=1'; ?>"><i style="font-size: 15px;" class="fa fa-frown-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_1'); ?> (<?php echo $data_m_1; ?>)</span>
+                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='2'){ ?>blue<?php }else{?>yellow<?php } ?>"  href_url="<?php echo $url_page_cur.'&rate=2'; ?>"><i style="font-size: 15px;" class="fa fa-meh-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_2'); ?> (<?php echo $data_m_2; ?>)</span>
+                    <span onclick="go_to_url(this);" class="buttonPro small <?php if($sel_rate=='3'){ ?>blue<?php }else{?>yellow<?php } ?>"  href_url="<?php echo $url_page_cur.'&rate=3'; ?>"><i style="font-size: 15px;" class="fa fa-smile-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_3'); ?> (<?php echo $data_m_3; ?>)</span>
                  
                 <?php if($is_ready_data_music=='1'){?>   
                 <div style="float: left;width: 100%;">

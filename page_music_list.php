@@ -63,8 +63,8 @@ function restart_music(){
 var myJsonString='';
 var arr_id_music=[];
 <?php
-    $query_count_music=mysql_query("SELECT COUNT(`id`) as c FROM `app_my_girl_vi` WHERE `effect` = '2'");
-    $data_count_music=mysql_fetch_array($query_count_music);
+    $query_count_music=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_vi` WHERE `effect` = '2'");
+    $data_count_music=mysqli_fetch_assoc($query_count_music);
     $count_p=$data_count_music['c'];
 ?>
 var count_p=<?php echo $count_p; ?>;
@@ -107,50 +107,50 @@ function play_video(id_video){
 <?php
 if(!isset($query_list_music)){
     if($sub_view=='all'){
-        $query_list_music=mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' ORDER BY RAND() LIMIT 30");
+        $query_list_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' ORDER BY RAND() LIMIT 30");
     }else if($sub_view=='month'){
-        $query_list_music=mysql_query("SELECT `chat`.id,`chat`.chat,`chat`.file_url,`chat`.slug,`chat`.author,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 40");
+        $query_list_music=mysqli_query($link,"SELECT `chat`.id,`chat`.chat,`chat`.file_url,`chat`.slug,`chat`.author,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 40");
     }else if($sub_view=='artist') {
     }else if($sub_view=='year') {
     }else if($sub_view=='genre') {
     }else{
         $txt_query_view=" AND `top_music`.`value`='$sub_view' ";
-        $query_list_music=mysql_query("SELECT DISTINCT `chat`.id,`chat`.chat,`chat`.file_url,`chat`.slug,`chat`.author FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view LIMIT 40");
+        $query_list_music=mysqli_query($link,"SELECT DISTINCT `chat`.id,`chat`.chat,`chat`.file_url,`chat`.slug,`chat`.author FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view LIMIT 40");
     }
 }
 
 
 if($sub_view=='artist'){
-    $query_artis=mysql_query("SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
-    while ($row = mysql_fetch_array($query_artis)) {
+    $query_artis=mysqli_query($link,"SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
+    while ($row = mysqli_fetch_assoc($query_artis)) {
         include "page_music_artist_git.php";
     }
 }else if($sub_view=='year'){
-    $query_year=mysql_query("SELECT DISTINCT `year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `year`!='' order by `year` desc");
-    while ($row = mysql_fetch_array($query_year)) {
+    $query_year=mysqli_query($link,"SELECT DISTINCT `year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `year`!='' order by `year` desc");
+    while ($row = mysqli_fetch_assoc($query_year)) {
         include "page_music_year_git.php";
     }
 }else if($sub_view=='genre'){
-    $query_genre=mysql_query("SELECT DISTINCT `genre` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `genre`!=''");
-    while ($row = mysql_fetch_array($query_genre)) {
+    $query_genre=mysqli_query($link,"SELECT DISTINCT `genre` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `genre`!=''");
+    while ($row = mysqli_fetch_assoc($query_genre)) {
         include "page_music_genre_git.php";
     }
 }else {
     $list_style = 'list';
 
-    $label_choi_nhac=lang('choi_nhac');
-    $label_chi_tiet=lang('chi_tiet');
-    $label_loi_bai_hat=lang('loi_bai_hat');
-    $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
-    $label_music_no_rank=lang('music_no_rank');
+    $label_choi_nhac=lang($link,'choi_nhac');
+    $label_chi_tiet=lang($link,'chi_tiet');
+    $label_loi_bai_hat=lang($link,'loi_bai_hat');
+    $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
+    $label_music_no_rank=lang($link,'music_no_rank');
 
-    while ($row = mysql_fetch_array($query_list_music)) {
+    while ($row = mysqli_fetch_array($query_list_music)) {
         include "page_music_git.php";
     }
 }
 
 if(!isset($query_list_music)){
-    mysql_free_result($query_list_music);
+    mysqli_free_result($query_list_music);
 }
 ?>
 

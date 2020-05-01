@@ -71,7 +71,7 @@
             data: "function=rate_object&star="+star+"&objects="+objects+"&id="+id,
             success: function(data, textStatus, jqXHR)
             {
-                swal('<?php echo lang('thanh_cong') ?>','<?php echo lang('cam_on_da_danh_gia') ?>','success');
+                swal('<?php echo lang($link,'thanh_cong') ?>','<?php echo lang($link,'cam_on_da_danh_gia') ?>','success');
                 $('#loading').fadeOut(100);
             }
         });
@@ -119,7 +119,7 @@
 
     function swal_loading(){
         swal({
-            html: true, title: '<?php echo lang('dang_xu_ly');?>',
+            html: true, title: '<?php echo lang($link,'dang_xu_ly');?>',
             text: '<img src="<?php echo $url;?>/images/waiting.gif" alt="Loading"/>',
             showCancelButton: false
         })
@@ -134,7 +134,7 @@
             data: "function=show_box_select_lang&urls="+urls,
             success: function (data, textStatus, jqXHR) {
                 swal({
-                    html: true, title: '<?php echo lang('ngon_ngu_hien_thi');?>',
+                    html: true, title: '<?php echo lang($link,'ngon_ngu_hien_thi');?>',
                     text: data,
                     showCancelButton: false
                 })
@@ -156,7 +156,7 @@
     function register_account_carrot(emp_btn) {
         $(emp_btn).removeClass("blue");
         $(emp_btn).addClass("yellow");
-        $(emp_btn).html("<i class='fa fa-spinner' aria-hidden='true'></i> <?php echo lang('dang_xu_ly');?>...");
+        $(emp_btn).html("<i class='fa fa-spinner' aria-hidden='true'></i> <?php echo lang($link,'dang_xu_ly');?>...");
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
@@ -164,9 +164,9 @@
             success: function (data, textStatus, jqXHR) {
                 $(emp_btn).removeClass("yellow");
                 $(emp_btn).addClass("blue");
-                $(emp_btn).html("<i class='fa fa-sign-in' aria-hidden='true'></i> <?php echo lang('dang_nhap');?>");
+                $(emp_btn).html("<i class='fa fa-sign-in' aria-hidden='true'></i> <?php echo lang($link,'dang_nhap');?>");
                 if (data == "add_account_success") {
-                    swal("<?php echo lang('dang_ky') ?>", "<?php echo lang('thanh_cong') ?>", "success");
+                    swal("<?php echo lang($link,'dang_ky') ?>", "<?php echo lang($link,'thanh_cong') ?>", "success");
                     setTimeout(function () {
                         login_account();
                     }, 2000);
@@ -185,7 +185,7 @@
 
         $(emp_btn).removeClass("blue");
         $(emp_btn).addClass("yellow");
-        $(emp_btn).html("<i class='fa fa-spinner' aria-hidden='true'></i> <?php echo lang('dang_xu_ly');?>...");
+        $(emp_btn).html("<i class='fa fa-spinner' aria-hidden='true'></i> <?php echo lang($link,'dang_xu_ly');?>...");
         $.ajax({
             url: "<?php echo $url;?>/index.php",
             type: "post",
@@ -193,7 +193,7 @@
             success: function (data, textStatus, jqXHR) {
                 $(emp_btn).removeClass("yellow");
                 $(emp_btn).addClass("blue");
-                $(emp_btn).html("<i class='fa fa-sign-in' aria-hidden='true'></i> <?php echo lang('dang_nhap');?>");
+                $(emp_btn).html("<i class='fa fa-sign-in' aria-hidden='true'></i> <?php echo lang($link,'dang_nhap');?>");
                 if (data.toString() == "ready_account") {
                     swal_loading();
                     reset_url();
@@ -211,25 +211,25 @@
         var html_box_register = '<div style="width: 100%;">';
         html_box_register = html_box_register + '<form id="box_register">';
 
-        html_box_register = html_box_register + '<i class="tip"><?php echo lang('dang_ky_carrot_tip');?></i><br/>';
+        html_box_register = html_box_register + '<i class="tip"><?php echo lang($link,'dang_ky_carrot_tip');?></i><br/>';
         html_box_register = html_box_register + '<strong id="box_register_error"></strong>';
-        html_box_register = html_box_register + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang('so_dien_thoai');?></label><br/>';
+        html_box_register = html_box_register + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang($link,'so_dien_thoai');?></label><br/>';
         html_box_register = html_box_register + '<input id="user_phone_register" name="user_phone_register" type="text"></input>';
-        html_box_register = html_box_register + '<label><i class="fa fa-user"></i> <?php echo lang('ten_day_du');?></label><br/>';
+        html_box_register = html_box_register + '<label><i class="fa fa-user"></i> <?php echo lang($link,'ten_day_du');?></label><br/>';
         html_box_register = html_box_register + '<input id="user_name_register" name="user_name_register" type="text"></input>';
-        html_box_register = html_box_register + '<label><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo lang('dia_chi');?></label><br/>';
+        html_box_register = html_box_register + '<label><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo lang($link,'dia_chi');?></label><br/>';
         html_box_register = html_box_register + '<input id="user_address_register" name="user_address_register" type="text"></input>';
-        html_box_register = html_box_register + '<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau');?></label><br/>';
+        html_box_register = html_box_register + '<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang($link,'mat_khau');?></label><br/>';
         html_box_register = html_box_register + '<input id="user_password_register" name="user_password_register" type="password"></input><br/>';
-        html_box_register = html_box_register + '<span class="buttonPro green large" onclick="register_account_carrot(this)"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang("hoan_tat");?></span>';
+        html_box_register = html_box_register + '<span class="buttonPro green large" onclick="register_account_carrot(this)"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang($link,"hoan_tat");?></span>';
         html_box_register = html_box_register + '<input name="function" value="register_account_carrot" type="hidden"></input>';
         html_box_register = html_box_register + '</form>';
         html_box_register = html_box_register + '<div style="float: left;width: 100%;">';
-        html_box_register = html_box_register + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>  <span class="buttonPro light_blue" onclick="login_account();return false"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>';
+        html_box_register = html_box_register + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span>  <span class="buttonPro light_blue" onclick="login_account();return false"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang($link,'dang_nhap');?></span>';
         html_box_register = html_box_register + '</div>';
 
         html_box_register = html_box_register + '</div>';
-        swal({html: true, title: '<?php echo lang("dang_ky"); ?>', text: html_box_register, showConfirmButton: false,});
+        swal({html: true, title: '<?php echo lang($link,"dang_ky"); ?>', text: html_box_register, showConfirmButton: false,});
 
         setTimeout(function () {
             $("#user_address_register").geocomplete();
@@ -241,7 +241,7 @@
         shortcut_key_music=false;
         var html_box_login = '<div style="width: 100%;">';
         html_box_login = html_box_login + '<div class="box_login">';
-        html_box_login = html_box_login + '<strong class="title"><?php echo lang('dang_nhap_mxh');?></strong>';
+        html_box_login = html_box_login + '<strong class="title"><?php echo lang($link,'dang_nhap_mxh');?></strong>';
         html_box_login = html_box_login + '<div id="box_login_other">';
         html_box_login = html_box_login + '<div id="my-signin2"></div>';
         html_box_login = html_box_login + '<img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;width: 200px;height: 40px;" src="<?php echo $url;?>/images/btn_login_fb.jpg">';
@@ -249,25 +249,25 @@
         html_box_login = html_box_login + '</div>';
 
         html_box_login = html_box_login + '<div class="box_login">';
-        html_box_login = html_box_login + '<strong class="title"><?php echo lang('dang_nhap_carrot');?></strong>';
-        html_box_login = html_box_login + '<i class="tip"><?php echo lang('dang_nhap_carrot_tip');?></i>';
+        html_box_login = html_box_login + '<strong class="title"><?php echo lang($link,'dang_nhap_carrot');?></strong>';
+        html_box_login = html_box_login + '<i class="tip"><?php echo lang($link,'dang_nhap_carrot_tip');?></i>';
         html_box_login = html_box_login + '<div style="float: left;padding: 20px;" id="box_login_body">';
         html_box_login = html_box_login + '<div><img src="<?php echo $url;?>/images/icon.png"/></div>';
         html_box_login = html_box_login + '<strong id="box_login_error"></strong>';
-        html_box_login = html_box_login + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang('so_dien_thoai');?></label><br/>';
+        html_box_login = html_box_login + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang($link,'so_dien_thoai');?></label><br/>';
         html_box_login = html_box_login + '<input id="user_phone_login" name="user_phone_login" type="text"></input>';
-        html_box_login = html_box_login + '<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang('mat_khau');?></label><br/>';
+        html_box_login = html_box_login + '<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang($link,'mat_khau');?></label><br/>';
         html_box_login = html_box_login + '<input id="user_password_login"  name="user_password_login" type="password"></input>';
-        html_box_login = html_box_login + '<span class="buttonPro large blue" onclick="login_account_carrot(this)"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>';
+        html_box_login = html_box_login + '<span class="buttonPro large blue" onclick="login_account_carrot(this)"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang($link,'dang_nhap');?></span>';
         html_box_login = html_box_login + '</div>';
         html_box_login = html_box_login + '</div>';
 
         html_box_login = html_box_login + '<div style="float: left;width: 100%;">';
-        html_box_login = html_box_login + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>  <span class="buttonPro light_blue" onclick="show_box_register();"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang("dang_ky");?></span>';
+        html_box_login = html_box_login + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span>  <span class="buttonPro light_blue" onclick="show_box_register();"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang($link,"dang_ky");?></span>';
         html_box_login = html_box_login + '</div>';
 
         html_box_login = html_box_login + '</div>';
-        swal({html: true, title: '<?php echo lang("dang_nhap"); ?>', text: html_box_login, showConfirmButton: false,});
+        swal({html: true, title: '<?php echo lang($link,"dang_nhap"); ?>', text: html_box_login, showConfirmButton: false,});
         setTimeout(function () {
             renderButton();
         }, 100);
@@ -281,7 +281,7 @@
             type: "post",
             data: "function=login_google&user_id=" + profile.getId() + "&user_name=" + profile.getName() + "&user_email=" + profile.getEmail() + "&user_avatar=" + profile.getImageUrl(),
             success: function (data, textStatus, jqXHR) {
-                swal("<?php echo lang('dang_nhap');?>", "<?php echo lang('login_account_succes'); ?>", "success");
+                swal("<?php echo lang($link,'dang_nhap');?>", "<?php echo lang($link,'login_account_succes'); ?>", "success");
                 if (goto_user) {
                     window.location = "<?php echo $url;?>/user/" + data + "/<?php echo $_SESSION['lang'];?>";
                 } else {
@@ -313,13 +313,13 @@
 
     function delete_playlist_music(id_playlis,lang){
         swal({
-                title: "<?php echo lang('delete');?>",
-                text: "<?php echo lang('delete_tip');?>",
+                title: "<?php echo lang($link,'delete');?>",
+                text: "<?php echo lang($link,'delete_tip');?>",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#DD6B55',
-                confirmButtonText: '<?php echo lang('box_yes');?>',
-                cancelButtonText: "<?php echo lang('box_no');?>",
+                confirmButtonText: '<?php echo lang($link,'box_yes');?>',
+                cancelButtonText: "<?php echo lang($link,'box_no');?>",
                 closeOnConfirm: false,
             },
             function(isConfirm){
@@ -331,7 +331,7 @@
                         data: "function=delete_playlist_music&id="+id_playlis+"&lang="+lang,
                         success: function (data, textStatus, jqXHR) {
                             $(".list_playlist_"+id_playlis).hide();
-                            swal("<?php echo lang('my_playlist') ?>", "<?php echo lang('thanh_cong') ?>", "success");
+                            swal("<?php echo lang($link,'my_playlist') ?>", "<?php echo lang($link,'thanh_cong') ?>", "success");
                         }
                 });
             }
@@ -357,12 +357,12 @@
         testAd.remove();
         if (adBlockEnabled) {
             swal({
-                    title: "<?php echo lang("adblock_title"); ?>",
-                    text: "<img alt='<?php echo lang("adblock_title");?>' style='width:100%' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang("adblock_msg");?>",
+                    title: "<?php echo lang($link,"adblock_title"); ?>",
+                    text: "<img alt='<?php echo lang($link,"adblock_title");?>' style='width:100%' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang($link,"adblock_msg");?>",
                     html: true,
                     showCancelButton: true,
                     cancelButtonClass: "btn-info",
-                    confirmButtonText: "<?php echo lang('help_off_block_ads');?>",
+                    confirmButtonText: "<?php echo lang($link,'help_off_block_ads');?>",
                     cancelButtonText: "Okay!",
                     closeOnConfirm: false,
                     closeOnCancel: true
@@ -447,7 +447,7 @@ if ($protocol == 'https') {
                             type: "post",
                             data: "function=login_facebook&user_name="+response.name+"&user_id="+response.id+"&user_email="+response.email,
                             success: function (data, textStatus, jqXHR) {
-                                swal("<?php echo lang('dang_nhap');?>", "<?php echo lang('login_account_succes'); ?>", "success");
+                                swal("<?php echo lang($link,'dang_nhap');?>", "<?php echo lang($link,'login_account_succes'); ?>", "success");
                                 reset_url();
                             }
                         });

@@ -17,7 +17,7 @@
     ?>
     </p>
     <div id="show_anwer_note" style="margin-top: 20px;">
-        <strong><?php echo lang('answer_tip'); ?></strong>
+        <strong><?php echo lang($link,'answer_tip'); ?></strong>
         <textarea  name="answer_note" class="inp"><?php echo $answer_note;?></textarea>
     </div>
     <input type="hidden" name="id_answer" value="<?php echo $an['id'];?>"/>

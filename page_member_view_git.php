@@ -1,6 +1,6 @@
-<div id="row<?php echo $row[0]; ?>" class="app" >
+<div id="row<?php echo $row['id_device']; ?>" class="app" >
     <div class="app_title">
-        <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang;?>">
+        <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang;?>">
             <h1>
                 <?php
                         if($row['sex']=='0'){
@@ -16,9 +16,9 @@
             </h1>
         </a>
     </div>
-    <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang;?>">
+    <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang;?>">
         <?php
-            $url_img='app_mygirl/app_my_girl_'.$lang_sel.'_user/'.$row[0].'.png';
+            $url_img='app_mygirl/app_my_girl_'.$lang_sel.'_user/'.$row['id_device'].'.png';
             if(file_exists($url_img)){
             ?>
             <img  alt="<?php echo $row['name']; ?>" src="<?php echo $url;?>/thumb.php?src=<?php echo $url.'/'.$url_img;?>&size=170x170&trim=1" class="app_icon" style="height: 100px;" />
@@ -45,7 +45,7 @@
             <?php if($row['sdt']!=''){?>
             <p class="app_address" style="padding: 0px;margin:0px;">
                 <i class="fa fa-phone" aria-hidden="true"></i> 
-                <strong><?php echo lang("so_dien_thoai");?>:</strong>
+                <strong><?php echo lang($link,"so_dien_thoai");?>:</strong>
                 <a href="callto://+<?php echo $row['sdt']; ?>"><?php echo $row['sdt']; ?></a></span>
             </p>
             <?php }?>
@@ -53,14 +53,14 @@
             <?php if($row['address']!=''){?>
             <p class="app_address" style="padding: 0px;margin:0px;">
                 <i class="fa fa-map-marker"></i>
-                <strong><?php echo lang("dia_chi");?>:</strong>  
+                <strong><?php echo lang($link,"dia_chi");?>:</strong>  
                 <?php echo $row['address'];?>
             </p>
             <?php }?>
             
             <p class="app_address" style="padding: 0px;margin:0px;">
                 <i class="fa fa-globe" aria-hidden="true"></i>
-                <strong><?php echo lang("quoc_gia");?>:</strong>  
+                <strong><?php echo lang($link,"quoc_gia");?>:</strong>  
                 <img style="height: 12px;" src="<?php echo $url;?>/app_mygirl/img/<?php echo $lang_sel;?>.png"/> <?php echo $lang_sel;?>
             </p>
         <br />
@@ -69,14 +69,14 @@
         <i class="fa fa-envelope" aria-hidden="true"></i> - <i class="fa fa-phone-square" aria-hidden="true"></i> - <i class="fa fa-id-card-o" aria-hidden="true"></i>
     </div>
     <div class="app_action">
-        <a href="<?php echo $url; ?>/user/<?php echo $row[0]; ?>/<?php echo $lang_sel;?>" class="buttonPro small "><?php echo lang('chi_tiet'); ?></a>
-        <a href="callto://+<?php echo $row['sdt']; ?>" class="buttonPro small "><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang('goi_dien'); ?></a>
+        <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang_sel;?>" class="buttonPro small "><?php echo lang($link,'chi_tiet'); ?></a>
+        <a href="callto://+<?php echo $row['sdt']; ?>" class="buttonPro small "><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang($link,'goi_dien'); ?></a>
         <button onclick="show_menu_app(this);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
     </div>
 
     <div class="menu_more">
-        <a class="buttonPro orange" href="callto://+<?php echo $row['sdt']; ?>" ><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang('goi_dien'); ?></a>
-        <a class="buttonPro orange" href="<?php echo  $url;?>/download_vcf.php?id_user=<?php echo $row[0]; ?>&lang=<?php echo $lang_sel;?>" ><i class="fa fa-download" aria-hidden="true"></i> <?php echo lang('download_vcf'); ?></a>
+        <a class="buttonPro orange" href="callto://+<?php echo $row['sdt']; ?>" ><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang($link,'goi_dien'); ?></a>
+        <a class="buttonPro orange" href="<?php echo  $url;?>/download_vcf.php?id_user=<?php echo $row['id_device']; ?>&lang=<?php echo $lang_sel;?>" ><i class="fa fa-download" aria-hidden="true"></i> <?php echo lang($link,'download_vcf'); ?></a>
         <a href="#" style="width: auto" onclick="$(this).parent().parent().removeClass('menu_app');return false;" class="buttonPro small"><i class="fa fa-arrow-circle-o-left"></i></a>
     </div>
     

@@ -12,7 +12,7 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
 
         <div id="account_menu">
             <ul style="margin: 0px;">
-                <li <?php  echo 'class="active"'?> ><a href=""><i class="fa fa-music"></i> <?php echo lang('music_same'); ?></a></li>
+                <li <?php  echo 'class="active"'?> ><a href=""><i class="fa fa-music"></i> <?php echo lang($link,'music_same'); ?></a></li>
             </ul>
         </div>
     </div>

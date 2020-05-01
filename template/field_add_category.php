@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?php echo $url;?>/js/sol.js"></script>
 <p>
 <div class="group">
-    <div class="title"><input type="checkbox" class="btnGroup" /> <?php echo lang('chuyen_muc');?> </div>
+    <div class="title"><input type="checkbox" class="btnGroup" /> <?php echo lang($link,'chuyen_muc');?> </div>
     <div class="content">
         <?php
             $type_id=$_GET['sub_view'];

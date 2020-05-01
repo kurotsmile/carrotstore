@@ -1,7 +1,7 @@
 <?php
 //$type_rate
 ?>
-<label><?php echo lang('danh_gia');?></label>
+<label><?php echo lang($link,'danh_gia');?></label>
 <?php
 if(isset($_SESSION['username_login'])){
     $users=$_SESSION['username_login'];
@@ -9,12 +9,12 @@ if(isset($_SESSION['username_login'])){
     $users= $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
 }
 $rate=0;
-$check_rate=mysql_query("SELECT `rate` FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."' AND `user` = '$users'");
-$count_rate=mysql_query("SELECT * FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."'");
+$check_rate=mysqli_query($link,"SELECT `rate` FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."' AND `user` = '$users'");
+$count_rate=mysqli_query($link,"SELECT * FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."'");
 $user_rate=$count_rate;
-$count_rate=mysql_num_rows($count_rate);
+$count_rate=mysqli_num_rows($count_rate);
 if($check_rate){
-    $check_rate=mysql_fetch_array($check_rate);
+    $check_rate=mysqli_fetch_array($check_rate);
     $rate=$check_rate[0];
 }
 ?>
@@ -23,9 +23,9 @@ if($check_rate){
     for($i=1;$i<=5;$i++){
         if($i<=$rate){
             ?>
-            <i title="<?php echo lang('tip_star'.$i); ?>" class="fa fa-star star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" style="color: #fdb021;" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
+            <i title="<?php echo lang($link,'tip_star'.$i); ?>" class="fa fa-star star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" style="color: #fdb021;" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
         <?php }else{ ?>
-            <i title="<?php echo lang('tip_star'.$i); ?>" class="fa fa-star-o star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
+            <i title="<?php echo lang($link,'tip_star'.$i); ?>" class="fa fa-star-o star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
             <?php
         }
     }
@@ -35,12 +35,12 @@ if($check_rate){
 <?php
 if($count_rate>0){
     ?>
-    <span><?php echo lang('so_nguoi_da_danh_gia');?>:</span><strong><?php echo $count_rate;?></strong>
+    <span><?php echo lang($link,'so_nguoi_da_danh_gia');?>:</span><strong><?php echo $count_rate;?></strong>
 <?php }?>
 <div>
 <?php
-while($user_r=mysql_fetch_array($user_rate)){
-    $user_rs=get_account($user_r[1]);
+while($user_r=mysqli_fetch_array($user_rate)){
+    $user_rs=get_account($link,$user_r[1],$lang);
     echo '<div style="width: 90%;">';
     $pos = strpos($user_r[1], '@');
     if ($pos === false) {

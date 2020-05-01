@@ -70,9 +70,9 @@ initialize();
 
             <p>
                 <div class="group">
-                    <div class="title"><input type="checkbox" class="btnGroup" /> <?php echo lang('dia_chi');?> </div>
+                    <div class="title"><input type="checkbox" class="btnGroup" /> <?php echo lang($link,'dia_chi');?> </div>
                     <div class="content">
-                        <i><?php echo lang('tip_ps_address'); ?></i><br /><br />
+                        <i><?php echo lang($link,'tip_ps_address'); ?></i><br /><br />
                         <input class="inp" type="text" name="address" id="address" value="" />
                         <input class="inp" type="hidden" name="lat" id="lat" value="" />
                         <input class="inp" type="hidden" name="lng" id="lng" value="" />

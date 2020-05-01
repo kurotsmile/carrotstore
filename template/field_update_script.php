@@ -9,23 +9,23 @@ function update_product(emp){
     var category= JSON.stringify(category);
 
     if($('#name_product').val()=='' ||$('#name_product').val().length<5 ){
-        swal('<?php echo lang('loi');?>','<?php echo lang('loi_ten_sp'); ?>','error');
+        swal('<?php echo lang($link,'loi');?>','<?php echo lang($link,'loi_ten_sp'); ?>','error');
         return false;
     }
     
     if($('#descrip_product').val()=='' ||$('#descrip_product').val().length<10 ){
-        swal('<?php echo lang('loi');?>','<?php echo lang('loi_mo_ta_sp'); ?>','error');
+        swal('<?php echo lang($link,'loi');?>','<?php echo lang($link,'loi_mo_ta_sp'); ?>','error');
         return false;
     }
     
     if($('#id_user').val()==null || $('#id_user').val()==''){;
-            swal("<?php echo lang('loi'); ?>","<?php echo lang('ten_dn_k_de_trong'); ?>", "error"); 
+            swal("<?php echo lang($link,'loi'); ?>","<?php echo lang($link,'ten_dn_k_de_trong'); ?>", "error"); 
             return false;    
     }else{
         if(isEmail($('#id_user').val())){
                 
         }else{
-            swal("<?php echo lang('loi'); ?>","<?php echo lang('email_sai'); ?>", "error"); 
+            swal("<?php echo lang($link,'loi'); ?>","<?php echo lang($link,'email_sai'); ?>", "error"); 
             return false; 
         }
     }
@@ -42,7 +42,7 @@ function update_product(emp){
         data: "function=update_product&"+txt_data+"&category="+category,
         success: function(data, textStatus, jqXHR)
         {
-            swal('<?php echo lang('thanh_cong'); ?>','<?php echo lang('cap_nhat_thanh_cong'); ?>','success');
+            swal('<?php echo lang($link,'thanh_cong'); ?>','<?php echo lang($link,'cap_nhat_thanh_cong'); ?>','success');
             $('#loading').fadeOut(200);
         }
     

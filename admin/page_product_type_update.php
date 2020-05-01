@@ -18,7 +18,7 @@
         </p>
         
         <p>
-            <button class="buttonPro purple" onclick="update_type(this);return false;"><?php echo lang('cap_nhat') ?></button>
+            <button class="buttonPro purple" onclick="update_type(this);return false;"><?php echo lang($link,'cap_nhat') ?></button>
         </p>
     </form>
 </div>
@@ -27,13 +27,13 @@
 function update_type(emp){
 
     if($('#id_type').val()==''){
-        swal('<?php echo lang('loi');?>','Id không được để trống','error');
+        swal('<?php echo lang($link,'loi');?>','Id không được để trống','error');
         return false;
     }
     
     
     if($('#icon_type').val()=='' ){
-        swal('<?php echo lang('loi');?>','icon không được để trống','error');
+        swal('<?php echo lang($link,'loi');?>','icon không được để trống','error');
         return false;
     }
     
@@ -48,7 +48,7 @@ function update_type(emp){
         {
             $('.alert').remove();
             $('#loading').fadeOut(200);
-            swal("Good job!","<?php echo lang('cap_nhat_thanh_cong'); ?>", "success");
+            swal("Good job!","<?php echo lang($link,'cap_nhat_thanh_cong'); ?>", "success");
         }
     
     });

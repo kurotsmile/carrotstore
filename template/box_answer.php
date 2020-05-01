@@ -27,12 +27,12 @@
 ?>
 </p>
 <div id="show_anwer_note" style="display: none;">
-    <strong><?php echo lang('answer_tip'); ?></strong>
+    <strong><?php echo lang($link,'answer_tip'); ?></strong>
     <textarea  name="answer_note" class="inp"></textarea>
 </div>
 <input type="hidden" name="question" value="<?php echo $que[0];?>" />
-<button class="buttonPro blue" onclick="select_answer();return false;"><?php echo lang('hoan_tat'); ?></button>
-<button class="buttonPro light_blue" onclick="reload_answer('<?php echo $que[0]; ?>');return false;"><?php echo lang('Đổi câu hỏi'); ?></button>
+<button class="buttonPro blue" onclick="select_answer();return false;"><?php echo lang($link,'hoan_tat'); ?></button>
+<button class="buttonPro light_blue" onclick="reload_answer('<?php echo $que[0]; ?>');return false;"><?php echo lang($link,'Đổi câu hỏi'); ?></button>
 </form>
 <script>
     function reload_answer(id_question){
@@ -77,7 +77,7 @@
                 }
             });
         }else{
-            swal("<?php echo lang('thong_bao');?>","<?php echo lang('dang_nhap_de_tra_loi_trac_nghiem'); ?>","info");
+            swal("<?php echo lang($link,'thong_bao');?>","<?php echo lang($link,'dang_nhap_de_tra_loi_trac_nghiem'); ?>","info");
         }
 
     }

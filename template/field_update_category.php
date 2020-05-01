@@ -5,7 +5,7 @@
     $category=json_decode($data['category']);
     ?>
 <div class="group">
-    <div class="title"><input type="checkbox" class="btnGroup" <?php if($category!=null){ echo 'checked="true"';}?> /> <?php echo lang('chuyen_muc');?> </div>
+    <div class="title"><input type="checkbox" class="btnGroup" <?php if($category!=null){ echo 'checked="true"';}?> /> <?php echo lang($link,'chuyen_muc');?> </div>
     <div class="content" <?php if($category!=null){ echo 'style="display: block;"';}?>>
         <?php
         $type_id=$_GET['sub_view'];

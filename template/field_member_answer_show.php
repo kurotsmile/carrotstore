@@ -8,7 +8,7 @@
            <?php
                 if(isset($_SESSION['username_login'])&&$_SESSION['username_login']==$id_user){
            ?>
-                <i class="fa fa-times close" title="<?php echo lang('xoa');?>" aria-hidden="true" onclick="delete_data(this,'<?php echo $an['id'];?>','account_answer');"></i> <i title="<?php echo lang('cap_nhat');?>" onclick="member_edit_answer('<?php echo $an['id'];?>');" class="fa fa-pencil-square edit" aria-hidden="true"></i>
+                <i class="fa fa-times close" title="<?php echo lang($link,'xoa');?>" aria-hidden="true" onclick="delete_data(this,'<?php echo $an['id'];?>','account_answer');"></i> <i title="<?php echo lang($link,'cap_nhat');?>" onclick="member_edit_answer('<?php echo $an['id'];?>');" class="fa fa-pencil-square edit" aria-hidden="true"></i>
             <?php }?>
         </div>
     <strong><?php echo $que['question'];?></strong><br/>

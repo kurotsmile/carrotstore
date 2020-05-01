@@ -131,14 +131,13 @@ if($_GET||$_POST){
             $category=$_GET['category'];
             $tags=$_GET['tags'];
             if($type!=''){
-               $result = mysql_query("SELECT * FROM `products` WHERE `type` = '".$type."' AND `id` NOT IN (".implode(",",$arr_id).") LIMIT 15",$link);
+               $result = mysqli_query($link,"SELECT * FROM `products` WHERE `type` = '".$type."' AND `id` NOT IN (".implode(",",$arr_id).") LIMIT 15");
             }else if($tags!=''){
-               $result = mysql_query("SELECT p.* FROM product_tag tag,products p WHERE tag.product_id=p.id AND tag.tag LIKE '%$tags%' AND p.id NOT IN (".implode(",",$arr_id).") LIMIT 15",$link);
+               $result = mysqli_query($link,"SELECT p.* FROM product_tag tag,products p WHERE tag.product_id=p.id AND tag.tag LIKE '%$tags%' AND p.id NOT IN (".implode(",",$arr_id).") LIMIT 15");
             }else{
-               $result = mysql_query("SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$arr_id).") LIMIT 15",$link);
+               $result = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$arr_id).") LIMIT 15");
             }
-
-            while ($row = mysql_fetch_array($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                include "page_view_all_product_git_template.php";
             }
         }
@@ -156,8 +155,8 @@ if($_GET||$_POST){
             $lang_sel=$_SESSION['lang'];
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
-            $result = mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 20",$link);
-            while ($row = mysql_fetch_array($result)) {
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_array($result)) {
                include "page_member_view_git.php";
             }
         }
@@ -283,7 +282,7 @@ if($_GET||$_POST){
         if(mysql_num_rows($get_member_data)>0){
             ?>
             <p style="min-height: 200px;">
-            <input type="text"  class="inp boxmsg_search" placeholder="<?php echo lang('tim_kiem');?>">
+            <input type="text"  class="inp boxmsg_search" placeholder="<?php echo lang($link,'tim_kiem');?>">
             <span class="boxmsg_member" onclick="select_member('<?php echo $user; ?>',this)"><img src="<?php echo thumb($data_cur_user['avatar'],'20x20');?>"/> <?php echo show_name_User($user);?></span>
             <?php
             while($member=mysql_fetch_array($get_member_data)){
@@ -464,9 +463,9 @@ if($_GET||$_POST){
 
     if(isset($_POST['function'])&&$_POST['function']=='show_box_select_lang'){
         $urls = $_POST['urls'];
-        $query_country=mysql_query("SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'", $link);
+        $query_country=mysqli_query($link,"SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'");
         echo '<form id="menu_country" method="post">';
-        while ($row_country=mysql_fetch_array($query_country)){
+        while ($row_country=mysqli_fetch_assoc($query_country)){
             $css_active='';
             if($row_country['key']==$lang){
                 $css_active='active';

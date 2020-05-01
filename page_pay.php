@@ -69,13 +69,13 @@ if($pay_device!=''&&$pay_item!=''){
 
 <div style="width: 100%;float: left;text-align: center;">
     <div style="width: 100%;float: left;padding-top: 20px;padding-bottom: 10px;">
-        <strong style="font-size: 20px;"><?php echo lang('pay_title'); ?></strong>
+        <strong style="font-size: 20px;"><?php echo lang($link,'pay_title'); ?></strong>
     </div>
     
     <?php if($pay_item!='music'){?>
         <div style="width: 50%;float: left;">
             <div style="margin: 5px;border-radius:2px;background-color: white;padding: 10px;max-width: 300px;margin-left: auto;">
-            <strong style="font-size: 16px;"><?php echo lang('sp'); ?></strong><br /><br />
+            <strong style="font-size: 16px;"><?php echo lang($link,'sp'); ?></strong><br /><br />
             <img style="border-radius: 25px;" src="<?php echo get_url_icon_product('119','50'); ?>" /><br />
             <?php
             if($pay_item=='obj_nude'){
@@ -91,7 +91,7 @@ if($pay_device!=''&&$pay_item!=''){
             
             if($pay_status!=''){
                 if($pay_status=='0'){
-                   echo lang('pay_tip_buy_now');
+                   echo lang($link,'pay_tip_buy_now');
                 }
                 
                 if($pay_status=='1'){
@@ -142,17 +142,17 @@ if($pay_device!=''&&$pay_item!=''){
         ?>
         <div style="width: 50%;float: left;">
             <div style="margin: 5px;border-radius:2px;padding: 10px;max-width: 300px;margin-right: auto;">
-            <strong style="font-size: 16px;"><?php echo lang('pay_account'); ?></strong><br /><br />
+            <strong style="font-size: 16px;"><?php echo lang($link,'pay_account'); ?></strong><br /><br />
             <img src="<?php echo get_url_avatar_user($pay_device,$_SESSION['lang'],'100');?>'"/><br />
             <b style="color: green;"><?php echo get_username_by_id($pay_device);?></b>
             <p>
             <ul style="text-align: left;list-style: none;padding: 0px;margin: 0px;overflow-wrap: break-word;">
             <li><strong><i class="fa fa-mobile" aria-hidden="true"></i> ID carrot:</strong> <?php echo $pay_device; ?></li>
-            <?php if($sdt!=''){?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang('so_dien_thoai');?>:</strong> <?php echo $sdt; ?></li><?php }?>
-            <?php if($address_account!=''){?><li><strong><i class="fa fa-map-marker"></i> <?php echo lang('dia_chi');?>:</strong> <?php echo $address_account;?></li><?php }?>
+            <?php if($sdt!=''){?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang($link,'so_dien_thoai');?>:</strong> <?php echo $sdt; ?></li><?php }?>
+            <?php if($address_account!=''){?><li><strong><i class="fa fa-map-marker"></i> <?php echo lang($link,'dia_chi');?>:</strong> <?php echo $address_account;?></li><?php }?>
             </ul>
             <br />
-            <i><?php echo lang('pay_tip_done'); ?></i>
+            <i><?php echo lang($link,'pay_tip_done'); ?></i>
             </p>
             </div>
         </div>
@@ -162,7 +162,7 @@ if($pay_device!=''&&$pay_item!=''){
     <?php if($pay_item=='music'){?>
     <div style="float: left;width: 100%;">
             <div style="margin: 5px;border-radius:2px;background-color: white;padding: 10px;max-width: 400px;margin-left: auto;margin-right: auto;min-height: 400px;">
-            <strong style="font-size: 16px;"><?php echo lang('download_song'); ?></strong><br /><br />
+            <strong style="font-size: 16px;"><?php echo lang($link,'download_song'); ?></strong><br /><br />
             
             <?php
             $query_music=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$pay_id_music'");
@@ -187,7 +187,7 @@ if($pay_device!=''&&$pay_item!=''){
             <?php
             if($pay_status!=''){
                 if($pay_status=='0'){
-                   echo lang('pay_tip_buy_now');
+                   echo lang($link,'pay_tip_buy_now');
                 }
                 
                 if($pay_status=='1'){
@@ -221,8 +221,8 @@ if($pay_device!=''&&$pay_item!=''){
             <script>
             function showlikepage(){
                 swal({
-                    title: "<?php echo lang('download_song');?>",
-                    text: "<iframe src='http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/virtuallover&width=292&colorscheme=light&show_faces=false&stream=false&header=false&height=80' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100%; height:62px;float:left;;margin-bottom:20px;margin-left: 91px;' allowTransparency='true'></iframe> <?php echo lang('tai_thanh_cong_tip'); ?>",
+                    title: "<?php echo lang($link,'download_song');?>",
+                    text: "<iframe src='http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/virtuallover&width=292&colorscheme=light&show_faces=false&stream=false&header=false&height=80' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100%; height:62px;float:left;;margin-bottom:20px;margin-left: 91px;' allowTransparency='true'></iframe> <?php echo lang($link,'tai_thanh_cong_tip'); ?>",
                     type: "success",
                     html:true
                 });
@@ -230,7 +230,7 @@ if($pay_device!=''&&$pay_item!=''){
             </script>
             <a style="width: 100%;" href="<?php echo $url;?>/download.php?file=<?php echo $url_download;?>" onclick="showlikepage();" id="download_song" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-                <span><?php echo lang('download_song');?></span>
+                <span><?php echo lang($link,'download_song');?></span>
             </a>
             <?php }?>
 

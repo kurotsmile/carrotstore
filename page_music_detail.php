@@ -5,11 +5,11 @@ if(!isset($data_music['id'])){
     <p style="float: left;width: 100%;margin-top: 40px;">
         <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i><br />
         <span style="margin-top: 10px;">
-        <?php echo lang('not_music'); ?>
+        <?php echo lang($link,'not_music'); ?>
         </span>
         <br />
         <br />
-        <a class="buttonPro" href="<?php echo $url;?>/music"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang('back_list_music'); ?></a>
+        <a class="buttonPro" href="<?php echo $url;?>/music"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang($link,'back_list_music'); ?></a>
     </p>
 </div>
 <?php
@@ -82,7 +82,7 @@ $txt_title=$data_music['chat'];
             ?>
 
         <h3>
-        <?php echo lang('loi_bai_hat');?> "<?php echo $data_music['chat'];?>"
+        <?php echo lang($link,'loi_bai_hat');?> "<?php echo $data_music['chat'];?>"
         </h3>
 
             <?php
@@ -96,7 +96,7 @@ $txt_title=$data_music['chat'];
             <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" />
             <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-                <span><?php echo lang('download_song');?></span>
+                <span><?php echo lang($link,'download_song');?></span>
                 <br />
                 <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$0.99</span>
             </a>
@@ -110,7 +110,7 @@ $txt_title=$data_music['chat'];
 
             <a  <?php echo $txt_function;?>  id="download_song" style="background-color: #67c7ca;" >
                     <i class="fa fa-plus-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-                    <span><?php echo lang('song_add_playlist');?></span>
+                    <span><?php echo lang($link,'song_add_playlist');?></span>
              </a>
 
             <div class="info_music">
@@ -194,19 +194,19 @@ $txt_title=$data_music['chat'];
                </div>
             <?php }else{?>
                 <div style="float: left;width: 100%;">
-                    <i class="fa fa-sticky-note-o" aria-hidden="true"></i> <?php echo lang('chua_co_loi_bai_hat');?>
+                    <i class="fa fa-sticky-note-o" aria-hidden="true"></i> <?php echo lang($link,'chua_co_loi_bai_hat');?>
                     <br />
-                    <span class="buttonPro black" id="btn_add_lyrics" onclick="show_add_lyrics();"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo lang('dong_gop_loi_nhac'); ?></span>
+                    <span class="buttonPro black" id="btn_add_lyrics" onclick="show_add_lyrics();"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo lang($link,'dong_gop_loi_nhac'); ?></span>
                     <div id="box_lyrics">
                         <div class="title" style="margin-bottom: 10px;float: left;">
-                            <i style="font-size: 60px;float: left;margin-right: 10px;" class="fa fa-file-text-o" aria-hidden="true"></i> <strong><?php echo lang('dong_gop_loi_nhac'); ?></strong><br />
-                            <i><?php echo lang('dong_gop_loi_nhac_tip'); ?></i>
+                            <i style="font-size: 60px;float: left;margin-right: 10px;" class="fa fa-file-text-o" aria-hidden="true"></i> <strong><?php echo lang($link,'dong_gop_loi_nhac'); ?></strong><br />
+                            <i><?php echo lang($link,'dong_gop_loi_nhac_tip'); ?></i>
                         </div>
                     <textarea id="lyric_contain" style="width: 98%;min-height: 250px;">
                     </textarea>
                     <br />
-                    <span class="buttonPro green" onclick="add_lyrics_music();"><i class="fa fa-paper-plane" aria-hidden="true"></i>  <?php echo lang('add_lyrics_send'); ?></span>
-                    <span class="buttonPro blue" onclick="hide_add_lyrics();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang('back'); ?></span>
+                    <span class="buttonPro green" onclick="add_lyrics_music();"><i class="fa fa-paper-plane" aria-hidden="true"></i>  <?php echo lang($link,'add_lyrics_send'); ?></span>
+                    <span class="buttonPro blue" onclick="hide_add_lyrics();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span>
                     </div>
                 </div>
                 
@@ -215,7 +215,7 @@ $txt_title=$data_music['chat'];
                         shortcut_key_music=false;
                         var contain_lyrics=$("#lyric_contain").val();
                         if(contain_lyrics.trim()==""){
-                             swal("<?php echo lang('loi'); ?>","<?php echo lang('add_lyrics_error'); ?>", "error");
+                             swal("<?php echo lang($link,'loi'); ?>","<?php echo lang($link,'add_lyrics_error'); ?>", "error");
                         }else{
                             $.ajax({
                                 url: "<?php echo $url; ?>/index.php",
@@ -224,7 +224,7 @@ $txt_title=$data_music['chat'];
                                 success: function(data, textStatus, jqXHR)
                                 {
                                     if(data=="1"){
-                                        swal("<?php echo lang('thanh_cong'); ?>","<?php echo lang('add_lyrics_success'); ?>", "success");
+                                        swal("<?php echo lang($link,'thanh_cong'); ?>","<?php echo lang($link,'add_lyrics_success'); ?>", "success");
                                         $('#box_lyrics').hide();
                                         $('#btn_add_lyrics').hide();
                                         shortcut_key_music=true;
@@ -262,11 +262,11 @@ $txt_title=$data_music['chat'];
     
     <div id="sidebar_product">
         <?php if($url_video!=''){?>
-        <h3><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang('xem_video'); ?></h3>     
+        <h3><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></h3>     
         <iframe width="100%"  src="https://www.youtube.com/embed/<?php echo $url_video; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <?php }?>
         <br />
-        <a href="<?php echo $url; ?>/music/month"><h3><i class="fa fa-star-half-o" aria-hidden="true"></i> <?php echo lang('music_top_month'); ?></h3></a>
+        <a href="<?php echo $url; ?>/music/month"><h3><i class="fa fa-star-half-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_month'); ?></h3></a>
         <?php
             $query_list_music_top=mysql_query("SELECT `chat`.id,`chat`.chat,`chat`.author,`chat`.slug,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 10");
             while($row_top=mysql_fetch_array($query_list_music_top)){
@@ -309,7 +309,7 @@ $list_music = mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM
 if(mysql_num_rows($list_music)>0){
 ?>
 <div style="float: left;width: 100%;">
-<h2 style="padding-left: 30px;"><?php echo lang('music_same'); ?></h2>
+<h2 style="padding-left: 30px;"><?php echo lang($link,'music_same'); ?></h2>
 <?php
     $label_choi_nhac=lang('choi_nhac');
     $label_chi_tiet=lang('chi_tiet');

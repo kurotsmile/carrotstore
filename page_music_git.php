@@ -2,14 +2,14 @@
     $url_song='';
    $id_music=$row['id'];
    $lang_sel=$row['author'];
-    $query_lyrics=mysql_query("SELECT SUBSTRING(`lyrics`, 1, 110) as l FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
-    $data_lyrics=mysql_fetch_array($query_lyrics);
-    mysql_free_result($query_lyrics);
-    $query_link_video=mysql_query("SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
-    $data_video=mysql_fetch_array($query_link_video);
+    $query_lyrics=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 110) as l FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
+    $data_lyrics=mysqli_fetch_array($query_lyrics);
+    mysqli_free_result($query_lyrics);
+    $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
+    $data_video=mysqli_fetch_array($query_link_video);
     $url_mp3 = '';
-    if($row['url_file']!='') {
-        $url_mp3 = $row['url_file'];
+    if($row['file_url']!='') {
+        $url_mp3 = $row['file_url'];
     }else{
         $url_mp3 = $url . '/app_mygirl/app_my_girl_' . $lang_sel . '/' . $id_music . '.mp3';
     }
@@ -43,25 +43,25 @@ $data_m_0='0';
 $data_m_1='0';
 $data_m_2='0';
 $data_m_3='0';
-$count_status_0=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='0' LIMIT 1");
-$count_status_1=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='1' LIMIT 1");
-$count_status_2=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='2' LIMIT 1");
-$count_status_3=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='3' LIMIT 1");
-$data_0=mysql_fetch_array($count_status_0);$data_m_0=$data_0[0];
-$data_1=mysql_fetch_array($count_status_1);$data_m_1=$data_1[0];
-$data_2=mysql_fetch_array($count_status_2);$data_m_2=$data_2[0];
-$data_3=mysql_fetch_array($count_status_3);$data_m_3=$data_3[0];
-mysql_free_result($count_status_0);
-mysql_free_result($count_status_1);
-mysql_free_result($count_status_2);
-mysql_free_result($count_status_3);
+$count_status_0=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='0' LIMIT 1");
+$count_status_1=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='1' LIMIT 1");
+$count_status_2=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='2' LIMIT 1");
+$count_status_3=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='3' LIMIT 1");
+$data_0=mysqli_fetch_array($count_status_0);$data_m_0=$data_0[0];
+$data_1=mysqli_fetch_array($count_status_1);$data_m_1=$data_1[0];
+$data_2=mysqli_fetch_array($count_status_2);$data_m_2=$data_2[0];
+$data_3=mysqli_fetch_array($count_status_3);$data_m_3=$data_3[0];
+mysqli_free_result($count_status_0);
+mysqli_free_result($count_status_1);
+mysqli_free_result($count_status_2);
+mysqli_free_result($count_status_3);
 ?>
 <div id="row<?php echo $row[0]; ?>" class="app" >
     <div class="app_title">
         <a href="<?php echo $url_song;?>">
             <h1 style="font-size: -1vw;">
                 <i class="fa fa-music" aria-hidden="true"  ></i>  &nbsp;&nbsp;
-                <?php echo limit_words($row['chat'],7); echo mysql_error();?>
+                <?php echo limit_words($row['chat'],7); ?>
             </h1>
         </a>
     </div>

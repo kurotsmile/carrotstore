@@ -2,7 +2,7 @@
     var arr_id_user=[];
     var myJsonString='';
 
-    var count_p=<?php echo mysql_num_rows(mysql_query("SELECT `id_device` FROM `app_my_girl_user_$lang_sel` WHERE `sdt`!='' AND `address`!='' AND `status`='0'")); ?>;
+    var count_p=<?php echo mysqli_num_rows(mysqli_query($link,"SELECT `id_device` FROM `app_my_girl_user_$lang_sel` WHERE `sdt`!='' AND `address`!='' AND `status`='0'")); ?>;
     $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {
             $('#loading').fadeIn(200);
@@ -26,9 +26,9 @@
     });
 </script>
 <?php
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysqli_fetch_array($result)) {
     include "page_member_view_git.php";
 }
-echo show_ads_box_main('contact_page');
+echo show_ads_box_main($link,'contact_page');
 ?>
 

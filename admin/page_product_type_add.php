@@ -21,13 +21,13 @@
 <script>
 function add_type(emp){
     if($('#id_type').val()==''){
-        swal('<?php echo lang('loi');?>','Id không được để trống','error');
+        swal('<?php echo lang($link,'loi');?>','Id không được để trống','error');
         return false;
     }
     
     
     if($('#icon_type').val()=='' ){
-        swal('<?php echo lang('loi');?>','icon không được để trống','error');
+        swal('<?php echo lang($link,'loi');?>','icon không được để trống','error');
         return false;
     }
     
@@ -39,7 +39,7 @@ function add_type(emp){
         data: "function=add_type&"+txt_data, //tham số truyền vào
         success: function(data, textStatus, jqXHR)
         {
-                swal('<?php echo lang('thanh_cong'); ?>','Thêm loại cho sản phẩm thành công','success');
+                swal('<?php echo lang($link,'thanh_cong'); ?>','Thêm loại cho sản phẩm thành công','success');
                 $('#loading').fadeOut(200);
                 $('#icons').val('');
                 $('#names').val('');

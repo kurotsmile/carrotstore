@@ -1,12 +1,12 @@
 <?php
-$query_type=mysql_query("SELECT `css_icon` FROM `type` WHERE `id` = '".$data['type']."' LIMIT 1");
-$data_type=mysql_fetch_array($query_type);
+$query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$data['type']."' LIMIT 1");
+$data_type=mysqli_fetch_array($query_type);
 ?>
 <div style="float: left;width:100%">
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
-        <h2><?php echo get_name_product_lang($data[0],$_SESSION['lang']);?></h2>
+        <h2><?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?></h2>
         <p>
-            <img alt="<?php echo get_name_product_lang($data[0],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($data[0],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data[0],150);?>" />
+            <img alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
             <?php 
                 QRcode::png($url.'/product/'.$data['id'], 'phpqrcode/img_product/'.$data['id'].'.png', 'L', 4, 2);
             ?>
@@ -16,17 +16,17 @@ $data_type=mysql_fetch_array($query_type);
             </span>
    
             
-            <strong><?php echo lang('loai'); ?>:</strong>
-            <a style="color: orangered;font-weight: bold;" href="<?php echo $url; ?>/type/<?php echo $data["type"]; ?>"> <span class="<?php echo $data_type[0]; ?>"></span> <?php echo lang($data["type"]);?></a>
+            <strong><?php echo lang($link,'loai'); ?>:</strong>
+            <a style="color: orangered;font-weight: bold;" href="<?php echo $url; ?>/type/<?php echo $data["type"]; ?>"> <span class="<?php echo $data_type[0]; ?>"></span> <?php echo lang($link,$data["type"]);?></a>
             
             <br />
-            <span class="product_view" > <i class="fa fa-eye"></i> <strong><?php echo lang('luot_xem');?></strong>:<?php
+            <span class="product_view" > <i class="fa fa-eye"></i> <strong><?php echo lang($link,'luot_xem');?></strong>:<?php
                 echo intval($data["view"]);
                 $count_view=intval($data["view"]);
                 $count_view++;
-                mysql_query("UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data[0]."';");
+                mysqli_query($link,"UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data['id']."';");
                 ?></span><br/>
-            <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang('ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang('ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
+            <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
             <br />
             <?php
             $type_rate='product';
@@ -40,7 +40,7 @@ $data_type=mysql_fetch_array($query_type);
             <?php if($data['huawei_store']!=''){ ?><li><a href="<?php echo $data['huawei_store'];?>" target="_blank"><img src="<?php echo $url.'/images/huawei_store_download.png';?>" /></a></li><?php }?>
             <?php if($data['apk']!=''){ ?><li><a class="buttonPro orange" href="<?php echo $data['apk'];?>" target="_blank"><img src="<?php echo $url.'/images/apk_download.png';?>" /></a></li><?php }?>
             <?php if($data['carrot_store']!=''){ ?><li><a href="<?php echo $data['carrot_store'];?>" target="_blank"><img src="<?php echo $url.'/images/carrotstore_app_web.png';?>" /></a></li><?php }?>
-            <?php if(file_exists('product_data/'.$data[0].'/ios/app.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $data[0];?>/ios/app.plist" target="_blank" title="<?php echo lang('download_on').' (Carrot Store)';?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
+            <?php if(file_exists('product_data/'.$data['id'].'/ios/app.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $data['id'];?>/ios/app.plist" target="_blank" title="<?php echo lang($link,'download_on').' (Carrot Store)';?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
             </ul>
         </p>
 
@@ -64,7 +64,7 @@ $data_type=mysql_fetch_array($query_type);
     		<div class="container" style="float: left;width: 100%;">
     			<div id="simpleImg" class="util-theme-default util-carousel sample-img">
                 <?php
-                $id_product=$data[0];
+                $id_product=$data['id'];
                 $dirname = "product_data/".$id_product."/slide";
             $dir = opendir($dirname);
         
@@ -95,8 +95,8 @@ $data_type=mysql_fetch_array($query_type);
 <div style="float: left;width: 100%;background-color: white;">
     <div id="post_product">
     <?php
-        echo get_desc_product_lang($data[0],$_SESSION['lang']);
-        echo show_share($seo_url); 
+        echo get_desc_product_lang($link,$data['id'],$_SESSION['lang']);
+        echo show_share($link,$seo_url); 
         
     ?>
                 <iframe
@@ -107,13 +107,13 @@ $data_type=mysql_fetch_array($query_type);
     </div>
 
     <div id="sidebar_product">
-       <h3 class="title"><?php echo lang('loai');?></h3>
+       <h3 class="title"><?php echo lang($link,'loai');?></h3>
         <ul class="list_category" >
             <?php
-            $results_category = mysql_query("SELECT * FROM `type`");
-            while ($category = mysql_fetch_array($results_category)) {
+            $results_category = mysqli_query($link,"SELECT * FROM `type`");
+            while ($category = mysqli_fetch_assoc($results_category)) {
                 ?>
-                <li><a href="<?php echo $url.'/type/'.$category['id'];?>"><span class="<?php echo $category['css_icon'];?>"></span> <?php echo lang($category['id']);?></a></li>
+                <li><a href="<?php echo $url.'/type/'.$category['id'];?>"><span class="<?php echo $category['css_icon'];?>"></span> <?php echo lang($link,$category['id']);?></a></li>
                 <?php
             }
             ?>
@@ -121,7 +121,7 @@ $data_type=mysql_fetch_array($query_type);
 
 
         <?php
-        if(get_setting('show_ads')=='1') {
+        if(get_setting($link,'show_ads')=='1') {
         ?>
             <ins class="adsbygoogle"
                  style="display:inline-block;width:300px;height:300px"
@@ -151,7 +151,7 @@ $(document).ready(function() {
     <div id="box_comments" style="width: 70%;float: left">
     <?php
                 $type_comment='products';
-                $id_product=$data[0];
+                $id_product=$data['id'];
                 include "template/field_comment.php";
     ?>
     </div>
@@ -165,13 +165,13 @@ $(document).ready(function() {
 <?php
             $types=$data['type'];
             $id_product=$data['id'];
-            $result3 = mysql_query("SELECT * FROM `products` WHERE `type` ='$types' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8",$link);
-            if(mysql_num_rows($result3)>0){
+            $result3 = mysqli_query($link,"SELECT * FROM `products` WHERE `type` ='$types' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+            if(mysqli_num_rows($result3)>0){
 ?>
 <div style="float: left;width: 100%;">
-<h2 style="padding-left: 30px;"><?php echo lang('sp_tuong_tu'); ?></h2>
+<h2 style="padding-left: 30px;"><?php echo lang($link,'sp_tuong_tu'); ?></h2>
 <?php
-                while ($row = mysql_fetch_array($result3)) {
+                while ($row = mysqli_fetch_array($result3)) {
                     include "page_view_all_product_git_template.php";
                 }
                 ?>

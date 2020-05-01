@@ -12,7 +12,7 @@ if(isset($data["id"])){
 ?>
         <div style="margin-top: 15px;">        
             <div class="group">
-            <div class="title"><input type="checkbox" name="place_time" class="btnGroup" <?php if($check_time>0){ echo 'checked="true"';} ?>  /> <?php echo lang('thoi_gian');?> </div>
+            <div class="title"><input type="checkbox" name="place_time" class="btnGroup" <?php if($check_time>0){ echo 'checked="true"';} ?>  /> <?php echo lang($link,'thoi_gian');?> </div>
             <div class="content"  <?php if($check_time>0){ echo 'style="display: block;"';}?> >
             <div id="content_tag" class="tags">
                 <p>

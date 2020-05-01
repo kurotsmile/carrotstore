@@ -17,23 +17,23 @@ $(document).ready(function(){
         echo "profilePictureURL: '".thumb('images/avatar_default.png','40x40')."',";
    }
    ?>
-   textareaPlaceholderText: '<?php echo lang('nhap_binh_luan'); ?>',
-   sendText: '<?php echo lang('dang_binh_luan'); ?>',
-   replyText: '<?php echo lang('tra_loi');?>',
-   newestText: '<?php echo lang('moi_nhat');?>',
-   oldestText: '<?php echo lang('cu_nhat');?>',
-   popularText: '<?php echo lang('pho_bien_nhat'); ?>',
-   noCommentsText: '<?php echo lang('khong_co_binh_luan'); ?>',
+   textareaPlaceholderText: '<?php echo lang($link,'nhap_binh_luan'); ?>',
+   sendText: '<?php echo lang($link,'dang_binh_luan'); ?>',
+   replyText: '<?php echo lang($link,'tra_loi');?>',
+   newestText: '<?php echo lang($link,'moi_nhat');?>',
+   oldestText: '<?php echo lang($link,'cu_nhat');?>',
+   popularText: '<?php echo lang($link,'pho_bien_nhat'); ?>',
+   noCommentsText: '<?php echo lang($link,'khong_co_binh_luan'); ?>',
     getComments: function(success, error) {
         var commentsArray = [
             <?php
-            $result=mysql_query("SELECT * FROM `comment` WHERE `productid` = '$id_product' AND `type_comment`='$type_comment' AND `lang`='".$_SESSION['lang']."'");
-            while ($row = mysql_fetch_array($result)) {
+            $result=mysqli_query($link,"SELECT * FROM `comment` WHERE `productid` = '$id_product' AND `type_comment`='$type_comment' AND `lang`='".$_SESSION['lang']."'");
+            while ($row = mysqli_fetch_array($result)) {
                 $comment_user_name='';
                 $comment_user_avatar='';
 
                 if($row['username']=='andanh@gmail.com'){
-                    $comment_user_name=lang("an_danh");
+                    $comment_user_name=lang($link,"an_danh");
                     $comment_user_avatar=thumb('images/avatar_default.png','40x40');
                 }else{
                     $user_comment=json_decode(get_info_user_comment($row['username'],$row['lang']));

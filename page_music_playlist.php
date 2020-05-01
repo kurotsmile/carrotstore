@@ -6,21 +6,23 @@ Class Song{
     public $mp3='';
 }
 
+
+
 $id=$_GET['id'];
 $lang=$_GET['lang'];
 $query_list_playlist=mysql_query("SELECT `data`,`name`,`user_id` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id' LIMIT 1");
 $data_playlist_sel=mysql_fetch_array($query_list_playlist);
-$data_playlist=json_decode($data_playlist_sel['data']);
+$s_data=preg_replace( "/\r|\n/", "", $data_playlist_sel['data']);
+
+$data_playlist=json_decode($s_data);
 
 $obj_music=$data_playlist[0];
-$id_music=$obj_music->id;
-$lang_music=$obj_music->lang;
-$query_music=mysql_query("SELECT `file_url` FROM `app_my_girl_$lang_music` WHERE `id` = '$id_music' LIMIT 1");
-$data_music=mysql_fetch_array($query_music);
-if(file_exists("app_mygirl/app_my_girl_$lang_music/$id_music.mp3")){
-    $url_mp3 =$url."/app_mygirl/app_my_girl_$lang_music/$id_music.mp3";
+
+$url_mp3='';
+if(file_exists("app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3")){
+    $url_mp3 =$url."/app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3";
 }else {
-    $url_mp3 = $data_music['file_url'];
+    $url_mp3 =$obj_music->file_url;
 }
 
 $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
@@ -58,36 +60,36 @@ if(isset($user_login)){
         <input type="hidden" name="lang_song_delete" id="lang_song_delete" value="">
         <input type="hidden" name="id_playlist" value="<?php echo $id;?>">
         <input type="hidden" name="lang_playlist" value="<?php echo $lang;?>">
-        <input type="hidden" name="data_txt" id="data_txt" value='<?php echo addslashes($data_playlist_sel['data']);?>'>
+        <input type="hidden" name="data_txt" id="data_txt" value='<?php echo $s_data;?>'>
     </form>
 
     <table id="list_my_music">
         <?php
         for ($i=0;$i<count($data_playlist);$i++){
                 $obj_music=$data_playlist[$i];
-                $id_music=$obj_music->id;
-                $lang_music=$obj_music->lang;
                 $url_mp3='';
                 $name_mp3='';
-                $query_music=mysql_query("SELECT `file_url`,`chat` FROM `app_my_girl_$lang_music` WHERE `id` = '$id_music' LIMIT 1");
-                $data_music=mysql_fetch_array($query_music);
-                if(file_exists("app_mygirl/app_my_girl_$lang_music/$id_music.mp3")){
-                    $url_mp3 =$url."/app_mygirl/app_my_girl_$lang_music/$id_music.mp3";
+                if(file_exists("app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3")){
+                    $url_mp3 =$url."/app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3";
                 }else {
-                    $url_mp3 =$data_music['file_url'];
+                    $url_mp3 =$obj_music->file_url;
                 }
                 
                 $song=new Song();
-                $song->id=$id_music;
-                $song->name=addslashes($data_music['chat']);
+                $song->id=$obj_music->id;
+                $song->name=addslashes($obj_music->chat);
                 $song->mp3=$url_mp3;
                 array_push($list_song,$song);
+
+
+
+
         ?>
         <tr class="item_playlis item_play_<?php echo $i;?>"  index="<?php echo $i;?>">
-            <td><i class="fa fa-music item_playlist_icon" aria-hidden="true"></i> <span class="item_playlist_name"><?php echo $data_music['chat']; ?></span></td>
+            <td><i class="fa fa-music item_playlist_icon" aria-hidden="true"></i> <span class="item_playlist_name"><?php echo $obj_music->chat; ?></span></td>
             <td style="text-align: right">
-                <a target="_blank" href="<?php echo $url;?>/music/<?php echo $id_music;?>/<?php echo $lang_music;?>" class="buttonPro small light_blue"><i class="fa fa-info" aria-hidden="true"></i></a>
-                <?php if($is_me){?><span class="buttonPro small red" onclick="update_playlist(this,'<?php echo $id_music;?>','<?php echo $lang_music;?>');return false;"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span><?php }?>
+                <a target="_blank" href="<?php echo $url;?>/music/<?php echo $obj_music->id;?>/<?php echo $obj_music->author;?>" class="buttonPro small light_blue"><i class="fa fa-info" aria-hidden="true"></i></a>
+                <?php if($is_me){?><span class="buttonPro small red" onclick="update_playlist(this,'<?php echo $obj_music->id;?>','<?php echo $obj_music->author;?>');return false;"><i class="fa fa-trash" aria-hidden="true"></i> <?php echo $label_delete;?></span><?php }?>
             </td>
         </tr>
         <?php }?>
@@ -122,13 +124,13 @@ if(isset($user_login)){
         $("#id_song_delete").val(id_delete);
         $("#lang_song_delete").val(lang_delete);
         swal({
-                title: "<?php echo lang('delete');?>",
-                text: "<?php echo lang('delete_tip');?>",
+                title: "<?php echo lang($link,'delete');?>",
+                text: "<?php echo lang($link,'delete_tip');?>",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#DD6B55',
-                confirmButtonText: '<?php echo lang('box_yes');?>',
-                cancelButtonText: "<?php echo lang('box_no');?>",
+                confirmButtonText: '<?php echo lang($link,'box_yes');?>',
+                cancelButtonText: "<?php echo lang($link,'box_no');?>",
                 closeOnConfirm: false,
             },
             function(isConfirm){
@@ -141,7 +143,7 @@ if(isset($user_login)){
                         success: function (data, textStatus, jqXHR) {
                             $("#data_txt").val(data);
                             $(emp).parent().parent().remove();
-                            swal("<?php echo lang("my_playlist"); ?>","<?php echo lang('delete_song_success');?>","success");
+                            swal("<?php echo lang("my_playlist"); ?>","<?php echo lang($link,'delete_song_success');?>","success");
                             return false;
                         }
                     });

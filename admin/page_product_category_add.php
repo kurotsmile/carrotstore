@@ -38,13 +38,13 @@
             <input name="table" type="hidden" value="product_category"/>
             <?php  if($edit>0){?>
                 <input type="hidden" name="id" value="<?php echo $edit;?>">
-                <input type="hidden" name="success" value="<?php echo lang('cap_nhat_thanh_cong');?>">
+                <input type="hidden" name="success" value="<?php echo lang($link,'cap_nhat_thanh_cong');?>">
                 <input type="button" class="buttonPro" value="Cập nhật" onclick="insert_data('frm_category_add');return false;"/>
             <?php }else{?>
-                <input type="hidden" name="success" value="<?php echo lang('them_moi_thanh_cong');?>">
+                <input type="hidden" name="success" value="<?php echo lang($link,'them_moi_thanh_cong');?>">
                 <input type="button" class="buttonPro" value="Thêm" onclick="insert_data('frm_category_add');return false;"/>
             <?php }?>
-            <input type="hidden" name="error" value="<?php echo lang('loi');?>">
+            <input type="hidden" name="error" value="<?php echo lang($link,'loi');?>">
         </p>
     </form>
 </div>

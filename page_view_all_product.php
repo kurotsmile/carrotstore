@@ -11,15 +11,15 @@
 
 
     if($type==''){
-        $result = mysql_query("SELECT * FROM `products` WHERE  `status`='1' ORDER BY RAND() LIMIT 20",$link);
-        $result_count=mysql_query("SELECT * FROM `products` WHERE  `status`='1' ORDER BY RAND()",$link);
+        $result = mysqli_query($link,"SELECT * FROM `products` WHERE  `status`='1' ORDER BY RAND() LIMIT 20");
+        $result_count=mysqli_query($link,"SELECT * FROM `products` WHERE  `status`='1' ORDER BY RAND()");
     }else{
-        $result = mysql_query("SELECT * FROM `products` $type AND `status`='1' ORDER BY RAND() LIMIT 20",$link);
-        $result_count=mysql_query("SELECT * FROM `products` $type AND  `status`='1' ORDER BY RAND()",$link);
+        $result = mysqli_query($link,"SELECT * FROM `products` $type AND `status`='1' ORDER BY RAND() LIMIT 20");
+        $result_count=mysqli_query($link,"SELECT * FROM `products` $type AND  `status`='1' ORDER BY RAND()");
     }
 
 
-    $result_count=mysql_num_rows($result_count);
+    $result_count=mysqli_num_rows($result_count);
 
 
     $view_type="page_view_all_product_git";
@@ -31,13 +31,13 @@
     }
 ?>
     <div id="bar_menu_sub">
-        <li class="menu_item_type"> <a href="<?php echo $url; ?>" <?php if($type_menu==''){ echo 'class="active"';} ?>><?php echo '<span class="fa fa-globe" style="padding: 0px;margin: 0px;margin-right: 5px;float: left;"></span> '.lang('tat_ca'); ?></a></li>
+        <li class="menu_item_type"> <a href="<?php echo $url; ?>" <?php if($type_menu==''){ echo 'class="active"';} ?>><?php echo '<span class="fa fa-globe" style="padding: 0px;margin: 0px;margin-right: 5px;float: left;"></span> '.lang($link,'tat_ca'); ?></a></li>
             <?php
-                $results = mysql_query("SELECT * FROM `type` ORDER BY `position`",$link);
-                while ($row = mysql_fetch_array($results)) {
+                $results = mysqli_query($link,"SELECT `id`,`css_icon` FROM `type` ORDER BY `position`");
+                while ($row = mysqli_fetch_assoc($results)) {
                     ?>
                     <li class="menu_item_type">
-                    <a href="<?php echo $url; ?>/type/<?php echo $row[0];?>" <?php if($type_menu==$row[0]){ echo 'class="active"';} ?>><?php echo '<span class="'.$row[1].'" style="padding: 0px;margin: 0px;margin-right: 5px;float: left;"></span> '.lang($row[0]); ?></a>
+                    <a href="<?php echo $url; ?>/type/<?php echo $row['id'];?>" <?php if($type_menu==$row['id']){ echo 'class="active"';} ?>><?php echo '<span class="'.$row['css_icon'].'" style="padding: 0px;margin: 0px;margin-right: 5px;float: left;"></span> '.lang($link,$row['id']); ?></a>
                     </li>
              <?php
                 }

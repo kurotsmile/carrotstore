@@ -12,7 +12,7 @@
     }
     ?>
     <div class="group">
-        <div class="title"><input type="checkbox" class="btnGroup" <?php if(count($tags)>0){ echo 'checked="true"';} ?>  /> <?php echo lang('the');?> </div>
+        <div class="title"><input type="checkbox" class="btnGroup" <?php if(count($tags)>0){ echo 'checked="true"';} ?>  /> <?php echo lang($link,'the');?> </div>
         <div class="content"  <?php if(count($tags)>0){ echo 'style="display: block;"';}?> >
     <div id="content_tag" class="tags">
         <?php
@@ -24,7 +24,7 @@
     <input  id="tags" type="text" class="inp"  >
     <ul id="tags_autocomet"></ul>
      <br/>
-    <button class="buttonPro light_blue small" onclick="add_tags();return false;"><?php echo lang('them_the');?></button>
+    <button class="buttonPro light_blue small" onclick="add_tags();return false;"><?php echo lang($link,'them_the');?></button>
 
     <input name="tags" id="tags_val" type="hidden" value="<?php echo $tags_val; ?>" >
 <script>
@@ -66,7 +66,7 @@
         tags_val=tags_val+txt_tag+',';
         $('#tags_val').val(tags_val);
     }else{
-        swal("<?php echo lang('loi'); ?>","<?php echo lang('tip_err_the'); ?>", "error");
+        swal("<?php echo lang($link,'loi'); ?>","<?php echo lang($link,'tip_err_the'); ?>", "error");
     }
 
   }

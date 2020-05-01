@@ -110,7 +110,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
         ?>
         <i class="fa fa-rocket fa-3x" style="float: left;margin-right: 10px;"></i>
         <strong style="font-size: 15px;width: 100px;">Thêm sản phẩm</strong><br />
-        <span>(<span id="num_cart_show"><?php echo mysql_num_rows($result); ?></span>) <?php echo lang('sp'); ?></span>
+        <span>(<span id="num_cart_show"><?php echo mysql_num_rows($result); ?></span>) <?php echo lang($link,'sp'); ?></span>
     </a>
 
     <div id="bar_menu">
@@ -156,8 +156,8 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
 
 <div id="loading">
     <i class="fa fa-refresh fa-spin fa-3x" style="float: left;margin-right: 10px;"></i>
-    <strong style="font-size: 15px;width: 100px;"><?php echo lang('dang_xu_ly'); ?></strong><br />
-    <span><?php echo lang('dang_lay_du_lieu'); ?></span>
+    <strong style="font-size: 15px;width: 100px;"><?php echo lang($link,'dang_xu_ly'); ?></strong><br />
+    <span><?php echo lang($link,'dang_lay_du_lieu'); ?></span>
 </div>
 
 

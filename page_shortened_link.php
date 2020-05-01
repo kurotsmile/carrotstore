@@ -23,16 +23,16 @@ $count_toal_link=$count_toal_link['c'];
 <div id="bk_link">
     <div style="width: 10%;float: left;">&nbsp;</div>
     <form style="width: 80%;float: left;text-align: center;" id="link_create" name="link_create">
-        <h2><?php echo lang('rut_gon_link'); ?></h2>
-        <input type="text" value="" style="" name="link" id="inp_link" placeholder="<?php echo lang('shorten_link_inp'); ?>" />
-        <a class="buttonPro blue large" onclick="create_shorten_link();return false;"><i class="fa fa-link fa-spin"></i> <?php echo lang('shorten_link_btn'); ?></a>
+        <h2><?php echo lang($link,'rut_gon_link'); ?></h2>
+        <input type="text" value="" style="" name="link" id="inp_link" placeholder="<?php echo lang($link,'shorten_link_inp'); ?>" />
+        <a class="buttonPro blue large" onclick="create_shorten_link();return false;"><i class="fa fa-link fa-spin"></i> <?php echo lang($link,'shorten_link_btn'); ?></a>
         <input type="hidden" name="function" value="create_shorten_link" />
     </form>
     <div style="width: 80%;float: left;text-align: center;" id="link_return">
-        <h2><?php echo lang('shorten_link_return'); ?></h2>
+        <h2><?php echo lang($link,'shorten_link_return'); ?></h2>
         <div id="link_return_show" style="float: left;width: 100%;">
         </div>
-        <a class="buttonPro blue small" onclick="$('#link_create').show();$('#link_return').hide();return false;"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang('back'); ?></a>
+        <a class="buttonPro blue small" onclick="$('#link_create').show();$('#link_return').hide();return false;"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></a>
     </div>
     <div style="width: 10%;float: left;">&nbsp;</div>
 </div>
@@ -46,13 +46,13 @@ $count_toal_link=$count_toal_link['c'];
                   <strong><?php echo $user_login->name; ?></strong><br />
                   <img src="<?php echo $user_login->avatar; ?>" />
                   <br />
-                  <a href="<?php echo $url;?>/links/<?php echo $user_login->id;?>"> <?php echo lang('shorten_link_my_list');?></a>
+                  <a href="<?php echo $url;?>/links/<?php echo $user_login->id;?>"> <?php echo lang($link,'shorten_link_my_list');?></a>
                 <?php
                 }else{
                 ?>
                     <i style="font-size: 30px;margin-bottom: 20px;" class="fa fa-sign-in" aria-hidden="true"></i><br />
-                    <?php echo lang('shorten_link_tip_1'); ?><br/>
-                    <span class="buttonPro green" onclick="login_account();"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang('dang_nhap');?></span>
+                    <?php echo lang($link,'shorten_link_tip_1'); ?><br/>
+                    <span class="buttonPro green" onclick="login_account();"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang($link,'dang_nhap');?></span>
                 <?php
                 }
                 ?>
@@ -65,12 +65,12 @@ $count_toal_link=$count_toal_link['c'];
         ?>
         <br />
         <br />
-        <a href="<?php echo $url;?>/links"><i class="fa fa fa-list" aria-hidden="true"></i> <?php echo lang('shorten_link_list'); ?></a>
+        <a href="<?php echo $url;?>/links"><i class="fa fa fa-list" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_list'); ?></a>
     </div>
     
     <div class="row_info_link" style="width: 28%;float: left;padding: 10px;">
             <i style="font-size: 30px;margin-bottom: 20px;" class="fa fa-motorcycle" aria-hidden="true"></i><br />
-            <?php echo lang('shorten_link_tip_3');?>
+            <?php echo lang($link,'shorten_link_tip_3');?>
             <div style="width: 100%;float: left;margin-top: 5px;">
             <?php
             $query_product=mysql_query("SELECT `chplay_store`,`app_store`,`app_store`,`window_store`,`huawei_store`,`galaxy_store` FROM `products` WHERE `id` = '137' LIMIT 1");
@@ -111,7 +111,7 @@ function create_shorten_link(){
         });
     }else{
         $("#loading").hide(200);
-        swal("<?php echo lang("rut_gon_link"); ?>","<?php echo lang('shorten_link_error');?>","error");
+        swal("<?php echo lang("rut_gon_link"); ?>","<?php echo lang($link,'shorten_link_error');?>","error");
     }
         
 }

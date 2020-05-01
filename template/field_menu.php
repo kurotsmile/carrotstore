@@ -8,7 +8,7 @@ if(isset($data["id"])){
 ?>
         <div style="margin-top: 15px;">        
             <div class="group">
-            <div class="title"><input type="checkbox" name="place_menu" class="btnGroup" <?php if($check_menu_item>0){ echo 'checked="true"';} ?>  /> <?php echo lang('thuc_don');?> </div>
+            <div class="title"><input type="checkbox" name="place_menu" class="btnGroup" <?php if($check_menu_item>0){ echo 'checked="true"';} ?>  /> <?php echo lang($link,'thuc_don');?> </div>
             <div class="content"  <?php if($check_menu_item>0){ echo 'style="display: block;"';}?> >
                 <p>
                     <label>Item name:</label>

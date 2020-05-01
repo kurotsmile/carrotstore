@@ -13,7 +13,7 @@ $data_link=mysql_fetch_array($query_link);
     <div style="width: 10%;float: left;">&nbsp;</div>
     <div style="width: 10%;float: left;text-align: center;"><i style="font-size: 50px;margin-top: 26px;" class="fa fa-link" aria-hidden="true"></i></div>
     <div style="width: 70%;float: left;text-align: left;" id="link_create">
-        <h2><?php echo lang('shorten_link_detail'); ?></h2><br />
+        <h2><?php echo lang($link,'shorten_link_detail'); ?></h2><br />
         <div style="color: slateblue;text-shadow: 1px 0px 11px #acff00;font-size: 15px;font-weight: bold;"><?php echo $data_link['link']; ?></div>
     </div>
     <div style="width: 10%;float: left;">&nbsp;</div>
@@ -37,23 +37,23 @@ $data_link=mysql_fetch_array($query_link);
             <td>ID</td><td><?php echo $data_link['id']; ?></td>
         </tr>
         <tr>
-            <td><?php echo lang('link_full');?></td><td><a href="<?php echo $data_link['link']; ?>" target="_blank"><?php echo $data_link['link']; ?></a></td>
+            <td><?php echo lang($link,'link_full');?></td><td><a href="<?php echo $data_link['link']; ?>" target="_blank"><?php echo $data_link['link']; ?></a></td>
         </tr>
         <tr>
-            <td><?php echo lang('shorten_link_create');?></td><td><a href="<?php echo $url;?>/link/<?php echo $data_link['id']; ?>" target="_blank"><?php echo $url;?>/link/<?php echo $data_link['id']; ?></a></td>
+            <td><?php echo lang($link,'shorten_link_create');?></td><td><a href="<?php echo $url;?>/link/<?php echo $data_link['id']; ?>" target="_blank"><?php echo $url;?>/link/<?php echo $data_link['id']; ?></a></td>
         </tr>
         <tr>
-            <td><?php echo lang('ngay_dang');?></td><td><?php echo $data_link['date']; ?></td>
+            <td><?php echo lang($link,'ngay_dang');?></td><td><?php echo $data_link['date']; ?></td>
         </tr>
         <tr>
-            <td><?php echo lang('luot_xem'); ?></td><td><?php echo $data_link['view']; ?></td>
+            <td><?php echo lang($link,'luot_xem'); ?></td><td><?php echo $data_link['view']; ?></td>
         </tr>
         <?php
         if($data_link['id_user']!=''){
         ?>
         <tr>
             <td>
-                <?php echo lang('link_nguoi_tao'); ?>
+                <?php echo lang($link,'link_nguoi_tao'); ?>
             </td>
             <td>
             
@@ -75,7 +75,7 @@ $data_link=mysql_fetch_array($query_link);
         ?>
         
         <tr>
-            <td><?php echo lang('shorten_link_home'); ?></td><td><a href="http://<?php echo get_home_url($data_link['link']); ?>" target="_blank"><?php echo get_home_url($data_link['link']); ?></a></td>
+            <td><?php echo lang($link,'shorten_link_home'); ?></td><td><a href="http://<?php echo get_home_url($data_link['link']); ?>" target="_blank"><?php echo get_home_url($data_link['link']); ?></a></td>
         </tr>
         <?php
         if($data_link['password']!=''){
@@ -85,7 +85,7 @@ $data_link=mysql_fetch_array($query_link);
         </tr>
         <?php }?>
         <tr>
-            <td><?php echo lang('shorten_link_status');?></td><td><?php echo lang("shorten_link_status_".$data_link['status']); ?></td>
+            <td><?php echo lang($link,'shorten_link_status');?></td><td><?php echo lang("shorten_link_status_".$data_link['status']); ?></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -94,15 +94,15 @@ $data_link=mysql_fetch_array($query_link);
         </tr>
         <tr>
             <td colspan="2">
-                <a class="buttonPro blue" href="<?php echo $url;?>/links"><i class="fa fa-list" aria-hidden="true"></i> <?php echo lang('shorten_link_list'); ?></a>
+                <a class="buttonPro blue" href="<?php echo $url;?>/links"><i class="fa fa-list" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_list'); ?></a>
                 <?php
                 if(isset($user_login)){
                 ?>
-                <a href="<?php echo $url;?>/links/<?php echo $user_login->id; ?>" class="buttonPro blue"><img src="<?php echo $user_login->avatar;?>" style="width: 13px;" /> <?php echo $user_login->name;?> : <?php echo lang('shorten_link_my_list'); ?></a>
+                <a href="<?php echo $url;?>/links/<?php echo $user_login->id; ?>" class="buttonPro blue"><img src="<?php echo $user_login->avatar;?>" style="width: 13px;" /> <?php echo $user_login->name;?> : <?php echo lang($link,'shorten_link_my_list'); ?></a>
                 <?php
                 }
                 ?>
-                <a class="buttonPro blue" href="<?php echo $url;?>/link"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo lang('shorten_link_btn'); ?></a>
+                <a class="buttonPro blue" href="<?php echo $url;?>/link"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_btn'); ?></a>
             </td>
         </tr>
     </table>

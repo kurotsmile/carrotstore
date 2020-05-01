@@ -28,3 +28,32 @@ if(isset($_POST['function'])&&$_POST['function']=='update_info_user'){
 }
 
 
+if(isset($_POST['function'])&&$_POST['function']=='speed_quote'){
+    $quote_id=$_POST['id'];
+    $url_mp3='';
+    if(file_exists('app_mygirl/app_my_girl_'.$lang.'/'.$quote_id.'.mp3')){
+        $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$quote_id.'.mp3';
+    }else{
+        $query_quote=mysql_query("SELECT `chat` FROM `app_my_girl_$lang` WHERE `id`='$quote_id' LIMIT 1");
+        $data_quote=mysql_fetch_assoc($query_quote);
+        $text=urlencode($data_quote['chat']);
+        $link_audio="https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=".strlen($text)."&client=tw-ob&q=$text&tl=$lang";
+        $ch = curl_init($link_audio);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_NOBODY, 0);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
+        $output = curl_exec($ch);
+        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        $file_new='voice_'.uniqid().'.mp3';
+        if ($status == 200) {
+            file_put_contents('data_temp/'.$file_new, $output);
+        }
+        $url_mp3=$url.'/data_temp/'.$file_new;
+    }
+    echo $url_mp3;
+    exit;
+}

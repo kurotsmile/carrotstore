@@ -26,13 +26,13 @@ $(document).ready(function(){
         echo "profilePictureURL: '".thumb('images/avatar_default.png','40x40')."',";
    }
    ?>
-   textareaPlaceholderText: '<?php echo lang('nhap_binh_luan'); ?>',
-   sendText: '<?php echo lang('dang_binh_luan'); ?>',
-   replyText: '<?php echo lang('tra_loi');?>',
-   newestText: '<?php echo lang('moi_nhat');?>',
-   oldestText: '<?php echo lang('cu_nhat');?>',
-   popularText: '<?php echo lang('pho_bien_nhat'); ?>',
-   noCommentsText: '<?php echo lang('khong_co_binh_luan'); ?>',
+   textareaPlaceholderText: '<?php echo lang($link,'nhap_binh_luan'); ?>',
+   sendText: '<?php echo lang($link,'dang_binh_luan'); ?>',
+   replyText: '<?php echo lang($link,'tra_loi');?>',
+   newestText: '<?php echo lang($link,'moi_nhat');?>',
+   oldestText: '<?php echo lang($link,'cu_nhat');?>',
+   popularText: '<?php echo lang($link,'pho_bien_nhat'); ?>',
+   noCommentsText: '<?php echo lang($link,'khong_co_binh_luan'); ?>',
     getComments: function(success, error) {
         var commentsArray = [
 

@@ -11,7 +11,7 @@ if(!$is_me){
 $query_backup=mysql_query("SELECT * FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id_user` = '$id_user'");
 ?>
 <div style="float: left;width: 100%">
-    <h3 style="padding: 20px;padding-bottom: 5px;margin-bottom: 5px;"><?php echo lang('backup_contact_title'); ?></h3>
+    <h3 style="padding: 20px;padding-bottom: 5px;margin-bottom: 5px;"><?php echo lang($link,'backup_contact_title'); ?></h3>
     <?php
         $title_backup_tip=lang('backup_contact_title_tip');
         $title_backup_tip=str_replace("{num_bk}",mysql_num_rows($query_backup),$title_backup_tip);
@@ -28,11 +28,11 @@ $query_backup=mysql_query("SELECT * FROM carrotsy_contacts.`backup_contact_$lang
         ?>
         <div class="item">
             <i class="fa fa-address-book-o"></i>
-            <h3><?php echo lang('sao_luu_danh_ba');?> (<?php echo $count_backup;?>)</h3>
+            <h3><?php echo lang($link,'sao_luu_danh_ba');?> (<?php echo $count_backup;?>)</h3>
             <p>
                 <?php echo $row_backup['comment']; ?><br>
-                <span class="buttonPro small light_blue" onclick="view_backup('<?php echo $row_backup['id'];?>')"><?php echo lang('chi_tiet');?></span>
-                <span class="buttonPro small red"><?php echo lang('delete');?></span>
+                <span class="buttonPro small light_blue" onclick="view_backup('<?php echo $row_backup['id'];?>')"><?php echo lang($link,'chi_tiet');?></span>
+                <span class="buttonPro small red"><?php echo lang($link,'delete');?></span>
             </p>
         </div>
          <?php

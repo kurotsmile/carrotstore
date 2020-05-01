@@ -67,7 +67,7 @@ $list_quote=mysql_query("SELECT * FROM `app_my_girl_".$_SESSION['lang']."` WHERE
 if(mysql_num_rows($list_quote)>0){
 ?>
 <div style="float: left;width: 100%;">
-<h2 style="padding-left: 30px;"><?php echo lang('quote_more'); ?></h2>
+<h2 style="padding-left: 30px;"><?php echo lang($link,'quote_more'); ?></h2>
 <?php
 while ($row = mysql_fetch_array($list_quote)) {
     include "page_quote_git.php";

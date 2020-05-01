@@ -71,9 +71,9 @@ if (isset($_SESSION['lang'])) {
     $lang=$_SESSION['lang'];
 } else {
     $k = ip_visitor_country();
-    $query_key_country = mysql_query("SELECT `key` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
-    if (mysql_num_rows($query_key_country)) {
-        $data_key_country = mysql_fetch_array($query_key_country);
+    $query_key_country = mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
+    if (mysqli_num_rows($query_key_country)) {
+        $data_key_country = mysqli_fetch_array($query_key_country);
         $_SESSION['lang'] = $data_key_country['key'];
     } else {
         $_SESSION['lang'] = 'en';
@@ -131,10 +131,10 @@ include "header.php";
     }
     ?>
     <div class="" id="tool_search">
-        <input type="text" placeholder="<?php echo lang('tip_search'); ?>" onchange="search_product(this.value)"
+        <input type="text" placeholder="<?php echo lang($link,'tip_search'); ?>" onchange="search_product(this.value)"
                name="search" class="inp" id="inp_search"/>
         <!--<button class="btn"><?php echo $icon_search; ?></button>--!>
-        <span id="proccess" style="display: none;float: left;"> <?php echo lang('dang_xu_ly'); ?></span>
+        <span id="proccess" style="display: none;float: left;"> <?php echo lang($link,'dang_xu_ly'); ?></span>
     </div>
 
     <script>
@@ -166,40 +166,40 @@ include "header.php";
 
     <div id="add_company" onclick="show_box_select_lang();">
         <?php
-        $query_name_country=mysql_query("SELECT `name` FROM `app_my_girl_country` WHERE `key`='$lang' LIMIT 1", $link);
-        $data_name_country=mysql_fetch_array($query_name_country);
+        $query_name_country=mysqli_query($link,"SELECT `name` FROM `app_my_girl_country` WHERE `key`='$lang' LIMIT 1");
+        $data_name_country=mysqli_fetch_assoc($query_name_country);
         ?>
         <img style="width: 39px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"  src="<?php echo $url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$lang.'.png&size=39x39&trim=1'; ?>"/>
         <strong style="font-size: 15px;width: 100px;"><?php echo $data_name_country['name']; ?></strong><br/>
-        <span  style="font-size: 70%;"><?php echo lang('ngon_ngu_hien_thi'); ?></span>
+        <span  style="font-size: 70%;"><?php echo lang($link,'ngon_ngu_hien_thi'); ?></span>
     </div>
 
-    <a id="add_company" href="https://www.paypal.me/kurotsmile" target="_blank" title="<?php echo lang('chu_thich_ung_ho'); ?>">
+    <a id="add_company" href="https://www.paypal.me/kurotsmile" target="_blank" title="<?php echo lang($link,'chu_thich_ung_ho'); ?>">
         <i class="fa fa-heart-o fa-3x" style="float: left;margin-right: 10px;" aria-hidden="true"></i>
-        <strong style="font-size: 15px;width: 100px;"><?php echo lang('ung_ho'); ?></strong><br/>
-        <span><?php echo lang('ung_ho_tip'); ?></span>
+        <strong style="font-size: 15px;width: 100px;"><?php echo lang($link,'ung_ho'); ?></strong><br/>
+        <span><?php echo lang($link,'ung_ho_tip'); ?></span>
     </a>
     
 
     <div id="bar_menu">
         <a href="<?php echo $url; ?>/products" <?php if ($page_file == "page_view.php") {
             echo 'class="active"';
-        } ?>><?php echo lang('mua_sp'); ?></a>
+        } ?>><?php echo lang($link,'mua_sp'); ?></a>
         <a href="<?php echo $url; ?>/member" <?php if ($page_file == "page_member.php") {
             echo 'class="active"';
-        } ?>><?php echo lang('luu_tru_lien_he'); ?></a>
+        } ?>><?php echo lang($link,'luu_tru_lien_he'); ?></a>
         <a href="<?php echo $url; ?>/music" <?php if ($page_file == "page_music.php") {
             echo 'class="active"';
-        } ?>><?php echo lang('am_nhac_cho_cuoc_song'); ?></a>
+        } ?>><?php echo lang($link,'am_nhac_cho_cuoc_song'); ?></a>
         <a href="<?php echo $url; ?>/quote" <?php if ($page_file == "page_quote.php") {
             echo 'class="active"';
-        } ?>><?php echo lang('trich_dan'); ?></a>
+        } ?>><?php echo lang($link,'trich_dan'); ?></a>
         <a href="<?php echo $url; ?>/link" <?php if ($page_file == "page_shortened_link.php" || $page_file == "page_shortened_link_manager.php" || $page_file == "page_shortened_link_detail.php") {
             echo 'class="active"';
-        } ?>><?php echo lang('rut_gon_link'); ?></a>
+        } ?>><?php echo lang($link,'rut_gon_link'); ?></a>
         <a href="<?php echo $url; ?>/privacy_policy" <?php if ($page_file == "page_privacy_policy.php") {
             echo 'class="active"';
-        } ?>><?php echo lang('gioi_thieu'); ?></a>
+        } ?>><?php echo lang($link,'gioi_thieu'); ?></a>
 
         <?php
         if(isset($user_login)){
@@ -213,7 +213,7 @@ include "header.php";
                 echo '<a style="float: right;margin-right: 5px;"  onclick="show_all_playlist();return false"><i class="fa fa-music" aria-hidden="true"></i></a> ';
             }
         }else{
-            echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang('dang_nhap').'</a> ';
+            echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang($link,'dang_nhap').'</a> ';
         }
         ?>
         <a id="show_history" style="float: right;margin-right: 5px;"
@@ -240,8 +240,8 @@ include "header.php";
 
 <div id="loading">
     <i class="fa fa-refresh fa-spin fa-3x" style="float: left;margin-right: 10px;"></i>
-    <strong style="font-size: 15px;width: 100px;"><?php echo lang('dang_xu_ly'); ?></strong><br/>
-    <span><?php echo lang('dang_lay_du_lieu'); ?></span>
+    <strong style="font-size: 15px;width: 100px;"><?php echo lang($link,'dang_xu_ly'); ?></strong><br/>
+    <span><?php echo lang($link,'dang_lay_du_lieu'); ?></span>
     <span id="loading-page"></span>
 </div>
 
@@ -269,8 +269,8 @@ include "header.php";
      attribution=setup_tool
      page_id="232297850844551"
      theme_color="#67b868"
-     logged_in_greeting="<?php echo lang('message_tip'); ?>"
-     logged_out_greeting="<?php echo lang('message_tip'); ?>"
+     logged_in_greeting="<?php echo lang($link,'message_tip'); ?>"
+     logged_out_greeting="<?php echo lang($link,'message_tip'); ?>"
 >
 </div>
 
@@ -283,5 +283,5 @@ include "script_all_page.php";
 </body>
 </html>
 <?php
-mysql_close($link);
+mysqli_close($link);
 ?>

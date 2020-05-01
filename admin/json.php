@@ -62,19 +62,19 @@ if(isset($_POST['function'])&&$_POST['function']=='status_order'){
         $status=$_POST['status'];
         $result3 = mysql_query("UPDATE `order` SET `status` = '$status' WHERE `users` = '$users' AND `product` = '$product' ",$link);
         if($status=='1'){
-            ?><span class="order_level1"><?php echo lang('cho_xac_nhan'); ?></span><?php
+            ?><span class="order_level1"><?php echo lang($link,'cho_xac_nhan'); ?></span><?php
             $content='';
         }
         if($status=='2'){
-            ?><span class="order_level2"><?php echo lang('da_xac_nhan'); ?></span><?php 
+            ?><span class="order_level2"><?php echo lang($link,'da_xac_nhan'); ?></span><?php
             $content=lang('tip_order_1');
         }
         if($status=='3'){
-            ?><span class="order_level3"><?php echo lang('dang_chuyen_hang'); ?></span><?php
+            ?><span class="order_level3"><?php echo lang($link,'dang_chuyen_hang'); ?></span><?php
             $content=lang('tip_order_2');
         }
         if($status=='4'){
-            ?><span class="order_level4"><?php echo lang('hoan_tat'); ?></span><?php
+            ?><span class="order_level4"><?php echo lang($link,'hoan_tat'); ?></span><?php
             $content=lang('tip_order_3');
         }
         mysql_query("INSERT INTO `notification` (`icon`, `user`, `content`, `type`, `object_id`, `object_type`) VALUES ('fa fa-shopping-basket', '$users', '$content', 'don_dac_hang', '$product','products')");

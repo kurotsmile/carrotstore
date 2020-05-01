@@ -22,11 +22,11 @@
     <?php
     if($row['type']!='ket_ban'){
     ?>
-    <span class="buttonPro small red" onclick="delete_notification(<?php echo $row[0];?>)"><?php echo lang('xoa'); ?></span>
-    <button class="buttonPro small light_blue" onclick="read_notification(<?php echo $row[0];?>)"><?php echo lang('da_doc'); ?></button>
+    <span class="buttonPro small red" onclick="delete_notification(<?php echo $row[0];?>)"><?php echo lang($link,'xoa'); ?></span>
+    <button class="buttonPro small light_blue" onclick="read_notification(<?php echo $row[0];?>)"><?php echo lang($link,'da_doc'); ?></button>
     <?php }else{?>
-        <span class="buttonPro small red" onclick="delete_friend('<?php echo $row['user_from'];?>',0);"><?php echo lang('tu_choi_ket_ban'); ?></span>
-        <button class="buttonPro small blue" onclick="add_friend('<?php echo $row['user_from'];?>',0);"><?php echo lang('chap_nhan_ket_ban'); ?></button>
+        <span class="buttonPro small red" onclick="delete_friend('<?php echo $row['user_from'];?>',0);"><?php echo lang($link,'tu_choi_ket_ban'); ?></span>
+        <button class="buttonPro small blue" onclick="add_friend('<?php echo $row['user_from'];?>',0);"><?php echo lang($link,'chap_nhan_ket_ban'); ?></button>
     <?php }?>
     </div>
 </div>

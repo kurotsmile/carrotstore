@@ -63,11 +63,10 @@ if($function=='save_playlist_music'){
     $query_playlist=mysql_query("SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
     if(mysql_num_rows($query_playlist)==0){
         $new_id_playlist=uniqid().''.uniqid();
-        $item_playlist=new Item_playlis();
-        $item_playlist->id=$id_music;
-        $item_playlist->lang=$lang_music;
+        $query_music=mysql_query("SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang_music` WHERE `id`='$id_music'  LIMIT 1");
+        $item_playlist=mysql_fetch_assoc($query_music);
         $array_playlist=array($item_playlist);
-        $data_playlist=json_encode($array_playlist);
+        $data_playlist=json_encode($array_playlist,JSON_UNESCAPED_UNICODE);
         $name_playlist=lang('my_playlist',$lang);
         $query_add_playlist=mysql_query("INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_user', '$data_playlist', '$name_playlist','1');");
         $alert->type='0';
@@ -107,25 +106,16 @@ if($function=='add_song_to_playlist'){
 
     $query_playlist=mysql_query("SELECT `data` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id_playlist' LIMIT 1");
     $data_playlist=mysql_fetch_array($query_playlist);
-    $data_playlist=json_decode($data_playlist['data']);
+    $s_data=preg_replace( "/\r|\n/", "", $data_playlist['data']);
+    $data_playlist=json_decode($s_data,JSON_UNESCAPED_UNICODE);
 
-    $array_playlist = array();
+    $query_music=mysql_query("SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang_music` WHERE `id`='$id_music'  LIMIT 1");
+    $item_playlist=mysql_fetch_assoc($query_music);
+    array_push($data_playlist,$item_playlist);
 
-    for($i=0;$i<count($data_playlist);$i++) {
-        $obj_music=$data_playlist[$i];
-        $item_playlist = new Item_playlis();
-        $item_playlist->id = $obj_music->id;
-        $item_playlist->lang = $obj_music->lang;
-        array_push($array_playlist,$item_playlist);
-    }
+    $length_playlist=count($data_playlist);
+    $data_playlist = json_encode($data_playlist,JSON_UNESCAPED_UNICODE);
 
-    $item_playlist = new Item_playlis();
-    $item_playlist->id = $id_music;
-    $item_playlist->lang = $lang_music;
-    array_push($array_playlist,$item_playlist);
-
-    $data_playlist = json_encode($array_playlist);
-    $length_playlist=count($array_playlist);
 
     $query_update_playlist=mysql_query("UPDATE carrotsy_music.`playlist_$lang` SET `data`='$data_playlist', `length` ='$length_playlist' WHERE `id`='$id_playlist'");
     exit;
@@ -139,11 +129,10 @@ if($function=='create_playlist'){
     $name_playlist=$_POST['name_playlist'];
 
     $new_id_playlist=uniqid().''.uniqid();
-    $item_playlist=new Item_playlis();
-    $item_playlist->id=$id_music;
-    $item_playlist->lang=$lang;
+    $query_music=mysql_query("SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang` WHERE `id`='$id_music'  LIMIT 1");
+    $item_playlist=mysql_fetch_assoc($query_music);
     $array_playlist=array($item_playlist);
-    $data_playlist=json_encode($array_playlist);
+    $data_playlist=json_encode($array_playlist,JSON_UNESCAPED_UNICODE);
 
     $query_add_playlist=mysql_query("INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_u', '$data_playlist', '$name_playlist','1');");
     echo mysql_error();
@@ -163,17 +152,14 @@ if($function=='update_playlist'){
     $arr_new_list=array();
     for($i=0;$i<count($data_playlist);$i++){
         $obj_music=$data_playlist[$i];
-        if($obj_music->id==$id_song_delete&&$obj_music->lang==$lang_song_delete){
+        if($obj_music->id==$id_song_delete&&$obj_music->author==$lang_song_delete){
 
         }else{
-            $item_playlist=new Item_playlis();
-            $item_playlist->id=$obj_music->id;
-            $item_playlist->lang=$obj_music->lang;
-            array_push($arr_new_list,$item_playlist);
+            array_push($arr_new_list,$obj_music);
         }
     }
 
-    $data_playlist_new=json_encode($arr_new_list);
+    $data_playlist_new=json_encode($arr_new_list,JSON_UNESCAPED_UNICODE);
     $length_playlist_new=count($arr_new_list);
     $query_update_playlist=mysql_query("UPDATE carrotsy_music.`playlist_$lang_playlist` SET `data`='$data_playlist_new', `length` ='$length_playlist_new' WHERE `id`='$id_playlist'");
     echo $data_playlist_new;

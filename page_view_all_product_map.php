@@ -6,7 +6,7 @@
       
     </style>
     <div id="list_map">
-        <div class="title"><?php echo lang('danh_sach_tim_thay'); ?></div>
+        <div class="title"><?php echo lang($link,'danh_sach_tim_thay'); ?></div>
         <div class="content">
         <?php
         while ($row = mysql_fetch_array($result)) {
@@ -101,10 +101,10 @@ function initMap() {
                     txt_content="<strong><?php echo $row[1];?></strong>";
                     txt_content=txt_content+"<div class='hr'></div>";
                     txt_content=txt_content+"<br/><img src='<?php echo thumb($row[3],'90x90'); ?>'/><br/>";
-                    txt_content=txt_content+"<?php echo lang('loai').":<a href='".URL."/type/".$row[8]."'>".lang($row[8])."</a>"; ?></br>";
-                    txt_content=txt_content+"<?php echo lang('dia_chi').":<a href='".URL."/type/".$row[8]."'>".$address->address."</a>"; ?></br></br>";
-                    txt_content=txt_content+"<a class='buttonPro small purple' href='index.php?page_view=page_view.php&view_product=<?php echo $row[0];?>'><?php echo lang('chi_tiet');?></a>";
-                    txt_content=txt_content+"<a onclick='add_cart(<?php echo $row[0]; ?>)' class='buttonPro small orange'><i class='fa fa-cart-plus'></i> <?php echo lang('them_vao_gio_hang'); ?></a>";
+                    txt_content=txt_content+"<?php echo lang($link,'loai').":<a href='".URL."/type/".$row[8]."'>".lang($row[8])."</a>"; ?></br>";
+                    txt_content=txt_content+"<?php echo lang($link,'dia_chi').":<a href='".URL."/type/".$row[8]."'>".$address->address."</a>"; ?></br></br>";
+                    txt_content=txt_content+"<a class='buttonPro small purple' href='index.php?page_view=page_view.php&view_product=<?php echo $row[0];?>'><?php echo lang($link,'chi_tiet');?></a>";
+                    txt_content=txt_content+"<a onclick='add_cart(<?php echo $row[0]; ?>)' class='buttonPro small orange'><i class='fa fa-cart-plus'></i> <?php echo lang($link,'them_vao_gio_hang'); ?></a>";
                     infoWindow.setContent(txt_content);
               });
         <?php

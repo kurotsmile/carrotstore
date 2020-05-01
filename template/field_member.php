@@ -1,7 +1,7 @@
 <div class="c_member" data-user-id="<?php echo $user['usernames'];?>">
     <img style="float: left;margin: 2px;" src="<?php echo thumb($user['avatar'],'90x90'); ?>"/>
     <strong><?php echo show_name_User($user['usernames']); ?></strong><br/>
-    <i><?php echo lang('chuc_vu');?>:</i><br/>
+    <i><?php echo lang($link,'chuc_vu');?>:</i><br/>
     <input type="hidden" value="<?php echo $user['usernames'];?>" name="user[]">
     <select class="inp" name="position[]" style="width: auto;">
         <?php
@@ -15,5 +15,5 @@
         }
         ?>
     </select><br/>
-    <button class="buttonPro small red" onclick="$(this).parent().remove();return false;"><i class="fa fa-trash"></i> <?php echo lang('xoa');?></button>
+    <button class="buttonPro small red" onclick="$(this).parent().remove();return false;"><i class="fa fa-trash"></i> <?php echo lang($link,'xoa');?></button>
 </div>
