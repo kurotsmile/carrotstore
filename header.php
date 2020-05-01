@@ -35,26 +35,26 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
         $lang_sel=$_GET['lang'];
         if(isset($_GET['slug'])){
             $slug=$_GET['slug'];
-            $query_music=mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `slug`='$slug'");
+            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `slug`='$slug'");
         }else{
             $id=$_GET['id'];
-            $query_music=mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$id'");
+            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$id'");
         }
 
-        $data_music=mysql_fetch_array($query_music);
+        $data_music=mysqli_fetch_assoc($query_music);
         $id=$data_music['id'];
         $id_music=$data_music['id'];
         $title_page=$data_music['chat'];
         
-        $query_lyrics_desc=mysql_query("SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
-        if(mysql_num_rows($query_lyrics_desc)){
-            $data_lyrics=mysql_fetch_array($query_lyrics_desc);
+        $query_lyrics_desc=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        if(mysqli_num_rows($query_lyrics_desc)){
+            $data_lyrics=mysqli_fetch_assoc($query_lyrics_desc);
             $seo_desc='';
-            if ($data_lyrics['artist'] != '') $seo_desc.=lang('song_artist').':'.$data_lyrics['artist'].' ';
-            if ($data_lyrics['album'] != '') $seo_desc.=lang('song_album').':'. $data_lyrics['album'].' ';
-            if ($data_lyrics['genre'] != '') $seo_desc.=lang('song_genre').':'.$data_lyrics['genre'].' ';
-            if ($data_lyrics['year'] != '') $seo_desc.=lang('song_year').':'.$data_lyrics['year'].' ';
-            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang('loi_bai_hat').' ('.$title_page.') '. $data_lyrics['l'].'... ';
+            if ($data_lyrics['artist'] != '') $seo_desc.=lang($link,'song_artist').':'.$data_lyrics['artist'].' ';
+            if ($data_lyrics['album'] != '') $seo_desc.=lang($link,'song_album').':'. $data_lyrics['album'].' ';
+            if ($data_lyrics['genre'] != '') $seo_desc.=lang($link,'song_genre').':'.$data_lyrics['genre'].' ';
+            if ($data_lyrics['year'] != '') $seo_desc.=lang($link,'song_year').':'.$data_lyrics['year'].' ';
+            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang($link,'loi_bai_hat').' ('.$title_page.') '. $data_lyrics['l'].'... ';
         }
 
         if($data_music['slug']!=''){
@@ -63,8 +63,8 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
             $seo_url = $url . '/music/' . $id_music . '/' . $lang_sel;
         }
         
-        $query_link_video=mysql_query("SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
-        $data_video=mysql_fetch_array($query_link_video);
+        $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
+        $data_video=mysqli_fetch_array($query_link_video);
         $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang_sel.'/'.$id_music.'.mp3';
             
         $seo_img=$url.'/images/music_default.png';
@@ -89,8 +89,8 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
     if($_GET['view']=='info_quote'){
         $id=$_GET['id'];
         $lang_sel=$_GET['lang'];
-        $query_quote=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
-        $data_quote=mysql_fetch_array($query_quote);
+        $query_quote=mysqli_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
+        $data_quote=mysqli_fetch_array($query_quote);
         $title_page=$data_quote['chat'];
         $seo_desc=$title_page;
         

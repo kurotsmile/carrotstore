@@ -171,14 +171,14 @@ if($_GET||$_POST){
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
             $list_style='list';
-            $label_choi_nhac=lang('choi_nhac');
-            $label_chi_tiet=lang('chi_tiet');
-            $label_loi_bai_hat=lang('loi_bai_hat');
-            $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
-            $label_music_no_rank=lang('music_no_rank');
+            $label_choi_nhac=lang($link,'choi_nhac');
+            $label_chi_tiet=lang($link,'chi_tiet');
+            $label_loi_bai_hat=lang($link,'loi_bai_hat');
+            $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
+            $label_music_no_rank=lang($link,'music_no_rank');
             
-            $result = mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20",$link);
-            while ($row = mysql_fetch_array($result)) {
+            $result = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_assoc($result)) {
                include "page_music_git.php";
             }
         }
@@ -192,7 +192,7 @@ if($_GET||$_POST){
             $lang_sel=$_SESSION['lang'];
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
-            $result = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20",$link);
+            $result = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20");
             while ($row = mysql_fetch_array($result)) {
                include "page_quote_git.php";
             }
@@ -295,7 +295,7 @@ if($_GET||$_POST){
             </p>
             <?php
         }else{
-            echo '<strong>'.lang('khong_co_du_lieu').'</strong>';
+            echo '<strong>'.lang($link,'khong_co_du_lieu').'</strong>';
         }
         exit;
     }
@@ -454,9 +454,9 @@ if($_GET||$_POST){
         echo '<strong style="color: slateblue;text-shadow: 1px 0px 11px #acff00;">'.$link.'</strong><br/>';
         echo '<img src="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png"/><br/>';
         echo '<input type="text" class="inp_link_show" value="'.$new_url_link.'" /><br/>';
-        echo '<a href="" class="buttonPro light_blue large" onClick="copyTextToClipboard(\''.$new_url_linkk.'\');return false;"><i class="fa fa-clipboard" aria-hidden="true" ></i> '.lang('copy').'</a>';
-        echo '<a href="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png" target="_blank" class="buttonPro light_blue large"><i class="fa fa-floppy-o" aria-hidden="true"></i> '.lang('save_img').' (QR)</a>';
-        echo '<a href="'.$url.'/l/'.$new_id_link.'" target="_blank" class="buttonPro light_blue large"><i class="fa fa-external-link-square" aria-hidden="true"></i> '.lang('shorten_link_detail').'</a>';
+        echo '<a href="" class="buttonPro light_blue large" onClick="copyTextToClipboard(\''.$new_url_linkk.'\');return false;"><i class="fa fa-clipboard" aria-hidden="true" ></i> '.lang($link,'copy').'</a>';
+        echo '<a href="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png" target="_blank" class="buttonPro light_blue large"><i class="fa fa-floppy-o" aria-hidden="true"></i> '.lang($link,'save_img').' (QR)</a>';
+        echo '<a href="'.$url.'/l/'.$new_id_link.'" target="_blank" class="buttonPro light_blue large"><i class="fa fa-external-link-square" aria-hidden="true"></i> '.lang($link,'shorten_link_detail').'</a>';
         echo show_share($new_url_link.'/'.$lang);
         exit;
     }
@@ -484,11 +484,11 @@ if($_GET||$_POST){
 
         $txt_error='';
         if($user_phone_login==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('account_update_phone_error');
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'account_update_phone_error');
         }
 
         if($user_password_login==''&&$txt_error==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_dang_nhap');
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_dang_nhap');
         }
 
         if($txt_error=='') {
@@ -506,7 +506,7 @@ if($_GET||$_POST){
                 $_SESSION['user_login'] = json_encode($user_login);
                 echo 'ready_account';
             } else {
-                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_dang_nhap');
+                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_dang_nhap');
             }
         }else{
             echo $txt_error;
@@ -524,22 +524,22 @@ if($_GET||$_POST){
         $txt_error='';
 
         if($user_name_register==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_ten');
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_ten');
         }
 
         if(!is_numeric($user_phone_register)&&$txt_error==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('account_update_phone_error');
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'account_update_phone_error');
         }
 
 
         if($user_password_register==''&&$txt_error==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_mat_khau');
+            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_mat_khau');
         }
 
         if($txt_error==''){
             $check_login = mysql_query("SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_register' AND `password`='$user_password_register' LIMIT 1");
             if(mysql_num_rows($check_login)>0){
-                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang('loi_tai_khoan_da_ton_tai');
+                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_tai_khoan_da_ton_tai');
             }else {
                 $query_add_user = mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`,`sdt`, `sex`, `date_start`, `date_cur`, `status`,`password`) VALUES ('$id_device','$user_name_register','$user_phone_register','0',NOW(),NOW(),0,'$user_password_register');");
                 echo 'add_account_success';

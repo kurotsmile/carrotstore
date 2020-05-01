@@ -149,13 +149,10 @@ if($sub_view=='artist'){
     }
 }
 
-if(!isset($query_list_music)){
-    mysqli_free_result($query_list_music);
-}
 ?>
 
 </div>
 
 <?php
-echo show_ads_box_main('music_page');
+echo show_ads_box_main($link,'music_page');
 ?>

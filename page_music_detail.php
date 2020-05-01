@@ -23,8 +23,8 @@ $id_music=$data_music['id'];
 $color_music=$data_music['color'];
 $lang_sel=$data_music['author'];
 
-$query_link_video=mysql_query("SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
-$data_video=mysql_fetch_array($query_link_video);
+$query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
+$data_video=mysqli_fetch_assoc($query_link_video);
 if($data_music['file_url']!=''){
     $url_mp3 = $data_music['file_url'];
 }else {
@@ -35,8 +35,8 @@ $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x1
 $url_video='';
 $url_img_thumb_ytb='';
 
-if($data_video[0]!=''){
-    parse_str( parse_url( $data_video[0], PHP_URL_QUERY ), $my_array_of_vars );
+if($data_video['link']!=''){
+    parse_str( parse_url( $data_video['link'], PHP_URL_QUERY ), $my_array_of_vars );
     $url_video=$my_array_of_vars['v'];
     $url_img_thumb_ytb='https://img.youtube.com/vi/'.$my_array_of_vars['v'].'/hqdefault.jpg'; 
 }
@@ -123,7 +123,7 @@ $txt_title=$data_music['chat'];
             </div>
 
             </p>
-            <?php echo show_share($url.'/music/'.$id_music.'/'.$lang_sel); ?>
+            <?php echo show_share($link,$url.'/music/'.$id_music.'/'.$lang_sel); ?>
             <?php if($data_lyrics['lyrics']!=''){?>
                 <div style="float: left;width: 100%;">
                     <span style="float: right;" >
@@ -268,8 +268,8 @@ $txt_title=$data_music['chat'];
         <br />
         <a href="<?php echo $url; ?>/music/month"><h3><i class="fa fa-star-half-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_month'); ?></h3></a>
         <?php
-            $query_list_music_top=mysql_query("SELECT `chat`.id,`chat`.chat,`chat`.author,`chat`.slug,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 10");
-            while($row_top=mysql_fetch_array($query_list_music_top)){
+            $query_list_music_top=mysqli_query($link,"SELECT `chat`.id,`chat`.chat,`chat`.author,`chat`.slug,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$lang_sel` as `top_music` left JOIN   `app_my_girl_$lang_sel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT 10");
+            while($row_top=mysqli_fetch_array($query_list_music_top)){
                 $url_song='';
                 if($row_top['slug']!=''){
                     $url_song=$url.'/song/'.$row_top['author'].'/'.$row_top['slug'];
@@ -285,11 +285,11 @@ $txt_title=$data_music['chat'];
         ?>
         <br />
         <?php
-            echo show_box_ads_page('music_page');
+            echo show_box_ads_page($link,'music_page');
         ?>
 
         <?php
-        if(get_setting('show_ads')=='1') {
+        if(get_setting($link,'show_ads')=='1') {
         ?>
         <ins class="adsbygoogle"
              style="display:inline-block;width:300px;height:300px"
@@ -305,18 +305,18 @@ $txt_title=$data_music['chat'];
 
 <?php
 $list_style='same';
-$list_music = mysql_query("SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND  `id` != '$id_music' ORDER BY RAND() LIMIT 10",$link);
-if(mysql_num_rows($list_music)>0){
+$list_music = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND  `id` != '$id_music' ORDER BY RAND() LIMIT 10");
+if(mysqli_num_rows($list_music)>0){
 ?>
 <div style="float: left;width: 100%;">
 <h2 style="padding-left: 30px;"><?php echo lang($link,'music_same'); ?></h2>
 <?php
-    $label_choi_nhac=lang('choi_nhac');
-    $label_chi_tiet=lang('chi_tiet');
-    $label_loi_bai_hat=lang('loi_bai_hat');
-    $label_chua_co_loi_bai_hat=lang('chua_co_loi_bai_hat');
-    $label_music_no_rank=lang('music_no_rank');
-    while ($row = mysql_fetch_array($list_music)) {
+    $label_choi_nhac=lang($link,'choi_nhac');
+    $label_chi_tiet=lang($link,'chi_tiet');
+    $label_loi_bai_hat=lang($link,'loi_bai_hat');
+    $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
+    $label_music_no_rank=lang($link,'music_no_rank');
+    while ($row = mysqli_fetch_assoc($list_music)) {
         include "page_music_git.php";
     }
 ?>
