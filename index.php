@@ -206,8 +206,8 @@ include "header.php";
             echo '<a style="float: right;margin-right: 5px;"  onclick="logout_account();return false"><i class="fa fa-sign-out" aria-hidden="true"></i></a> ';
             echo '<a  href="'.$user_login->link.'" style="float:right;padding:0px"><img  style="float: right;margin-right: 5px;margin-top:5px" class="login_avatar" alt="User Avatar" src="'.$user_login->avatar.'"/></a>';
             echo '<a style="float: right;margin-right: 5px;" href="'.$user_login->link.'">'.$user_login->name.'</a>';
-            $query_playlist_music=mysql_query("SELECT COUNT(`id`) FROM carrotsy_music.`playlist_".$user_login->lang."` WHERE `user_id`='".$user_login->id."' LIMIT 1");
-            $count_playlist=mysql_fetch_array($query_playlist_music);
+            $query_playlist_music=mysqli_query($link,"SELECT COUNT(`id`) FROM carrotsy_music.`playlist_".$user_login->lang."` WHERE `user_id`='".$user_login->id."' LIMIT 1");
+            $count_playlist=mysqli_fetch_array($query_playlist_music);
             $count_playlist=$count_playlist[0];
             if($count_playlist>0) {
                 echo '<a style="float: right;margin-right: 5px;"  onclick="show_all_playlist();return false"><i class="fa fa-music" aria-hidden="true"></i></a> ';

@@ -109,15 +109,15 @@ if(isset($_POST['loc'])){
     }
     
     if($tip!=''){
-        $result_tip=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `tip` = '$tip' AND `character_sex`='$sex_char' $txt_key_search $txt_query_effect $limit_chat_query $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC $limit_txt_query");
+        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `tip` = '$tip' AND `character_sex`='$sex_char' $txt_key_search $txt_query_effect $limit_chat_query $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC $limit_txt_query");
     }else{
-        $result_tip=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$sex_char' $txt_key_search $txt_query_effect $limit_chat_query $disable_chat_sql  $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC $limit_txt_query");
+        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$sex_char' $txt_key_search $txt_query_effect $limit_chat_query $disable_chat_sql  $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC $limit_txt_query");
     }
 }else{
     if($tip!=''){
-        $result_tip=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `tip` = '$tip' AND `character_sex`='$sex_char' $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC  $limit_txt_query");
+        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `tip` = '$tip' AND `character_sex`='$sex_char' $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC  $limit_txt_query");
     }else{
-        $result_tip=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel'  AND `character_sex`='$sex_char' $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC  $limit_txt_query");
+        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel'  AND `character_sex`='$sex_char' $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC  $limit_txt_query");
     }
 }
 ?>
@@ -142,8 +142,8 @@ if(isset($_POST['loc'])){
     <label>Ngôn ngữ:</label> 
     <select name="lang">
     <?php     
-    $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-    while($row_lang=mysql_fetch_array($query_list_lang)){?>
+    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    while($row_lang=mysqli_fetch_array($query_list_lang)){?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
@@ -235,8 +235,8 @@ if(isset($_POST['loc'])){
     <select name="user_work">
     <option value="">Tất cả</option>
     <?php
-    $query_all_user_work=mysql_query("SELECT * FROM  carrotsy_work.`work_user` ");
-    while($op_user=mysql_fetch_array($query_all_user_work)){
+    $query_all_user_work=mysqli_query($link,"SELECT * FROM  carrotsy_work.`work_user` ");
+    while($op_user=mysqli_fetch_array($query_all_user_work)){
     ?>
         <option value="<?php echo $op_user['user_id']; ?>" <?php if($user_work==$op_user['user_id']){?> selected="true" <?php } ?>><?php echo $op_user['user_name']; ?></option>
     <?php
@@ -259,7 +259,6 @@ if(isset($_POST['loc'])){
 
 <div id="form_loc" style="position: fixed;right: 50%;bottom: 0px;">
     <span class="buttonPro yellow small" onclick="select_disable()"><i class="fa fa-check-square-o" aria-hidden="true"></i> Chọn toàn bộ</span>
-    <!--<span class="buttonPro red small" onclick="os_select()">ios</span>--!>
     <span class="buttonPro red small" onclick="os_active('os_window','1')"><i class="fa fa-windows" aria-hidden="true"></i> Ẩn window</span>
     <span class="buttonPro blue small" onclick="os_active('os_window','0')"><i class="fa fa-windows" aria-hidden="true"></i> Hiện window</span>
     <span class="buttonPro red small" onclick="os_active('os_ios','1')"><i class="fa fa-apple" aria-hidden="true"></i> Ẩn Ios</span>
@@ -365,7 +364,7 @@ function os_select(){
 <?php
 echo '<table  style="border:solid 1px green;margin-bottom: 80px;">';
 echo '<tr style="border:solid 1px green"><th>id</th><th>Loại</th><th>Trả lời</th><th>Nội dung</th><th>Giới tính</th><th>Chức năng</th><th>Hiển thị</th><th>Giọng</th><th>Thao tác 1</th><th>Thao tác 2</th></tr>';
-        while ($row = mysql_fetch_array($result_tip)) {
+        while ($row = mysqli_fetch_assoc($result_tip)) {
             $bnt_del='<a href="#" class="buttonPro small red" onclick="delete_table('.$row['id'].');return false;"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>';
             $bnt_history='<a href="'.$url.'/app_my_girl_history.php?id_chat_see='.$row['id'].'&type_chat_see=chat&lang='.$langsel.'&sex='.$row['sex'].'&character_sex='.$row['character_sex'].'" target="_blank" class="buttonPro small blue" title="Xem lịch sử dùng của câu trò chuyện này"><i class="fa fa-history" aria-hidden="true"></i></a>';
             if($row['disable']=='0'){
@@ -373,9 +372,9 @@ echo '<tr style="border:solid 1px green"><th>id</th><th>Loại</th><th>Trả l�
             }else{
                 $check_select='<input class="sel_row review" value="'.$row['id'].'" type="checkbox" style="width:auto;float:none"/>';
             }
-            echo show_row_chat_prefab($row,$langsel,$bnt_history.' '.$bnt_del.' '.$check_select);
+            echo show_row_chat_prefab($link,$row,$langsel,$bnt_history.' '.$bnt_del.' '.$check_select);
         }
 echo '</table>';
-mysql_free_result($result_tip);
+mysqli_free_result($result_tip);
 ?>
 

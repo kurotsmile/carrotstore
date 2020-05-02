@@ -302,7 +302,7 @@
             data: "function=show_all_playlist&id_user=<?php echo $user_login->id;?>&lang=<?php echo $user_login->lang;?>",
             success: function (data, textStatus, jqXHR) {
                 swal({
-                    title: "<?php echo lang("my_playlist"); ?>",
+                    title: "<?php echo lang($link,"my_playlist"); ?>",
                     text: data,
                     html: true
                 });

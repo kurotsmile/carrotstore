@@ -58,7 +58,7 @@ function show_info_user_name($lang_sel, $id_device)
 }
 
 //start app nguoi yeu ao
-function show_row_chat_prefab($data, $lang, $txt_fun_other)
+function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
 {
     global $url;
     $txt_link = '';
@@ -111,8 +111,8 @@ function show_row_chat_prefab($data, $lang, $txt_fun_other)
 
     if ($data['id_redirect'] != '') {
         $id_redirect = $data['id_redirect'];
-        $result_chat = mysql_query("SELECT * FROM `app_my_girl_$lang` WHERE `id` = '$id_redirect'");
-        $arr_chat = mysql_fetch_array($result_chat);
+        $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `id` = '$id_redirect'");
+        $arr_chat = mysqli_fetch_assoc($result_chat);
         if ($data['pater'] != '') {
             $txt_type = '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i>';
         } else {
@@ -120,7 +120,7 @@ function show_row_chat_prefab($data, $lang, $txt_fun_other)
         }
         $txt_style = ';background-color: #C0F17E;';
         $data = $arr_chat;
-        mysql_free_result($result_chat);
+        mysqli_free_result($result_chat);
     }
 
     if ($data['disable'] != '0') {
@@ -131,7 +131,7 @@ function show_row_chat_prefab($data, $lang, $txt_fun_other)
         if (file_exists('app_mygirl/app_my_girl_msg_' . $lang . '/' . $data['id'] . '.mp3')) {
             $txt_audio = '<a href="' . $url . '/app_mygirl/app_my_girl_msg_' . $lang . '/' . $data['id'] . '.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
         } else {
-            $url_voice_audio = get_key_lang('voice_character_sex_' . $data['character_sex'], $lang);
+            $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $data['character_sex'], $lang);
             if ($url_voice_audio == '') {
                 $txt_audio = '<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
             } else {
@@ -158,7 +158,7 @@ function show_row_chat_prefab($data, $lang, $txt_fun_other)
                 if ($data['effect'] == '2') {
                     $txt_audio = '<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
                 } else {
-                    $url_voice_audio = get_key_lang('voice_character_sex_' . $data['character_sex'], $lang);
+                    $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $data['character_sex'], $lang);
                     if ($url_voice_audio == '') {
                         $txt_audio = '<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
                     } else {
@@ -620,10 +620,10 @@ function show_row_music($row, $langsel)
     return show_row_chat_prefab($row, $langsel, $bnt_update_lyric . ' ' . $bnt_del . ' ' . $bnt_view_lyric . ' ' . $btn_search_lyrict . ' ' . $col_rank . ' ' . $bnt_view_store . ' ' . $btn_view_video . mysql_error());
 }
 
-function show_name_country_by_key($key_lang)
+function show_name_country_by_key($link,$key_lang)
 {
-    $query_name = mysql_query("SELECT `name` FROM `app_my_girl_country` WHERE `key` = '$key_lang' LIMIT 1");
-    $name_country = mysql_fetch_array($query_name);
+    $query_name = mysqli_query($link,"SELECT `name` FROM `app_my_girl_country` WHERE `key` = '$key_lang' LIMIT 1");
+    $name_country = mysqli_fetch_array($query_name);
     return $name_country[0];
 }
 

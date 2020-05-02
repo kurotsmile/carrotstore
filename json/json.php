@@ -432,7 +432,7 @@ if($_GET||$_POST){
         $contain=$_POST['contain'];
         $id_music=$_POST['id_music'];
         $lang=$_SESSION['lang'];
-        $query_add_lyrics=mysql_query("INSERT INTO `music_contribute_lyrics` (`id_music`, `lyrics`, `lang`) VALUES ('$id_music', '$contain', '$lang');");
+        $query_add_lyrics=mysqli_query($link,"INSERT INTO `music_contribute_lyrics` (`id_music`, `lyrics`, `lang`) VALUES ('$id_music', '$contain', '$lang');");
         if($query_add_lyrics){
             echo "1";
         }else{
@@ -449,8 +449,8 @@ if($_GET||$_POST){
         if(isset($user_login)){
             $user_id=$user_login->id;
         }
-        $query_add_link_shorten=mysql_query("INSERT INTO `link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link', '$user_id', '', '0',NOW(),'$lang');");
-        $new_id_link=mysql_insert_id();
+        $query_add_link_shorten=mysqli_query($link,"INSERT INTO `link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link', '$user_id', '', '0',NOW(),'$lang');");
+        $new_id_link=mysqli_insert_id();
         $new_url_link=$url.'/link/'.$new_id_link;
         QRcode::png($new_url_link, 'phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
         echo '<strong style="color: slateblue;text-shadow: 1px 0px 11px #acff00;">'.$link.'</strong><br/>';
@@ -494,15 +494,15 @@ if($_GET||$_POST){
         }
 
         if($txt_error=='') {
-            $check_login = mysql_query("SELECT `id_device`,`name`,`email`,`sdt` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_login' AND `password`='$user_password_login' ");
-            if (mysql_num_rows($check_login) > 0) {
-                $data_login_user = mysql_fetch_array($check_login);
+            $check_login = mysqli_query($link,"SELECT `id_device`,`name`,`email`,`sdt` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_login' AND `password`='$user_password_login' ");
+            if (mysqli_num_rows($check_login) > 0) {
+                $data_login_user = mysqli_fetch_assoc($check_login);
                 $user_login = new User_login();
                 $user_login->id = $data_login_user['id_device'];
                 $user_login->name = $data_login_user['name'];
                 $user_login->type = 'carrot';
                 $user_login->link = $url . '/user/' . $data_login_user['id_device'] . '/' . $lang;
-                $user_login->avatar = get_url_avatar_user($data_login_user['id_device'],$lang);
+                $user_login->avatar = get_url_avatar_user($link,$data_login_user['id_device'],$lang);
                 $user_login->email = $data_login_user['email'];
                 $user_login->lang = $lang;
                 $_SESSION['user_login'] = json_encode($user_login);
@@ -539,11 +539,11 @@ if($_GET||$_POST){
         }
 
         if($txt_error==''){
-            $check_login = mysql_query("SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_register' AND `password`='$user_password_register' LIMIT 1");
-            if(mysql_num_rows($check_login)>0){
+            $check_login = mysqli_query($link,"SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_register' AND `password`='$user_password_register' LIMIT 1");
+            if(mysqli_num_rows($check_login)>0){
                 echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_tai_khoan_da_ton_tai');
             }else {
-                $query_add_user = mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`,`sdt`, `sex`, `date_start`, `date_cur`, `status`,`password`) VALUES ('$id_device','$user_name_register','$user_phone_register','0',NOW(),NOW(),0,'$user_password_register');");
+                $query_add_user = mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`,`sdt`, `sex`, `date_start`, `date_cur`, `status`,`password`) VALUES ('$id_device','$user_name_register','$user_phone_register','0',NOW(),NOW(),0,'$user_password_register');");
                 echo 'add_account_success';
             }
         }else{
