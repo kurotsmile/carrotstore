@@ -90,8 +90,8 @@ if(isset($_POST['loc'])){
 <?php
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id</th><th>func</th><th>chat</th><th>Character sex</th><th>Ver 1</th><th>Ver 2</th><th>Giới hạng</th><th>Audio</th><th>Disable</th><th>Action</th></tr>';
-        while ($row = mysqli_fetch_array($result_tip)) {
-            show_row_msg_prefab($row,$langsel);
+        while ($row = mysqli_fetch_assoc($result_tip)) {
+            show_row_msg_prefab($link,$row,$langsel);
         }
 echo '</table>';
 ?>

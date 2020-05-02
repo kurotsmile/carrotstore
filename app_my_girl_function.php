@@ -329,18 +329,14 @@ function show_row_history_prefab($row)
 }
 
 
-function show_row_msg_prefab($row, $langsel, $btn_more = null)
+function show_row_msg_prefab($link,$row, $langsel, $btn_more = null)
 {
     global $url;
     $txt_style = '';
     $txt_limit = '';
     $txt_audio_tip = '';
     $bnt_history = '<a href="' . $url . '/app_my_girl_history.php?id_chat_see=' . $row['id'] . '&type_chat_see=msg&lang=' . $langsel . '&sex=' . $row['sex'] . '&character_sex=' . $row['character_sex'] . '" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lịch sử dùng</a>';
-
-    if ($row['pater'] != '') {
-        $bnt_history .= '<a class="buttonPro small yellow"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
-    }
-    $bnt_history_func .= ' onclick="view_pater(\'' . $langsel . '\',\'' . $row['id'] . '\',\'msg\',\'' . $row['sex'] . '\',\'' . $row['character_sex'] . '\');return false;" ';
+    $bnt_history_func= ' onclick="view_pater(\'' . $langsel . '\',\'' . $row['id'] . '\',\'msg\',\'' . $row['sex'] . '\',\'' . $row['character_sex'] . '\');return false;" ';
     $bnt_history .= '<a href="" ' . $bnt_history_func . ' class="buttonPro small yellow" title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
 
     if ($row['disable'] == '0') {
@@ -367,7 +363,7 @@ function show_row_msg_prefab($row, $langsel, $btn_more = null)
         //$txt_audio='<audio controls><source src="'.$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$data['id'].'.mp3" type="audio/ogg"></audio>';
         $txt_audio = '<a href="' . $url . '/app_mygirl/app_my_girl_msg_' . $langsel . '/' . $row['id'] . '.mp3" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> File sever</a>';
     } else {
-        $url_voice_audio = get_key_lang('voice_character_sex_' . $row['character_sex'], $langsel);
+        $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $row['character_sex'], $langsel);
         if ($url_voice_audio == '') {
             $txt_audio = '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có';
         } else {

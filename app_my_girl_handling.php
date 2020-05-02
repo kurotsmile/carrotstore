@@ -309,5 +309,9 @@ if($func=='seo'){
 if($func=='fix_lyrics'){
     include "app_mygirl_function/fix_lyrics.php";
 }
+
+if($func=='data_syn'){
+    include "app_mygirl_function/data_syn.php";
+}
 ?>
 
