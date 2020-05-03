@@ -23,20 +23,21 @@ if (isset($_GET['msg'])) {
     $txt_title = 'Cập nhật câu trả lời (' . $lang_sel . ') id:' . $id;
 }
 
-$check_storage = mysql_query("SELECT * FROM `app_my_girl_storage` WHERE `id` = '$id' AND `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1");
+$check_storage = mysqli_query($link,"SELECT * FROM `app_my_girl_storage` WHERE `id` = '$id' AND `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1");
+echo mysqli_error($link);
 $storage_category = '';
-if (mysql_num_rows($check_storage) > 0) {
-    $data_storage = mysql_fetch_array($check_storage);
+if (mysqli_num_rows($check_storage) > 0) {
+    $data_storage = mysqli_fetch_assoc($check_storage);
     $storage_category = $data_storage['category'];
     $chat_storage = 'on';
 }
 
-mysql_free_result($check_storage);
+mysqli_free_result($check_storage);
 $q1='';
 $q2='';
 $r1='';
 $r2='';
-$link='';
+$link_chat='';
 $vibrate='';
 $func_sever='';
 $limit_day='';
@@ -61,7 +62,7 @@ if ($_POST) {
     if(isset($_POST['r1']))$r1 = $_POST['r1'];
     if(isset($_POST['r2']))$r2 = $_POST['r2'];
     $tip = $_POST['tip'];
-    if(isset($_POST['link'])) $link = $_POST['link'];
+    if(isset($_POST['link'])) $link_chat = $_POST['link'];
     $face = $_POST['face'];
     $action = $_POST['action'];
     $character_sex = $_POST['character_sex'];
@@ -98,15 +99,15 @@ if ($_POST) {
     if ($storage == 'on') {
         $storage_category = $_POST['storage_category'];
         if ($chat_storage == 'off') {
-            $add_storage = mysql_query("INSERT INTO `app_my_girl_storage` (`id`, `lang`,`type`,`category`) VALUES ('$id', '$lang_sel','$type_chat','$storage_category');");
+            $add_storage = mysqli_query($link,"INSERT INTO `app_my_girl_storage` (`id`, `lang`,`type`,`category`) VALUES ('$id', '$lang_sel','$type_chat','$storage_category');");
             $chat_storage = 'on';
         } else {
-            $add_storage = mysql_query("UPDATE `app_my_girl_storage` SET `category` = '$storage_category' where `id`='$id' AND `lang`='$lang_sel' AND `type`='$type_chat'");
+            $add_storage = mysqli_query($link,"UPDATE `app_my_girl_storage` SET `category` = '$storage_category' where `id`='$id' AND `lang`='$lang_sel' AND `type`='$type_chat'");
             $chat_storage = 'on';
         }
     } else {
         if ($chat_storage == 'on') {
-            $delete_storage = mysql_query("DELETE FROM `app_my_girl_storage` WHERE `id` = '$id' AND  `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1;");
+            $delete_storage = mysqli_query($link,"DELETE FROM `app_my_girl_storage` WHERE `id` = '$id' AND  `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1;");
             $chat_storage = 'off';
         }
     }
@@ -115,15 +116,15 @@ if ($_POST) {
     if (isset($_GET['msg'])) {
         $func = $_POST['func'];
         $type_chat = 'msg';
-        $result_update = mysql_query("UPDATE `$txt_table` SET `func` = '$func',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex , `ver`=$limit_ver  , `limit_chat`='$limit_chat' ,`limit_day`='$limit_day',`limit_month`='$limit_month',`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`user_update`='$user_id',`file_url`='$file_url'  $txt_disable WHERE `id` = '$id';");
+        $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `func` = '$func',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex , `ver`=$limit_ver  , `limit_chat`='$limit_chat' ,`limit_day`='$limit_day',`limit_month`='$limit_month',`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`user_update`='$user_id',`file_url`='$file_url'  $txt_disable WHERE `id` = '$id';");
     } else {
         $text = addslashes($_POST['text']);
         $type_chat = 'chat';
-        $result_update = mysql_query("UPDATE `$txt_table` SET `text` = '$text',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`tip` = '$tip',`link` = '$link',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex ,`id_redirect`='$id_redirect' , `ver`=$limit_ver , `limit_chat`='$limit_chat' ,`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`limit_day`='$limit_day',`limit_month`='$limit_month', `author`='$lang_sel' ,`func_sever`='$func_sever',`user_update`='$user_id',`file_url`='$file_url' $txt_disable  WHERE `id` = '$id';");
+        $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `text` = '$text',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`tip` = '$tip',`link` = '$link_chat',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex ,`id_redirect`='$id_redirect' , `ver`=$limit_ver , `limit_chat`='$limit_chat' ,`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`limit_day`='$limit_day',`limit_month`='$limit_month', `author`='$lang_sel' ,`func_sever`='$func_sever',`user_update`='$user_id',`file_url`='$file_url' $txt_disable  WHERE `id` = '$id';");
     }
 
     echo mysql_error();
-    $check_field_chat = mysql_query("SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
+    $check_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
     if (isset($_POST['id_field_chat'])) {
         $id_field_chat = $_POST['id_field_chat'];
         $id_func_field_chat = $_POST['id_func_field_chat'];
@@ -142,17 +143,17 @@ if ($_POST) {
         $author = "unclear";
 
         if (mysql_num_rows($check_field_chat) > 0) {
-            $query_update_field = mysql_query("UPDATE `app_my_girl_field_$lang_sel` SET `data` = '$data_field' , `option`='$box_select_short'  WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
+            $query_update_field = mysqli_query($link,"UPDATE `app_my_girl_field_$lang_sel` SET `data` = '$data_field' , `option`='$box_select_short'  WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
             mysql_freeresult($query_update_field);
             echo "Cập nhật trường dữ liệu (Field chat) thành công!<br/>";
         } else {
-            $query_add_field = mysql_query("INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`,`option`) VALUES ('$id', '$type_chat', '$data_field', 'field_chat', '$author','$box_select_short');");
+            $query_add_field = mysqli_query($link,"INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`,`option`) VALUES ('$id', '$type_chat', '$data_field', 'field_chat', '$author','$box_select_short');");
             mysql_free_result($query_add_field);
             echo "Thêm mới trường dữ liệu (Field chat) thành công!<br/>";
         }
     } else {
         if (mysql_num_rows($check_field_chat) > 0) {
-            $query_delete_field = mysql_query("DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat'  LIMIT 1;");
+            $query_delete_field = mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat'  LIMIT 1;");
             mysql_free_result($query_delete_field);
             echo "Xóa trường dữ liệu (Field chat) thành công!<br/>";
         }
@@ -164,13 +165,13 @@ if ($_POST) {
     if ($lyrics != '') {
         $lyrics = addslashes($lyrics);
 
-        $show_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if (mysql_num_rows($show_lyrics) == 0) {
-            mysql_query("INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`) VALUES ('$id', '$lyrics');");
+            mysqli_query($link,"INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`) VALUES ('$id', '$lyrics');");
             echo mysql_error();
             echo "Thêm mới lời bài hát thành công !";
         } else {
-            mysql_query("UPDATE `app_my_girl_" . $lang_sel . "_lyrics` SET `lyrics` = '$lyrics' WHERE `id_music` = '$id'");
+            mysqli_query($link,"UPDATE `app_my_girl_" . $lang_sel . "_lyrics` SET `lyrics` = '$lyrics' WHERE `id_music` = '$id'");
             echo mysql_error();
             echo "Cập nhật lời bài hát thành công !";
         }
@@ -202,27 +203,27 @@ if ($_POST) {
     }
 
 
-    $update_item_child = mysql_query("UPDATE `app_my_girl_$lang_sel` SET `pater` = '',`pater_type`='' WHERE `pater` = '$id' AND `pater_type`='$type_chat';");
+    $update_item_child = mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `pater` = '',`pater_type`='' WHERE `pater` = '$id' AND `pater_type`='$type_chat';");
 
     if (isset($_POST['chat_child'])) {
         $all_child = $_POST['chat_child'];
         foreach ($all_child as $child) {
-            $update_item_child = mysql_query("UPDATE `app_my_girl_$lang_sel` SET `pater` = '$id',`pater_type`='$type_chat' WHERE `id` = '$child';");
-            echo mysql_error();
+            $update_item_child = mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `pater` = '$id',`pater_type`='$type_chat' WHERE `id` = '$child';");
+            echo mysqli_error();
         }
     } else {
-        $update_item_child = mysql_query("UPDATE `app_my_girl_$lang_sel` SET `pater` = '',`pater_type`='' WHERE `pater` = '$id' AND `pater_type`='$type_chat';");
+        $update_item_child = mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `pater` = '',`pater_type`='' WHERE `pater` = '$id' AND `pater_type`='$type_chat';");
         echo "<p>clear all child chat!</p>";
     }
 }
 
 
-$result_chat = mysql_query("SELECT * FROM `$txt_table` WHERE `id`='$id' LIMIT 1");
-if (mysql_num_rows($result_chat) == 0) {
+$result_chat = mysqli_query($link,"SELECT * FROM `$txt_table` WHERE `id`='$id' LIMIT 1");
+if (mysqli_num_rows($result_chat) == 0) {
     echo show_alert('Đối tượng này không còn tồn tại!', 'alert');
     exit;
 }
-$arr = mysql_fetch_array($result_chat);
+$arr = mysqli_fetch_array($result_chat);
 ?>
 <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
@@ -257,7 +258,7 @@ $arr = mysql_fetch_array($result_chat);
     if ($data_user_carrot["user_role"] == "admin" || $data_user_carrot["user_role"] == "leader") {
         ?>
         <li><a target="_blank"
-               href="http://work.carrotstore.com/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>"
+               href="http://work.carrotstore.com/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($link,$arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>"
                class="buttonPro small red"><i class="fa fa-bug" aria-hidden="true"></i> Báo lỗi</a></li>
     <?php } ?>
 </ul>
@@ -344,7 +345,7 @@ $arr = mysql_fetch_array($result_chat);
                             <td>
                                 <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 <label>Người Tạo :</label>
-                                <strong><?php echo get_user_name_by_id($arr['user_create']); ?></strong>
+                                <strong><?php echo get_user_name_by_id($link,$arr['user_create']); ?></strong>
                             </td>
                         <?php } ?>
 
@@ -355,7 +356,7 @@ $arr = mysql_fetch_array($result_chat);
                                 <strong><?php echo $data_user_carrot['user_name']; ?></strong>
                             <?php } else { ?>
                                 <label>Người cập nhật cũ:</label>
-                                <strong><?php echo get_user_name_by_id($arr['user_update']); ?></strong>
+                                <strong><?php echo get_user_name_by_id($link,$arr['user_update']); ?></strong>
                             <?php } ?>
                             <input type="hidden" name="user_id" value="<?php echo $data_user_carrot['user_id']; ?>"/>
                         </td>
@@ -551,7 +552,7 @@ $arr = mysql_fetch_array($result_chat);
                 <td>
                     <input type="text" name="q1" id="q1" value='<?php echo $arr['q1']; ?>'/>
                     <span class="key_func"
-                          onclick="add_key_question(this,$('#q1'));return false;"><?php echo get_key_lang('key_yes_question', $lang_sel); ?></span>
+                          onclick="add_key_question(this,$('#q1'));return false;"><?php echo get_key_lang($link,'key_yes_question', $lang_sel); ?></span>
                     <span onclick="add_key_customer('q1');return false;" class="buttonPro small yellow">Thêm thẻ</span>
                 </td>
             </tr>
@@ -564,7 +565,7 @@ $arr = mysql_fetch_array($result_chat);
                 <td>
                     <input type="text" name="q2" id="q2" value='<?php echo $arr['q2']; ?>'/>
                     <span class="key_func"
-                          onclick="add_key_question(this,$('#q2'));return false;"><?php echo get_key_lang('key_no_question', $lang_sel); ?></span>
+                          onclick="add_key_question(this,$('#q2'));return false;"><?php echo get_key_lang($link,'key_no_question', $lang_sel); ?></span>
                     <span onclick="add_key_customer('q2');return false;" class="buttonPro small yellow">Thêm thẻ</span>
                 </td>
             </tr>
@@ -872,12 +873,12 @@ $arr = mysql_fetch_array($result_chat);
                 <button onclick="remove_all_chat_child();return false;" class="buttonPro small red">Delete all</button>
                 <table id="table_data_return">
                     <?php
-                    $get_child_chat = mysql_query("SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id' AND `pater_type`='$type_chat'");
-                    while ($row_child = mysql_fetch_array($get_child_chat)) {
+                    $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id' AND `pater_type`='$type_chat'");
+                    while ($row_child = mysqli_fetch_assoc($get_child_chat)) {
                         $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\'' . $row_child['id'] . '\')">Gỡ bỏ khỏi cha</a><input type="hidden" value="' . $row_child['id'] . '" name="chat_child[]" />';
-                        echo show_row_chat_prefab($row_child, $lang_sel, $btn_remove);
+                        echo show_row_chat_prefab($link,$row_child, $lang_sel, $btn_remove);
                     }
-                    mysql_fetch_array($get_child_chat);
+                    mysqli_fetch_array($get_child_chat);
                     ?>
                 </table>
             </td>
@@ -896,8 +897,8 @@ $arr = mysql_fetch_array($result_chat);
                     <table id="table_data_same">
                         <?php if ($arr['id_redirect'] != '') {
                             $id_redirect = $arr['id_redirect'];
-                            $result_chat = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                            $result_chat = mysql_fetch_array($result_chat);
+                            $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                            $result_chat = mysqli_fetch_array($result_chat);
                             $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\'' . $id_redirect . '\')">Gỡ bỏ</a>';
                             echo show_row_chat_prefab($result_chat, $lang_sel, $btn_remove);
                         } ?>
@@ -909,50 +910,55 @@ $arr = mysql_fetch_array($result_chat);
             <td>Bản lựa chọn</td>
             <td id="box_select_content">
                 <?php
-                $get_field_chat = mysql_query("SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_add' LIMIT 1");
-                $data_fields = mysql_fetch_array($get_field_chat);
-                $data_field = json_decode($data_fields['data']);
-                for ($i = 0; $i < count($data_field); $i++) {
-                    $item_field = $data_field[$i];
-                    ?>
-                    <div class="box_fiel_chat_item field_chat_<?php echo $item_field[0]; ?>">
-                        <div class="col"><label>ID :</label><input name="id_field_chat[]"
-                                                                   id="id_field_chat_<?php echo $item_field[0]; ?>"
-                                                                   value="<?php echo $item_field[0]; ?>" type="text"/>
-                        </div>
-                        <div class="col"><label>ID Func:</label><input name="id_func_field_chat[]"
-                                                                       value="<?php echo $item_field[1]; ?>"
-                                                                       type="text"/></div>
-                        <div class="col"><label>Name Func:</label><input name="name_func_field_chat[]"
-                                                                         value="<?php echo $item_field[2]; ?>"
-                                                                         type="text"/></div>
-                        <div class="col"><label>Lable:</label><input name="value_field_chat[]"
-                                                                     value="<?php echo $item_field[3]; ?>" type="text"/>
-                        </div>
-                        <div class="col"><label>Color:</label><input class="jscolor jscolor-active"
-                                                                     name="color_field_chat[]"
-                                                                     value="<?php if (isset($item_field[4])) {
-                                                                         echo $item_field[4];
-                                                                     } else {
-                                                                         echo '#000000';
-                                                                     } ?>" type="text"/></div>
-                        <div class="col" style="width:240px;padding-top: 6px;">
-                            <?php
-                            if ($item_field[2] == "show_chat" || $item_field[2] == "inp_chat") {
-                                ?>
-                                <span class="buttonPro light_blue"
-                                      onclick="show_id_chat('<?php echo $lang_sel; ?>','id_field_chat_<?php echo $item_field[0]; ?>','0');return false;">Lấy id chat</span>
+                $get_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_add' LIMIT 1");
+                if(mysqli_num_rows($get_field_chat)>0) {
+                    $data_fields = mysqli_fetch_array($get_field_chat);
+                    $data_field = json_decode($data_fields['data']);
+                    for ($i = 0; $i < count($data_field); $i++) {
+                        $item_field = $data_field[$i];
+                        ?>
+                        <div class="box_fiel_chat_item field_chat_<?php echo $item_field[0]; ?>">
+                            <div class="col"><label>ID :</label><input name="id_field_chat[]"
+                                                                       id="id_field_chat_<?php echo $item_field[0]; ?>"
+                                                                       value="<?php echo $item_field[0]; ?>"
+                                                                       type="text"/>
+                            </div>
+                            <div class="col"><label>ID Func:</label><input name="id_func_field_chat[]"
+                                                                           value="<?php echo $item_field[1]; ?>"
+                                                                           type="text"/></div>
+                            <div class="col"><label>Name Func:</label><input name="name_func_field_chat[]"
+                                                                             value="<?php echo $item_field[2]; ?>"
+                                                                             type="text"/></div>
+                            <div class="col"><label>Lable:</label><input name="value_field_chat[]"
+                                                                         value="<?php echo $item_field[3]; ?>"
+                                                                         type="text"/>
+                            </div>
+                            <div class="col"><label>Color:</label><input class="jscolor jscolor-active"
+                                                                         name="color_field_chat[]"
+                                                                         value="<?php if (isset($item_field[4])) {
+                                                                             echo $item_field[4];
+                                                                         } else {
+                                                                             echo '#000000';
+                                                                         } ?>" type="text"/></div>
+                            <div class="col" style="width:240px;padding-top: 6px;">
                                 <?php
-                            }
-                            ?>
-                            <span class="buttonPro red"
-                                  onclick="delete_field_chat('<?php echo $item_field[0]; ?>')">Xóa</span>
+                                if ($item_field[2] == "show_chat" || $item_field[2] == "inp_chat") {
+                                    ?>
+                                    <span class="buttonPro light_blue"
+                                          onclick="show_id_chat('<?php echo $lang_sel; ?>','id_field_chat_<?php echo $item_field[0]; ?>','0');return false;">Lấy id chat</span>
+                                    <?php
+                                }
+                                ?>
+                                <span class="buttonPro red"
+                                      onclick="delete_field_chat('<?php echo $item_field[0]; ?>')">Xóa</span>
+                            </div>
+                            <i class="fa fa-sort" aria-hidden="true"
+                               style="float: right;margin: 3px;cursor: pointer;"></i>
                         </div>
-                        <i class="fa fa-sort" aria-hidden="true" style="float: right;margin: 3px;cursor: pointer;"></i>
-                    </div>
-                    <?php
+                        <?php
+                    }
                 }
-                mysql_free_result($get_field_chat);
+                mysqli_free_result($get_field_chat);
                 ?>
             </td>
             <td>
@@ -977,7 +983,8 @@ $arr = mysql_fetch_array($result_chat);
                     <tr>
                         <td>
                             <?php
-                            $sel_short = $data_fields['option'];
+                            $sel_short='0';
+                            if(isset($data_fields['option'])) $sel_short = $data_fields['option'];
                             ?>
                             <label>Tùy chỉnh sắp xếp</label>
                             <select name="box_select_short">
@@ -1177,12 +1184,12 @@ $arr = mysql_fetch_array($result_chat);
                     <?php
                     $txt_lyrics = '';
                     $data_lyrics='';
-                    $show_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE  `id_music` = '$id_music' LIMIT 1");
-                    if (mysql_num_rows($show_lyrics) > 0) {
-                        $data_lyrics = mysql_fetch_array($show_lyrics);
+                    $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE  `id_music` = '$id_music' LIMIT 1");
+                    if (mysqli_num_rows($show_lyrics) > 0) {
+                        $data_lyrics = mysqli_fetch_array($show_lyrics);
                         $txt_lyrics = $data_lyrics[1];
                     }
-                    mysql_free_result($show_lyrics);
+                    mysqli_free_result($show_lyrics);
                     ?><textarea id="music_lyrics_contain" name="lyrics"
                                 style="height: 240px;"><?php echo $txt_lyrics; ?></textarea>
                 </td>
@@ -1198,14 +1205,14 @@ $arr = mysql_fetch_array($result_chat);
                                 <?php
                                 $txt_link_video = '';
                                 $txt_link_thumb = '';
-                                $check_video = mysql_query("SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id_music' LIMIT 1");
-                                if (mysql_num_rows($check_video) > 0) {
-                                    $data_video = mysql_fetch_array($check_video);
+                                $check_video = mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id_music' LIMIT 1");
+                                if (mysqli_num_rows($check_video) > 0) {
+                                    $data_video = mysqli_fetch_assoc($check_video);
                                     $txt_link_video = $data_video['link'];
                                     parse_str(parse_url($txt_link_video, PHP_URL_QUERY), $my_array_of_vars);
                                     $txt_link_thumb = $my_array_of_vars['v'];
                                 }
-                                mysql_free_result($check_video);
+                                mysqli_free_result($check_video);
                                 ?>
                                 <a href="#" class="buttonPro small blue"
                                    onclick="add_video_music('<?php echo $id_music; ?>');return false;"><i
@@ -1233,9 +1240,9 @@ $arr = mysql_fetch_array($result_chat);
                                     thị chính</i><br/>
                                 <?php
                                 $img_url_avatar = 'app_mygirl/app_my_girl_' . $lang_sel . '_img/' . $id_music . '.png';
-                                $img_url_avatar_sever = $url_home . '/images/music_default.png';
+                                $img_url_avatar_sever = $url.'/images/music_default.png';
                                 if (file_exists($img_url_avatar)) {
-                                    $img_url_avatar_sever = $url_home . '/' . $img_url_avatar;
+                                    $img_url_avatar_sever = $url . '/' . $img_url_avatar;
                                 }
                                 ?>
                                 <a target="_blank" href="http://carrotstore.com/music/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"><img style="width: 150px;" id="avatar_music_sever" src="<?php echo $img_url_avatar_sever; ?>"/></a>
@@ -1294,23 +1301,23 @@ $arr = mysql_fetch_array($result_chat);
 
             </tr>
             <?php
-            $check_music_data = mysql_query("SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
+            $check_music_data = mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
             if ($check_music_data){
-            if (mysql_num_rows($check_music_data)) {
+            if (mysqli_num_rows($check_music_data)) {
                 ?>
                 <tr>
                     <td><i class="fa fa-list-alt" aria-hidden="true"></i> Bản xếp hạng</td>
                     <td>
                         <?php
-                        if (mysql_num_rows($check_music_data)) {
-                            $count_status_0 = mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='0' LIMIT 1");
-                            $count_status_1 = mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='1' LIMIT 1");
-                            $count_status_2 = mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='2' LIMIT 1");
-                            $count_status_3 = mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='3' LIMIT 1");
-                            $data_0 = mysql_fetch_array($count_status_0);
-                            $data_1 = mysql_fetch_array($count_status_1);
-                            $data_2 = mysql_fetch_array($count_status_2);
-                            $data_3 = mysql_fetch_array($count_status_3);
+                        if (mysqli_num_rows($check_music_data)) {
+                            $count_status_0 = mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='0' LIMIT 1");
+                            $count_status_1 = mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='1' LIMIT 1");
+                            $count_status_2 = mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='2' LIMIT 1");
+                            $count_status_3 = mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat` = '$id_music' AND `value`='3' LIMIT 1");
+                            $data_0 = mysqli_fetch_array($count_status_0);
+                            $data_1 = mysqli_fetch_array($count_status_1);
+                            $data_2 = mysqli_fetch_array($count_status_2);
+                            $data_3 = mysqli_fetch_array($count_status_3);
                             ?>
                             <span class="box_feel_music"><i style="font-size: 30px;" class="fa fa-smile-o" aria-hidden="true"></i> <span><?php echo $data_0[0]; ?></span></span>
                             <span class="box_feel_music"><i style="font-size: 30px;" class="fa fa-frown-o" aria-hidden="true"></i><span><?php echo $data_1[0]; ?></span></span>
@@ -1353,36 +1360,36 @@ $arr = mysql_fetch_array($result_chat);
 <?php
 if ($type_chat == "chat") {
     $id = $arr['id'];
-    $result_chat_redirect = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id_redirect` = '$id'");
-    if (mysql_num_rows($result_chat_redirect) > 0) {
+    $result_chat_redirect = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id_redirect` = '$id'");
+    if (mysqli_num_rows($result_chat_redirect) > 0) {
         echo '<div class="box_info">';
         echo '<h2>Những Trò chuyện được ghi lại bởi câu trò chuyện nầy:</h2>';
         echo '<table>';
-        while ($row_redirect = mysql_fetch_array($result_chat_redirect)) {
+        while ($row_redirect = mysqli_fetch_array($result_chat_redirect)) {
             echo show_row_chat_prefab($row_redirect, $lang_sel, '');
         }
         echo '</table>';
         echo '</div>';
     }
-    mysql_free_result($result_chat_redirect);
+    mysqli_free_result($result_chat_redirect);
 
 
     $id_pater = $arr['pater'];
     if ($id_pater != '') {
         $type_pater = $arr['pater_type'];
         if ($type_pater == "msg") {
-            $result_chat_pater = mysql_query("SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id` = '$id_pater'");
+            $result_chat_pater = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id` = '$id_pater'");
         } else {
-            $result_chat_pater = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_pater'");
+            $result_chat_pater = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_pater'");
         }
 
-        $row_pater = mysql_fetch_array($result_chat_pater);
+        $row_pater = mysqli_fetch_array($result_chat_pater);
         echo '<div class="box_info">';
         echo '<h2>Câu trò chuyện cha của trò chuyện này:</h2>';
         echo '<table>';
         echo show_row_chat_prefab($row_pater, $lang_sel, '');
-        $get_child_chat = mysql_query("SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_pater' AND `pater_type`='$type_pater'");
-        if (mysql_num_rows($get_child_chat) > 0) {
+        $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_pater' AND `pater_type`='$type_pater'");
+        if (mysqli_num_rows($get_child_chat) > 0) {
             ?>
             <tr>
                 <td><strong>Câu thoại con</strong></td>
@@ -1391,15 +1398,15 @@ if ($type_chat == "chat") {
                 <td>
                     <table>
                         <?php
-                        $get_child_chat = mysql_query("SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_pater' AND `pater_type`='$type_pater'");
-                        while ($row_child = mysql_fetch_array($get_child_chat)) {
+                        $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_pater' AND `pater_type`='$type_pater'");
+                        while ($row_child = mysqli_fetch_array($get_child_chat)) {
                             $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_father_chat(\'' . $row_child['id'] . '\');return false;"><i class="fa fa-eraser" aria-hidden="true"></i> Gỡ bỏ khỏi cha</a><input type="hidden" value="' . $row_child['id'] . '" name="chat_child[]" />';
                             if ($row_child['id'] == $id) {
                                 $btn_remove .= ' <i class="fa fa-pencil" aria-hidden="true"></i> Đang sửa';
                             }
                             echo show_row_chat_prefab($row_child, $lang_sel, $btn_remove);
                         }
-                        mysql_fetch_array($get_child_chat);
+                        mysqli_fetch_array($get_child_chat);
                         ?>
                     </table>
                 </td>
@@ -1407,7 +1414,7 @@ if ($type_chat == "chat") {
         <?php }
         echo '</table>';
         echo '</div>';
-        mysql_free_result($result_chat_pater);
+        mysqli_free_result($result_chat_pater);
     }
 }
 ?>

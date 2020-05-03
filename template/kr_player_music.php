@@ -9,6 +9,7 @@
         <input type="range"  id="slider_timer_val"/>
         <?php if($is_playlist){?><i class="fa fa-step-backward btn_control btn_backward" aria-hidden="true" onclick="kr_back_song();"></i><?php }?>
         <div class="btn_refresh btn_control" id="kr_btn_refresh"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+        <div class="btn_control" onclick="kr_show_help();"><i class="fa fa-question-circle" aria-hidden="true"></i></div>
         <?php if($is_playlist){?><i class="fa fa-step-forward btn_control btn_next" aria-hidden="true" onclick="kr_next_song();"></i><?php }?>
     </div>
 
@@ -48,7 +49,7 @@
             <?php if($is_playlist){?>
             kr_next_song();
             <?php }else{?>
-                this.play();
+            this.play();
             <?php }?>
         }, false);
         kr_audio.addEventListener("canplay",function(){
@@ -61,8 +62,6 @@
         });
 
         kr_audio.addEventListener('error', function failed(e) {
-            // audio playback failed - show a message saying why
-            // to get the source of the audio element use $(this).src
             switch (e.target.error.code) {
                 case e.target.error.MEDIA_ERR_ABORTED:
                     break;
@@ -181,6 +180,14 @@
 
     }
 
+    function kr_show_help(){
+        var html_help='';
+        html_help=html_help+'<div class="kr_help_item"><span class="key_code">Space</span> <span class="txt"><?php echo lang($link,'kr_help_space'); ?></span></div>';
+        html_help=html_help+'<div class="kr_help_item"><span class="key_code"><i class="fa fa-arrow-left" aria-hidden="true"></i></span> <span class="key_code"><i class="fa fa-arrow-up" aria-hidden="true"></i></span> <span class="txt"><?php echo lang($link,'kr_help_back'); ?></span></div>';
+        html_help=html_help+'<div class="kr_help_item"><span class="key_code"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> <span class="key_code"><i class="fa fa-arrow-down" aria-hidden="true"></i></span> <span class="txt"><?php echo lang($link,'kr_help_next'); ?></span></div>';
+        html_help=html_help+'<div class="kr_help_item"><span class="key_code">M</span> <span class="txt"><?php echo lang($link,'kr_help_mute'); ?></span></div>';
+        swal({html: true, title: '<?php echo lang($link,"kr_player_help"); ?>', text: html_help, showConfirmButton: true,});
+    }
 
     $(window).scroll( function(){
         if($(window).scrollTop()>top_x_player) {

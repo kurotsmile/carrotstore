@@ -10,16 +10,16 @@ if(isset($_GET['delete'])){
     $delete_type=$_GET['delete'];
     if($delete_type=='1'){
         $langsel=$_GET['lang']; 
-        $msql_delete=mysql_query("DELETE FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");
+        $msql_delete=mysqli_query($link,"DELETE FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");
     }
     
     if($delete_type=='0'){
-        $msql_delete_all=mysql_query("DELETE FROM `app_my_girl_log_key_music`"); 
+        $msql_delete_all=mysqli_query($link,"DELETE FROM `app_my_girl_log_key_music`"); 
     }
     
     if($delete_type=='2'){
-        $msql_delete_not_music_key=mysql_query("DELETE m.* FROM `app_my_girl_log_key_music` as m, `app_my_girl_$langsel` as chat where m.key=chat.text or m.key=chat.chat");
-        $num_delete=mysql_affected_rows();
+        $msql_delete_not_music_key=mysqli_query($link,"DELETE m.* FROM `app_my_girl_log_key_music` as m, `app_my_girl_$langsel` as chat where m.key=chat.text or m.key=chat.chat");
+        $num_delete=mysqli_affected_rows();
         show_alert('Đã xóa ('.$num_delete.') từ khóa không phải là bài hát!','alert');
     }
 }
@@ -27,8 +27,8 @@ if(isset($_GET['delete'])){
 if(isset($_GET['delete_key'])){
     $key_delete=$_GET['delete_key'];
     $langsel=$_GET['lang'];
-    $msql_delete_key=mysql_query("DELETE FROM `app_my_girl_log_key_music` WHERE `key` = '$key_delete'");
-    $num_delete=mysql_affected_rows();
+    $msql_delete_key=mysqli_query($link,"DELETE FROM `app_my_girl_log_key_music` WHERE `key` = '$key_delete'");
+    $num_delete=mysqli_affected_rows($link);
     show_alert('Đã xóa ('.$num_delete.') từ khóa âm nhạc','alert');
 }
 
@@ -37,15 +37,15 @@ if(isset($_POST['loc'])){
 }
 
 if($langsel==''){
-    $result_tip=mysql_query("SELECT DISTINCT * FROM `app_my_girl_log_key_music`");
+    $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_log_key_music`");
 }else{
-    $result_tip=mysql_query("SELECT DISTINCT * FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");  
+    $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");  
 }
 ?>
 <form method="post" id="form_loc" style="width: 800px;">
 <div style="display: inline-block;float: left;margin: 2px;">
         <i class="fa fa-music" aria-hidden="true" style="font-size: 20px;"></i><br />
-        có <?php echo mysql_num_rows($result_tip);?> hiển thị bài hát
+        có <?php echo mysqli_num_rows($result_tip);?> hiển thị bài hát
 </div>
 
 <div style="display: inline-block;float: left;margin: 2px;width: 90px;">
@@ -53,8 +53,8 @@ if($langsel==''){
     <select name="lang">
     <option value=""  selected="true"  <?php if($langsel==""){?> selected="true"<?php }?>>Tất cả</option>
     <?php 
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
-    while($row_lang=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
+    while($row_lang=mysqli_fetch_array($list_country)){
     ?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
@@ -76,10 +76,10 @@ if($langsel==''){
 
 
 <?php
-if(mysql_num_rows($result_tip)>0){
+if(mysqli_num_rows($result_tip)>0){
     echo '<table  style="border:solid 1px green">';
     echo '<tr style="border:solid 1px green"><th>Từ khóa</th><th>Ngôn ngữ</th><th>Tùy chỉnh</th><th>Hành động</th></tr>';
-            while ($row = mysql_fetch_array($result_tip)) {
+            while ($row = mysqli_fetch_array($result_tip)) {
                 ?>
                 <tr>
                     <td><?php echo $row[0]; ?></td>
@@ -94,7 +94,7 @@ if(mysql_num_rows($result_tip)>0){
                 <?php
             }
     echo '</table>';
-    mysql_free_result($result_tip);
+    mysqli_free_result($result_tip);
 }else{
     show_alert('Chưa có dữ liệu từ người dùng','alert');
 }

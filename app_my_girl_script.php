@@ -7,8 +7,8 @@ function check_sex(){
     var valsex1=$('#sex1').val();
     var valsex2=$('#character_sex').val();
     
-    var api_voice_female="<?php echo get_key_lang('voice_character_sex_1',$lang_sel);?>";
-    var api_voice_male="<?php echo get_key_lang('voice_character_sex_0',$lang_sel);?>";
+    var api_voice_female="<?php echo get_key_lang($link,'voice_character_sex_1',$lang_sel);?>";
+    var api_voice_male="<?php echo get_key_lang($link,'voice_character_sex_0',$lang_sel);?>";
     $('#btn_add_audio').hide();
     $('#file_audio').show();
     $('#btn_tool_cms_audio').hide();
@@ -116,8 +116,8 @@ function get_audio_file(lang){
     txt=txt.replace("{ten_user}", "");
     var link_voice_api="";
     var link_audios='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='+txt.length+'&client=tw-ob&q='+txt+'&tl='+lang;
-    var link_audio_sex_0="<?php echo get_key_lang('voice_character_sex_1',$lang_sel);?>";
-    var link_audio_sex_1="<?php echo get_key_lang('voice_character_sex_0',$lang_sel);?>";
+    var link_audio_sex_0="<?php echo get_key_lang($link,'voice_character_sex_1',$lang_sel);?>";
+    var link_audio_sex_1="<?php echo get_key_lang($link,'voice_character_sex_0',$lang_sel);?>";
     
     if((sex=='0'&&char_sex=='1')||(sex=='1'&&char_sex=='1')){
         if(link_audio_sex_0!="google"){
@@ -154,7 +154,7 @@ function search_music_lyrics(){
 
 function search_gg(){
     var txt_name_song=$('#chat').val().replace(/\&/g,' and ');
-    var win = window.open("https://www.google.com/search?q="+txt_name_song+" <?php echo get_key_lang('lyrics_search',$lang_sel);?>", '_blank');
+    var win = window.open("https://www.google.com/search?q="+txt_name_song+" <?php echo get_key_lang($link,'lyrics_search',$lang_sel);?>", '_blank');
     win.focus();
 }
 

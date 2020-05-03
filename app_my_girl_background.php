@@ -228,9 +228,9 @@ if(isset($_GET['del'])){
     }
 
 
-    $result_tip_count=mysql_query("SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC");  
+    $result_tip_count=mysqli_query("SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC");
 
-    $total_records=mysql_num_rows($result_tip_count);
+    $total_records=mysqli_num_rows($result_tip_count);
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     $limit = 80;
     $total_page = ceil($total_records / $limit);
@@ -243,7 +243,7 @@ if(isset($_GET['del'])){
     $start = ($current_page - 1) * $limit;
     
 
-    $list_effect=mysql_query("SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC LIMIT $start, $limit "); 
+    $list_effect=mysqli_query("SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC LIMIT $start, $limit ");
 ?>
     <div id="form_loc">
     <strong>Trang hiển thị:</strong>
@@ -266,7 +266,7 @@ if(isset($_GET['del'])){
     <div id="form_loc">
             <strong>Loại (category)</strong>
             <?php
-            $list_category_bk=mysql_query("SELECT * FROM `app_my_girl_bk_category` ORDER BY `id`");
+            $list_category_bk=mysqli_query("SELECT * FROM `app_my_girl_bk_category` ORDER BY `id`");
             ?>
             <select name="category" onchange="show_cat(this.value);return false;">
                 <option value="0">none</option>
@@ -275,7 +275,7 @@ if(isset($_GET['del'])){
                 <?php }?>
             </select>
             <?php
-            mysql_free_result($list_category_bk);
+            mysqli_free_result($list_category_bk);
             ?>
     <script>
     function show_cat(id_cat){
@@ -297,7 +297,7 @@ if(isset($_GET['del'])){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-while($row=mysql_fetch_array($list_effect)){
+while($row=mysqli_fetch_array($list_effect)){
 ?>
     <tr>
         <td><?php echo $row[0];?></td>
@@ -311,10 +311,10 @@ while($row=mysql_fetch_array($list_effect)){
         <td>
         <?php 
         $id_cat=$row['category'];
-        $query_cat=mysql_query("SELECT `name` FROM `app_my_girl_bk_category` WHERE `id` = '$id_cat' LIMIT 1");
-        $data_cat=mysql_fetch_array($query_cat);
-        echo get_key_lang($data_cat['name'],'vi');
-        mysql_free_result($query_cat);
+        $query_cat=mysqli_query("SELECT `name` FROM `app_my_girl_bk_category` WHERE `id` = '$id_cat' LIMIT 1");
+        $data_cat=mysqli_fetch_array($query_cat);
+        echo get_key_lang($link,$data_cat['name'],'vi');
+        mysqli_free_result($query_cat);
         ?>
         </td>
         <td>

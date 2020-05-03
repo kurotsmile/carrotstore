@@ -9,7 +9,7 @@ $effect_search='';
 $disable_chat='';
 $disable_chat_sql="";
 $txt_key_search='';
-
+$txt_query_page_cat="";
 $view_top_music="";
 
 $col_rank='';
@@ -47,7 +47,6 @@ if(isset($_GET['limit'])){
 if(isset($_POST['loc'])){
     if(isset($_POST['lang'])) $langsel=$_POST['lang'];
     if(isset($_POST['sex'])) $sexsel=$_POST['sex'];
-    $tip=$_POST['tip'];
     $key_search= $_POST['key_word'];
     
     if(isset($_POST['disable_chat'])) $disable_chat=$_POST['disable_chat'];
@@ -74,14 +73,14 @@ $txt_query_view='';
 if($view_top_music!=''){
     if($view_top_music!="-1"){
         $txt_query_view=" AND `top_music`.`value`=$view_top_music ";
-        $result_tip=mysql_query("SELECT DISTINCT `chat`.* FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view ");
+        $result_tip=mysqli_query($link,"SELECT DISTINCT `chat`.* FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view ");
     }else{
-        $result_tip=mysql_query("SELECT `chat`.*,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC ");
+        $result_tip=mysqli_query($link,"SELECT `chat`.*,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC ");
     } 
-    $total_records=mysql_num_rows($result_tip); 
+    $total_records=mysqli_num_rows($result_tip);
 }else{
-    $query_count_all=mysql_query("SELECT COUNT(`id`) FROM `app_my_girl_$langsel` WHERE `disable` = 0 $txt_key_search AND `effect`='2' ORDER BY `id`");
-    $data_all_music=mysql_fetch_array($query_count_all);
+    $query_count_all=mysqli_query($link,"SELECT COUNT(`id`) FROM `app_my_girl_$langsel` WHERE `disable` = 0 $txt_key_search AND `effect`='2' ORDER BY `id`");
+    $data_all_music=mysqli_fetch_array($query_count_all);
     $total_records=$data_all_music[0];
 }
 
@@ -101,14 +100,14 @@ else if ($current_page < 1){
 $start = ($current_page - 1) * $limit;
 if($view_top_music!=''){
     if($view_top_music!="-1"){
-        $list_music=mysql_query("SELECT DISTINCT `chat`.* FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view LIMIT $start, $limit ");
+        $list_music=mysqli_query($link,"SELECT DISTINCT `chat`.* FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2'  $txt_query_view LIMIT $start, $limit ");
     }else{
-        $list_music=mysql_query("SELECT `chat`.*,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT $start, $limit ");
+        $list_music=mysqli_query($link,"SELECT `chat`.*,COUNT(`top_music`.`id_chat`)  as c  FROM `app_my_girl_music_data_$langsel` as `top_music` left JOIN   `app_my_girl_$langsel` as `chat`  on `chat`.`id`=`top_music`.`id_chat` WHERE `chat`.`effect` = '2' GROUP BY `top_music`.`id_chat` HAVING COUNT(`top_music`.`id_chat`) >= 1 ORDER BY c DESC LIMIT $start, $limit ");
     }  
 }else{
-    $list_music=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `disable` = 0 $txt_key_search AND `effect`='2' ORDER BY `id` DESC LIMIT $start, $limit "); 
+    $list_music=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `disable` = 0 $txt_key_search AND `effect`='2' ORDER BY `id` DESC LIMIT $start, $limit "); 
 }
-echo mysql_error();
+echo mysqli_error($link);
 ?>
 <form method="post" id="form_loc">
 
@@ -116,8 +115,8 @@ echo mysql_error();
     <label>Ngôn ngữ:</label> 
     <select name="lang">
     <?php 
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
-    while($row_lang=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
+    while($row_lang=mysqli_fetch_assoc($list_country)){
     ?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
@@ -168,7 +167,7 @@ echo mysql_error();
 
 <div id="form_loc" style="font-size: 11px;">
     <div style="display: inline-block;float: left;margin: 2px;">
-        <i class="fa fa-music" aria-hidden="true"></i> có <?php echo mysql_num_rows($list_music);?> hiển thị / <?php echo $data_all_music[0];?> bài hát
+        <i class="fa fa-music" aria-hidden="true"></i> có <?php echo mysqli_num_rows($list_music);?> hiển thị / <?php echo $data_all_music[0];?> bài hát
     </div>
 </div>
 
@@ -287,7 +286,7 @@ function search_gg(emp){
     var key_value=$(emp).attr('title');
     key_value=key_value.replace("&", "and");
     key_value=key_value.replace("/", "");
-    var url_search="https://www.google.com/search?q="+key_value+" <?php echo get_key_lang('lyrics_search',$langsel);?>";
+    var url_search="https://www.google.com/search?q="+key_value+" <?php echo get_key_lang($link,'lyrics_search',$langsel);?>";
     var win = window.open(url_search, '_blank');
     win.focus();
 }
@@ -298,8 +297,8 @@ function search_gg(emp){
 <?php
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id</th>'.$col_rank.'<th>Loại</th><th>Từ khóa âm nhạc</th><th>Tên bài hát</th><th>Giới tính</th><th>Gợi ý</th><th>Giới hạng</th><th>Giọng</th><th>Thao tác</th><th>Thông tin siêu dữ liệu</th></tr>';
-        while ($row = mysql_fetch_array($list_music)) {
-             echo show_row_music($row,$langsel);
+        while ($row = mysqli_fetch_array($list_music)) {
+             echo show_row_music($link,$row,$langsel);
         }
 echo '</table>';
 ?>

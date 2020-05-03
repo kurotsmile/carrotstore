@@ -2,6 +2,7 @@
 include "app_my_girl_template.php";
 
 $lang_sel='vi';
+$langsel='vi';
 $name_user="";
 $date_act_user="";
 $id_user="";
@@ -16,8 +17,8 @@ if(isset($_GET['lang'])){
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_effect=mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE ((`id_device` = '$id_edit')) LIMIT 1;");
-    $arr_data_effect=mysql_fetch_array($edit_effect);
+    $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE ((`id_device` = '$id_edit')) LIMIT 1;");
+    $arr_data_effect=mysqli_fetch_array($edit_effect);
     $name_user=$arr_data_effect[1];
     $id_user=$id_edit;
     $func="edit";
@@ -27,11 +28,11 @@ if(isset($_POST['func'])){
     $name_user=$_POST['name_user'];
     $id_user=$_POST['id_user'];
     if($_POST['func']=="add"){
-        $add_effect=mysql_query("INSERT INTO `app_my_girl_user_$lang_sel` (`id_device`,`name`) VALUES ('$id_user','$name_user');");
-        $id_new=mysql_insert_id();
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang_sel` (`id_device`,`name`) VALUES ('$id_user','$name_user');");
+        $id_new=mysqli_insert_id($link);
     }else{
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysql_query("UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$name_user' WHERE `id_device` = '$id_user';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$name_user' WHERE `id_device` = '$id_user';");
     }
 }
 
@@ -66,12 +67,12 @@ if(isset($_POST['find'])){
         $txt_sql_address=" and `address` LIKE '%$address%'";
     }
     
-    $list_effect=mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` where 1=1 $txt_sql_id  $txt_sql_name $txt_sql_date $txt_sql_address  AND `sex`=$sexsel   ORDER BY RAND() LIMIT 900");
+    $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` where 1=1 $txt_sql_id  $txt_sql_name $txt_sql_date $txt_sql_address  AND `sex`=$sexsel   ORDER BY RAND() LIMIT 900");
 }else{
-    $list_effect=mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel`  WHERE `sex`=$sexsel ORDER BY RAND() LIMIT 900");  
+    $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel`  WHERE `sex`=$sexsel ORDER BY RAND() LIMIT 900");  
 }
 
-echo mysql_error();
+echo mysqli_error($link);
 
 ?>
 
@@ -79,10 +80,10 @@ echo mysql_error();
 <div style="display: inline-block;float: left;margin: 2px;">
     <label>Ngôn ngữ:</label> 
     <select name="lang">
-    <?php     $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    <?php     $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
     
     
-    while($row_lang=mysql_fetch_array($query_list_lang)){?>
+    while($row_lang=mysqli_fetch_array($query_list_lang)){?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
@@ -129,7 +130,7 @@ if(isset($_GET['del'])){
     if (file_exists($filename_avatar)) {
         unlink($filename_avatar);
     } 
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_user_$lang_sel` WHERE ((`id_device` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_user_$lang_sel` WHERE ((`id_device` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
 }
 
@@ -150,7 +151,7 @@ if(isset($_GET['del'])){
 </tr>
 <?php
 
-while($row=mysql_fetch_array($list_effect)){
+while($row=mysqli_fetch_array($list_effect)){
             $filename_avatar= 'app_mygirl/app_my_girl_'.$lang_sel.'_user/'.$row[0].'.png';
             $txt_img_url=thumb('images/avatar_default.png','25x25');
             if (file_exists($filename_avatar)) {

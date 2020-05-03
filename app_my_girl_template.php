@@ -502,7 +502,7 @@ $arr_status_icon = array('<i class="fa fa-meh-o" aria-hidden="true"></i>', '<i c
 <title>Người yêu ảo</title>
 <link rel="icon" href="<?php echo $url; ?>/app_mygirl/icon.ico" type="image/gif" sizes="16x16"/>
 <script src="<?php echo $url; ?>/js/jquery.js"></script>
-<link href="<?php echo $url; ?>/app_mygirl/style.css" rel="stylesheet"/>
+<link href="<?php echo $url; ?>/app_mygirl/style.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css"/>
 <link rel="stylesheet" href="<?php echo $url; ?>/js/jquery-ui.css"/>
 <script src="<?php echo $url; ?>/js/jquery-ui.js"></script>

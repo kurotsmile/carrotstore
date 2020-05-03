@@ -1,6 +1,6 @@
 <?php
 include "app_my_girl_template.php";
-
+$langsel='vi';
 $name_radio="";
 $stream_radio="";
 $lang_radio="vi";
@@ -14,8 +14,8 @@ if(isset($_GET['lang'])){
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_effect=mysql_query("SELECT * FROM `app_my_girl_radio` WHERE ((`id` = '$id_edit')) LIMIT 1;");
-    $arr_data_effect=mysql_fetch_array($edit_effect);
+    $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` WHERE ((`id` = '$id_edit')) LIMIT 1;");
+    $arr_data_effect=mysqli_fetch_array($edit_effect);
     $name_radio=$arr_data_effect['name_radio'];
     $stream_radio=$arr_data_effect['stream'];
     $lang_radio=$arr_data_effect['lang'];
@@ -32,14 +32,14 @@ if(isset($_POST['func'])){
     $lang_radio=$_POST['lang_radio'];
         
     if($_POST['func']=="add"){
-        $add_effect=mysql_query("INSERT INTO `app_my_girl_radio` (`name_radio`,`stream`,`lang`) VALUES ('$name_radio','$stream_radio','$lang_radio');");
-        $id_new=mysql_insert_id();
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_radio` (`name_radio`,`stream`,`lang`) VALUES ('$name_radio','$stream_radio','$lang_radio');");
+        $id_new=mysqli_insert_id($link);
         $target_dir = "app_mygirl/obj_radio/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_radio_icon"]["tmp_name"], $target_dir);
         echo '<a href="http://work.carrotstore.com/?id_object='.$id_new.'&lang='.$lang_radio.'&type_chat=radio&type_action=add" target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn làm việc (Editor)</a>';
     }else{
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysql_query("UPDATE `app_my_girl_radio` SET `name_radio` = '$name_radio',`stream`='$stream_radio',`lang`='$lang_radio' WHERE `id` = '$id_edit';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_radio` SET `name_radio` = '$name_radio',`stream`='$stream_radio',`lang`='$lang_radio' WHERE `id` = '$id_edit';");
         
         if(isset_file($_FILES["file_radio_icon"])){
             $filename = 'app_mygirl/obj_radio/icon_'.$id_edit.'.png';
@@ -83,7 +83,19 @@ if(isset($_POST['func'])){
             <?php }?>
         </select>
     </div>
-    
+
+
+    <div style="display: inline-block;float: left;margin: 2px;">
+        <label>Ngôn ngữ:</label>
+        <select name="lang">
+            <?php
+            $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+            while($row_lang=mysqli_fetch_array($query_list_lang)){?>
+                <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
+            <?php }?>
+        </select>
+    </div>
+
     <div style="display: inline-block;float: left;margin: 2px;">
         <?php if($func=="add"){?>
             <button class="buttonPro blue">Thêm mới</button>
@@ -95,25 +107,10 @@ if(isset($_POST['func'])){
     </div>
 </form>
 
-<form method="get" id="form_loc" action="<?php echo $url;?>/app_my_girl_radio.php">
-    <div style="display: inline-block;float: left;margin: 2px;">
-        <label>Ngôn ngữ:</label> 
-        <select name="lang">
-        <?php for($i=0;$i<count($lang_app->menu_lang);$i++){?>
-        <option value="<?php echo $lang_app->menu_lang[$i]->key;?>" <?php if($lang_radio==$lang_app->menu_lang[$i]->key){?> selected="true"<?php }?>><?php echo $lang_app->menu_lang[$i]->name;?></option>
-        <?php }?>
-        </select>
-    </div>
-    
-    <div style="display: inline-block;float: left;margin: 2px;">
-        <input type="submit" value="Lọc" class="link_button" />
-    </div>
-</form>
-
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_radio` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_radio` WHERE ((`id` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
     $filename = 'app_mygirl/obj_radio/icon_'.$id_del.'.png';
     if (file_exists($filename)) {
@@ -122,9 +119,9 @@ if(isset($_GET['del'])){
 }
 
 
-    $result_tip_count=mysql_query("SELECT * FROM `app_my_girl_radio` where `lang`='$lang_radio' ORDER BY `id` DESC");  
+    $result_tip_count=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` where `lang`='$lang_radio' ORDER BY `id` DESC");  
 
-    $total_records=mysql_num_rows($result_tip_count);
+    $total_records=mysqli_num_rows($result_tip_count);
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     $limit = 80;
     $total_page = ceil($total_records / $limit);
@@ -137,9 +134,9 @@ if(isset($_GET['del'])){
     $start = ($current_page - 1) * $limit;
 
     if($lang_radio!=''){
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_radio` where `lang`='$lang_radio' ORDER BY `id`  DESC LIMIT $start, $limit ");
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` where `lang`='$lang_radio' ORDER BY `id`  DESC LIMIT $start, $limit ");
     }else{
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_radio` ORDER BY `id`  DESC LIMIT $start, $limit ");
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` ORDER BY `id`  DESC LIMIT $start, $limit ");
     }
 ?>
     <div id="form_loc">
@@ -165,7 +162,7 @@ if(isset($_GET['del'])){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-while($row=mysql_fetch_array($list_effect)){
+while($row=mysqli_fetch_array($list_effect)){
 ?>
     <tr>
         <td><?php echo $row[0];?></td>

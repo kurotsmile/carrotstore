@@ -115,10 +115,10 @@ $txt_title=$data_music['chat'];
 
             <div class="info_music">
                 <?php
-                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang('song_artist').':</b><a href="'.$url.'/artist/'.$lang_sel.'/'.$data_lyrics['artist'].'">'.$data_lyrics['artist'].'</a></div>';
-                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> '.lang('song_album').':</b><a href="'.$url.'/album/'.$lang_sel.'/'.$data_lyrics['album'].'">'.$data_lyrics['album'].'</a></div>';
-                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang('song_genre').':</b><a href="'.$url.'/index.php?page_view=page_music.php&view=genre&lang='.$lang_sel.'&genre='.$data_lyrics['genre'].'">'.$data_lyrics['genre'].'</a></div>';
-                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang('song_year').':</b><a href="'.$url.'/year/'.$lang_sel.'/'.$data_lyrics['year'].'">'.$data_lyrics['year'].'</a></div>';
+                if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang($link,'song_artist').':</b><a href="'.$url.'/artist/'.$lang_sel.'/'.$data_lyrics['artist'].'">'.$data_lyrics['artist'].'</a></div>';
+                if($data_lyrics['album']!='') echo '<div class="item"><b><i class="fa fa-cc-diners-club" aria-hidden="true"></i> '.lang($link,'song_album').':</b><a href="'.$url.'/album/'.$lang_sel.'/'.$data_lyrics['album'].'">'.$data_lyrics['album'].'</a></div>';
+                if($data_lyrics['genre']!='') echo '<div class="item"><b><i class="fa fa-stumbleupon" aria-hidden="true"></i> '.lang($link,'song_genre').':</b><a href="'.$url.'/index.php?page_view=page_music.php&view=genre&lang='.$lang_sel.'&genre='.$data_lyrics['genre'].'">'.$data_lyrics['genre'].'</a></div>';
+                if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang($link,'song_year').':</b><a href="'.$url.'/year/'.$lang_sel.'/'.$data_lyrics['year'].'">'.$data_lyrics['year'].'</a></div>';
                 ?>
             </div>
 

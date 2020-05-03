@@ -10,7 +10,7 @@ function isset_file($file)
 function show_info_user($lang_sel, $id_device, $show_phone)
 {
     $name_user = "";
-    $list_effect = mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
+    $list_effect = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
     if ($list_effect != false) {
         if (mysql_num_rows($list_effect) > 0) {
             $arr_data = mysql_fetch_array($list_effect);
@@ -44,7 +44,7 @@ function show_info_user($lang_sel, $id_device, $show_phone)
 function show_info_user_name($lang_sel, $id_device)
 {
     $name_user = "";
-    $list_effect = mysql_query("SELECT `name` FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
+    $list_effect = mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
     if ($list_effect != false) {
         if (mysql_num_rows($list_effect) > 0) {
             $arr_data = mysql_fetch_array($list_effect);
@@ -426,11 +426,11 @@ function get_key_lang($link,$key, $lang)
     return $val;
 }
 
-function get_user_name_by_id($id_user)
+function get_user_name_by_id($link,$id_user)
 {
-    $query_login = mysql_query("Select `user_name` From `carrotsy_work`.`work_user` WHERE `user_id`='$id_user' Limit 1");
-    if (mysql_num_rows($query_login) > 0) {
-        $data_user_login = mysql_fetch_array($query_login);
+    $query_login = mysqli_query($link,"Select `user_name` From `carrotsy_work`.`work_user` WHERE `user_id`='$id_user' Limit 1");
+    if (mysqli_num_rows($query_login) > 0) {
+        $data_user_login = mysqli_fetch_assoc($query_login);
         return $data_user_login['user_name'];
     } else {
         return $id_user;
@@ -465,9 +465,9 @@ function object_to_array($data)
 
 function delete_chat_by_lang($id, $lang_sel)
 {
-    $check_chat = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id' LIMIT 1");
+    $check_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id' LIMIT 1");
     $data_chat = mysql_fetch_array($check_chat);
-    $result_chat = mysql_query("DELETE FROM `app_my_girl_$lang_sel` WHERE `id` = '$id'");
+    $result_chat = mysqli_query($link,"DELETE FROM `app_my_girl_$lang_sel` WHERE `id` = '$id'");
 
     $filename = 'app_mygirl/app_my_girl_' . $lang_sel . '/' . $id . '.mp3';
     echo 'Xóa câu trò chuyện #' . $id . ' thành công !!!<br/>';
@@ -480,9 +480,9 @@ function delete_chat_by_lang($id, $lang_sel)
 
     mysql_free_result($result_chat);
 
-    $check_field_chat = mysql_query("SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
+    $check_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
     if (mysql_num_rows($check_field_chat) > 0) {
-        $query_delete_field = mysql_query("DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
+        $query_delete_field = mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
         mysql_free_result($query_delete_field);
         echo "Xóa trường dữ liệu (Field chat) thành công!";
     } else {
@@ -491,25 +491,25 @@ function delete_chat_by_lang($id, $lang_sel)
 
     if ($data_chat['effect'] == '2') {
         echo "<br/>Xóa các chức năng liên quan tới nhạc";
-        $check_video = mysql_query("SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id' LIMIT 1");
+        $check_video = mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id' LIMIT 1");
         if (mysql_num_rows($check_video) > 0) {
-            mysql_query("DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id'");
+            mysqli_query($link,"DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id'");
             echo mysql_error();
             echo "<br/>Xóa liên kết video thành công!";
         }
         mysql_free_result($check_video);
 
-        $show_lyrics = mysql_query("SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if (mysql_num_rows($show_lyrics) > 0) {
-            mysql_query("DELETE FROM `app_my_girl_music_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1;");
+            mysqli_query($link,"DELETE FROM `app_my_girl_music_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1;");
             echo mysql_error();
             echo "<br/>Xóa lời bài hát!";
         }
         mysql_free_result($show_lyrics);
 
-        $check_rank_music = mysql_query("SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat`='$id' LIMIT 1");
+        $check_rank_music = mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat`='$id' LIMIT 1");
         if (mysql_num_rows($check_rank_music) > 0) {
-            mysql_query("DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music` = '$id' LIMIT 1;");
+            mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music` = '$id' LIMIT 1;");
             echo mysql_error();
             echo "<br/>Xóa bản xếp hạng liên quan đến bài hát!";
         }
@@ -528,9 +528,9 @@ function show_row_map($chat_item)
     $id = $chat_item['id_question'];
 
     if ($chat_item['type_question'] == 'chat') {
-        $result_chat1 = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = $id ");
+        $result_chat1 = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = $id ");
     } else {
-        $result_chat1 = mysql_query("SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id` = $id ");
+        $result_chat1 = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id` = $id ");
     }
     if (mysql_num_rows($result_chat1) > 0) {
         $arr_item = mysql_fetch_array($result_chat1);
@@ -562,12 +562,13 @@ function show_row_map($chat_item)
 }
 
 
-function show_row_music($row, $langsel)
+function show_row_music($link,$row, $langsel)
 {
-    $msql_check_lyric = mysql_query("SELECT * FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `id_music` = '" . $row['id'] . "'  LIMIT 1");
+    $msql_check_lyric = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `id_music` = '" . $row['id'] . "'  LIMIT 1");
     $bnt_view_lyric = '';
     $btn_search_lyrict = '';
     $count_rank = '';
+    $view_top_music='';
 
     $color_btn_ytb = 'blue';
     $color_btn_lyrics = 'blue';
@@ -583,7 +584,7 @@ function show_row_music($row, $langsel)
         $color_btn_view_store = '';
     }
 
-    if (mysql_num_rows($msql_check_lyric)) {
+    if (mysqli_num_rows($msql_check_lyric)) {
         if (isset($_SESSION['off_color'])) {
             $color_btn_lyrics = '';
             $color_btn_view_lyrics = '';
@@ -596,14 +597,14 @@ function show_row_music($row, $langsel)
         $btn_search_lyrict = '<a href="#" class="buttonPro small ' . $color_btn_search_music . '" onclick="search_music_lyrics(\'' . $row['chat'] . '\');return false;"><i class="fa fa-search-plus" aria-hidden="true"></i>  Tìm từ lyrics</a><a href="#" class="buttonPro small ' . $color_btn_search_music . '" title="' . $row['chat'] . '" onclick="search_gg(this);return false;"><i class="fa fa-search-plus" aria-hidden="true"></i> Tìm từ gg</a>';
     }
 
-    mysql_freeresult($msql_check_lyric);
+    $col_rank="";
     if ($view_top_music == '-1') {
         $col_rank = "  Số lần tương tác:<strong>" . $row['c'] . "</strong>";
     }
-    $check_video = mysql_query("SELECT `link` FROM `app_my_girl_video_$langsel` WHERE  `id_chat` = '" . $row['id'] . "' LIMIT 1");
+    $check_video = mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$langsel` WHERE  `id_chat` = '" . $row['id'] . "' LIMIT 1");
     $btn_view_video = '';
-    if (mysql_num_rows($check_video) > 0) {
-        $data_video = mysql_fetch_array($check_video);
+    if (mysqli_num_rows($check_video) > 0) {
+        $data_video = mysqli_fetch_array($check_video);
         if (isset($_SESSION['off_color'])) {
             $color_btn_ytb = '';
         } else {
@@ -613,11 +614,10 @@ function show_row_music($row, $langsel)
     } else {
         $btn_view_video = ' <a href="https://www.youtube.com/results?search_query=' . $row['chat'] . '" target="_blank" class="buttonPro small pink" ><i class="fa fa-search-plus" aria-hidden="true"></i>  Tìm video youtube</a>';
     }
-    mysql_free_result($check_video);
     $bnt_update_lyric = '<a href="#" class="buttonPro small ' . $color_btn_lyrics . ' btn_add_lyrics_' . $row['id'] . '" onclick="add_music_lyrics(' . $row['id'] . ');return false;"><i class="fa fa-book"></i> Cập nhật lời bài hát</a> <a href="#" class="buttonPro small ' . $color_btn_ytb . ' btn_add_video_' . $row['id'] . '" onclick="add_video_music(' . $row['id'] . ');return false;"><i class="fa fa-youtube-square" aria-hidden="true"></i> Cập nhật video</a>';
     $bnt_del = '<a href="#" class="buttonPro small red " onclick="delete_table(' . $row['id'] . ');return false;"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>';
     $bnt_view_store = '<a href="/music/'.$row['id'].'/'. $row['author'] . '" class="buttonPro small ' . $color_btn_view_store . ' " target="_blank"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>';
-    return show_row_chat_prefab($row, $langsel, $bnt_update_lyric . ' ' . $bnt_del . ' ' . $bnt_view_lyric . ' ' . $btn_search_lyrict . ' ' . $col_rank . ' ' . $bnt_view_store . ' ' . $btn_view_video . mysql_error());
+    return show_row_chat_prefab($link,$row, $langsel, $bnt_update_lyric . ' ' . $bnt_del . ' ' . $bnt_view_lyric . ' ' . $btn_search_lyrict . ' ' . $col_rank . ' ' . $bnt_view_store . ' ' . $btn_view_video);
 }
 
 function show_name_country_by_key($link,$key_lang)
