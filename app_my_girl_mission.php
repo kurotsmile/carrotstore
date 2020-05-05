@@ -2,6 +2,7 @@
 header('Content-type: text/html; charset=utf-8');
 include "app_my_girl_template.php";
 $sel_lang='vi';
+$lang_sel='vi';
 $sel_sex_user='-1';
 $sel_sex_char='-1';
 $check_key_tip='1';
@@ -56,19 +57,19 @@ if($sel_sex_char!='-1'){
 
 if($check_key_tip=='1') {
     $arr_tip_key = array();
-    $query_tip_chat = mysql_query("SELECT `text` FROM `app_my_girl_" . $sel_lang . "` WHERE `tip` = '1' $sql_query_sex_char");
-    while ($row_tip = mysql_fetch_array($query_tip_chat)) {
+    $query_tip_chat = mysqli_query($link,"SELECT `text` FROM `app_my_girl_" . $sel_lang . "` WHERE `tip` = '1' $sql_query_sex_char");
+    while ($row_tip = mysqli_fetch_array($query_tip_chat)) {
         array_push($arr_tip_key, $row_tip['text']);
     }
 }
 
 if($check_key_tip=='1') {
-    $query_get_chat = mysql_query("SELECT * FROM `app_my_girl_key` WHERE char_length(`key`) <20 AND `key` NOT IN ( '" . implode("', '", $arr_tip_key) . "' ) AND `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
+    $query_get_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_key` WHERE char_length(`key`) <20 AND `key` NOT IN ( '" . implode("', '", $arr_tip_key) . "' ) AND `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
 }else{
-    $query_get_chat = mysql_query("SELECT * FROM `app_my_girl_key` WHERE  char_length(`key`) <20 AND `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
+    $query_get_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_key` WHERE  char_length(`key`) <20 AND `lang` = '$sel_lang'   $sql_query_sex $sql_query_sex_char ORDER BY RAND() LIMIT 1");
 }
 
-$data_chat=mysql_fetch_array($query_get_chat);
+$data_chat=mysqli_fetch_array($query_get_chat);
 $id_device=$data_chat['id_device'];
 $sex=$data_chat['sex'];
 $character_sex=$data_chat['character_sex'];
@@ -77,14 +78,13 @@ $link_edit_show_chat='';
 if($data_chat['id_question']!=''){
     $id_father=$data_chat['id_question'];
     if($data_chat['type_question']=='chat'){
-        $query_father_chat=mysql_query("SELECT `chat` FROM `app_my_girl_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
+        $query_father_chat=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
         $link_edit_show_chat=$url."/app_my_girl_update.php?id=$id_father&lang=$sel_lang";
     }else{
-        $query_father_chat=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
+        $query_father_chat=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$sel_lang` WHERE `id` = '$id_father' LIMIT 50");
         $link_edit_show_chat=$url."/app_my_girl_update.php?id=$id_father&lang=$sel_lang&msg=1";
     }
-    $data_father=mysql_fetch_array($query_father_chat);
-    mysql_free_result($query_father_chat);
+    $data_father=mysqli_fetch_array($query_father_chat);
 }
 ?>
 <div class="body">
@@ -97,8 +97,8 @@ if($data_chat['id_question']!=''){
         Chọn ngôn ngữ: <br />
         <select id="sel_lang" style="width: 200px;" name="sel_lang">
             <?php 
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
-            while($row_lang=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
+            while($row_lang=mysqli_fetch_array($list_country)){
             ?>
             <option value="<?php echo $row_lang['key'];?>" <?php if($sel_lang==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
             <?php }?>
@@ -184,24 +184,19 @@ if($data_chat['id_question']!=''){
         </div>
  </div>
 
-<?php
-mysql_free_result($query_get_chat);
-?>
 <br />
 <div id="show_device" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" style="position: static;background-color: #878792;width: 90%;float: left;margin-top: 20px;">
 <p id="dialog_data">
 <h4>Nội dung đầy đủ của cuộc trò chuyện:</h4>
 <?php
-    $result_chat=mysql_query("SELECT * FROM `app_my_girl_key` WHERE `id_device`='$id_device'  AND `sex`='$sex' AND `character_sex`='$character_sex' ");
-    $chat_item=mysql_fetch_array($result_chat);
+    $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_key` WHERE `id_device`='$id_device'  AND `sex`='$sex' AND `character_sex`='$character_sex' ");
+    $chat_item=mysqli_fetch_array($result_chat);
     echo "<div style='width:100%;float:left;margin: 3px;'>ID device:".$chat_item['id_device']." Lang:".$lang_sel." Os:".$chat_item['os']." Version:".$chat_item['version'].'</div><hr/>';
 
-    show_row_map($chat_item);
-    while($chat_item=mysql_fetch_array($result_chat)){
-        show_row_map($chat_item);
-        mysql_free_result($result_chat1);
+    show_row_map($link,$chat_item);
+    while($chat_item=mysqli_fetch_array($result_chat)){
+        show_row_map($link,$chat_item);
     }
-    mysql_free_result($chat_item);
 ?>
 </p>
 </div>

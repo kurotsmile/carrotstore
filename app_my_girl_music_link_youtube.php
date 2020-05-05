@@ -3,7 +3,7 @@ include "app_my_girl_template.php";
 $langsel = 'vi';
 $txt_msg_error = '';
 $limit = '100';
-
+$txt_search='';
 if (isset($_GET['lang'])) {
     $langsel = $_GET['lang'];
 }
@@ -11,7 +11,7 @@ if (isset($_GET['lang'])) {
 
 if (isset($_GET['delete'])) {
     $id_delete = $_GET['delete'];
-    $msql_delete_one = mysql_query("DELETE FROM `app_my_girl_video_" . $langsel . "` WHERE `id_chat` = '$id_delete' ");
+    $msql_delete_one = mysqli_query($link,"DELETE FROM `app_my_girl_video_" . $langsel . "` WHERE `id_chat` = '$id_delete' ");
     $txt_msg_error = 'Xóa thành công lời bái hát của bài nhạc có id:' . $id_delete;
 }
 
@@ -20,8 +20,8 @@ if (isset($_POST['loc'])) {
     $langsel = $_POST['lang'];
 }
 
-$query_count_all = mysql_query("SELECT COUNT(`id_chat`) FROM `app_my_girl_video_" . $langsel . "`  ORDER BY `id_chat` ");
-$data_all_lyrics = mysql_fetch_array($query_count_all);
+$query_count_all = mysqli_query($link,"SELECT COUNT(`id_chat`) FROM `app_my_girl_video_" . $langsel . "`  ORDER BY `id_chat` ");
+$data_all_lyrics = mysqli_fetch_array($query_count_all);
 $total_records = $data_all_lyrics[0];
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $total_page = ceil($total_records / $limit);
@@ -33,7 +33,7 @@ if ($current_page > $total_page) {
 $start = ($current_page - 1) * $limit;
 
 
-$result_link_ytb = mysql_query("SELECT * FROM `app_my_girl_video_" . $langsel . "` ORDER BY `id_chat`  LIMIT $start, $limit  ");
+$result_link_ytb = mysqli_query($link,"SELECT * FROM `app_my_girl_video_" . $langsel . "` ORDER BY `id_chat`  LIMIT $start, $limit  ");
 
 ?>
 <form method="post" id="form_loc" style="width: 500px;">
@@ -43,8 +43,8 @@ $result_link_ytb = mysql_query("SELECT * FROM `app_my_girl_video_" . $langsel . 
         <select name="lang">
             <option value="" selected="true" <?php if ($langsel == "") { ?> selected="true"<?php } ?>>Tất cả</option>
             <?php
-            $query_list_lang = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-            while ($row_lang = mysql_fetch_array($query_list_lang)) {
+            $query_list_lang = mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+            while ($row_lang = mysqli_fetch_array($query_list_lang)) {
                 ?>
                 <option value="<?php echo $row_lang['key']; ?>" <?php if ($langsel == $row_lang['key']) { ?> selected="true"<?php } ?>><?php echo $row_lang['name']; ?></option>
             <?php } ?>
@@ -60,7 +60,7 @@ $result_link_ytb = mysql_query("SELECT * FROM `app_my_girl_video_" . $langsel . 
 
 <div id="form_loc" style="font-size: 11px;">
     <div style="display: inline-block;float: left;margin: 2px;">
-        <i class="fa fa-youtube-play" aria-hidden="true"></i> Hiển thị <?php echo mysql_num_rows($result_link_ytb); ?>
+        <i class="fa fa-youtube-play" aria-hidden="true"></i> Hiển thị <?php echo mysqli_num_rows($result_link_ytb); ?>
         /<?php echo $total_records; ?> liên kết Youtube
     </div>
 </div>
@@ -89,11 +89,11 @@ if ($txt_msg_error != '') {
 }
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id bài hát</th><th>Tên bài hát</th><th>Vắn tắt</th><th>Hành động</th></tr>';
-while ($row = mysql_fetch_array($result_link_ytb)) {
+while ($row = mysqli_fetch_array($result_link_ytb)) {
     $is_ready = false;
-    $sql_name_song = mysql_query("SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row[0] . "' LIMIT 1");
-    if (mysql_num_rows($sql_name_song) > 0) {
-        $arr_song = mysql_fetch_array($sql_name_song);
+    $sql_name_song = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row[0] . "' LIMIT 1");
+    if (mysqli_num_rows($sql_name_song) > 0) {
+        $arr_song = mysqli_fetch_array($sql_name_song);
         $is_ready = true;
     } else {
         $is_ready = false;
@@ -124,9 +124,9 @@ while ($row = mysql_fetch_array($result_link_ytb)) {
         </td>
     </tr>
     <?php
-    mysql_free_result($sql_name_song);
+    mysqli_free_result($sql_name_song);
 }
 echo '</table>';
-mysql_free_result($result_link_ytb);
+mysqli_free_result($result_link_ytb);
 ?>
 

@@ -32,10 +32,10 @@ if($edit_lang==''){
 </form>
 </div>
 <?php
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver$ver`='1'");
-    while($row=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver$ver`='1'");
+    while($row=mysqli_fetch_array($list_country)){
         $langsel=$row['key'];
-        $query_data_display=mysql_query("SELECT `data` FROM `app_my_girl_display_lang` WHERE `lang` = '$langsel' AND `version`='".$ver."' LIMIT 1");
+        $query_data_display=mysqli_query($link,"SELECT `data` FROM `app_my_girl_display_lang` WHERE `lang` = '$langsel' AND `version`='".$ver."' LIMIT 1");
         
             ?>
             <div class="box_lang">
@@ -47,7 +47,7 @@ if($edit_lang==''){
                 <div class="body">
                     
                     <?php 
-                    $data_display=mysql_fetch_array($query_data_display);
+                    $data_display=mysqli_fetch_array($query_data_display);
                     $data_display=$data_display[0];
                     if($data_display==''){
                     ?>
@@ -68,7 +68,7 @@ if($edit_lang==''){
                 </div>
             </div>
             <?php 
-        mysql_free_result($query_data_display);
+        mysqli_free_result($query_data_display);
     }
 }else{
 ?>
@@ -81,15 +81,15 @@ if(isset($_POST['key'])){
     $ver=$_POST['ver'];
     unset($_POST['ver']);
     $data=addslashes(json_encode($_POST,JSON_UNESCAPED_UNICODE));
-    if(mysql_num_rows(mysql_query("SELECT `lang` FROM `app_my_girl_display_lang` WHERE `lang`='$key' AND `version` = '$ver'"))){
-        $query_update_data=mysql_query("UPDATE `app_my_girl_display_lang` SET `data` = '$data' WHERE `lang` = '$key'  AND `version` = '$ver' LIMIT 1;");
+    if(mysqli_num_rows(mysqli_query($link,"SELECT `lang` FROM `app_my_girl_display_lang` WHERE `lang`='$key' AND `version` = '$ver'"))){
+        $query_update_data=mysqli_query($link,"UPDATE `app_my_girl_display_lang` SET `data` = '$data' WHERE `lang` = '$key'  AND `version` = '$ver' LIMIT 1;");
         if($query_update_data===true){
             echo 'Cập nhật dữ liệu giao diện thành công!';
         }else{
             echo 'Cập nhật dữ liệu giao diện thất bại!';
         }
     }else{
-        $query_add_data=mysql_query("INSERT INTO `app_my_girl_display_lang` (`lang`, `data`, `version`) VALUES ('$key', '$data', '$ver');");
+        $query_add_data=mysqli_query($link,"INSERT INTO `app_my_girl_display_lang` (`lang`, `data`, `version`) VALUES ('$key', '$data', '$ver');");
         if($query_add_data===true){
             echo 'Thêm dữ liệu giao diện thành công!';
         }else{
@@ -103,13 +103,13 @@ if(isset($_POST['key'])){
 <table>
     <?php
     $data_display='';
-    $query_data_display=mysql_query("SELECT `data` FROM `app_my_girl_display_lang` WHERE `lang` = '$edit_lang' AND `version`='$ver' LIMIT 1");
-    $data_display=mysql_fetch_array($query_data_display);
+    $query_data_display=mysqli_query($link,"SELECT `data` FROM `app_my_girl_display_lang` WHERE `lang` = '$edit_lang' AND `version`='$ver' LIMIT 1");
+    $data_display=mysqli_fetch_array($query_data_display);
     $data_display=$data_display[0];
     $data_display=json_decode($data_display,JSON_UNESCAPED_UNICODE);
                     
-    $query_list_display_lang_data=mysql_query("SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='$ver'");
-    while($row=mysql_fetch_array($query_list_display_lang_data)){
+    $query_list_display_lang_data=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='$ver'");
+    while($row=mysqli_fetch_array($query_list_display_lang_data)){
     ?>
         <tr <?php if($edit_key_sel==$row['key']){ ?>style="background-color: yellowgreen;"<?php }?> >
             <td><?php echo $row['key'];?></td>

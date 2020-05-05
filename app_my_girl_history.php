@@ -90,7 +90,7 @@ if(isset($_POST['sex'])){
 }
 
 if(isset($_POST['delete_data'])){
-    $delete_query=mysql_query("DELETE FROM `app_my_girl_key`");
+    $delete_query=mysqli_query($link,"DELETE FROM `app_my_girl_key`");
     if($delete_query){
         echo "Delete success!!!";
     }
@@ -98,8 +98,8 @@ if(isset($_POST['delete_data'])){
 }
 
 if($type_view=="on"){
-    $result_tip=mysql_query("SELECT COUNT(*), `key`,`lang`,`sex`,`os`,`character_sex`,`character`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`,`dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel'  AND `character_sex`='$character_sex' AND (`location_lon`!='' AND `location_lon`!='0') $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query GROUP BY `location_lon` ORDER BY COUNT(*) DESC");
-    $result_count=mysql_query("SELECT `id` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel'  AND `character_sex`='$character_sex' AND (`location_lon`!='' AND `location_lon`!='0') $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query");
+    $result_tip=mysqli_query($link,"SELECT COUNT(*), `key`,`lang`,`sex`,`os`,`character_sex`,`character`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`,`dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel'  AND `character_sex`='$character_sex' AND (`location_lon`!='' AND `location_lon`!='0') $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query GROUP BY `location_lon` ORDER BY COUNT(*) DESC");
+    $result_count=mysqli_query($link,"SELECT `id` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel'  AND `character_sex`='$character_sex' AND (`location_lon`!='' AND `location_lon`!='0') $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query");
 }else{
 
     if($view_group=='0'){
@@ -108,10 +108,10 @@ if($type_view=="on"){
         $mysql_group_by='GROUP BY `id_device`';
     }
     
-    $result_count=mysql_query("SELECT `dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel' AND `character_sex`='$character_sex' $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query $txt_id_device");
-    $result_tip_count=mysql_query("SELECT COUNT(*), `key`,`lang`,`sex`,`os`,`character_sex`,`character`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`,`dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel' AND `character_sex`='$character_sex' $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query  $txt_id_device $mysql_group_by ORDER BY COUNT(*) DESC");  
+    $result_count=mysqli_query($link,"SELECT `dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel' AND `character_sex`='$character_sex' $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query $txt_id_device");
+    $result_tip_count=mysqli_query($link,"SELECT COUNT(*), `key`,`lang`,`sex`,`os`,`character_sex`,`character`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`,`dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel' AND `character_sex`='$character_sex' $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query  $txt_id_device $mysql_group_by ORDER BY COUNT(*) DESC");  
 
-    $total_records=mysql_num_rows($result_tip_count);
+    $total_records=mysqli_num_rows($result_tip_count);
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     $limit = 50;
     $total_page = ceil($total_records / $limit);
@@ -124,9 +124,9 @@ if($type_view=="on"){
     $start = ($current_page - 1) * $limit;
 
 
-    $result_tip=mysql_query("SELECT COUNT(*), `key`,`lang`,`sex`,`os`,`character_sex`,`character`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`,`dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel'  AND `character_sex`='$character_sex' $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query  $txt_id_device $mysql_group_by ORDER BY COUNT(*) DESC LIMIT $start, $limit "); 
+    $result_tip=mysqli_query($link,"SELECT COUNT(*), `key`,`lang`,`sex`,`os`,`character_sex`,`character`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`,`dates` FROM `app_my_girl_key` WHERE `sex` = '$sex' AND `lang`='$langsel'  AND `character_sex`='$character_sex' $txt_query_search $txt_type_chat_see_query $txt_id_chat_see_query  $txt_id_device $mysql_group_by ORDER BY COUNT(*) DESC LIMIT $start, $limit "); 
 
-    mysql_free_result($result_tip_count);
+    mysqli_free_result($result_tip_count);
 }
 ?>
 
@@ -233,8 +233,8 @@ if($type_view=="on"){
 <label>Ngôn ngữ:</label> 
     <select name="lang">
     <?php     
-    $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-    while($row_lang=mysql_fetch_array($query_list_lang)){?>
+    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    while($row_lang=mysqli_fetch_array($query_list_lang)){?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
@@ -320,11 +320,11 @@ if($type_view=="on"){
          / <?php echo $limit;?> từ khóa
     </div>
     <?php
-    echo '<p class="tip">Có '.mysql_num_rows($result_tip).' từ khóa được chat trong '.mysql_num_rows($result_count).' câu được chat </p>';  
+    echo '<p class="tip">Có '.mysqli_num_rows($result_tip).' từ khóa được chat trong '.mysqli_num_rows($result_count).' câu được chat </p>';
     include "app_my_girl_history_nomal.php";
 }
 
-mysql_free_result($result_tip);
-mysql_free_result($result_count);
+mysqli_free_result($result_tip);
+mysqli_free_result($result_count);
 ?>
 

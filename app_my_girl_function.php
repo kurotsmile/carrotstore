@@ -522,8 +522,9 @@ function delete_chat_by_lang($id, $lang_sel)
     exit;
 }
 
-function show_row_map($chat_item)
+function show_row_map($link,$chat_item)
 {
+    global  $url;
     $lang_sel = $chat_item['lang'];
     $id = $chat_item['id_question'];
 
@@ -532,8 +533,8 @@ function show_row_map($chat_item)
     } else {
         $result_chat1 = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id` = $id ");
     }
-    if (mysql_num_rows($result_chat1) > 0) {
-        $arr_item = mysql_fetch_array($result_chat1);
+    if (mysqli_num_rows($result_chat1) > 0) {
+        $arr_item = mysqli_fetch_array($result_chat1);
 
         echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['character_sex'] . '.png" style="width:13px">';
         if ($chat_item['type_question'] == 'chat') {

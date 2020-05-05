@@ -36,7 +36,7 @@ if(isset($_POST['edit'])){
     if(isset($_POST['ver2'])) $ver2='1';
     if(isset($_POST['active'])) $active=1;
     
-    $update_country=mysql_query("UPDATE `app_my_girl_country` SET `name` = '$edit_name', `country_code`='$country_code' , `ver0`='$ver0' , `ver1`='$ver1' , `ver2`='$ver2' ,`active`=$active WHERE `key` = '$edit_key' LIMIT 1;");
+    $update_country=mysqli_query($link,"UPDATE `app_my_girl_country` SET `name` = '$edit_name', `country_code`='$country_code' , `ver0`='$ver0' , `ver1`='$ver1' , `ver2`='$ver2' ,`active`=$active WHERE `key` = '$edit_key' LIMIT 1;");
     
     if(isset_file($_FILES['icon'])){
             $target_file = 'app_mygirl/img/'.$edit_key.'.png';
@@ -50,8 +50,8 @@ if(isset($_POST['edit'])){
 }
 
 if($edit!=''){
-    $get_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `key`='$edit'");
-    $data_country=mysql_fetch_array($get_country);
+    $get_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `key`='$edit'");
+    $data_country=mysqli_fetch_array($get_country);
 ?>
 <form id="form_loc"  method="post" enctype="multipart/form-data" action="<?php echo $url;?>/app_my_girl_manager_country.php" >
     <div style="display: inline-block;float: left;margin: 2px;">
@@ -199,37 +199,37 @@ if($delete!=''){
 <div id="form_loc" style="background-color: #eff4f9;" >
 <strong><i class="fa fa-trash" aria-hidden="true"></i> Xóa quốc gia (<strong><?php echo $delete; ?></strong>)</strong>
 <?php
-if(mysql_query("DROP TABLE `app_my_girl_".$delete."`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_".$delete."`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_'.$delete.'"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_'.$delete.'" để xóa';
 }
-if(mysql_query("DROP TABLE `app_my_girl_msg_".$delete."`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_msg_".$delete."`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_msg_'.$delete.'"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_msg_'.$delete.'" để xóa';
 }
-if(mysql_query("DROP TABLE `app_my_girl_user_".$delete."`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_user_".$delete."`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_user_'.$delete.'"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_user_'.$delete.'" để xóa';
 }
-if(mysql_query("DROP TABLE `app_my_girl_".$delete."_lyrics`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_".$delete."_lyrics`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_'.$delete.'_lyrics"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_'.$delete.'_lyrics" để xóa';
 }
-if(mysql_query("DROP TABLE `app_my_girl_field_".$delete."`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_field_".$delete."`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_field_'.$delete.'"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_field_'.$delete.'" để xóa';
 }
-if(mysql_query("DROP TABLE `app_my_girl_music_data_".$delete."`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_music_data_".$delete."`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_music_data_'.$delete.'"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_music_data_'.$delete.'" để xóa';
 }
-if(mysql_query("DROP TABLE `app_my_girl_video_".$delete."`")){
+if(mysqli_query($link,"DROP TABLE `app_my_girl_video_".$delete."`")){
     echo '<br/><b style="color:red;">Xóa thành công:</b> bản dữ liệu "app_my_girl_video_'.$delete.'"';
 }else{
     echo '<br/><b style="color:blue;">Không tìm thấy:</b> bản dữ liệu "app_my_girl_video_'.$delete.'" để xóa';
@@ -251,7 +251,7 @@ $dirname='app_mygirl/app_my_girl_'.$delete.'_brain';
 array_map('unlink', glob("$dirname/*.*"));
 if(is_dir($dirname)) rmdir($dirname);
 
-$query_delete=mysql_query("DELETE FROM `app_my_girl_country` WHERE `key` = '$delete'  LIMIT 1;");
+$query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_country` WHERE `key` = '$delete'  LIMIT 1;");
 if(file_exists('app_mygirl/img/'.$delete.'.png')){
 unlink('app_mygirl/img/'.$delete.'.png');
 }
@@ -277,7 +277,7 @@ function is_url_exist($url){
 }
 
 
-function check_show_btn($key_lang,$version,$ver_check){
+function check_show_btn($link,$key_lang,$version,$ver_check){
     global $url;
     $color_btn='';
     $txt_show='';
@@ -291,9 +291,9 @@ function check_show_btn($key_lang,$version,$ver_check){
     $css='';
 
     
-    $query_data_display=mysql_query("SELECT * FROM `app_my_girl_display_lang` WHERE `lang`='".$key_lang."' AND `version`='$ver_check'");
-    if(mysql_num_rows($query_data_display)){
-        $data_display=mysql_fetch_array($query_data_display);
+    $query_data_display=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang` WHERE `lang`='".$key_lang."' AND `version`='$ver_check'");
+    if(mysqli_num_rows($query_data_display)){
+        $data_display=mysqli_fetch_array($query_data_display);
         $data_display=json_decode($data_display['data'],JSON_UNESCAPED_UNICODE);
         $count_data='('.count($data_display).')';
         
@@ -345,8 +345,8 @@ function check_show_btn($key_lang,$version,$ver_check){
         <th>Thao tác</th>
     </tr>
     <?php
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` ORDER BY `id`");
-    while($row=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` ORDER BY `id`");
+    while($row=mysqli_fetch_array($list_country)){
     ?>
     <tr <?php if($row['active']=='0'){?>style="background-color: #FFD9D9;"<?php }?>>
         <td>
@@ -363,9 +363,9 @@ function check_show_btn($key_lang,$version,$ver_check){
         <td><img src="<?php echo thumb('app_mygirl/img/'.$row['key'].'.png','20');?>"/></td>
         <td><?php echo $row['key']; ?> | code: <?php echo $row['country_code']; ?></td>
         <td><?php echo $row['name']; ?></td>
-            <?php echo check_show_btn($row['key'],$row['ver0'],'0');?>
-            <?php echo check_show_btn($row['key'],$row['ver1'],'1');?>
-            <?php echo check_show_btn($row['key'],$row['ver2'],'2');?>
+            <?php echo check_show_btn($link,$row['key'],$row['ver0'],'0');?>
+            <?php echo check_show_btn($link,$row['key'],$row['ver1'],'1');?>
+            <?php echo check_show_btn($link,$row['key'],$row['ver2'],'2');?>
         <td>
             <a href="<?php echo $url;?>/app_my_girl_manager_country.php?edit=<?php echo $row['key']; ?>" class="buttonPro small yellow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật</a>
             <a href="<?php echo $url;?>/app_my_girl_manager_country.php?fix=<?php echo $row['key']; ?>" class="buttonPro small orange" ><i class="fa fa-wrench" aria-hidden="true"></i> Kiểm tra lỗi</a>

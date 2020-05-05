@@ -10,12 +10,12 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
-      <webServer id="622e9de4-dc50-40fc-b473-c1f01e8b85a1" name="Carrot.sytes.net" url="http://192.168.1.5">
-        <fileTransfer host="192.168.1.5" port="21">
+      <webServer id="622e9de4-dc50-40fc-b473-c1f01e8b85a1" name="DataMusic" url="http://34.70.228.22">
+        <fileTransfer host="34.70.228.22" port="22" privateKey="E:\datamusic.ppk" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="21" />
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
       <webServer id="599662b4-c792-4c0b-b46c-e3c0a541ce5b" name="work.carrotstore.com" url="http://ftp.carrotstore.com">

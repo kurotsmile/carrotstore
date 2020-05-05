@@ -19,8 +19,8 @@ if(isset($_GET['cat'])){
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_effect=mysql_query("SELECT * FROM `app_my_girl_background` WHERE ((`id` = '$id_edit')) LIMIT 1;");
-    $arr_data_effect=mysql_fetch_array($edit_effect);
+    $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_background` WHERE ((`id` = '$id_edit')) LIMIT 1;");
+    $arr_data_effect=mysqli_fetch_array($edit_effect);
     $name_bk=$arr_data_effect[1];
     $id_store_bk=$arr_data_effect['id_store'];
     $price_bk=$arr_data_effect['price'];
@@ -52,7 +52,7 @@ if(isset($_POST['func'])){
         
     if($_POST['func']=="add"){
 
-        $add_effect=mysql_query("INSERT INTO `app_my_girl_background` (`name`,`price`,`id_store`,`version`,`category`) VALUES ('$name_bk','$price_bk','$id_store_bk','$version','$id_category');");
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_background` (`name`,`price`,`id_store`,`version`,`category`) VALUES ('$name_bk','$price_bk','$id_store_bk','$version','$id_category');");
         $id_new=mysql_insert_id();
         $target_dir = "app_mygirl/obj_background/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_icon"]["tmp_name"], $target_dir);
@@ -64,7 +64,7 @@ if(isset($_POST['func'])){
         echo '<a class="buttonPro blue" target="_blank" href="http://work.carrotstore.com/?id_object='.$id_new.'&lang=vi&type_chat=bk&type_action=add">Thêm vào bàn làm việc</a>';
     }else{
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysql_query("UPDATE `app_my_girl_background` SET `name` = '$name_bk',`price`='$price_bk',`id_store`='$id_store_bk',`version`='$version',`category`='$id_category' WHERE `id` = '$id_edit';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_background` SET `name` = '$name_bk',`price`='$price_bk',`id_store`='$id_store_bk',`version`='$version',`category`='$id_category' WHERE `id` = '$id_edit';");
         
         if(isset_file($_FILES["file_bk_icon"])){
             $filename = 'app_mygirl/obj_background/icon_'.$id_edit.'.png';
@@ -153,16 +153,16 @@ $(document).ready(function(){
     <div style="display: inline-block;float: left;margin: 2px;width: 220px;">
         <label>Loại (category)</label>
         <?php
-        $list_category_bk=mysql_query("SELECT * FROM `app_my_girl_bk_category` ORDER BY `id`");
+        $list_category_bk=mysqli_query($link,"SELECT * FROM `app_my_girl_bk_category` ORDER BY `id`");
         ?>
         <select name="category" >
             <option value="">none</option>
-            <?php while($row_cat=mysql_fetch_array($list_category_bk)){ ?>
-            <option value="<?php echo $row_cat['id']; ?>" <?php if($row_cat['id']==$id_category){?>selected="true"<?php }?>><?php echo get_key_lang($row_cat['name'],'vi');?></option>
+            <?php while($row_cat=mysqli_fetch_array($list_category_bk)){ ?>
+            <option value="<?php echo $row_cat['id']; ?>" <?php if($row_cat['id']==$id_category){?>selected="true"<?php }?>><?php echo get_key_lang($link,$row_cat['name'],'vi');?></option>
             <?php }?>
         </select>
         <?php
-        mysql_free_result($list_category_bk);
+        mysqli_free_result($list_category_bk);
         ?>
     </div>
     
@@ -198,7 +198,7 @@ $(document).ready(function(){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_background` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_background` WHERE ((`id` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
     $filename = 'app_mygirl/obj_background/icon_'.$id_del.'.png';
     if (file_exists($filename)) {
@@ -228,7 +228,7 @@ if(isset($_GET['del'])){
     }
 
 
-    $result_tip_count=mysqli_query("SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC");
+    $result_tip_count=mysqli_query($link,"SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC");
 
     $total_records=mysqli_num_rows($result_tip_count);
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -243,7 +243,7 @@ if(isset($_GET['del'])){
     $start = ($current_page - 1) * $limit;
     
 
-    $list_effect=mysqli_query("SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC LIMIT $start, $limit ");
+    $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_background` $txt_query_cat ORDER BY `id` DESC LIMIT $start, $limit ");
 ?>
     <div id="form_loc">
     <strong>Trang hiển thị:</strong>
@@ -266,12 +266,12 @@ if(isset($_GET['del'])){
     <div id="form_loc">
             <strong>Loại (category)</strong>
             <?php
-            $list_category_bk=mysqli_query("SELECT * FROM `app_my_girl_bk_category` ORDER BY `id`");
+            $list_category_bk=mysqli_query($link,"SELECT * FROM `app_my_girl_bk_category` ORDER BY `id`");
             ?>
             <select name="category" onchange="show_cat(this.value);return false;">
                 <option value="0">none</option>
-                <?php while($row_cat=mysql_fetch_array($list_category_bk)){ ?>
-                <option value="<?php echo $row_cat['id']; ?>" <?php if($row_cat['id']==$id_category){?>selected="true"<?php }?>><?php echo get_key_lang($row_cat['name'],'vi');?></option>
+                <?php while($row_cat=mysqli_fetch_array($list_category_bk)){ ?>
+                <option value="<?php echo $row_cat['id']; ?>" <?php if($row_cat['id']==$id_category){?>selected="true"<?php }?>><?php echo get_key_lang($link,$row_cat['name'],'vi');?></option>
                 <?php }?>
             </select>
             <?php
@@ -311,7 +311,7 @@ while($row=mysqli_fetch_array($list_effect)){
         <td>
         <?php 
         $id_cat=$row['category'];
-        $query_cat=mysqli_query("SELECT `name` FROM `app_my_girl_bk_category` WHERE `id` = '$id_cat' LIMIT 1");
+        $query_cat=mysqli_query($link,"SELECT `name` FROM `app_my_girl_bk_category` WHERE `id` = '$id_cat' LIMIT 1");
         $data_cat=mysqli_fetch_array($query_cat);
         echo get_key_lang($link,$data_cat['name'],'vi');
         mysqli_free_result($query_cat);

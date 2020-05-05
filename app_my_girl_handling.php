@@ -12,17 +12,15 @@ if($func=='delete_chat'){
 
 if($func=='delete_all_key_music'){
     echo '<h2>Xóa dữ liệu tìm kiếm nhạc</h2>';
-    $query_delete_log_key_music=mysql_query("DELETE FROM `app_my_girl_log_key_music`");
-    echo '<p style="float:left;width:100%">Đã xóa '.mysql_affected_rows().' từ khóa tìm kiếm nhạc của tất cả các nước!</p>';
-    mysql_free_result($query_delete_log_key_music);
+    $query_delete_log_key_music=mysqli_query($link,"DELETE FROM `app_my_girl_log_key_music`");
+    echo '<p style="float:left;width:100%">Đã xóa '.mysqli_affected_rows($link).' từ khóa tìm kiếm nhạc của tất cả các nước!</p>';
     exit;
 }
 
 if($func=='delete_all_report'){
     echo '<h2>Xóa dữ liệu báo lỗi</h2>';
-    $query_delete_report=mysql_query("DELETE FROM `app_my_girl_report`");
-    echo '<p style="float:left;width:100%">Đã xóa '.mysql_affected_rows().' báo lỗi của tất cả các nước!</p>';
-    mysql_free_result($query_delete_report);
+    $query_delete_report=mysqli_query($link,"DELETE FROM `app_my_girl_report`");
+    echo '<p style="float:left;width:100%">Đã xóa '.mysqli_affected_rows($link).' báo lỗi của tất cả các nước!</p>';
     exit;
 }
 
@@ -56,18 +54,17 @@ if($func=='command_mysql'){
     if(isset($_GET['act'])){
         $txt_mysql_val=$_GET['val_txt'];
         
-        $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-        while($l=mysql_fetch_array($list_country)){
+        $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+        while($l=mysqli_fetch_array($list_country)){
                 $langsel=$l['key'];
                 $txt_mysql=str_replace('{lang}',$langsel,$txt_mysql_val);
-                $query_create=mysql_query($txt_mysql);
-                if(mysql_error()==""){
+                $query_create=mysqli_query($txt_mysql);
+                if(mysqli_error($link)==""){
                     echo "Thự hiện câu lệnh thành công nước (".$langsel.")<br/>";
                 }else{
                     echo "Thự hiện câu lệnh thành công nước (".$langsel.")<br/>";
-                    echo mysql_error()."<br/>";
+                    echo mysqli_error($link)."<br/>";
                 }
-                mysql_freeresult($query_create);
         }
     }
 }
@@ -77,16 +74,16 @@ if($func=='active_chat_month'){
     $msg='';
     $month=$_GET['month'];
     if($month!=''){
-        $set_act=mysql_query("UPDATE `app_my_girl_vi` SET `disable` = '0' WHERE `limit_month` = '$month'");
-        $count_act=mysql_num_rows($set_act);
+        $set_act=mysqli_query($link,"UPDATE `app_my_girl_vi` SET `disable` = '0' WHERE `limit_month` = '$month'");
+        $count_act=mysqli_num_rows($set_act);
         if($count_act>0){
             $msg="Kích hoạt $count_act câu trò chuyện trong tháng $month thành công!";
         }else{
             $msg="Không có câu trò chuyện nào được kích hoạt";
         }
         
-        $set_disable=mysql_query("UPDATE `app_my_girl_vi` SET `disable` = '0' WHERE `limit_month` = '$month'");
-        $count_disable=mysql_num_rows($set_disable);
+        $set_disable=mysqli_query($link,"UPDATE `app_my_girl_vi` SET `disable` = '0' WHERE `limit_month` = '$month'");
+        $count_disable=mysqli_num_rows($set_disable);
         if($count_disable>0){
             
         }
@@ -103,19 +100,19 @@ if($func=='active_chat_month'){
 }
 
 if($func=='delete_field_music_error'){
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+    while($l=mysqli_fetch_array($list_country)){
         $key_lang=$l['key'];
-        $query_delete_field=mysql_query("DELETE FROM `app_my_girl_music_data_$key_lang` WHERE `id_chat` = ''");
-        if(mysql_error($link)==""){
-            $count_delete_row=mysql_affected_rows($link);
+        $query_delete_field=mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$key_lang` WHERE `id_chat` = ''");
+        if(mysqli_error($link)==""){
+            $count_delete_row=mysqli_affected_rows($link);
             echo "</br>Xóa ($count_delete_row) lỗi siêu dữ liệu âm nhạc thành công nước ($key_lang)!";
         }else{
             echo "</br>Xóa lỗi siêu dữ liệu âm nhạc thất bại ($key_lang)!";
         }
         
     }
-    mysql_free_result($list_country);
+    mysqli_free_result($list_country);
 }
 
 
@@ -159,8 +156,8 @@ if($func=='lang_2'){
         ?>
         <select name="lang2">
         <?php
-        $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-        while($l=mysql_fetch_array($list_country)){
+        $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+        while($l=mysqli_fetch_array($list_country)){
         ?>
             <option value="<?php echo $l['key'];?>" <?php if($lang_2==$l['key']){?> selected="true" <?php }?> ><?php echo $l['name'];?></option>
         <?php
@@ -190,16 +187,16 @@ if($func=='backup'){
 }    
 
 if($func=='move_lyrics'){
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+    while($l=mysqli_fetch_array($list_country)){
         $lang_sel=$l['key'];
-        $query_get_lyrics=mysql_query("SELECT * FROM `app_my_girl_music_lyrics` WHERE `lang` = '$lang_sel'");
-        if(mysql_numrows($query_get_lyrics)){
-            while($row_lyrics=mysql_fetch_array($query_get_lyrics)){
-                $data_lyrics=mysql_fetch_array($query_get_lyrics);
+        $query_get_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_music_lyrics` WHERE `lang` = '$lang_sel'");
+        if(mysqli_numrows($query_get_lyrics)){
+            while($row_lyrics=mysqli_fetch_array($query_get_lyrics)){
+                $data_lyrics=mysqli_fetch_array($query_get_lyrics);
                 $id_chat=$data_lyrics['id_music'];
                 $txt_lyrics=addslashes($data_lyrics['lyrics']);
-                $query_add_lyrics=mysql_query("INSERT INTO `app_my_girl_".$lang_sel."_lyrics` (`id_music`, `lyrics`) VALUES ('$id_chat', '$txt_lyrics');");
+                $query_add_lyrics=mysqli_query($link,"INSERT INTO `app_my_girl_".$lang_sel."_lyrics` (`id_music`, `lyrics`) VALUES ('$id_chat', '$txt_lyrics');");
                 if($query_add_lyrics===true){
                     echo 'Cập nhật thành công lời nhạc id:'.$id_chat.' Nước '.$lang_sel.'<br/>';
                 }else{
@@ -210,7 +207,7 @@ if($func=='move_lyrics'){
         }else{
             echo '<hr/>Khôn có lời nhạc ở quốc gia ('.$lang_sel.') này!<br/>';
         }
-        mysql_free_result($query_get_lyrics);
+        mysqli_free_result($query_get_lyrics);
     }
 }
 
@@ -224,12 +221,12 @@ if($func=='delete_audio'){
 
 
 if($func=='test_search'){
-     $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
      $txt_query='';
      $seach_music='love';
-     $count_l=mysql_num_rows($list_country);
+     $count_l=mysqli_num_rows($list_country);
      $count_index=0;
-     while($l=mysql_fetch_array($list_country)){
+     while($l=mysqli_fetch_array($list_country)){
         $key=$l['key'];
         $txt_query.="(SELECT * FROM `app_my_girl_$key` WHERE  `chat` LIKE '%$seach_music%' AND  `effect`='2' AND `disable` = '0' limit 21)";
         $count_index++;
@@ -239,11 +236,11 @@ if($func=='test_search'){
      }
      
      echo $txt_query;
-     $list_music=mysql_query($txt_query);
-     while($r=mysql_fetch_array($list_music)){
+     $list_music=mysqli_query($link,$txt_query);
+     while($r=mysqli_fetch_array($list_music)){
         echo var_dump($r);
      }
-     echo mysql_error();
+     echo mysqli_error($link);
      echo ' leng: '.$count_l;
 }
 
@@ -252,8 +249,8 @@ if($func=='draft_brain'){
 }
 
 if($func=='bk'){
-    $query_bk=mysql_query("SELECT * FROM `app_my_girl_background` WHERE `version` = '1'");
-    while($row_bk=mysql_fetch_array($query_bk)){
+    $query_bk=mysqli_query($link,"SELECT * FROM `app_my_girl_background` WHERE `version` = '1'");
+    while($row_bk=mysqli_fetch_array($query_bk)){
         $url_file_1='app_mygirl/obj_background/place_'.$row_bk['id'].'.png';
         $url_file_2='app_mygirl/obj_background/view_'.$row_bk['id'].'.png';
         echo $row_bk['id'].'<br/>';
@@ -276,8 +273,8 @@ if($func=='off_color'){
 }
 
 if($func=='create_f'){
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+    while($l=mysqli_fetch_array($list_country)){
         $key=$l['key'];
         $path_file='app_mygirl/app_my_girl_'.$key.'_img';
         if (!file_exists($path_file)) {

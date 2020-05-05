@@ -33,8 +33,8 @@ if(isset($_GET['tag_display'])){
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_effect=mysql_query("SELECT * FROM `app_my_girl_effect` WHERE ((`id` = '$id_edit')) LIMIT 1;");
-    $arr_data_effect=mysql_fetch_array($edit_effect);
+    $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` WHERE ((`id` = '$id_edit')) LIMIT 1;");
+    $arr_data_effect=mysqli_fetch_array($edit_effect);
     $loop=$arr_data_effect[2];
     $name_effect=$arr_data_effect[1];
     $tag_effect=$arr_data_effect[3];
@@ -58,8 +58,8 @@ if(isset($_POST['func'])){
     }
     ;
     if($_POST['func']=="add"){
-        $add_effect=mysql_query("INSERT INTO `app_my_girl_effect` (`name`,`loop`,`tag`,`color`) VALUES ('$name_effect','$loop','$tag_effect','$color');");
-        $id_new=mysql_insert_id();
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_effect` (`name`,`loop`,`tag`,`color`) VALUES ('$name_effect','$loop','$tag_effect','$color');");
+        $id_new=mysqli_insert_id($link);
         $target_dir = "app_mygirl/obj_effect/".$id_new.".png";
         if(move_uploaded_file($_FILES["file_effect"]["tmp_name"], $target_dir)) {
             echo "The file ". basename( $_FILES["file_effect"]["name"]). " has been uploaded.";
@@ -69,7 +69,7 @@ if(isset($_POST['func'])){
     }else{
 
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysql_query("UPDATE `app_my_girl_effect` SET `name` = '$name_effect' , `loop`='$loop',`tag`='$tag_effect',`color`='$color' WHERE `id` = '$id_edit';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_effect` SET `name` = '$name_effect' , `loop`='$loop',`tag`='$tag_effect',`color`='$color' WHERE `id` = '$id_edit';");
         
         if(isset_file($_FILES["file_effect"])){
             $filename = 'app_mygirl/obj_effect/'.$id_edit.'.png';
@@ -168,7 +168,7 @@ if(isset($_POST['func'])){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_effect` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_effect` WHERE ((`id` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
     $filename = 'app_mygirl/obj_effect/'.$id_del.'.png';
     if (file_exists($filename)) {
@@ -177,12 +177,12 @@ if(isset($_GET['del'])){
 }
 
     if($category_effect==""){
-        $result_tip_count=mysql_query("SELECT * FROM `app_my_girl_effect` ORDER BY `id` DESC");
+        $result_tip_count=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` ORDER BY `id` DESC");
     }else{
-        $result_tip_count=mysql_query("SELECT * FROM `app_my_girl_effect` WHERE `tag` = '$category_effect' ORDER BY `id` DESC");
+        $result_tip_count=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` WHERE `tag` = '$category_effect' ORDER BY `id` DESC");
     }
 
-    $total_records=mysql_num_rows($result_tip_count);
+    $total_records=mysqli_num_rows($result_tip_count);
     
     
     $total_page = ceil($total_records / $limit);
@@ -195,9 +195,9 @@ if(isset($_GET['del'])){
     $start = ($current_page - 1) * $limit;
 
     if($category_effect==""){
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` ORDER BY `id` DESC LIMIT $start, $limit ");
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` ORDER BY `id` DESC LIMIT $start, $limit ");
     }else{
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` WHERE `tag` = '$category_effect' ORDER BY `id` DESC LIMIT $start, $limit ");
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` WHERE `tag` = '$category_effect' ORDER BY `id` DESC LIMIT $start, $limit ");
     }
     
 ?>
@@ -229,7 +229,7 @@ if($tag_display=='table'){
         <th style="width: 100px;">Thao tác</th>
     </tr>
     <?php
-    while($row=mysql_fetch_array($list_effect)){
+    while($row=mysqli_fetch_array($list_effect)){
     ?>
         <tr>
             <td><?php echo $row[0];?></td>
@@ -252,7 +252,7 @@ if($tag_display=='table'){
 ?>
 <div style="width: 100%;float: left;">
     <?php
-    while($row=mysql_fetch_array($list_effect)){
+    while($row=mysqli_fetch_array($list_effect)){
         echo '<div class="box_icon" style="float:left;display:block;"><img src="'.thumb('/app_mygirl/obj_effect/'.$row[0].'.png',50).'"/> <span class="color" style="background-color:#'.$row[4].'"></span> <a class="buttonPro small yellow" href="'.$url.'/app_my_girl_effect.php?edit='.$row['id'].'&page='.$current_page.'&tag_display=grid">Sửa</a> <a href="'.$url.'/app_my_girl_effect.php?del='.$row['id'].'" class="buttonPro small red">Xóa</a></div>';
     }
     ?>

@@ -48,9 +48,9 @@ if(isset($_POST['func'])){
     
     if($func=="add"){
         $preson=new Preson();
-        $query_add_preson=mysql_query("INSERT INTO `app_my_girl_preson` (`sex`,`os`) VALUES ('$sex','$os');");
+        $query_add_preson=mysqli_query($link,"INSERT INTO `app_my_girl_preson` (`sex`,`os`) VALUES ('$sex','$os');");
         
-        $id_new=mysql_insert_id();
+        $id_new=mysqli_insert_id($link);
         $target_dir_icon = "app_mygirl/obj_preson/icon_".$id_new.".png";
         
         
@@ -115,12 +115,12 @@ if(isset($_POST['func'])){
         echo '<hr/>';
         
         $data=json_encode($preson);
-        $query_update_preson=mysql_query("UPDATE `app_my_girl_preson` SET `data` = '$data' , `category`='$id_category' WHERE `id` = '$id_new';");
+        $query_update_preson=mysqli_query($link,"UPDATE `app_my_girl_preson` SET `data` = '$data' , `category`='$id_category' WHERE `id` = '$id_new';");
             
-        if(mysql_error()==""){
+        if(mysqli_error($link)==""){
             echo "Add success!!!";
         }else{
-            echo mysql_error();
+            echo mysqli_error($link);
         }
     }else{
         $id_edit=$_POST["id_edit"];
@@ -209,15 +209,15 @@ if(isset($_POST['func'])){
         }
         echo '<hr/>';
         $data=json_encode($preson);
-        $query_update_preson=mysql_query("UPDATE `app_my_girl_preson` SET `data` = '$data',`sex` = '$sex',`os`='$os',`category`='$id_category' WHERE `id` = '$id_edit';");
+        $query_update_preson=mysqli_query($link,"UPDATE `app_my_girl_preson` SET `data` = '$data',`sex` = '$sex',`os`='$os',`category`='$id_category' WHERE `id` = '$id_edit';");
         echo "<br/>update success!";
     }
 }
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $query_show_edit=mysql_query("SELECT * FROM `app_my_girl_preson` WHERE `id` = '$id_edit' LIMIT 1");
-    $arr_data=mysql_fetch_array($query_show_edit);
+    $query_show_edit=mysqli_query($link,"SELECT * FROM `app_my_girl_preson` WHERE `id` = '$id_edit' LIMIT 1");
+    $arr_data=mysqli_fetch_array($query_show_edit);
     $sex=$arr_data['sex'];
     $data_preson=json_decode($arr_data['data']);
     
@@ -431,16 +431,16 @@ if(isset($_GET['type_view'])){
     <div style="display: inline-block;float: left;margin: 2px;">
         <label>Category</label>
         <?php
-        $list_category_pr=mysql_query("SELECT * FROM `app_my_girl_preson_category` ORDER BY `id`");
+        $list_category_pr=mysqli_query($link,"SELECT * FROM `app_my_girl_preson_category` ORDER BY `id`");
         ?>
         <select name="category">
             <option value="">none</option>
-            <?php while($row_cat=mysql_fetch_array($list_category_pr)){ ?>
-            <option value="<?php echo $row_cat['id']; ?>" <?php if($row_cat['id']==$id_category){?>selected="true"<?php }?>><?php echo get_key_lang($row_cat['name'],'vi');?></option>
+            <?php while($row_cat=mysqli_fetch_array($list_category_pr)){ ?>
+            <option value="<?php echo $row_cat['id']; ?>" <?php if($row_cat['id']==$id_category){?>selected="true"<?php }?>><?php echo get_key_lang($link,$row_cat['name'],'vi');?></option>
             <?php }?>
         </select>
         <?php
-        mysql_free_result($list_category_pr);
+        mysqli_free_result($list_category_pr);
         ?>
     </div>
     
@@ -457,10 +457,10 @@ if(isset($_GET['type_view'])){
 
 </form>
 <?php
-    $result_all_count=mysql_query("SELECT * FROM `app_my_girl_preson` ORDER BY `id` DESC");  
+    $result_all_count=mysqli_query($link,"SELECT * FROM `app_my_girl_preson` ORDER BY `id` DESC");  
 
     if($type_view=='0'){
-        $total_records=mysql_num_rows($result_all_count);
+        $total_records=mysqli_num_rows($result_all_count);
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
         $limit = 5;
         $total_page = ceil($total_records / $limit);
@@ -472,7 +472,7 @@ if(isset($_GET['type_view'])){
         }
         $start = ($current_page - 1) * $limit;
     
-        $result_all_preson=mysql_query("SELECT * FROM `app_my_girl_preson` ORDER BY `id` DESC LIMIT $start, $limit "); 
+        $result_all_preson=mysqli_query($link,"SELECT * FROM `app_my_girl_preson` ORDER BY `id` DESC LIMIT $start, $limit "); 
     }
     
     if($type_view=='0'){
@@ -511,7 +511,7 @@ if(isset($_GET['type_view'])){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_preson` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_preson` WHERE ((`id` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
     $filename = 'app_mygirl/obj_preson/icon_'.$id_del.'.png';
     if (file_exists($filename)) {
@@ -577,7 +577,7 @@ if($type_view=='0'){
         <th style="width: 100px;">Thao tác</th>
     </tr>
     <?php
-    while($row=mysql_fetch_array($result_all_preson)){
+    while($row=mysqli_fetch_array($result_all_preson)){
     $data_preson=json_decode($row['data']);
     ?>
         <tr>
@@ -640,11 +640,11 @@ if($type_view=='0'){
             <td>
                 <?php
                     $id_row=$row['category'];
-                    $get_cat=mysql_query("SELECT `name` FROM `app_my_girl_preson_category` WHERE `id` = '$id_row' LIMIT 1");
-                    if(mysql_num_rows($get_cat)>0){
-                        $data_cat=mysql_fetch_array($get_cat);
-                        echo get_key_lang($data_cat['name'],'vi');
-                        mysql_free_result($get_cat);
+                    $get_cat=mysqli_query($link,"SELECT `name` FROM `app_my_girl_preson_category` WHERE `id` = '$id_row' LIMIT 1");
+                    if(mysqli_num_rows($get_cat)>0){
+                        $data_cat=mysqli_fetch_array($get_cat);
+                        echo get_key_lang($link,$data_cat['name'],'vi');
+                        mysqli_free_result($get_cat);
                     }else{
                         if($id_row==""){
                             echo "none";
@@ -666,7 +666,7 @@ if($type_view=='0'){
 <?php 
 }else{
     echo '<div style="width:100%;float:left">';
-    while($row=mysql_fetch_array($result_all_count)){
+    while($row=mysqli_fetch_array($result_all_count)){
     $data_preson=json_decode($row['data']);    
     ?>
     <div class="box_icon">
