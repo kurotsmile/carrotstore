@@ -240,20 +240,14 @@ if ($char_view_type == '2') {
             <button onclick="show_data_month()" class="buttonPro small yellow"><i class="fa fa-bar-chart"></i> Tháng
             </button>
 
-
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_brain" class="buttonPro small red"><i
-                        class="fa fa-trash"></i> dạy</a>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_report" class="buttonPro small red"><i
-                        class="fa fa-trash"></i> báo lỗi</a>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_key_music"
-               class="buttonPro small red"><i class="fa fa-trash"></i> Tìm nhạc</a>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=fix_error" class="buttonPro small blue"><i
-                        class="fa fa-wrench" aria-hidden="true"></i> Sửa Lỗi</a>
-            <a href="<?php echo $url; ?>/app_my_girl_mission.php" class="buttonPro small black"><i
-                        class="fa fa-calendar-check-o" aria-hidden="true"></i> Nhiệm vụ</a>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=manager_country_work" class="buttonPro small black">
-                <i class="fa fa-connectdevelop" aria-hidden="true"></i> Ẩn / hiện quốc gia
-            </a>
+            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_brain" class="buttonPro small red"><i class="fa fa-trash"></i> dạy</a>
+            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_report" class="buttonPro small red"><i class="fa fa-trash"></i> báo lỗi</a>
+            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_key_music" class="buttonPro small red"><i class="fa fa-trash"></i> Tìm nhạc</a>
+            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=fix_error" class="buttonPro small blue"><i class="fa fa-wrench" aria-hidden="true"></i> Sửa Lỗi</a>
+            <a href="<?php echo $url; ?>/app_my_girl_mission.php" class="buttonPro small black"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Nhiệm vụ</a>
+            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=manager_country_work" class="buttonPro small black"><i class="fa fa-connectdevelop" aria-hidden="true"></i> Ẩn / hiện quốc gia</a>
+            <a href="<?php echo $url; ?>/app_my_girl_mission.php" class="buttonPro small black"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Nhiệm vụ</a>
+            <a href="#" class="buttonPro small purple"><i class="fa fa-refresh" aria-hidden="true"></i> Kiểm tra và đồng bộ dữ liệu</a>
         </div>
     </div>
 <?php
@@ -304,6 +298,7 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
     }
     $result_count_report = mysqli_query($link,"SELECT * FROM `app_my_girl_report` WHERE `lang`='$langsel'");
     $result_count_music_key = mysqli_query($link,"SELECT DISTINCT `key` FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");
+    $date = new DateTime("now", new DateTimeZone(get_key_lang($link,'timezone',$langsel)) );
     ?>
     <div class="box_lang">
         <div class="title">
@@ -311,6 +306,7 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                         class="icon" src="<?php echo thumb('app_mygirl/img/' . $langsel . '.png', '60'); ?>"/></a>
             <strong><?php echo $name_country; ?></strong><br/>
             Từ khóa ngôn ngữ:<?php echo $langsel; ?><br/>
+            <i class="fa fa-clock-o" aria-hidden="true"></i> Múi giờ:<?php  echo $date->format('H:i:s d/m/Y'); ?><br/>
             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>" title="Thêm trò chuyện"
                class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Chat</a>
             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1" title="Thêm câu thoại"

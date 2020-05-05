@@ -1,4 +1,5 @@
 <?php
+$langsel='vi';
 $lang_audio_sel = '';
 ?>
 <div class="contain" style="padding: 20px;">
@@ -15,8 +16,8 @@ $lang_audio_sel = '';
                 <label>Ngôn ngữ:</label>
                 <select name="lang">
                     <?php
-                    $query_list_lang = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-                    while ($row_lang = mysql_fetch_array($query_list_lang)) {
+                    $query_list_lang = mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+                    while ($row_lang = mysqli_fetch_assoc($query_list_lang)) {
                         ?>
                         <option value="<?php echo $row_lang['key']; ?>" <?php if ($langsel == $row_lang['key']) { ?> selected="true"<?php } ?>><?php echo $row_lang['name']; ?></option>
                     <?php } ?>
@@ -57,8 +58,8 @@ $lang_audio_sel = '';
         }
         echo '</ul>';
 
-        $list_country = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-        while ($l = mysql_fetch_array($list_country)) {
+        $list_country = mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+        while ($l = mysqli_fetch_array($list_country)) {
             $langsel = $l['key'];
             $dirname = 'app_mygirl/app_my_girl_temp_' . $langsel;
             $dir = opendir($dirname);
@@ -129,10 +130,10 @@ $lang_audio_sel = '';
             $msg = $_GET['msg'];
         }
         if ($msg != '') {
-            $query_list_msg = mysql_query("SELECT * FROM `app_my_girl_msg_$lang_audio_sel` ");
+            $query_list_msg = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_audio_sel` ");
             echo '<ul>';
             $path_audio = 'app_mygirl/app_my_girl_msg_' . $lang_audio_sel;
-            while ($row_msg = mysql_fetch_array($query_list_msg)) {
+            while ($row_msg = mysqli_fetch_array($query_list_msg)) {
                 $voice_lang = get_key_lang('voice_character_sex_' . $row_msg['character_sex'], $lang_audio_sel);
                 $url_file_audio_chat = $path_audio . '/' . $row_msg['id'] . '.mp3';
                 echo '<li>';
@@ -149,10 +150,10 @@ $lang_audio_sel = '';
             }
             echo '</ul>';
         } else {
-            $query_list_chat = mysql_query("SELECT * FROM `app_my_girl_$lang_audio_sel` WHERE `effect` != '2' AND `effect` != '49' ");
+            $query_list_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_audio_sel` WHERE `effect` != '2' AND `effect` != '49' ");
             echo '<ul>';
             $path_audio = 'app_mygirl/app_my_girl_' . $lang_audio_sel;
-            while ($row_chat = mysql_fetch_array($query_list_chat)) {
+            while ($row_chat = mysqli_fetch_array($query_list_chat)) {
                 $voice_lang = get_key_lang('voice_character_sex_' . $row_chat['character_sex'], $lang_audio_sel);
                 $url_file_audio_chat = $path_audio . '/' . $row_chat['id'] . '.mp3';
                 echo '<li>';

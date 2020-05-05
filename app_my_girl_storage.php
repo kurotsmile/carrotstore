@@ -5,9 +5,6 @@ $id_edit='';
 $query_search='';
 $search_category='all';
 
-
-
-
 function get_value_category($key_check,$array_category_store){
     for($i=0;$i<count($array_category_store);$i++){
         if($array_category_store[$i]->key==$key_check){
@@ -30,12 +27,12 @@ if(isset($_GET['delete'])){
     $id_del=$_GET['delete'];
     $type_del=$_GET['type'];
     $lang_del=$_GET['lang'];
-    $query_delete=mysql_query("DELETE FROM `app_my_girl_storage` WHERE `id` = '$id_del' AND `lang` = '$lang_del'  AND `type` = '$type_del' LIMIT 1;");
+    $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_storage` WHERE `id` = '$id_del' AND `lang` = '$lang_del'  AND `type` = '$type_del' LIMIT 1;");
     
-    if(mysql_error($link)==''){
+    if(mysqli_error($link)==''){
         echo 'Delete success ('.$id_del.')';
     }else{
-        echo 'Delete Fail :'.mysql_error($link);
+        echo 'Delete Fail :'.mysqli_error($link);
     }
 }
 
@@ -48,7 +45,7 @@ if(isset($_POST['id_edit'])){
     $id_edit=$_POST['id_edit'];
     $lang_edit=$_POST['lang_edit'];
     $type_edit=$_POST['type_edit'];
-    $query_update=mysql_query("UPDATE `app_my_girl_storage` SET `category` = '$type_edit' WHERE `id` = '$id_edit' AND `lang` = '$lang_edit' LIMIT 1;");
+    $query_update=mysqli_query($link,"UPDATE `app_my_girl_storage` SET `category` = '$type_edit' WHERE `id` = '$id_edit' AND `lang` = '$lang_edit' LIMIT 1;");
     if($query_update){
         echo show_alert("Cập nhật thành công!","alert");
     }else{
@@ -56,12 +53,7 @@ if(isset($_POST['id_edit'])){
     }
 }
 
-
-
-
-    
-
-$list_storage=mysql_query("SELECT * FROM app_my_girl_storage $query_search");
+$list_storage=mysqli_query($link,"SELECT * FROM app_my_girl_storage $query_search");
 ?>
 <h2>Lưu trữ những câu trò chuyện nỗi bậc và đang cập nhật</h2>
 <form method="post" id="form_loc">
@@ -69,8 +61,8 @@ $list_storage=mysql_query("SELECT * FROM app_my_girl_storage $query_search");
     <label>Ngôn ngữ:</label> 
     <select name="lang">
     <?php     
-    $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-    while($row_lang=mysql_fetch_array($query_list_lang)){?>
+    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    while($row_lang=mysqli_fetch_array($query_list_lang)){?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
@@ -125,7 +117,7 @@ if($id_edit!=''){
 </form>
 <?php }?>
 
-<?php if(mysql_num_rows($list_storage)>0){?>
+<?php if(mysqli_num_rows($list_storage)>0){?>
 <table>
 <tr>
     <th>Id chat</th>
@@ -135,7 +127,7 @@ if($id_edit!=''){
     <th>Action</th>
 </tr>
 <?php
-while($row=mysql_fetch_array($list_storage)){
+while($row=mysqli_fetch_array($list_storage)){
     $row_lang=$row['lang'];
     $row_id=$row['id'];
     $row_type=$row['type'];
@@ -145,13 +137,13 @@ while($row=mysql_fetch_array($list_storage)){
     echo '<td>'.$row_type.'</td>';
     echo '<td><table>';
     if($row_type=='chat'){
-        $get_chat=mysql_query("SELECT * FROM `app_my_girl_$row_lang` WHERE `id` = '$row_id' LIMIT 1");
-        $data_chat=mysql_fetch_array($get_chat);
-        echo show_row_chat_prefab($data_chat,$row_lang,'');
+        $get_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$row_lang` WHERE `id` = '$row_id' LIMIT 1");
+        $data_chat=mysqli_fetch_array($get_chat);
+        echo show_row_chat_prefab($link,$data_chat,$row_lang,'');
     }else{
-        $get_msg=mysql_query("SELECT * FROM `app_my_girl_msg_$row_lang` WHERE `id` = '$row_id' LIMIT 1");
-        $data_msg=mysql_fetch_array($get_msg);
-        show_row_msg_prefab($data_msg,$row_lang);
+        $get_msg=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$row_lang` WHERE `id` = '$row_id' LIMIT 1");
+        $data_msg=mysqli_fetch_array($get_msg);
+        show_row_msg_prefab($link,$data_msg,$row_lang);
     }
     echo '</table></td>';
     echo '<td>';
@@ -167,5 +159,5 @@ while($row=mysql_fetch_array($list_storage)){
 </table>
 <?php 
 }
-mysql_free_result($list_storage);
+mysqli_free_result($list_storage);
 ?>

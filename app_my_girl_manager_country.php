@@ -1,9 +1,9 @@
 <?php
 include "app_my_girl_template.php";
-
 $edit='';
 $fix='';
 $delete='';
+$show_full='0';
 
 if(isset($_GET['edit'])){
     $edit=$_GET['edit'];
@@ -99,6 +99,11 @@ if($edit!=''){
 
 
 if($fix!=''){
+    function btn_fix($type,$val){
+        global  $url;
+        $txt='<a class="buttonPro small yellow" href="'.$url.'/app_mygirl_function/fix_country.php?type='.$type.'&val='.$val.'"><i class="fa fa-wrench" aria-hidden="true"></i></a>';
+        return $txt;
+    }
 ?>
 <div id="form_loc" style="background-color: #eff4f9;" >
 <strong><i class="fa fa-wrench" aria-hidden="true"></i> Kiểm tra lỗi khởi tạo quốc gia (<strong><?php echo $fix; ?></strong>)</strong>
@@ -123,60 +128,70 @@ if(!file_exists('app_mygirl/app_my_girl_'.$fix.'/-2.mp3')){
 
 if(!is_dir('app_mygirl/app_my_girl_msg_'.$fix.'')){
     $count_error++;
-    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục msg "app_mygirl/app_my_girl_msg_'.$fix.'" </li>';
+    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục msg "app_mygirl/app_my_girl_msg_'.$fix.'" '.btn_fix('folder','app_my_girl_msg_'.$fix).'</li>';
 }
 
 if(!is_dir('app_mygirl/app_my_girl_'.$fix.'')){
     $count_error++;
-    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục chat "app_mygirl/app_my_girl_'.$fix.'" </li>';
+    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục chat "app_mygirl/app_my_girl_'.$fix.'" '.btn_fix('folder','app_my_girl_'.$fix).'</li>';
 }
 
 if(!is_dir('app_mygirl/app_my_girl_'.$fix.'_user')){
     $count_error++;
-    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục user "app_mygirl/app_my_girl_'.$fix.'_user" </li>';
+    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục user "app_mygirl/app_my_girl_'.$fix.'_user" '.btn_fix('folder','app_my_girl_'.$fix.'_user').'</li>';
 }
 
 if(!is_dir('app_mygirl/app_my_girl_'.$fix.'_brain')){
     $count_error++;
-    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục brain "app_mygirl/app_my_girl_'.$fix.'_brain" </li>';
+    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục brain "app_mygirl/app_my_girl_'.$fix.'_brain" '.btn_fix('folder','app_my_girl_'.$fix.'_brain').'</li>';
 }
 
-$check_1= mysql_query('select 1 from `app_my_girl_'.$fix.'` LIMIT 1');
+if(!is_dir('app_mygirl/app_my_girl_temp_'.$fix.'')){
+    $count_error++;
+    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục temp "app_mygirl/app_my_girl_temp_'.$fix.'" '.btn_fix('folder','app_my_girl_temp_'.$fix).'</li>';
+}
+
+if(!is_dir('app_mygirl/app_my_girl_'.$fix.'_img')){
+    $count_error++;
+    $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu thư mục Img "app_mygirl/app_my_girl_'.$fix.'_img" '.btn_fix('folder','app_my_girl_'.$fix.'_img').'</li>';
+}
+
+$check_1= mysqli_query($link,'select 1 from `app_my_girl_'.$fix.'` LIMIT 1');
 if($check_1=== FALSE)
 {
     $count_error++;
     $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu bản dữ liệu "app_my_girl_'.$fix.'"</li>';
 }
 
-$check_2= mysql_query('select 1 from `app_my_girl_msg_'.$fix.'` LIMIT 1');
+$check_2= mysqli_query($link,'select 1 from `app_my_girl_msg_'.$fix.'` LIMIT 1');
 if($check_2=== FALSE)
 {
     $count_error++;
     $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu bản dữ liệu "app_my_girl_msg_'.$fix.'"</li>';
 }
 
-$check_3= mysql_query('select 1 from `app_my_girl_user_'.$fix.'` LIMIT 1');
+$check_3= mysqli_query($link,'select 1 from `app_my_girl_user_'.$fix.'` LIMIT 1');
 if($check_3=== FALSE)
 {
     $count_error++;
     $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu bản dữ liệu "app_my_girl_user_'.$fix.'"</li>';
 }
 
-$check_4= mysql_query('select 1 from `app_my_girl_'.$fix.'_lyrics` LIMIT 1');
+$check_4= mysqli_query($link,'select 1 from `app_my_girl_'.$fix.'_lyrics` LIMIT 1');
 if($check_4=== FALSE)
 {
     $count_error++;
     $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu bản dữ liệu "app_my_girl_'.$fix.'_lyrics"</li>';
 }
 
-$check_5= mysql_query('select 1 from `app_my_girl_music_data_'.$fix.'` LIMIT 1');
+$check_5= mysqli_query($link,'select 1 from `app_my_girl_music_data_'.$fix.'` LIMIT 1');
 if($check_5=== FALSE)
 {
     $count_error++;
     $out_error.='<li><b style="color:red;">Lỗi:</b> thiếu bản dữ liệu "app_my_girl_music_data_'.$fix.'"</li>';
 }
 
-$check_6= mysql_query('select 1 from `app_my_girl_video_'.$fix.'` LIMIT 1');
+$check_6= mysqli_query($link,'select 1 from `app_my_girl_video_'.$fix.'` LIMIT 1');
 if($check_6=== FALSE)
 {
     $count_error++;
@@ -291,15 +306,15 @@ function check_show_btn($link,$key_lang,$version,$ver_check){
     $css='';
 
     
-    $query_data_display=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang` WHERE `lang`='".$key_lang."' AND `version`='$ver_check'");
+    $query_data_display=mysqli_query($link,"SELECT `data` FROM `app_my_girl_display_lang` WHERE `lang`='".$key_lang."' AND `version`='$ver_check'");
     if(mysqli_num_rows($query_data_display)){
         $data_display=mysqli_fetch_array($query_data_display);
         $data_display=json_decode($data_display['data'],JSON_UNESCAPED_UNICODE);
         $count_data='('.count($data_display).')';
         
         $arr_data=(Array)$data_display;
-        $setting_url_sound_test_sex0=$arr_data['setting_url_sound_test_sex0'];
-        $setting_url_sound_test_sex1=$arr_data['setting_url_sound_test_sex1'];
+        if(isset($arr_data['setting_url_sound_test_sex0'])) $setting_url_sound_test_sex0=$arr_data['setting_url_sound_test_sex0'];
+        if(isset($arr_data['setting_url_sound_test_sex1'])) $setting_url_sound_test_sex1=$arr_data['setting_url_sound_test_sex1'];
         
         if(is_url_exist($setting_url_sound_test_sex0)){ 
             $btn_voice_sex_0=' <a href="'.$setting_url_sound_test_sex0.'" class="buttonPro small" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> nữ</a>';
@@ -339,14 +354,18 @@ function check_show_btn($link,$key_lang,$version,$ver_check){
         <th>Biểu tượng</th>
         <th>Từ khóa ngôn ngữ</th>
         <th>Tên gọi quốc tế</th>
+        <?php
+        if($show_full=='1'){
+        ?>
         <th>ver 0 (2d)</th>
         <th>ver 1 (Onichan)</th>
         <th>ver 2 (3d)</th>
+        <?php }?>
         <th>Thao tác</th>
     </tr>
     <?php
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` ORDER BY `id`");
-    while($row=mysqli_fetch_array($list_country)){
+    while($row=mysqli_fetch_assoc($list_country)){
     ?>
     <tr <?php if($row['active']=='0'){?>style="background-color: #FFD9D9;"<?php }?>>
         <td>
@@ -363,9 +382,13 @@ function check_show_btn($link,$key_lang,$version,$ver_check){
         <td><img src="<?php echo thumb('app_mygirl/img/'.$row['key'].'.png','20');?>"/></td>
         <td><?php echo $row['key']; ?> | code: <?php echo $row['country_code']; ?></td>
         <td><?php echo $row['name']; ?></td>
-            <?php echo check_show_btn($link,$row['key'],$row['ver0'],'0');?>
-            <?php echo check_show_btn($link,$row['key'],$row['ver1'],'1');?>
-            <?php echo check_show_btn($link,$row['key'],$row['ver2'],'2');?>
+        <?php
+            if($show_full=='1'){
+                echo check_show_btn($link,$row['key'],$row['ver0'],'0');
+                echo check_show_btn($link,$row['key'],$row['ver1'],'1');
+                echo check_show_btn($link,$row['key'],$row['ver2'],'2');
+            }
+        ?>
         <td>
             <a href="<?php echo $url;?>/app_my_girl_manager_country.php?edit=<?php echo $row['key']; ?>" class="buttonPro small yellow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật</a>
             <a href="<?php echo $url;?>/app_my_girl_manager_country.php?fix=<?php echo $row['key']; ?>" class="buttonPro small orange" ><i class="fa fa-wrench" aria-hidden="true"></i> Kiểm tra lỗi</a>
