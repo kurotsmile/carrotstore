@@ -1,7 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 include "app_my_girl_template.php";
-
 $id_audio = '';
 $sex = '';
 $user_name = $data_user_carrot['user_id'];
@@ -17,7 +15,7 @@ $txt_table = '';
 $txt_title = '';
 $type_chat = 'chat';
 $character_sex = '1';
-$link = '';
+$link_chat = '';
 $file_url = '';
 
 if (isset($_GET['id_audio'])) {
@@ -43,24 +41,20 @@ if (isset($_GET['sex'])) {
 }
 
 if (isset($_GET['link'])) {
-    $link = $_GET['link'];
+    $link_chat = $_GET['link'];
 }
 
-if ($_POST) {
+if (isset($_POST['chat'])) {
     echo '<div class="contain" style="padding: 20px;">';
-    $chat = mysql_real_escape_string($_POST['chat']);
+    $chat = mysqli_real_escape_string($link,$_POST['chat']);
     $status = $_POST['status'];
     $sex = $_POST['sex'];
     $id = $_POST['id'];
     $effect = $_POST['effect'];
     $vibrate = $_POST['vibrate'];
     $color = '#' . $_POST['color'];
-    $q1 = $_POST['q1'];
-    $q2 = $_POST['q2'];
-    $r1 = $_POST['r1'];
-    $r2 = $_POST['r2'];
     $tip = $_POST['tip'];
-    $link = $_POST['link'];
+    $link_chat = $_POST['link'];
     $face = $_POST['face'];
     $action = $_POST['action'];
     $character_sex = $_POST['character_sex'];
@@ -91,18 +85,19 @@ if ($_POST) {
     }
 
     if ($type_chat == "msg") {
-        $result_update = mysql_query("INSERT INTO `$txt_table` (`func`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`disable`,`ver`,`limit_chat`,`effect_customer`,`limit_day`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$func', '$chat', '$status', '$sex', '$color', '$q1', '$q2', '$r1', '$r2', '$vibrate', '$effect','$face','$action','$character_sex',$txt_disable,$limit_ver,'$limit_chat','$effect_customer','$limit_day','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+        $result_update = mysql_query("INSERT INTO `$txt_table` (`func`, `chat`, `status`, `sex`, `color`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`disable`,`ver`,`limit_chat`,`effect_customer`,`limit_day`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$func', '$chat', '$status', '$sex', '$color', '$vibrate', '$effect','$face','$action','$character_sex',$txt_disable,$limit_ver,'$limit_chat','$effect_customer','$limit_day','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
     } else {
         $text = mysql_real_escape_string($_POST['text']);
         if (isset($_POST['id_question'])) {
             $id_question = $_POST['id_question'];
             $type_question = $_POST['type_question'];
-            $result_update = mysql_query("INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`pater`,`pater_type`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$q1', '$q2', '$r1', '$r2', '$tip', '$link', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$id_question','$type_question','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+            $result_update = mysql_query("INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`pater`,`pater_type`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$id_question','$type_question','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
         } else {
-            $result_update = mysql_query("INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$q1', '$q2', '$r1', '$r2', '$tip', '$link', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+            $result_update = mysql_query("INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
         }
     }
-    $id_new = mysql_insert_id();
+
+    $id_new = mysqli_insert_id($link);
 
     $storage = 'off';
     if (isset($_POST['storage'])) {
@@ -110,12 +105,12 @@ if ($_POST) {
     }
     if ($storage == 'on') {
         $storage_category = $_POST['storage_category'];
-        $check_storage = mysql_query("SELECT * FROM `app_my_girl_storage` WHERE `id` = '$id' AND `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1");
-        if (mysql_num_rows($check_storage) == 0) {
-            $add_storage = mysql_query("INSERT INTO `app_my_girl_storage` (`id`, `lang`,`type`,`category`) VALUES ('$id_new', '$lang_sel','$type_chat','$storage_category');");
-            mysql_free_result($add_storage);
+        $check_storage = mysqli_query($link,"SELECT * FROM `app_my_girl_storage` WHERE `id` = '$id' AND `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1");
+        if (mysqli_num_rows($check_storage) == 0) {
+            $add_storage = mysqli_query($link,"INSERT INTO `app_my_girl_storage` (`id`, `lang`,`type`,`category`) VALUES ('$id_new', '$lang_sel','$type_chat','$storage_category');");
+            mysqli_free_result($add_storage);
         }
-        mysql_free_result($check_storage);
+        mysqli_free_result($check_storage);
     }
 
     $target_dir = "app_mygirl/$txt_table";
@@ -134,18 +129,18 @@ if ($_POST) {
             show_alert("Không thể tải tệp âm thanh câu thoại vào hệ thống", "error");
         }
     }
-    $result_chat = mysql_query("SELECT * FROM `$txt_table` WHERE `id`='$id_new'");
-    $result_chat = mysql_fetch_array($result_chat);
+    $result_chat = mysqli_query($link,"SELECT * FROM `$txt_table` WHERE `id`='$id_new'");
+    $result_chat = mysqli_fetch_array($result_chat);
 
     if (isset($_POST['music_lyrics']) && $_POST['music_lyrics'] != '') {
         $music_lyrics = $_POST['music_lyrics'];
-        $query_add_lyrics = mysql_query("INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`) VALUES ('$id_new', '" . addslashes($music_lyrics) . "');");
-        mysql_free_result($query_add_lyrics);
+        $query_add_lyrics = mysqli_query($link,"INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`) VALUES ('$id_new', '" . addslashes($music_lyrics) . "');");
+        mysqli_free_result($query_add_lyrics);
     }
 
     if (isset($_POST['link_ytb']) && $_POST['link_ytb'] != '') {
         $link_ytb = $_POST['link_ytb'];
-        $query_add_link = mysql_query("INSERT INTO `app_my_girl_video_$lang_sel` (`id_chat`, `link`)VALUES ('$id_new', '$link_ytb');");
+        $query_add_link = mysqli_query($link, "INSERT INTO `app_my_girl_video_$lang_sel` (`id_chat`, `link`)VALUES ('$id_new', '$link_ytb');");
 
         parse_str(parse_url($link_ytb, PHP_URL_QUERY), $my_array_of_vars);
         $id_ytb = $my_array_of_vars['v'];
@@ -159,7 +154,7 @@ if ($_POST) {
         curl_exec($ch);
         curl_close($ch);
         fclose($fp);
-        mysql_free_result($query_add_link);
+        mysqli_free_result($query_add_link);
     }
 
     if (isset($_POST['id_field_chat'])) {
@@ -174,55 +169,38 @@ if ($_POST) {
         }
         $data_field = json_encode($arr_data_field_chat, JSON_UNESCAPED_UNICODE);
         $author = "unclear";
-        $query_add_field = mysql_query("INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`) VALUES ('$id_new', '$type_chat', '$data_field', 'field_chat', '$author');");
-        mysql_free_result($query_add_field);
+        $query_add_field = mysqli_query($link, "INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`) VALUES ('$id_new', '$type_chat', '$data_field', 'field_chat', '$author');");
+        mysqli_free_result($query_add_field);
     }
 
-
-    if (mysql_error() == '') {
+    if (mysqli_error($link) == '') {
         echo "<h2 style='width:100%;'>Add success!!!</h2>" . $id_new . "<br/>";
-        echo "<b>Sex</b>:<img src='" . $url . "/app_mygirl/img/" . $result_chat['sex'] . ".png'/> <=> <img src='" . $url . "/app_mygirl/img/" . $result_chat['character_sex'] . ".png'/><br/>";
+        echo "<b>Sex</b>:<img src='$url/app_mygirl/img/".$result_chat['sex'].".png'/> ,<img src='".$url."/app_mygirl/img/".$result_chat['character_sex'].".png'/><br/>";
         echo "<b>Chat</b>:" . $result_chat['chat'] . '<br/>';
         echo "<b>Face</b>:" . $result_chat['face'] . '<br/>';
         echo "<b>Action</b>:" . $result_chat['face'] . '<br/>';
         if ($result_chat['effect'] == '49') {
-            ?>
-            <a href="http://work.carrotstore.com/?id_object=<?php echo $id_new; ?>&lang=<?php echo $lang_sel; ?>&type_chat=story&type_action=add"
-               target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào
-                bàn làm việc (Editor)</a><br/>
-            <?php
+            echo btn_add_work($id_new,$lang_sel,'story','add');
         }else{
-            ?>
-            <a href="http://work.carrotstore.com/?id_object=<?php echo $id_new; ?>&lang=<?php echo $lang_sel; ?>&type_chat=<?php echo $type_chat; ?>&type_action=add"
-               target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào
-                bàn làm việc (Editor)</a><br/>
-            <?php
+            echo btn_add_work($id_new,$lang_sel,$type_chat,'add');
         }
+
         if ($result_chat['effect'] == '2') {
-            ?>
-            <a href="<?php echo $url.'/music/'.$id_new; ?>/<?php echo $lang_sel; ?>" target="_blank"
-               class="buttonPro light_blue"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên
-                carrotstore</a>
-            <?
+            echo '<a href="'.$url.'/music/'.$id_new.'/'.$lang_sel.'" target="_blank" class="buttonPro light_blue"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên carrotstore</a>';
         } else {
             if ($result_chat['file_url'] != '') {
-                ?>
-                <a href="<?php echo $result_chat['file_url']; ?>" target="_blank" class="buttonPro light_blue"><i class="fa fa-cloud" aria-hidden="true"></i> Nghe thử âm thành từ máy chủ khác</a>
-                <?
+                echo '<a href="'.$result_chat['file_url'].'" target="_blank" class="buttonPro light_blue"><i class="fa fa-cloud" aria-hidden="true"></i> Nghe thử âm thành từ máy chủ khác</a>';
             } else {
-                ?>
-                <a href="<?php echo $url;?>/app_mygirl/<?php echo $txt_table;?>/<?php echo $result_chat['id'];?>.mp3" target="_blank"
-                   class="buttonPro light_blue"><i class="fa fa-file-audio-o" aria-hidden="true"></i> Nghe thử âm thanh</a>
-                <?
+                echo '<a href="'.$url.'/app_mygirl/'.$txt_table.'/'.$result_chat['id'].'.mp3" target="_blank"class="buttonPro light_blue"><i class="fa fa-file-audio-o" aria-hidden="true"></i> Nghe thử âm thanh</a>';
             }
         }
 
         if (isset($_POST['chat_child'])) {
             $all_child = $_POST['chat_child'];
             foreach ($all_child as $child) {
-                $update_item_child = mysql_query("UPDATE `$txt_table` SET `pater` = '$id_new',`pater_type`='$type_chat' WHERE `id` = '$child';");
+                $update_item_child = mysqli_query("UPDATE `$txt_table` SET `pater` = '$id_new',`pater_type`='$type_chat' WHERE `id` = '$child';");
                 echo "<p>Add $child to $id_new success!</p>";
-                mysql_free_result($update_item_child);
+                mysqli_free_result($update_item_child);
             }
         }
 
@@ -239,8 +217,8 @@ if ($_POST) {
         show_alert("Thêm câu trò chuyện không thành công ! lỗi:" . mysql_error(), "error");
     }
     exit;
-
 }
+
 
 ?>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
@@ -252,11 +230,10 @@ if ($_POST) {
         <table>
 
             <?php
-            $id_lang = get_lang_id_by_key($lang_sel, $lang_app);
             $type_add = 'chat';
             if (isset($_GET['msg'])) {
                 $type_add = 'msg';
-                $func = $lang_app->msg_func[0]->key;
+                $func = $data_app->msg_func[0]->key;
                 if (isset($_POST['func'])) {
                     $func = $_POST['func'];
                 }
@@ -357,7 +334,7 @@ if ($_POST) {
                            onclick="reset_key();return false;">Làm mới từ khóa</a>
                         <span class="buttonPro small black"
                               onclick="translation_tag('key_inp','<?php echo $lang_sel; ?>','vi');return false;"><i
-                                    class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                                class="fa fa-language" aria-hidden="true"></i> Dịch</span>
                         <a href="#" class="buttonPro small yellow" target="_blank"
                            onclick="check_key();return false;"><i class="fa fa-share-square-o" aria-hidden="true"></i>
                             kiểm tra tồn tại</a>
@@ -417,9 +394,9 @@ if ($_POST) {
                         ?>
                         <span class="buttonPro small black"
                               onclick="translation_tag('chat','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i
-                                    class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                                class="fa fa-language" aria-hidden="true"></i> Dịch</span>
                         <span class="buttonPro small black" onclick="paste_tag('chat');return false;"><i
-                                    class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
+                                class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
                     </div>
                 </td>
             </tr>
@@ -428,56 +405,24 @@ if ($_POST) {
                 <td>Sex (giới tính người dùng)</td>
                 <td>
                     <select name="sex" id="sex1" onchange="check_sex();">
-                        <option value="0" <?php if (isset($_GET['sex'])) {
-                            if ($_GET['sex'] == '0') {
-                                echo 'selected="true"';
-                            }
-                        } ?> >Nam
-                        </option>
-                        <option value="1" <?php if (isset($_GET['sex'])) {
-                            if ($_GET['sex'] == '1') {
-                                echo 'selected="true"';
-                            }
-                        } ?>>Nữ
-                        </option>
+                        <option value="0" <?php if (isset($_GET['sex'])) {if ($_GET['sex'] == '0') {echo 'selected="true"';}} ?> >Nam</option>
+                        <option value="1" <?php if (isset($_GET['sex'])) {if ($_GET['sex'] == '1') {echo 'selected="true"';}} ?>>Nữ</option>
                     </select>
                 </td>
                 <td class="row_no_music" rowspan="15" style="width: 400px;margin: 2px;">
-                    <table style="text-align: center;">
-                        <tr>
-                            <td>
-                                <div style="float: left;width: 100%; margin-bottom: 5px;">
-                                    Mô tả khuôn mặt <br/>
-                                    <img src="<?php echo $url; ?>/app_mygirl/img/face/0.png" id="id_img_face"
-                                         style="width: 100px;cursor: pointer;" onclick="choice_face();"/>
-                                </div>
+                    <div style="float: left;width: 100%; margin-bottom: 5px;">
+                        Mô tả khuôn mặt <br/>
+                        <img src="<?php echo $url; ?>/app_mygirl/img/face/0.png" id="id_img_face" style="width: 100px;cursor: pointer;" onclick="choice_face();"/>
+                    </div>
 
-                                <div style="float: left;width: 100%;margin: 2px;">
-                                    Mô tả hành động <br/>
-                                    <?php if (isset($_GET['actions'])) { ?>
-                                        <img src="<?php echo $url; ?>/app_mygirl/img/action/<?php echo $_GET['actions']; ?>.png"
-                                             id="id_img" style="width: 100px;cursor: pointer;"
-                                             onclick="choice_action();"/>
-                                    <?php } else { ?>
-                                        <img src="<?php echo $url; ?>/app_mygirl/img/action/0.png" id="id_img"
-                                             style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
-                                    <?php } ?>
-                                </div>
-                            </td>
-                            <td>
-                                <!--
-                <div style="float: left;width: 100%;margin: 2px;">
-                    Mô tả hành động 3D<br />
-                    <?php if (isset($_GET['actions'])) { ?>
-                        <img src="<?php echo $url; ?>/app_mygirl/img/action3d/<?php echo $_GET['actions']; ?>.png" id="id_img_3d" style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
-                    <?php } else { ?>
-                        <img src="<?php echo $url; ?>/app_mygirl/img/action3d/0_3d_act_0.gif" id="id_img_3d" style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
-                    <?php } ?>
-                </div>
-                !-->
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="float: left;width: 100%;margin: 2px;">
+                        Mô tả hành động <br/>
+                        <?php if (isset($_GET['actions'])) { ?>
+                            <img src="<?php echo $url; ?>/app_mygirl/img/action/<?php echo $_GET['actions']; ?>.png" id="id_img" style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
+                        <?php } else { ?>
+                            <img src="<?php echo $url; ?>/app_mygirl/img/action/0.png" id="id_img" style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
+                        <?php } ?>
+                    </div>
                 </td>
             </tr>
 
@@ -501,21 +446,13 @@ if ($_POST) {
                 <td>effect</td>
                 <td>
                     <select name="effect" onchange="check_function_chat(this.value);return false;"  id="effect">
-                        <option value="" <?php if (isset($_GET['effect'])) {
-                            if ($_GET['effect'] == '0') {
-                                echo 'selected="true"';
-                            }
-                        } ?> >None
+                        <option value="" <?php if (isset($_GET['effect'])) {if ($_GET['effect'] == '0') {echo 'selected="true"';}}?>>None
                         </option>
                         <?php
-                        for ($i = 0; $i < count($data_app->arr_function_app); $i++) {
+                        for ($i = 0;$i<count($data_app->arr_function_app); $i++) {
                             $data_i = $data_app->arr_function_app[$i];
                             ?>
-                            <option value="<?php echo $data_i->key; ?>" <?php if (isset($_GET['effect'])) {
-                                if ($_GET['effect'] == $data_i->key) {
-                                    echo 'selected="true"';
-                                }
-                            } ?>><?php echo $data_i->name; ?></option>
+                            <option value="<?php echo $data_i->key; ?>" <?php if (isset($_GET['effect'])) {if ($_GET['effect'] == $data_i->key) {echo 'selected="true"';}} ?>><?php echo $data_i->name; ?></option>
                             <?php
                         }
                         ?>
@@ -528,17 +465,11 @@ if ($_POST) {
                 <td>
                     <input name="effect_customer" type="hidden" id="effect_chat"/>
                     <img src="<?php echo $url; ?>/app_mygirl/img/no_icon.png" id="id_img_effect" onclick="show_effect_chat('','');return false;" style="cursor: pointer;"/>
-
                     <button class="buttonPro blue small" id="btn_effect_random" oncontextmenu="show_effect_chat('rand','');return false;"  onclick="sel_effect_random('');return false;">gẫu nhiên</button>
-
                     <?php for ($i = 0; $i < count($arr_tag_effect); $i++) { ?>
-                        <button class="buttonPro light_blue small" id="btn_effect_<?php echo $arr_tag_effect[$i]; ?>"
-                                oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>','');return false;"
-                                onclick="sel_effect_random('<?php echo $arr_tag_effect[$i]; ?>');return false;"><?php echo $arr_tag_effect[$i]; ?></button>
+                        <button class="buttonPro light_blue small" id="btn_effect_<?php echo $arr_tag_effect[$i]; ?>" oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>','');return false;" onclick="sel_effect_random('<?php echo $arr_tag_effect[$i]; ?>');return false;"><?php echo $arr_tag_effect[$i]; ?></button>
                     <?php } ?>
-
-                    <a class="buttonPro yellow small" id="edit_effect" style="display: none;" href="" target="_blank">chỉnh
-                        sửa hiệu ứng</a>
+                    <a class="buttonPro yellow small" id="edit_effect" style="display: none;" href="" target="_blank">chỉnh sửa hiệu ứng</a>
                 </td>
             </tr>
 
@@ -555,71 +486,14 @@ if ($_POST) {
 
             <tr class="chat_1">
                 <td>color</td>
-                <td><input type="text" name="color" id="chat_color" class="jscolor"
-                           value="<?php if (isset($_POST['color'])) {
-                               echo $_POST['color'];
-                           }
-                           if (isset($_GET['color'])) {
-                               echo $_GET['color'];
-                           } ?>"/></td>
-            </tr>
-
-            <tr class="chat_1 row_no_music">
-                <td>q1</td>
-                <td>
-                    <input type="text" name="q1" id="q1" value="<?php if (isset($_POST['q1'])) {
-                        echo $_POST['q1'];
-                    } ?>"/>
-                    <span class="key_func"
-                          onclick="add_key_question(this,$('#q1'));return false;"><?php echo get_key_lang('key_yes_question', $lang_sel); ?></span>
-                    <span onclick="add_key_customer('q1');return false;" class="buttonPro small yellow">Thêm thẻ</span>
-                </td>
-            </tr>
-
-            <tr class="chat_1 row_no_music">
-                <td>q2</td>
-                <td>
-                    <input type="text" name="q2" id="q2" value="<?php if (isset($_POST['q2'])) {
-                        echo $_POST['q2'];
-                    } ?>"/>
-                    <span class="key_func"
-                          onclick="add_key_question(this,$('#q2'));return false;"><?php echo get_key_lang('key_no_question', $lang_sel); ?></span>
-                    <span onclick="add_key_customer('q2');return false;" class="buttonPro small yellow">Thêm thẻ</span>
-                </td>
-            </tr>
-
-            <tr class="chat_1 row_no_music">
-                <td>r1</td>
-                <td><input type="text" name="r1" id="r1" value="<?php if (isset($_POST['r1'])) {
-                        echo $_POST['r1'];
-                    } ?>"/>
-                    <button class="buttonPro small"
-                            onclick="show_id_chat('<?php echo $lang_sel; ?>','r1',0);return false;">Get ID chat
-                    </button>
-                    <button class="buttonPro small" onclick="add_new_chat();return false;">Add chat</button>
-                </td>
-            </tr>
-
-            <tr class="chat_1 row_no_music">
-                <td>r2</td>
-                <td>
-                    <input type="text" name="r2" id="r2" value="<?php if (isset($_POST['r2'])) {
-                        echo $_POST['r2'];
-                    } ?>"/>
-                    <button class="buttonPro small"
-                            onclick="show_id_chat('<?php echo $lang_sel; ?>','r2',0);return false;">Get ID chat
-                    </button>
-                    <button class="buttonPro small" onclick="add_new_chat();return false;">Add chat</button>
-                </td>
+                <td><input type="text" name="color" id="chat_color" class="jscolor" value="<?php if (isset($_POST['color'])) {echo $_POST['color'];}if (isset($_GET['color'])) {echo $_GET['color'];} ?>"/></td>
             </tr>
 
             <?php if (isset($_GET['msg'])) {
             } else { ?>
                 <tr class="chat_1 row_no_music">
                     <td>link</td>
-                    <td><input type="text" name="link" value="<?php if ($link != '') {
-                            echo $link;
-                        } ?>"/></td>
+                    <td><input type="text" name="link" value="<?php if ($link_chat != '') {echo $link_chat;} ?>"/></td>
                 </tr>
 
                 <tr class="chat_1">
@@ -659,30 +533,10 @@ if ($_POST) {
                 <td>status</td>
                 <td>
                     <select name="status">
-                        <option value="1" <?php if (isset($_GET['action'])) {
-                            if ($_GET['action'] == '0') {
-                                echo 'selected="true"';
-                            }
-                        } ?>>Nomal - (bình thường)
-                        </option>
-                        <option value="0" <?php if (isset($_GET['action'])) {
-                            if ($_GET['action'] == '1') {
-                                echo 'selected="true"';
-                            }
-                        } ?>>Ban đầu - (không quan tâm)
-                        </option>
-                        <option value="2" <?php if (isset($_GET['action'])) {
-                            if ($_GET['action'] == '2') {
-                                echo 'selected="true"';
-                            }
-                        } ?>>Xúc động - (vui vẻ)
-                        </option>
-                        <option value="3" <?php if (isset($_GET['action'])) {
-                            if ($_GET['action'] == '3') {
-                                echo 'selected="true"';
-                            }
-                        } ?>>Tức giận - (không hài lòng)
-                        </option>
+                        <option value="1" <?php if (isset($_GET['action'])) {if ($_GET['action'] == '0') {echo 'selected="true"';}} ?>>Nomal - (bình thường)</option>
+                        <option value="0" <?php if (isset($_GET['action'])) {if ($_GET['action'] == '1') {echo 'selected="true"';}} ?>>Ban đầu - (không quan tâm)</option>
+                        <option value="2" <?php if (isset($_GET['action'])) {if ($_GET['action'] == '2') {echo 'selected="true"';}} ?>>Xúc động - (vui vẻ)</option>
+                        <option value="3" <?php if (isset($_GET['action'])) {if ($_GET['action'] == '3') {echo 'selected="true"';}} ?>>Tức giận - (không hài lòng)</option>
                     </select>
                 </td>
             </tr>
@@ -692,11 +546,7 @@ if ($_POST) {
                 <td>
                     <select name="action" id="action_nv" onchange="change_action(this.value)">
                         <?php for ($i = 0; $i < count($data_app->arr_action_name); $i++) { ?>
-                            <option value="<?php echo $i; ?>" <?php if (isset($_GET['actions'])) {
-                                if ($_GET['actions'] == $i) {
-                                    echo 'selected="true"';
-                                }
-                            } ?>><?php echo $data_app->arr_action_name[$i]; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if (isset($_GET['actions'])) {if ($_GET['actions'] == $i) {echo 'selected="true"';}} ?>><?php echo $data_app->arr_action_name[$i]; ?></option>
                         <?php } ?>
                     </select>
                 </td>
@@ -707,11 +557,7 @@ if ($_POST) {
                 <td>
                     <select name="face" id="face_nv" onchange="change_face(this.value)">
                         <?php for ($i = 0; $i < count($data_app->arr_face_name); $i++) { ?>
-                            <option value="<?php echo $i; ?>" <?php if (isset($_GET['face'])) {
-                                if ($_GET['face'] == $i) {
-                                    echo 'selected="true"';
-                                }
-                            } ?>><?php echo $data_app->arr_face_name[$i]; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if (isset($_GET['face'])) {if ($_GET['face'] == $i) {echo 'selected="true"';}} ?>><?php echo $data_app->arr_face_name[$i]; ?></option>
                         <?php } ?>
                     </select>
                 </td>
@@ -941,10 +787,10 @@ if ($_POST) {
                     <td><i class="fa fa-book" aria-hidden="true"></i> Lời bài hát</td>
                     <td>
                         <a href="#" class="buttonPro small purple" onclick="search_music_lyrics();return false;"><i
-                                    class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát
+                                class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát
                             (search.azlyrics.com)</a>
                         <a href="#" class="buttonPro small purple" onclick="search_gg();return false;"><i
-                                    class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
+                                class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
                         <textarea id="music_lyrics_contain" style="height: 240px;" name="music_lyrics"></textarea>
                     </td>
                 </tr>
@@ -953,7 +799,7 @@ if ($_POST) {
                     </td>
                     <td>
                         <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i
-                                    class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
+                                class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
                         <input type="text" id="link_ytb" value="" name="link_ytb"/>
                     </td>
                 </tr>
@@ -963,7 +809,6 @@ if ($_POST) {
         ?>
 
     </form>
-
 <?php
 if ($key != '') {
 
@@ -999,7 +844,6 @@ if ($key != '') {
     }
     mysqli_free_result($result_chat_key);
 }
-
 ?>
 
 <?php if (isset($_GET['type_question'])) { ?>
@@ -1150,7 +994,6 @@ if ($key != '') {
             swal.close();
         }
 
-
         function add_new_chat() {
             var sex = $('#sex1').val();
             var char_sex = $('#character_sex').val();
@@ -1264,7 +1107,6 @@ if ($key != '') {
             }
         }
 
-
         function remove_father() {
             $("#box_father").remove();
             $("#val_type_question").remove();
@@ -1289,3 +1131,4 @@ if ($key != '') {
     </script>
 <?php
 include "app_my_girl_script.php";
+?>

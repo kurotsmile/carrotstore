@@ -26,35 +26,35 @@ if (isset($_SESSION['hide_help'])) {
 
 if(isset($_GET['delete_father'])){
     $type_view_user = $_GET['type_view_user'];
-    $query_remove_father=mysql_query("UPDATE `app_my_girl_brain` SET `id_question` = '' , `type_question` = '' WHERE  `approved` = '0' AND `tick` = '1' AND `user_work_id` = '$type_view_user' AND `id_question` != '' AND `ping_father` = '0'");
-    echo mysql_error($link);
+    $query_remove_father=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `id_question` = '' , `type_question` = '' WHERE  `approved` = '0' AND `tick` = '1' AND `user_work_id` = '$type_view_user' AND `id_question` != '' AND `ping_father` = '0'");
+    echo mysqli_error($link);
     echo show_alert("Gỡ các câu thoại cha!","alert");
 }
 
 if(isset($_GET['delete_all'])){
     $type_view_user = $_GET['type_view_user'];
-    $query_delete_all=mysql_query("DELETE FROM `app_my_girl_brain` WHERE  `approved` = '1' AND `tick` = '1' AND `user_work_id` = '$type_view_user' ");
-    echo mysql_error($query_delete_all);
+    $query_delete_all=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE  `approved` = '1' AND `tick` = '1' AND `user_work_id` = '$type_view_user' ");
+    echo mysqli_error($query_delete_all);
     echo show_alert("Đã xóa tất cả","alert");
 }
 
 if ($type_view == '1') {
     if ($type_view_user == '0') {
-        $result_brain = mysql_query("SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '0'");
+        $result_brain = mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '0'");
     } else {
-        $result_brain = mysql_query("SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '0' AND `user_work_id`='$type_view_user'");
+        $result_brain = mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '0' AND `user_work_id`='$type_view_user'");
     }
 }elseif ($type_view=='2'){
-    $result_brain = mysql_query("SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '1' AND `user_work_id`='$type_view_user'");
+    $result_brain = mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '1' AND `user_work_id`='$type_view_user'");
 } else {
-    $result_brain = mysql_query("SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '0' AND `user_work_id`='$id_user_work'");
+    $result_brain = mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `tick` = '1' AND `approved` = '0' AND `user_work_id`='$id_user_work'");
 }
 
 ?>
 <div class="contain notranslate" style="background-color: #fefff5;padding: 0px;min-width: 600px;" id="form_loc">
     <div style="width: 100%;float: left;background-color: #6edfff;">
         <strong style="padding: 10px;float: left;"><i class="fa fa-info-circle" aria-hidden="true"></i> Những lưu ý khi
-            xuất bản <?php echo mysql_num_rows($result_brain); ?> nội dung dạy do
+            xuất bản <?php echo mysqli_num_rows($result_brain); ?> nội dung dạy do
             "<?php echo $data_user_carrot['user_name']; ?>" xử lý</strong>
         <?php if ($hide_help == '0') { ?>
             <a href="<?php echo $cur_url; ?>&hide_help=1"
@@ -113,8 +113,6 @@ if ($type_view == '1') {
                 </li>
                 <script>
                     $(document).ready(function () {
-                        //$("#tip_i").effect("highlight").effect("highlight").effect("highlight").effect("pulsate");
-                        //$("#tip_h").effect("highlight").effect("highlight").effect("highlight").effect("highlight").effect("explode");
                         $(".tip_new").effect("highlight").effect("highlight").effect("highlight").effect("pulsate");
                     });
                 </script>
@@ -133,8 +131,8 @@ if ($type_view == '1') {
                     echo 'blue';
                 } ?>" href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain&type_view=1">Xem tất cả</a>
                 <?php
-                $query_all_user_work = mysql_query("SELECT * FROM  carrotsy_work.`work_user` ");
-                while ($op_user = mysql_fetch_array($query_all_user_work)) {
+                $query_all_user_work = mysqli_query($link,"SELECT * FROM  carrotsy_work.`work_user` ");
+                while ($op_user = mysqli_fetch_array($query_all_user_work)) {
                     ?>
                     <a class="buttonPro small <?php if ($type_view_user == $op_user['user_id']) {
                         echo 'yellow';
@@ -171,7 +169,6 @@ if ($type_view == '1') {
                 }
             }
             ?>
-
         </div>
         <?php
     }
@@ -291,11 +288,11 @@ function show_row_brain($row,$type_view, $lang_key)
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green" class="notranslate" ><th>Câu hỏi</th><th width="500px">Câu trả lời</th><th>Ngôn ngữ</th><th>Giới tính - đối tượng</th><th>Thông tin mở rộng</th><th>Hiệu ứng & chức năng</th><th>Lời thoại cha</th><th>Âm thanh</th><th>Hành động</th></tr>';
 
-while ($row = mysql_fetch_array($result_brain)) {
-    show_row_brain($row,$type_view, $row['langs']);
+while ($row = mysqli_fetch_array($result_brain)) {
+    show_row_brain($link,$row,$type_view, $row['langs']);
 }
 echo '</table>';
-echo mysql_error();
+echo mysqli_error($link);
 ?>
 <script>
     function approved(emp) {

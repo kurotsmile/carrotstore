@@ -1,11 +1,9 @@
 <?php
 include "app_my_girl_template.php";
-
 $arr_country_work = array();
 if (isset($data_user_carrot['country_work'])) {
     $arr_country_work = json_decode($data_user_carrot['country_work']);
 }
-
 $char_view_type = '0';
 
 if (isset($_GET['char_view_type'])) {
@@ -31,7 +29,6 @@ if ($char_view_type == '2') {
         array_push($c->data, $row_log['key']);
     }
     mysqli_free_result($log_month);
-
 }
 ?>
     <script src="<?php echo $url; ?>/js/Chart.min.js"></script>
@@ -66,10 +63,9 @@ if ($char_view_type == '2') {
     <div style="display: inline-block;width: 95%;float: left;">
         &nbsp;
         <canvas id="myChart" style="position: relative;" width="100%" height="20px"></canvas>
-        <script>
+ <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
-
                 type: <?php if ($char_view_type == '0') {
                     echo '"bar"';
                 } else {
@@ -108,9 +104,7 @@ if ($char_view_type == '2') {
                             echo 'fill:true,';
                             echo 'data:' . json_encode($c->data) . '';
                             echo '},';
-
                         }
-
                         ?>
                     ]
                 },
@@ -148,10 +142,7 @@ if ($char_view_type == '2') {
                             options: {}
                         });
                     }
-
                 });
-
-
             }
 
             function show_all_data_ver() {
@@ -181,11 +172,9 @@ if ($char_view_type == '2') {
                                     data: result['arr_ver2'],
                                 }]
                             },
-
                             options: {}
                         });
                     }
-
                 });
             }
 
@@ -210,14 +199,16 @@ if ($char_view_type == '2') {
                                     data: result['arr_ver1'],
                                 }]
                             },
-
                             options: {}
                         });
                     }
-
                 });
             }
-        </script>
+
+    function  check_data_syn() {
+        alert("Bắt đầu kiểm tra");
+    }
+</script>
 
 
     </div>
@@ -247,7 +238,7 @@ if ($char_view_type == '2') {
             <a href="<?php echo $url; ?>/app_my_girl_mission.php" class="buttonPro small black"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Nhiệm vụ</a>
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=manager_country_work" class="buttonPro small black"><i class="fa fa-connectdevelop" aria-hidden="true"></i> Ẩn / hiện quốc gia</a>
             <a href="<?php echo $url; ?>/app_my_girl_mission.php" class="buttonPro small black"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Nhiệm vụ</a>
-            <a href="#" class="buttonPro small purple"><i class="fa fa-refresh" aria-hidden="true"></i> Kiểm tra và đồng bộ dữ liệu</a>
+            <a href="#" class="buttonPro small purple" onclick="check_data_syn();" ><i class="fa fa-refresh" aria-hidden="true"></i> Kiểm tra và đồng bộ dữ liệu</a>
         </div>
     </div>
 <?php
@@ -307,97 +298,46 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
             <strong><?php echo $name_country; ?></strong><br/>
             Từ khóa ngôn ngữ:<?php echo $langsel; ?><br/>
             <i class="fa fa-clock-o" aria-hidden="true"></i> Múi giờ:<?php  echo $date->format('H:i:s d/m/Y'); ?><br/>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>" title="Thêm trò chuyện"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Chat</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1" title="Thêm câu thoại"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-plus-circle"></i> Msg</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=2&actions=9"
-               title="Thêm bài hát" class="buttonPro small blue" target="_blank"><i class="fa fa-plus"></i> Music</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=36"
-               title="Thêm châm ngôn" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i>
-                Quote</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=49"
-               title="Thêm chuyện ngắn" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square-o"></i>
-                Story</a>
-            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>" title="Danh sách trò chuyện"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-comments"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>" title="Danh sách câu thoại"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-commenting-o"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music.php?lang=<?php echo $langsel; ?>" title="Danh sách nhạc"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-music"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>"
-               title="Duyệt nhạc từ người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-headphones"
-                                                                                                aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_user.php?lang=<?php echo $langsel; ?>" title="Danh sách người dùng"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-user-o"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_radio.php?lang=<?php echo $langsel; ?>" title="Danh sách Radio"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-wifi"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_maxim.php?lang=<?php echo $langsel; ?>" title="Danh sách châm ngôn"
-               class="buttonPro small blue" target="_blank"><i class="fa fa-quote-left" aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_story.php?lang=<?php echo $langsel; ?>"
-               title="Danh sách truyện ngắn" class="buttonPro small blue" target="_blank"><i class="fa fa-book"
-                                                                                             aria-hidden="true"></i></a>
-            <a href="https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl&hl=<?php echo $langsel; ?>&msg=1"
-               title="Chplay" class="buttonPro small blue" target="_blank"><i class="fa fa-android"
-                                                                              aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=fix_error&lang=<?php echo $langsel; ?>"
-               class="buttonPro small blue" title="Sửa lỗi nước"><i class="fa fa-wrench"
-                                                                                                aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=0"
-               class="buttonPro small blue" title="Ngôn ngữ giao diện 2D" target="_blank"><i class="fa fa-file-word-o"
-                                                                                             aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=2"
-               class="buttonPro small blue" title="Ngôn ngữ giao diện 3D" target="_blank"><i class="fa fa-wpforms"
-                                                                                             aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_lyrics.php?lang=<?php echo $langsel; ?>"
-               class="buttonPro small blue" title="Danh sách lời bài hát" target="_blank"><i
-                        class="fa fa-audio-description" aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_link_youtube.php?lang=<?php echo $langsel; ?>"
-               class="buttonPro small blue" title="Liên kết youtube" target="_blank"><i class="fa fa-youtube-play"
-                                                                                        aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>" title="Thêm trò chuyện" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Chat</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1" title="Thêm câu thoại" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-circle"></i> Msg</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=2&actions=9" title="Thêm bài hát" class="buttonPro small blue" target="_blank"><i class="fa fa-plus"></i> Music</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=36" title="Thêm châm ngôn" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Quote</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=49" title="Thêm chuyện ngắn" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square-o"></i> Story</a>
+            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>" title="Danh sách trò chuyện" class="buttonPro small blue" target="_blank"><i class="fa fa-comments"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>" title="Danh sách câu thoại" class="buttonPro small blue" target="_blank"><i class="fa fa-commenting-o"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music.php?lang=<?php echo $langsel; ?>" title="Danh sách nhạc" class="buttonPro small blue" target="_blank"><i class="fa fa-music"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>" title="Duyệt nhạc từ người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-headphones" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_user.php?lang=<?php echo $langsel; ?>" title="Danh sách người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-user-o"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_radio.php?lang=<?php echo $langsel; ?>" title="Danh sách Radio" class="buttonPro small blue" target="_blank"><i class="fa fa-wifi"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_maxim.php?lang=<?php echo $langsel; ?>" title="Danh sách châm ngôn" class="buttonPro small blue" target="_blank"><i class="fa fa-quote-left" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_story.php?lang=<?php echo $langsel; ?>" title="Danh sách truyện ngắn" class="buttonPro small blue" target="_blank"><i class="fa fa-book" aria-hidden="true"></i></a>
+            <a href="https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl&hl=<?php echo $langsel; ?>&msg=1" title="Chplay" class="buttonPro small blue" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=fix_error&lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Sửa lỗi nước"><i class="fa fa-wrench" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=0" class="buttonPro small blue" title="Ngôn ngữ giao diện 2D" target="_blank"><i class="fa fa-file-word-o" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=2" class="buttonPro small blue" title="Ngôn ngữ giao diện 3D" target="_blank"><i class="fa fa-wpforms" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_lyrics.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Danh sách lời bài hát" target="_blank"><i class="fa fa-audio-description" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_link_youtube.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Liên kết youtube" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
         </div>
 
         <div class="body">
             <ul>
                 <li>
-                    <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>" target="_blank">Lịch
-                        sử trò chuyện</a> &nbsp; <a
-                            href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0"
-                            target="_blank"><i class="fa fa-mars" aria-hidden="true"></i></a> &nbsp; <a
-                            href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0"
-                            target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-venus"
-                                                                                   aria-hidden="true"></i></i></a>
+                    <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>" target="_blank">Lịch sử trò chuyện</a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank"><i class="fa fa-mars" aria-hidden="true"></i></a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-venus" aria-hidden="true"></i></i></a>
                     <ul>
-                        <li><a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0"
-                               target="_blank">Nam - nữ</a> &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                    href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0&view_group=1"
-                                    target="_blank"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                        <li><a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Nam - nữ</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0&view_group=1" target="_blank"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
                         <?php if ($disable_girl == 0) { ?>
                             <?php
                             if ($sel_version == '1') {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1"
-                                       target="_blank">Nữ - nữ</a> &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                            href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&view_group=1"
-                                            target="_blank" title="Xem lịch sử theo người dùng"><i
-                                                class="fa fa-caret-right" aria-hidden="true"></i></li>
+                                    <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ - nữ</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></li>
                                 <?php
                             } else {
                                 ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0"
-                                       target="_blank">Nữ - nam</a> &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                            href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&view_group=1"
-                                            target="_blank" title="Xem lịch sử theo người dùng"><i
-                                                class="fa fa-caret-right" aria-hidden="true"></i></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ - nam</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
                                     <?php if (($sel_version == '0' & $langsel == "vi") || ($sel_version == '0' & $langsel == "en")) { ?>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                                href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1"
-                                                target="_blank">Nữ - nữ </a> &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                                href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&view_group=1"
-                                                target="_blank" title="Xem lịch sử theo người dùng"><i
-                                                    class="fa fa-caret-right" aria-hidden="true"></i></a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ - nữ </a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
                                     <?php } ?>
                                 </li>
                             <?php } ?>
@@ -435,47 +375,27 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                 </li>
 
                 <li>
-                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0"
-                       target="_blank">Câu chat trò chuyện:<?php echo mysqli_num_rows($result_count_chat); ?></a>
+                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Câu chat trò chuyện:<?php echo mysqli_num_rows($result_count_chat); ?></a>
                     <ul>
                         <li>
-                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1"
-                               target="_blank">Nam:<?php echo mysqli_num_rows($result_count_chat_sex_0); ?></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                    href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&disable_chat=1"
-                                    target="_blank"><i class="fa fa-eye-slash"></i></a>
-                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&tip=1"
-                               target="_blank" title="Xem các câu thoại gợi ý nam"><i class="fa fa-lightbulb-o"
-                                                                                      aria-hidden="true"></i></a>
-                            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1"
-                               title="Thêm trò chuyện nam" target="_blank"><i class="fa fa-plus"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam:<?php echo mysqli_num_rows($result_count_chat_sex_0); ?></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&tip=1" target="_blank" title="Xem các câu thoại gợi ý nam"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" title="Thêm trò chuyện nam" target="_blank"><i class="fa fa-plus"></i></a>
                         </li>
                         <?php if ($disable_girl == 0) { ?>
                             <?php if ($sel_version == '1') { ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1"
-                                       target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_chat_sex_1); ?></a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                            href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&disable_chat=1"
-                                            target="_blank"><i class="fa fa-eye-slash"></a></i>
-                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&tip=1"
-                                       target="_blank" title="Xem các câu thoại gợi ý nữ"><i class="fa fa-lightbulb-o"
-                                                                                             aria-hidden="true"></i></a>
-                                    <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1"
-                                       title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_chat_sex_1); ?></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></a></i>
+                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&tip=1" target="_blank" title="Xem các câu thoại gợi ý nữ"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
                                 </li>
                             <?php } else { ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0"
-                                       target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_chat_sex_1); ?></a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<a
-                                            href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1"
-                                            target="_blank"><i class="fa fa-eye-slash"></a></i>
-                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&tip=1"
-                                       target="_blank" title="Xem các câu thoại gợi ý nữ"><i class="fa fa-lightbulb-o"
-                                                                                             aria-hidden="true"></i></a>
-                                    <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0"
-                                       title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_chat_sex_1); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></a></i>
+                                    <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&tip=1" target="_blank" title="Xem các câu thoại gợi ý nữ"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
                                 </li>
                             <?php } ?>
                         <?php } ?>
@@ -495,31 +415,23 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                         <?php if ($disable_girl == 0) { ?>
                             <?php if ($sel_version == '1') { ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1"
-                                       target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_brain_sex_1); ?></a>
-                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&criterion=1"
-                                       target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> (đúng
-                                        chuẩn)</a></li>
+                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_brain_sex_1); ?></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&criterion=1" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> (đúng chuẩn)</a></li>
                             <?php } else { ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0"
-                                       target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_brain_sex_1); ?></a>
-                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&criterion=1"
-                                       target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> (đúng
-                                        chuẩn)</a></li>
+                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ:<?php echo mysqli_num_rows($result_count_brain_sex_1); ?></a>
+                                    <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&criterion=1" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> (đúng chuẩn)</a></li>
                             <?php } ?>
                         <?php } ?>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="<?php echo $url; ?>/app_my_girl_report.php?lang=<?php echo $langsel; ?>" target="_blank">Báo
-                        lỗi:<?php echo mysqli_num_rows($result_count_report); ?></a>
+                    <a href="<?php echo $url; ?>/app_my_girl_report.php?lang=<?php echo $langsel; ?>" target="_blank">Báo lỗi:<?php echo mysqli_num_rows($result_count_report); ?></a>
                 </li>
 
                 <li>
-                    <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>"
-                       target="_blank">Gợi ý âm nhạc:<?php echo mysqli_num_rows($result_count_music_key); ?></a>
+                    <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>" target="_blank">Gợi ý âm nhạc:<?php echo mysqli_num_rows($result_count_music_key); ?></a>
                 </li>
             </ul>
 

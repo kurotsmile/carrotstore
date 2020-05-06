@@ -414,7 +414,6 @@ function get_key_lang($link,$key, $lang)
 {
     $val = '';
     $query_get_value = mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
-
     if (mysqli_num_rows($query_get_value) > 0) {
         $data_val = mysqli_fetch_array($query_get_value);
         $val = $data_val[0];
@@ -466,7 +465,7 @@ function object_to_array($data)
 function delete_chat_by_lang($id, $lang_sel)
 {
     $check_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id' LIMIT 1");
-    $data_chat = mysql_fetch_array($check_chat);
+    $data_chat = mysqli_fetch_array($check_chat);
     $result_chat = mysqli_query($link,"DELETE FROM `app_my_girl_$lang_sel` WHERE `id` = '$id'");
 
     $filename = 'app_mygirl/app_my_girl_' . $lang_sel . '/' . $id . '.mp3';
@@ -478,12 +477,12 @@ function delete_chat_by_lang($id, $lang_sel)
         echo "Không có file âm thanh $filename để xóa <br/>";
     }
 
-    mysql_free_result($result_chat);
+    mysqli_free_result($result_chat);
 
     $check_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
-    if (mysql_num_rows($check_field_chat) > 0) {
+    if (mysqli_num_rows($check_field_chat) > 0) {
         $query_delete_field = mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
-        mysql_free_result($query_delete_field);
+        mysqli_free_result($query_delete_field);
         echo "Xóa trường dữ liệu (Field chat) thành công!";
     } else {
         echo "Không có trường dữ liệu (Field chat)";
@@ -492,12 +491,12 @@ function delete_chat_by_lang($id, $lang_sel)
     if ($data_chat['effect'] == '2') {
         echo "<br/>Xóa các chức năng liên quan tới nhạc";
         $check_video = mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id' LIMIT 1");
-        if (mysql_num_rows($check_video) > 0) {
+        if (mysqli_num_rows($check_video) > 0) {
             mysqli_query($link,"DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id'");
             echo mysql_error();
             echo "<br/>Xóa liên kết video thành công!";
         }
-        mysql_free_result($check_video);
+        mysqli_free_result($check_video);
 
         $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if (mysql_num_rows($show_lyrics) > 0) {
@@ -513,12 +512,12 @@ function delete_chat_by_lang($id, $lang_sel)
             echo mysql_error();
             echo "<br/>Xóa bản xếp hạng liên quan đến bài hát!";
         }
-        mysql_num_rows($check_rank_music);
+        mysqli_num_rows($check_rank_music);
 
     }
 
-    mysql_free_result($check_field_chat);
-    mysql_free_result($check_chat);
+    mysqli_free_result($check_field_chat);
+    mysqli_free_result($check_chat);
     exit;
 }
 
@@ -825,5 +824,10 @@ function move_file_to_sever($url_file,$arr_sever_upload){
     <?php
 }
 
+function btn_add_work($id_object,$lang,$type,$action){
+    $txt_html='';
+    $txt_html.='<a  target="_blank" class="buttonPro blue" href="http://work.carrotstore.com/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-plus-square"></i> Thêm vào bàn làm việc</a>';
+    return $txt_html;
+}
 //End App nguoi yeu ao
 ?>

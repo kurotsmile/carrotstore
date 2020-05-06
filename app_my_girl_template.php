@@ -480,17 +480,6 @@ $category_item->key = 'holiday';
 $category_item->value = "Ngày lễ";
 array_push($array_category_store, $category_item);
 
-function get_lang_id_by_key($key, $lang_app)
-{
-    for ($i = 0; $i < count($lang_app->menu_lang); $i++) {
-        $data_key = $lang_app->menu_lang[$i];
-        if ($key == $data_key->key) {
-            return $data_key->id;
-        }
-    }
-    return -1;
-}
-
 $arr_tag_effect = array("chat", "music", "love", "noel", "sex boy", "sex girl", "emoji", "animal", "foods", "app");
 $arr_func = array('{gio}', '{phut}', '{ngay}', '{thang}', '{nam}', '{thu}', '{ngaycuanam}', '{ngaycuanam2}', '{ten_user}', '{devicename}', '{devicetype}', '{vi_tri}', '{giai_toan}', '{thong_tin}', '{dem_ngay_gap}', '{key_chat}');
 $arr_func_sever = array('doc_ten', 'sua_ten', 'vi_tri', 'dem_ngay_gap', 'vi_tri_map', 'tim_danh_ba', 'tim_nhac', 'tim_duong', 'tim_loi_nhac');
