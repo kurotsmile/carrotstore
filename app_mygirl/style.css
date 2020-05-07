@@ -5,7 +5,6 @@
         font-size: 12px;
         overflow-x:no-display;
     }
-    
     a{
         text-decoration: none;
         color:#400080;
@@ -500,7 +499,18 @@ select {
     to {background-color: yellow;}
 }
 
-/* 
+.tag_data_syn{
+    background: #2cfd2c;
+    padding: 4px;
+    margin: 3px;
+    border-radius: 11px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.tag_data_syn.lost{background-color: red;}
+.tag_data_syn.colon{background-color: #ffe900;}
+
+/*
  ----------------------------------------------------------------------------------
  ------ ----- ---- --- -- -  Defaults & General Styling  - -- --- ---- ----- ------
  ----------------------------------------------------------------------------------
