@@ -16,7 +16,7 @@ if(isset($_GET['lang'])){
 if(isset($_GET['key'])){
     $key=$_GET['key'];
     $sel_lang=$_GET['lang_sel'];
-    $query_add_key=mysql_query("INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES ('$key', '$sel_lang');");
+    $query_add_key=mysqli_query($link,"INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES ('$key', '$sel_lang');");
     if($query_add_key){
         echo show_alert("Thêm thành công từ khóa","alert");
     }
@@ -25,7 +25,7 @@ if(isset($_GET['key'])){
 if(isset($_GET['delete'])){
     $key=$_GET['delete'];
     $sel_lang=$_GET['lang'];
-    $query_delete=mysql_query("DELETE FROM `app_my_girl_keyword_warning` WHERE `key` = '$key'  AND `lang` = '$sel_lang' LIMIT 1;");
+    $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_keyword_warning` WHERE `key` = '$key'  AND `lang` = '$sel_lang' LIMIT 1;");
     
 }
 
@@ -34,8 +34,8 @@ if(isset($_GET['active_os'])){
     $langsel=$_GET['lang'];
     $os=$_GET['os'];
     $os_value=$_GET['val'];
-    $query_updat_msg=mysql_query("UPDATE `app_my_girl_msg_$langsel` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%' AND `effect`!='2' ;");
-    $query_updat=mysql_query("UPDATE `app_my_girl_$langsel` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%' AND `effect`!='2' ;");
+    $query_updat_msg=mysqli_query($link,"UPDATE `app_my_girl_msg_$langsel` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%' AND `effect`!='2' ;");
+    $query_updat=mysqli_query($link,"UPDATE `app_my_girl_$langsel` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%' AND `effect`!='2' ;");
     if($query_updat){
         echo show_alert("Thiết lập thành công từ khóa '$key' trên $os !","alert");
     }
@@ -44,16 +44,16 @@ if(isset($_GET['active_os'])){
 if(isset($_GET['active_os_all'])){
     $os=$_GET['os'];
     $os_value=$_GET['active_os_all'];
-    $list_key=mysql_query("Select * from `app_my_girl_keyword_warning`");
+    $list_key=mysqli_query($link,"Select * from `app_my_girl_keyword_warning`");
     $txt_msg='';
-    while($row_key=mysql_fetch_array($list_key)){
+    while($row_key=mysqli_fetch_array($list_key)){
         $key=$row_key['key'];
         $lang=$row_key['lang'];
-        $query_updat_msg=mysql_query("UPDATE `app_my_girl_msg_$lang` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%';");
+        $query_updat_msg=mysqli_query($link,"UPDATE `app_my_girl_msg_$lang` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%';");
         echo mysql_error();
-        $query_updat2=mysql_query("UPDATE `app_my_girl_$lang` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%' AND  `effect`!='2';");
+        $query_updat2=mysqli_query($link,"UPDATE `app_my_girl_$lang` SET `$os` = '$os_value' WHERE `chat` LIKE '%$key%' AND  `effect`!='2';");
         echo mysql_error();
-        $query_updat=mysql_query("UPDATE `app_my_girl_$lang` SET `$os` = '$os_value' WHERE `text` LIKE '%$key%' AND `effect`!='2';");
+        $query_updat=mysqli_query($link,"UPDATE `app_my_girl_$lang` SET `$os` = '$os_value' WHERE `text` LIKE '%$key%' AND `effect`!='2';");
         if($query_updat){
             $txt_msg.="Thiết lập thành công từ khóa '$key' trên $os ! cho quốc gia ($lang)<br/>";
         }
@@ -77,8 +77,8 @@ if($sub_view=='add'){
         Ngôn ngữ:<br />
         <select name="lang_sel" >
         <?php
-        $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-        while($l=mysql_fetch_array($list_country)){
+        $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+        while($l=mysqli_fetch_array($list_country)){
             $langsel=$l['key'];
             ?>
             <option value="<?php echo $langsel;?>" <?php if($sel_lang==$langsel){ echo 'selected="true"'; } ?>><?php echo $l['name'];?></option>';
@@ -104,8 +104,8 @@ if($sub_view=='add'){
     <br /><br />
     <strong>Hiển thị theo quốc gia</strong><br />
         <?php
-        $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-        while($l=mysql_fetch_array($list_country)){
+        $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+        while($l=mysqli_fetch_array($list_country)){
             $langsel=$l['key'];
             ?>
             <a href="<?php echo $url;?>/app_my_girl_handling.php?func=keyword_warning&lang=<?php echo $langsel;?>" class="buttonPro small <?php if($sel_lang==$langsel){ echo 'blue';} ?>" <?php if($sel_lang==$langsel){ echo 'selected="true"'; } ?>> <img src="<?php echo thumb('app_mygirl/img/'.$l['key'].'.png','10x10');?>"/> (<?php echo $l['key'];?>) <?php echo $l['name'];?></a>
@@ -125,8 +125,8 @@ if($sub_view=='add'){
     <th>Thao tác</th>
 </tr>
 <?php
-$list_key=mysql_query("Select * from `app_my_girl_keyword_warning` WHERE 1=1 $txt_query_lang");
-while($row_key=mysql_fetch_array($list_key)){
+$list_key=mysqli_query($link,"Select * from `app_my_girl_keyword_warning` WHERE 1=1 $txt_query_lang");
+while($row_key=mysqli_fetch_array($list_key)){
     ?>
     <tr>
         <td><?php echo $row_key['key'];?></td>
@@ -159,7 +159,7 @@ $key=$_GET['view'];
 $langsel=$_GET['lang'];
 $os=$_GET['os'];
 $os_value=$_GET['val'];
-$list_key=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `chat` LIKE '%$key%' AND `$os`='$os_value' AND `text` LIKE '%$key%' AND `effect`!='2'");
+$list_key=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `chat` LIKE '%$key%' AND `$os`='$os_value' AND `text` LIKE '%$key%' AND `effect`!='2'");
 $txt_show_on='được hiển thị';
 if($os_value=='1'){
     $txt_show_on='không được hiển thị';
@@ -171,10 +171,10 @@ echo show_alert("Xem các câu trò chuyện $txt_show_on trên $os với từ k
 <strong>Trò chuyện</strong>
 <table style="width: auto;">
 <?php
-while($row_key=mysql_fetch_array($list_key)){
+while($row_key=mysqli_fetch_array($list_key)){
 ?>
 <tr>
-    <?php echo show_row_chat_prefab($row_key,$langsel,''); ?>
+    <?php echo show_row_chat_prefab($link,$row_key,$langsel,''); ?>
 </tr>
 <?php
 }
@@ -185,11 +185,11 @@ while($row_key=mysql_fetch_array($list_key)){
 <strong>Câu thoại</strong>
 <table style="width: auto;">
 <?php
-$list_key_msg=mysql_query("SELECT * FROM `app_my_girl_msg_$langsel` WHERE `chat` LIKE '%$key%' AND `$os`='$os_value' AND `text` LIKE '%$key%' ");
-while($row_key=mysql_fetch_array($list_key_msg)){
+$list_key_msg=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `chat` LIKE '%$key%' AND `$os`='$os_value' AND `text` LIKE '%$key%' ");
+while($row_key=mysqli_fetch_array($list_key_msg)){
 ?>
 <tr>
-    <?php echo show_row_msg_prefab($row_key,$langsel,''); ?>
+    <?php echo show_row_msg_prefab($link,$row_key,$langsel,''); ?>
 </tr>
 <?php
 }

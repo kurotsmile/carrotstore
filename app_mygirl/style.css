@@ -505,10 +505,10 @@ select {
     margin: 3px;
     border-radius: 11px;
     font-size: 10px;
-    cursor: pointer;
+    cursor: pointer;position: absolute;
 }
 .tag_data_syn.lost{background-color: red;}
-.tag_data_syn.colon{background-color: #ffe900;}
+.tag_data_syn.colon{background-color: #f9a804;}
 
 /*
  ----------------------------------------------------------------------------------
