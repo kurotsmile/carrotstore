@@ -8,7 +8,7 @@ Class Setting{
 
 if(isset($_POST['show_ads'])){
     foreach ($_POST as $key=>$val){
-        $query_update_setting=mysql_query("UPDATE `setting` SET  `value` = '$val' WHERE `key` = '$key' LIMIT 1;");
+        $query_update_setting=mysqli_query($link,"UPDATE `setting` SET  `value` = '$val' WHERE `key` = '$key' LIMIT 1;");
         if($query_update_setting) {
             echo alert("Cập nhật cài đặt thành công! $key => $val");
         }
@@ -20,7 +20,7 @@ $array_setting=array();
 
 $item_setting=new Setting();
 $item_setting->key='show_ads';
-$item_setting->val=get_setting($item_setting->key);
+$item_setting->val=get_setting($link,$item_setting->key);
 $item_setting->type='select';
 $item_setting->label='Quảng cáo (google)';
 array_push($array_setting,$item_setting);
@@ -28,7 +28,7 @@ array_push($array_setting,$item_setting);
 
 $item_setting=new Setting();
 $item_setting->key='show_adsupply';
-$item_setting->val=get_setting($item_setting->key);
+$item_setting->val=get_setting($link,$item_setting->key);
 $item_setting->type='select';
 $item_setting->label='Quảng cáo ADsupply';
 array_push($array_setting,$item_setting);

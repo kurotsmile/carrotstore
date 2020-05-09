@@ -9,8 +9,8 @@ $arr_id_product=array();
 if(isset($_GET['edit'])){
     $func='edit';
     $id_ads=$_GET['edit'];
-    $query_ads=mysql_query("SELECT * FROM `ads` WHERE `id_ads` = '$id_ads' LIMIT 1");
-    $data_ads=mysql_fetch_array($query_ads);
+    $query_ads=mysqli_query($link,"SELECT * FROM `ads` WHERE `id_ads` = '$id_ads' LIMIT 1");
+    $data_ads=mysqli_fetch_array($query_ads);
     $id_product_main=$data_ads['id_product_main'];
     $arr_id_product=json_decode($data_ads['id_product']);
     $tip_download=$data_ads['tip_download'];
@@ -26,17 +26,17 @@ if(isset($_POST['func'])){
     $tip_download=$_POST['tip_download'];
     
     if($func=='add'){
-        $query_add_ads=mysql_query("INSERT INTO `ads` (`id_ads`, `id_product`,`id_product_main`,`tip_download`) VALUES ('$id_ads', '$data_product','$product_main','$tip_download');");
+        $query_add_ads=mysqli_query($link,"INSERT INTO `ads` (`id_ads`, `id_product`,`id_product_main`,`tip_download`) VALUES ('$id_ads', '$data_product','$product_main','$tip_download');");
         if($query_add_ads){
             echo alert("Thêm mới địa điểm quảng cáo thành công!",'alert');
         }
     }else{
         $id_edit=$_POST['id_edit'];
-        $query_edit_ads=mysql_query("UPDATE `ads` SET `id_ads`='$id_ads' , `id_product` = '$data_product' , `id_product_main` = '$product_main' , `tip_download`='$tip_download' WHERE `id_ads` = '$id_edit' LIMIT 1;");
+        $query_edit_ads=mysqli_query($link,"UPDATE `ads` SET `id_ads`='$id_ads' , `id_product` = '$data_product' , `id_product_main` = '$product_main' , `tip_download`='$tip_download' WHERE `id_ads` = '$id_edit' LIMIT 1;");
         if($query_edit_ads){
             echo alert("Cập nhật địa điểm quảng cáo thành công!",'alert');
         } 
-         echo mysql_error($link);
+         echo mysqli_error($link);
     }
    
 }
@@ -55,13 +55,13 @@ if(isset($_POST['func'])){
             <div style="max-height: 200px;overflow-y: auto;">
             <select name="product_main">
             <?php 
-                $list_product=mysql_query("SELECT * FROM `products` WHERE `status`='1'");
-                while($p=mysql_fetch_array($list_product)){
+                $list_product=mysqli_query($link,"SELECT `id` FROM `products` WHERE `status`='1'");
+                while($p=mysqli_fetch_assoc($list_product)){
             ?>
-                <option value="<?php echo $p[0];?>" <?php if($id_product_main==$p[0]){ ?>selected="true"<?php } ?>><?php echo get_name_product_lang($p[0],$_SESSION["lang"]);?></option>
+                <option value="<?php echo $p['id'];?>" <?php if($id_product_main==$p['id']){ ?>selected="true"<?php } ?>><?php echo get_name_product_lang($link,$p['id'],$_SESSION["lang"]);?></option>
             <?php
                 }
-                mysql_free_result($list_product);
+                mysqli_free_result($list_product);
             ?>
              </select>
              </div>
@@ -71,21 +71,21 @@ if(isset($_POST['func'])){
             <div style="max-height: 200px;overflow-y: auto;">
             <table>
             <?php 
-                $list_product=mysql_query("SELECT * FROM `products` WHERE `status`='1'");
-                while($p=mysql_fetch_array($list_product)){
+                $list_product=mysqli_query($link,"SELECT `id` FROM `products` WHERE `status`='1'");
+                while($p=mysqli_fetch_assoc($list_product)){
             ?>
                <tr>
-                <td><a target="_blank" href="<?php echo $url; ?>/product/<?php echo $p[0];?>"><img  src="<?php echo get_url_icon_product($p[0],'15',true);?>"/></a></td>
+                <td><a target="_blank" href="<?php echo $url; ?>/product/<?php echo $p['id'];?>"><img  src="<?php echo get_url_icon_product($p['id'],'15',true);?>"/></a></td>
                 <td>
-                    <strong><?php echo get_name_product_lang($p[0],$_SESSION["lang"]);?></strong>
+                    <strong><?php echo get_name_product_lang($link,$p['id'],$_SESSION["lang"]);?></strong>
                 </td>
                 <td>
-                    <input type="checkbox" name="product[]" value="<?php echo $p[0]; ?>" <?php if(in_array($p[0],$arr_id_product)){?> checked="true"<?php } ?> />
+                    <input type="checkbox" name="product[]" value="<?php echo $p['id']; ?>" <?php if(in_array($p['id'],$arr_id_product)){?> checked="true"<?php } ?> />
                 </td>
                </tr>
             <?php
                 }
-                mysql_free_result($list_product);
+                mysqli_free_result($list_product);
             ?>
              </table>
              </div>
@@ -112,7 +112,7 @@ if(isset($_POST['func'])){
 </form>
 
 <?php
-$list_ads=mysql_query("SELECT * FROM `ads`"); 
+$list_ads=mysqli_query($link,"SELECT * FROM `ads`"); 
 ?>
 <table>
 <tr>
@@ -123,7 +123,7 @@ $list_ads=mysql_query("SELECT * FROM `ads`");
     <th style="width: 200px;">Thao tác</th>
 </tr>
 <?php
-while($row=mysql_fetch_array($list_ads)){
+while($row=mysqli_fetch_array($list_ads)){
 ?>
     <tr>
         <td><?php echo $row['id_ads'];?></td>
@@ -152,6 +152,6 @@ while($row=mysql_fetch_array($list_ads)){
     </tr>
 <?php
 }
-mysql_free_result($list_ads);
+mysqli_free_result($list_ads);
 ?>
 </table>

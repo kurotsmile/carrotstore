@@ -7,14 +7,14 @@
         <th>Thao tác</th>
     </tr>
         <?php
-        while ($row = mysql_fetch_array($result)) {
-            $query_type=mysql_query("SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
-            $data_type=mysql_fetch_array($query_type);
+        while ($row = mysqli_fetch_array($result)) {
+            $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
+            $data_type=mysqli_fetch_array($query_type);
             ?>
                 <tr id="row<?php echo $row[0];?>'">
                     <td><a target="_blank" href="<?php echo $url; ?>/product/<?php echo $row[0];?>"><img title="<?php echo $row[1];?>" src="<?php echo get_url_icon_product($row[0],'50',true);?>"/></a></td>
-                    <td><a target="_blank" href="<?php echo $url; ?>/product/<?php echo $row[0];?>"><strong><?php echo get_name_product_lang($row[0],'en',true);?></strong></a></td>
-                    <td><span class="<?php echo $data_type['css_icon']; ?>"></span> <?php echo '<a target="_blank" href="'.URL.'/type/'.$row['type'].'">'.lang($row['type']).'</a>'; ?></td>
+                    <td><a target="_blank" href="<?php echo $url; ?>/product/<?php echo $row[0];?>"><strong><?php echo get_name_product_lang($link,$row[0],'en',true);?></strong></a></td>
+                    <td><span class="<?php echo $data_type['css_icon']; ?>"></span> <?php echo '<a target="_blank" href="'.URL.'/type/'.$row['type'].'">'.lang($link,$row['type']).'</a>'; ?></td>
                     <td>
                         <?php 
                             if($row['status']=='1'){

@@ -39,30 +39,30 @@ if(isset($_POST['type_product'])){
     $slug=$_POST['slug_product'];
     
     if($func=='add'){
-        $query_add=mysql_query("INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`slug`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$slug');");
-        $id_product=mysql_insert_id();
+        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`slug`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$slug');");
+        $id_product=mysqli_insert_id();
         $func='edit';
     }else{
-        $query_update=mysql_query("UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' WHERE `id` = '$id_product'");
+        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' WHERE `id` = '$id_product'");
     }
     
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-    $query_clear_data=mysql_query("DELETE FROM `product_desc` WHERE `id_product` = '$id_product'");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+    $query_clear_data=mysqli_query($link,"DELETE FROM `product_desc` WHERE `id_product` = '$id_product'");
+    while($l=mysqli_fetch_array($list_country)){
         $name_desc='desc_'.$l['key'];
         if($_POST[$name_desc]!=''){
             $desc_data=addslashes($_POST[$name_desc]);
-            $query_add=mysql_query("INSERT INTO `product_desc` (`id_product`, `key_country`, `data`) VALUES ('$id_product', '".$l['key']."', '$desc_data');");
+            $query_add=mysqli_query($link,"INSERT INTO `product_desc` (`id_product`, `key_country`, `data`) VALUES ('$id_product', '".$l['key']."', '$desc_data');");
         }
     }
     
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-    $query_clear_data=mysql_query("DELETE FROM `product_name` WHERE `id_product` = '$id_product'");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+    $query_clear_data=mysqli_query($link,"DELETE FROM `product_name` WHERE `id_product` = '$id_product'");
+    while($l=mysqli_fetch_array($list_country)){
         $name_inp='name_product_'.$l['key'];
         if($_POST[$name_inp]!=''){
             $name_data=addslashes($_POST[$name_inp]);
-            $query_add=mysql_query("INSERT INTO `product_name` (`id_product`, `key_country`, `data`) VALUES ('$id_product', '".$l['key']."', '$name_data');");
+            $query_add=mysqli_query($link,"INSERT INTO `product_name` (`id_product`, `key_country`, `data`) VALUES ('$id_product', '".$l['key']."', '$name_data');");
         }
     }
     
@@ -80,21 +80,27 @@ if(isset($_POST['type_product'])){
     }
     
     if(isset($_FILES['img_desc'])){
-        $file_delete=$_POST['file_delete'];
-        $files = glob($path_folder_product.'/'.$id_product.'/slide/*'); // get all file names
-        foreach($files as $file){ // iterate files
-          if(is_file($file)){
-            if(in_array($file,$file_delete))
-            unlink($file);
-          }
-        }
+		$file_delete='';
+		if(isset($_POST['file_delete'])){
+			$file_delete=$_POST['file_delete'];
+		}
+		
+		if($file_delete!=''){
+			$files = glob($path_folder_product.'/'.$id_product.'/slide/*'); // get all file names
+			foreach($files as $file){ // iterate files
+			  if(is_file($file)){
+				if(in_array($file,$file_delete))
+				unlink($file);
+			  }
+			}
+		}
         
         if (!file_exists($path_folder_product.'/'.$id_product.'/slide')) {
             mkdir($path_folder_product.'/'.$id_product.'/slide', 0777, true);
         }
         
         for($i=0;$i<count($_FILES['img_desc']['name']);$i++){
-                $target_file=$path_folder_product.'/'.$id_product.'/slide/'.md5(date()).'_'.$i.'.png';
+                $target_file=$path_folder_product.'/'.$id_product.'/slide/'.md5(date("Y-m-d H:i:s")).'_'.$i.'.png';
                 if (move_uploaded_file($_FILES["img_desc"]["tmp_name"][$i], $target_file)) {
                     $msg_alert.=alert("Tệp tin ". basename( $_FILES["img_desc"]["name"][$i]). " đã được tải lên!","info");
                 } else {
@@ -103,13 +109,12 @@ if(isset($_POST['type_product'])){
         }
     }
     $msg_alert.=alert("Cập nhật thành công!","alert");
-    echo mysql_error();
+    echo mysqli_error($link);
 }
 
 if($id_product!=''){
-    $query_product=mysql_query("SELECT * FROM `products` WHERE `id` = '$id_product' LIMIT 1");
-    $data_product=mysql_fetch_array($query_product);
-    $name_prodcut=$data_product['name_product'];
+    $query_product=mysqli_query($link,"SELECT * FROM `products` WHERE `id` = '$id_product' LIMIT 1");
+    $data_product=mysqli_fetch_array($query_product);
     $type_product=$data_product['type'];
     $galaxy_store=$data_product['galaxy_store'];
     $app_store=$data_product['app_store'];
@@ -156,12 +161,12 @@ if($msg_alert!=''){
         <td>
             <?php
             $arr_is_data_name=array();
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-            while($l=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+            while($l=mysqli_fetch_array($list_country)){
                 $key_l=$l['key'];
                 if($id_product!=''){
-                    $query_data=mysql_query("SELECT `data` FROM `product_name` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
-                    $data_name=mysql_fetch_array($query_data);
+                    $query_data=mysqli_query($link,"SELECT `data` FROM `product_name` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
+                    $data_name=mysqli_fetch_array($query_data);
                     $data_name=$data_name['data'];
                     if($data_name!=''){
                         array_push($arr_is_data_name,$key_l);
@@ -174,8 +179,8 @@ if($msg_alert!=''){
             <?php }?>
             
             <?php
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-            while($l=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+            while($l=mysqli_fetch_array($list_country)){
                 $key_l=$l['key'];
             ?>
                 <span id="btn_name_<?php echo $key_l;?>" class="buttonPro small btn_name" onclick="show_tap_lang('<?php echo $key_l;?>');return false;"><?php echo $key_l; ?> - <?php echo $l['name']; ?></span>
@@ -183,10 +188,10 @@ if($msg_alert!=''){
             
             <?php
             if($id_product!=''){
-                if(sizeof($arr_is_data)>0){
+                if(sizeof($arr_is_data_name)>0){
                     echo '<b>Các ngôn ngữ có dữ liệu:</b>';
-                    for($i=0;$i<sizeof($arr_is_data);$i++){
-                        echo $arr_is_data[$i].' ';
+                    for($i=0;$i<sizeof($arr_is_data_name);$i++){
+                        echo $arr_is_data_name[$i].' ';
                     }
                 }
             }
@@ -198,11 +203,11 @@ if($msg_alert!=''){
         <td>
             <?php
             $arr_is_data=array();
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-            while($l=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+            while($l=mysqli_fetch_array($list_country)){
                 $key_l=$l['key'];
-                $query_data=mysql_query("SELECT `data` FROM `product_desc` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
-                $data_desc=mysql_fetch_array($query_data);
+                $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
+                $data_desc=mysqli_fetch_array($query_data);
                 $data_desc=$data_desc['data'];
                 if($data_desc!=''){
                     array_push($arr_is_data,$key_l);
@@ -212,8 +217,8 @@ if($msg_alert!=''){
             <?php }?>
             
             <?php
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-            while($l=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+            while($l=mysqli_fetch_array($list_country)){
                 $key_l=$l['key'];
             ?>
                 <span id="btn_desc_<?php echo $key_l;?>" class="buttonPro small btn_desc" onclick="show_tap_lang('<?php echo $key_l;?>');return false;"><?php echo $key_l; ?> - <?php echo $l['name']; ?></span>
@@ -270,10 +275,10 @@ if($msg_alert!=''){
         <td>
             <select name="type_product">
             <?php
-            $query_type_p=mysql_query("SELECT * FROM `type`");
-            while($row_type=mysql_fetch_array($query_type_p)){
+            $query_type_p=mysqli_query($link,"SELECT * FROM `type`");
+            while($row_type=mysqli_fetch_array($query_type_p)){
             ?>
-                <option value="<?php echo $row_type['id']; ?>" <?php if($type_product==$row_type['id']){ ?>selected="true"<?php }?>><?php echo lang($row_type['id']); ?></option>
+                <option value="<?php echo $row_type['id']; ?>" <?php if($type_product==$row_type['id']){ ?>selected="true"<?php }?>><?php echo lang($link,$row_type['id']); ?></option>
             <?php
             }
             ?>
@@ -382,7 +387,7 @@ if($msg_alert!=''){
 </table>
 </form>
 </div>
-<script src="<?php echo $url;?>/ckeditor.js"></script>
+<script src="<?php echo $url;?>/js/ckeditor.js"></script>
 
 <script>
 

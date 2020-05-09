@@ -1,6 +1,6 @@
 <?php
 include "phpqrcode/qrlib.php";
-if($_GET['slug']){
+if(isset($_GET['slug'])){
     $slug=$_GET['view_product'];
     $result=mysqli_query($link,"SELECT * FROM `products` WHERE `slug` = '$slug' LIMIT 1");
 }else{

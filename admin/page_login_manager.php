@@ -6,15 +6,15 @@ if(isset($_GET['lang'])){
 if(isset($_GET['delete'])){
     $sdt_delete=$_GET['delete'];
     $user_password=$_GET['password'];
-    $query_delete=mysql_query("DELETE FROM `app_my_girl_user_$lang` where `password`='$user_password' AND `sdt`='$sdt_delete'");
+    $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_user_$lang` where `password`='$user_password' AND `sdt`='$sdt_delete'");
     if($query_delete){
         echo alert('Xóa thành công ('.$sdt_delete.')','error');
     }
 }
 
-$query_all_country=mysql_query("SELECT `key`, `name` FROM `app_my_girl_country`");
+$query_all_country=mysqli_query($link,"SELECT `key`, `name` FROM `app_my_girl_country`");
 echo '<div id="bar_menu_sub">';
-while ($country=mysql_fetch_assoc($query_all_country)) {
+while ($country=mysqli_fetch_assoc($query_all_country)) {
     ?>
     <a href="<?php echo $url_admin;?>/?page_view=page_login_manager&lang=<?php echo $country['key'];?>"><img style="float: left" src="<?php echo $url;?>/thumb.php?src=<?php echo $url;?>/app_mygirl/img/<?php echo $country['key'];?>.png&size=16x16&trim=1"><?php echo $country['name'];?></a>
     <?php
@@ -30,9 +30,9 @@ echo '</div>';
     <th>Thao tác</th>
 </tr>
 <?php
-$list_login=mysql_query("SELECT `name`,`id_device`,`password`,`sdt`,`date_start` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!=''");
-echo mysql_error();
-while($row=mysql_fetch_array($list_login)){
+$list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!=''");
+echo mysqli_error($link);
+while($row=mysqli_fetch_assoc($list_login)){
 ?>
     <tr>
         <td>
@@ -62,6 +62,6 @@ while($row=mysql_fetch_array($list_login)){
     </tr>
 <?php
 }
-mysql_free_result($list_login);
+mysqli_free_result($list_login);
 ?>
 </table>

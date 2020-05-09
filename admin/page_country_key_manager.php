@@ -17,34 +17,34 @@ if(isset($_GET['edit'])){
         $key=$_POST['key'];
             
         if($_POST['func']=="add"){
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-            while($l=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+            while($l=mysqli_fetch_array($list_country)){
                 $key_lang=$l['key'];
                 $name_value='value_'.$key_lang;
                 $value=mysql_real_escape_string ($_POST[$name_value]);
-                $add_key_lang=mysql_query("INSERT INTO `lang_value` (`key`,`value`,`lang`) VALUES ('$key','$value','$key_lang');");
+                $add_key_lang=mysqli_query($link,"INSERT INTO `lang_value` (`key`,`value`,`lang`) VALUES ('$key','$value','$key_lang');");
                 echo mysql_error();
                 echo 'Thêm từ khóa "'.$key.'" vào ngôn ngữ ('.$key_lang.') thành công!<br/>';
             }
-            mysql_free_result($list_country);
+            mysqli_free_result($list_country);
         }else{
             $id_edit=$_POST['id_edit'];
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-            while($l=mysql_fetch_array($list_country)){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+            while($l=mysqli_fetch_array($list_country)){
                 $key_lang=$l['key'];
                 $name_value='value_'.$key_lang;
-                $value=mysql_real_escape_string ($_POST[$name_value]);
+                $value=mysqli_real_escape_string($link,$_POST[$name_value]);
                 $name_check_null='type_act_'.$key_lang;
                 if(isset($_POST[$name_check_null])){
-                    $add_key_lang=mysql_query("INSERT INTO `lang_value` (`key`,`value`,`lang`) VALUES ('$key','$value','$key_lang');");
+                    $add_key_lang=mysqli_query($link,"INSERT INTO `lang_value` (`key`,`value`,`lang`) VALUES ('$key','$value','$key_lang');");
                     echo 'Thêm từ khóa "'.$key.'" vào ngôn ngữ ('.$key_lang.') thành công!<br/>';
                 }else{
-                    $update_key_lang=mysql_query("UPDATE `lang_value` SET `value` = '$value' WHERE `key` = '$key'  AND `lang` = '$key_lang' ");
+                    $update_key_lang=mysqli_query($link,"UPDATE `lang_value` SET `value` = '$value' WHERE `key` = '$key'  AND `lang` = '$key_lang' ");
                     echo 'Cập nhật từ khóa "'.$key.'" vào ngôn ngữ ('.$key_lang.') thành công!<br/>';
                 }
                 
             }
-            mysql_free_result($list_country);
+            mysqli_free_result($list_country);
         }
     }
 
@@ -52,13 +52,13 @@ if(isset($_GET['edit'])){
 if(isset($_POST['id_edit_key_lang'])){
     $key_new=$_POST['key_new'];
     $id_edit_key_lang=$_POST['id_edit_key_lang'];
-    $query_edit_key=mysql_query("UPDATE `lang_value` SET `key` = '$key_new' WHERE `key` = '$id_edit_key_lang'");
+    $query_edit_key=mysqli_query($link,"UPDATE `lang_value` SET `key` = '$key_new' WHERE `key` = '$id_edit_key_lang'");
     echo "Chỉnh sửa từ khóa '".$id_edit_key_lang."' thành '".$key_new."' thành công !<br/>";
 }
 
 if(isset($_POST['id_delete_key_lang'])){
     $id_delete_key_lang=$_POST['id_delete_key_lang'];
-    $query_delete=mysql_query("DELETE FROM `lang_value` WHERE `key` = '$id_delete_key_lang'");
+    $query_delete=mysqli_query($link,"DELETE FROM `lang_value` WHERE `key` = '$id_delete_key_lang'");
     echo "Xóa từ khóa ".$id_delete_key_lang." thành công!!!<br/>";
 }
 ?>
@@ -79,8 +79,8 @@ if(isset($_POST['id_delete_key_lang'])){
         <td>
             <table>
             <?php 
-                $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-                while($l=mysql_fetch_array($list_country)){
+                $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+                while($l=mysqli_fetch_array($list_country)){
                     $key_lang=$l['key'];
                     $key_name=$l['name'];
                     $style_edit_lang="";
@@ -103,10 +103,10 @@ if(isset($_POST['id_delete_key_lang'])){
                         <?php
                     }else{
                             $value_is_null="0";
-                            $query_get_value=mysql_query("SELECT `value` FROM `lang_value` WHERE `key` = '$key' AND `lang` = '$key_lang' LIMIT 1");
-                            if(mysql_num_rows($query_get_value)>0){
+                            $query_get_value=mysqli_query($link,"SELECT `value` FROM `lang_value` WHERE `key` = '$key' AND `lang` = '$key_lang' LIMIT 1");
+                            if(mysqli_num_rows($query_get_value)>0){
                                 $value_is_null="1"; 
-                                $data_value=mysql_fetch_array($query_get_value);  
+                                $data_value=mysqli_fetch_array($query_get_value);  
                             }
                             
                         ?>
@@ -117,7 +117,7 @@ if(isset($_POST['id_delete_key_lang'])){
                                 <input type="text" class="inp_val" name="value_<?php echo $key_lang?>" value="<?php echo $data_value[0]; ?>" />
                             <?php }?>
                         <?php
-                            mysql_free_result($query_get_value);
+                            mysqli_free_result($query_get_value);
                     }
                     ?>
 
@@ -125,7 +125,7 @@ if(isset($_POST['id_delete_key_lang'])){
                </tr>
             <?php
                 }
-                mysql_free_result($list_country);
+                mysqli_free_result($list_country);
             ?>
              </table>
             <span class="buttonPro small" onclick="$('.inp_val').val('')"><i class="fa fa-refresh" aria-hidden="true"></i> Làm mới các trường</span>
@@ -160,13 +160,13 @@ if(isset($_POST['id_delete_key_lang'])){
         <label>Chọn từ khóa sửa</label>
         <select name="id_edit_key_lang">
         <?php
-            $query_all_key=mysql_query('SELECT DISTINCT `key` FROM lang_value');
-            while($row_key=mysql_fetch_array($query_all_key)){
+            $query_all_key=mysqli_query($link,'SELECT DISTINCT `key` FROM lang_value');
+            while($row_key=mysqli_fetch_array($query_all_key)){
         ?>
             <option value="<?php echo $row_key[0]?>"><?php echo $row_key[0]?></option>
         <?php
             }
-            mysql_free_result($query_all_key);
+            mysqli_free_result($query_all_key);
         ?>
         </select>
     </div>
@@ -185,13 +185,13 @@ if(isset($_POST['id_delete_key_lang'])){
         <label>Chọn từ khóa Xóa</label>
         <select name="id_delete_key_lang">
         <?php
-            $query_all_key=mysql_query('SELECT DISTINCT `key` FROM lang_value');
-            while($row_key=mysql_fetch_array($query_all_key)){
+            $query_all_key=mysqli_query($link,'SELECT DISTINCT `key` FROM lang_value');
+            while($row_key=mysqli_fetch_array($query_all_key)){
         ?>
             <option value="<?php echo $row_key[0]?>"><?php echo $row_key[0]?></option>
         <?php
             }
-            mysql_free_result($query_all_key);
+            mysqli_free_result($query_all_key);
         ?>
         </select>
     </div>
@@ -211,13 +211,13 @@ if(isset($_POST['id_delete_key_lang'])){
         <label>Chọn từ khóa để xem</label>
         <select name="edit">
         <?php
-            $query_all_key=mysql_query('SELECT DISTINCT `key` FROM lang_value ORDER By `key`');
-            while($row_key=mysql_fetch_array($query_all_key)){
+            $query_all_key=mysqli_query($link,'SELECT DISTINCT `key` FROM lang_value ORDER By `key`');
+            while($row_key=mysqli_fetch_array($query_all_key)){
         ?>
             <option value="<?php echo $row_key[0]?>"><?php echo $row_key[0]?></option>
         <?php
             }
-            mysql_free_result($query_all_key);
+            mysqli_free_result($query_all_key);
         ?>
         </select>
     </div>
@@ -233,12 +233,12 @@ if(isset($_POST['id_delete_key_lang'])){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `lang_value` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `lang_value` WHERE ((`id` = '$id_del'));");
 
 }
 
 
-    $list_lang_key=mysql_query("SELECT * FROM `lang_value` ORDER BY RAND() LIMIT 50"); 
+    $list_lang_key=mysqli_query($link,"SELECT * FROM `lang_value` ORDER BY RAND() LIMIT 50"); 
 ?>
 <table>
 <tr>
@@ -248,7 +248,7 @@ if(isset($_GET['del'])){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-while($row=mysql_fetch_array($list_lang_key)){
+while($row=mysqli_fetch_array($list_lang_key)){
 ?>
     <tr>
         <td><?php echo $row['key'];?></td>
@@ -260,6 +260,6 @@ while($row=mysql_fetch_array($list_lang_key)){
     </tr>
 <?php
 }
-mysql_free_result($list_lang_key);
+mysqli_free_result($list_lang_key);
 ?>
 </table>

@@ -28,7 +28,6 @@ if(isset($_SESSION['lang'])){
 include "../database.php";
 include "../function.php";  
 include "function.php";  
-include "json.php";
 
 if(isset($_POST['logout'])){
     unset($_SESSION['user_login']);
@@ -80,7 +79,7 @@ if($_GET&&isset($_GET['page_view'])){
     <link href="<?php echo $url_admin; ?>/style.min.css" rel="stylesheet" />
 	<title>Carrot - Admin </title>
     <meta charset="utf-8"/>
-    <meta name="title" content="<?php echo $title_page; ?>" />
+    <meta name="title" content="Admin CarrotStore" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css"/>
     <link rel="canonical" href="<?php echo $url; ?>" />
     <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.png"/>
@@ -157,15 +156,8 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     <span><?php echo lang($link,'dang_lay_du_lieu'); ?></span>
 </div>
 
-
-<script>
-    var URL='<?php echo $url;?>';
-</script>
-<?php
-//include "../script_all_page.php";
-?>
 </body>
 </html>
 <?php
-mysql_close($link);
+mysqli_close($link);
 ?>
