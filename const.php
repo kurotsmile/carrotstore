@@ -1,5 +1,4 @@
 <?php
-$url_admin='localhost/admin';
 $ch_url='https://play.google.com/store/apps/details?id=';
 $itune_url='https://itunes.apple.com/us/app/';
 $paypal_url='https://www.paypal.com/cgi-bin/webscr';

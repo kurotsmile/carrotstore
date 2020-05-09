@@ -14,7 +14,7 @@
         infoWindow.open(map);
         
         <?php 
-        while ($row = mysql_fetch_array($result_tip)) {
+        while ($row = mysqli_fetch_array($result_tip)) {
          ?>
             var p<?php echo $row['id'];?> = {lat: <?php echo $row['location_lat'];?>, lng:<?php echo $row['location_lon'];?>};
             var marker<?php echo $row['id'];?>  = new google.maps.Marker({

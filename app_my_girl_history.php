@@ -64,7 +64,6 @@ if(isset($_GET['type_chat_see'])){
 if(isset($_POST['sex'])){
     $sex=$_POST['sex'];
     $langsel=$_POST['lang'];
-    $sel_date=$_POST['dates'];
     $character_sex=$_POST['character_sex'];
     $type_view=$_POST['type_view'];
     
@@ -324,7 +323,5 @@ if($type_view=="on"){
     include "app_my_girl_history_nomal.php";
 }
 
-mysqli_free_result($result_tip);
-mysqli_free_result($result_count);
 ?>
 

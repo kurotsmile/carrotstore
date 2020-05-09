@@ -41,19 +41,18 @@ function show_info_user($lang_sel, $id_device, $show_phone)
     return $name_user;
 }
 
-function show_info_user_name($lang_sel, $id_device)
+function show_info_user_name($link,$lang_sel, $id_device)
 {
     $name_user = "";
     $list_effect = mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
     if ($list_effect != false) {
-        if (mysql_num_rows($list_effect) > 0) {
-            $arr_data = mysql_fetch_array($list_effect);
+        if (mysqli_num_rows($list_effect) > 0) {
+            $arr_data = mysqli_fetch_array($list_effect);
             $name_user = $arr_data[0];
         } else {
             $name_user = $id_device;
         }
     }
-    mysql_free_result($list_effect);
     return $name_user;
 }
 
@@ -264,7 +263,7 @@ function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
 }
 
 
-function show_row_history_prefab($row)
+function show_row_history_prefab($link,$row)
 {
     global $url;
     $txt_map = '';
@@ -307,7 +306,7 @@ function show_row_history_prefab($row)
 
 
     if ($row['id_device'] != '') {
-        $txt_id_device = '<a class="buttonPro small purple" onclick="view_device(\'' . $row['id_device'] . '\',\'' . $row['dates'] . '\',\'' . $row['lang'] . '\');return false;">Xem lịch sử của :' . show_info_user_name($row['lang'], $row['id_device']) . '</a>';
+        $txt_id_device = '<a class="buttonPro small purple" onclick="view_device(\'' . $row['id_device'] . '\',\'' . $row['dates'] . '\',\'' . $row['lang'] . '\');return false;">Xem lịch sử của :' . show_info_user_name($link,$row['lang'], $row['id_device']) . '</a>';
     } else {
         $txt_id_device = '';
     }

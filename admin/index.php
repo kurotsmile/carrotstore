@@ -13,9 +13,6 @@ if($protocol=='https'){
     include "../config.php";
 }
 
-
-$url_block=array('page_account.php','page_type.php','page_contry.php','page_type_add.php','page_type_update.php');
-
 if(isset($_POST['key_contry'])){
    $_SESSION['lang']=$_POST['key_contry'];     
 }
@@ -48,9 +45,9 @@ $error_login='';
 if(isset($_POST['user_name'])){
     $user_name=$_POST['user_name'];
     $user_pass=$_POST['user_pass'];
-    $query_login=mysql_query("SELECT * FROM carrotsy_work.`work_user` WHERE `user_name`='$user_name' AND `user_pass`='$user_pass' LIMIT 1");
-    if(mysql_num_rows($query_login)>0){
-        $data_login_user=mysql_fetch_array($query_login);
+    $query_login=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_user` WHERE `user_name`='$user_name' AND `user_pass`='$user_pass' LIMIT 1");
+    if(mysqli_num_rows($query_login)>0){
+        $data_login_user=mysqli_fetch_array($query_login);
         $user_login=new User_login();
         $user_login->id=$data_login_user['user_id'];
         $user_login->name=$user_name;
@@ -106,11 +103,11 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
 
     <a id="sell_product" href="<?php echo $url; ?>/admin/?page_view=page_product&sub_view=page_product_update">
         <?php
-        $result = mysql_query("SELECT * FROM `products`",$link);
+        $result = mysqli_query($link,"SELECT * FROM `products`");
         ?>
         <i class="fa fa-rocket fa-3x" style="float: left;margin-right: 10px;"></i>
         <strong style="font-size: 15px;width: 100px;">Thêm sản phẩm</strong><br />
-        <span>(<span id="num_cart_show"><?php echo mysql_num_rows($result); ?></span>) <?php echo lang($link,'sp'); ?></span>
+        <span>(<span id="num_cart_show"><?php echo mysqli_num_rows($result); ?></span>) <?php echo lang($link,'sp'); ?></span>
     </a>
 
     <div id="bar_menu">

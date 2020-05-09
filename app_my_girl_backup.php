@@ -1,6 +1,10 @@
 <?php
 include "config.php";
 $name_file=$_GET['name_file'];
+$tabels='';
+if(isset($_GET['table'])){
+    $table=$_GET['table'];
+}
 header("Content-type: text/sql");
 header("Content-Disposition: attachment; filename=$name_file");
 header("Pragma: no-cache");
@@ -61,6 +65,6 @@ ini_set('memory_limit', '-1');
         return $return;
     }
     
-    echo backup_tables($mysql_host,$mysql_user,$mysql_pass,$mysql_database);
+    echo backup_tables($mysql_host,$mysql_user,$mysql_pass,$mysql_database,$table);
     exit;
 ?>

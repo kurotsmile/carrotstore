@@ -57,7 +57,7 @@ if ($char_view_type == '2') {
     </div>
 
     <h2 style=" width: 95%;">
-        Dữ liệu người dùng đã trò chuyện
+        Dữ liệu người dùng đã trò chuyện <span  class="syn app_my_girl_key"  syn="app_my_girl_key"></span>
     </h2>
 
     <div style="display: inline-block;width: 95%;float: left;">
@@ -214,21 +214,35 @@ if ($char_view_type == '2') {
         });
 
         $.ajax({
-            url: "http://carrotstore.com/app_my_girl_jquery.php",
+            url: "<?php echo $url;?>/app_my_girl_jquery.php",
             type: "post",
-            data: {function:'check_data_syn',table:JSON.stringify(arr_syn)},
+            data: {function:'count_data_syn',table:JSON.stringify(arr_syn)},
             success: function (data, textStatus, jqXHR) {
                 var arr_item=JSON.parse(data);
                 for (var i=0;i<arr_item.length;i++){
-                    var count_data=$('.syn.'+arr_item[i].key_table).attr("syn-count");
-                    if(count_data==arr_item[i].count_table) {
-                        $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn" >' + arr_item[i].count_table + '</span>');
-                    }else if(count_data>arr_item[i].count_table) {
-                        $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\')">-' + arr_item[i].count_table + '</span>');
-                    }else{
-                        $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\')"> +' + arr_item[i].count_table + '</span>');
-                    }
+                    $('.syn.'+arr_item[i].key_table).attr("syn-count",arr_item[i].count_table);
                 }
+
+                $.ajax({
+                    url: "http://carrotstore.com/app_my_girl_jquery.php",
+                    type: "post",
+                    data: {function:'check_data_syn',table:JSON.stringify(arr_syn)},
+                    success: function (data, textStatus, jqXHR) {
+                        var arr_item=JSON.parse(data);
+                        for (var i=0;i<arr_item.length;i++){
+                            var count_data=$('.syn.'+arr_item[i].key_table).attr("syn-count");
+                            if(count_data==arr_item[i].count_table) {
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn" >' + arr_item[i].count_table + '</span>');
+                            }else if(count_data>arr_item[i].count_table) {
+                                var s_count=parseInt(arr_item[i].count_table);
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\')">-'+s_count+'</span>');
+                            }else{
+                                var s_count=parseInt(arr_item[i].count_table)-parseInt(count_data);
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\')"> +' +s_count + '</span>');
+                            }
+                        }
+                    }
+                });
             }
         });
     }
@@ -334,8 +348,8 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
             <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>" title="Danh sách trò chuyện" class="buttonPro small blue" target="_blank"><i class="fa fa-comments"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>" title="Danh sách câu thoại" class="buttonPro small blue" target="_blank"><i class="fa fa-commenting-o"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_music.php?lang=<?php echo $langsel; ?>" title="Danh sách nhạc" class="buttonPro small blue" target="_blank"><i class="fa fa-music"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>" title="Duyệt nhạc từ người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-headphones" aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_user.php?lang=<?php echo $langsel; ?>" title="Danh sách người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-user-o"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>" title="Duyệt nhạc từ người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-headphones" aria-hidden="true" ></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_user.php?lang=<?php echo $langsel; ?>" title="Danh sách người dùng" class="buttonPro small blue" target="_blank"><i class="fa fa-user-o syn app_my_girl_user_<?php echo $langsel; ?>"  syn="app_my_girl_user_<?php echo $langsel; ?>"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_radio.php?lang=<?php echo $langsel; ?>" title="Danh sách Radio" class="buttonPro small blue" target="_blank"><i class="fa fa-wifi"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_maxim.php?lang=<?php echo $langsel; ?>" title="Danh sách châm ngôn" class="buttonPro small blue" target="_blank"><i class="fa fa-quote-left" aria-hidden="true"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_story.php?lang=<?php echo $langsel; ?>" title="Danh sách truyện ngắn" class="buttonPro small blue" target="_blank"><i class="fa fa-book" aria-hidden="true"></i></a>
@@ -343,8 +357,11 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=fix_error&lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Sửa lỗi nước"><i class="fa fa-wrench" aria-hidden="true"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=0" class="buttonPro small blue" title="Ngôn ngữ giao diện 2D" target="_blank"><i class="fa fa-file-word-o" aria-hidden="true"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=2" class="buttonPro small blue" title="Ngôn ngữ giao diện 3D" target="_blank"><i class="fa fa-wpforms" aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_lyrics.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Danh sách lời bài hát" target="_blank"><i class="fa fa-audio-description" aria-hidden="true"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_link_youtube.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Liên kết youtube" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_lyrics.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Danh sách lời bài hát" target="_blank" ><i class="fa fa-audio-description syn app_my_girl_<?php echo $langsel; ?>_lyrics" aria-hidden="true"   syn="app_my_girl_<?php echo $langsel; ?>_lyrics"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_link_youtube.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Liên kết youtube" ><i class="fa fa-youtube-play syn app_my_girl_video_<?php echo $langsel; ?>" aria-hidden="true" target="_blank"  syn="app_my_girl_video_<?php echo $langsel; ?>"></i></a>
+            <?php
+            echo mysqli_error($link);
+            ?>
         </div>
 
         <div class="body">
@@ -374,7 +391,7 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                 </li>
 
                 <li>
-                    <a class="syn app_my_girl_msg_<?php echo $langsel; ?>" syn-count="<?php echo mysqli_num_rows($result_count_msg); ?>" syn="app_my_girl_msg_<?php echo $langsel; ?>" href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&character_sex=1" target="_blank">Câu thoại trò chuyện:<?php echo mysqli_num_rows($result_count_msg); ?></a>
+                    <a class="syn app_my_girl_msg_<?php echo $langsel; ?>" syn="app_my_girl_msg_<?php echo $langsel; ?>" href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&character_sex=1" target="_blank">Câu thoại trò chuyện:<?php echo mysqli_num_rows($result_count_msg); ?></a>
                     <ul>
                         <li>
                             <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam:<?php echo mysqli_num_rows($result_count_msg_sex_0); ?></a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a></li>
@@ -393,7 +410,7 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                 </li>
 
                 <li>
-                    <a class="syn app_my_girl_<?php echo $langsel; ?>" syn-count="<?php echo mysqli_num_rows($result_count_chat); ?>" syn="app_my_girl_<?php echo $langsel; ?>" href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Câu chat trò chuyện:<?php echo mysqli_num_rows($result_count_chat); ?></a>
+                    <a class="syn app_my_girl_<?php echo $langsel; ?>" syn="app_my_girl_<?php echo $langsel; ?>" href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Câu chat trò chuyện:<?php echo mysqli_num_rows($result_count_chat); ?></a>
                     <ul>
                         <li>
                             <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam:<?php echo mysqli_num_rows($result_count_chat_sex_0); ?></a>

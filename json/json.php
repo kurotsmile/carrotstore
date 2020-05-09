@@ -5,20 +5,20 @@ if($_GET||$_POST){
         $key_name=$_GET['key_name'];
         $key_contry=$_GET['key_contry'];
         $key_txt=addslashes($_GET['key_txt']);
-        mysql_query("INSERT INTO `lang_key` (`key_contry`, `key_name`, `key_txt`) VALUES ('$key_contry', '$key_name', '$key_txt');");
+        mysqli_query($link,"INSERT INTO `lang_key` (`key_contry`, `key_name`, `key_txt`) VALUES ('$key_contry', '$key_name', '$key_txt');");
         exit;
     }
     
     if(isset($_GET['function'])&&$_GET['function']=='add_type'){
         $id_type=$_GET['id_type'];
         $icon_type=$_GET['icon_type'];
-        mysql_query("INSERT INTO `type` (`id`, `css_icon`)VALUES ('$id_type', '$icon_type');");
+        mysqli_query($link,"INSERT INTO `type` (`id`, `css_icon`)VALUES ('$id_type', '$icon_type');");
         exit; 
     }
     
     if(isset($_GET['function'])&&$_GET['function']=='delete_type'){
         $key_id=$_GET['id'];
-        mysql_query("DELETE FROM `type` WHERE ((`id` = '$key_id'));");
+        mysqli_query($link,"DELETE FROM `type` WHERE ((`id` = '$key_id'));");
         exit; 
     }
 
@@ -27,14 +27,14 @@ if($_GET||$_POST){
         $key_name=$_GET['key_name'];
         $key_contry=$_GET['key_contry'];
         $key_txt=$_GET['key_txt'];
-        mysql_query("UPDATE `lang_key` SET `key_contry` = '$key_contry',`key_name` = '$key_name',`key_txt` = '$key_txt' WHERE `id` = '$id';");
+        mysqli_query($link,"UPDATE `lang_key` SET `key_contry` = '$key_contry',`key_name` = '$key_name',`key_txt` = '$key_txt' WHERE `id` = '$id';");
         exit; 
     }
 
     if(isset($_GET['function'])&&$_GET['function']=='update_type'){
         $id=$_GET['id_type'];
         $icon_type=$_GET['icon_type'];
-        $a=mysql_query("UPDATE `type` SET `css_icon` = '$icon_type' WHERE `id` = '$id' ");
+        $a=mysqli_query($link,"UPDATE `type` SET `css_icon` = '$icon_type' WHERE `id` = '$id' ");
         echo var_dump($a);
         exit; 
     }
@@ -43,7 +43,7 @@ if($_GET||$_POST){
     
     if(isset($_GET['function'])&&$_GET['function']=='search_key'){
         $key=$_GET['key'];
-        $result = mysql_query("SELECT * FROM `lang_key` WHERE `key_txt` LIKE '%$key%' OR `key_name` LIKE '%$key%' LIMIT 50",$link);
+        $result = mysqli_query($link,"SELECT * FROM `lang_key` WHERE `key_txt` LIKE '%$key%' OR `key_name` LIKE '%$key%' LIMIT 50",$link);
         include "admin/page_country_key_template.php";
         exit; 
     }
@@ -56,7 +56,7 @@ if($_GET||$_POST){
             if(isset($_SESSION['lang'])){
                 $lang_sel=$_SESSION['lang'];
             }
-            $result = mysql_query("SELECT * FROM `products` as p INNER JOIN `product_name` as n ON p.`id` = n.`id_product` WHERE n.`key_country` = '$lang_sel' AND n.`data` LIKE '%$key%' AND p.`status`=1 LIMIT 50",$link);
+            $result = mysqli_query($link,"SELECT * FROM `products` as p INNER JOIN `product_name` as n ON p.`id` = n.`id_product` WHERE n.`key_country` = '$lang_sel' AND n.`data` LIKE '%$key%' AND p.`status`=1 LIMIT 50",$link);
             if(isset($_SESSION['view_type'])){
                 $view_type=$_SESSION['view_type'];
                 include "$view_type.php";
@@ -71,17 +71,17 @@ if($_GET||$_POST){
             if(isset($_SESSION['lang'])){
                 $lang_sel=$_SESSION['lang'];
             }
-            $result = mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND (`status`='0' AND `sdt`!='' ) ORDER BY RAND() LIMIT 50",$link);
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND (`status`='0' AND `sdt`!='' ) ORDER BY RAND() LIMIT 50",$link);
             include "page_member_template.php";
         }
         
         if($type=='music'){
-            $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
             $txt_query='';
             $txt_query_2='';
-            $count_l=mysql_num_rows($list_country);
+            $count_l=mysqli_num_rows($list_country);
             $count_index=0;
-            while($l=mysql_fetch_array($list_country)){
+            while($l=mysqli_fetch_array($list_country)){
                     $key_lang=$l['key'];
                     $txt_query.="(SELECT * FROM `app_my_girl_$key_lang` WHERE  `chat` LIKE '%$key%' AND  `effect`='2' AND `disable` = '0' limit 21)";
                     $txt_query_2.=" (SELECT * FROM `app_my_girl_$key_lang` WHERE MATCH (`chat`) AGAINST ('$key' IN BOOLEAN MODE) AND  `effect`='2' AND `disable` = '0' limit 21)";
@@ -93,7 +93,7 @@ if($_GET||$_POST){
             }
             
             $query_list_music=mysql_query($txt_query);
-            if(mysql_num_rows($query_list_music)==0){
+            if(mysqli_num_rows($query_list_music)==0){
                 $query_list_music=mysql_query($txt_query_2);
             }
             include "page_music_list.php";
@@ -104,7 +104,7 @@ if($_GET||$_POST){
             if(isset($_SESSION['lang'])){
                 $lang_sel=$_SESSION['lang'];
             }
-            $list_quote=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `chat` LIKE '%$key%' ORDER BY RAND() LIMIT 30");
+            $list_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `chat` LIKE '%$key%' ORDER BY RAND() LIMIT 30");
             include "page_quote.php";
         }
         exit; 
@@ -118,7 +118,7 @@ if($_GET||$_POST){
         if(isset($_SESSION['lang'])){
             $lang_sel=$_SESSION['lang'];
         }
-        $result = mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND `status`='0' LIMIT 50",$link);
+        $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND `status`='0' LIMIT 50",$link);
         include 'page_member_template.php';
         exit; 
     }
@@ -260,7 +260,7 @@ if($_GET||$_POST){
         $type_comment=$_POST['type_comment'];
         $lang_comment=$_POST['lang_comment'];
 
-        mysql_query("INSERT INTO `comment` (`id_c`, `username`, `comment`, `productid`, `created`,`upvote_count`,`parent`,`type_comment`,`lang`) VALUES ('$id', '$usernames', '$content', '$productid', '$created','$upvote_count','$parent','$type_comment','$lang_comment');");
+        mysqli_query($link,"INSERT INTO `comment` (`id_c`, `username`, `comment`, `productid`, `created`,`upvote_count`,`parent`,`type_comment`,`lang`) VALUES ('$id', '$usernames', '$content', '$productid', '$created','$upvote_count','$parent','$type_comment','$lang_comment');");
         exit; 
     }
 
@@ -269,7 +269,7 @@ if($_GET||$_POST){
         $content=addslashes($_POST["content"]);
         $usernames=$_POST['username'];
         $lang_comment=$_POST['lang_comment'];
-        mysql_query("INSERT INTO carrotsy_flower.`flower_action_$lang_comment` (`id_device`, `id_maxim`, `type`, `data`, `date`) VALUES ('$usernames', '$quocte_id', 'comment', '$content',NOW());");
+        mysqli_query($link,"INSERT INTO carrotsy_flower.`flower_action_$lang_comment` (`id_device`, `id_maxim`, `type`, `data`, `date`) VALUES ('$usernames', '$quocte_id', 'comment', '$content',NOW());");
         exit; 
     }
 
@@ -280,14 +280,14 @@ if($_GET||$_POST){
     if(isset($_POST['function'])&&$_POST['function']=='get_member'){
         $user=$_SESSION['username_login'];
         $data_cur_user=get_account($user);
-        $get_member_data=mysql_query("SELECT  * FROM `account_friend` WHERE `user` = '$user' limit 20");
-        if(mysql_num_rows($get_member_data)>0){
+        $get_member_data=mysqli_query($link,"SELECT  * FROM `account_friend` WHERE `user` = '$user' limit 20");
+        if(mysqli_num_rows($get_member_data)>0){
             ?>
             <p style="min-height: 200px;">
             <input type="text"  class="inp boxmsg_search" placeholder="<?php echo lang($link,'tim_kiem');?>">
             <span class="boxmsg_member" onclick="select_member('<?php echo $user; ?>',this)"><img src="<?php echo thumb($data_cur_user['avatar'],'20x20');?>"/> <?php echo show_name_User($user);?></span>
             <?php
-            while($member=mysql_fetch_array($get_member_data)){
+            while($member=mysqli_fetch_array($get_member_data)){
             $data_member=get_account($member['friend']);
             ?>
                <span class="boxmsg_member" onclick="select_member('<?php echo $member['friend']; ?>',this)"><img src="<?php echo thumb($data_member['avatar'],'20x20');?>"/> <?php echo show_name_User($member['friend']);?></span>
@@ -318,15 +318,15 @@ if($_GET||$_POST){
         }else{
             $user= $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
         }
-        $check_rate=mysql_query("SELECT * FROM `".$objects."_rate` WHERE `".$objects."` = '$id' AND `user` = '$user'");
-        if(mysql_num_rows($check_rate)>0){
-            mysql_query("UPDATE `".$objects."_rate` SET `rate` = '$star' WHERE `".$objects."` = '$id' AND `user` = '$user' ");
+        $check_rate=mysqli_query($link,"SELECT * FROM `".$objects."_rate` WHERE `".$objects."` = '$id' AND `user` = '$user'");
+        if(mysqli_num_rows($check_rate)>0){
+            mysqli_query($link,"UPDATE `".$objects."_rate` SET `rate` = '$star' WHERE `".$objects."` = '$id' AND `user` = '$user' ");
         }else{
-            mysql_query("INSERT INTO `".$objects."_rate` (`".$objects."`, `user`, `rate`) VALUES ('$id', '$user', '$star');");
+            mysqli_query($link,"INSERT INTO `".$objects."_rate` (`".$objects."`, `user`, `rate`) VALUES ('$id', '$user', '$star');");
             if(isset($_SESSION['username_login'])){
                 $tip='act_da_danh_gia_'.$objects;
                 $content=json_encode(array($objects,$star,$id));
-                mysql_query("INSERT INTO `account_activity` (`type`, `content`, `user`,`wall`,`date`,`tip`) VALUES ('account', '$content', '$user','$user',NOW(),'$tip');");
+                mysqli_query($link,"INSERT INTO `account_activity` (`type`, `content`, `user`,`wall`,`date`,`tip`) VALUES ('account', '$content', '$user','$user',NOW(),'$tip');");
             }
         }
         exit;
@@ -335,9 +335,9 @@ if($_GET||$_POST){
     
     if(isset($_POST['function'])&&$_POST['function']=='login_qr'){
         $user_id=$_POST['user_id'];
-        $check_login=mysql_query("SELECT * FROM `account_login` WHERE `status` = '1' AND `user_id` = '$user_id'");
-        if(mysql_num_rows($check_login)>0){
-            mysql_query("DELETE FROM `account_login` WHERE `user_id` = '$user_id'");
+        $check_login=mysqli_query($link,"SELECT * FROM `account_login` WHERE `status` = '1' AND `user_id` = '$user_id'");
+        if(mysqli_num_rows($check_login)>0){
+            mysqli_query($link,"DELETE FROM `account_login` WHERE `user_id` = '$user_id'");
             $_SESSION['username_login']=$user_id;
             echo '1';
         }else{
@@ -349,9 +349,9 @@ if($_GET||$_POST){
     if(isset($_POST['function'])&&$_POST['function']=='login_admin'){
         $username=$_POST['login_admin_username'];
         $password=$_POST['login_admin_password'];
-        $query_login_admin=mysql_query("SELECT * FROM  carrotsy_work.`work_user` WHERE `user_name` = '$username' AND `user_pass` = '$password' LIMIT 1");
-        if(mysql_num_rows($query_login_admin)>0){
-            $data_login_user=mysql_fetch_array($query_login_admin);
+        $query_login_admin=mysqli_query($link,"SELECT * FROM  carrotsy_work.`work_user` WHERE `user_name` = '$username' AND `user_pass` = '$password' LIMIT 1");
+        if(mysqli_num_rows($query_login_admin)>0){
+            $data_login_user=mysqli_fetch_array($query_login_admin);
             $user_login=new User_login();
             $user_login->id=$data_login_user['user_id'];
             $user_login->name=$username;
@@ -381,11 +381,11 @@ if($_GET||$_POST){
         $user_avatar=$_POST['user_avatar'];
 
         $lang=$_SESSION['lang'];
-        $check_login=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
-        if(mysql_num_rows($check_login)>0){
-            $query_update_user=mysql_query("UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
+        $check_login=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
+        if(mysqli_num_rows($check_login)>0){
+            $query_update_user=mysqli_query($link,"UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
         }else{
-            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
+            $query_add_user=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
         }
         $user_login=new User_login();
         $user_login->id=$user_id;
@@ -410,11 +410,11 @@ if($_GET||$_POST){
             $user_email='';
         }
 
-        $check_login=mysql_query("SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
-        if(mysql_num_rows($check_login)>0){
-            $query_update_user=mysql_query("UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
+        $check_login=mysqli_query($link,"SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
+        if(mysqli_num_rows($check_login)>0){
+            $query_update_user=mysqli_query($link,"UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
         }else{
-            $query_add_user=mysql_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
+            $query_add_user=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
         }
         $user_login=new User_login();
         $user_login->id=$user_id;
