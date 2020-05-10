@@ -224,7 +224,7 @@ if ($char_view_type == '2') {
                 }
 
                 $.ajax({
-                    url: "http://carrotstore.com/app_my_girl_jquery.php",
+                    url: "<?php echo $url_syn;?>/app_my_girl_jquery.php",
                     type: "post",
                     data: {function:'check_data_syn',table:JSON.stringify(arr_syn)},
                     success: function (data, textStatus, jqXHR) {

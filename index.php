@@ -41,12 +41,9 @@ function ip_visitor_country()
     return $country;
 }
 
-$protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
-if ($protocol == 'https') {
-    include "config_https.php";
-} else {
-    include "config.php";
-}
+
+include "config.php";
+
 
 require_once('phpmailer/class.phpmailer.php');
 if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
