@@ -44,7 +44,7 @@ $count_toal_link=$count_toal_link['c'];
                 if(isset($user_login)){
                 ?>
                   <strong><?php echo $user_login->name; ?></strong><br />
-                  <img src="<?php echo $user_login->avatar; ?>" />
+                  <img style="width:140px" src="<?php echo $user_login->avatar; ?>" />
                   <br />
                   <a href="<?php echo $url;?>/links/<?php echo $user_login->id;?>"> <?php echo lang($link,'shorten_link_my_list');?></a>
                 <?php
@@ -73,7 +73,7 @@ $count_toal_link=$count_toal_link['c'];
             <?php echo lang($link,'shorten_link_tip_3');?>
             <div style="width: 100%;float: left;margin-top: 5px;">
             <?php
-            $query_product=mysqli_query($link,"SELECT `chplay_store`,`app_store`,`app_store`,`window_store`,`huawei_store`,`galaxy_store` FROM `products` WHERE `id` = '137' LIMIT 1");
+            $query_product=mysqli_query($link,"SELECT `chplay_store`,`app_store`,`app_store`,`window_store`,`huawei_store`,`galaxy_store`,`chrome_store` FROM `products` WHERE `id` = '137' LIMIT 1");
             $data_p=mysqli_fetch_array($query_product);
             ?>
             <?php if($data_p['chplay_store']!=''){ ?><a href="<?php echo $data_p['chplay_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/chplay_download.png';?>" /></a><?php }?>
@@ -81,6 +81,7 @@ $count_toal_link=$count_toal_link['c'];
             <?php if($data_p['galaxy_store']!=''){ ?><a href="<?php echo $data_p['galaxy_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/galaxy_store_download.png';?>" /></a><?php }?>
             <?php if($data_p['window_store']!=''){ ?><a href="<?php echo $data_p['window_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/window_store_download.png';?>" /></a><?php }?>
             <?php if($data_p['huawei_store']!=''){ ?><a href="<?php echo $data_p['huawei_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/huawei_store_download.png';?>" /></a><?php }?>
+			<?php if($data_p['chrome_store']!=''){ ?><a href="<?php echo $data_p['chrome_store'];?>" target="_blank"><img style="width: 140px;margin-top: 5px;" src="<?php echo $url.'/images/chrome_store_download.png';?>" /></a><?php }?>
             </div>
     </div>
     <div class="row_info_link" style="width: 5%;float: left;">&nbsp;</div>

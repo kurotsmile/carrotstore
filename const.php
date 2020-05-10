@@ -9,3 +9,5 @@ $mysql_user='carrot';
 $mysql_database='carrot';
 $key_api_google='AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I';
 $ver=2;
+
+$url='http://carrot.sytes.net';

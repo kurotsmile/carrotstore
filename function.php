@@ -367,6 +367,11 @@ function show_ads_box_main($link,$id_place_ads){
             $txt_download='<a href="'.$data_product_ads['window_store'].'"  target="_blank"><img alt="Download '.$name_product.'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/window_store_download.png&size=85x28&trim=1" /></a>';
             array_push($arr_download,$txt_download);
         }
+		
+		if($data_product_ads['chrome_store']!=''){ 
+            $txt_download='<a href="'.$data_product_ads['chrome_store'].'"  target="_blank"><img alt="Download '.$name_product.'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/chrome_store_download.png&size=85x28&trim=1" /></a>';
+            array_push($arr_download,$txt_download);
+        }
         
         if($data_product_ads['apk']!=''){ 
             $txt_download='<a href="'.$data_product_ads['apk'].'" target="_blank"><img alt="Download '.$name_product.'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/apk_download.png&size=85x28&trim=1" /></a>';

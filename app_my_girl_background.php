@@ -319,7 +319,7 @@ while($row=mysqli_fetch_array($list_effect)){
         </td>
         <td>
             <a class="buttonPro small orange" href="<?php echo $url.'/app_my_girl_background.php';?>?edit=<?php echo $row['id'];?>&page=<?php echo $current_page;?>">Sửa</a>
-            <a class="buttonPro small red" href="<?php echo $url.'/app_my_girl_background.php';?>?del=<?php echo $row['id'];?>&page=<?php echo $current_page;?>">Xóa</a>
+            <a class="buttonPro small red" href="<?php echo $url.'/app_my_girl_background.php';?>?del=<?php echo $row['id'];?>&page=<?php echo $current_page;?>&cat=<?php echo $id_category; ?>">Xóa</a>
         </td>
     </tr>
 <?php
