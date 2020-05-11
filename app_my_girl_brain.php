@@ -56,7 +56,7 @@ if(isset($_POST['filter'])){
 }
 
 if(isset($_POST)&&isset($_POST['clear'])){
-    mysql_query("DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' ");
+    mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' ");
     $files = glob('app_mygirl/app_my_girl_'.$langsel.'_brain/*'); // get all file names
     foreach($files as $file){ // iterate files
       if(is_file($file))
@@ -77,12 +77,12 @@ if($is_criterion!=''){
 
 if($filter=='0'){
     if($is_approved=='0'){
-        $result_tip=mysql_query("SELECT DISTINCT * FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `approved` = '0' AND `tick` = '0' $txt_query_music $sql_criterion ");
+        $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `approved` = '0' AND `tick` = '0' $txt_query_music $sql_criterion ");
     }else{
-        $result_tip=mysql_query("SELECT DISTINCT * FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `approved` = '1' AND `tick` = '0' $txt_query_music $sql_criterion ");  
+        $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `approved` = '1' AND `tick` = '0' $txt_query_music $sql_criterion ");  
     }
 }else{
-    $result_tip=mysql_query("SELECT * FROM `app_my_girl_brain` WHERE `langs`='$langsel'  AND `sex`='$sex' AND `character_sex`='$character_sex' AND  LENGTH(`question`) > '$lenth_question'  AND LENGTH(`answer`) > '$lenth_answer' AND `question`!=`answer` AND `tick` = '0'");
+    $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `langs`='$langsel'  AND `sex`='$sex' AND `character_sex`='$character_sex' AND  LENGTH(`question`) > '$lenth_question'  AND LENGTH(`answer`) > '$lenth_answer' AND `question`!=`answer` AND `tick` = '0'");
 }
 
 ?>
@@ -263,8 +263,8 @@ function select_all_check(){
     <label>Ngôn ngữ:</label> 
     <select name="lang">
     <?php     
-    $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-    while($row_lang=mysql_fetch_array($query_list_lang)){?>
+    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    while($row_lang=mysqli_fetch_array($query_list_lang)){?>
     <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
@@ -330,26 +330,26 @@ function select_all_check(){
 <?php
 if(isset($_POST)&&isset($_POST['clear'])){
 }else{
-    echo '<p class="tip">Có '.mysql_num_rows($result_tip).' câu thoại chờ duyệt</p>';  
+    echo '<p class="tip">Có '.mysqli_num_rows($result_tip).' câu thoại chờ duyệt</p>';  
 }
 
 
 echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green" class="notranslate" ><th>Câu hỏi</th><th width="500px">Câu trả lời</th><th>Ngôn ngữ</th><th>Giới tính - đối tượng</th><th>Thông tin mở rộng</th><th>Hiệu ứng & chức năng</th><th>Giới hạng</th><th>Lời thoại cha</th><th>Âm thanh</th><th>Hành động</th></tr>';
 
-        while ($row = mysql_fetch_array($result_tip)) {
+        while ($row = mysqli_fetch_array($result_tip)) {
             if($is_unicode!=''){
                 if (strlen($row['question']) != strlen(utf8_decode($row['question']))){
-                    show_row_brain($row,$langsel);
+                    show_row_brain($link,$row,$langsel);
                 }
            }else{
-                show_row_brain($row,$langsel);
+                show_row_brain($link,$row,$langsel);
            }
             
         }
 echo '</table>';
 
-function show_row_brain($row,$lang_key){
+function show_row_brain($link,$row,$lang_key){
     global $url;
     $txt_id_audio='';
     $txt_color_chat='';
@@ -396,9 +396,9 @@ function show_row_brain($row,$lang_key){
     if($row['type_question']=='msg'){
         $txt_chat_show='<a href="'.$url.'/app_my_girl_update.php?id='.$row['id_question'].'&lang='.$lang_key.'&msg=1" target="_blank" class="buttonPro small orange"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> '.$row['id_question'].' - '.$row['type_question'].'</a>';
         $txt_chat_show.="<a class='buttonPro small yellow notranslate' onclick=\"view_pater('".$row['langs']."','".$row['id_question']."','msg','0','1');return false;\"><i class='fa fa-plane' aria-hidden='true' ></i> xem nhanh - msg</a>";
-        $query_msg=mysql_query("SELECT * FROM `app_my_girl_msg_".$row['langs']."` WHERE `id` = '".$row['id_question']."' LIMIT 1");
-        if(mysql_num_rows($query_msg)){
-            $data_msg=mysql_fetch_array($query_msg);
+        $query_msg=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_".$row['langs']."` WHERE `id` = '".$row['id_question']."' LIMIT 1");
+        if(mysqli_num_rows($query_msg)>0){
+            $data_msg=mysqli_fetch_array($query_msg);
             $txt_show_contain_father='<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> msg:'.$data_msg['func'].' <i class="fa fa-angle-double-right" aria-hidden="true"></i> '.$data_msg['chat'].'</span><br/>';
         }
     }
@@ -406,10 +406,10 @@ function show_row_brain($row,$lang_key){
     if($row['type_question']=='chat'){
         $txt_chat_show='<a href="'.$url.'/app_my_girl_update.php?id='.$row['id_question'].'&lang='.$lang_key.'" target="_blank" class="buttonPro small orange"><i class="fa fa-pencil-square" aria-hidden="true"></i> '.$row['id_question'].' - '.$row['type_question'].'</a>';
         $txt_chat_show.="<a class='buttonPro small yellow notranslate' onclick=\"view_pater('".$row['langs']."','33','".$row['id_question']."','0','1');return false;\"><i class='fa fa-plane' aria-hidden='true' ></i> xem nhanh - chat</a>";
-        $query_chat=mysql_query("SELECT * FROM `app_my_girl_".$row['langs']."` WHERE `id` = '2' LIMIT 1");
-        if(mysql_num_rows($query_chat)){
-            $data_chat=mysql_fetch_array($query_chat);
-            $txt_show_contain_father='<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> chat:'.$data_chat['text'].' <i class="fa fa-angle-double-right" aria-hidden="true"></i> '.$data_msg['chat'].'</span><br/>';
+        $query_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_".$row['langs']."` WHERE `id` = '2' LIMIT 1");
+        if(mysqli_num_rows($query_chat)>0){
+            $data_chat=mysqli_fetch_array($query_chat);
+            $txt_show_contain_father='<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> chat:'.$data_chat['text'].' <i class="fa fa-angle-double-right" aria-hidden="true"></i> '.$data_chat['chat'].'</span><br/>';
         }
     }
     
@@ -450,8 +450,8 @@ function show_row_brain($row,$lang_key){
     <span class="buttonPro blue small" onclick="draft_select()"><i class="fa fa-file-text" aria-hidden="true"></i> Chờ Xuất bản</span>
     <select style="float: right;width: 100px;" id="user_work_send">
     <?php
-    $query_all_user_work=mysql_query("SELECT * FROM  carrotsy_work.`work_user` ");
-    while($op_user=mysql_fetch_array($query_all_user_work)){
+    $query_all_user_work=mysqli_query($link,"SELECT * FROM  carrotsy_work.`work_user` ");
+    while($op_user=mysqli_fetch_array($query_all_user_work)){
     ?>
         <option value="<?php echo $op_user['user_id']; ?>"><?php echo $op_user['user_name']; ?></option>
     <?php

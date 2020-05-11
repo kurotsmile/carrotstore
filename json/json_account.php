@@ -18,8 +18,8 @@ $function=$_POST['function'];
 if($function=='view_contatc_backup'){
     $lang=$_POST['lang'];
     $id=$_POST['id'];
-    $query_data_backup=mysql_query("SELECT `data` FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id` = '$id' LIMIT 1");
-    $data_backup=mysql_fetch_array($query_data_backup);
+    $query_data_backup=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id` = '$id' LIMIT 1");
+    $data_backup=mysqli_fetch_array($query_data_backup);
     $data_backup_json=$data_backup['data'];
     $data_backup_json=str_replace(",}","}",$data_backup_json);
     $data_backup_json=str_replace(",]","]",$data_backup_json);
@@ -50,7 +50,7 @@ if($function=='view_contatc_backup'){
 if($function=='delete_backup_contact'){
     $lang=$_POST['lang'];
     $id=$_POST['id'];
-    $query_backup_contact=mysql_query("DELETE FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id` = '$id'");
+    $query_backup_contact=mysqli_query($link,"DELETE FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id` = '$id'");
     exit;
 }
 
@@ -60,20 +60,20 @@ if($function=='save_playlist_music'){
     $lang=$_POST['lang'];
     $lang_music=$_POST['lang_music'];
     $id_user=$_POST['id_user'];
-    $query_playlist=mysql_query("SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
-    if(mysql_num_rows($query_playlist)==0){
+    $query_playlist=mysqli_query($link,"SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
+    if(mysqli_num_rows($query_playlist)==0){
         $new_id_playlist=uniqid().''.uniqid();
-        $query_music=mysql_query("SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang_music` WHERE `id`='$id_music'  LIMIT 1");
+        $query_music=mysqli_query($link,"SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang_music` WHERE `id`='$id_music'  LIMIT 1");
         $item_playlist=mysql_fetch_assoc($query_music);
         $array_playlist=array($item_playlist);
         $data_playlist=json_encode($array_playlist,JSON_UNESCAPED_UNICODE);
         $name_playlist=lang('my_playlist',$lang);
-        $query_add_playlist=mysql_query("INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_user', '$data_playlist', '$name_playlist','1');");
+        $query_add_playlist=mysqli_query($link,"INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_user', '$data_playlist', '$name_playlist','1');");
         $alert->type='0';
     }else{
         $alert->type='1';
         $txt_show='<table class="table_msg_box">';
-        while($item_playlist=mysql_fetch_array($query_playlist)){
+        while($item_playlist=mysqli_fetch_array($query_playlist)){
             $txt_show.='<tr>';
             $txt_show.='<td style="width: 50%;"><span class="tag_number">'.$item_playlist['length'].' x <i class="fa fa-music" aria-hidden="true"></i></span> <a href="'.$url.'/playlist/'.$item_playlist['id'].'/'.$lang.'"><i class="fa fa-list-alt" aria-hidden="true"></i> '.$item_playlist['name'].'</a></td>';
             $txt_show.='<td>';
@@ -94,7 +94,7 @@ if($function=='save_playlist_music'){
 if($function=='delete_playlist_music'){
     $lang=$_POST['lang'];
     $id=$_POST['id'];
-    $query_delete=mysql_query("DELETE FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id'");
+    $query_delete=mysqli_query($link,"DELETE FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id'");
     exit;
 }
 
@@ -104,12 +104,12 @@ if($function=='add_song_to_playlist'){
     $lang=$_POST['lang'];
     $lang_music=$_POST['lang_music'];
 
-    $query_playlist=mysql_query("SELECT `data` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id_playlist' LIMIT 1");
-    $data_playlist=mysql_fetch_array($query_playlist);
+    $query_playlist=mysqli_query($link,"SELECT `data` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id_playlist' LIMIT 1");
+    $data_playlist=mysqli_fetch_array($query_playlist);
     $s_data=preg_replace( "/\r|\n/", "", $data_playlist['data']);
     $data_playlist=json_decode($s_data,JSON_UNESCAPED_UNICODE);
 
-    $query_music=mysql_query("SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang_music` WHERE `id`='$id_music'  LIMIT 1");
+    $query_music=mysqli_query($link,"SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang_music` WHERE `id`='$id_music'  LIMIT 1");
     $item_playlist=mysql_fetch_assoc($query_music);
     array_push($data_playlist,$item_playlist);
 
@@ -117,7 +117,7 @@ if($function=='add_song_to_playlist'){
     $data_playlist = json_encode($data_playlist,JSON_UNESCAPED_UNICODE);
 
 
-    $query_update_playlist=mysql_query("UPDATE carrotsy_music.`playlist_$lang` SET `data`='$data_playlist', `length` ='$length_playlist' WHERE `id`='$id_playlist'");
+    $query_update_playlist=mysqli_query($link,"UPDATE carrotsy_music.`playlist_$lang` SET `data`='$data_playlist', `length` ='$length_playlist' WHERE `id`='$id_playlist'");
     exit;
 }
 
@@ -129,12 +129,12 @@ if($function=='create_playlist'){
     $name_playlist=$_POST['name_playlist'];
 
     $new_id_playlist=uniqid().''.uniqid();
-    $query_music=mysql_query("SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang` WHERE `id`='$id_music'  LIMIT 1");
+    $query_music=mysqli_query($link,"SELECT `id`,`chat`,`color`,`file_url`,`author` FROM `app_my_girl_$lang` WHERE `id`='$id_music'  LIMIT 1");
     $item_playlist=mysql_fetch_assoc($query_music);
     $array_playlist=array($item_playlist);
     $data_playlist=json_encode($array_playlist,JSON_UNESCAPED_UNICODE);
 
-    $query_add_playlist=mysql_query("INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_u', '$data_playlist', '$name_playlist','1');");
+    $query_add_playlist=mysqli_query($link,"INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_u', '$data_playlist', '$name_playlist','1');");
     echo mysql_error();
     echo var_dump($_POST);
     echo "thanh";
@@ -161,7 +161,7 @@ if($function=='update_playlist'){
 
     $data_playlist_new=json_encode($arr_new_list,JSON_UNESCAPED_UNICODE);
     $length_playlist_new=count($arr_new_list);
-    $query_update_playlist=mysql_query("UPDATE carrotsy_music.`playlist_$lang_playlist` SET `data`='$data_playlist_new', `length` ='$length_playlist_new' WHERE `id`='$id_playlist'");
+    $query_update_playlist=mysqli_query($link,"UPDATE carrotsy_music.`playlist_$lang_playlist` SET `data`='$data_playlist_new', `length` ='$length_playlist_new' WHERE `id`='$id_playlist'");
     echo $data_playlist_new;
     exit;
 }
@@ -170,16 +170,16 @@ if($function=='edit_name_playlist'){
     $name_playlist=$_POST['name_playlist'];
     $lang=$_POST['lang'];
     $id_playlist=$_POST['id_playlist'];
-    $query_update=mysql_query("UPDATE carrotsy_music.`playlist_$lang` SET `name` = '$name_playlist' WHERE `id` = '$id_playlist'");
+    $query_update=mysqli_query($link,"UPDATE carrotsy_music.`playlist_$lang` SET `name` = '$name_playlist' WHERE `id` = '$id_playlist'");
 }
 
 
 if($function=='show_all_playlist'){
     $lang=$_POST['lang'];
     $id_user=$_POST['id_user'];
-    $query_playlist=mysql_query("SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
+    $query_playlist=mysqli_query($link,"SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
     $txt_show='<div>';
-    while($item_playlist=mysql_fetch_array($query_playlist)){
+    while($item_playlist=mysqli_fetch_array($query_playlist)){
             $txt_show.='<div><a href="'.$url.'/playlist/'.$item_playlist['id'].'/'.$lang.'"><i class="fa fa-list-alt" aria-hidden="true"></i> '.$item_playlist['name'].'</a> <span class="tag_number"><i class="fa fa-music" aria-hidden="true"></i> x '.$item_playlist['length'].'</span></div>';
     }
     $txt_show.='</div>';

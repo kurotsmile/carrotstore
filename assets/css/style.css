@@ -129,6 +129,15 @@ label{
 	background: #f2992b;
 }
 
+.features-carousel .item .icon {
+    font-size: 40px;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background-color: #4cae4c;
+    color: #fff;
+    border-radius: 50%;
+}
 
 /* ----- ---- --- -- -  Default buttons - -- --- ---- ----- */
 
@@ -875,7 +884,7 @@ form{
     float: left;
 }
 
-.active{
+#bar_menu .active{
     background-color: green;
         text-shadow: none;
 }

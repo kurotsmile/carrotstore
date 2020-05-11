@@ -177,7 +177,7 @@ if ($type_view == '1') {
 <?php
 
 
-function show_row_brain($row,$type_view, $lang_key)
+function show_row_brain($link,$row,$type_view, $lang_key)
 {
     global $url;
     $txt_id_audio = '';

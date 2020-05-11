@@ -83,13 +83,12 @@ if($_GET&&isset($_GET['page_view'])){
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css"/>
     <link rel="canonical" href="<?php echo $url; ?>" />
     <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.png"/>
-    <link href="<?php echo $url; ?>/assets/css/style.css" rel="stylesheet" />
+    <link href="<?php echo $url_admin; ?>/style.min.css" rel="stylesheet" />
     <script src="<?php echo $url; ?>/js/jquery.js"></script>
     <script src="<?php echo $url; ?>/js/jquery-ui.min.js"></script>
     <link href="<?php echo $url; ?>/js/jquery-ui.css" rel="stylesheet" />
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/responsive.css"/>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
 </head>
 <body>

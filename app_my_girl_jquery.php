@@ -194,7 +194,7 @@ if($func=='delete_chat'){
         $check_video=mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id' LIMIT 1");
         if(mysqli_num_rows($check_video)>0){
             mysqli_query($link,"DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id'");
-            echo mysql_error();
+            echo mysqli_error($link);
             echo "<br/>Xóa liên kết video thành công!"; 
         }
         mysqli_free_result($check_video);
@@ -202,7 +202,7 @@ if($func=='delete_chat'){
         $show_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if(mysqli_num_rows($show_lyrics)>0){
             mysqli_query($link,"DELETE FROM `app_my_girl_".$lang_sel."_lyrics` WHERE  `id_music` = '$id' LIMIT 1;");
-            echo mysql_error();
+            echo mysqli_error($link);
             echo "<br/>Xóa lời bài hát!";
         }
         mysqli_free_result($show_lyrics);
@@ -210,7 +210,7 @@ if($func=='delete_chat'){
         $check_rank_music=mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat`='$id' LIMIT 1");
         if(mysqli_num_rows($check_rank_music)>0){
             mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music` = '$id' LIMIT 1;");
-            echo mysql_error();
+            echo mysqli_error($link);
             echo "<br/>Xóa bản xếp hạng liên quan đến bài hát!";
         }
         mysqli_num_rows($check_rank_music);
@@ -440,7 +440,7 @@ if($func=='delete_brain'){
     $id=$_GET['id'];
     $langsel=$_GET['lang'];
     $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE ((`md5` = '$id'));");
-    if(mysql_error()==""){
+    if(mysqli_error($link)==""){
         $filename = 'app_mygirl/app_my_girl_'.$langsel.'_brain/'.$id.'.mp3';
         if (file_exists($filename)) {
             unlink($filename);
@@ -450,7 +450,7 @@ if($func=='delete_brain'){
         }
         echo "- Xóa thành công!";
     }else{
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     exit;
 }
@@ -467,10 +467,10 @@ if($func=='delete_brain_father'){
     $id=$_GET['id'];
     $langsel=$_GET['lang'];
     $query_update=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `id_question` = '',`type_question` = ''  WHERE ((`md5` = '$id')) AND (`langs`='$langsel');");
-    if(mysql_error()==""){
+    if(mysqli_error($link)==""){
         echo "-- gỡ câu thoại cha thành công id:('.$id.')--\n";
     }else{
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     exit;
 }
@@ -483,10 +483,10 @@ if($func=='change_brain'){
     $c_brain_effect=$_POST['c_brain_effect'];
     $c_brain_links=$_POST['links'];
     $query_update=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `question` = '$c_question', `answer` = '$c_answer', `effect` = '$c_brain_effect' , `links`='$c_brain_links'  WHERE ((`md5` = '$id')) AND (`langs`='$langsel');");
-    if(mysql_error()==""){
+    if(mysqli_error($link)==""){
         echo "Cập nhật thành công bản nháp id:('.$id.')\n";
     }else{
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     exit;
 }
@@ -496,10 +496,10 @@ if($func=='delete_report'){
     $type_chat=$_GET['type_chat'];
     $lang_chat=$_GET['lang'];
     $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_report` WHERE `id_question` = '$id_chat' AND `type_question` = '$type_chat' AND `lang` = '$lang_chat'");
-    if(mysql_error()==""){
+    if(mysqli_error($link)==""){
         echo "Đã sửa! Xóa thành công báo cáo!";
     }else{
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     exit;
 }
@@ -711,13 +711,13 @@ if(isset($_POST['save_lyric'])){
     $show_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
     if(mysqli_num_rows($show_lyrics)==0){
         mysqli_query($link,"INSERT INTO `app_my_girl_".$lang."_lyrics` (`id_music`, `lyrics`) VALUES ('$id_music', '$lyrics');");
-        echo mysql_error();
+        echo mysqli_error($link);
         if($type_save=="0"){
             echo "Thêm mới thành công !";
         }
     }else{
         mysqli_query($link,"UPDATE `app_my_girl_".$lang."_lyrics` SET `lyrics` = '$lyrics' WHERE `id_music` = '$id_music'");
-        echo mysql_error();
+        echo mysqli_error($link);
         if($type_save=="0"){
             echo "Cập nhật thành công !";
         } 
@@ -744,10 +744,10 @@ if(isset($_POST['save_video'])){
     $check_video=mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang` WHERE  `id_chat` = '$id_music' LIMIT 1");
     if(mysqli_num_rows($check_video)==0){
         mysqli_query($link,"INSERT INTO `app_my_girl_video_$lang` (`id_chat`, `link`) VALUES ('$id_music', '$link');");
-        echo mysql_error();
+        echo mysqli_error($link);
     }else{
         mysqli_query($link,"UPDATE `app_my_girl_video_$lang` SET `link` = '$link' WHERE  `id_chat` = '$id_music'");
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     echo $link;
     
@@ -776,7 +776,7 @@ if(isset($_POST['delete_select_brain'])){
     echo "Xóa các câu dạy ngôn ngữ (".$langsel.")\n";
     foreach($arr_id as $id_row){
         $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE ((`md5` = '$id_row'));");
-        if(mysql_error()==""){
+        if(mysqli_error($link)==""){
             echo "--Xóa duyệt id:('.$id_row.')--\n";
             $filename = 'app_mygirl/app_my_girl_'.$langsel.'_brain/'.$id_row.'.mp3';
             if (file_exists($filename)) {
@@ -788,7 +788,7 @@ if(isset($_POST['delete_select_brain'])){
             echo "-> Xóa thành công!\n";
             echo "--------\n";
         }else{
-            echo mysql_error();
+            echo mysqli_error($link);
         }
         mysqli_free_result($query_delete);
     }
@@ -831,10 +831,10 @@ if($func=='edit_brain'){
     $lang=$_GET['lang'];
     $query_update_brain=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `question` = '$question', `answer` = '$answer' WHERE `md5` = '$id_brain' AND `langs` = '$lang'  LIMIT 1;");
     mysqli_free_result($query_update_brain);
-    if(mysql_error()==""){
+    if(mysqli_error($link)==""){
         echo "Cập nhật câu dạy thành công!!!";
     }else{
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     exit;
 }
@@ -868,10 +868,10 @@ if(isset($_POST['draft_brain'])){
     echo "Chuyển vào chờ duyệt ngôn ngữ (".$langsel.")\n";
     foreach($arr_id as $id_row){
         $query_update=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `tick` = '1',`effect` = '0',`user_work_id`='$user_work'  WHERE ((`md5` = '$id_row')) AND (`langs`='$langsel');");
-        if(mysql_error()==""){
+        if(mysqli_error($link)==""){
             echo "--Cập nhật thành công id:('.$id_row.')--\n";
         }else{
-            echo mysql_error();
+            echo mysqli_error($link);
         }
     }
     exit;
@@ -1097,7 +1097,7 @@ if ($func == 'login_work') {
 if($func=='data_syn_get_table'){
     $name_table=$_POST['table'];
     $query_data=mysqli_query($link,"select * FROM `$name_table`");
-    echo mysql_error();
+    echo mysqli_error($link);
     $data=array();
     while ($row=mysql_fetch_assoc($query_data)){
         array_push($data,$row);

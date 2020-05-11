@@ -6,7 +6,7 @@ $paypal_mail_carrot='phantranduyuye1@gmail.com';
 $mysql_host='localhost';
 $mysql_pass='123';
 $mysql_user='carrot';
-$mysql_database='carrot';
+$mysql_database='carrotsy_virtuallover';
 $key_api_google='AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I';
 $ver=2;
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";

@@ -2,31 +2,15 @@
 $lang_sel='vi';
 if(isset($_SESSION['lang'])){ $lang_sel=$_SESSION['lang'];}
 ?>
-
 <script>
-
-    var audioElement = document.createElement('audio');
-    audioElement.loop=true;
-    
-    audioElement.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-    
-function speech_quote(url_m){
-    audioElement.setAttribute('src', url_m);
-    this.currentTime = 0;
-    audioElement.play();
-}
-
 var myJsonString='';
 var arr_id_quote=[];
 
-    <?php
+<?php
     $query_count_quote=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id_redirect` = '' AND `chat`!=''");
-    $data_count_quote=mysqli_fetch_assoc($query_count_quote);
-    $count_p=$data_count_quote['c'];
-    ?>
+    $data_count_quote=mysqli_fetch_array($query_count_quote);
+	$count_p=$data_count_quote['c'];
+?>
 var count_p=<?php echo $count_p;?>;
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {
@@ -56,7 +40,6 @@ $(window).scroll(function() {
 if(!isset($list_quocte)){
     $list_quote=mysqli_query($link,"SELECT `chat`, `id`,`effect_customer`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id_redirect` = '' AND `chat`!='' ORDER BY RAND() LIMIT 50");
 }
-
 while($row=mysqli_fetch_assoc($list_quote)){
     include "page_quote_git.php";
 }
@@ -64,5 +47,5 @@ while($row=mysqli_fetch_assoc($list_quote)){
 </div>
 
 <?php
-echo show_ads_box_main($link,'quote_page');
+echo show_ads_box_main('quote_page');
 ?>

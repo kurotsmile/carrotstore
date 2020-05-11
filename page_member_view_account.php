@@ -57,7 +57,7 @@ while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
                 </li>
                 <?php
                 if($is_me){
-                    echo '<li><a class="buttonPro small yellow" href="'.$url.'/user_edit/'.$id_user.'/'.$lang.'"><i class="fa fa-wrench" aria-hidden="true"></i> '.lang('chinh_sua_thong_tin').'</a></li>';
+                    echo '<li><a class="buttonPro small yellow" href="'.$url.'/user_edit/'.$id_user.'/'.$lang.'"><i class="fa fa-wrench" aria-hidden="true"></i> '.lang($link,'chinh_sua_thong_tin').'</a></li>';
                 }
                 ?>
                 <?php if ($address_account != '') { ?>

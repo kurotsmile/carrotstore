@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo $url; ?>/js/jquery-comments.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/jquery-comments.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/jquery-comments.css"/>
 <p style="float: left;width: 100%;">
     <div id="comments" style="float: left;width: 90%;padding: 20px;"></div>
 </p>
@@ -36,7 +36,7 @@ $(document).ready(function(){
                     $comment_user_name=lang($link,"an_danh");
                     $comment_user_avatar=thumb('images/avatar_default.png','40x40');
                 }else{
-                    $user_comment=json_decode(get_info_user_comment($row['username'],$row['lang']));
+                    $user_comment=json_decode(get_info_user_comment($link,$row['username'],$row['lang']));
                     $comment_user_name=$user_comment->name;
                     $comment_user_avatar=$user_comment->avatar;
                 }

@@ -82,10 +82,10 @@ function thumb($urls,$size,$type=null){
 }
 
 
-function show_name_by_id($id_device,$lang){
-    $return=mysql_query("SELECT `name` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_device' LIMIT 1");
-    $return=mysql_fetch_array($return);
-    mysql_free_result($return);
+function show_name_by_id($link,$id_device,$lang){
+    $return=mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_device' LIMIT 1");
+    $return=mysqli_fetch_array($return);
+    mysqli_free_result($return);
     return $return['name'];
 }
 
@@ -95,9 +95,9 @@ function strclean($string) {
 }
 
 function check_Order($id_product,$id_user){
-    $a=mysql_query("SELECT * FROM `order` WHERE `product` = '$id_product' AND `users` = '$id_user' LIMIT 50");
-    if(mysql_num_rows($a)>0){
-        $a=mysql_fetch_array($a);
+    $a=mysqli_query($link,"SELECT * FROM `order` WHERE `product` = '$id_product' AND `users` = '$id_user' LIMIT 50");
+    if(mysqli_num_rows($a)>0){
+        $a=mysqli_fetch_array($a);
         return $a[4];
     }else{
         return null;
@@ -190,7 +190,7 @@ function get_desc_product_lang($link,$id_product,$key_l,$is_adim_site=false){
             return "";
         }
     }
-    mysql_free_result($query_data);
+    mysqli_free_result($query_data);
 }
 
 function get_url_icon_product($id_product,$size_img,$is_addmin_site=false){
@@ -413,16 +413,16 @@ function get_home_url($url) {
   return $result['host'];
 }
 
-function get_info_user_comment($user_id,$lang){
-    $query_user_comment=mysql_query("SELECT `avatar_url`,`name` FROM `app_my_girl_user_".$lang."` WHERE `id_device` ='".$user_id."' LIMIT 1");
-    if(mysql_num_rows($query_user_comment)>0) {
-        $data_user=mysql_fetch_array($query_user_comment);
+function get_info_user_comment($link,$user_id,$lang){
+    $query_user_comment=mysqli_query($link,"SELECT `avatar_url`,`name` FROM `app_my_girl_user_".$lang."` WHERE `id_device` ='".$user_id."' LIMIT 1");
+    if(mysqli_num_rows($query_user_comment)>0) {
+        $data_user=mysqli_fetch_array($query_user_comment);
         $user_info=new User_info();
         $user_info->name=$data_user['name'];
         if($data_user['avatar_url']!=''){
             $user_info->avatar=$data_user['avatar_url'];
         }else{
-            $user_info->avatar=get_url_avatar_user($user_id,$lang,'40x40');
+            $user_info->avatar=get_url_avatar_user($link,$user_id,$lang,'40x40');
         }
         return json_encode($user_info);
     }else{

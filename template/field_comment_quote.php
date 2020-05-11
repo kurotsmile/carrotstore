@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo $url; ?>/js/jquery-comments.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/jquery-comments.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/jquery-comments.css"/>
 <p style="float: left;width: 100%;">
     <div id="comments" style="float: left;width: 90%;padding: 20px;"></div>
 </p>
@@ -35,16 +35,16 @@ $(document).ready(function(){
             id: '<?php echo $row_comment[0]; ?>',
             created: '<?php echo $row_comment['date']; ?>',
             content: '<?php echo trim($row_comment['data']); ?>',
-            fullname: '<?php echo get_username_by_id($row_comment[0]);?>',
+            fullname: '<?php echo get_username_by_id($link,$row_comment[0]);?>',
             <?php
-            $url_avatar_comment=get_url_account_google($row_comment[0],$lang);
+            $url_avatar_comment=get_url_account_google($link,$row_comment[0],$lang);
             if($url_avatar_comment!=''){
             ?>
             profile_picture_url: '<?php  echo var_dump($url_avatar_comment); ?>',
             <?php
             }else{
             ?>
-            profile_picture_url: '<?php  echo get_url_avatar_user($row_comment[0],$lang) ?>',
+            profile_picture_url: '<?php  echo get_url_avatar_user($link,$row_comment[0],$lang) ?>',
             <?php
             }
             ?>

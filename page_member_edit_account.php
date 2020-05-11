@@ -1,8 +1,8 @@
 <?php
 $id_user=$_GET['user'];
 $lang=$_GET['lang'];
-$query_account_edit=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-$data_user=mysql_fetch_array($query_account_edit);
+$query_account_edit=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
+$data_user=mysqli_fetch_array($query_account_edit);
 include_once "page_member_header_account.php";
 if(!$is_me){
     exit;
@@ -13,7 +13,7 @@ if(!$is_me){
     <form name="frm" id="frm_update_info" class="frm" action="" method="post" enctype="multipart/form-data">
         <p class="row" style="text-align: center">
             <label><i class="fa fa-picture-o" aria-hidden="true"></i> <?php echo lang($link,'avatar');?></label><br/>
-            <img class="avatar" onclick="$('#user_avatar').click();" id="img_user_avatar" src="<?php echo get_url_avatar_user($id_user,$lang,'200x200');?>"/>
+            <img class="avatar" onclick="$('#user_avatar').click();" id="img_user_avatar" src="<?php echo get_url_avatar_user($link,$id_user,$lang,'200x200');?>"/>
             <br/>
             <input name="user_avatar" id="user_avatar" type="file" >
         </p>

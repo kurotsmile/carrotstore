@@ -5,19 +5,19 @@ include "../database.php";
 
 function get_key_lang($key,$lang){
     $val='';
-    $query_get_value=mysql_query("SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
-    if(mysql_num_rows($query_get_value)>0){
-        $data_val=mysql_fetch_array($query_get_value);
+    $query_get_value=mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
+    if(mysqli_num_rows($query_get_value)>0){
+        $data_val=mysqli_fetch_array($query_get_value);
         $val=$data_val[0];
     }else{
         $val=$key;
     }
-    mysql_free_result($query_get_value);
+    mysqli_free_result($query_get_value);
     return $val;
 }
 
 function thumb($urls,$size){
-    return URLS."/thumb.php?src=$urls&size=$size&trim=1";
+    return URL."/thumb.php?src=$urls&size=$size&trim=1";
 }
 
 class App{
@@ -122,16 +122,16 @@ if($func=='get_info'){
     $is_user=0;
     
     if($s_type=="0"){
-        $list_users=mysql_query("SELECT *,DATEDIFF(date_cur,date_start) as 'count_date' FROM `app_my_girl_user_$lang_sel` WHERE  `id_device`='$id_device_show' AND `name`!='' LIMIT 1");
-        while($row=mysql_fetch_array($list_users)){
+        $list_users=mysqli_query($link,"SELECT *,DATEDIFF(date_cur,date_start) as 'count_date' FROM `app_my_girl_user_$lang_sel` WHERE  `id_device`='$id_device_show' AND `name`!='' LIMIT 1");
+        while($row=mysqli_fetch_array($list_users)){
             $filename_avatar= 'app_my_girl_'.$lang_sel.'_user/'.$row[0].'.png';
             if($row[2]=='1'){
-                $txt_img_url=thumb(URLS.'/app_mygirl/img/avatar_default1.png','80x50');
+                $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default1.png','80x50');
             }else{
-                $txt_img_url=thumb(URLS.'/app_mygirl/img/avatar_default.png','80x50');
+                $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default.png','80x50');
             }
             if (file_exists($filename_avatar)) {
-                  $txt_img_url=thumb(URLS.'/app_mygirl/'.$filename_avatar,'50x50');
+                  $txt_img_url=thumb(URL.'/app_mygirl/'.$filename_avatar,'50x50');
             } 
                 
 
@@ -186,14 +186,14 @@ if($func=='get_info'){
     }
     
 
-        $query_check_field=mysql_query("SELECT * FROM carrotsy_contacts.user_field_data WHERE `id_device` = '$id_device_show' LIMIT 1");
-        if(mysql_num_rows($query_check_field)>0){
-            $data_user=mysql_fetch_array($query_check_field);
+        $query_check_field=mysqli_query($link,"SELECT * FROM carrotsy_contacts.user_field_data WHERE `id_device` = '$id_device_show' LIMIT 1");
+        if(mysqli_num_rows($query_check_field)>0){
+            $data_user=mysqli_fetch_array($query_check_field);
             $data_field=json_decode($data_user['data']);
             foreach($data_field as $i_key=>$i_val){
-                $query_get_field=mysql_query("SELECT * FROM carrotsy_contacts.field_contacts WHERE `name`='$i_key' LIMIT 1");
-                if(mysql_num_rows($query_get_field)>0){
-                    $data_item_field=mysql_fetch_array($query_get_field);
+                $query_get_field=mysqli_query($link,"SELECT * FROM carrotsy_contacts.field_contacts WHERE `name`='$i_key' LIMIT 1");
+                if(mysqli_num_rows($query_get_field)>0){
+                    $data_item_field=mysqli_fetch_array($query_get_field);
                     $value_item=new Item_value();
                     $value_item->icon='https://contact.carrotstore.com/field_icon/'.$data_item_field['id'].'.png';
                     $value_item->key=$i_key;
@@ -203,15 +203,15 @@ if($func=='get_info'){
                     }
                     array_push($arr_other_field,$value_item);
                 }
-                mysql_free_result($query_get_field);
+                mysqli_free_result($query_get_field);
             }
         }
-        mysql_free_result($query_check_field);
+        mysqli_free_result($query_check_field);
         
         //?ng d?ng d?m c?u
-        $query_app_sheep=mysql_query("SELECT * FROM carrotsy_sheep.scores WHERE `id_user` = '$id_device_show' LIMIT 1");
-        if(mysql_num_rows($query_app_sheep)>0){
-            $data_app_sheep=mysql_fetch_array($query_app_sheep);
+        $query_app_sheep=mysqli_query($link,"SELECT * FROM carrotsy_sheep.scores WHERE `id_user` = '$id_device_show' LIMIT 1");
+        if(mysqli_num_rows($query_app_sheep)>0){
+            $data_app_sheep=mysqli_fetch_array($query_app_sheep);
             $value_item=new Item_value();
             $value_item->icon='https://contact.carrotstore.com//image/sheep.png';
             $value_item->key='Counting sheep';
@@ -223,27 +223,27 @@ if($func=='get_info'){
             }
             array_push($arr_other_field,$value_item);
         }
-        mysql_free_result($query_app_sheep);
+        mysqli_free_result($query_app_sheep);
      $u->arr_data_other=$arr_other_field;  
       
     
     if($is_user==1){
-        $get_music_feel=mysql_query("SELECT `device_id` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_device_show' ORDER BY RAND() LIMIT 10");
-        if(mysql_num_rows($get_music_feel)>0){
-            while($row_feel=mysql_fetch_array($get_music_feel)){
-                $get_song_name=mysql_query("SELECT `chat` FROM `app_my_girl_$lang_sel` WHERE `id` = '".$row_feel['id_chat']."' LIMIT 1");
-                if(mysql_num_rows($get_song_name)>0){
-                    $data_song=mysql_fetch_array($get_song_name);
+        $get_music_feel=mysqli_query($link,"SELECT `device_id` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_device_show' ORDER BY RAND() LIMIT 10");
+        if(mysqli_num_rows($get_music_feel)>0){
+            while($row_feel=mysqli_fetch_array($get_music_feel)){
+                $get_song_name=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$lang_sel` WHERE `id` = '".$row_feel['id_chat']."' LIMIT 1");
+                if(mysqli_num_rows($get_song_name)>0){
+                    $data_song=mysqli_fetch_array($get_song_name);
                     $status_feel_id=$row_feel['value'];
                     $status_feel_music=get_key_lang("statu_music_user_$status_feel_id",$lang_sel);
                     $txt_show=$status_feel_music.' "'.$data_song[0].'"';
                     $item_user_test=array($row_feel['id_chat'],"$lang_sel","show_chat",$txt_show);
                     array_push($app->all_tip,$item_user_test);
                 }
-                mysql_free_result($get_song_name);
+                mysqli_free_result($get_song_name);
             }
         }
-        mysql_free_result($get_music_feel);
+        mysqli_free_result($get_music_feel);
         array_push($app->all_user,$u);
     }
     echo json_encode($app);
@@ -266,20 +266,20 @@ if($func=='get_list_contact'){
     $seach=$_POST['search'];
 
     if($seach!=""){
-        $list_users=mysql_query("SELECT `id_device`,`name`,`sex`,`sdt`,`address`,`status` FROM `app_my_girl_user_$lang_sel` WHERE `status` = '0'  AND `sdt`!='' AND  (MATCH (name)  AGAINST ('$seach' IN BOOLEAN MODE) or `sdt` LIKE '%$seach%') $txt_query_sex ORDER BY RAND() LIMIT 20");
+        $list_users=mysqli_query($link,"SELECT `id_device`,`name`,`sex`,`sdt`,`address`,`status` FROM `app_my_girl_user_$lang_sel` WHERE `status` = '0'  AND `sdt`!='' AND  (MATCH (name)  AGAINST ('$seach' IN BOOLEAN MODE) or `sdt` LIKE '%$seach%') $txt_query_sex ORDER BY RAND() LIMIT 20");
     }else{
-        $list_users=mysql_query("SELECT `id_device`,`name`,`sex`,`sdt`,`address`,`status` FROM `app_my_girl_user_$lang_sel` WHERE `status` = '0'  AND `sdt`!='' $txt_query_sex ORDER BY RAND() LIMIT 21");
+        $list_users=mysqli_query($link,"SELECT `id_device`,`name`,`sex`,`sdt`,`address`,`status` FROM `app_my_girl_user_$lang_sel` WHERE `status` = '0'  AND `sdt`!='' $txt_query_sex ORDER BY RAND() LIMIT 21");
     }
     
-    while($row=mysql_fetch_array($list_users)){
+    while($row=mysqli_fetch_array($list_users)){
         $filename_avatar= 'app_my_girl_'.$lang_sel.'_user/'.$row['id_device'].'.png';
         if($row['sex']=='1'){
-            $txt_img_url=thumb(URLS.'/app_mygirl/img/avatar_default1.png','80x50');
+            $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default1.png','80x50');
         }else{
-            $txt_img_url=thumb(URLS.'/app_mygirl/img/avatar_default.png','80x50');
+            $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default.png','80x50');
         }
         if (file_exists($filename_avatar)) {
-              $txt_img_url=thumb(URLS.'/app_mygirl/'.$filename_avatar,'80x50');
+              $txt_img_url=thumb(URL.'/app_mygirl/'.$filename_avatar,'80x50');
         } 
         $u=new User();
         $u->id=$row['id_device'];
@@ -314,9 +314,9 @@ if($func=='get_list_contact'){
 
 if($func=='set_status'){
     $text=$_POST['text'];
-    $update_status=mysql_query("UPDATE `app_my_girl_user_$lang_sel` SET `status` = '$text' WHERE `id_device`='$id_device'");
-    $update_sex=mysql_query("UPDATE `app_my_girl_user_$lang_sel` SET `sex`='$sex' WHERE `id_device` = '$id_device';");
-    echo mysql_error();
+    $update_status=mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `status` = '$text' WHERE `id_device`='$id_device'");
+    $update_sex=mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `sex`='$sex' WHERE `id_device` = '$id_device';");
+    echo mysqli_error($link);
     echo "1";
     exit;
 }
@@ -340,21 +340,19 @@ if($func=='add_user'){
                 
     $new_name=$_POST['new_name'];
     $new_phone=$_POST['new_phone'];
-    $check_user=mysql_query("SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` = '$id_device' LIMIT 1");
-    if(mysql_num_rows($check_user)>0){
+    $check_user=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` = '$id_device' LIMIT 1");
+    if(mysqli_num_rows($check_user)>0){
         if($txt_dc==""){
-            $add_account=mysql_query("UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$new_name', `date_cur` = now(),`sdt` = '$new_phone' WHERE `id_device` = '$id_device'");
+            $add_account=mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$new_name', `date_cur` = now(),`sdt` = '$new_phone' WHERE `id_device` = '$id_device'");
         }else{
-            $add_account=mysql_query("UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$new_name', `date_cur` = now(), `address` = '$txt_dc',`sdt` = '$new_phone' WHERE `id_device` = '$id_device'");
+            $add_account=mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$new_name', `date_cur` = now(), `address` = '$txt_dc',`sdt` = '$new_phone' WHERE `id_device` = '$id_device'");
         }
-        mysql_free_result($add_account);
     }else{
-        $update_account=mysql_query("INSERT INTO `app_my_girl_user_$lang_sel` (`id_device`,`name`,`sex`,`date_start`,`date_cur`,`sdt`,`address`) VALUES ('$id_device','$new_name','$sex',now(),now(),'$new_phone','$txt_dc');");
-        mysql_free_result($update_account);
+        $update_account=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang_sel` (`id_device`,`name`,`sex`,`date_start`,`date_cur`,`sdt`,`address`) VALUES ('$id_device','$new_name','$sex',now(),now(),'$new_phone','$txt_dc');");
     }
     echo "1";
-    mysql_free_result($check_user);
-    mysql_close($link);
+    mysqli_free_result($check_user);
+    mysqli_close($link);
     exit;
 }
 
@@ -368,75 +366,75 @@ if($func=="music_emotion"){
     $m_count_serenity="0";
     $m_count_excited="0";
     
-    $check_emotion=mysql_query("SELECT `value` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_device' AND `id_chat` = '$id_music' LIMIT 1");
-    if(mysql_num_rows($check_emotion)>0){
-        $data_check=mysql_fetch_array($check_emotion);
+    $check_emotion=mysqli_query($link,"SELECT `value` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_device' AND `id_chat` = '$id_music' LIMIT 1");
+    if(mysqli_num_rows($check_emotion)>0){
+        $data_check=mysqli_fetch_array($check_emotion);
         $user_sel_emotion=$data_check[0];
         
-        $query_count_fun=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '0' AND `id_chat` = '$id_music'");
-        $query_count_sad=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '1' AND `id_chat` = '$id_music'");
-        $query_count_serenity=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '2' AND `id_chat` = '$id_music'");
-        $query_count_excited=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '3' AND `id_chat` = '$id_music'");
+        $query_count_fun=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '0' AND `id_chat` = '$id_music'");
+        $query_count_sad=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '1' AND `id_chat` = '$id_music'");
+        $query_count_serenity=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '2' AND `id_chat` = '$id_music'");
+        $query_count_excited=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '3' AND `id_chat` = '$id_music'");
         
-        $data_0=mysql_fetch_array($query_count_fun);
-        $data_1=mysql_fetch_array($query_count_sad);
-        $data_2=mysql_fetch_array($query_count_serenity);
-        $data_3=mysql_fetch_array($query_count_excited);
+        $data_0=mysqli_fetch_array($query_count_fun);
+        $data_1=mysqli_fetch_array($query_count_sad);
+        $data_2=mysqli_fetch_array($query_count_serenity);
+        $data_3=mysqli_fetch_array($query_count_excited);
         
         $m_count_fun=$data_0[0];
         $m_count_sad=$data_1[0];
         $m_count_serenity=$data_2[0];
         $m_count_excited=$data_3[0];
         
-        mysql_free_result($query_count_fun);
-        mysql_free_result($query_count_sad);
-        mysql_free_result($query_count_serenity);
-        mysql_free_result($query_count_excited);
+        mysqli_free_result($query_count_fun);
+        mysqli_free_result($query_count_sad);
+        mysqli_free_result($query_count_serenity);
+        mysqli_free_result($query_count_excited);
         
     }else{
         $user_sel_emotion='-1';
     }
-    mysql_free_result($check_emotion);
+    mysqli_free_result($check_emotion);
     
     if($sub_func=="set"){
         $sel_emotion=$_POST['sel_emotion'];
         
         if($user_sel_emotion=='-1'){
-            $add_emotion_music=mysql_query("INSERT INTO `app_my_girl_music_data_$lang_sel` (`device_id`, `value`, `id_chat`) VALUES ('$id_device', '$sel_emotion', '$id_music');");
-            mysql_free_result($add_emotion_music);
+            $add_emotion_music=mysqli_query($link,"INSERT INTO `app_my_girl_music_data_$lang_sel` (`device_id`, `value`, `id_chat`) VALUES ('$id_device', '$sel_emotion', '$id_music');");
+            mysqli_free_result($add_emotion_music);
         }else{
-            $update_emotion_music=mysql_query("UPDATE `app_my_girl_music_data_$lang_sel` SET  `value` = '$sel_emotion' WHERE `device_id` = '$id_device' AND `id_chat` = '$id_music' LIMIT 1;");
-            mysql_free_result($update_emotion_music);
+            $update_emotion_music=mysqli_query($link,"UPDATE `app_my_girl_music_data_$lang_sel` SET  `value` = '$sel_emotion' WHERE `device_id` = '$id_device' AND `id_chat` = '$id_music' LIMIT 1;");
+            mysqli_free_result($update_emotion_music);
         }
         
         $user_sel_emotion=$sel_emotion;
         
-        $query_count_fun=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '0' AND `id_chat` = '$id_music'");
-        $query_count_sad=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '1' AND `id_chat` = '$id_music'");
-        $query_count_serenity=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '2' AND `id_chat` = '$id_music'");
-        $query_count_excited=mysql_query("SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '3' AND `id_chat` = '$id_music'");
+        $query_count_fun=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '0' AND `id_chat` = '$id_music'");
+        $query_count_sad=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '1' AND `id_chat` = '$id_music'");
+        $query_count_serenity=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '2' AND `id_chat` = '$id_music'");
+        $query_count_excited=mysqli_query($link,"SELECT count(*) FROM `app_my_girl_music_data_$lang_sel` WHERE `value` = '3' AND `id_chat` = '$id_music'");
         
-        $data_0=mysql_fetch_array($query_count_fun);
-        $data_1=mysql_fetch_array($query_count_sad);
-        $data_2=mysql_fetch_array($query_count_serenity);
-        $data_3=mysql_fetch_array($query_count_excited);
+        $data_0=mysqli_fetch_array($query_count_fun);
+        $data_1=mysqli_fetch_array($query_count_sad);
+        $data_2=mysqli_fetch_array($query_count_serenity);
+        $data_3=mysqli_fetch_array($query_count_excited);
         
         $m_count_fun=$data_0[0];
         $m_count_sad=$data_1[0];
         $m_count_serenity=$data_2[0];
         $m_count_excited=$data_3[0];
         
-        mysql_free_result($query_count_fun);
-        mysql_free_result($query_count_sad);
-        mysql_free_result($query_count_serenity);
-        mysql_free_result($query_count_excited);
+        mysqli_free_result($query_count_fun);
+        mysqli_free_result($query_count_sad);
+        mysqli_free_result($query_count_serenity);
+        mysqli_free_result($query_count_excited);
     }
     
     $arr_music=array("$user_sel_emotion","$m_count_fun","$m_count_sad","$m_count_serenity","$m_count_excited");
     echo json_encode($arr_music);
-    mysql_close($link);
+    mysqli_close($link);
     exit;
 }
 
 
-mysql_close($link);
+mysqli_close($link);
