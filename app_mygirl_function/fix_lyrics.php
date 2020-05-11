@@ -1,10 +1,11 @@
 <?php
+$sel_lang='vi';
 if(isset($_POST['func'])) {
     $lang = $_POST['lang_sel'];
-    $query_update_lyrics = mysql_query('update `app_my_girl_'.$lang.'_lyrics` set `lyrics`=REPLACE(`lyrics`,"[","")');
-    $query_update_lyrics = mysql_query('update `app_my_girl_'.$lang.'_lyrics` set `lyrics`=REPLACE(`lyrics`,"]","")');
-    $query_update_lyrics = mysql_query('update `app_my_girl_'.$lang.'_lyrics` set `lyrics`=REPLACE(`lyrics`,"\'","")');
-    mysql_error($link);
+    $query_update_lyrics = mysqli_query($link,'update `app_my_girl_'.$lang.'_lyrics` set `lyrics`=REPLACE(`lyrics`,"[","")');
+    $query_update_lyrics = mysqli_query($link,'update `app_my_girl_'.$lang.'_lyrics` set `lyrics`=REPLACE(`lyrics`,"]","")');
+    $query_update_lyrics = mysqli_query($link,'update `app_my_girl_'.$lang.'_lyrics` set `lyrics`=REPLACE(`lyrics`,"\'","")');
+    mysqli_error($link);
     show_alert('Đã sửa các lời bài hát của nước '.$lang,'info');
 }
 ?>
@@ -19,8 +20,8 @@ if(isset($_POST['func'])) {
             Ngôn ngữ:<br/>
             <select name="lang_sel">
                 <?php
-                $list_country = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-                while ($l = mysql_fetch_array($list_country)) {
+                $list_country = mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+                while ($l = mysqli_fetch_array($list_country)) {
                     $langsel = $l['key'];
                     ?>
                     <option value="<?php echo $langsel; ?>" <?php if ($sel_lang == $langsel) {

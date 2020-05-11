@@ -9,6 +9,7 @@ $xml.='<urlset
 $xml.='<!-- carrotstore.com -->'.PHP_EOL;
 
 $date_now = date('Y-m-d\TH:i:s+00:00', time());
+$urls=str_replace("http","https",$url);
 
 function write_url_seo($url_seo,$priority,$date_seo){
     $txt='<url>'.PHP_EOL;
@@ -23,23 +24,23 @@ $xml_https=$xml;
 $xml.=write_url_seo($url.'/','1.00',$date_now);
 $xml_https.=write_url_seo($urls.'/','1.00',$date_now);
 
-$query_product_seo=mysql_query("SELECT `id`, `slug` FROM `products` WHERE `status` = '1'");
-while ($p=mysql_fetch_array($query_product_seo)) {
+$query_product_seo=mysqli_query($link,"SELECT `id`, `slug` FROM `products` WHERE `status` = '1'");
+while ($p=mysqli_fetch_array($query_product_seo)) {
     $xml.=write_url_seo($url.'/p/'.$p['slug'],'0.80',$date_now);
     $xml_https.=write_url_seo($urls.'/p/'.$p['slug'],'0.80',$date_now);
 }
 
-$list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-while($l=mysql_fetch_array($list_country)){
+$list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+while($l=mysqli_fetch_array($list_country)){
     $key_c=$l['key'];
-    $query_music_seo=mysql_query("SELECT `slug`, `author` FROM `app_my_girl_".$key_c."` WHERE `effect` = '2' AND `slug` != ''");
-    while ($p=mysql_fetch_array($query_music_seo)) {
+    $query_music_seo=mysqli_query($link,"SELECT `slug`, `author` FROM `app_my_girl_".$key_c."` WHERE `effect` = '2' AND `slug` != ''");
+    while ($p=mysqli_fetch_array($query_music_seo)) {
         $xml.=write_url_seo($url.'/song/'.$p['author'].'/'.$p['slug'],'0.70',$date_now);
         $xml_https.=write_url_seo($urls.'/song/'.$p['author'].'/'.$p['slug'],'0.70',$date_now);
     }
-    mysql_free_result($query_music_seo);
+    mysqli_free_result($query_music_seo);
 }
-mysql_free_result($list_country);
+mysqli_free_result($list_country);
 
 
 $xml.='</urlset>'.PHP_EOL;

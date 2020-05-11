@@ -130,7 +130,6 @@ include "header.php";
     <div class="" id="tool_search">
         <input type="text" placeholder="<?php echo lang($link,'tip_search'); ?>" onchange="search_product(this.value)"
                name="search" class="inp" id="inp_search"/>
-        <!--<button class="btn"><?php echo $icon_search; ?></button>--!>
         <span id="proccess" style="display: none;float: left;"> <?php echo lang($link,'dang_xu_ly'); ?></span>
     </div>
 
@@ -213,10 +212,6 @@ include "header.php";
             echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang($link,'dang_nhap').'</a> ';
         }
         ?>
-        <a id="show_history" style="float: right;margin-right: 5px;"
-           href="<?php echo $url; ?>/index.php?page_view=page_history.php" <?php if ($page_file == "page_history.php") {
-            echo 'class="active"';
-        } ?>><i class="fa fa-history"></i></a>
         <a onclick="show_menu_mobile();" id="btn_menu_mobile"><i class="fa fa-bars" aria-hidden="true"></i></a>
     </div>
 </div>

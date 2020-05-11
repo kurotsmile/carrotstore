@@ -50,7 +50,7 @@ if(isset($user_login)){
                 if(obj["type"]=='0'){
                     swal("<?php echo lang($link,'song_add_playlist') ?>", "<?php echo lang($link,'thanh_cong') ?>", "success");
                 }else{
-                    swal({html: true, title: '<?php echo lang("song_add_playlist"); ?>', text: obj["msg"], showConfirmButton: false});
+                    swal({html: true, title: '<?php echo lang($link,"song_add_playlist"); ?>', text: obj["msg"], showConfirmButton: false});
                 }
             }
         });

@@ -6,12 +6,9 @@ ini_set('max_execution_time', 900);
 
 header('Content-type: text/html; charset=utf-8');
 session_start();
-$protocol=$_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
-if($protocol=='https'){
-    include "../config_https.php";
-}else{
-    include "../config.php";
-}
+
+include "../config.php";
+
 
 if(isset($_POST['key_contry'])){
    $_SESSION['lang']=$_POST['key_contry'];     

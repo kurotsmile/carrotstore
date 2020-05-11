@@ -30,24 +30,24 @@ $month_act='';
     if(isset($_GET['month_activer'])){
         $month_act=$_GET['month_activer'];
 
-        $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+        $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
         echo '<ul style="width:90%;float:left">';
-        while($row_lang=mysql_fetch_array($query_list_lang)){
+        while($row_lang=mysqli_fetch_array($query_list_lang)){
             $langsel=$row_lang['key'];
             $lang_name=$row_lang['name'];
             
             //update msg
-            $mysql_update1_lang=mysql_query("UPDATE `app_my_girl_msg_$langsel` SET `disable` = '1' WHERE `limit_month` != '$month_act' AND `limit_month` != '' AND limit_date = ''");
-            $mysql_update2_lang=mysql_query("UPDATE `app_my_girl_msg_$langsel` SET `disable` = '0' WHERE `limit_month` = '$month_act' AND `limit_month` != '' AND limit_date = ''");
-            if(mysql_error()!=""){
-               echo mysql_error();
+            $mysql_update1_lang=mysqli_query($link,"UPDATE `app_my_girl_msg_$langsel` SET `disable` = '1' WHERE `limit_month` != '$month_act' AND `limit_month` != '' AND limit_date = ''");
+            $mysql_update2_lang=mysqli_query($link,"UPDATE `app_my_girl_msg_$langsel` SET `disable` = '0' WHERE `limit_month` = '$month_act' AND `limit_month` != '' AND limit_date = ''");
+            if(mysqli_error($link)!=""){
+               echo mysqli_error($link);
             }
             
             //update chat
-            $mysql_update1_chat=mysql_query("UPDATE `app_my_girl_$langsel` SET `disable` = '1' WHERE `limit_month` != '$month_act' AND `limit_month` != '0'");
-            $mysql_update2_chat=mysql_query("UPDATE `app_my_girl_$langsel` SET `disable` = '0' WHERE `limit_month` = '$month_act' AND `limit_month` != '0'");
-            if(mysql_error()!=""){
-               echo mysql_error();
+            $mysql_update1_chat=mysqli_query($link,"UPDATE `app_my_girl_$langsel` SET `disable` = '1' WHERE `limit_month` != '$month_act' AND `limit_month` != '0'");
+            $mysql_update2_chat=mysqli_query($link,"UPDATE `app_my_girl_$langsel` SET `disable` = '0' WHERE `limit_month` = '$month_act' AND `limit_month` != '0'");
+            if(mysqli_error($link)!=""){
+               echo mysqli_error($link);
             }
             
             echo "<li>Kích hoạt thành công tháng ($month_act) của nước $lang_name !</li>";

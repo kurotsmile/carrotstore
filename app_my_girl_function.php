@@ -7,13 +7,14 @@ function isset_file($file)
     return (isset($file) && $file['error'] != UPLOAD_ERR_NO_FILE);
 }
 
-function show_info_user($lang_sel, $id_device, $show_phone)
+function show_info_user($link,$lang_sel, $id_device, $show_phone)
 {
+	global $url;
     $name_user = "";
     $list_effect = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
     if ($list_effect != false) {
-        if (mysql_num_rows($list_effect) > 0) {
-            $arr_data = mysql_fetch_array($list_effect);
+        if (mysqli_num_rows($list_effect) > 0) {
+            $arr_data = mysqli_fetch_array($list_effect);
 
             $filename_avatar = 'app_mygirl/app_my_girl_' . $lang_sel . '_user/' . $id_device . '.png';
             $txt_img_url = URL . '/images/avatar_default.png';
@@ -37,7 +38,7 @@ function show_info_user($lang_sel, $id_device, $show_phone)
             $name_user .= '</a>';
         }
     }
-    mysql_free_result($list_effect);
+    mysqli_free_result($list_effect);
     return $name_user;
 }
 
@@ -498,15 +499,15 @@ function delete_chat_by_lang($id, $lang_sel)
         mysqli_free_result($check_video);
 
         $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
-        if (mysql_num_rows($show_lyrics) > 0) {
+        if (mysqli_num_rows($show_lyrics) > 0) {
             mysqli_query($link,"DELETE FROM `app_my_girl_music_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1;");
             echo mysql_error();
             echo "<br/>Xóa lời bài hát!";
         }
-        mysql_free_result($show_lyrics);
+        mysqli_free_result($show_lyrics);
 
         $check_rank_music = mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat`='$id' LIMIT 1");
-        if (mysql_num_rows($check_rank_music) > 0) {
+        if (mysqli_num_rows($check_rank_music) > 0) {
             mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music` = '$id' LIMIT 1;");
             echo mysql_error();
             echo "<br/>Xóa bản xếp hạng liên quan đến bài hát!";
@@ -611,9 +612,9 @@ function show_row_music($link,$row, $langsel)
         }
         $btn_view_video = ' <a href="' . $data_video[0] . '" class="buttonPro small ' . $color_btn_view_video . '" target="_blank"><i class="fa fa-video-camera" aria-hidden="true"></i> Xem video</a>';
     } else {
-        $btn_view_video = ' <a href="https://www.youtube.com/results?search_query=' . $row['chat'] . '" target="_blank" class="buttonPro small pink" ><i class="fa fa-search-plus" aria-hidden="true"></i>  Tìm video youtube</a>';
+        $btn_view_video = ' <a href="https://www.youtube.com/results?search_query=' . $row['chat'] . '" target="_blank" class="buttonPro small pink" ><i class="fa fa-search-plus" aria-hidden="true"></i></a>';
     }
-    $bnt_update_lyric = '<a href="#" class="buttonPro small ' . $color_btn_lyrics . ' btn_add_lyrics_' . $row['id'] . '" onclick="add_music_lyrics(' . $row['id'] . ');return false;"><i class="fa fa-book"></i> Cập nhật lời bài hát</a> <a href="#" class="buttonPro small ' . $color_btn_ytb . ' btn_add_video_' . $row['id'] . '" onclick="add_video_music(' . $row['id'] . ');return false;"><i class="fa fa-youtube-square" aria-hidden="true"></i> Cập nhật video</a>';
+    $bnt_update_lyric = '<a href="#" class="buttonPro small ' . $color_btn_lyrics . ' btn_add_lyrics_' . $row['id'] . '" onclick="add_music_lyrics(' . $row['id'] . ');return false;"><i class="fa fa-book"></i></a> <a href="#" class="buttonPro small ' . $color_btn_ytb . ' btn_add_video_' . $row['id'] . '" onclick="add_video_music(' . $row['id'] . ');return false;"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>';
     $bnt_del = '<a href="#" class="buttonPro small red " onclick="delete_table(' . $row['id'] . ');return false;"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>';
     $bnt_view_store = '<a href="/music/'.$row['id'].'/'. $row['author'] . '" class="buttonPro small ' . $color_btn_view_store . ' " target="_blank"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>';
     return show_row_chat_prefab($link,$row, $langsel, $bnt_update_lyric . ' ' . $bnt_del . ' ' . $bnt_view_lyric . ' ' . $btn_search_lyrict . ' ' . $col_rank . ' ' . $bnt_view_store . ' ' . $btn_view_video);

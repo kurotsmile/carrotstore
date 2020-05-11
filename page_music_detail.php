@@ -113,6 +113,9 @@ $txt_title=$data_music['chat'];
                     <span><?php echo lang($link,'song_add_playlist');?></span>
              </a>
 
+			<?php
+			if(isset($data_lyrics)){
+			?>
             <div class="info_music">
                 <?php
                 if($data_lyrics['artist']!='') echo '<div class="item"><b><i class="fa fa-user" aria-hidden="true"></i> '.lang($link,'song_artist').':</b><a href="'.$url.'/artist/'.$lang_sel.'/'.$data_lyrics['artist'].'">'.$data_lyrics['artist'].'</a></div>';
@@ -121,10 +124,11 @@ $txt_title=$data_music['chat'];
                 if($data_lyrics['year']!='') echo '<div class="item"><b><i class="fa fa-calendar-o" aria-hidden="true"></i> '.lang($link,'song_year').':</b><a href="'.$url.'/year/'.$lang_sel.'/'.$data_lyrics['year'].'">'.$data_lyrics['year'].'</a></div>';
                 ?>
             </div>
+			<?php }?>
 
             </p>
             <?php echo show_share($link,$url.'/music/'.$id_music.'/'.$lang_sel); ?>
-            <?php if($data_lyrics['lyrics']!=''){?>
+            <?php if(isset($data_lyrics)&&$data_lyrics['lyrics']!=''){?>
                 <div style="float: left;width: 100%;">
                     <span style="float: right;" >
                         <span style="float: right;border-bottom: solid 2px;cursor: pointer;" onclick="change_font_size();">

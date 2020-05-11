@@ -13,8 +13,8 @@ $is_free="";
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_effect=mysql_query("SELECT * FROM `app_my_girl_view_3d` WHERE ((`id` = '$id_edit')) LIMIT 1;");
-    $arr_data=mysql_fetch_array($edit_effect);
+    $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_view_3d` WHERE ((`id` = '$id_edit')) LIMIT 1;");
+    $arr_data=mysqli_fetch_array($edit_effect);
     $name_view=$arr_data[1];
     $url_android=$arr_data[2];
     $url_ios=$arr_data[3];
@@ -25,7 +25,7 @@ if(isset($_GET['edit'])){
     if (file_exists($filename)) {
         $img_edit_icon=$filename;
     }
-    mysql_free_result($edit_effect);
+    mysqli_free_result($edit_effect);
     $func="edit";
 }
 
@@ -37,11 +37,11 @@ if(isset($_POST['func'])){
         if(isset($_POST['is_free'])){
             $is_free="on";
         }
-        $add_view_3d=mysql_query("INSERT INTO `app_my_girl_view_3d` (`name`,`android`,`ios`,`is_free`) VALUES ('$name_view','$url_android','$url_ios','$is_free');");
+        $add_view_3d=mysqli_query($link,"INSERT INTO `app_my_girl_view_3d` (`name`,`android`,`ios`,`is_free`) VALUES ('$name_view','$url_android','$url_ios','$is_free');");
         $id_new=mysql_insert_id();
         $target_dir = "app_mygirl/obj_view_3d/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_icon"]["tmp_name"], $target_dir);
-        mysql_free_result($add_view_3d);
+        mysqli_free_result($add_view_3d);
     }else{
         $name_view=$_POST['name_view'];
         $id_edit=$_POST['id_edit'];
@@ -50,7 +50,7 @@ if(isset($_POST['func'])){
         if(isset($_POST['is_free'])){
             $is_free="on";
         }
-        $update_view_3d=mysql_query("UPDATE `app_my_girl_view_3d` SET `name` = '$name_view',`android`='$url_android',`ios`='$url_ios',`is_free`='$is_free' WHERE `id` = '$id_edit';");
+        $update_view_3d=mysqli_query($link,"UPDATE `app_my_girl_view_3d` SET `name` = '$name_view',`android`='$url_android',`ios`='$url_ios',`is_free`='$is_free' WHERE `id` = '$id_edit';");
         
         if(isset_file($_FILES["file_icon"])){
             $filename = 'app_mygirl/obj_view_3d/icon_'.$id_edit.'.png';
@@ -59,7 +59,7 @@ if(isset($_POST['func'])){
             move_uploaded_file($_FILES["file_icon"]["tmp_name"], $target_dir);
         }
         
-        mysql_free_result($update_view_3d);
+ 
     }
 }
 
@@ -113,7 +113,7 @@ if(isset($_POST['func'])){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_view_3d` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_view_3d` WHERE ((`id` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
     $filename = 'app_mygirl/obj_view_3d/icon_'.$id_del.'.png';
     if (file_exists($filename)) {
@@ -134,8 +134,8 @@ if(isset($_GET['del'])){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-$list_effect=mysql_query("SELECT * FROM `app_my_girl_view_3d`");
-while($row=mysql_fetch_array($list_effect)){
+$list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_view_3d`");
+while($row=mysqli_fetch_array($list_effect)){
 ?>
     <tr>
         <td><?php echo $row[0];?></td>

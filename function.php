@@ -33,7 +33,6 @@ function lang($link,$key,$lang_sel=null){
         $lang=$lang_sel;
     }
     $return=mysqli_query($link,"SELECT `value` FROM `lang_value` WHERE `key` = '$key' AND `lang`='$lang' LIMIT 1");
-	
     $data=mysqli_fetch_array($return);
     if($data){
         return addslashes($data['value']);
@@ -317,6 +316,7 @@ function box_ads($link,$id_product,$lang){
         if(isset($arr_download[1])) $html_txt.=$arr_download[1];
         if(isset($arr_download[2])) $html_txt.=$arr_download[2];
         if(isset($arr_download[3])) $html_txt.=$arr_download[3];
+		if(isset($arr_download[4])) $html_txt.=$arr_download[4];
         
     $html_txt.='</div>';
     $html_txt.='</div>';
@@ -387,6 +387,7 @@ function show_ads_box_main($link,$id_place_ads){
         if(isset($arr_download[1])) $txt_html.=$arr_download[1];
         if(isset($arr_download[2])) $txt_html.=$arr_download[2];
         if(isset($arr_download[3])) $txt_html.=$arr_download[3];
+		if(isset($arr_download[4])) $txt_html.=$arr_download[4];
     $txt_html.='</div>';
     
     $txt_html.='<div id="ads_video"></div>';

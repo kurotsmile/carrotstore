@@ -45,29 +45,33 @@ if (isset($_GET['link'])) {
 }
 
 if (isset($_POST['chat'])) {
+	$id='';
+	$tip='';
+	$link_chat='';
+	$id_redirect='';
     echo '<div class="contain" style="padding: 20px;">';
     $chat = mysqli_real_escape_string($link,$_POST['chat']);
     $status = $_POST['status'];
     $sex = $_POST['sex'];
-    $id = $_POST['id'];
+    if(isset($_POST['id']))$id = $_POST['id'];
     $effect = $_POST['effect'];
     $vibrate = $_POST['vibrate'];
     $color = '#' . $_POST['color'];
-    $tip = $_POST['tip'];
-    $link_chat = $_POST['link'];
+    if(isset($_POST['tip']))$tip = $_POST['tip'];
+    if(isset($_POST['link']))$link_chat = $_POST['link'];
     $face = $_POST['face'];
     $action = $_POST['action'];
     $character_sex = $_POST['character_sex'];
-    $id_redirect = $_POST['id_redirect'];
-    $id_audio = $_POST['id_audio'];
+    if(isset($_POST['id_redirect']))$id_redirect = $_POST['id_redirect'];
+    if(isset($_POST['id_audio']))$id_audio = $_POST['id_audio'];
 
     $type_chat = $_POST['type_chat'];
 
-    $limit_os = $_POST['limit_os'];
+    if(isset($_POST['limit_os']))$limit_os = $_POST['limit_os'];
     $limit_ver = $_POST['limit_ver'];
     $limit_chat = $_POST['limit_chat'];
     $effect_customer = $_POST['effect_customer'];
-    $func_sever = $_POST['func_sever'];
+    if(isset($_POST['func_sever']))$func_sever = $_POST['func_sever'];
     $limit_day = $_POST['limit_day'];
     $limit_month = $_POST['limit_month'];
     $os_window = $_POST['os_window'];
@@ -76,8 +80,10 @@ if (isset($_POST['chat'])) {
     $file_url = $_POST['file_url'];
 
     $txt_disable = 0;
-    $func = $_POST['func'];
-    $disable = $_POST['disable'];
+	$func='';
+    if(isset($_POST['func']))$func = $_POST['func'];
+	$disable='off';
+    if(isset($_POST['disable']))$disable = $_POST['disable'];
     if ($disable == 'on') {
         $txt_disable = 1;
     } else {
@@ -85,15 +91,15 @@ if (isset($_POST['chat'])) {
     }
 
     if ($type_chat == "msg") {
-        $result_update = mysql_query("INSERT INTO `$txt_table` (`func`, `chat`, `status`, `sex`, `color`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`disable`,`ver`,`limit_chat`,`effect_customer`,`limit_day`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$func', '$chat', '$status', '$sex', '$color', '$vibrate', '$effect','$face','$action','$character_sex',$txt_disable,$limit_ver,'$limit_chat','$effect_customer','$limit_day','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+        $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (`func`, `chat`, `status`, `sex`, `color`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`disable`,`ver`,`limit_chat`,`effect_customer`,`limit_day`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$func', '$chat', '$status', '$sex', '$color', '$vibrate', '$effect','$face','$action','$character_sex',$txt_disable,$limit_ver,'$limit_chat','$effect_customer','$limit_day','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
     } else {
-        $text = mysql_real_escape_string($_POST['text']);
+        $text = mysqli_real_escape_string($link,$_POST['text']);
         if (isset($_POST['id_question'])) {
             $id_question = $_POST['id_question'];
             $type_question = $_POST['type_question'];
-            $result_update = mysql_query("INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`pater`,`pater_type`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$id_question','$type_question','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+            $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`pater`,`pater_type`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$id_question','$type_question','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
         } else {
-            $result_update = mysql_query("INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+            $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (`text`, `chat`, `status`, `sex`, `color`, `tip`, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
         }
     }
 
@@ -223,7 +229,7 @@ if (isset($_POST['chat'])) {
 ?>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
-    <script src="<?php echo $url; ?>/js/jscolor.min.min.js"></script>
+    <script src="<?php echo $url; ?>/js/jscolor.min.js"></script>
     <h2><img src="<?php echo $url; ?>/app_mygirl/img/<?php echo $lang_sel; ?>.png"
              style="width: 20px;margin-right: 2px;float: left;"/> <?php echo $txt_title; ?></h2>
     <form name="frm_chat" method="post" enctype="multipart/form-data">
@@ -409,7 +415,7 @@ if (isset($_POST['chat'])) {
                         <option value="1" <?php if (isset($_GET['sex'])) {if ($_GET['sex'] == '1') {echo 'selected="true"';}} ?>>Nữ</option>
                     </select>
                 </td>
-                <td class="row_no_music" rowspan="15" style="width: 400px;margin: 2px;">
+                <td class="row_no_music" rowspan="11" style="width: 400px;margin: 2px;">
                     <div style="float: left;width: 100%; margin-bottom: 5px;">
                         Mô tả khuôn mặt <br/>
                         <img src="<?php echo $url; ?>/app_mygirl/img/face/0.png" id="id_img_face" style="width: 100px;cursor: pointer;" onclick="choice_face();"/>
@@ -855,18 +861,18 @@ if ($key != '') {
             $id_father = $_GET['id_question'];
             $type_father = $_GET['type_question'];
             if ($type_father == "msg") {
-                $result_msg_father = mysql_query("SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id`='$id_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
+                $result_msg_father = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id`='$id_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
                 $row_father = mysql_fetch_array($result_msg_father);
                 echo show_row_chat_prefab($row_father, $lang_sel, '');
                 mysql_free_result($result_msg_father);
             } else {
-                $result_chat_father = mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id`='$id_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
+                $result_chat_father = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id`='$id_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
                 $row_chat = mysql_fetch_array($result_chat_father);
                 echo show_row_chat_prefab($row_chat, $lang_sel);
                 mysql_free_result($result_chat_father);
             }
 
-            $get_child_chat = mysql_query("SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father'");
+            $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father'");
             if (mysql_num_rows($get_child_chat) > 0) {
                 ?>
                 <tr>
@@ -876,7 +882,7 @@ if ($key != '') {
                     <td>
                         <table>
                             <?php
-                            $get_child_chat = mysql_query("SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father'");
+                            $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father'");
                             while ($row_child = mysql_fetch_array($get_child_chat)) {
                                 $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\'' . $row_child['id'] . '\')">Gỡ bỏ</a><input type="hidden" value="' . $row_child['id'] . '" name="chat_child[]" />';
                                 echo show_row_chat_prefab($row_child, $lang_sel, $btn_remove);

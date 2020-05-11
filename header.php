@@ -4,11 +4,7 @@ $seo_desc=lang($link,'gioi_thieu_tip');
 $seo_url=$url;
 $seo_img=$url.'/images/logo.png';
 
-$arr_history=array();
 $date = date('m/d/Y h:i:s a', time());
-if(isset($_SESSION['arr_history'])){
-    $arr_history=$_SESSION['arr_history'];
-}
 
 if(isset($_GET['view_product'])){
     if(isset($_GET['slug'])){
@@ -23,9 +19,6 @@ if(isset($_GET['view_product'])){
     $seo_desc=strip_tags (get_desc_product_lang($link,$data['id'],$_SESSION['lang']));
     $seo_url=$url.'/product/'.$data['id'];
     $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';;
-    $item_history=array($data['id'],'product',$date,$_SESSION['lang']);
-    array_push($arr_history,$item_history);
-    $_SESSION['arr_history']=$arr_history;
 }
 
 if(isset($_GET['page_view'])&&isset($_GET['view'])){
@@ -80,9 +73,6 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
             }
         }
 
-        $item_history=array($id_music,'music',$date,$lang_sel);
-        array_push($arr_history,$item_history);
-        $_SESSION['arr_history']=$arr_history;
     }
     
     
@@ -98,9 +88,6 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
         if($data_quote['effect_customer']!=''){
             $seo_img=$url.'/app_mygirl/obj_effect/'.$data_quote['effect_customer'].'.png';
         }
-        $item_history=array($id,'quote',$date,$lang_sel);
-        array_push($arr_history,$item_history);
-        $_SESSION['arr_history']=$arr_history;
     }
 }
 
@@ -131,9 +118,6 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
             }
         }
         $seo_url = $url . '/user/' . $id_user . '/' . $lang;
-        $item_history = array($id_user, 'contact', $date, $lang);
-        array_push($arr_history, $item_history);
-        $_SESSION['arr_history'] = $arr_history;
     }
 }
 
@@ -191,7 +175,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/responsive.min.css?v=<?php echo $ver;?>"/>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link type="text/css" rel="stylesheet" href="<?php echo $url; ?>/libary/jquery.qtip.min.css" />
-    <script type="text/javascript" src="<?php echo $url; ?>/libary/jquery.qtip.min.js" async defer></script>
+    <script type="text/javascript" src="<?php echo $url; ?>/libary/jquery.qtip.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="745653792874-8tn5rob2rdbkn6hkqhk6l10dv8t3etpu.apps.googleusercontent.com"/>
     <script src="<?php echo $url;?>/dist/lazysizes.min.js" async"></script>
@@ -202,7 +186,6 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     var shortcut_key_music=true;
 
     $(document).ready(function(){
-        reset_tip();
              $('#logo').qtip({
                 content: {
                     title:"<?php echo lang($link,'home_url'); ?>",
@@ -215,13 +198,14 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                     at: 'bottom right',
                 }
             });
+			reset_tip();
     });
     
     function reset_tip(){
         $('a[title],img[title],#share_link').each(function(){
-            $(this).qtip({ // Grab all elements with a title attribute
+            $(this).qtip({
                 content: {
-                    text: $(this).attr('title'), // Won't work, because "this" is the window element!
+                    text: $(this).attr('title'),
                     title: '<?php echo lang($link,'chu_thich'); ?>',
                 },
                 style: {
@@ -277,4 +261,3 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     ?>
 </head>
 <body>
-

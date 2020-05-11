@@ -1,26 +1,26 @@
 <?php
 $id_user=$_GET['user'];
 $lang=$_GET['lang'];
-$query_account_edit=mysql_query("SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-$data_user=mysql_fetch_array($query_account_edit);
+$query_account_edit=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
+$data_user=mysqli_fetch_array($query_account_edit);
 include_once "page_member_header_account.php";
 if(!$is_me){
     exit;
 }
 
-$query_playlist=mysql_query("SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
-$label_delete=lang('delete');
-$label_edit=lang('edit');
-$label_view=lang('chi_tiet');
+$query_playlist=mysqli_query($link,"SELECT `id`,`name`,`length`  FROM carrotsy_music.`playlist_$lang` WHERE `user_id` = '$id_user' ");
+$label_delete=lang($link,'delete');
+$label_edit=lang($link,'edit');
+$label_view=lang($link,'chi_tiet');
 ?>
 <div class="container" style="float: left;width: 100%;">
     <div id="container-title">
-        <div id="title"><?php echo lang("my_playlist");?></div>
+        <div id="title"><?php echo lang($link,"my_playlist");?></div>
     </div>
 
     <div id="slide_playlist" class="util-theme-default util-carousel features-carousel">
         <?php
-        while ($row_playlist=mysql_fetch_array($query_playlist)){
+        while ($row_playlist=mysqli_fetch_array($query_playlist)){
             ?>
             <div class="item item-playlist">
                 <i class="fa fa-th-list"></i>

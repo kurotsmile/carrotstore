@@ -112,7 +112,7 @@ function create_shorten_link(){
         });
     }else{
         $("#loading").hide(200);
-        swal("<?php echo lang("rut_gon_link"); ?>","<?php echo lang($link,'shorten_link_error');?>","error");
+        swal("<?php echo lang($link,"rut_gon_link"); ?>","<?php echo lang($link,'shorten_link_error');?>","error");
     }
         
 }

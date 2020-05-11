@@ -1,9 +1,9 @@
 <?php
 include "config.php";
 $name_file=$_GET['name_file'];
-$tabels='';
+$tabels='*';
 if(isset($_GET['table'])){
-    $table=$_GET['table'];
+    $tables=$_GET['table'];
 }
 header("Content-type: text/sql");
 header("Content-Disposition: attachment; filename=$name_file");
@@ -15,16 +15,16 @@ ini_set('memory_limit', '-1');
     function backup_tables($host,$user,$pass,$name,$tables = '*')
     {
         $return='';
-      $link = mysql_connect($host,$user,$pass);
-      mysql_select_db($name,$link);
-      mysql_query("SET NAMES 'UTF8'"); 
+      $link = mysqli_connect($host,$user,$pass);
+      mysqli_select_db($link,$name);
+      mysqli_query($link,"SET NAMES 'UTF8'"); 
 
       //Lấy tất cả các bảng
       if($tables == '*')
       {
         $tables = array();
-        $result = mysql_query('SHOW TABLES');
-        while($row = mysql_fetch_row($result))
+        $result = mysqli_query($link,'SHOW TABLES');
+        while($row = mysqli_num_rows($result))
         {
           $tables[] = $row[0];
         }
@@ -37,16 +37,16 @@ ini_set('memory_limit', '-1');
       //Vòng lặp
       foreach($tables as $table)
       {
-        $result = mysql_query('SELECT * FROM '.$table);
-        $num_fields = mysql_num_fields($result);
+        $result = mysqli_query($link,'SELECT * FROM '.$table);
+        $num_fields = mysqli_num_fields($result);
        
         $return.= 'DROP TABLE IF EXISTS '.$table.';';
-        $row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
+        $row2 = mysqli_num_rows(mysqli_query($link,'SHOW CREATE TABLE '.$table));
         $return.= "\n\n".$row2[1].";\n\n";
        
         for ($i = 0; $i < $num_fields; $i++)
         {
-          while($row = mysql_fetch_row($result))
+          while($row = mysqli_num_rows($result))
           {
             $return.= 'INSERT INTO '.$table.' VALUES(';
             for($j=0; $j<$num_fields; $j++)
@@ -65,6 +65,6 @@ ini_set('memory_limit', '-1');
         return $return;
     }
     
-    echo backup_tables($mysql_host,$mysql_user,$mysql_pass,$mysql_database,$table);
+    echo backup_tables($mysql_host,$mysql_user,$mysql_pass,$mysql_database,$tabels);
     exit;
 ?>

@@ -58,7 +58,7 @@ if($func=='command_mysql'){
         while($l=mysqli_fetch_array($list_country)){
                 $langsel=$l['key'];
                 $txt_mysql=str_replace('{lang}',$langsel,$txt_mysql_val);
-                $query_create=mysqli_query($txt_mysql);
+                $query_create=mysqli_query($link,$txt_mysql);
                 if(mysqli_error($link)==""){
                     echo "Thự hiện câu lệnh thành công nước (".$langsel.")<br/>";
                 }else{
@@ -309,6 +309,10 @@ if($func=='fix_lyrics'){
 
 if($func=='data_syn'){
     include "app_mygirl_function/data_syn.php";
+}
+
+if($func=='delete_user_expired'){
+    include "app_mygirl_function/delete_user_expired.php";
 }
 ?>
 

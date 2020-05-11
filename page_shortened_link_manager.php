@@ -25,7 +25,7 @@ if($id_user!=''){
     </div>
     <div style="width: 70%;float: left;text-align: left;" id="link_create">
         <h2><?php echo lang($link,'shorten_link_my_list'); ?></h2>
-        <strong><b><?php echo mysql_num_rows($query_list_link);?></b> <?php echo lang($link,'shorten_link_create') ?></strong><br />
+        <strong><b><?php echo mysqli_num_rows($query_list_link);?></b> <?php echo lang($link,'shorten_link_create') ?></strong><br />
         <a class="buttonPro small blue" href="<?php echo $url;?>/links"><i class="fa fa-list" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_list'); ?></a>
         <a class="buttonPro small blue" href="<?php echo $url;?>/link"><i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_btn'); ?></a>
     </div>

@@ -3,7 +3,7 @@ include "../config.php";
 include "../database.php";
 
 
-function get_key_lang($key,$lang){
+function get_key_lang($link,$key,$lang){
     $val='';
     $query_get_value=mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
     if(mysqli_num_rows($query_get_value)>0){
@@ -295,17 +295,17 @@ if($func=='get_list_contact'){
     
     $color_sel='000000';
     if($id_sub_menu=='2'){$color_sel='ff6347';}
-    $arr_data_item=Array('2','2','msg_box_func',get_key_lang('contact_all',$lang_sel),$color_sel);
+    $arr_data_item=Array('2','2','msg_box_func',get_key_lang($link,'contact_all',$lang_sel),$color_sel);
     array_push($app->all_tip,$arr_data_item);
     
     $color_sel='000000';
     if($id_sub_menu=='0'){$color_sel='ff6347';}
-    $arr_data_item=Array('0','2','msg_box_func',get_key_lang('contact_sex_0',$lang_sel),$color_sel);
+    $arr_data_item=Array('0','2','msg_box_func',get_key_lang($link,'contact_sex_0',$lang_sel),$color_sel);
     array_push($app->all_tip,$arr_data_item);
     
     $color_sel='000000';
     if($id_sub_menu=='1'){$color_sel='ff6347';}
-    $arr_data_item=Array('1','2','msg_box_func',get_key_lang('contact_sex_1',$lang_sel),$color_sel);
+    $arr_data_item=Array('1','2','msg_box_func',get_key_lang($link,'contact_sex_1',$lang_sel),$color_sel);
     array_push($app->all_tip,$arr_data_item);
     echo json_encode($app);
     

@@ -92,10 +92,11 @@ if($_GET||$_POST){
                     }
             }
             
-            $query_list_music=mysql_query($txt_query);
+            $query_list_music=mysqli_query($link,$txt_query);
             if(mysqli_num_rows($query_list_music)==0){
-                $query_list_music=mysql_query($txt_query_2);
+                $query_list_music=mysqli_query($link,$txt_query_2);
             }
+			$sub_view='all';
             include "page_music_list.php";
         }
         
@@ -443,23 +444,23 @@ if($_GET||$_POST){
     
     if(isset($_POST['function'])&&$_POST['function']=='create_shorten_link'){
         include "phpqrcode/qrlib.php";
-        $link=$_POST['link'];
+        $link_web=$_POST['link'];
         $lang=$_SESSION['lang'];
         $user_id='';
         if(isset($user_login)){
             $user_id=$user_login->id;
         }
-        $query_add_link_shorten=mysqli_query($link,"INSERT INTO `link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link', '$user_id', '', '0',NOW(),'$lang');");
-        $new_id_link=mysqli_insert_id();
+        $query_add_link_shorten=mysqli_query($link,"INSERT INTO `link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link_web', '$user_id', '', '0',NOW(),'$lang');");
+        $new_id_link=mysqli_insert_id($link);
         $new_url_link=$url.'/link/'.$new_id_link;
         QRcode::png($new_url_link, 'phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
-        echo '<strong style="color: slateblue;text-shadow: 1px 0px 11px #acff00;">'.$link.'</strong><br/>';
+        echo '<strong style="color: slateblue;text-shadow: 1px 0px 11px #acff00;">'.$link_web.'</strong><br/>';
         echo '<img src="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png"/><br/>';
         echo '<input type="text" class="inp_link_show" value="'.$new_url_link.'" /><br/>';
-        echo '<a href="" class="buttonPro light_blue large" onClick="copyTextToClipboard(\''.$new_url_linkk.'\');return false;"><i class="fa fa-clipboard" aria-hidden="true" ></i> '.lang($link,'copy').'</a>';
+        echo '<a href="" class="buttonPro light_blue large" onClick="copyTextToClipboard(\''.$new_url_link.'\');return false;"><i class="fa fa-clipboard" aria-hidden="true" ></i> '.lang($link,'copy').'</a>';
         echo '<a href="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png" target="_blank" class="buttonPro light_blue large"><i class="fa fa-floppy-o" aria-hidden="true"></i> '.lang($link,'save_img').' (QR)</a>';
         echo '<a href="'.$url.'/l/'.$new_id_link.'" target="_blank" class="buttonPro light_blue large"><i class="fa fa-external-link-square" aria-hidden="true"></i> '.lang($link,'shorten_link_detail').'</a>';
-        echo show_share($new_url_link.'/'.$lang);
+        echo show_share($link,$new_url_link.'/'.$lang);
         exit;
     }
 

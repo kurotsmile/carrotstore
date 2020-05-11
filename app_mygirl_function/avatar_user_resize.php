@@ -131,8 +131,8 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
             Ngôn ngữ:<br/>
             <select name="lang_sel">
                 <?php
-                $list_country = mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-                while ($l = mysql_fetch_array($list_country)) {
+                $list_country = mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+                while ($l = mysqli_fetch_array($list_country)) {
                     $langsel = $l['key'];
                     ?>
                     <option value="<?php echo $langsel; ?>" <?php if ($sel_lang == $langsel) {
@@ -176,10 +176,10 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
                 $id_user_file=str_replace(".png","",basename($file));
 
                 if($type=='1'){
-                    $query_check_info=mysql_query("SELECT `id_device` FROM `app_my_girl_user_".$sel_lang."` WHERE `id_device` = '$id_user_file' LIMIT 1");
-                    if(mysql_num_rows($query_check_info)>0){
+                    $query_check_info=mysqli_query($link,"SELECT `id_device` FROM `app_my_girl_user_".$sel_lang."` WHERE `id_device` = '$id_user_file' LIMIT 1");
+                    if(mysqli_num_rows($query_check_info)>0){
                         $is_resize=true;
-                        echo 'Tìm thấy dữ liệu  <a  target="_blank" href="'.$url.'/'.$file.'">'.$file.'</a> <a class="buttonPro small" href="http://carrotstore.com/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank">Xem info</a><br/>';
+                        echo 'Tìm thấy dữ liệu  <a  target="_blank" href="'.$url.'/'.$file.'">'.$file.'</a> <a class="buttonPro small" href="'.$url.'/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank">Xem info</a><br/>';
                     }else{
                         $is_resize=false;
                         echo 'Không tìm thấy dữ liệu - <b style="color: red;">Đã xóa file</b> : <a target="_blank" href="'.$url.'/'.$file.'">'.$file.'</a><br/>';
@@ -191,7 +191,7 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
                     $datasize= getimagesize($file);
                     if($datasize[0]>$width||$datasize[1]>$width){
                         smart_resize_image($file,"",300,300,false,'file',true,false,90);
-                        echo 'Đã tối ưu kích thước ảnh : <a href="http://carrotstore.com/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank"><img src="'.$url.'/'.$file.'" style="float:left"></a><br/>';
+                        echo 'Đã tối ưu kích thước ảnh : <a href="'.$url.'/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank"><img src="'.$url.'/'.$file.'" style="float:left"></a><br/>';
                     }
                 }
 

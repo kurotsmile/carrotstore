@@ -227,7 +227,7 @@ $arr = mysqli_fetch_array($result_chat);
 ?>
 <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
-<script src="<?php echo $url; ?>/js/jscolor.min.min.js"></script>
+<script src="<?php echo $url; ?>/js/jscolor.min.js"></script>
 <h2><img src="<?php echo $url; ?>/app_mygirl/img/<?php echo $lang_sel; ?>.png" style="width: 20px;margin-right: 2px;float: left;"/> <?php echo $txt_title; ?></h2>
 <ul id="menu_page">
     <li>
@@ -1387,7 +1387,7 @@ if ($type_chat == "chat") {
         echo '<div class="box_info">';
         echo '<h2>Câu trò chuyện cha của trò chuyện này:</h2>';
         echo '<table>';
-        echo show_row_chat_prefab($row_pater, $lang_sel, '');
+        echo show_row_chat_prefab($link,$row_pater, $lang_sel, '');
         $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_pater' AND `pater_type`='$type_pater'");
         if (mysqli_num_rows($get_child_chat) > 0) {
             ?>
@@ -1404,7 +1404,7 @@ if ($type_chat == "chat") {
                             if ($row_child['id'] == $id) {
                                 $btn_remove .= ' <i class="fa fa-pencil" aria-hidden="true"></i> Đang sửa';
                             }
-                            echo show_row_chat_prefab($row_child, $lang_sel, $btn_remove);
+                            echo show_row_chat_prefab($link,$row_child, $lang_sel, $btn_remove);
                         }
                         mysqli_fetch_array($get_child_chat);
                         ?>

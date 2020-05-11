@@ -13,8 +13,8 @@ $character="";
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_effect=mysql_query("SELECT * FROM `app_my_girl_head` WHERE ((`id` = '$id_edit')) LIMIT 1;");
-    $arr_data_effect=mysql_fetch_array($edit_effect);
+    $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_head` WHERE ((`id` = '$id_edit')) LIMIT 1;");
+    $arr_data_effect=mysqli_fetch_array($edit_effect);
     $name_bk=$arr_data_effect[1];
     $id_store_bk=$arr_data_effect['id_store'];
     $price_bk=$arr_data_effect['price'];
@@ -38,15 +38,15 @@ if(isset($_POST['func'])){
     $id_store_bk=$_POST['id_store_bk'];
     $price_bk=$_POST['price_bk'];
     if($_POST['func']=="add"){
-        $add_effect=mysql_query("INSERT INTO `app_my_girl_head` (`name`,`price`,`id_store`,`character`) VALUES ('$name_bk','$price_bk','$id_store_bk','$character');");
-        $id_new=mysql_insert_id();
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_head` (`name`,`price`,`id_store`,`character`) VALUES ('$name_bk','$price_bk','$id_store_bk','$character');");
+        $id_new=mysqli_insert_id($link);
         $target_dir = "app_mygirl/obj_head/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_icon"]["tmp_name"], $target_dir);
         $target_dir = "app_mygirl/obj_head/head_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_view"]["tmp_name"], $target_dir);
     }else{
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysql_query("UPDATE `app_my_girl_head` SET `name` = '$name_bk',`price`='$price_bk',`id_store`='$id_store_bk',`character`='$character' WHERE `id` = '$id_edit';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_head` SET `name` = '$name_bk',`price`='$price_bk',`id_store`='$id_store_bk',`character`='$character' WHERE `id` = '$id_edit';");
         
         if(isset_file($_FILES["file_bk_icon"])){
             $filename = 'app_mygirl/obj_head/icon_'.$id_edit.'.png';
@@ -127,7 +127,7 @@ if(isset($_POST['func'])){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_head` WHERE ((`id` = '$id_del'));");
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_head` WHERE ((`id` = '$id_del'));");
     echo "Delete success ! (".$id_del.")";
     $filename = 'app_mygirl/obj_head/icon_'.$id_del.'.png';
     if (file_exists($filename)) {
@@ -155,8 +155,8 @@ if(isset($_GET['del'])){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-$list_effect=mysql_query("SELECT * FROM `app_my_girl_head`");
-while($row=mysql_fetch_array($list_effect)){
+$list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_head`");
+while($row=mysqli_fetch_array($list_effect)){
 ?>
     <tr>
         <td><?php echo $row[0];?></td>

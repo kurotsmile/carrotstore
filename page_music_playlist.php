@@ -6,23 +6,24 @@ Class Song{
     public $mp3='';
 }
 
-
-
 $id=$_GET['id'];
 $lang=$_GET['lang'];
-$query_list_playlist=mysql_query("SELECT `data`,`name`,`user_id` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id' LIMIT 1");
-$data_playlist_sel=mysql_fetch_array($query_list_playlist);
-$s_data=preg_replace( "/\r|\n/", "", $data_playlist_sel['data']);
+$query_list_playlist=mysqli_query($link,"SELECT `data`,`name`,`user_id` FROM carrotsy_music.`playlist_$lang` WHERE `id` = '$id' LIMIT 1");
+$data_playlist_sel=mysqli_fetch_array($query_list_playlist);
 
-$data_playlist=json_decode($s_data);
-
-$obj_music=$data_playlist[0];
+if($data_playlist_sel['data']!='[]'){
+	$s_data=preg_replace( "/\r|\n/", "", $data_playlist_sel['data']);
+	$data_playlist=json_decode($s_data);
+	$obj_music=$data_playlist[0];
+}
 
 $url_mp3='';
-if(file_exists("app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3")){
-    $url_mp3 =$url."/app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3";
-}else {
-    $url_mp3 =$obj_music->file_url;
+if($data_playlist_sel['data']!='[]'){
+	if(file_exists("app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3")){
+		$url_mp3 =$url."/app_mygirl/app_my_girl_".$obj_music->author."/".$obj_music->id.".mp3";
+	}else {
+		$url_mp3 =$obj_music->file_url;
+	}
 }
 
 $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
@@ -33,7 +34,7 @@ $is_me=false;
 if(isset($user_login)){
     if($data_playlist_sel['user_id']==$user_login->id){
         $is_me=true;
-        $label_delete=lang('delete');
+        $label_delete=lang($link,'delete');
     }
 }
 ?>
@@ -51,6 +52,7 @@ if(isset($user_login)){
 
     <div id="post_product">
     <?php
+	if($data_playlist_sel['data']!='[]'){
     $is_playlist=true;
     include_once "template/kr_player_music.php";
     ?>
@@ -94,15 +96,15 @@ if(isset($user_login)){
         </tr>
         <?php }?>
     </table>
-
+	<?php }?>
     </div>
 
     <div id="sidebar_product">
         <?php
-        echo show_box_ads_page('music_page');
+        echo show_box_ads_page($link,'music_page');
         ?>
         <?php
-        if(get_setting('show_ads')=='1') {
+        if(get_setting($link,'show_ads')=='1') {
             ?>
             <ins class="adsbygoogle"
                  style="display:inline-block;width:300px;height:300px"
@@ -143,7 +145,7 @@ if(isset($user_login)){
                         success: function (data, textStatus, jqXHR) {
                             $("#data_txt").val(data);
                             $(emp).parent().parent().remove();
-                            swal("<?php echo lang("my_playlist"); ?>","<?php echo lang($link,'delete_song_success');?>","success");
+                            swal("<?php echo lang($link,"my_playlist"); ?>","<?php echo lang($link,'delete_song_success');?>","success");
                             return false;
                         }
                     });

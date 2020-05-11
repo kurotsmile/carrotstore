@@ -178,12 +178,10 @@ if($func=='delete_chat'){
         echo "Không có file ảnh $filename_img để xóa <br/>";
     }
     
-    mysqli_free_result($result_chat);
     
     $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
     if(mysqli_num_rows($check_field_chat)>0){
         $query_delete_field=mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
-        mysqli_free_result($query_delete_field);
         echo "Xóa trường dữ liệu (Field chat) thành công!";
     }else{
         echo "Không có trường dữ liệu (Field chat)";
@@ -217,8 +215,6 @@ if($func=='delete_chat'){
             
     }
     
-    mysqli_free_result($check_field_chat);
-    mysqli_free_result($check_chat);
     exit;
 }
 
@@ -423,15 +419,13 @@ if($func=='view_device'){
     
     $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_key` WHERE `id_device`='$id_device' AND `dates`='$dates' AND `sex`='$sex' AND `character_sex`='$character_sex' ");
     $chat_item=mysqli_fetch_array($result_chat);
-    echo show_info_user($lang_sel,$chat_item['id_device'],'1');
+    echo show_info_user($link,$lang_sel,$chat_item['id_device'],'1');
     echo "<div style='width:100%;float:left;margin: 3px;'>ID device:".$chat_item['id_device']." Lang:".$lang_sel." Os:".$chat_item['os']." Version:".$chat_item['version'].'</div><hr/>';
     echo '<div style="width:100%;max-height:550px;overflow-y: scroll;">';
-    show_row_map($chat_item);
+    show_row_map($link,$chat_item);
     while($chat_item=mysqli_fetch_array($result_chat)){
-        show_row_map($chat_item);
-        mysqli_free_result($result_chat1);
+        show_row_map($link,$chat_item);
     }
-    mysqli_free_result($chat_item);
     echo '</div>';
     exit;
 }
@@ -693,7 +687,6 @@ if($func=='select_random_effect'){
     $effect_chat->color=$data_effect[4];
     
     echo json_encode($effect_chat);
-    mysql_freeresult($rand_id_effect);
     exit;
 }
 

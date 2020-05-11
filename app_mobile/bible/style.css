@@ -1,0 +1,125 @@
+body {
+  height: 100%;
+  overflow-x: hidden;
+  width: 100% !important;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background-color: white;
+  font-size: 13px;
+}
+a{color:black;text-decoration: none;}
+a:active{color:red;}
+a:visited{color:black;}
+
+#header{
+    float: left;width: 100%;background: #BF0000;
+}
+
+#header #title{
+    padding: 5px;font-size: 20px;float: left;color: white;text-shadow: 3px 3px 3px #4D4D4D;
+}
+
+#menu_work{
+    float: left;width: 100%;padding: 0px;margin: 0px;background-color:  #8c1515;list-style: none;color: white;font-size: 11px;
+}
+
+#menu_work li{
+    float: left;padding: 5px;
+}
+#menu_work li:hover{
+    background-color: black;
+}
+#menu_work li a{
+    color:white;float: left;    
+}
+
+#menu_work li a img{
+    float: left;margin-right: 3px;
+}
+#menu_work li a .name{
+    float: left;
+}
+
+#body{
+    width: 100%;float: left;
+}
+
+#body #page_contain{
+    float: left;padding: 10px;    
+}
+
+#body .box_country{
+    width: 300px;float: left;margin: 3px;background-color: #FFCBB3;padding: 2px;box-shadow: 3px 3px 3px #8F8F8F;
+}
+#body .box_country.active{
+    background-color: #FEFDD8;
+}
+.box_country .header{
+    background-color: #F3837C;float: left;width: 100%;
+}
+.box_country .body{
+    float: left;padding: 10px;
+}
+#body .box_country.active .header{
+    background-color: #D5E9FD;
+}
+
+.box_country .header .icon{
+    float: left;
+}
+.box_country .header .title{
+    float: left;margin-left: 4px;margin-top: 5px;
+}
+
+#menu{
+    float: left;width: 100%;background-color: #FFCBB3;margin: 0px;list-style: none;padding: 0px;
+}
+
+#menu li{
+    float: left;padding: 5px;
+}
+
+.box_form{
+    float: left;min-width: 300px;background-color: #FFE8DD;border: solid 3px #FFBC9B;margin: 5px;padding: 3px;
+}
+.box_form .row{
+    float: left;width: 100%;margin-top: 3px;margin-bottom: 3px;
+}
+
+table {
+    border-collapse: collapse;
+    float: left;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 2px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+table th {
+    background-color: #ffe4c3;
+    color: black;
+    font-size: 13px;
+    padding: 5px;
+}
+
+.alert{
+    float: left;width:100%;
+}
+.alert .msg{
+    float: left;padding:3px;box-shadow: 3px 3px 3px #B2B2B2;border-radius: 3px;width: auto;margin: 3px;
+}
+.alert .msg.alert{
+    background-color: #FFFF88;
+}
+.alert .msg.error{
+    background-color: #FF6262;
+}
+.alert .msg.info{
+    background-color: #A4D1FF;
+}

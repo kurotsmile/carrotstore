@@ -185,7 +185,8 @@ while($row_key=mysqli_fetch_array($list_key)){
 <strong>Câu thoại</strong>
 <table style="width: auto;">
 <?php
-$list_key_msg=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `chat` LIKE '%$key%' AND `$os`='$os_value' AND `text` LIKE '%$key%' ");
+$list_key_msg=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `chat` LIKE '%$key%' AND `$os`='$os_value' ");
+echo mysqli_error($link);
 while($row_key=mysqli_fetch_array($list_key_msg)){
 ?>
 <tr>

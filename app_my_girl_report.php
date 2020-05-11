@@ -39,7 +39,7 @@ if(isset($_POST['lang'])){
 }
 
 if(isset($_POST)&&isset($_POST['clear'])){
-    mysql_query("DELETE FROM `app_my_girl_report` WHERE `lang`='$lang_sel' ");
+    mysqli_query($link,"DELETE FROM `app_my_girl_report` WHERE `lang`='$lang_sel' ");
     echo "Delete all success!";
 }
 ?>
@@ -69,12 +69,12 @@ function delete_report(id_chat,type_chat){
 <label>Ngôn ngữ:</label> 
 
     <select name="lang">
-    <option value=""  selected="true"  <?php if($langsel==""){?> selected="true"<?php }?>>Tất cả</option>
+    <option value=""  selected="true"  <?php if($lang_sel==""){?> selected="true"<?php }?>>Tất cả</option>
     <?php 
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
-    while($row_lang=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
+    while($row_lang=mysqli_fetch_array($list_country)){
     ?>
-    <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
+    <option value="<?php echo $row_lang['key'];?>" <?php if($lang_sel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php }?>
     </select>
 </div>
@@ -104,12 +104,12 @@ function delete_report(id_chat,type_chat){
 <?php
 
     if($type_error==""){
-        $result_tip_count=mysql_query("SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' $txt_query_question");  
+        $result_tip_count=mysqli_query($link,"SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' $txt_query_question");  
     }else{
-        $result_tip_count=mysql_query("SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' AND `sel_report` = '$type_error'"); 
+        $result_tip_count=mysqli_query($link,"SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' AND `sel_report` = '$type_error'"); 
     }
 
-    $total_records=mysql_num_rows($result_tip_count);
+    $total_records=mysqli_num_rows($result_tip_count);
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
     $limit = 80;
     $total_page = ceil($total_records / $limit);
@@ -121,9 +121,9 @@ function delete_report(id_chat,type_chat){
     }
     $start = ($current_page - 1) * $limit;
     if($type_error==""){
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' $txt_query_question"); 
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' $txt_query_question"); 
     }else{
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' AND `sel_report` = '$type_error'"); 
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_report` WHERE `lang`='$lang_sel' AND `sel_report` = '$type_error'"); 
     }
 ?>
     <div id="form_loc">
@@ -152,7 +152,7 @@ function delete_report(id_chat,type_chat){
 </tr>
 <?php
 
-while($row=mysql_fetch_array($list_effect)){
+while($row=mysqli_fetch_array($list_effect)){
 ?>
     <tr class="report_<?php echo $row['id_question'] ?>_<?php echo $row['type_question']?>">
         <td>
@@ -217,7 +217,7 @@ while($row=mysql_fetch_array($list_effect)){
         </td>
         <td>
         <?php 
-            echo show_info_user($row['lang'],$row['id_device'],'');
+            echo show_info_user($link,$row['lang'],$row['id_device'],'');
         ?>
         </td>
         <td>
