@@ -28,7 +28,7 @@
         
         
         $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
-        if(mysql_num_rows($check_field_chat)>0){
+        if(mysqli_num_rows($check_field_chat)>0){
             $query_delete_field=mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");;
             echo "Xóa trường dữ liệu (Field chat) thành công!";
         }else{
@@ -38,7 +38,7 @@
         if($data_chat['effect']=='2'){
             echo "<br/>Xóa các chức năng liên quan tới nhạc";
             $check_video=mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id' LIMIT 1");
-            if(mysql_num_rows($check_video)>0){
+            if(mysqli_num_rows($check_video)>0){
                 mysqli_query($link,"DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id'");
                 echo mysqli_error($link);
                 echo "<br/>Xóa liên kết video thành công!"; 
@@ -46,7 +46,7 @@
             mysqli_free_result($check_video);
             
             $show_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
-            if(mysql_num_rows($show_lyrics)>0){
+            if(mysqli_num_rows($show_lyrics)>0){
                 mysqli_query($link,"DELETE FROM `app_my_girl_music_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1;");
                 echo mysqli_error($link);
                 echo "<br/>Xóa lời bài hát!";
@@ -54,12 +54,12 @@
             mysqli_free_result($show_lyrics);
             
             $check_rank_music=mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat`='$id' LIMIT 1");
-            if(mysql_num_rows($check_rank_music)>0){
+            if(mysqli_num_rows($check_rank_music)>0){
                 mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music` = '$id' LIMIT 1;");
                 echo mysqli_error($link);
                 echo "<br/>Xóa bản xếp hạng liên quan đến bài hát!";
             }
-            mysql_num_rows($check_rank_music);
+            mysqli_num_rows($check_rank_music);
                 
         }
         

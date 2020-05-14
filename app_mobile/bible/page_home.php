@@ -44,19 +44,19 @@ while($item_country=mysqli_fetch_array($query_list_country)){
                 }
             ?>
             <ul style="margin: 0px;padding: 3px;list-style: none;">
-                <li><a href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=0">Cựu ước :<strong><?php echo $count_book_0['count_book']; ?></strong></a> <a href="<?php echo $url;?>?page=add_book&lang=<?php echo $item_country['key']; ?>&type=0" class="buttonPro small"><i class="fas fa-book"></i> Thêm sách</a> <a class="buttonPro small blue" href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=0"><i class="fas fa-tasks"></i> Quản lý</a></li>
-                <li><a href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=1">Tân ước :<strong><?php echo $count_book_1['count_book']; ?></strong></a> <a href="<?php echo $url;?>?page=add_book&lang=<?php echo $item_country['key']; ?>&type=1" class="buttonPro small"><i class="fas fa-book"></i> Thêm sách</a> <a class="buttonPro small blue" href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=1"><i class="fas fa-tasks"></i> Quản lý</a></li>
-                <li><a href="<?php echo $url;?>?page=manager_lang_value&lang=<?php echo $key_country;?>">Ngôn ngữ giao diện :<strong><?php echo $count_lang_val; ?></strong></a> <a href="<?php echo $url;?>?page=manager_lang_value&lang=<?php echo $key_country;?>" class="buttonPro small"><i class="fas fa-wrench"></i> Sửa</a></li>
-                <li><a href="https://play.google.com/store/apps/details?id=com.carrotstore.bible&hl=<?php echo $key_country;?>" target="_blank"><i class="fab fa-android"></i> Xem đánh giá về ứng dụng</a></li>
+                <li><a href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=0">Cựu ước :<strong><?php echo $count_book_0['count_book']; ?></strong></a> <a href="<?php echo $url;?>?page=add_book&lang=<?php echo $item_country['key']; ?>&type=0" class="buttonPro small"><i class="fa fa-book" aria-hidden="true"></i> Thêm sách</a> <a class="buttonPro small blue" href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=0"><i class="fa fa-tasks"></i> Quản lý</a></li>
+                <li><a href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=1">Tân ước :<strong><?php echo $count_book_1['count_book']; ?></strong></a> <a href="<?php echo $url;?>?page=add_book&lang=<?php echo $item_country['key']; ?>&type=1" class="buttonPro small"><i class="fa fa-book" aria-hidden="true"></i>Thêm sách</a> <a class="buttonPro small blue" href="<?php echo $url;?>?page=manager_book&lang=<?php echo $key_country;?>&type=1"><i class="fa fa-tasks"></i> Quản lý</a></li>
+                <li><a href="<?php echo $url;?>?page=manager_lang_value&lang=<?php echo $key_country;?>">Ngôn ngữ giao diện :<strong><?php echo $count_lang_val; ?></strong></a> <a href="<?php echo $url;?>?page=manager_lang_value&lang=<?php echo $key_country;?>" class="buttonPro small"><i class="fa fa-wrench"></i> Sửa</a></li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.carrotstore.bible&hl=<?php echo $key_country;?>" target="_blank"><i class="fa fa-android"></i> Xem đánh giá về ứng dụng</a></li>
                 <?php
                 $check_error_table=mysqli_query($link,"select 1 from `paragraph_$key_country` LIMIT 1");
                 if($check_error_table !== FALSE){
                 ?>
-                    <li><a><i class="fas fa-table"></i> Có bản </a></li>
+                    <li><a><i class="fa fa-table"></i> Có bản </a></li>
                 <?php
                 }else{
                 ?>
-                    <li ><a style="color: red;" href="<?php echo $url;?>?page=tool&sub_view=add_table&lang=<?php echo $key_country;?>"><i class="fas fa-table"></i> Chưa có bản - sửa lỗi này</a></li>
+                    <li ><a style="color: red;" href="<?php echo $url;?>?page=tool&sub_view=add_table&lang=<?php echo $key_country;?>"><i class="fa fa-table"></i> Chưa có bản - sửa lỗi này</a></li>
                 <?php
                 }
                 ?>

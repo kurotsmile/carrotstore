@@ -56,7 +56,7 @@ mysqli_free_result($count_status_1);
 mysqli_free_result($count_status_2);
 mysqli_free_result($count_status_3);
 ?>
-<div id="row<?php echo $row[0]; ?>" class="app" >
+<div id="row<?php echo $row['id']; ?>" class="app" >
     <div class="app_title">
         <a href="<?php echo $url_song;?>">
             <h1 style="font-size: -1vw;">

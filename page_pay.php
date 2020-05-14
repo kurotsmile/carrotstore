@@ -41,13 +41,14 @@ if($pay_item!='music'){
 if(isset($_GET['lang'])){
     if($pay_item!='music'){
         $pay_lang=$_GET['lang'];
-        $_SESSION['lang']=$pay_lang;
+        $_SESSION['lang_pay']=$pay_lang;
     }else{
         $pay_lang=$_GET['lang'];
+		$_SESSION['lang_pay']=$pay_lang;
     }
     $lang_sel=$_GET['lang'];
 }else{
-    $lang_sel=$_SESSION['lang'];
+    $lang_sel=$_SESSION['lang_pay'];
 }
 
 
@@ -210,26 +211,21 @@ if($pay_device!=''&&$pay_item!=''){
             </form>
             <?php
             }else{
-                if($data_music['file_url']!=''){
-                    $url_download=$data_music['file_url'].'&type=0';
-                }else{
-                    $url_download='app_mygirl/app_my_girl_'.$lang_sel.'/'.$pay_id_music.'.mp3&type=1';
-                }
 
                 ?>
 				<script>
 				function showlikepage(){
 					swal({
-						title: "<?php echo lang('download_song');?>",
-						text: "<iframe src='http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/virtuallover&width=292&colorscheme=light&show_faces=false&stream=false&header=false&height=80' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100%; height:62px;float:left;;margin-bottom:20px;margin-left: 91px;' allowTransparency='true'></iframe> <?php echo lang('tai_thanh_cong_tip'); ?>",
+						title: "<?php echo lang($link,'download_song');?>",
+						text: "<iframe src='http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/virtuallover&width=292&colorscheme=light&show_faces=false&stream=false&header=false&height=80' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100%; height:62px;float:left;;margin-bottom:20px;margin-left: 91px;' allowTransparency='true'></iframe> <?php echo lang($link,'tai_thanh_cong_tip'); ?>",
 						type: "success",
 						html:true
 					});
 				}
 				</script>
-				<a style="width: 100%;" href="<?php echo $url;?>/download.php?file=<?php echo $url_download;?>" onclick="showlikepage();" id="download_song" >
+				<a style="width: 100%;" href="<?php echo $url;?>/download.php?id=<?php echo $pay_id_music;?>&lang=<?php echo $lang_sel; ?>" onclick="showlikepage();" id="download_song" >
 					<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-					<span><?php echo lang('download_song');?></span>
+					<span><?php echo lang($link,'download_song');?></span>
 				</a>
             <?php }?>
 		</div>

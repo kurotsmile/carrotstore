@@ -238,9 +238,9 @@ function show_row_brain($link,$row,$type_view, $lang_key)
     if ($row['type_question'] == 'msg') {
         $txt_chat_show = '<a href="' . $url . '/app_my_girl_update.php?id=' . $row['id_question'] . '&lang=' . $lang_key . '&msg=1" target="_blank" class="buttonPro small orange"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ' . $row['id_question'] . ' - ' . $row['type_question'] . '</a>';
         $txt_chat_show .= "<a class='buttonPro small yellow' onclick=\"view_pater('" . $row['langs'] . "','" . $row['id_question'] . "','msg','0','1');return false;\"><i class='fa fa-plane' aria-hidden='true' ></i> xem nhanh - msg</a>";
-        $query_msg = mysql_query("SELECT * FROM `app_my_girl_msg_" . $row['langs'] . "` WHERE `id` = '" . $row['id_question'] . "' LIMIT 1");
-        if (mysql_num_rows($query_msg)) {
-            $data_msg = mysql_fetch_array($query_msg);
+        $query_msg = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_" . $row['langs'] . "` WHERE `id` = '" . $row['id_question'] . "' LIMIT 1");
+        if (mysqli_num_rows($query_msg)) {
+            $data_msg = mysqli_fetch_array($query_msg);
             $txt_show_contain_father = '<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> msg:' . $data_msg['func'] . ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' . $data_msg['chat'] . '</span><br/>';
         }
     }
@@ -248,9 +248,9 @@ function show_row_brain($link,$row,$type_view, $lang_key)
     if ($row['type_question'] == 'chat') {
         $txt_chat_show = '<a href="' . $url . '/app_my_girl_update.php?id=' . $row['id_question'] . '&lang=' . $lang_key . '" target="_blank" class="buttonPro small orange"><i class="fa fa-pencil-square" aria-hidden="true"></i> ' . $row['id_question'] . ' - ' . $row['type_question'] . '</a>';
         $txt_chat_show .= "<a class='buttonPro small yellow' onclick=\"view_pater('" . $row['langs'] . "','33','" . $row['id_question'] . "','0','1');return false;\"><i class='fa fa-plane' aria-hidden='true' ></i> xem nhanh - chat</a>";
-        $query_chat = mysql_query("SELECT * FROM `app_my_girl_" . $row['langs'] . "` WHERE `id` = '2' LIMIT 1");
-        if (mysql_num_rows($query_chat)) {
-            $data_chat = mysql_fetch_array($query_chat);
+        $query_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $row['langs'] . "` WHERE `id` = '2' LIMIT 1");
+        if (mysqli_num_rows($query_chat)) {
+            $data_chat = mysqli_fetch_array($query_chat);
             $txt_show_contain_father = '<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> chat:' . $data_chat['text'] . ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' . $data_msg['chat'] . '</span><br/>';
         }
     }

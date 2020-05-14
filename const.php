@@ -12,6 +12,6 @@ $ver=2;
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 $url=$protocol.'localhost';
 $url_syn='http://carrotstore.com';
-$url_work=$url.'/app_mobile/work';
 $url_carrot_store=$url;
 $url_cms=$url.'/app_mobile';
+$url_work=$url_cms.'/work';

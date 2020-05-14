@@ -1,10 +1,5 @@
 <?php
-$protocol = $_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
-if ($protocol == 'https') {
-    include "config_https.php";
-} else {
-    include "config.php";
-}
+include "config.php";
 include "database.php";
 include "function.php";
 include "app_my_girl_function.php";
@@ -87,7 +82,7 @@ $data_app = new Data_app();
 //Máy chủ lưu trữ dữ liệu
 $item_upload = new item_sever_upload();
 $item_upload->name = "Máy chủ nhà rốt";
-$item_upload->url_home='http://carrot.sytes.net';
+$item_upload->url_home='http://34.70.228.22';
 $item_upload->url = $item_upload->url_home.'/ajax.php';
 array_push($data_app->arr_sever_upload, $item_upload);
 

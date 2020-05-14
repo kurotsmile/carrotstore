@@ -24,17 +24,17 @@ if(mysqli_num_rows($query_book)>0){
     while($book=mysqli_fetch_array($query_book)){
     ?>
     <li id_book="<?php echo $book['id']; ?>" >
-        <i class="fas fa-book"></i> 
+        <i class="fa fa-book"></i> 
         <?php echo $book['name']; ?>  
-        <a class="buttonPro small blue" href="<?php echo $url;?>/?page=view_book&id=<?php echo $book['id']; ?>"><i class="fas fa-play"></i> Xem (<?php echo $book['chapter']; ?> chương)</a>
-        <a class="buttonPro small yellow" href="<?php echo $url;?>?page=add_book&edit=<?php echo $book['id']; ?>"><i class="fas fa-edit"></i> Sửa</a> 
-        <a class="buttonPro small red" href="<?php echo $url_cur;?>&delete=<?php echo $book['id']; ?>"><i class="fas fa-trash-alt"></i> Xóa</a>
+        <a class="buttonPro small blue" href="<?php echo $url;?>/?page=view_book&id=<?php echo $book['id']; ?>"><i class="fa fa-play"></i> Xem (<?php echo $book['chapter']; ?> chương)</a>
+        <a class="buttonPro small yellow" href="<?php echo $url;?>?page=add_book&edit=<?php echo $book['id']; ?>"><i class="fa fa-edit"></i> Sửa</a> 
+        <a class="buttonPro small red" href="<?php echo $url_cur;?>&delete=<?php echo $book['id']; ?>"><i class="fa fa-trash"></i> Xóa</a>
     </li>
     <?php }
     mysqli_free_result($query_book);
     ?>
 </ul>
-<a id="btn_save" class="buttonPro small yellow" onclick="save_all_item();return false;"><i class="fas fa-save"></i> Lưu thay đổi thứ tự</a>
+<a id="btn_save" class="buttonPro small yellow" onclick="save_all_item();return false;"><i class="fa fa-save"></i> Lưu thay đổi thứ tự</a>
 <script>
 $(document).ready(function(){
     $("#btn_save").hide();

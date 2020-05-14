@@ -2,7 +2,8 @@
 <?php
 if(isset($_GET['act'])){
     if(is_file('error_log')){
-        unlink('error_log');
+        if(file_exists('error_log'))unlink('error_log');
+		if(file_exists('app_mygirl/error_log'))unlink('app_mygirl/error_log');
         echo '<strong>Xóa lỗi thành công</strong>';
     }
 }
@@ -12,6 +13,19 @@ if(isset($_GET['act'])){
 <?php
 if(is_file('error_log')){
     $fh = fopen('error_log','r');
+    while ($line = fgets($fh)) {
+        echo($line);
+    }
+    fclose($fh);
+}
+
+?>
+</textarea>
+<label style="width:90%;float:left;">Lỗi thư mục app_my_girl</label>
+<textarea style="height: 300px;width: 90%;float: left;">
+<?php
+if(is_file('app_mygirl/error_log')){
+    $fh = fopen('app_mygirl/error_log','r');
     while ($line = fgets($fh)) {
         echo($line);
     }

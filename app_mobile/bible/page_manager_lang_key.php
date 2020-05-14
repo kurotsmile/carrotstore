@@ -17,11 +17,11 @@ if(isset($_POST['name_key'])){
     <?php
     if($id_edit==''){
     ?>
-        <strong><i class="fas fa-tags"></i> Thêm trường ngôn ngữ</strong>
+        <strong><i class="fa fa-tags"></i> Thêm trường ngôn ngữ</strong>
     <?php
     }else{
     ?>
-        <strong><i class="fas fa-tags"></i> Cập nhật trường ngôn ngữ</strong>
+        <strong><i class="fa fa-tags"></i> Cập nhật trường ngôn ngữ</strong>
     <?php   
     }
     
@@ -67,7 +67,7 @@ if(isset($_POST['name_key'])){
         ?>
         <input class="buttonPro small yellow" type="submit" value="Cập nhật" />
         <input type="hidden" name="edit_id" value="<?php echo $id_edit;?>" />
-        <a href="<?php echo $url_cur; ?>" class="buttonPro small blue"><i class="fas fa-angle-double-left"></i> Thêm trường khác</a>
+        <a href="<?php echo $url_cur; ?>" class="buttonPro small blue"><i class="fa fa-angle-double-left"></i> Thêm trường khác</a>
         <?php }else{?>
         <input class="buttonPro small green" type="submit" value="Thêm mới" />
         <?php }?>
@@ -96,8 +96,8 @@ while($row_key=mysqli_fetch_array($query_list_key)){
     <td><?php echo $row_key['id']; ?></td>
     <td><?php echo $row_key['name_key']; ?></td>
     <td>
-        <a href="<?php echo $url_cur; ?>&edit_id=<?php echo $row_key['id']; ?>&name_key=<?php echo $row_key['name_key']; ?>" class="buttonPro small yellow"><i class="fas fa-edit"></i> Sửa</a>
-        <a href="<?php echo $url_cur; ?>&delete=<?php echo $row_key['id']; ?>" class="buttonPro small red"><i class="fas fa-trash-alt"></i> Xóa</a>
+        <a href="<?php echo $url_cur; ?>&edit_id=<?php echo $row_key['id']; ?>&name_key=<?php echo $row_key['name_key']; ?>" class="buttonPro small yellow"><i class="fa fa-edit"></i> Sửa</a>
+        <a href="<?php echo $url_cur; ?>&delete=<?php echo $row_key['id']; ?>" class="buttonPro small red"><i class="fa fa-trash"></i> Xóa</a>
     </td>
 </tr>
 <?php 

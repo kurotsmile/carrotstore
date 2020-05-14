@@ -156,11 +156,11 @@ while($row_media=mysqli_fetch_array($query_media)){
 ?>
     <tr>
         <td><?php if($url!=''){ ?><img src="<?php echo thumb($url_image,'50');?>"/><?php }?></td>
-        <td><i class="fas fa-book"></i> <?php echo $row_media['order_book']; ?></td>
-        <td><i class="fas fa-quote-left"></i> <?php echo $row_media['order_chap']; ?></td>
+        <td><i class="fa fa-book"></i> <?php echo $row_media['order_book']; ?></td>
+        <td><i class="fa fa-quote-left"></i> <?php echo $row_media['order_chap']; ?></td>
         <td>
-            <a href="<?php echo $url;?>?page=media&edit=<?php echo $row_media['id'];?>" class="buttonPro small yellow"><i class="fas fa-edit"></i> Sửa</a>
-            <a href="<?php echo $url;?>?page=media&delete=<?php echo $row_media['id'];?>" class="buttonPro small red"><i class="fas fa-trash-alt"></i> Xóa</a>
+            <a href="<?php echo $url;?>?page=media&edit=<?php echo $row_media['id'];?>" class="buttonPro small yellow"><i class="fa fa-edit"></i> Sửa</a>
+            <a href="<?php echo $url;?>?page=media&delete=<?php echo $row_media['id'];?>" class="buttonPro small red"><i class="fa fa-trash-alt"></i> Xóa</a>
         </td>
         <td>
             <?php

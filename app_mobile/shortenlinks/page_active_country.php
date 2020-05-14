@@ -3,9 +3,9 @@
 <?php
 if(isset($_POST['sel_country'])){
     $sel_country=$_POST['sel_country'];
-    $query_reste_country=mysql_query("DELETE FROM `country`");
+    $query_reste_country=mysqli_query($link,"DELETE FROM `country`");
     for($i=0;$i<sizeof($sel_country);$i++){
-        $query_add=mysql_query("INSERT INTO `country` (`key`) VALUES ('".$sel_country[$i]."');");
+        $query_add=mysqli_query($link,"INSERT INTO `country` (`key`) VALUES ('".$sel_country[$i]."');");
     }
     echo alert("Cập nhật thành công!","alert");
 }
@@ -14,12 +14,12 @@ if(isset($_POST['sel_country'])){
 <table>
 <?php
 
-$query_list_country=mysql_query("SELECT * FROM carrotsy_virtuallover.`app_my_girl_country`");
-while($item_country=mysql_fetch_array($query_list_country)){
+$query_list_country=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_country`");
+while($item_country=mysqli_fetch_array($query_list_country)){
     $key_country=$item_country['key'];
     $is_sel='off';
-    $query_check_sel=mysql_query("SELECT `key` FROM `country` WHERE `key` = '$key_country' LIMIT 1");
-    if(mysql_num_rows($query_check_sel)>0){
+    $query_check_sel=mysqli_query($link,"SELECT `key` FROM `country` WHERE `key` = '$key_country' LIMIT 1");
+    if(mysqli_num_rows($query_check_sel)>0){
         $is_sel='on';
     }else{
         $is_sel='off';
@@ -40,7 +40,7 @@ while($item_country=mysql_fetch_array($query_list_country)){
     </tr>
 <?php 
 }
-mysql_free_result($query_list_country);
+mysqli_free_result($query_list_country);
 
 ?>
 </table>

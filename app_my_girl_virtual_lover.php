@@ -1,7 +1,8 @@
 <?php
 include "config.php";
 include "database.php";
-$func = $_POST['func'];
+$func="";
+if(isset($_POST['func']))$func = $_POST['func'];
 $date_cur = date("Y-m-d");
 
 $lang_sel = 'vi';
@@ -203,13 +204,13 @@ function Chat_report($data_row, $type_chat, $lang_sel, $link)
             }
 
             if ($data_row['func_sever'] == 'doc_ten') {
-                if (get_name_device($lang_sel) == '') {
+                if (get_name_device($link,$lang_sel) == '') {
                     Chat_report(chat_func($link,'chua_biet_ten'), 'nho_ten', $lang_sel, $link);
                 }
             }
 
             if ($data_row['func_sever'] == 'dem_ngay_gap') {
-                if (get_name_device($lang_sel) != '') {
+                if (get_name_device($link,$lang_sel) != '') {
                     $id_device = "";
                     if (isset($_POST['id_device'])) {
                         $id_device = $_POST['id_device'];
@@ -256,7 +257,7 @@ function Chat_report($data_row, $type_chat, $lang_sel, $link)
                 $txt_dc = str_replace('Unnamed Road,', '', $txt_dc);
                 $txt_chat = str_replace("{vi_tri}", $txt_address, $txt_chat);
 
-                if (get_name_device($lang_sel) != '') {
+                if (get_name_device($link,$lang_sel) != '') {
                     $update_user_address = mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `address` = '$txt_dc' WHERE `id_device` = '$id_device';");
                 }
             }
@@ -338,7 +339,7 @@ function Chat_report($data_row, $type_chat, $lang_sel, $link)
             $query_get_notification = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$lang_sel` WHERE `func` = 'thong_bao' Order by rand() LIMIT 1");
             if (mysqli_num_rows($query_get_notification)) {
                 $data_msg = mysqli_fetch_array($query_get_notification);
-                $chat->data_text = str_replace("{ten_user}", get_name_device($lang_sel), $data_msg[0]);
+                $chat->data_text = str_replace("{ten_user}", get_name_device($link,$lang_sel), $data_msg[0]);
             }
             mysqli_free_result($query_get_notification);
         }
@@ -482,7 +483,7 @@ function get_name_device($link,$lang_sel)
 function check_func_msg_sevrer($type_question, $id_device, $text, $lang_sel, $link, $sex)
 {
     if ($type_question == "nho_ten") {
-        if (get_name_device($lang_sel) == "") {
+        if (get_name_device($link,$lang_sel) == "") {
             $add_effect = mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang_sel` (`id_device`,`name`,`sex`,`date_start`) VALUES ('$id_device','$text','$sex',now());");
         } else {
             $add_effect = mysqli_query($link,"UPDATE `app_my_girl_user_$lang_sel` SET `name` = '$text',`sex`='$sex' WHERE `id_device` = '$id_device';");
@@ -518,7 +519,7 @@ function check_func_msg_sevrer($type_question, $id_device, $text, $lang_sel, $li
             $get_music_by_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "` WHERE `id` = '" . $id_song . "' LIMIT 1");
             if ($get_music_by_lyrics != false) {
                 if (mysqli_num_rows($get_music_by_lyrics) > 0) {
-                    Chat_report(mysqli_fetch_array($get_music_by_lyrics), 'chat', $lang_sel, '');
+                    Chat_report(mysqli_fetch_array($get_music_by_lyrics), 'chat', $lang_sel, $link);
                 }
             }
             mysqli_free_result($get_music_by_lyrics);
@@ -887,11 +888,11 @@ if ($func == 'chat') {
         $text = str_replace('?', '', $text);
         $wiki = wikidefinition($text, $lang_sel);
         if ($wiki != "") {
-            $tim_kiem = chat_func('tim_thay');
+            $tim_kiem = chat_func($link,'tim_thay');
             $tim_kiem['chat'] = str_replace('{thong_tin}', $wiki, $tim_kiem['chat']);
             Chat_report($tim_kiem, 'msg', $lang_sel, $link);
         } else {
-            $tim_kiem = chat_func('khong_tim_thay');
+            $tim_kiem = chat_func($link,'khong_tim_thay');
             Chat_report($tim_kiem, 'msg', $lang_sel, $link);
         }
     }
@@ -957,22 +958,26 @@ if ($func == 'chat') {
         if ($id_question != '') {
             $txt_table_chat_return = 'app_my_girl_' . $lang_sel;
             $get_child_chat = mysqli_query($link,"SELECT * FROM  `$txt_table_chat_return`  WHERE `text`='$text' AND `pater` = '$id_question' AND `pater_type` = '$type_question' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `disable` = '0' ORDER BY RAND() LIMIT 1");
-            if (mysqli_num_rows($get_child_chat)) {
-                Chat_report(mysqli_fetch_array($get_child_chat), 'chat', $lang_sel, $link);
-            }
+			if($get_child_chat){
+				if (mysqli_num_rows($get_child_chat)) {
+					Chat_report(mysqli_fetch_array($get_child_chat), 'chat', $lang_sel, $link);
+				}
+			}
 
             $get_child_chat2 = mysqli_query($link,"SELECT * FROM  `$txt_table_chat_return` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE) AND `pater` = '$id_question' AND `pater_type` = '$type_question' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `disable` = '0' LIMIT 1");
-            if (mysqli_num_rows($get_child_chat2)) {
-                Chat_report(mysqli_fetch_array($get_child_chat2), 'chat', $lang_sel, $link);
-            }
+			if($get_child_chat2){
+				if (mysqli_num_rows($get_child_chat2)) {
+					Chat_report(mysqli_fetch_array($get_child_chat2), 'chat', $lang_sel, $link);
+				}
+			}
         }
-
 
         $result_chat4 = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `text`='$text' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' AND `disable` = '0' $txt_limit_ver  $txt_limit_os $txt_limit_chat ORDER BY RAND() LIMIT 1");
-
-        if (mysqli_num_rows($result_chat4)) {
-            Chat_report(mysqli_fetch_array($result_chat4), 'chat', $lang_sel, $link);
-        }
+		if($result_chat4){
+			if (mysqli_num_rows($result_chat4)) {
+				Chat_report(mysqli_fetch_array($result_chat4), 'chat', $lang_sel, $link);
+			}
+		}
 
 
         $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `text` LIKE '%$text%' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' AND `disable` = '0' $txt_limit_os $txt_limit_ver $txt_limit_chat ORDER BY RAND() LIMIT 1");
@@ -981,12 +986,11 @@ if ($func == 'chat') {
             Chat_report(mysqli_fetch_array($result_chat), 'chat', $lang_sel, $link);
         } else {
             $result_chat2 = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE)  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' AND `disable` = '0' $txt_limit_os $txt_limit_ver $txt_limit_chat LIMIT 1");
-            if (mysqli_num_rows($result_chat2)) {
-                Chat_report(mysqli_fetch_array($result_chat2), 'chat', $lang_sel, $link);
-            }
-
-
-            //mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang_sel','$sex',now(),'$os',$character,$character_sex,$version,'$id_question','$type_question','$id_device','$location_lon','$location_lat');");
+			if($result_chat2){
+				if (mysqli_num_rows($result_chat2)) {
+					Chat_report(mysqli_fetch_array($result_chat2), 'chat', $lang_sel, $link);
+				}
+			}
             Chat_report(chat_func($link,'bam_bay'), 'msg', $lang_sel, $link);
         }
         mysqli_free_result($result_chat);

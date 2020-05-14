@@ -53,15 +53,14 @@ if(isset($_POST['func'])){
     if($_POST['func']=="add"){
 
         $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_background` (`name`,`price`,`id_store`,`version`,`category`) VALUES ('$name_bk','$price_bk','$id_store_bk','$version','$id_category');");
-        $id_new=mysql_insert_id();
+        $id_new=mysqli_insert_id($link);
         $target_dir = "app_mygirl/obj_background/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_icon"]["tmp_name"], $target_dir);
         $target_dir = "app_mygirl/obj_background/view_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_view"]["tmp_name"], $target_dir);
         $target_dir = "app_mygirl/obj_background/place_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_place"]["tmp_name"], $target_dir);
-        
-        echo '<a class="buttonPro blue" target="_blank" href="http://work.carrotstore.com/?id_object='.$id_new.'&lang=vi&type_chat=bk&type_action=add">Thêm vào bàn làm việc</a>';
+        echo btn_add_work($id_new,'vi','bk','add');
     }else{
         $id_edit=$_POST['id_edit'];
         $update_effect=mysqli_query($link,"UPDATE `app_my_girl_background` SET `name` = '$name_bk',`price`='$price_bk',`id_store`='$id_store_bk',`version`='$version',`category`='$id_category' WHERE `id` = '$id_edit';");

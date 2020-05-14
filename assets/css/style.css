@@ -2254,7 +2254,7 @@ input#slider_volume::-moz-range-thumb,input#slider_timer_val::-moz-range-thumb {
 #kr_player_music .box_area progress[value] {-webkit-appearance: none;appearance: none;background-color: #008000;color: blue;border-radius: 10px;height: 5px;}
 #kr_player_music .box_area progress[value]::-webkit-progress-bar {background-color: #008000;color: blue;border-radius: 10px;}
 #kr_player_music .box_area progress::-webkit-progress-value {background-color: white;border-radius: 10px;}
-.btn_control{cursor: pointer;display: inline-block;transition: color 2s}
+.btn_control{cursor: pointer;color: white;display: inline-block;transition: color 2s}
 .btn_control:hover{color: orange;}
 
 #box_lyrics{float: left;width: 100%;background-color: white;border-radius: 10px;padding: 10px;font-size: 11px;display: none;}

@@ -42,7 +42,7 @@ if(isset($_POST['user_name'])){
     <link href="<?php echo $url;?>/buttonPro.css" rel="stylesheet" />
     <link rel="icon" href="icon.ico" type="image/x-icon"/>
     <script src="<?php echo $url_carrot_store;?>/js/jquery.js"></script>
-    <link rel="stylesheet" href="<?php echo $url;?>/fonts/css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/js/jquery-ui.css"/>
     <script src="<?php echo $url_carrot_store;?>/js/jquery-ui.js"></script>
     <script src="<?php echo $url;?>/js/sweetalert.min.js"></script>
@@ -50,7 +50,7 @@ if(isset($_POST['user_name'])){
 <body>
 <div id="header">
 <span id="title">Kinh thánh</span>
-<a href="<?php echo $url;?>?logout=1" style="float: right;margin-right: 10px;color: white;margin-top: 10px;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+<a href="<?php echo $url;?>?logout=1" style="float: right;margin-right: 10px;color: white;margin-top: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
 </div>
 <ul id="menu_work">
 <?php
@@ -66,11 +66,11 @@ while($item_app=mysqli_fetch_array($query_list_app)){
 if(isset($_SESSION['login_id'])){
 ?>
 <ul id="menu">
-    <li><a href="<?php echo $url;?>?page=home" class="buttonPro <?php if($page=='home'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fas fa-volleyball-ball"></i> Tổng quang</a></li>
-    <li><a href="<?php echo $url;?>?page=media" class="buttonPro <?php if($page=='media'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fas fa-images"></i> Hình ảnh</a></li>
-    <li><a href="<?php echo $url;?>?page=manager_country" class="buttonPro <?php if($page=='manager_country'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fas fa-globe"></i> Quản lý quốc gia triển khai</a></li>
-    <li><a href="<?php echo $url;?>?page=manager_lang_key" class="buttonPro <?php if($page=='manager_lang_key'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fas fa-tags"></i> Trường ngôn ngữ</a></li>
-    <li><a href="<?php echo $url;?>?page=tool" class="buttonPro <?php if($page=='tool'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fas fa-wrench"></i> Công cụ</a></li>
+    <li><a href="<?php echo $url;?>?page=home" class="buttonPro <?php if($page=='home'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fa fa-globe" aria-hidden="true"></i> Tổng quang</a></li>
+    <li><a href="<?php echo $url;?>?page=media" class="buttonPro <?php if($page=='media'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fa fa-picture-o" aria-hidden="true"></i> Hình ảnh</a></li>
+    <li><a href="<?php echo $url;?>?page=manager_country" class="buttonPro <?php if($page=='manager_country'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fa fa-globe"></i> Quản lý quốc gia triển khai</a></li>
+    <li><a href="<?php echo $url;?>?page=manager_lang_key" class="buttonPro <?php if($page=='manager_lang_key'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fa fa-tags"></i> Trường ngôn ngữ</a></li>
+    <li><a href="<?php echo $url;?>?page=tool" class="buttonPro <?php if($page=='tool'){ echo 'orange';}else{ echo 'red'; }?>"><i class="fa fa-wrench"></i> Công cụ</a></li>
 </ul>
 <?php
 }

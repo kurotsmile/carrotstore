@@ -1,12 +1,11 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
+include "../../const.php";
 global $url;
-define('URL','http://carrotstore.com/app_mobile/shortenlinks');
-$url='http://carrotstore.com/app_mobile/shortenlinks';
-$url_home='http://carrotstore.com';
+$url=$url_cms.'/shortenlinks';
+define('URL',$url);
 $mysql_host='localhost';
-$mysql_pass='V5];e[Mkw#Q#';
-$mysql_user='root';
+$mysql_pass='123';
+$mysql_user='carrot';
 $mysql_database='carrotsy_shortenlinks';
 $key_api_google='AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I';
 ?>

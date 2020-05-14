@@ -23,7 +23,7 @@ $query_list_country=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app
 <form class="box_form" action="" method="post">
 
 <div class="row">
-<strong><i class="fas fa-tags"></i> Thêm giá trị ngôn ngữ nước (<?php echo $lang_key ?>)</strong>
+<strong><i class="fa fa-tags"></i> Thêm giá trị ngôn ngữ nước (<?php echo $lang_key ?>)</strong>
 </div>
 
 <?php
@@ -61,7 +61,7 @@ while($row_key=mysqli_fetch_array($query_list_key)){
     <td><?php echo $row_key['name_key']; ?></td>
     <td><input style="width: 100%;" type="text" name="<?php echo $row_key['name_key']; ?>" value="<?php echo $data_val->{$row_key['name_key']};?>" /></td>
     <td>
-        <a href="<?php echo $url;?>?page=manager_lang_key&edit_id=<?php echo $row_key['id']; ?>&name_key=<?php echo $row_key['name_key']; ?>" class="buttonPro small"><i class="fas fa-edit"></i> sửa tag</a>
+        <a href="<?php echo $url;?>?page=manager_lang_key&edit_id=<?php echo $row_key['id']; ?>&name_key=<?php echo $row_key['name_key']; ?>" class="buttonPro small"><i class="fa fa-edit"></i> sửa tag</a>
         <?php 
         if($lang_key_to!=''){
             $txt_lang_to=$lang_key_to;
@@ -69,7 +69,7 @@ while($row_key=mysqli_fetch_array($query_list_key)){
                 $txt_lang_to='zh-CN';
             }
         ?>
-        <a href="https://translate.google.com/#view=home&op=translate&sl=<?php echo $lang_key;?>&tl=<?php echo $txt_lang_to;?>&text=<?php echo $data_val->{$row_key['name_key']};?>" target="_blank" class="buttonPro small yellow" onclick="$(this).css('color','red');"><i class="fas fa-language"></i> <?php echo $lang_key_to; ?></a>
+        <a href="https://translate.google.com/#view=home&op=translate&sl=<?php echo $lang_key;?>&tl=<?php echo $txt_lang_to;?>&text=<?php echo $data_val->{$row_key['name_key']};?>" target="_blank" class="buttonPro small yellow" onclick="$(this).css('color','red');"><i class="fa fa-language"></i> <?php echo $lang_key_to; ?></a>
         <?php }?>
     </td>
 </tr>

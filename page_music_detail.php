@@ -72,7 +72,7 @@ $txt_title=$data_music['chat'];
                     ?>
                     <script>
                     function open_edit(){
-                        window.open("http://carrotstore.com/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
+                        window.open("<?php echo $url;?>/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
                     }
                     </script>
                     <br />
@@ -86,6 +86,7 @@ $txt_title=$data_music['chat'];
         </h3>
 
             <?php
+            $url_download=$url.'/pay/music/0/'.$id_music.'/'.$lang_sel;
             $is_playlist=false;
             include_once "template/kr_player_music.php";
             ?>

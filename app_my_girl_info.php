@@ -40,7 +40,7 @@ if ($char_view_type == '2') {
         $query_app_work = mysqli_query($link,"SELECT * FROM carrotsy_work.`work_app`");
         while ($row_app_work = mysqli_fetch_array($query_app_work)) {
             echo '<a target="_blank"  href="' . $row_app_work['url'] . '">';
-            echo '<img src="http://work.carrotstore.com/thumb.php?src=http://work.carrotstore.com/avatar_app/' . $row_app_work['id'] . '.png&size=18&trim=1"/> ';
+            echo '<img src="'.$url_work.'/thumb.php?src='.$url_work.'/avatar_app/' . $row_app_work['id'] . '.png&size=18&trim=1"/> ';
             echo $row_app_work['name'];
             echo '</a>';
         }
@@ -49,8 +49,7 @@ if ($char_view_type == '2') {
         if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
             ?>
             <a style="float: right;" href="<?php echo $url; ?>/vl/?logout=1">
-                <strong><img style="width: 20px;float: left;margin-right: 5px;"
-                             src="http://work.carrotstore.com/img.php?url=avatar_user/<?php echo $data_user_carrot['user_id']; ?>.png&size=20"/>
+                <strong><img style="width: 20px;float: left;margin-right: 5px;" src="<?php echo $url_work;?>/img.php?url=avatar_user/<?php echo $data_user_carrot['user_id']; ?>.png&size=20"/>
                     User:</strong> <?php echo $data_user_carrot['user_name']; ?>
             </a>
         <?php } ?>
@@ -232,13 +231,13 @@ if ($char_view_type == '2') {
                         for (var i=0;i<arr_item.length;i++){
                             var count_data=$('.syn.'+arr_item[i].key_table).attr("syn-count");
                             if(count_data==arr_item[i].count_table) {
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn" >' + arr_item[i].count_table + '</span>');
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;" ><i class="fa fa-check-circle" aria-hidden="true"></i></span>');
                             }else if(count_data>arr_item[i].count_table) {
-                                var s_count=parseInt(arr_item[i].count_table);
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\')">-'+s_count+'</span>');
+                                var s_count=count_data-parseInt(arr_item[i].count_table);
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;">-'+s_count+'</span>');
                             }else{
                                 var s_count=parseInt(arr_item[i].count_table)-parseInt(count_data);
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\')"> +' +s_count + '</span>');
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;"> +' +s_count + '</span>');
                             }
                         }
                     }
@@ -248,7 +247,7 @@ if ($char_view_type == '2') {
     }
 
     function backup_mysql_table(s_table){
-        window.location.href="http://carrotstore.com/app_my_girl_backup.php?name_file="+s_table+".sql&table="+s_table;
+        window.location.href="<?php echo $url_syn;?>/app_my_girl_backup.php?name_file="+s_table+".sql&table="+s_table;
     }
 </script>
 

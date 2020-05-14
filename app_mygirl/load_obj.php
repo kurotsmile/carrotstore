@@ -74,7 +74,7 @@ if($func=='load_music'){
     if(isset($_POST['lang'])){$lang_sel=$_POST['lang'];}
     
     $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE  `effect`='2' ORDER BY RAND() LIMIT 15");
-    if(mysql_num_rows($list_view)>0){
+    if(mysqli_num_rows($list_view)>0){
         while ($row = mysqli_fetch_array($list_view)) {
             $skin_item=new Skin_item();
             $skin_item->name=$row['chat'];

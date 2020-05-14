@@ -7,7 +7,7 @@
     }
 
     function reset_url(){
-        window.location = "<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
+        window.location = "<?php echo $protocol."$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>";
     }
 
     $(window).scroll( function(){

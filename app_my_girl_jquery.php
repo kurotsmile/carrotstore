@@ -729,26 +729,21 @@ if(isset($_POST['save_lyric'])){
 if(isset($_POST['save_video'])){
     $id_music=$_POST['id_music'];
     $lang=$_POST['lang'];
-    $link=$_POST['link'];
+    $link_video=$_POST['link'];
     $user_name='';
     if(isset($_POST['user_name'])){
         $user_name=$_POST['user_name'];
     }
     $check_video=mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang` WHERE  `id_chat` = '$id_music' LIMIT 1");
     if(mysqli_num_rows($check_video)==0){
-        mysqli_query($link,"INSERT INTO `app_my_girl_video_$lang` (`id_chat`, `link`) VALUES ('$id_music', '$link');");
+        mysqli_query($link,"INSERT INTO `app_my_girl_video_$lang` (`id_chat`, `link`) VALUES ('$id_music', '$link_video');");
         echo mysqli_error($link);
     }else{
-        mysqli_query($link,"UPDATE `app_my_girl_video_$lang` SET `link` = '$link' WHERE  `id_chat` = '$id_music'");
+        mysqli_query($link,"UPDATE `app_my_girl_video_$lang` SET `link` = '$link_video' WHERE  `id_chat` = '$id_music'");
         echo mysqli_error($link);
     }
-    echo $link;
+    echo $link_video;
     
-    if($user_name!=''){
-        $add_work=mysqli_query($link,"INSERT INTO carrotsy_work.`work_chat` (`id_chat`, `type_chat`, `user_name`,`type_action`,`lang_chat`, `dates`) VALUES ('$id_music', 'chat', '$user_name','edit','$lang','$date_cur')");
-        mysqli_free_result($add_work);
-    }
-    mysqli_free_result($check_video);
     exit;
 }
 
@@ -783,7 +778,6 @@ if(isset($_POST['delete_select_brain'])){
         }else{
             echo mysqli_error($link);
         }
-        mysqli_free_result($query_delete);
     }
     exit;
 }
@@ -926,7 +920,7 @@ if($func=='save_avatar_music'){
     curl_exec($ch);
     curl_close($ch);
     fclose($fp);
-    echo $url_home.'/'.$img;
+    echo $url_carrot_store.'/'.$img;
     exit;
 }
 
@@ -1055,11 +1049,11 @@ if($func=='update_carrotstore_music'){
     $data_song_genre=addslashes($_GET['data_song_genre']);
     $data_song_lang=$_GET['data_song_lang'];
     $query_update_music=mysqli_query($link,"UPDATE `app_my_girl_".$data_song_lang."_lyrics` SET `artist` = '$data_song_artist',`album` = '$data_song_album',`year` = '$data_song_year',`genre` = '$data_song_genre' WHERE `id_music` = '$data_song_id' LIMIT 1;");
-    if(mysql_error($link)==''){
+    if(mysqli_error($link)==''){
         $c->{'error'}='0';
     }else{
         $c->{'error'}='1';
-        $c->data=mysql_error($link);
+        $c->data=mysqli_error($link);
     }
     echo 'updatemusiccarrotstorecallback(' . json_encode($c) . ')';
     exit;
@@ -1113,7 +1107,7 @@ if($func=='check_data_syn'){
         $item=new item_table();
         $item->key_table=$arr_table[$i];
         $k_table=$arr_table[$i];
-        $query_count=mysqli_query("SELECT COUNT(1) as c FROM `$k_table`");
+        $query_count=mysqli_query($link,"SELECT COUNT(1) as c FROM `$k_table`");
         $data_count=mysqli_fetch_assoc($query_count);
         $item->count_table=$data_count['c'];
         array_push($arr_item,$item);

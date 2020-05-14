@@ -25,7 +25,7 @@ $data_type=mysqli_fetch_assoc($query_type);
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/app.plist')){
                         ?>
-                            <a title="<?php echo lang($link,'download_on').' (Carrot Store)';?>" alt="<?php echo lang($link,'download_on').' (Carrot Store)';?>" class="buttonPro small green" href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $row[0];?>/ios/app.plist" target="_blank"><i class="fa fa-apple" aria-hidden="true"></i> Ipa</a>
+                            <a title="<?php echo lang($link,'download_on').' (Carrot Store)';?>" alt="<?php echo lang($link,'download_on').' (Carrot Store)';?>" class="buttonPro small green" href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $row['id'];?>/ios/app.plist" target="_blank"><i class="fa fa-apple" aria-hidden="true"></i> Ipa</a>
                         <?php }?>
                 </div>
                 <div class="app_type">
@@ -47,7 +47,7 @@ $data_type=mysqli_fetch_assoc($query_type);
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/app.plist')){
                         ?>
-                            <a title="<?php echo lang($link,'download_on').' (Carrot Store)';?>"  class="buttonPro orange small" href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $row[0];?>/ios/app.plist" target="_blank"><i class="fa fa-apple" aria-hidden="true"></i> (Ipa) <?php echo lang($link,'download_on').' (Carrot Store)';?></a>
+                            <a title="<?php echo lang($link,'download_on').' (Carrot Store)';?>"  class="buttonPro orange small" href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $row['id'];?>/ios/app.plist" target="_blank"><i class="fa fa-apple" aria-hidden="true"></i> (Ipa) <?php echo lang($link,'download_on').' (Carrot Store)';?></a>
                         <?php }?>
                         <a href="#" style="width: auto" onclick="$(this).parent().parent().removeClass('menu_app');return false;" class="buttonPro small"><i class="fa fa-arrow-circle-o-left"></i></a>
                     </div>

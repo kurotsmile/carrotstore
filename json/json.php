@@ -56,7 +56,7 @@ if($_GET||$_POST){
             if(isset($_SESSION['lang'])){
                 $lang_sel=$_SESSION['lang'];
             }
-            $result = mysqli_query($link,"SELECT * FROM `products` as p INNER JOIN `product_name` as n ON p.`id` = n.`id_product` WHERE n.`key_country` = '$lang_sel' AND n.`data` LIKE '%$key%' AND p.`status`=1 LIMIT 50",$link);
+            $result = mysqli_query($link,"SELECT * FROM `products` as p INNER JOIN `product_name` as n ON p.`id` = n.`id_product` WHERE n.`key_country` = '$lang_sel' AND n.`data` LIKE '%$key%' AND p.`status`=1 LIMIT 50");
             if(isset($_SESSION['view_type'])){
                 $view_type=$_SESSION['view_type'];
                 include "$view_type.php";
@@ -71,7 +71,7 @@ if($_GET||$_POST){
             if(isset($_SESSION['lang'])){
                 $lang_sel=$_SESSION['lang'];
             }
-            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND (`status`='0' AND `sdt`!='' ) ORDER BY RAND() LIMIT 50",$link);
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND (`status`='0' AND `sdt`!='' ) ORDER BY RAND() LIMIT 50");
             include "page_member_template.php";
         }
         

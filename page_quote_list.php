@@ -47,5 +47,5 @@ while($row=mysqli_fetch_assoc($list_quote)){
 </div>
 
 <?php
-echo show_ads_box_main('quote_page');
+echo show_ads_box_main($link,'quote_page');
 ?>

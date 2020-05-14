@@ -35,7 +35,7 @@ if(isset($_POST['name_key'])){
             echo 'Trường ngôn ngữ không được để trống!';
         }else{
             if($id_edit==''){
-                $query_add=mysql_query("INSERT INTO `key_lang` (`key`) VALUES ('$name_key');");
+                $query_add=mysqli_query($link,"INSERT INTO `key_lang` (`key`) VALUES ('$name_key');");
                 if($query_add){
                     $name_key='';
                     echo "Thêm sách thành công!";
@@ -43,7 +43,7 @@ if(isset($_POST['name_key'])){
                     echo "Thêm sách thất bại";
                 }
             }else{
-                $query_add=mysql_query("UPDATE `key_lang` SET `key` = '$name_key' WHERE `key` = '$id_edit';");
+                $query_add=mysqli_query($link,"UPDATE `key_lang` SET `key` = '$name_key' WHERE `key` = '$id_edit';");
                 if($query_add){
                     echo "Cập nhật sách thành công!";
                 }elsE{
@@ -51,7 +51,7 @@ if(isset($_POST['name_key'])){
                 }
             }
         }
-        echo mysql_error();
+        echo mysqli_error($link);
     }
     ?>
     </div>
@@ -78,23 +78,21 @@ if(isset($_POST['name_key'])){
 <?php
 if(isset($_GET['delete'])){
     $id_delete=$_GET['delete'];
-    $query_delete=mysql_query("DELETE FROM `key_lang` WHERE ((`key` = '$id_delete'));");
+    $query_delete=mysqli_query($link,"DELETE FROM `key_lang` WHERE ((`key` = '$id_delete'));");
     echo "Xóa thành công trường ngôn ngữ (".$id_delete.")";
 }
 ?>
 
 <table>
 <tr>
-    <th>ID</th>
     <th>Name key</th>
     <th>Thao tác</th>
 </tr>
 <?php
-$query_list_key=mysql_query("SELECT * FROM `key_lang`");
-while($row_key=mysql_fetch_array($query_list_key)){
+$query_list_key=mysqli_query($link,"SELECT * FROM `key_lang`");
+while($row_key=mysqli_fetch_array($query_list_key)){
 ?>
 <tr>
-    <td><?php echo $row_key['id']; ?></td>
     <td><?php echo $row_key['key']; ?></td>
     <td>
         <a href="<?php echo $url_cur; ?>&edit_id=<?php echo $row_key['key']; ?>&name_key=<?php echo $row_key['key']; ?>" class="buttonPro small yellow"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>

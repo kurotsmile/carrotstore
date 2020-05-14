@@ -10,6 +10,7 @@
         <?php if($is_playlist){?><i class="fa fa-step-backward btn_control btn_backward" aria-hidden="true" onclick="kr_back_song();"></i><?php }?>
         <div class="btn_refresh btn_control" id="kr_btn_refresh"><i class="fa fa-refresh" aria-hidden="true"></i></div>
         <div class="btn_control" onclick="kr_show_help();"><i class="fa fa-question-circle" aria-hidden="true"></i></div>
+        <?php if(isset($url_download)){?><a class="btn_control" href="<?php echo $url_download;?>"><i class="fa fa-download" aria-hidden="true"></i></a><?php }?>
         <?php if($is_playlist){?><i class="fa fa-step-forward btn_control btn_next" aria-hidden="true" onclick="kr_next_song();"></i><?php }?>
     </div>
 

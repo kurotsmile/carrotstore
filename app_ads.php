@@ -5,7 +5,7 @@ include "database.php";
 $func='';
 
 function thumb($urls,$size){
-    return URLS."/thumb.php?src=$urls&size=$size";
+    return URL."/thumb.php?src=$urls&size=$size";
 }
 
 Class Item{
@@ -32,16 +32,16 @@ $app=new App();
 
 if($func=='list_ads'){
     $os=$_POST['os'];
-    $query_list_ads=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
-    while($row_ads=mysql_fetch_array($query_list_ads)){
+    $query_list_ads=mysqli_query($link,"SELECT * FROM `app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
+    while($row_ads=mysqli_fetch_array($query_list_ads)){
         $item=new Item();
-        $item->id=thumb($urls.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png','80');
+        $item->id=thumb($url.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png','80');
         $item->name=$row_ads['name'];
         $item->url=$row_ads[$os];
         array_push($app->list,$item);
     }
-    echo mysql_error();
+    echo mysqli_error($link);
     echo json_encode($app);
 }
 
-mysql_close($link);
+mysqli_close($link);

@@ -228,14 +228,14 @@ if($func=='get_info'){
       
     
     if($is_user==1){
-        $get_music_feel=mysqli_query($link,"SELECT `device_id` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_device_show' ORDER BY RAND() LIMIT 10");
+        $get_music_feel=mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_device_show' ORDER BY RAND() LIMIT 10");
         if(mysqli_num_rows($get_music_feel)>0){
             while($row_feel=mysqli_fetch_array($get_music_feel)){
                 $get_song_name=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$lang_sel` WHERE `id` = '".$row_feel['id_chat']."' LIMIT 1");
                 if(mysqli_num_rows($get_song_name)>0){
                     $data_song=mysqli_fetch_array($get_song_name);
                     $status_feel_id=$row_feel['value'];
-                    $status_feel_music=get_key_lang("statu_music_user_$status_feel_id",$lang_sel);
+                    $status_feel_music=get_key_lang($link,"statu_music_user_$status_feel_id",$lang_sel);
                     $txt_show=$status_feel_music.' "'.$data_song[0].'"';
                     $item_user_test=array($row_feel['id_chat'],"$lang_sel","show_chat",$txt_show);
                     array_push($app->all_tip,$item_user_test);
@@ -334,7 +334,7 @@ if($func=='add_user'){
         $curlData = curl_exec($curl);
         curl_close($curl);
         $place = json_decode($curlData);
-        $txt_dc=$place->results[0]->formatted_address;
+		if(isset($place->results[0]->formatted_address))$txt_dc=$place->results[0]->formatted_address;
         $txt_dc=str_replace('Unnamed Road,','',$txt_dc);
     }
                 
@@ -401,10 +401,8 @@ if($func=="music_emotion"){
         
         if($user_sel_emotion=='-1'){
             $add_emotion_music=mysqli_query($link,"INSERT INTO `app_my_girl_music_data_$lang_sel` (`device_id`, `value`, `id_chat`) VALUES ('$id_device', '$sel_emotion', '$id_music');");
-            mysqli_free_result($add_emotion_music);
         }else{
             $update_emotion_music=mysqli_query($link,"UPDATE `app_my_girl_music_data_$lang_sel` SET  `value` = '$sel_emotion' WHERE `device_id` = '$id_device' AND `id_chat` = '$id_music' LIMIT 1;");
-            mysqli_free_result($update_emotion_music);
         }
         
         $user_sel_emotion=$sel_emotion;

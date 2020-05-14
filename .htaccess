@@ -25,7 +25,6 @@ RewriteRule    ^product/([0-9]+)/?$    index.php?page_view=page_view.php&view_pr
 RewriteRule    ^p/([^/]*)/?$    index.php?page_view=page_view.php&view_product=$1&slug=$1    [NC,L]
 RewriteRule    ^product_app_info/([0-9]+)/?$    index.php?page_view=page_view.php&view_product=$1&viewss=info    [NC,L]
 RewriteRule    ^product_tags/([^/]*)/?$   index.php?page_view=page_view.php&tags=$1    [NC,L]     
-RewriteRule    ^login   index.php?page_view=page_login.php [NC,L]  
 RewriteRule    ^pay/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2&device=$3&lang=$4  [NC,L]
 RewriteRule    ^pay/([^/]*)/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2&device=$3  [NC,L]
 RewriteRule    ^pay/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2  [NC,L]

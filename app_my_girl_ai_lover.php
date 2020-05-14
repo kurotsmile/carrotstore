@@ -1,7 +1,8 @@
 <?php
 include "config.php";
 include "database.php";
-$func=$_POST['func'];
+$func='';
+if(isset($_POST['func']))$func=$_POST['func'];
 $date_cur=date("Y-m-d");
 
 $lang_sel='vi';
@@ -472,7 +473,7 @@ function check_func_msg_sevrer($type_question,$id_device,$text,$lang_sel,$link,$
             $get_music_by_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_sel."` WHERE `id` = '".$id_song."' LIMIT 1");
             if($get_music_by_lyrics!=false){
                 if(mysqli_num_rows($get_music_by_lyrics)>0){
-                    Chat_report(mysqli_fetch_array($get_music_by_lyrics),'chat',$lang_sel,'');
+                    Chat_report(mysqli_fetch_array($get_music_by_lyrics),'chat',$lang_sel,$link);
                 }
             }
             mysqli_free_result($get_music_by_lyrics);

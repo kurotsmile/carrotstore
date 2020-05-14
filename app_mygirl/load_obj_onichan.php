@@ -3,7 +3,7 @@ include "../config.php";
 include "../database.php";
 $url_s='https://carrotstore.com';
 function thumb($urls,$size){
-    return URLS."/thumb.php?src=$urls&size=$size&trim=1";
+    return URL."/thumb.php?src=$urls&size=$size&trim=1";
 }
 
 class Skin_app{
@@ -29,12 +29,12 @@ if(isset($_POST['search'])){
 }
 
 if($func=='load_skin'){
-    if($search==''){
-        $list_skin=mysql_query("SELECT * FROM `app_my_girl_skin`");
-    }else{
-        $list_skin=mysql_query("SELECT * FROM `app_my_girl_skin` WHERE `name` LIKE '%$search%'");
+    
+    $list_skin=mysqli_query($link,"SELECT * FROM `app_my_girl_skin`");
+    if($search!=''){
+        $list_skin=mysqli_query($link,"SELECT * FROM `app_my_girl_skin` WHERE `name` LIKE '%$search%'");
     }
-    while($row=mysql_fetch_array($list_skin)){
+    while($row=mysqli_fetch_array($list_skin)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name'];
         $skin_item->url=$url_s.'/app_mygirl/obj_skin/skin_'.$row[0].'.png';
@@ -42,7 +42,6 @@ if($func=='load_skin'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_skin);
     exit;
 }
 
@@ -50,12 +49,12 @@ if($func=='load_skin'){
 if($func=='load_head'){
     $character=$_POST['character'];
     if($search==''){
-        $list_head=mysql_query("SELECT * FROM `app_my_girl_head` WHERE `character`='$character'");
+        $list_head=mysqli_query($link,"SELECT * FROM `app_my_girl_head` WHERE `character`='$character'");
     }else{
-        $list_head=mysql_query("SELECT * FROM `app_my_girl_head` WHERE `character`='$character' AND `name` LIKE '%$search%'");
+        $list_head=mysqli_query($link,"SELECT * FROM `app_my_girl_head` WHERE `character`='$character' AND `name` LIKE '%$search%'");
     }
     
-    while($row=mysql_fetch_array($list_head)){
+    while($row=mysqli_fetch_array($list_head)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name'];
         $skin_item->url=$url_s.'/app_mygirl/obj_head/head_'.$row[0].'.png';
@@ -63,17 +62,17 @@ if($func=='load_head'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_head);
+    mysqli_free_result($list_head);
     exit;
 }
 
 if($func=='load_view'){
-    if($search==''){
-        $list_view=mysql_query("SELECT * FROM `app_my_girl_background` WHERE `version`='2' ORDER BY RAND() LIMIT 15");
-    }else{
-        $list_view=mysql_query("SELECT * FROM `app_my_girl_background` WHERE `version`='2' AND `name` LIKE '%$search%' ORDER BY RAND() LIMIT 15");
+	$txt_query_search='';
+    if($search!=''){
+		$txt_query_search=" AND `name` LIKE '%$search%' ";
     }
-    while($row=mysql_fetch_array($list_view)){
+	$list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_background` WHERE `version`='2' $txt_query_search ORDER BY RAND() LIMIT 15");
+    while($row=mysqli_fetch_array($list_view)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name'];
         $skin_item->url=$url_s.'/app_mygirl/obj_background/view_'.$row[0].'.png';
@@ -82,7 +81,7 @@ if($func=='load_view'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_view);
+    mysqli_free_result($list_view);
     exit;
 }
 
@@ -90,9 +89,9 @@ if($func=='load_music'){
     $lang_sel='vi';
     if(isset($_POST['lang'])){$lang_sel=$_POST['lang'];}
     
-    $list_view=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE  `effect`='2' ORDER BY RAND() LIMIT 15");
-    if(mysql_num_rows($list_view)>0){
-        while ($row = mysql_fetch_array($list_view)) {
+    $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE  `effect`='2' ORDER BY RAND() LIMIT 15");
+    if(mysqli_num_rows($list_view)>0){
+        while ($row = mysqli_fetch_array($list_view)) {
             $skin_item=new Skin_item();
             $skin_item->name=$row['chat'];
             $skin_item->url=$row['id'];
@@ -101,7 +100,7 @@ if($func=='load_music'){
         }
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_view);
+    mysqli_free_result($list_view);
     exit;
 }
 
@@ -109,14 +108,14 @@ if($func=='load_ads'){
     $os=$_REQUEST['os'];
     if($search==''){
         if($os=="android"){
-            $list_view=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `android`!='' ORDER BY RAND()");
+            $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_ads` WHERE `android`!='' ORDER BY RAND()");
         }else{
-           $list_view=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `ios`!='' ORDER BY RAND()");
+           $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_ads` WHERE `ios`!='' ORDER BY RAND()");
         }
     }else{
-        $list_view=mysql_query("SELECT * FROM `app_my_girl_ads` WHERE `name` LIKE '%$search%' ORDER BY RAND()");
+        $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_ads` WHERE `name` LIKE '%$search%' ORDER BY RAND()");
     }
-    while($row=mysql_fetch_array($list_view)){
+    while($row=mysqli_fetch_array($list_view)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name'];
         $skin_item->url=$row['android'];
@@ -125,7 +124,7 @@ if($func=='load_ads'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_view);
+    mysqli_free_result($list_view);
     exit;
 }
 
@@ -134,8 +133,8 @@ if($func=='list_view_3d'){
     if(isset($_POST['os'])){
         $os=$_POST['os'];
     }
-    $list_view=mysql_query("SELECT * FROM `app_my_girl_view_3d` ORDER BY RAND()");
-    while($row=mysql_fetch_array($list_view)){
+    $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_view_3d` ORDER BY RAND()");
+    while($row=mysqli_fetch_array($list_view)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name'];
         if($os=='android'){
@@ -148,7 +147,7 @@ if($func=='list_view_3d'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_view);
+    mysqli_free_result($list_view);
     exit;
 }
 
@@ -159,11 +158,11 @@ if($func=='list_radio'){
     if(isset($_POST['lang'])){$lang_sel=$_POST['lang'];}
     if(isset($_POST['search_option'])){$search_option=$_POST['search_option'];}
     if($search_option=="0"){
-        $list_radio=mysql_query("SELECT * FROM `app_my_girl_radio` WHERE `lang`='$lang_sel' ORDER BY RAND()");
+        $list_radio=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` WHERE `lang`='$lang_sel' ORDER BY RAND()");
     }else{
-        $list_radio=mysql_query("SELECT * FROM `app_my_girl_radio` ORDER BY RAND() LIMIT 20");
+        $list_radio=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` ORDER BY RAND() LIMIT 20");
     }
-    while($row=mysql_fetch_array($list_radio)){
+    while($row=mysqli_fetch_array($list_radio)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name_radio'];
         $skin_item->url=$row['stream'];
@@ -171,13 +170,13 @@ if($func=='list_radio'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_radio);
+    mysqli_free_result($list_radio);
     exit;
 }
 
 if($func=='list_unitychan'){
-    $list_unitychan=mysql_query("SELECT * FROM `app_my_girl_unitychan` ORDER BY RAND() LIMIT 20");
-    while($row=mysql_fetch_array($list_unitychan)){
+    $list_unitychan=mysqli_query($link,"SELECT * FROM `app_my_girl_unitychan` ORDER BY RAND() LIMIT 20");
+    while($row=mysqli_fetch_array($list_unitychan)){
         $skin_item=new Skin_item();
         $skin_item->name=$row['name'];
         $skin_item->url=$row['link'];
@@ -185,7 +184,7 @@ if($func=='list_unitychan'){
         array_push($skin_app->arr_skin,$skin_item);
     }
     echo json_encode($skin_app);
-    mysql_free_result($list_unitychan);
+    mysqli_free_result($list_unitychan);
     exit;
 }
 ?>

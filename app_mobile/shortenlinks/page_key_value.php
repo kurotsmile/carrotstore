@@ -7,15 +7,15 @@ $url_cur=$url.'?view=page_key_value';
 
 if(isset($_GET['lang'])){
     $lang_key=$_GET['lang'];
-    $query_get_val=mysql_query("SELECT * FROM `value_lang` WHERE `id_country` = '$lang_key' LIMIT 1");
-    $data_val=mysql_fetch_array($query_get_val);
+    $query_get_val=mysqli_query($link,"SELECT * FROM `value_lang` WHERE `id_country` = '$lang_key' LIMIT 1");
+    $data_val=mysqli_fetch_array($query_get_val);
     $data_val=json_decode($data_val['value']);
 }
 
 if(isset($_GET['lang_to'])){
     $lang_key_to=$_GET['lang_to'];
 }
-$query_list_country=mysql_query("SELECT * FROM carrotsy_virtuallover.`app_my_girl_country`");
+$query_list_country=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_country`");
 ?>
 
 
@@ -31,9 +31,9 @@ if(isset($_POST['lang_key'])){
     $lang_key=$_POST['lang_key'];
     $data_val=json_encode($_POST, JSON_UNESCAPED_UNICODE);
     $data_val_inst=addslashes($data_val);
-    $check_value_lang=mysql_query("SELECT * FROM `value_lang` WHERE `id_country` = '$lang_key' LIMIT 1");
-    if(mysql_num_rows($check_value_lang)==0){
-        $query_add_lang=mysql_query("INSERT INTO `value_lang` (`id_country`, `value`) VALUES ('$lang_key', '$data_val_inst');");
+    $check_value_lang=mysqli_query($link,"SELECT * FROM `value_lang` WHERE `id_country` = '$lang_key' LIMIT 1");
+    if(mysqli_num_rows($check_value_lang)==0){
+        $query_add_lang=mysqli_query($link,"INSERT INTO `value_lang` (`id_country`, `value`) VALUES ('$lang_key', '$data_val_inst');");
         if($query_add_lang){
             $data_val=json_decode($data_val);
             echo alert("Thêm mới các giá trị ngôn ngữ thành công!!!","alert");
@@ -42,7 +42,7 @@ if(isset($_POST['lang_key'])){
         }
 
     }else{
-        $query_update_lang=mysql_query("UPDATE `value_lang` SET `value` = '$data_val_inst' WHERE `id_country` = '$lang_key' ");
+        $query_update_lang=mysqli_query($link,"UPDATE `value_lang` SET `value` = '$data_val_inst' WHERE `id_country` = '$lang_key' ");
         if($query_update_lang){
             $data_val=json_decode($data_val);
             echo btn_add_work($lang_key,$lang_key,'lang_link','add');
@@ -56,8 +56,8 @@ if(isset($_POST['lang_key'])){
 
 <table>
 <?php
-$query_list_key=mysql_query("SELECT * FROM `key_lang`");
-while($row_key=mysql_fetch_array($query_list_key)){
+$query_list_key=mysqli_query($link,"SELECT * FROM `key_lang`");
+while($row_key=mysqli_fetch_array($query_list_key)){
 ?>
 <tr>
     <td><?php echo $row_key['key']; ?></td>
@@ -90,7 +90,7 @@ while($row_key=mysql_fetch_array($query_list_key)){
 <label>Chọn ngôn ngữ dịch sang</label>
 <select name="lang_to" onchange="change_lang_to(this);return false;">
     <?php
-    while($row_lang=mysql_fetch_array($query_list_country)){
+    while($row_lang=mysqli_fetch_array($query_list_country)){
     ?>
     <option value="<?php echo $row_lang['key']; ?>" <?php if($row_lang['key']==$lang_key_to){?>selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php 

@@ -505,7 +505,9 @@ select {
     margin: 3px;
     border-radius: 11px;
     font-size: 10px;
-    cursor: pointer;position: absolute;
+	cursor: pointer;position: absolute;
+	color: black;
+    text-shadow: none;
 }
 .tag_data_syn.lost{background-color: red;}
 .tag_data_syn.colon{background-color: #f9a804;}

@@ -29,7 +29,7 @@ class Editor_item{
 }
 
 function thumb($urls,$size){
-    return URLS."/thumb.php?src=$urls&size=$size&trim=1";
+    return URL."/thumb.php?src=$urls&size=$size&trim=1";
 }
 
 $app=new App();
@@ -43,8 +43,8 @@ $user_name=$_POST['user_name'];
 $date_cur=date("Y-m-d");
 
 if($func=="list_editor"){
-    $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_brain` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `langs` = '$langs' LIMIT 20");
-    while($row=mysql_fetch_array($query_list_editor)){
+    $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `langs` = '$langs' LIMIT 20");
+    while($row=mysqli_fetch_array($query_list_editor)){
         $editor_item=new Editor_item();
         $editor_item->question=$row['question'];
         $editor_item->answer=$row['answer'];
@@ -54,22 +54,22 @@ if($func=="list_editor"){
         $id_father=$row['id_question'];
         if($id_father!=''){
             if($row['type_question']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
         array_push($app->all_data,$editor_item);
     }
-    mysql_free_result($query_list_editor);
+    mysqli_free_result($query_list_editor);
     
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -81,23 +81,23 @@ if($func=="list_chat"){
     if($search!=''){
         if($type_view=='2'){
             $type_chat='msg';
-            $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_msg_$langs` WHERE (`chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+            $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langs` WHERE (`chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
         }else{
-            $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE (`text` LIKE '%$search%' OR `chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+            $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE (`text` LIKE '%$search%' OR `chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
         }
     }else{
         if($view_father==''){
             if($type_view=='2'){
                 $type_chat='msg';
-                $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_msg_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+                $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
             }else{
-                $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+                $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
             }
         }else{
-            $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `pater` = '$view_father' AND `pater_type` = 'chat' ORDER BY `id` DESC LIMIT 50");
+            $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `pater` = '$view_father' AND `pater_type` = 'chat' ORDER BY `id` DESC LIMIT 50");
         }
     }
-    while($row=mysql_fetch_array($query_list_editor)){
+    while($row=mysqli_fetch_array($query_list_editor)){
         $editor_item=new Editor_item();
         if($type_view=='2'){
             $editor_item->question=$row['func'];
@@ -124,37 +124,37 @@ if($func=="list_chat"){
         $editor_item->effect_system=$row['effect'];
         
         $editor_item->limit=$row['limit_chat'];
-        $query_count_child=mysql_query("SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
-        $editor_item->count_child=mysql_num_rows($query_count_child);
-        mysql_free_result($query_count_child);
-        $check_field_chat=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$row['id']."' AND `type_chat` = '$type_chat'");
-        $editor_item->count_select_box=mysql_num_rows($check_field_chat);
-        mysql_free_result($check_field_chat);
-        
-        $id_father=$row['pater'];
+        $query_count_child=mysqli_query($link,"SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
+        $editor_item->count_child=mysqli_num_rows($query_count_child);
+        mysqli_free_result($query_count_child);
+        $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$row['id']."' AND `type_chat` = '$type_chat'");
+        $editor_item->count_select_box=mysqli_num_rows($check_field_chat);
+        mysqli_free_result($check_field_chat);
+        $id_father='';
+        if(isset($row['pater']))$id_father=$row['pater'];
         if($type_view=='2'){
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
         }else{
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
         }
         if($id_father!=''){
             if($row['pater_type']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
         array_push($app->all_data,$editor_item);
     }
-    mysql_free_result($query_list_editor);
+    mysqli_free_result($query_list_editor);
     
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -162,8 +162,8 @@ if($func=="delete_editor"){
     $id=$_POST['md5'];
     $langsel=$_POST['lang'];
     if($type_view=='0'){
-        $query_delete=mysql_query("DELETE FROM `app_my_girl_brain` WHERE ((`md5` = '$id'));");
-        if(mysql_error()==""){
+        $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE ((`md5` = '$id'));");
+        if(mysqli_error()==""){
             $filename = 'app_mygirl/app_my_girl_'.$langsel.'_brain/'.$id.'.mp3';
             if (file_exists($filename)) {
                 unlink($filename);
@@ -173,12 +173,12 @@ if($func=="delete_editor"){
             }
             echo "- Xóa thành công!";
         }else{
-            echo mysql_error();
+            echo mysqli_error();
         }
-        mysql_free_result($query_delete);
+        mysqli_free_result($query_delete);
         
     }else{
-        $query_delete=mysql_query("DELETE FROM `app_my_girl_$langs` WHERE `id` = '$id'");
+        $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_$langs` WHERE `id` = '$id'");
         
         $filename = 'app_mygirl/app_my_girl_'.$langs.'/'.$id.'.mp3';
         echo 'Xóa câu trò chuyện #'.$id.' thành công !!!<br/>';
@@ -189,20 +189,20 @@ if($func=="delete_editor"){
             echo "Không có file âm thanh $filename để xóa <br/>";
         }
         
-        mysql_free_result($query_delete);
+        mysqli_free_result($query_delete);
         
-        $check_field_chat=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
-        if(mysql_num_rows($check_field_chat)>0){
-            $query_delete_field=mysql_query("DELETE FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
-            mysql_free_result($query_delete_field);
+        $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
+        if(mysqli_num_rows($check_field_chat)>0){
+            $query_delete_field=mysqli_query($link,"DELETE FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
+            mysqli_free_result($query_delete_field);
             echo "Xóa trường dữ liệu (Field chat) thành công!";
         }else{
             echo "Không có trường dữ liệu (Field chat)";
         }
-        mysql_free_result($check_field_chat);
+        mysqli_free_result($check_field_chat);
 
     }
-    mysql_close($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -222,11 +222,11 @@ if($func=="add_chat"){
     $effect_system=$_POST['effect_system'];
     $id_redirect=$_POST['id_redirect'];
     if($type_view=='2'){
-        $query_add=mysql_query("INSERT INTO `app_my_girl_msg_$langs` (`func`, `chat`,`status`, `sex`,`character_sex`,`face`,`action`,`effect_customer`,`color`,`disable`,`author`,`effect`,`limit_chat`,`user_create`) VALUES ('$question','$answer','$status','$user_sex','$char_sex','$face','$action','$effect','#$color','$disable','$langs','$effect_system','$limit_chat','2');");
+        $query_add=mysqli_query($link,"INSERT INTO `app_my_girl_msg_$langs` (`func`, `chat`,`status`, `sex`,`character_sex`,`face`,`action`,`effect_customer`,`color`,`disable`,`author`,`effect`,`limit_chat`,`user_create`) VALUES ('$question','$answer','$status','$user_sex','$char_sex','$face','$action','$effect','#$color','$disable','$langs','$effect_system','$limit_chat','2');");
     }else{
-        $query_add=mysql_query("INSERT INTO `app_my_girl_$langs` (`text`, `chat`,`status`, `sex`,`character_sex`,`face`,`action`,`effect_customer`,`color`,`pater`,`pater_type`,`link`,`disable`,`author`,`effect`,`limit_chat`,`id_redirect`,`user_create`) VALUES ('$question','$answer','$status','$user_sex','$char_sex','$face','$action','$effect','#$color','$id_father','$type_father','$links','$disable','$langs','$effect_system','$limit_chat','$id_redirect','2');");
+        $query_add=mysqli_query($link,"INSERT INTO `app_my_girl_$langs` (`text`, `chat`,`status`, `sex`,`character_sex`,`face`,`action`,`effect_customer`,`color`,`pater`,`pater_type`,`link`,`disable`,`author`,`effect`,`limit_chat`,`id_redirect`,`user_create`) VALUES ('$question','$answer','$status','$user_sex','$char_sex','$face','$action','$effect','#$color','$id_father','$type_father','$links','$disable','$langs','$effect_system','$limit_chat','$id_redirect','2');");
     }
-    $id_new=mysql_insert_id();
+    $id_new=mysqli_insert_id($link);
     
     /*
     if(isset($_FILES['audio'])){
@@ -256,17 +256,15 @@ if($func=="add_chat"){
             array_push($array_item_data,$data_item_chat);
         }
          $array_item_data=json_encode($array_item_data,JSON_UNESCAPED_UNICODE);
-        $query_add_select_box=mysql_query("INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `author`, `color`) VALUES ($id_new, '$type_chat', '$array_item_data', 'field_chat', 'unclear', '#000000');");
+        $query_add_select_box=mysqli_query($link,"INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `author`, `color`) VALUES ($id_new, '$type_chat', '$array_item_data', 'field_chat', 'unclear', '#000000');");
     }
     
     if($user_name!=''){
-        $add_work=mysql_query("INSERT INTO carrotsy_work.`work_chat` (`id_chat`, `type_chat`, `user_name`,`type_action`,`lang_chat`, `dates`) VALUES ('$id_new', '$type_chat', '$user_name','add','$langs','$date_cur')");
-        mysql_freeresult($add_work);
+        $add_work=mysqli_query($link,"INSERT INTO carrotsy_work.`work_chat` (`id_chat`, `type_chat`, `user_name`,`type_action`,`lang_chat`, `dates`) VALUES ('$id_new', '$type_chat', '$user_name','add','$langs','$date_cur')");
     }
-    echo mysql_error($link);
+    echo mysqli_error($link);
     echo "add success!!!";
-    mysql_free_result($query_add);
-    mysql_close($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -287,9 +285,9 @@ if($func=='update_chat'){
     $effect_system=$_POST['effect_system'];
     $id_redirect=$_POST['id_redirect'];
     if($type_view=='2'){
-        $query_add=mysql_query("UPDATE `app_my_girl_msg_$langs` SET `func` = '$question',`chat` = '$answer',`status` = '$status',`color` = '$color',`face`='$face',`action`='$action',`effect_customer`='$effect',`disable` =$disable,`limit_chat`='$limit_chat',`effect`='$effect_system',`user_update`='2' WHERE `id` = '$id';");
+        $query_add=mysqli_query($link,"UPDATE `app_my_girl_msg_$langs` SET `func` = '$question',`chat` = '$answer',`status` = '$status',`color` = '$color',`face`='$face',`action`='$action',`effect_customer`='$effect',`disable` =$disable,`limit_chat`='$limit_chat',`effect`='$effect_system',`user_update`='2' WHERE `id` = '$id';");
     }else{
-        $query_add=mysql_query("UPDATE `app_my_girl_$langs` SET `text` = '$question',`chat` = '$answer',`status` = '$status',`color` = '$color',`link` = '$links',`face`='$face',`action`='$action',`effect_customer`='$effect',`disable` =$disable,`limit_chat`='$limit_chat',`effect`='$effect_system',`pater`='$id_father',`pater_type`='$type_father',`id_redirect`='$id_redirect',`user_update`='2' WHERE `id` = '$id';");
+        $query_add=mysqli_query($link,"UPDATE `app_my_girl_$langs` SET `text` = '$question',`chat` = '$answer',`status` = '$status',`color` = '$color',`link` = '$links',`face`='$face',`action`='$action',`effect_customer`='$effect',`disable` =$disable,`limit_chat`='$limit_chat',`effect`='$effect_system',`pater`='$id_father',`pater_type`='$type_father',`id_redirect`='$id_redirect',`user_update`='2' WHERE `id` = '$id';");
     }
     
     /*
@@ -321,30 +319,29 @@ if($func=='update_chat'){
         }
         $array_item_data=json_encode($array_item_data,JSON_UNESCAPED_UNICODE);
         
-        $check_field_chat=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
-        if(mysql_num_rows($check_field_chat)>0){
-            $query_update_field=mysql_query("UPDATE `app_my_girl_field_$langs` SET `data` = '$array_item_data' WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
+        $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
+        if(mysqli_num_rows($check_field_chat)>0){
+            $query_update_field=mysqli_query($link,"UPDATE `app_my_girl_field_$langs` SET `data` = '$array_item_data' WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
         }else{
-            $query_add_select_box=mysql_query("INSERT INTO `app_my_girl_field_$langs` (`id_chat`, `type_chat`, `data`, `type`, `author`) VALUES ($id, '$type_chat', '$array_item_data', 'field_chat', 'unclear');");
+            $query_add_select_box=mysqli_query($link,"INSERT INTO `app_my_girl_field_$langs` (`id_chat`, `type_chat`, `data`, `type`, `author`) VALUES ($id, '$type_chat', '$array_item_data', 'field_chat', 'unclear');");
         }
        
     }else{
         $id_delete=$_POST['is_delete'];
         if($id_delete=="1"){
-            $query_delete_field=mysql_query("DELETE FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
-            mysql_free_result($query_delete_field);
+            $query_delete_field=mysqli_query($link,"DELETE FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
+            mysqli_free_result($query_delete_field);
         }
     }
-    mysql_free_result($check_field_chat);
+    mysqli_free_result($check_field_chat);
     
     if($user_name!=''){
-        $add_work=mysql_query("INSERT INTO carrotsy_work.`work_chat` (`id_chat`, `type_chat`, `user_name`,`type_action`,`lang_chat`, `dates`) VALUES ('$id', '$type_chat', '$user_name','edit','$langs','$date_cur')");
-        mysql_freeresult($add_work);
+        $add_work=mysqli_query($link,"INSERT INTO carrotsy_work.`work_chat` (`id_chat`, `type_chat`, `user_name`,`type_action`,`lang_chat`, `dates`) VALUES ('$id', '$type_chat', '$user_name','edit','$langs','$date_cur')");
     }
-    echo mysql_error($link);
+    echo mysqli_error($link);
     echo "add success!!!";
-    mysql_free_result($query_add);
-    mysql_close($link);
+    mysqli_free_result($query_add);
+    mysqli_close($link);
     exit;
 }
 
@@ -352,11 +349,11 @@ if($func=='update_chat'){
 if($func=="icon_color"){
     $category=$_POST['category'];
     if($category!=""){
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` WHERE `tag`='$category' ORDER by RAND() LIMIT 20");
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` WHERE `tag`='$category' ORDER by RAND() LIMIT 20");
     }else{
-        $list_effect=mysql_query("SELECT * FROM `app_my_girl_effect` ORDER by RAND() LIMIT 20");
+        $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_effect` ORDER by RAND() LIMIT 20");
     }
-    while($row_effect=mysql_fetch_array($list_effect)){
+    while($row_effect=mysqli_fetch_array($list_effect)){
         $url_effct='app_mygirl/obj_effect/'.$row_effect[0].'.png';
         $url_icon=thumb($url_effct,'45x45');
         $editor_item=new Editor_item();
@@ -365,10 +362,10 @@ if($func=="icon_color"){
         $editor_item->md5=$url_icon;
         array_push($app->all_data,$editor_item);
     }
-    echo mysql_error($link);
+    echo mysqli_error($link);
     echo json_encode($app);
-    mysql_free_result($list_effect);
-    mysql_close($link);
+    mysqli_free_result($list_effect);
+    mysqli_close($link);
     exit;
 }
 
@@ -388,8 +385,8 @@ if($func=="list_lang"){
 }
 
 if($func=='get_chat_miss'){
-    $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_key` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `lang` = '$langs' ORDER BY RAND() LIMIT 1");
-    $row=mysql_fetch_array($query_list_editor);
+    $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_key` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `lang` = '$langs' ORDER BY RAND() LIMIT 1");
+    $row=mysqli_fetch_array($query_list_editor);
         $editor_item=new Editor_item();
         $editor_item->question=$row['key'];
         $editor_item->answer=$row['key'];
@@ -399,23 +396,23 @@ if($func=='get_chat_miss'){
         $id_father=$row['id_question'];
         if($id_father!=''){
             if($row['type_question']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
 
     array_push($app->all_data,$editor_item);
 
-    mysql_free_result($query_list_editor);
+    mysqli_free_result($query_list_editor);
     
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -451,9 +448,9 @@ if($func=='get_login'){
     $user_id=$_POST['s_user'];
     $user_pass=$_POST['s_pass'];
     
-    $mysql_query_user=mysql_query("SELECT * FROM carrotsy_work.`work_user` WHERE `user_name` = '$user_id' AND `user_pass`='$user_pass' LIMIT 1");
+    $mysql_query_user=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_user` WHERE `user_name` = '$user_id' AND `user_pass`='$user_pass' LIMIT 1");
     if(mysql_numrows($mysql_query_user)>0){
-        $data_user=mysql_fetch_array($mysql_query_user);
+        $data_user=mysqli_fetch_array($mysql_query_user);
         $app->{"user_id"}=$data_user['user_id'];
         $app->{"user_name"}=$data_user['user_name'];
         $app->{"user_role"}=$data_user['user_role'];
@@ -467,7 +464,7 @@ if($func=='get_login'){
         $app->{"user_work_curent"}="";
     }
     echo json_encode($app);
-    mysql_close($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -475,12 +472,12 @@ if($func=="list_chat_sub"){
     $type_view=$_POST['type_view'];
     $search=$_POST['search'];
     if($type_view=='2'){
-        $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_msg_$langs` WHERE (`func` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+        $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langs` WHERE (`func` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
     }else{
-        $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE (`text` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+        $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE (`text` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
     }
 
-    while($row=mysql_fetch_array($query_list_editor)){
+    while($row=mysqli_fetch_array($query_list_editor)){
         $editor_item=new Editor_item();
         if($type_view=='2'){
             $editor_item->question=$row['func'];
@@ -509,33 +506,33 @@ if($func=="list_chat_sub"){
             $editor_item->links=$row['link'];
         }
         $editor_item->limit=$row['limit_chat'];
-        $query_count_child=mysql_query("SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
-        $editor_item->count_child=mysql_num_rows($query_count_child);
-        mysql_free_result($query_count_child);
+        $query_count_child=mysqli_query($link,"SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
+        $editor_item->count_child=mysqli_num_rows($query_count_child);
+        mysqli_free_result($query_count_child);
         $id_father=$row['pater'];
         if($type_view=='2'){
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
         }else{
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
         }
         if($id_father!=''){
             if($row['pater_type']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
         array_push($app->all_data,$editor_item);
     }
-    mysql_free_result($query_list_editor);
+    mysqli_free_result($query_list_editor);
     
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -545,9 +542,9 @@ if($func=="list_select_box"){
         $type_chat='msg';
     }
     $id=$_POST['chat_id'];
-    $query_get_list=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
-    if(mysql_num_rows($query_get_list)>0){
-        $data_field=mysql_fetch_array($query_get_list);
+    $query_get_list=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
+    if(mysqli_num_rows($query_get_list)>0){
+        $data_field=mysqli_fetch_array($query_get_list);
         $editor_item=new Editor_item();
         $data_field=json_decode($data_field['data']);
         for($i=0;$i<count($data_field);$i++){
@@ -561,8 +558,8 @@ if($func=="list_select_box"){
         }
     }
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -574,23 +571,23 @@ if($func=="list_fix"){
     if($search!=''){
         if($type_view=='2'){
             $type_chat='msg';
-            $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_msg_$langs` WHERE (`chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+            $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langs` WHERE (`chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
         }else{
-            $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE (`text` LIKE '%$search%' OR `chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+            $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE (`text` LIKE '%$search%' OR `chat` LIKE '%$search%') AND `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
         }
     }else{
         if($view_father==''){
             if($type_view=='2'){
                 $type_chat='msg';
-                $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_msg_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+                $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
             }else{
-                $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
+                $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' ORDER BY `id` DESC LIMIT 50");
             }
         }else{
-            $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `pater` = '$view_father' AND `pater_type` = 'chat' ORDER BY `id` DESC LIMIT 50");
+            $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `pater` = '$view_father' AND `pater_type` = 'chat' ORDER BY `id` DESC LIMIT 50");
         }
     }
-    while($row=mysql_fetch_array($query_list_editor)){
+    while($row=mysqli_fetch_array($query_list_editor)){
         $editor_item=new Editor_item();
         if($type_view=='2'){
             $editor_item->question=$row['func'];
@@ -619,37 +616,37 @@ if($func=="list_fix"){
             $editor_item->links=$row['link'];
         }
         $editor_item->limit=$row['limit_chat'];
-        $query_count_child=mysql_query("SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
-        $editor_item->count_child=mysql_num_rows($query_count_child);
-        mysql_free_result($query_count_child);
-        $check_field_chat=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$row['id']."' AND `type_chat` = '$type_chat'");
-        $editor_item->count_select_box=mysql_num_rows($check_field_chat);
-        mysql_free_result($check_field_chat);
+        $query_count_child=mysqli_query($link,"SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
+        $editor_item->count_child=mysqli_num_rows($query_count_child);
+        mysqli_free_result($query_count_child);
+        $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$row['id']."' AND `type_chat` = '$type_chat'");
+        $editor_item->count_select_box=mysqli_num_rows($check_field_chat);
+        mysqli_free_result($check_field_chat);
         
         $id_father=$row['pater'];
         if($type_view=='2'){
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
         }else{
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
         }
         if($id_father!=''){
             if($row['pater_type']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
         array_push($app->all_data,$editor_item);
     }
-    mysql_free_result($query_list_editor);
+    mysqli_free_result($query_list_editor);
     
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -660,9 +657,9 @@ if($func=='get_list_fix'){
     $type_chat='chat';
     $type_fix=$_POST['type'];
     
-    $query_list_editor=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `pater` = '$view_father' AND `pater_type` = 'chat' ORDER BY `id` DESC LIMIT 50");
+    $query_list_editor=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `pater` = '$view_father' AND `pater_type` = 'chat' ORDER BY `id` DESC LIMIT 50");
     
-    while($row=mysql_fetch_array($query_list_editor)){
+    while($row=mysqli_fetch_array($query_list_editor)){
         $editor_item=new Editor_item();
         if($type_view=='2'){
             $editor_item->question=$row['func'];
@@ -691,44 +688,44 @@ if($func=='get_list_fix'){
             $editor_item->links=$row['link'];
         }
         $editor_item->limit=$row['limit_chat'];
-        $query_count_child=mysql_query("SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
-        $editor_item->count_child=mysql_num_rows($query_count_child);
-        mysql_free_result($query_count_child);
-        $check_field_chat=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$row['id']."' AND `type_chat` = '$type_chat'");
-        $editor_item->count_select_box=mysql_num_rows($check_field_chat);
-        mysql_free_result($check_field_chat);
+        $query_count_child=mysqli_query($link,"SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$row['id']."' LIMIT 20");
+        $editor_item->count_child=mysqli_num_rows($query_count_child);
+        mysqli_free_result($query_count_child);
+        $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$row['id']."' AND `type_chat` = '$type_chat'");
+        $editor_item->count_select_box=mysqli_num_rows($check_field_chat);
+        mysqli_free_result($check_field_chat);
         
         $id_father=$row['pater'];
         if($type_view=='2'){
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
         }else{
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
         }
         if($id_father!=''){
             if($row['pater_type']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
         array_push($app->all_data,$editor_item);
     }
-    mysql_free_result($query_list_editor);
+    mysqli_free_result($query_list_editor);
     
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
 if($func=='get_chat'){
     $id_chat=$_POST['id'];
-    $query_get_chat=mysql_query("SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `id`='$id_chat'  LIMIT 1");
-    $data_chat=mysql_fetch_array($query_get_chat);
+    $query_get_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$langs` WHERE `sex` = '$user_sex' AND `character_sex` = '$char_sex' AND `id`='$id_chat'  LIMIT 1");
+    $data_chat=mysqli_fetch_array($query_get_chat);
     $editor_item=new Editor_item();
         if($type_view=='2'){
             $editor_item->question=$data_chat['func'];
@@ -755,35 +752,35 @@ if($func=='get_chat'){
         $editor_item->effect_system=$data_chat['effect'];
         
         $editor_item->limit=$data_chat['limit_chat'];
-        $query_count_child=mysql_query("SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$data_chat['id']."' LIMIT 20");
-        $editor_item->count_child=mysql_num_rows($query_count_child);
-        mysql_free_result($query_count_child);
-        $check_field_chat=mysql_query("SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$data_chat['id']."' AND `type_chat` = '$type_chat'");
-        $editor_item->count_select_box=mysql_num_rows($check_field_chat);
-        mysql_free_result($check_field_chat);
+        $query_count_child=mysqli_query($link,"SELECT * FROM `app_my_girl_vi` WHERE `pater_type` = 'chat' AND `pater` = '".$data_chat['id']."' LIMIT 20");
+        $editor_item->count_child=mysqli_num_rows($query_count_child);
+        mysqli_free_result($query_count_child);
+        $check_field_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_field_$langs` WHERE `id_chat` = '".$data_chat['id']."' AND `type_chat` = '$type_chat'");
+        $editor_item->count_select_box=mysqli_num_rows($check_field_chat);
+        mysqli_free_result($check_field_chat);
         
         $id_father=$data_chat['pater'];
         if($type_view=='2'){
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_msg_'.$langs.'/'.$editor_item->md5.'.mp3';
         }else{
-            $editor_item->mp3=$urls.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
+            $editor_item->mp3=$url.'/app_mygirl/app_my_girl_'.$langs.'/'.$editor_item->md5.'.mp3';
         }
         if($id_father!=''){
             if($data_chat['pater_type']=="chat"){
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }else{
-                $get_chat_father=mysql_query("SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
+                $get_chat_father=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$langs` WHERE `id` = '$id_father' LIMIT 1");
             }
-            if(mysql_num_rows($get_chat_father)>0){
-                $data_chat=mysql_fetch_array($get_chat_father);
+            if(mysqli_num_rows($get_chat_father)>0){
+                $data_chat=mysqli_fetch_array($get_chat_father);
                 $editor_item->msg_father=$data_chat['0'];
             }
         }
     array_push($app->all_data,$editor_item);
-    mysql_free_result($query_get_chat);
+    mysqli_free_result($query_get_chat);
     echo json_encode($app);
-    echo mysql_error($link);
-    mysql_close($link);
+    echo mysqli_error($link);
+    mysqli_close($link);
     exit;
 }
 
@@ -803,5 +800,5 @@ if($func=='create_audio'){
     if ($status == 200) {
         file_put_contents(dirname(__FILE__) . '/audio.mp3', $output);
     }
-    echo $urls.'/audio.mp3';
+    echo $url.'/audio.mp3';
 }

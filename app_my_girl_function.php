@@ -80,6 +80,7 @@ function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
     $txt_effect_new = '';
     $txt_color = '';
     $txt_sex = '';
+	$txt_fun_other=$txt_fun_other;
 
     if (isset($_GET['new_id'])) {
         if ($_GET['new_id'] == $id_row) {
@@ -102,14 +103,14 @@ function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
 
     }
 
-    if ($data['pater'] != '') {
+    if (isset($data['pater'])&&$data['pater'] != '') {
         $txt_style = ';background-color: #b3ffd5;';
         $txt_type = '<i ' . $txt_view_pather . ' class="fa fa-circle-o" aria-hidden="true"></i>';
         $txt_view_pather = ' onclick="view_pater(\'' . $lang . '\',\'' . $data['pater'] . '\',\'' . $data['pater_type'] . '\',\'' . $data['sex'] . '\',\'' . $data['character_sex'] . '\');return false;" ';
         $txt_update = $txt_update . '<a href="" class="buttonPro small yellow" ' . $txt_view_pather . ' title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
     }
 
-    if ($data['id_redirect'] != '') {
+    if (isset($data['id_redirect'])&&$data['id_redirect'] != '') {
         $id_redirect = $data['id_redirect'];
         $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `id` = '$id_redirect'");
         $arr_chat = mysqli_fetch_assoc($result_chat);
@@ -527,11 +528,14 @@ function show_row_map($link,$chat_item)
     $lang_sel = $chat_item['lang'];
     $id = $chat_item['id_question'];
 
+	$table_show='';
     if ($chat_item['type_question'] == 'chat') {
-        $result_chat1 = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = $id ");
+        $table_show="app_my_girl_$lang_sel";
     } else {
-        $result_chat1 = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id` = $id ");
+        $table_show="app_my_girl_msg_$lang_sel";
     }
+	
+	$result_chat1 = mysqli_query($link,"SELECT * FROM `$table_show` WHERE `id` = $id ");
     if (mysqli_num_rows($result_chat1) > 0) {
         $arr_item = mysqli_fetch_array($result_chat1);
 
@@ -825,8 +829,9 @@ function move_file_to_sever($url_file,$arr_sever_upload){
 }
 
 function btn_add_work($id_object,$lang,$type,$action){
+	global $url_work;
     $txt_html='';
-    $txt_html.='<a  target="_blank" class="buttonPro blue" href="http://work.carrotstore.com/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-plus-square"></i> Thêm vào bàn làm việc</a>';
+    $txt_html.='<a  target="_blank" class="buttonPro blue" href="'.$url_work.'/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-plus-square"></i> Thêm vào bàn làm việc</a>';
     return $txt_html;
 }
 //End App nguoi yeu ao

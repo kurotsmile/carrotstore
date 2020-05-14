@@ -1,10 +1,12 @@
+<?php
+include "app_my_girl_template.php";
+?>
 <style>
     body {
         overflow-x: hidden;
     }
 </style>
 <?php
-include "app_my_girl_template.php";
 $id = $_GET['id'];
 $lang_sel = $_GET['lang'];
 
@@ -66,7 +68,8 @@ if ($_POST) {
     $face = $_POST['face'];
     $action = $_POST['action'];
     $character_sex = $_POST['character_sex'];
-    $id_redirect = $_POST['id_redirect'];
+	$id_redirect="";
+    if(isset($_POST['id_redirect']))$id_redirect =$_POST['id_redirect'];
     if(isset($_POST['limit_ver'])) $limit_ver = $_POST['limit_ver'];
     if(isset($_POST['limit_chat'])) $limit_chat = $_POST['limit_chat'];
     $effect_customer = $_POST['effect_customer'];
@@ -123,7 +126,7 @@ if ($_POST) {
         $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `text` = '$text',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`tip` = '$tip',`link` = '$link_chat',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex ,`id_redirect`='$id_redirect' , `ver`=$limit_ver , `limit_chat`='$limit_chat' ,`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`limit_day`='$limit_day',`limit_month`='$limit_month', `author`='$lang_sel' ,`func_sever`='$func_sever',`user_update`='$user_id',`file_url`='$file_url' $txt_disable  WHERE `id` = '$id';");
     }
 
-    echo mysql_error();
+    echo mysqli_error($link);
     $check_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1");
     if (isset($_POST['id_field_chat'])) {
         $id_field_chat = $_POST['id_field_chat'];
@@ -142,7 +145,7 @@ if ($_POST) {
         $data_field = json_encode($arr_data_field_chat, JSON_UNESCAPED_UNICODE);
         $author = "unclear";
 
-        if (mysql_num_rows($check_field_chat) > 0) {
+        if (mysqli_num_rows($check_field_chat) > 0) {
             $query_update_field = mysqli_query($link,"UPDATE `app_my_girl_field_$lang_sel` SET `data` = '$data_field' , `option`='$box_select_short'  WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
             mysql_freeresult($query_update_field);
             echo "Cập nhật trường dữ liệu (Field chat) thành công!<br/>";
@@ -152,27 +155,26 @@ if ($_POST) {
             echo "Thêm mới trường dữ liệu (Field chat) thành công!<br/>";
         }
     } else {
-        if (mysql_num_rows($check_field_chat) > 0) {
+        if (mysqli_num_rows($check_field_chat) > 0) {
             $query_delete_field = mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat'  LIMIT 1;");
             mysql_free_result($query_delete_field);
             echo "Xóa trường dữ liệu (Field chat) thành công!<br/>";
         }
     }
-    mysql_free_result($check_field_chat);
 
-
-    $lyrics = $_POST['lyrics'];
+	$lyrics='';
+    if(isset($_POST['lyrics']))$lyrics = $_POST['lyrics'];
     if ($lyrics != '') {
         $lyrics = addslashes($lyrics);
 
         $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
-        if (mysql_num_rows($show_lyrics) == 0) {
+        if (mysqli_num_rows($show_lyrics) == 0) {
             mysqli_query($link,"INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`) VALUES ('$id', '$lyrics');");
-            echo mysql_error();
+            echo mysqli_error($link);
             echo "Thêm mới lời bài hát thành công !";
         } else {
             mysqli_query($link,"UPDATE `app_my_girl_" . $lang_sel . "_lyrics` SET `lyrics` = '$lyrics' WHERE `id_music` = '$id'");
-            echo mysql_error();
+            echo mysqli_error($link);
             echo "Cập nhật lời bài hát thành công !";
         }
     }
@@ -180,11 +182,11 @@ if ($_POST) {
 
     echo "Update success!!!";
     ?>
-    <a href="http://work.carrotstore.com/?id_object=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&type_chat=<?php echo $type_chat; ?>&type_action=edit"
+    <a href="<?php echo $url_work;?>/?id_object=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&type_chat=<?php echo $type_chat; ?>&type_action=edit"
        target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn làm
         việc (Editor)</a>
     <?php
-    echo mysql_error();
+    echo mysqli_error($link);
 
     if (isset_file($_FILES["file_audio"])) {
 
@@ -209,7 +211,7 @@ if ($_POST) {
         $all_child = $_POST['chat_child'];
         foreach ($all_child as $child) {
             $update_item_child = mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `pater` = '$id',`pater_type`='$type_chat' WHERE `id` = '$child';");
-            echo mysqli_error();
+            echo mysqli_error($link);
         }
     } else {
         $update_item_child = mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `pater` = '',`pater_type`='' WHERE `pater` = '$id' AND `pater_type`='$type_chat';");
@@ -900,7 +902,7 @@ $arr = mysqli_fetch_array($result_chat);
                             $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
                             $result_chat = mysqli_fetch_array($result_chat);
                             $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\'' . $id_redirect . '\')">Gỡ bỏ</a>';
-                            echo show_row_chat_prefab($result_chat, $lang_sel, $btn_remove);
+                            echo show_row_chat_prefab($link,$result_chat, $lang_sel, $btn_remove);
                         } ?>
                     </table>
                 </td>
@@ -1042,7 +1044,7 @@ $arr = mysqli_fetch_array($result_chat);
     if ($arr['effect'] == '2') {
         $id_music = $arr['id'];
         ?>
-        <script src="<?php echo $url_home; ?>/js/jquery.ajaxfileupload.js" type="text/javascript"></script>
+        <script src="<?php echo $url_carrot_store; ?>/js/jquery.ajaxfileupload.js" type="text/javascript"></script>
         <script>
             function add_music_lyrics() {
                 swal({
@@ -1129,7 +1131,7 @@ $arr = mysqli_fetch_array($result_chat);
 
             $(document).ready(function () {
                 $('#file_upload_avatar_music').ajaxfileupload({
-                    action: '<?php echo $url_home;?>/upload.php',
+                    action: '<?php echo $url_carrot_store;?>/upload.php',
                     params: {
                         id_music: '<?php echo $id_music;?>',
                         lang: '<?php echo $lang_sel;?>'
@@ -1366,7 +1368,7 @@ if ($type_chat == "chat") {
         echo '<h2>Những Trò chuyện được ghi lại bởi câu trò chuyện nầy:</h2>';
         echo '<table>';
         while ($row_redirect = mysqli_fetch_array($result_chat_redirect)) {
-            echo show_row_chat_prefab($row_redirect, $lang_sel, '');
+            echo show_row_chat_prefab($link,$row_redirect, $lang_sel, '');
         }
         echo '</table>';
         echo '</div>';

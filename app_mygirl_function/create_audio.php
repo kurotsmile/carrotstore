@@ -47,7 +47,6 @@ if(isset($_GET['create_audio'])){
                         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-                        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
                         $output = curl_exec($ch);
                         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                         curl_close($ch);
@@ -120,8 +119,8 @@ if(isset($_GET['create_audio'])){
         Ngôn ngữ:<br />
         <select name="lang_sel" >
         <?php
-        $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-        while($l=mysql_fetch_array($list_country)){
+        $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+        while($l=mysqli_fetch_array($list_country)){
             $langsel=$l['key'];
             ?>
             <option value="<?php echo $langsel;?>" <?php if($sel_lang==$langsel){ echo 'selected="true"'; } ?>><?php echo $l['name'];?></option>';
