@@ -247,7 +247,8 @@ if ($char_view_type == '2') {
     }
 
     function backup_mysql_table(s_table){
-        window.location.href="<?php echo $url_syn;?>/app_my_girl_backup.php?name_file="+s_table+".sql&table="+s_table;
+        var url_backup="<?php echo $url_syn;?>/adminer.php?username=carrotsy_carrot&db=carrotsy_virtuallover&dump="+s_table;
+        window.open(url_backup,'_blank');
     }
 </script>
 

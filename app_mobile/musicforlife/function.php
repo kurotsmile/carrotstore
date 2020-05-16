@@ -1,0 +1,26 @@
+<?php
+
+function alert($msg,$type='alert'){
+    $txt_html='<div class="alert">';
+    if($type=='alert'){
+        $txt_html.='<div class="msg alert"><i class="fa fa-exclamation-triangle"></i> '.$msg.'</div>';
+    }
+    
+    if($type=='error'){
+        $txt_html.='<div class="msg error"><i class="fa fa-exclamation-circle"></i> '.$msg.'</div>';
+    }
+    
+    if($type=='info'){
+        $txt_html.='<div class="msg info"><i class="fa fa-exclamation"></i> '.$msg.'</div>';
+    }
+    $txt_html.='</div>';
+    return $txt_html;
+}
+
+
+function btn_add_work($id_object,$lang,$type,$action){
+    $txt_html='';
+    $txt_html.='<a  target="_blank" class="buttonPro blue" href="http://work.carrotstore.com/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-plus-square"></i> Thêm vào bàn làm việc</a>';
+    return $txt_html;
+}
+?>

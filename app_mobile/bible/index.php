@@ -39,7 +39,7 @@ if(isset($_POST['user_name'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Làm việc - Kinh thánh</title>
     <link href="<?php echo $url;?>/style.css" rel="stylesheet" />
-    <link href="<?php echo $url;?>/buttonPro.css" rel="stylesheet" />
+    <link href="<?php echo $url_carrot_store;?>/assets/css/buttonPro.min.css" rel="stylesheet" />
     <link rel="icon" href="icon.ico" type="image/x-icon"/>
     <script src="<?php echo $url_carrot_store;?>/js/jquery.js"></script>
     <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css"/>

@@ -190,10 +190,15 @@ if (isset($_POST['chat'])) {
         }
 
         if ($result_chat['effect'] == '2') {
-            echo '<a href="'.$url.'/music/'.$id_new.'/'.$lang_sel.'" target="_blank" class="buttonPro light_blue"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên carrotstore</a>';
+            $url_slug=slug_url(vn_to_str($result_chat['chat'])).'-'.$id_new;
+            $query_update_slug=mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `slug` = '$url_slug' WHERE `id` = '$id_new';");
+            echo '<br/><a href="'.$url.'/music/'.$id_new.'/'.$lang_sel.'" target="_blank" class="buttonPro light_blue"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên carrotstore</a><br/>';
+            if($query_update_slug){
+                echo '<a href="'.$url.'/song/'.$lang_sel.'/'.$url_slug.'" target="_blank" class="buttonPro light_blue"> <i class="fa fa-link" aria-hidden="true"></i> Xem bài hát dưới dạng đường dẫn đầy đủ </b></a><br/>';
+            }
         } else {
             if ($result_chat['file_url'] != '') {
-                echo '<a href="'.$result_chat['file_url'].'" target="_blank" class="buttonPro light_blue"><i class="fa fa-cloud" aria-hidden="true"></i> Nghe thử âm thành từ máy chủ khác</a>';
+                echo '<a href="'.$result_chat['file_url'].'" target="_blank" class="buttonPro light_blue"><i class="fa fa-cloud" aria-hidden="true"></i> Nghe thử âm thành từ máy chủ khác</a><br/>';
             } else {
                 if(file_exists('app_mygirl/'.$txt_table.'/'.$result_chat['id'].'.mp3')){
                     echo '<a href="'.$url.'/app_mygirl/'.$txt_table.'/'.$result_chat['id'].'.mp3" target="_blank"class="buttonPro light_blue"><i class="fa fa-file-audio-o" aria-hidden="true"></i> Nghe thử âm thanh</a>';
@@ -220,7 +225,7 @@ if (isset($_POST['chat'])) {
 
         echo '</div>';
     } else {
-        show_alert("Thêm câu trò chuyện không thành công ! lỗi:" . mysql_error(), "error");
+        show_alert("Thêm câu trò chuyện không thành công ! lỗi:" . mysqli_error($link), "error");
     }
 	unset($_GET);
     exit;

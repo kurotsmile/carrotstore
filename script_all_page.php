@@ -19,9 +19,13 @@
     });
 
 
-    function show_menu_app(Emp){
+    function show_menu_app(Emp,type_act){
         $('.app').removeClass('menu_app');
-        $(Emp).parent().parent().addClass('menu_app')
+        if(type_act==0){
+            $(Emp).parent().parent().addClass('menu_app')
+        }else{
+            $(Emp).addClass('menu_app')   
+        }
     };
 
     var is_show_menu_mobile=true;

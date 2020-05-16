@@ -2025,6 +2025,11 @@ pre code{
     background: url('../../images/bk_link.jpg');
 }
 
+::selection {
+    background-color: green;
+    color: white;
+}
+
 
 /* Animation Keyframes*/
 @keyframes music {

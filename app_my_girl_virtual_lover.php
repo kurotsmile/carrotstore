@@ -522,7 +522,7 @@ function check_func_msg_sevrer($type_question, $id_device, $text, $lang_sel, $li
                     Chat_report(mysqli_fetch_array($get_music_by_lyrics), 'chat', $lang_sel, $link);
                 }
             }
-            mysqli_free_result($get_music_by_lyrics);
+     
         } else {
             $result_music = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE MATCH (chat)  AGAINST ('$text' IN BOOLEAN MODE)  AND `pater`='' AND `effect` = '2' AND `disable` = '0' LIMIT 1");
             if ($result_music != false) {
@@ -530,9 +530,9 @@ function check_func_msg_sevrer($type_question, $id_device, $text, $lang_sel, $li
                     Chat_report(mysqli_fetch_array($result_music), 'chat', $lang_sel, $link);
                 }
             }
-            mysqli_free_result($result_music);
+ 
         }
-        mysqli_free_result($result_lyricst);
+
 
     }
 }
@@ -654,9 +654,9 @@ if ($func == 'list_music') {
                         $txt_query_2 .= " UNION ALL ";
                     }
                 }
-                $result_tip = mysql_query($txt_query);
+                $result_tip = mysqli_query($link,$txt_query);
                 if (mysqli_num_rows($result_tip) == 0) {
-                    $result_tip = mysql_query($txt_query_2);
+                    $result_tip = mysqli_query($link,$txt_query_2);
                 }
             }
         }

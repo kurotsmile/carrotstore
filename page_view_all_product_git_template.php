@@ -8,7 +8,7 @@ if(trim($row['slug'])!=''){
 $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
 $data_type=mysqli_fetch_assoc($query_type);
 ?>
-            <div id="row<?php echo $row['id']; ?>" class="app">
+            <div id="row<?php echo $row['id']; ?>" class="app" oncontextmenu="show_menu_app(this,1);return false;">
                 <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo lang($link,'click_de_xem').' ('.get_name_product_lang($link,$row['id'],$_SESSION["lang"]).')';?>"><h1><span class="<?php echo $data_type['css_icon'];?>"></span> <?php echo get_name_product_lang($link,$row['id'],$_SESSION["lang"]); ?></h1></a></div>
                 <a href="<?php echo $link_app;?>"><img style="float: left;width: 100px;"  alt="<?php echo get_name_product_lang($link,$row['id'],$_SESSION["lang"]); ?>" title="<?php echo lang($link,'click_de_xem').' ('.get_name_product_lang($link,$row['id'],$_SESSION["lang"]).')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row['id'],'100x100'); ?>" class="app_icon" /></a>
                 <div class="app_txt">
@@ -20,7 +20,7 @@ $data_type=mysqli_fetch_assoc($query_type);
                         <?php if($row['galaxy_store']!=''){ ?><a title="<?php echo lang($link,'download_on').' (Galaxy store)';?>" alt="<?php echo lang($link,'download_on').' (Galaxy store)';?>" class="buttonPro small green" href="<?php echo $row['galaxy_store'];?>" target="_blank"><i class="fa fa-scribd" aria-hidden="true"></i></a><?php }?>
                         <?php if($row['window_store']!=''){ ?><a title="<?php echo lang($link,'download_on').' (Microsoft Store)';?>" alt="<?php echo lang($link,'download_on').' (Microsoft Store)';?>" class="buttonPro small green" href="<?php echo $row['window_store'];?>" target="_blank"><i class="fa fa-windows" aria-hidden="true"></i></a><?php }?>
                         <?php if($row['huawei_store']!=''){ ?><a title="<?php echo lang($link,'download_on').' (Huawei AppGallery)';?>" alt="<?php echo lang($link,'download_on').' (Huawei AppGallery)';?>" class="buttonPro small green" href="<?php echo $row['huawei_store'];?>" target="_blank"><i class="fa fa-pagelines" aria-hidden="true"></i></a><?php }?>
-						<?php if($row['chrome_store']!=''){ ?><a title="<?php echo lang($link,'chrome_store').' (Chrome store)';?>" alt="<?php echo lang($link,'download_on').' (Chrome store)';?>" class="buttonPro small green" href="<?php echo $row['chrome_store'];?>" target="_blank"><i class="fa fa-chrome" aria-hidden="true"></i></a><?php }?>
+						<?php if($row['chrome_store']!=''){ ?><a title="<?php echo lang($link,'download_on').' (Chrome store)';?>" alt="<?php echo lang($link,'download_on').' (Chrome store)';?>" class="buttonPro small green" href="<?php echo $row['chrome_store'];?>" target="_blank"><i class="fa fa-chrome" aria-hidden="true"></i></a><?php }?>
                         <?php if($row['apk']!=''){ ?><a title="<?php echo lang($link,'download_on').' (Carrot Store)';?>" alt="<?php echo lang($link,'download_on').' (Carrot Store)';?>" class="buttonPro small green" href="<?php echo $row['apk'];?>" target="_blank"><i class="fa fa-cloud-download" aria-hidden="true"></i></a><?php }?>
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/app.plist')){
@@ -33,7 +33,7 @@ $data_type=mysqli_fetch_assoc($query_type);
                 </div>
                 <div class="app_action">
                 <a href="<?php echo $link_app;?>" title="<?php echo lang($link,'click_de_xem').' ('.get_name_product_lang($link,$row['id'],$_SESSION["lang"]).')';?>" class="buttonPro small "><i class="fa fa-chevron-right" aria-hidden="true"></i> <?php echo lang($link,'chi_tiet'); ?></a>
-                <button onclick="show_menu_app(this);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
+                <button onclick="show_menu_app(this,0);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
                 </div>
                     <div class="menu_more">
                         <?php if($row['chplay_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['chplay_store'];?>&hl=<?php echo $_SESSION["lang"];?>" target="_blank"><i class="fa fa-android" aria-hidden="true"></i> <?php echo lang($link,'download_on').' (Chplay)';?></a><?php }?>

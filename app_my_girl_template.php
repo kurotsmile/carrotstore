@@ -81,20 +81,10 @@ class Data_app
 $data_app = new Data_app();
 //Máy chủ lưu trữ dữ liệu
 $item_upload = new item_sever_upload();
-$item_upload->name = "Máy chủ nhà rốt";
+$item_upload->name = "Máy chủ dữ liệu (mp3)";
 $item_upload->url_home='http://34.70.228.22';
 $item_upload->url = $item_upload->url_home.'/ajax.php';
 array_push($data_app->arr_sever_upload, $item_upload);
-
-
-
-/*
-$item_upload=new item_sever_upload();
-$item_upload->name="Máy chủ - Carrotstore";
-$item_upload->url_upload=$url.'/data_upload.php';
-$item_upload->url_sever=$url;
-array_push($data_app->arr_sever_upload,$item_upload);
-*/
 
 //Chức năng msg
 class msg_func_item
@@ -491,8 +481,8 @@ $arr_status_icon = array('<i class="fa fa-meh-o" aria-hidden="true"></i>', '<i c
 <link rel="stylesheet" href="<?php echo $url; ?>/js/jquery-ui.css"/>
 <script src="<?php echo $url; ?>/js/jquery-ui.js"></script>
 <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
-<script src="<?php echo $url; ?>/js/jquery.ajaxfileupload.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
+<script src="<?php echo $url; ?>/js/jquery.ajaxfileupload.min.js"></script>
 <?php
 
 if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
