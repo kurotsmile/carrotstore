@@ -1,0 +1,75 @@
+<?php
+$lang_item=new App_sheep_lang_item();
+$lang_item->id='11';
+$lang_item->key='ja';
+$lang_item->name='Japanese';
+$lang_item->goto_sleep='就寝時間';
+$lang_item->play_game='ゲームをする';
+$lang_item->home_tip='2つの主な機能を備えた不眠症に対する羊の数は、寝るとゲームをして根をクリアし、深く眠るのに役立ちます。
+
+眠りに行く：アプリは、あなたを数えて楽しく簡単な心を眠るのに役立つように音楽にドロップする羊の数が多い
+
+ゲームをする：羊を触ってフェンスにジャンプするのに適した時間を選んで、村は得点を得ます';
+$lang_item->icon='http://sheep.carrotstore.com/image/ja.png';
+$lang_item->btn_cancel='キャンセル';
+$lang_item->btn_okay='同意する';
+$lang_item->select_sheep='ヒツジの数を選択する';
+$lang_item->select_music='バックグラウンドミュージックを選択';
+$lang_item->setting='設定';
+$lang_item->remove_ads='広告を削除';
+$lang_item->remove_ads_tip='広告パックを購入するにはこのボタンをクリックします。これにより、アプリは迷惑な広告を表示しなくなります.';
+$lang_item->select_lang='言語を変えてください';
+$lang_item->restore='リストア';
+$lang_item->restore_tip='購入したアイテムをアプリに復元するにはこのボタンを押します';
+$lang_item->buy_music='購入曲';
+$lang_item->hight_socre='高得点';
+$lang_item->play_again='再びプレー';
+$lang_item->error_name='あなたの名前は5文字以下でなければなりません';
+$lang_item->error_msg='メッセージは空白にすることはできず、5文字を超えています';
+$lang_item->good_night_success='ポスト良い睡眠に成功！ メッセージありがとうございます。';
+$lang_item->good_night_write='おやすみを書く';
+$lang_item->good_night_name='あなたの名前';
+$lang_item->good_night_msg='メッセージ';
+$lang_item->btn_sel_1='25 x 羊';
+$lang_item->btn_sel_2='50 x 羊';
+$lang_item->btn_sel_3='100 x 羊';
+$lang_item->btn_sel_4='200 x 羊';
+$lang_item->music_type_1='無料';
+$lang_item->music_type_2='購入する';
+$lang_item->count_end_tip='あなたが眠っていた時（羊を完全に数える）';
+$lang_item->count_end_1='終了アプリケーション';
+$lang_item->count_end_2='戻る';
+$lang_item->sound_tip='アプリケーションサウンド（バックグラウンドミュージックを除く）';
+$lang_item->sound_on='オンにする';
+$lang_item->sound_off='消す';
+$lang_item->buy_ads_success='広告の削除に成功しました！ アプリケーションの製品をご購入いただきありがとうございます';
+$lang_item->buy_heart_success='心の成功を購入！ あなたはゲームを続けることができます';
+$lang_item->buy_music_success='音楽を購入していただきありがとうございます。 魂をリラックスさせる音楽を楽しんでほしい';
+$lang_item->buy_fail='購入に失敗しました';
+$lang_item->shop='格納';
+$lang_item->restore_success='購入したアイテムを正常に復元する！';
+$lang_item->restore_fail='復元に失敗しました';
+$lang_item->sex='セックス';
+$lang_item->sex_boy='男性';
+$lang_item->sex_girl='女性';
+$lang_item->account='アカウント';
+$lang_item->account_status='状態';
+$lang_item->account_status_1='情報共有';
+$lang_item->account_status_2='情報は共有されません';
+$lang_item->address='住所';
+$lang_item->rules='ルール';
+$lang_item->account_rules='この情報の入力が完了すると、アカウントが正常に登録されました。 あなたのすべての情報は、Carrot Appによって絶対的に秘密にされ、ゲームシステムの他のサービスや開発者のアプリケーションに関与している可能性があります。';
+$lang_item->create_and_edit_account='アカウントの作成と編集';
+$lang_item->edit='編集';
+$lang_item->error_phone='電話番号は8文字以下にする必要があります';
+$lang_item->account_add_success='アカウントが作成されました';
+$lang_item->account_update_success='アカウントの更新に成功しました';
+$lang_item->phone_number='電話番号';
+$lang_item->top_player='プレーヤーのランキング';
+$lang_item->scores='スコア';
+$lang_item->continue_playing='持続する';
+$lang_item->app_more='キャロットアプリからさらにアプリを追加する';
+$lang_item->app_more_setting='他のアプリを見るs';
+$lang_item->app_more_tip='開発者からのより多くのアプリ';
+array_push($app_sheep->list_lang,$lang_item);
+?>

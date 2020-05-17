@@ -1,4 +1,4 @@
-<div id="row<?php echo $row['id_device']; ?>" class="app" >
+<div id="row<?php echo $row['id_device']; ?>" class="app" oncontextmenu="show_menu_app(this,1);return false;">
     <div class="app_title">
         <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang;?>">
             <h1>
@@ -71,7 +71,7 @@
     <div class="app_action">
         <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang_sel;?>" class="buttonPro small "><?php echo lang($link,'chi_tiet'); ?></a>
         <a href="callto://+<?php echo $row['sdt']; ?>" class="buttonPro small "><i class="fa fa-volume-control-phone" aria-hidden="true"></i> <?php echo lang($link,'goi_dien'); ?></a>
-        <button onclick="show_menu_app(this);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
+        <button onclick="show_menu_app(this,0);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
     </div>
 
     <div class="menu_more">
