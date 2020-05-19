@@ -188,6 +188,7 @@ if ($_POST) {
     <?php
     echo mysqli_error($link);
 
+    
     if (isset_file($_FILES["file_audio"])) {
 
         $target_dir = "app_mygirl/$txt_table";

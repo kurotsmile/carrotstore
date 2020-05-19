@@ -180,7 +180,7 @@ mysqli_free_result($result_lyrics);
                             $(".item_info_music_"+id_music+"_genre").html(obj_data.genre);
                             swal({
                                 html: true, title: 'Báo cáo công việc',
-                                text: '<a href="http://work.carrotstore.com/?id_object='+id_music+'&lang='+lang_info+'&type_chat=info_music&type_action=add" target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn làm việc (Editor)</a>',
+                                text: '<a href="<?php echo $url_work;?>/?id_object='+id_music+'&lang='+lang_info+'&type_chat=info_music&type_action=add" target="_blank" class="buttonPro light_blue"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn làm việc (Editor)</a>',
                                 icon: "success"
                             });
                         }

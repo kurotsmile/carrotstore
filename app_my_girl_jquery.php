@@ -990,7 +990,7 @@ if ($func == 'get_chat_by_audio_url') {
             $data_chat = mysqli_fetch_array($query_check_chat);
             if($extrac=='') {
                 $c->{'error'}='0';
-                $c->data = "Đối tượng sử dụng tệp này<br/><a target='_blank' href='http://carrotstore.com/app_my_girl_update.php?id=" . $data_chat['id'] . "&lang=$lang'>" . $data_chat['id'] . " - " . $data_chat['chat'] . "</a>";
+                $c->data = "Đối tượng sử dụng tệp này<br/><a target='_blank' href='".$url."/app_my_girl_update.php?id=" . $data_chat['id'] . "&lang=$lang'>" . $data_chat['id'] . " - " . $data_chat['chat'] . "</a>";
                 echo 'datacallback(' . json_encode($c) . ')';
                 exit;
             }else{
@@ -1066,7 +1066,7 @@ if ($func == 'login_work') {
     if(mysqli_num_rows($query_login_work)>0){
         $data_user=mysqli_fetch_array($query_login_work);
         $c->{'username'}=$data_user['user_name'];
-        $c->{'avatar'}='http://work.carrotstore.com/img.php?url=avatar_user/'.$data_user['user_id'].'.png&size=20';
+        $c->{'avatar'}=$url_work.'/img.php?url=avatar_user/'.$data_user['user_id'].'.png&size=20';
         $c->{'id'}=$data_user['user_id'];
         if($data_user['full_name']!='') {
             $c->{'full_name'} = $data_user['full_name'];

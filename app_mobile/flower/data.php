@@ -1,0 +1,103 @@
+<?php
+Class App_flower{
+    public $list_lang=array();
+    public $list_data=array();
+}
+
+Class Item_lang{
+    public $id='';
+    public $key='';
+    public $name='';
+    public $icon='';
+    public $love='';
+    public $no_love='';
+    public $love_or_no_love='';
+    public $setting='';
+    public $seting_on;
+    public $seting_off;
+    public $seting_sound='';
+    public $seting_music='';
+    public $seting_animator='';
+    public $flower_tip='';
+    public $seting_update='';
+    public $back='';
+    public $flower_next='';
+    public $app_more='';
+    public $change_language='';
+    public $remove_ads='';
+    public $seting_restore='';
+    public $add_maxim='';
+    public $add_maxim_content='';
+    public $add_maxim_author='';
+    public $add_maxim_content_error='';
+    public $add_maxim_success='';
+    public $refresh='';
+    public $done='';
+    public $buy_ads_success='';
+    public $buy_music_success='';
+    public $shop='';
+    public $buy_fail='';
+    public $restore_success='';
+    public $restore_fail='';
+    public $music_type_1='';
+    public $music_type_2='';
+    public $buy_music='';
+    public $background='';
+    public $edit='';
+    public $account_information='';
+    public $account_update='';
+    public $phone='';
+    public $error_phone='';
+    public $phone_tip='';
+    public $account_name='';
+    public $account_name_tip='';
+    public $error_name='';
+    public $sms='';
+    public $address='';
+    public $address_tip='';
+    public $account_status='';
+    public $account_statu_1='';
+    public $account_statu_2='';
+    public $sex='';
+    public $sex_tip='';
+    public $sex_boy='';
+    public $sex_girl='';
+    public $account_avatar='';
+    public $account_avatar_tip='';
+    public $account_update_success='';
+    public $account_add_success='';
+    public $account_app_active='';
+    public $account_status_tip='';
+    public $sms_value='';
+    public $error_location='';
+    public $update='';
+    public $update_maxim_success='';
+    public $like='';
+    public $distlike='';
+    public $comment='';
+    public $comment_tip='';
+    public $account_none='';
+    public $send='';
+    public $share='';
+    public $list_maxim='';
+    public $list_maxim_tip='';
+    public $maxim='';
+    
+    public $ads_admob_baner_android='ca-app-pub-1054492803072526/5064308394';
+    public $ads_admob_baner_ios='ca-app-pub-1054492803072526/6493349257';
+    public $ads_admob_Interstitial_android='ca-app-pub-1054492803072526/2055001679';
+    public $ads_admob_Interstitial_ios='ca-app-pub-1054492803072526/4797124204';
+    public $count_click_ads='5';
+}
+
+$app_flower=new App_flower();
+
+include "lang/lang_vi.php";
+include "lang/lang_en.php";
+include "lang/lang_es.php";
+include "lang/lang_pt.php";
+include "lang/lang_fr.php";
+include "lang/lang_hi.php";
+include "lang/lang_zh.php";
+include "lang/lang_ru.php";
+?>
