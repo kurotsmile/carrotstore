@@ -20,8 +20,15 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
 
     <div style="margin-top: 20px;float: left;width: 100%;">
     <?php
-    $list_style='same';
-    $list_music = mysqli_query($link,"SELECT m.`id`, m.`chat`, m.`file_url`, m.`slug`,m.`author` From `app_my_girl_".$lang_artis."` as `m` LEFT JOIN `app_my_girl_".$lang_artis."_lyrics` as `l` ON m.id= l.id_music  WHERE l.artist like '%$name_artist%' LIMIT 20");
+	$list_style='same';
+	$string_search='';
+	$arr_tag_name=explode(',',$name_artist);
+	foreach ($arr_tag_name as $val) {
+		$string_search.= "l.artist like '%".trim($val)."%' OR ";
+	}
+
+	$string_search=substr($string_search,0,strlen($string_search)-3);
+	$list_music = mysqli_query($link,"SELECT m.`id`, m.`chat`, m.`file_url`, m.`slug`,m.`author` From `app_my_girl_".$lang_artis."` as `m` LEFT JOIN `app_my_girl_".$lang_artis."_lyrics` as `l` ON m.id= l.id_music  WHERE $string_search LIMIT 20");
 	if($list_music){
 		if(mysqli_num_rows($list_music)>0){
 			?>

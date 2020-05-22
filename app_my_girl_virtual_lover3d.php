@@ -344,7 +344,11 @@ if($func=='chat'){
             $chat->color=$giai_toan['color'];
             $chat->effect=$giai_toan['effect'];
             
-            $result=@eval("return " . $equation . ";");
+            try {
+                $result = @eval("return ".$equation.";");
+            } catch (ParseError $e) {
+                $result = "0";
+            }
             $chat->chat=str_replace('{giai_toan}','='.$result,$giai_toan['chat']);
             
             $table_app_temp='app_mygirl/app_my_girl_temp_'.$lang_sel;                        

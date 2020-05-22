@@ -164,6 +164,17 @@ function search_ytb(){
     win.focus();
 }
 
+function download_ytb(is_edit){
+    var link_ytb='';
+    if(is_edit){
+        link_ytb=$("#link_ytb_inp").html().replace('www.youtube.com','www.youtubepp.com');
+    }else{
+        link_ytb=$("#link_ytb").val().replace('www.youtube.com','www.youtubepp.com');
+    }
+    var win = window.open(link_ytb);
+    win.focus();
+}
+
 function search_song(){
     var txt_name_song=$('#chat').val().replace(/\&/g,' and ');
     var win = window.open("https://www.google.com/search?q="+txt_name_song+"", '_blank');

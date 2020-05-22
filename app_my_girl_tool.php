@@ -205,5 +205,13 @@ include "app_my_girl_template.php";
             </li>
         </a>
 
+        <a href="<?php echo $url;?>/app_my_girl_handling.php?func=fix_name_user">
+            <li class="box_tool">
+                <i class="fa fa-user-md" aria-hidden="true"></i>
+                <b>Sửa sai tên người dùng</b><br />
+                Tìm những người dùng sai tên và sửa lại tên của họ
+            </li>
+        </a>
+
     </ul>
 </div>

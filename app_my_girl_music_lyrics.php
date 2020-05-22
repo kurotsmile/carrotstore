@@ -100,7 +100,7 @@ echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id</th><th>Tên bài hát</th><th>Vắn tắt lời bài hát</th><th>Nghệ sĩ</th><th>Album</th><th>Thể loại</th><th>Năm xuất bản</th><th>Hành động</th></tr>';
 while ($row = mysqli_fetch_assoc($result_lyrics)) {
     $is_ready = false;
-    $sql_name_song = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_" . $langsel . "` WHERE `id` = '" . $row['id_music'] . "' LIMIT 1");
+    $sql_name_song = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_".$langsel."` WHERE `id` = '".$row['id_music']."' LIMIT 1");
     if (mysqli_num_rows($sql_name_song) > 0) {
         $arr_song = mysqli_fetch_array($sql_name_song);
         $row['name']=$arr_song['chat'];
@@ -142,6 +142,7 @@ mysqli_free_result($result_lyrics);
         var data_info=$(".item_info_music_"+id_music).attr('data_info');
         var obj_info=JSON.parse(data_info);
         var lang_info='<?php echo $langsel;?>';
+        alert(data_info);
 
         var html_edit_info='<form id="frm_update_info_music">';
         html_edit_info=html_edit_info+"<label style='float: left'>Artist</label>";

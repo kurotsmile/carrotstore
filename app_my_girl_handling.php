@@ -2,13 +2,6 @@
 include "app_my_girl_template.php";
 
 $func=$_GET['func'];
-if($func=='delete_all_brain'){
-    include "app_mygirl_function/delete_all_brain.php";
-}
-
-if($func=='delete_chat'){
-    include "app_mygirl_function/delete_chat.php";
-}
 
 if($func=='delete_all_key_music'){
     echo '<h2>Xóa dữ liệu tìm kiếm nhạc</h2>';
@@ -22,22 +15,6 @@ if($func=='delete_all_report'){
     $query_delete_report=mysqli_query($link,"DELETE FROM `app_my_girl_report`");
     echo '<p style="float:left;width:100%">Đã xóa '.mysqli_affected_rows($link).' báo lỗi của tất cả các nước!</p>';
     exit;
-}
-
-if($func=='fix_error'){
-    include "app_mygirl_function/fix_error.php";
-}
-
-if($func=='clear_the_trash'){
-    include "app_mygirl_function/clear_the_trash.php";
-}
-
-if($func=='zip_code'){
-    include "app_mygirl_function/zip_code.php";
-}
-
-if($func=='create_audio'){
-    include "app_mygirl_function/create_audio.php";
 }
 
 
@@ -67,6 +44,7 @@ if($func=='command_mysql'){
                 }
         }
     }
+    exit;
 }
 
 
@@ -96,7 +74,7 @@ if($func=='active_chat_month'){
         <?php if($msg!=''){?><p style="color: red;font-size: larger;"></p><?php }?>
     </form>
     <?php
-    
+    exit;
 }
 
 if($func=='delete_field_music_error'){
@@ -112,33 +90,9 @@ if($func=='delete_field_music_error'){
         }
         
     }
-    mysqli_free_result($list_country);
+    exit;
 }
 
-
-if($func=='move_chat'){
-    include "app_mygirl_function/move_chat.php";
-}
-
-if($func=='move_msg'){
-    include "app_mygirl_function/move_msg.php";
-}
-
-if($func=='check_music'){
-    include "app_mygirl_function/check_music.php";
-}
-
-if($func=='check_key'){
-    include "app_mygirl_function/check_key.php";
-}
-
-if($func=='keyword_warning'){
-    include "app_mygirl_function/keyword_warning.php";
-}
-
-if($func=='event_management'){
-    include "app_mygirl_function/event_management.php";
-}
 
 if($func=='lang_2'){
     $msg='';
@@ -169,6 +123,7 @@ if($func=='lang_2'){
         <input type="submit" value="Thực hiện" class="buttonPro blue" />
     </form>
     <?php
+    exit;
 }
 
 if($func=='backup'){
@@ -184,6 +139,7 @@ if($func=='backup'){
         <input type="submit" value="Thực hiện" class="buttonPro blue" />
     </form>
 <?php
+    exit;
 }    
 
 if($func=='move_lyrics'){
@@ -209,16 +165,8 @@ if($func=='move_lyrics'){
         }
         mysqli_free_result($query_get_lyrics);
     }
+    exit;
 }
-
-if($func=='error'){
-    include "app_mygirl_function/error.php";
-}
-
-if($func=='delete_audio'){
-    include "app_mygirl_function/delete_audio.php";
-}
-
 
 if($func=='test_search'){
      $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
@@ -242,11 +190,9 @@ if($func=='test_search'){
      }
      echo mysqli_error($link);
      echo ' leng: '.$count_l;
+     exit;
 }
 
-if($func=='draft_brain'){
-    include "app_mygirl_function/draft_brain.php";
-}
 
 if($func=='bk'){
     $query_bk=mysqli_query($link,"SELECT * FROM `app_my_girl_background` WHERE `version` = '1'");
@@ -260,6 +206,7 @@ if($func=='bk'){
         unlink($url_file_2);
         echo '<hr/>';
     }
+    exit;
 }
 
 if($func=='off_color'){
@@ -270,6 +217,7 @@ if($func=='off_color'){
         $_SESSION['off_color']='1';
         show_alert('Đã tắt chức năng màu!','alert');
     }
+    exit;
 }
 
 if($func=='create_f'){
@@ -281,38 +229,11 @@ if($func=='create_f'){
             mkdir($path_file);
         }
     }
+    exit;
 }
 
-if($func=='create_slug'){
-    include "app_mygirl_function/create_slug.php";
-}
-
-if($func=='manager_country_work'){
-    include "app_mygirl_function/manager_country_work.php";
-}
-
-if($func=='disk_capacity'){
-    include "app_mygirl_function/disk_capacity.php";
-}
-
-if($func=='avatar_user_resize'){
-    include "app_mygirl_function/avatar_user_resize.php";
-}
-
-if($func=='seo'){
-    include "app_mygirl_function/seo.php";
-}
-
-if($func=='fix_lyrics'){
-    include "app_mygirl_function/fix_lyrics.php";
-}
-
-if($func=='data_syn'){
-    include "app_mygirl_function/data_syn.php";
-}
-
-if($func=='delete_user_expired'){
-    include "app_mygirl_function/delete_user_expired.php";
+if($func!=''){
+    include "app_mygirl_function/".$func.".php";
 }
 ?>
 

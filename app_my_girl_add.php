@@ -810,8 +810,8 @@ if (isset($_POST['chat'])) {
                     <td><label><i class="fa fa-youtube-play" aria-hidden="true"></i> Liên kết Video Youtube</label>:
                     </td>
                     <td>
-                        <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i
-                                class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
+                        <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
+                        <a href="#" class="buttonPro small purple" onclick="download_ytb(false);return false;"><i class="fa fa-download" aria-hidden="true"></i> Tải video từ youtube</a>
                         <input type="text" id="link_ytb" value="" name="link_ytb"/>
                     </td>
                 </tr>

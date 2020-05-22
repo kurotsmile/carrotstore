@@ -1306,6 +1306,9 @@ tr:nth-child(even) {background-color: white}
     cursor: pointer;
     color:white;
 }
+#filter a.active{
+	background-color: green;
+}
 
 #filter #search{
     height: 14px;

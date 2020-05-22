@@ -507,48 +507,12 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
 ?>
 
 <ul id="menu" class="notranslate">
-    <li <?php if ($cur_url == '/vl') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/vl" style="font-weight: bold;">Vitual Lover</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_history.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_history.php"><i class="fa fa-user" aria-hidden="true"></i> Theo
-            dõi</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_msg.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_msg.php"><i class="fa fa-commenting-o" aria-hidden="true"></i> Câu
-            Thoại</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_chat.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_chat.php"><i class="fa fa-comments" aria-hidden="true"></i> Trò chuyện</a>
-    </li>
-    <li <?php if ($cur_url == '/app_my_girl_effect.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_effect.php"><i class="fa fa-gratipay" aria-hidden="true"></i> Hiệu ứng</a>
-    </li>
-    <li <?php if ($cur_url == '/app_my_girl_background.php') {
-        echo "class='active'";
-    } ?>><a href="<?php echo $url; ?>/app_my_girl_background.php"><i class="fa fa-university" aria-hidden="true"></i>
-            Khung cảnh</a>
-        <ul class="sub_menu">
-            <li><a href="<?php echo $url; ?>/app_my_girl_background_category.php"><i class="fa fa-th-list"
-                                                                                     aria-hidden="true"></i> Quảng lý
-                    Chủ đề</a></li>
-            <?php
-            $get_category_bk = mysqli_query($link,'SELECT `id`,`name` FROM `app_my_girl_bk_category`');
-            while ($row_cat = mysqli_fetch_array($get_category_bk)){
-            ?>
-            <li><a href="<?php echo $url; ?>/app_my_girl_background.php?cat=<?php echo $row_cat['id'] ?>"> <i
-                            class="fa fa-bars"
-                            aria-hidden="true"></i> <?php echo get_key_lang($link,$row_cat['name'], 'vi'); ?></a>
-                <?php
-                }
-                mysqli_free_result($get_category_bk);
-                ?>
-        </ul>
-    </li>
-
-
+    <li <?php if ($cur_url == '/vl') {echo "class='active'"; } ?>><a href="<?php echo $url; ?>/vl" style="font-weight: bold;">Vitual Lover</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_history.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_history.php"><i class="fa fa-user" aria-hidden="true"></i> Theo dõi</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_msg.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_msg.php"><i class="fa fa-commenting-o" aria-hidden="true"></i> Câu Thoại</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_chat.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_chat.php"><i class="fa fa-comments" aria-hidden="true"></i> Trò chuyện</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_effect.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_effect.php"><i class="fa fa-gratipay" aria-hidden="true"></i> Hiệu ứng</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_background.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_background.php"><i class="fa fa-university" aria-hidden="true"></i>Khung cảnh</a></li>
     <li <?php if ($cur_url == '/app_my_girl_ads.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_ads.php"><i class="fa fa-bandcamp" aria-hidden="true"></i> Quảng cáo</a></li>
     <li <?php if ($cur_url == '/app_my_girl_preson.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_preson.php"><i class="fa fa-heart"></i> Nhân vật</a>
         <ul class="sub_menu">
@@ -570,7 +534,6 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
 <div id="dialog" title="Xem quang hệ" style="display: none;" class="notranslate">
     <p id="dialog_data">Nội dung...</p>
 </div>
-
 
 <script>
     $(document).ready(function () {

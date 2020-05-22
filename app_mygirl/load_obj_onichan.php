@@ -1,7 +1,7 @@
 <?php
 include "../config.php";
 include "../database.php";
-$url_s='https://carrotstore.com';
+$url_s=$url;
 function thumb($urls,$size){
     return URL."/thumb.php?src=$urls&size=$size&trim=1";
 }
@@ -53,16 +53,16 @@ if($func=='load_head'){
     }else{
         $list_head=mysqli_query($link,"SELECT * FROM `app_my_girl_head` WHERE `character`='$character' AND `name` LIKE '%$search%'");
     }
-    
-    while($row=mysqli_fetch_array($list_head)){
-        $skin_item=new Skin_item();
-        $skin_item->name=$row['name'];
-        $skin_item->url=$url_s.'/app_mygirl/obj_head/head_'.$row[0].'.png';
-        $skin_item->icon=thumb('app_mygirl/obj_head/icon_'.$row[0].'.png','200');
-        array_push($skin_app->arr_skin,$skin_item);
+    if($list_head){
+        while($row=mysqli_fetch_array($list_head)){
+            $skin_item=new Skin_item();
+            $skin_item->name=$row['name'];
+            $skin_item->url=$url_s.'/app_mygirl/obj_head/head_'.$row[0].'.png';
+            $skin_item->icon=thumb('app_mygirl/obj_head/icon_'.$row[0].'.png','200');
+            array_push($skin_app->arr_skin,$skin_item);
+        }
     }
     echo json_encode($skin_app);
-    mysqli_free_result($list_head);
     exit;
 }
 

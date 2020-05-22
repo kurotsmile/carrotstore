@@ -127,7 +127,7 @@
                 echo '<div style="width:100%;float:left;">';
                 $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `key`!='$lang_move'");
                 while($l=mysqli_fetch_array($list_country)){
-                    $key_tip=get_key_lang("key_music",$l['key']);
+                    $key_tip=get_key_lang($link,"key_music",$l['key']);
                     ?>
                     <span style="display: inline-block;;background-color: black;color:white;cursor: pointer;padding: 3px;margin: 2px;border-radius: 10px;" onclick="sel_key_chat('<?php echo $l['key']; ?>','<?php echo $key_tip;?>')"><img style="float: left;margin-right: 5px;" src="<?php echo thumb('app_mygirl/img/'.$l['key'].'.png','20x20'); ?>" /> <?php echo $key_tip;?></span>
                     <?php

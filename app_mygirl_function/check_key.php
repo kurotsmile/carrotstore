@@ -6,17 +6,17 @@ $langsel=$_GET['lang'];
 $sex=$_GET['sex'];
 $character_sex=$_GET['character_sex'];
 
-$query_check_key=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE `text` = '$key' AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `pater` = ''");
-if(mysql_num_rows($query_check_key)){
+$query_check_key=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `text` = '$key' AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `pater` = ''");
+if(mysqli_num_rows($query_check_key)){
     echo '<b>Sơ cấp</b> Từ khóa trò chuyện được truy vấn:';
 }else{
     echo '<b>Thứ cấp</b> Từ khóa trò chuyện được truy vấn:';
-    $query_check_key=mysql_query("SELECT * FROM `app_my_girl_$langsel` WHERE MATCH (`text`) AGAINST ('$key') AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `pater` = ''");
+    $query_check_key=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE MATCH (`text`) AGAINST ('$key') AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `pater` = ''");
 }
-if(mysql_num_rows($query_check_key)){
-while($row_chat=mysql_fetch_array($query_check_key)){
+if(mysqli_num_rows($query_check_key)){
+while($row_chat=mysqli_fetch_array($query_check_key)){
     echo '<table>';
-    echo show_row_chat_prefab($row_chat,$langsel,'');
+    echo show_row_chat_prefab($link,$row_chat,$langsel,'');
     echo '</table>';
 }
 }else{

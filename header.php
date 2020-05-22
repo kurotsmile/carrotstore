@@ -96,28 +96,30 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     if(isset($_GET['lang'])) $lang=$_GET['lang'];
     $id_user=$_GET['user'];
     $query_account=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-    if(mysqli_num_rows($query_account)>0) {
-        $data_user = mysqli_fetch_assoc($query_account);
-        $title_page = $data_user['name'];
-        $seo_desc = '';
-        if ($data_user['sdt'] != '') {
-            $seo_desc .= ' Phone:' . $data_user['sdt'] . ' ';
-        }
-        if ($data_user['address'] != '') {
-            $seo_desc .= ' Address:' . $data_user['address'] . ' ';
-        }
-        $seo_desc .= ' Country:' . $lang . ' ';
-
-        $seo_img = $url . '/images/avatar_default.png';
-        $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $id_user . '.png';
-        if ($data_user['avatar_url'] != '') {
-            $seo_img = $data_user['avatar_url'];
-        } else {
-            if (file_exists($url_img)) {
-                $seo_img = $url . '/' . $url_img;
+    if($query_account){
+        if(mysqli_num_rows($query_account)>0) {
+            $data_user = mysqli_fetch_assoc($query_account);
+            $title_page = $data_user['name'];
+            $seo_desc = '';
+            if ($data_user['sdt'] != '') {
+                $seo_desc .= ' Phone:' . $data_user['sdt'] . ' ';
             }
+            if ($data_user['address'] != '') {
+                $seo_desc .= ' Address:' . $data_user['address'] . ' ';
+            }
+            $seo_desc .= ' Country:' . $lang . ' ';
+
+            $seo_img = $url . '/images/avatar_default.png';
+            $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $id_user . '.png';
+            if ($data_user['avatar_url'] != '') {
+                $seo_img = $data_user['avatar_url'];
+            } else {
+                if (file_exists($url_img)) {
+                    $seo_img = $url . '/' . $url_img;
+                }
+            }
+            $seo_url = $url . '/user/' . $id_user . '/' . $lang;
         }
-        $seo_url = $url . '/user/' . $id_user . '/' . $lang;
     }
 }
 

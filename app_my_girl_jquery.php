@@ -49,7 +49,7 @@ if($func=='show_return'){
         echo '<div style="max-height:550px;overflow-y: scroll;width:97%">';
         echo '<table>';
         while ($row = mysqli_fetch_array($result_chat)) {
-            echo show_row_chat_prefab($row,$lang_sel,'');
+            echo show_row_chat_prefab($link,$row,$lang_sel,'');
         }
         echo '</table>';
         echo '<div>';
@@ -89,7 +89,7 @@ if($func=='show_id_chat'){
             }else{
                 $txt_add_type_chat='<a href="#" class="buttonPro small yellow" onclick="add_id_chat_same('.$row['id'].',\'table_data_return\');return false;">Add same chat return</a>';
             }
-            echo show_row_chat_prefab($row,$lang_sel,$txt_add_type_chat);
+            echo show_row_chat_prefab($link,$row,$lang_sel,$txt_add_type_chat);
         }
         echo '</table>';
     }else{
@@ -109,7 +109,7 @@ if($func=='add_chat_same'){
     }else{
         $btn_remove='<a href="#" class="buttonPro small red" onclick="remove_chat_same(\''.$id.'\')">Gỡ bỏ</a>';
     }
-    echo show_row_chat_prefab($result_chat,$lang_sel,$btn_remove);
+    echo show_row_chat_prefab($link,$result_chat,$lang_sel,$btn_remove);
     exit;
 }
 
@@ -143,7 +143,7 @@ if($func=='search_chat'){
             }else{
                 $txt_add_type_chat='<a href="#" class="buttonPro small yellow" onclick="add_id_chat_same('.$row['id'].',\'table_data_return\');return false;">Add same chat return</a>';
             }
-            echo show_row_chat_prefab($row,$lang_sel,$txt_add_type_chat);
+            echo show_row_chat_prefab($link,$row,$lang_sel,$txt_add_type_chat);
         }
     }else{
 
@@ -300,7 +300,7 @@ if($func=='view_history_see'){
     $query_chat=mysqli_query($link,"SELECT * FROM `$table` WHERE `id` = '$id' AND `sex`='$sex' AND `character_sex`='$character_sex' LIMIT 1");
     $arr_chat=mysqli_fetch_array($query_chat);
     echo "<table>";
-    echo show_row_chat_prefab($arr_chat,$lang,'');
+    echo show_row_chat_prefab($link,$arr_chat,$lang,'');
     echo "</table>";
     exit;
 }
@@ -839,7 +839,7 @@ if($func=='show_type_chat_same'){
     }
     if(mysql_numrows($result_chat_key_same)>0){
         while($row_key=mysqli_fetch_array($result_chat_key_same)){
-            echo show_row_chat_prefab($row_key,$lang_sel,'');
+            echo show_row_chat_prefab($link,$row_key,$lang_sel,'');
 
         }
     }

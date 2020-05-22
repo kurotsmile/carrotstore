@@ -236,13 +236,8 @@ $arr = mysqli_fetch_array($result_chat);
     <li>
         <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $lang_sel; ?>&id_chat_see=<?php echo $id; ?>&type_chat_see=<?php echo $type_chat; ?>&sex=<?php echo $arr['sex']; ?>&character_sex=<?php echo $arr['character_sex']; ?>" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi theo câu trả lời này</a></li>
     <?php if (isset($_GET['msg'])) {?>
-        <li>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_msg&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>"
-               class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển hoặc sao chép sang
-                nước khác</a></li>
-        <li>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&type=msg"
-               class="buttonPro small red"><i class="fa fa-trash"></i> Xóa câu thoại này</a></li>
+        <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_msg&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>" class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển hoặc sao chép sang nước khác</a></li>
+        <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&type=msg" class="buttonPro small red"><i class="fa fa-trash"></i> Xóa câu thoại này</a></li>
         <?php
     } else { ?>
         <li>
@@ -253,23 +248,23 @@ $arr = mysqli_fetch_array($result_chat);
                class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển sang nước khác</a>
         </li>
         <?php if ($arr['effect'] == '2') { ?>
-            <li><a target="_blank" class="buttonPro small light_blue"
-                   href="<?php echo $url; ?>/music/<?php echo $id; ?>/<?php echo $lang_sel; ?>"><i
-                        class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên store</a></li><?php } ?>
+            <li>
+                <a target="_blank" class="buttonPro small light_blue" href="<?php echo $url; ?>/music/<?php echo $id; ?>/<?php echo $lang_sel; ?>"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên store</a>
+            </li>
+            <?php } ?>
     <?php } ?>
     <?php
     if ($data_user_carrot["user_role"] == "admin" || $data_user_carrot["user_role"] == "leader") {
         ?>
-        <li><a target="_blank"
-               href="http://work.carrotstore.com/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($link,$arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>"
-               class="buttonPro small red"><i class="fa fa-bug" aria-hidden="true"></i> Báo lỗi</a></li>
+        <li>
+            <a target="_blank" href="<?php echo $url_work;?>/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($link,$arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>" class="buttonPro small red"><i class="fa fa-bug" aria-hidden="true"></i> Báo lỗi</a>
+        </li>
     <?php } ?>
 </ul>
 
 
 <form name="frm_chat" method="post" enctype="multipart/form-data">
     <table>
-
         <?php
         $type_add = 'chat';
         if (isset($_GET['msg'])) {
@@ -306,8 +301,7 @@ $arr = mysqli_fetch_array($result_chat);
                     <span class="buttonPro small black"
                           onclick="translation_tag('key_inp','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i
                                 class="fa fa-language" aria-hidden="true"></i> Dịch</span>
-                    <a href="#" class="buttonPro small yellow" target="_blank" onclick="check_key();return false;"><i
-                                class="fa fa-share-square-o" aria-hidden="true"></i> kiểm tra tồn tại</a>
+                    <a href="#" class="buttonPro small yellow" target="_blank" onclick="check_key();return false;"><i class="fa fa-share-square-o" aria-hidden="true"></i> kiểm tra tồn tại</a>
                 </td>
             </tr>
         <?php } ?>
@@ -1221,10 +1215,9 @@ $arr = mysqli_fetch_array($result_chat);
                                    onclick="add_video_music('<?php echo $id_music; ?>');return false;"><i
                                             class="fa fa-plus-circle" aria-hidden="true"></i> cập nhật liên kết
                                     video</a>
-                                <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i
-                                            class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a><br/>
-                                <strong style="font-size: 13px;color: #1C8DFF;width: 100%;float: left;"
-                                        id="link_ytb_inp"><?php echo $txt_link_video; ?></strong>
+                                <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
+                                <a href="#" class="buttonPro small purple" onclick="download_ytb(true);return false;"><i class="fa fa-download" aria-hidden="true"></i> Tải video từ youtube</a>
+                                <strong style="font-size: 13px;color: #1C8DFF;width: 100%;float: left;" id="link_ytb_inp"><?php echo $txt_link_video; ?></strong>
                                 <input type="hidden" id="id_ytb_inp" value="<?php echo $txt_link_thumb; ?>"/>
 
                                 <div style="float: left;margin: 10px;">
