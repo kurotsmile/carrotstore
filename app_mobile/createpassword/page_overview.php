@@ -1,8 +1,8 @@
 <?php
-$query_list_country=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_country`");
+$query_list_country=mysqli_query($link,"SELECT `key`,`name` FROM carrotsy_virtuallover.`app_my_girl_country`");
 ?>
 <?php
-while($country=mysqli_fetch_array($query_list_country)){
+while($country=mysqli_fetch_assoc($query_list_country)){
     $key_country=$country['key'];
     $is_sel='off';
     $count_data_key_lang=0;
@@ -13,6 +13,16 @@ while($country=mysqli_fetch_array($query_list_country)){
         $is_sel='off';
     }
     $query_count_data_key=mysqli_query($link,"SELECT `value` FROM `value_lang` WHERE `id_country` = '$key_country' LIMIT 1");
+
+    $count_password=0;
+    $query_count_password=mysqli_query($link,"SELECT COUNT(`id`) as p FROM `password_$key_country` LIMIT 50");
+    if($query_count_password){
+        $data_count_password=mysqli_fetch_assoc($query_count_password);
+        $count_password=$data_count_password['p'];
+    }else{
+        $count_password=-1;  
+    }
+
     if(mysqli_num_rows($query_count_data_key)>0){
         $data_count_data_key=mysqli_fetch_array($query_count_data_key);
         $data_count_data_key=json_decode($data_count_data_key['value']);
@@ -34,6 +44,9 @@ while($country=mysqli_fetch_array($query_list_country)){
                     <?php }else{?>
                         Quốc gia này chưa được triển khai ứng dụng
                     <?php }?>
+                </li>
+                <li>
+                    Có <b><?php echo $count_password;?></b> Mật khẩu được tạo
                 </li>
                 <li>
                     Có <b><?php echo $count_data_key_lang;?></b> từ khóa ngôn ngữ ứng dụng được tạo

@@ -1,10 +1,10 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 include "config.php";
 include "database.php";
 
 ini_set('post_max_size', '90M');
 ini_set('upload_max_filesize', '90M');
-header("Access-Control-Allow-Origin: *");
 
 function does_url_exists($url) {
     $ch = curl_init($url);
@@ -40,11 +40,13 @@ if(isset($_POST['lang'])){
     $lang=$_POST['lang'];
 }
 $app=new App();
-$func=$_POST['function'];
+$func='';
+if(isset($_POST['function']))$func=$_POST['function'];
+
 if($func=='logincallback'){
     $user_phone=$_POST['user_phone'];
     $user_password=$_POST['user_password'];
-    if($user_phone.trim()==""){
+    if(trim($user_phone)==""){
         echo "none";
         exit;
     }
@@ -94,40 +96,39 @@ if($func=='download_lang'){
     echo json_encode($app);
 }
 
-if($func=='create_link'){
-    include "../../phpqrcode/qrlib.php";
-    $link_web=$_POST['link'];
+if($func=='create_password'){
     $id_device=$_POST['id_device'];
-    $query_add_log=mysqli_query($link,"INSERT INTO `log` (`id_device`, `url`, `date`, `id_user`,`os`,`lang`) VALUES ('$id_device', '$link_web', NOW(), '1','$os','$lang');");
-    $query_add_link_shorten=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link_web', '$id_device', '', '0',NOW(),'$lang');");
-    $new_id_link=mysqli_insert_id($link);
-    $app->link=$url_carrot_store.'/link/'.$new_id_link;
-    $new_url_link=$url_carrot_store.'/link/'.$new_id_link;
-    QRcode::png($new_url_link, '../../phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
-    $app->{"qr"}=$url_carrot_store.'/phpqrcode/img_link/'.$new_id_link.'.png';
-    $app->{'link_detail'}=$url_carrot_store.'/l/'.$new_id_link;
-    echo json_encode($app);
+    $tag=$_POST['tag'];
+    $password=$_POST['password'];
+    $id_create=uniqid().uniqid();
+    $username=$_POST['username'];
+    $query_add_password=mysqli_query($link,"INSERT INTO `password_$lang` (`id`, `password`, `tag`, `date`,`username`,`id_user`) VALUES ('$id_create', '$password', '$tag', NOW(),'$username','$id_device');");
+    if($query_add_password){
+        echo "done";
+    }else{
+        echo mysqli_error($link);
+    }
 }
 
-if($func=='show_list_link_by_account'){
+if($func=='show_list_passwor_by_account'){
     $id_device=$_POST['id_device'];
-    $query_link=mysqli_query($link,"SELECT `id`,`link` FROM carrotsy_virtuallover.`link` WHERE `id_user` = '$id_device' AND `lang`='$lang' LIMIT 50");
-    $arr_link=array();
-    while ($item_link=mysqli_fetch_assoc($query_link)){
+    $query_link=mysqli_query($link,"SELECT `id`,`tag`,`password`,`username` FROM `password_$lang` WHERE `id_user` = '$id_device' ");
+    $arr_password=array();
+    while ($item_passwod=mysqli_fetch_assoc($query_link)){
         $item=new Item();
-        $item->id=$item_link['id'];
-        $item->url=$item_link['link'];
-        $item->{"detail"}=$url_carrot_store."/l/".$item_link['id'];
-        $item->{"link"}=$url_carrot_store.'/l/'.$item_link['id'];
-        array_push($arr_link,$item);
+        $item->id=$item_passwod['id'];
+        $item->{'tag'}=$item_passwod['tag'];
+        $item->{'pass'}=$item_passwod['password'];
+        $item->{'username'}=$item_passwod['username'];
+        array_push($arr_password,$item);
     }
-    echo json_encode($arr_link);
+    echo json_encode($arr_password);
     exit;
 }
 
-if($func=='delete_link_by_account'){
-    $id_link=$_POST['id_link'];
-    $query_delete=mysqli_query($link,"DELETE FROM carrotsy_virtuallover.`link` WHERE `id` = '$id_link'");
+if($func=='delete_password_by_account'){
+    $id_password=$_POST['id_password'];
+    $query_delete=mysqli_query($link,"DELETE FROM `password_$lang` WHERE `id` = '$id_password'");
     exit;
 }
 

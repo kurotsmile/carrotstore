@@ -14,6 +14,7 @@ if(isset($_GET['view'])){
     <link href="<?php echo $url;?>/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php echo $url;?>/icon.ico"/>
     <link rel="stylesheet" href="<?php echo $url_carrot_store; ?>/assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="<?php echo $url_carrot_store; ?>/assets/css/buttonPro.min.css"/>
 </head>
 <body>
 <div id="header">

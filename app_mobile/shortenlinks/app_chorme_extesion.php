@@ -44,7 +44,7 @@ $func=$_POST['function'];
 if($func=='logincallback'){
     $user_phone=$_POST['user_phone'];
     $user_password=$_POST['user_password'];
-    if($user_phone.trim()==""){
+    if(trim($user_phone)==""){
         echo "none";
         exit;
     }
