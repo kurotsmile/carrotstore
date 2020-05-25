@@ -52,6 +52,7 @@ RewriteRule    ^bible   app_mobile/bible/index.php [NC,L]
 RewriteRule    ^appmusic   app_mobile/musicforlife/index.php [NC,L]
 RewriteRule    ^sheep   app_mobile/sheep/index.php [NC,L]
 RewriteRule    ^flower   app_mobile/flower/index.php [NC,L]
+RewriteRule    ^createpassword   app_mobile/createpassword/index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

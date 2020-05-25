@@ -34,12 +34,14 @@ if($func=='load_skin'){
     if($search!=''){
         $list_skin=mysqli_query($link,"SELECT * FROM `app_my_girl_skin` WHERE `name` LIKE '%$search%'");
     }
-    while($row=mysqli_fetch_array($list_skin)){
-        $skin_item=new Skin_item();
-        $skin_item->name=$row['name'];
-        $skin_item->url=$url_s.'/app_mygirl/obj_skin/skin_'.$row[0].'.png';
-        $skin_item->icon=thumb('app_mygirl/obj_skin/icon_'.$row[0].'.png','200');
-        array_push($skin_app->arr_skin,$skin_item);
+    if($list_skin){
+        while($row=mysqli_fetch_array($list_skin)){
+            $skin_item=new Skin_item();
+            $skin_item->name=$row['name'];
+            $skin_item->url=$url_s.'/app_mygirl/obj_skin/skin_'.$row[0].'.png';
+            $skin_item->icon=thumb('app_mygirl/obj_skin/icon_'.$row[0].'.png','200');
+            array_push($skin_app->arr_skin,$skin_item);
+        }
     }
     echo json_encode($skin_app);
     exit;
@@ -115,16 +117,18 @@ if($func=='load_ads'){
     }else{
         $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_ads` WHERE `name` LIKE '%$search%' ORDER BY RAND()");
     }
-    while($row=mysqli_fetch_array($list_view)){
-        $skin_item=new Skin_item();
-        $skin_item->name=$row['name'];
-        $skin_item->url=$row['android'];
-        $skin_item->url2=$row['ios'];
-        $skin_item->icon=thumb('app_mygirl/obj_ads/icon_'.$row[0].'.png','200');
-        array_push($skin_app->arr_skin,$skin_item);
+
+    if($list_view){
+        while($row=mysqli_fetch_array($list_view)){
+            $skin_item=new Skin_item();
+            $skin_item->name=$row['name'];
+            $skin_item->url=$row['android'];
+            $skin_item->url2=$row['ios'];
+            $skin_item->icon=thumb('app_mygirl/obj_ads/icon_'.$row[0].'.png','200');
+            array_push($skin_app->arr_skin,$skin_item);
+        }
     }
     echo json_encode($skin_app);
-    mysqli_free_result($list_view);
     exit;
 }
 

@@ -46,6 +46,8 @@ if (isset($_POST['login_act'])) {
         $_SESSION['is_login_user'] = $_POST['user_name'];
         $_SESSION['id_login_user'] = $data_user_carrot['user_pass'];
         $error_login_user = "Login success!";
+        $url_cur=$_POST['url_cur'];
+        header("location:$url_cur");
     } else {
         $error_login_user = "Username or password not match!";
         unset($_POST);
@@ -497,8 +499,8 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
             <label>Mật khẩu</label>
             <input type="password" name="passw"/><br/>
             <input type="submit" value="Login" name="login_act" class="buttonPro small green"/><br/><br/>
-            <?php if ($error_login_user != "") { ?><p
-                    style="color:red;font-weight: bold;"><?php echo $error_login_user; ?></p><?php } ?>
+            <?php if ($error_login_user != "") { ?><p style="color:red;font-weight: bold;"><?php echo $error_login_user; ?></p><?php } ?>
+            <input type="hidden" value="<?php echo currentUrl($_SERVER); ?>" name="url_cur"/><br/>
         </form>
     </div>
     <?php

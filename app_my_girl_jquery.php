@@ -1081,19 +1081,7 @@ if ($func == 'login_work') {
     exit;
 }
 
-if($func=='data_syn_get_table'){
-    $name_table=$_POST['table'];
-    $query_data=mysqli_query($link,"select * FROM `$name_table`");
-    echo mysqli_error($link);
-    $data=array();
-    while ($row=mysql_fetch_assoc($query_data)){
-        array_push($data,$row);
-    }
-    $txt_data=json_encode($data);
-    file_put_contents("data_temp/data_table.txt",$txt_data);
-    echo $url.'/data_temp/data_table.txt';
-    exit;
-}
+
 
 if($func=='check_data_syn'){
     class item_table{

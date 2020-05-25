@@ -41,7 +41,7 @@ function play_music(s_nam,url_m,url_icon,emp){
     $(".menu_app").removeClass('music_color');
     $("#player_music_name").html(s_nam);
     $("#player_music_img").attr('src',url_icon);
-    show_menu_app(emp);
+    show_menu_app(emp,0);
     $(".menu_app").addClass('music_color');
     show_player_music(true);
     audioElement.setAttribute('src', url_m);

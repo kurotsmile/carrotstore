@@ -159,9 +159,6 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
     <meta property="og:image:alt" content="<?php echo $title_page;?>" />
-
-
-
     <link href="<?php echo $url; ?>/assets/css/style.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
     <link hreflang="<?php echo $_SESSION['lang'];?>"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -184,8 +181,15 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <script src="<?php echo $url; ?>/js/jquery.form.min.js" async defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
     <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
+    <link rel="manifest" href="<?php echo $url;?>/manifest.json" />
     <script>
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('<?php echo $url;?>/js/installApp.min.js');
+    }
+
     var shortcut_key_music=true;
+
 
     $(document).ready(function(){
              $('#logo').qtip({
@@ -200,7 +204,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                     at: 'bottom right',
                 }
             });
-			reset_tip();
+            reset_tip();
     });
     
     function reset_tip(){

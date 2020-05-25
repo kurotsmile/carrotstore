@@ -24,6 +24,7 @@ if(isset($_GET['view'])){
     <a class="buttonPro <?php if($page_view=='page_overview'){ echo 'orange';}else{ echo 'green';}?> " href="<?php echo $url;?>?view=page_overview"><i class="fa fa-info-circle" aria-hidden="true"></i> Tổng quan</a>
     <a class="buttonPro <?php if($page_view=='page_active_country'){ echo 'orange';}else{ echo 'green';}?> " href="<?php echo $url;?>?view=page_active_country"><i class="fa fa-globe" aria-hidden="true"></i> Kích hoạt quốc gia</a>
     <a class="buttonPro <?php if($page_view=='page_key_lang'){ echo 'orange';}else{ echo 'green';}?> " href="<?php echo $url;?>?view=page_key_lang"><i class="fa fa-key" aria-hidden="true"></i> Từ khóa ngôn ngữ ứng dụng</a>
+    <a class="buttonPro <?php if($page_view=='page_tool'){ echo 'orange';}else{ echo 'green';}?> " href="<?php echo $url;?>?view=page_tool"><i class="fa fa-tool" aria-hidden="true"></i> Công cụ</a>
 </div>
 </div>
 <div id="body">

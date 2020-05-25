@@ -1,5 +1,7 @@
 
 cache/
+product_data/
+phpqrcode/
 app_mygirl/obj_background/
 app_mygirl/obj_preson/
 app_mygirl/obj_effect/

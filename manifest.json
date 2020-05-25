@@ -1,0 +1,31 @@
+{
+    "name": "Carrot store",
+    "short_name": "Carrot",
+    "description": "Carrotstore.com is an archive, introducing entertainment applications and add-on utilities for people around the world. When you use one of these systems, you have an account that identifies each person with the mobile device.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "homepage_url": "https://carrotstore.com",
+    "icons": [{
+      "src": "images/192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, {
+      "src": "images/128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }, {
+      "src": "images/512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }],
+    "related_applications": [{
+        "platform": "play",
+        "url": "https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl",
+        "id": "com.kurotsmile.mygirl"
+    }]
+  }

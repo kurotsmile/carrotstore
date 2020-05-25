@@ -29,6 +29,7 @@
 </div>
 
 <script>
+
     var top_bar_player=false;
     var top_x_player=500;
     const kr_audio = document.createElement('audio');

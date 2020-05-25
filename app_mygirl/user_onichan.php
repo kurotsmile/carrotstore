@@ -372,7 +372,7 @@ if($func=='set_status'){
 if($func=='add_user'){
     $txt_dc='';
     if($location_lon!='0'){
-        $place="http://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true";
+        $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=$key_api_google";
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $place);
         curl_setopt($curl, CURLOPT_HEADER, false);

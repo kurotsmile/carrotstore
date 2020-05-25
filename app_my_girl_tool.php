@@ -197,14 +197,6 @@ include "app_my_girl_template.php";
             </li>
         </a>
 
-        <a href="<?php echo $url;?>/app_my_girl_handling.php?func=data_syn">
-            <li class="box_tool">
-                <i class="fa fa-refresh" aria-hidden="true"></i>
-                <b>Đồng bộ dữ liệu</b><br />
-                Đồng bộ dữ liệu bằng cách liệt kê và kiểm tra cơ sỡ dữ liệu còn thiếu
-            </li>
-        </a>
-
         <a href="<?php echo $url;?>/app_my_girl_handling.php?func=fix_name_user">
             <li class="box_tool">
                 <i class="fa fa-user-md" aria-hidden="true"></i>

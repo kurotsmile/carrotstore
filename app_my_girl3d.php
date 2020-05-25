@@ -131,7 +131,7 @@ if($func=='list_music'){
         }else{
             $search_option=$_POST['search_option'];
             $result_tip_add_key_music=mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music`(`key`, `lang`,`type`) VALUES ('$seach_music', '$lang_sel','$search_option')");
-            mysql_freeresult($result_tip_add_key_music);
+            mysqli_free_result($result_tip_add_key_music);
             if($search_option=="0"){
                 $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE  `chat` LIKE '%$seach_music%' AND `effect`='2' limit 21");
                 if(mysqli_num_rows($result_tip)==0){
@@ -509,7 +509,7 @@ function Chat_report($data_row,$type_chat,$lang_sel,$link){
             }else{  
                 $chat->data_text="";
             }
-            mysql_freeresult($show_lyric_query);
+            mysqli_free_result($show_lyric_query);
         }
         
         $chat->link=$data_row['link'];

@@ -23,8 +23,8 @@ class Chat{
     public $effect='';
     public $action='';
     public $face='';
-    public $id_chat=''; //giúp biết được người dùng đang trả lời cho câu hỏi nào
-    public $type_chat=''; //giúp biết được loại câu trả lời là thoại,bắt chuyện,hay lời chào
+    public $id_chat=''; 
+    public $type_chat=''; 
 }
 $app=new App;
 
@@ -40,7 +40,7 @@ if($func=='chao'){
     }
     
     $chat=new Chat();
-    $chat_bay=chat_func('chao_'.$text);
+    $chat_bay=chat_func($link,'chao_'.$text);
     $chat->chat=$chat_bay['chat'];
     $chat->status=$chat_bay['status']; 
     $chat->color=$chat_bay['color'];
@@ -75,9 +75,9 @@ if($func=='chao'){
         $txt_limit_os=" AND `os`!='$os' ";
     }
         
-    $result_tip=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `tip` = '1' AND `sex` = '$sex' AND `character_sex`='$character_sex' $txt_limit_os $txt_limit_ver ORDER BY RAND() LIMIT 25");
-    if(mysql_num_rows($result_tip)>0){
-        while ($row = mysql_fetch_array($result_tip)) {
+    $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `tip` = '1' AND `sex` = '$sex' AND `character_sex`='$character_sex' $txt_limit_os $txt_limit_ver ORDER BY RAND() LIMIT 25");
+    if(mysqli_num_rows($result_tip)>0){
+        while ($row = mysqli_fetch_array($result_tip)) {
             array_push($app->all_tip,$row['text']);
         }
     }
@@ -97,7 +97,7 @@ if($func=='hit'){
         $sex=0;
     }
     $chat=new Chat();
-    $chat_bay=chat_func('dam');
+    $chat_bay=chat_func($link,'dam');
     $chat->chat=$chat_bay['chat'];
     $chat->status=$chat_bay['status']; 
     $chat->color=$chat_bay['color'];
@@ -118,7 +118,7 @@ if($func=='hit'){
 if($func=='bat_chuyen'){
     $chat=new Chat();
     $lang_sel=$_POST['lang'];
-    $chat_bay=chat_func('bat_chuyen');
+    $chat_bay=chat_func($link,'bat_chuyen');
     $chat->chat=$chat_bay['chat'];
     $chat->status=$chat_bay['status']; 
     $chat->color=$chat_bay['color'];
@@ -150,17 +150,17 @@ if($func=='tra_loi'){
         $character_sex=$_POST['character_sex'];
     }
     
-    $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id' AND `sex` = '$sex' AND `character_sex`='$character_sex' LIMIT 1");
-    if(mysql_num_rows($result_chat)>0){
-        while ($row = mysql_fetch_array($result_chat)) {
+    $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id' AND `sex` = '$sex' AND `character_sex`='$character_sex' LIMIT 1");
+    if(mysqli_num_rows($result_chat)>0){
+        while ($row = mysqli_fetch_array($result_chat)) {
             
                         //Chuyển hướng câu trò chuyện
                         if($row['id_redirect']!=''){ 
                             $id_redirect=$row['id_redirect'];
-                            $result_chat2=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                            $result_chat2=mysql_fetch_array($result_chat2);
+                            $result_chat2=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                            $result_chat2=mysqli_fetch_array($result_chat2);
                             $row=$result_chat2;
-                            mysql_free_result($result_chat2);
+                            mysqli_free_result($result_chat2);
                         } 
                         
             $chat=new Chat();
@@ -246,20 +246,20 @@ if($func=='chat'){
         if(isset($_POST['location_lat'])){ $location_lat=$_POST['location_lat'];}
         
         $date_cur=date("Y-m-d");
-        mysql_query("INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang_sel','$sex','$date_cur','$os',$character,$character_sex,$version,'$id_question','$type_question','$id_device','$location_lon','$location_lat');");
+        mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang_sel','$sex','$date_cur','$os',$character,$character_sex,$version,'$id_question','$type_question','$id_device','$location_lon','$location_lat');");
 
         if($id_question!='unclear'){
                 $txt_table_chat_return='app_my_girl_'.$lang_sel;
-                $get_child_chat=mysql_query("SELECT * FROM  `$txt_table_chat_return`  WHERE `text`='$text' AND `pater` = '$id_question' AND `pater_type` = '$type_question' LIMIT 1");
-                if(mysql_num_rows($get_child_chat)>0){
-                    while ($row_child = mysql_fetch_array($get_child_chat)) {
+                $get_child_chat=mysqli_query($link,"SELECT * FROM  `$txt_table_chat_return`  WHERE `text`='$text' AND `pater` = '$id_question' AND `pater_type` = '$type_question' LIMIT 1");
+                if(mysqli_num_rows($get_child_chat)>0){
+                    while ($row_child = mysqli_fetch_array($get_child_chat)) {
                         //Chuyển hướng câu trò chuyện
                         if($row_child['id_redirect']!=''){ 
                             $id_redirect=$row_child['id_redirect'];
-                            $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                            $result_chat=mysql_fetch_array($result_chat);
+                            $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                            $result_chat=mysqli_fetch_array($result_chat);
                             $row_child=$result_chat;
-                            mysql_free_result($result_chat);
+                            mysqli_free_result($result_chat);
                         } 
                     
                         $chat=new Chat();
@@ -285,19 +285,19 @@ if($func=='chat'){
                     }
                      array_push($app->all_chat,$chat);
                      echo json_encode($app);
-                     mysql_free_result($get_child_chat);
+                     mysqli_free_result($get_child_chat);
                      exit;
                 }else{
-                    $get_child_chat2=mysql_query("SELECT * FROM  `$txt_table_chat_return` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE) AND `pater` = '$id_question' AND `pater_type` = '$type_question' LIMIT 1");
-                    if(mysql_num_rows($get_child_chat2)>0){
-                        while ($row_child = mysql_fetch_array($get_child_chat2)) {
+                    $get_child_chat2=mysqli_query($link,"SELECT * FROM  `$txt_table_chat_return` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE) AND `pater` = '$id_question' AND `pater_type` = '$type_question' LIMIT 1");
+                    if(mysqli_num_rows($get_child_chat2)>0){
+                        while ($row_child = mysqli_fetch_array($get_child_chat2)) {
                             //Chuyển hướng câu trò chuyện
                             if($row_child['id_redirect']!=''){ 
                                 $id_redirect=$row_child['id_redirect'];
-                                $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                                $result_chat=mysql_fetch_array($result_chat);
+                                $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                                $result_chat=mysqli_fetch_array($result_chat);
                                 $row_child=$result_chat;
-                                mysql_free_result($result_chat);
+                                mysqli_free_result($result_chat);
                             } 
                         
                             $chat=new Chat();
@@ -323,12 +323,12 @@ if($func=='chat'){
                         }
                          array_push($app->all_chat,$chat);
                          echo json_encode($app);
-                         mysql_free_result($get_child_chat2);
+                         mysqli_free_result($get_child_chat2);
                          exit;
                     }
-                    mysql_free_result($get_child_chat2);
+                    mysqli_free_result($get_child_chat2);
                 }
-                mysql_free_result($get_child_chat);
+                mysqli_free_result($get_child_chat);
 
         }
         
@@ -345,17 +345,17 @@ if($func=='chat'){
             $txt_limit_os=" AND `os`!='$os' ";
         }
         
-        $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `text`='$text' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' $txt_limit_ver  $txt_limit_os  ORDER BY RAND() LIMIT 1");
-        if(mysql_num_rows($result_chat)>0){
-            while ($row = mysql_fetch_array($result_chat)) {
+        $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `text`='$text' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' $txt_limit_ver  $txt_limit_os  ORDER BY RAND() LIMIT 1");
+        if(mysqli_num_rows($result_chat)>0){
+            while ($row = mysqli_fetch_array($result_chat)) {
                 
                 //Chuyển hướng câu trò chuyện
                 if($row['id_redirect']!=''){ 
                     $id_redirect=$row['id_redirect'];
-                    $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                    $result_chat=mysql_fetch_array($result_chat);
+                    $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                    $result_chat=mysqli_fetch_array($result_chat);
                     $row=$result_chat;
-                    mysql_free_result($result_chat);
+                    mysqli_free_result($result_chat);
                 } 
             
                 $chat=new Chat();
@@ -384,18 +384,18 @@ if($func=='chat'){
             exit;
         }
 
-        $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `text` LIKE '%$text%' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' $txt_limit_os $txt_limit_ver ORDER BY RAND() LIMIT 1");
+        $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `text` LIKE '%$text%' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' $txt_limit_os $txt_limit_ver ORDER BY RAND() LIMIT 1");
         
-        if(mysql_num_rows($result_chat)>0){
-            while ($row = mysql_fetch_array($result_chat)) {
+        if(mysqli_num_rows($result_chat)>0){
+            while ($row = mysqli_fetch_array($result_chat)) {
                 
                 //Chuyển hướng câu trò chuyện
                 if($row['id_redirect']!=''){ 
                     $id_redirect=$row['id_redirect'];
-                    $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                    $result_chat=mysql_fetch_array($result_chat);
+                    $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                    $result_chat=mysqli_fetch_array($result_chat);
                     $row=$result_chat;
-                    mysql_free_result($result_chat);
+                    mysqli_free_result($result_chat);
                 } 
             
                 $chat=new Chat();
@@ -421,17 +421,17 @@ if($func=='chat'){
             }
         }else{
             
-                $result_chat2=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE)  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' $txt_limit_os $txt_limit_ver  LIMIT 1");
-                if(mysql_num_rows($result_chat2)>0){
-                    while ($row = mysql_fetch_array($result_chat2)) {
+                $result_chat2=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE)  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' $txt_limit_os $txt_limit_ver  LIMIT 1");
+                if(mysqli_num_rows($result_chat2)>0){
+                    while ($row = mysqli_fetch_array($result_chat2)) {
                         
                         //Chuyển hướng câu trò chuyện
                         if($row['id_redirect']!=''){ 
                             $id_redirect=$row['id_redirect'];
-                            $result_chat=mysql_query("SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
-                            $result_chat=mysql_fetch_array($result_chat);
+                            $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id_redirect'");
+                            $result_chat=mysqli_fetch_array($result_chat);
                             $row=$result_chat;
-                            mysql_free_result($result_chat);
+                            mysqli_free_result($result_chat);
                         } 
                     
                         $chat=new Chat();
@@ -456,9 +456,9 @@ if($func=='chat'){
                         $chat->effect=$row['effect'];
                     }
                 }else{
-                    //mysql_query("INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang_sel','$sex',now(),'$os',$character,$character_sex,$version,'$id_question','$type_question','$id_device','$location_lon','$location_lat');");
+                    //mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang_sel','$sex',now(),'$os',$character,$character_sex,$version,'$id_question','$type_question','$id_device','$location_lon','$location_lat');");
                     $chat=new Chat();
-                    $chat_bay=chat_func('bam_bay');
+                    $chat_bay=chat_func($link,'bam_bay');
                     $chat->chat=$chat_bay['chat'];
                     
                     $chat->status=$chat_bay['status']; 
@@ -479,9 +479,9 @@ if($func=='chat'){
                     }
                     $chat->effect=$chat_bay['effect'];
                 }
-                mysql_free_result($result_chat2);
+                mysqli_free_result($result_chat2);
         }
-        mysql_free_result($result_chat);
+        mysqli_free_result($result_chat);
     }
     array_push($app->all_chat,$chat);
 }
@@ -489,7 +489,7 @@ if($func=='chat'){
 echo json_encode($app);
 
 
-function chat_func($func){
+function chat_func($link,$func){
     $lang_sel=$_POST['lang'];
     $version='';
     $os='';
@@ -514,7 +514,7 @@ function chat_func($func){
     
     if(isset($_POST['character_sex'])){
         $character_sex=$_POST['character_sex'];
-        $result_chat=mysql_query("SELECT * FROM `app_my_girl_msg_".$lang_sel."` WHERE `func` = '$func'  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `disable` = '0' $txt_limit ORDER BY RAND() LIMIT 1");
+        $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_".$lang_sel."` WHERE `func` = '$func'  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `disable` = '0' $txt_limit ORDER BY RAND() LIMIT 1");
     }
     else{
         if($sex==0)
@@ -523,9 +523,9 @@ function chat_func($func){
         }else{
             $character_sex=0;
         }
-        $result_chat=mysql_query("SELECT * FROM `app_my_girl_msg_".$lang_sel."` WHERE `func` = '$func'  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND  `disable` = '0'   ORDER BY RAND() LIMIT 1");
+        $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_".$lang_sel."` WHERE `func` = '$func'  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND  `disable` = '0'   ORDER BY RAND() LIMIT 1");
     }
-    return mysql_fetch_array($result_chat);
+    return mysqli_fetch_array($result_chat);
 }
 
-mysql_close($link);
+mysqli_close($link);

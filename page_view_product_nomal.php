@@ -41,7 +41,7 @@ $data_type=mysqli_fetch_array($query_type);
             <?php if($data['apk']!=''){ ?><li><a class="buttonPro orange" href="<?php echo $data['apk'];?>" target="_blank"><img src="<?php echo $url.'/images/apk_download.png';?>" /></a></li><?php }?>
             <?php if($data['carrot_store']!=''){ ?><li><a href="<?php echo $data['carrot_store'];?>" target="_blank"><img src="<?php echo $url.'/images/carrotstore_app_web.png';?>" /></a></li><?php }?>
 			<?php if($data['chrome_store']!=''){ ?><li><a href="<?php echo $data['chrome_store'];?>" target="_blank"><img src="<?php echo $url.'/images/chrome_store_download.png';?>" /></a></li><?php }?>
-            <?php if(file_exists('product_data/'.$data['id'].'/ios/app.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/<?php echo $data['id'];?>/ios/app.plist" target="_blank" title="<?php echo lang($link,'download_on').' (Carrot Store)';?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
+            <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" title="<?php echo lang($link,'download_on').' (Carrot Store)';?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
             </ul>
         </p>
 

@@ -436,3 +436,13 @@ function get_setting($link,$key_setting){
     $data_setting=mysqli_fetch_array($query_setiing);
     return $data_setting['value'];
 }
+
+function currentUrl($server){
+    $http = 'http';
+    if(isset($server['HTTPS'])){
+        $http = 'https';
+    }
+    $host = $server['HTTP_HOST'];
+    $requestUri = $server['REQUEST_URI'];
+    return $http . '://' . htmlentities($host) . '/' . htmlentities($requestUri);
+}

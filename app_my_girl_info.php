@@ -281,6 +281,7 @@ if ($char_view_type == '2') {
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=manager_country_work" class="buttonPro small black"><i class="fa fa-connectdevelop" aria-hidden="true"></i> Ẩn / hiện quốc gia</a>
             <a href="<?php echo $url; ?>/app_my_girl_mission.php" class="buttonPro small black"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Nhiệm vụ</a>
             <a href="#" class="buttonPro small purple" onclick="check_data_syn();return false;" ><i class="fa fa-refresh" aria-hidden="true"></i> Kiểm tra và đồng bộ dữ liệu</a>
+            <a href="<?php echo $url;?>/adminer.php?username=<?php echo $mysql_user;?>&db=<?php echo $mysql_database;?>" target="_blank" class="buttonPro small blue"><i class="fa fa-database" aria-hidden="true"></i></a>
         </div>
     </div>
 <?php

@@ -754,7 +754,7 @@ if($func=='list_background'){
     while($row=mysqli_fetch_array($list_view)){
         $chat=new Chat();
         $chat->q1=thumb(URL.'/app_mygirl/obj_background/icon_'.$row[0].'.png','123x72');
-        $chat->q2=$URL.'/app_mygirl/obj_background/icon_'.$row[0].'.png';
+        $chat->q2=URL.'/app_mygirl/obj_background/icon_'.$row[0].'.png';
         array_push($app->all_chat,$chat);
     }
     
