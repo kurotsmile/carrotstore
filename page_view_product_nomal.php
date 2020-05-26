@@ -172,6 +172,10 @@ $(document).ready(function() {
 <div style="float: left;width: 100%;">
 <h2 style="padding-left: 30px;"><?php echo lang($link,'sp_tuong_tu'); ?></h2>
 <?php
+    $label_click_de_xem=lang($link,'click_de_xem');
+    $label_download_on=lang($link,'download_on');
+    $label_loai=lang($link,'loai');
+    $label_chi_tiet=lang($link,'chi_tiet');
                 while ($row = mysqli_fetch_array($result3)) {
                     include "page_view_all_product_git_template.php";
                 }

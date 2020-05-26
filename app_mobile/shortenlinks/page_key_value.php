@@ -61,7 +61,7 @@ while($row_key=mysqli_fetch_array($query_list_key)){
 ?>
 <tr>
     <td><?php echo $row_key['key']; ?></td>
-    <td><input style="width: 100%;" type="text" name="<?php echo $row_key['key']; ?>" value="<?php echo $data_val->{$row_key['key']};?>" /></td>
+    <td><input style="width: 100%;" type="text" name="<?php echo $row_key['key']; ?>" value="<?php if(isset($data_val->{$row_key['key']})) echo $data_val->{$row_key['key']};?>" /></td>
     <td>
         <a href="<?php echo $url;?>?view=page_key_lang&edit_id=<?php echo $row_key['key']; ?>&name_key=<?php echo $row_key['key']; ?>" class="buttonPro small"><i class="fa fa-pencil-square" aria-hidden="true"></i> sửa tag</a>
         <?php 

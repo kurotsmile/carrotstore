@@ -36,7 +36,7 @@ if($func=='list_country'){
         $item->id=$item_country['id'];
         $item->name=$item_country['name'];
         $item->key=$item_country['key'];
-        $item->url='https://carrotstore.com/thumb.php?src=https://carrotstore.com/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
+        $item->url=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
         array_push($app->list_data,$item);
     }
 }
@@ -58,8 +58,10 @@ if($func=='create_link'){
     $link_web=$_POST['link'];
     $query_add_log=mysqli_query($link,"INSERT INTO `log` (`id_device`, `url`, `date`, `id_user`,`os`,`lang`) VALUES ('$id_device', '$link_web', NOW(), '1','$os','$lang');");
     $user_id=$id_device;
-    $query_add_link_shorten=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link_web', '$user_id', '', '0',NOW(),'$lang');");
-    $new_id_link=mysqli_insert_id($link);
+
+    $new_id_link=uniqid();
+    $query_add_link_shorten=mysqli_query($link,"INSERT INTO `link_$lang` (`id`,`link`, `id_user`, `password`, `status`,`date`) VALUES ('$new_id_link','$link_web', '$user_id', '', '0',NOW());");
+
     $app->link=$url_carrot_store.'/link/'.$new_id_link;
     $new_url_link=$url_carrot_store.'/link/'.$new_id_link;
     QRcode::png($new_url_link, '../../phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
@@ -72,7 +74,7 @@ if($func=='login'){
 }
 
 if($func=='list_link'){
-    $query_list_link=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`link` WHERE `id_user` = '$is_user'");
+    $query_list_link=mysqli_query($link,"SELECT `id`,`link`,`view` FROM `link_$lang` WHERE `id_user` = '$is_user' ORDER BY `date` DESC");
     while($data_link=mysqli_fetch_array($query_list_link)){
         $item=new Item();
         $item->id=$data_link['id'];
@@ -87,7 +89,7 @@ if($func=='list_link'){
 
 if($func=='delete_link'){
     $id_delete=$_REQUEST['id_delete'];
-    $query_delete_link=mysqli_query($link,"DELETE FROM carrotsy_virtuallover.`link` WHERE `id` = '$id_delete';");
+    $query_delete_link=mysqli_query($link,"DELETE FROM `link_$lang` WHERE `id` = '$id_delete'");
 }
 
 echo json_encode($app);

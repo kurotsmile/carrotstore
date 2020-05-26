@@ -1,7 +1,7 @@
 <?php
 include "phpqrcode/qrlib.php";
 $id_link=$_GET['id'];
-$query_link=mysqli_query($link,"SELECT * FROM `link` WHERE `id` = '$id_link' LIMIT 1");
+$query_link=mysqli_query($link,"SELECT * FROM carrotsy_shortenlinks.`link_$lang` WHERE `id` = '$id_link' LIMIT 1");
 $data_link=mysqli_fetch_assoc($query_link);
 ?>
 <style>
@@ -59,13 +59,13 @@ $data_link=mysqli_fetch_assoc($query_link);
             
             <?php
             if(isset($_SESSION['login_google'])){
-                $data_user_link=get_account($link,$data_link['id_user'],$data_link['lang']);
+                $data_user_link=get_account($link,$data_link['id_user'],$lang);
             ?>
-                <a href="<?php echo $url;?>/user/<?php echo $data_link['id_user'] ?>/<?php echo $data_link['lang'];?>"><img src="<?php echo $data_user_link['avatar_url']; ?>" /></a>
+                <a href="<?php echo $url;?>/user/<?php echo $data_link['id_user'] ?>/<?php echo $lang;?>"><img src="<?php echo $data_user_link['avatar_url']; ?>" /></a>
             <?php
             }else{
             ?>
-                <img src="<?php echo get_url_avatar_user($link,$data_link['id_user'],$data_link['lang'],'80');?>" />
+                <img src="<?php echo get_url_avatar_user($link,$data_link['id_user'],$lang,'80');?>" />
             <?php }?>
             <?php echo get_username_by_id($link,$data_link['id_user']); ?>
             </td>

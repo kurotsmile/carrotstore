@@ -51,13 +51,13 @@ if($func=='logincallback'){
     $query_login=mysqli_query($link,"SELECT `id_device`,`avatar_url`,`sdt`,`name`,`address` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE (`sdt` = '$user_phone' AND `password` = '$user_password')  LIMIT 1");
     if(mysqli_num_rows($query_login)){
        $row_user=mysqli_fetch_assoc($query_login);
-       if(does_url_exists('https://carrotstore.com/app_mygirl/app_my_girl_'.$lang.'_user/'.$row_user['id_device'].'.png')) {
-           $row_user["avatar_url"] = "https://carrotstore.com/img.php?url=app_mygirl/app_my_girl_".$lang."_user/" . $row_user['id_device'] . ".png&size=60";
-           $row_user["avatar"]= "https://carrotstore.com/app_mygirl/app_my_girl_".$lang."_user/" . $row_user['id_device'] . ".png";
+       if(does_url_exists($url_carrot_store.'/app_mygirl/app_my_girl_'.$lang.'_user/'.$row_user['id_device'].'.png')) {
+           $row_user["avatar_url"] = $url_carrot_store."/img.php?url=app_mygirl/app_my_girl_".$lang."_user/" . $row_user['id_device'] . ".png&size=60";
+           $row_user["avatar"]= $url_carrot_store."/app_mygirl/app_my_girl_".$lang."_user/" . $row_user['id_device'] . ".png";
        }else{
            $row_user["avatar"]= $row_user["avatar_url"];
        }
-        $row_user["link"]="https://carrotstore.com/user/".$row_user['id_device']."/".$lang;
+        $row_user["link"]=$url_carrot_store."/user/".$row_user['id_device']."/".$lang;
        echo json_encode($row_user);
     }else{
         echo "none";
@@ -73,8 +73,8 @@ if($func=='show_select_lang'){
         $item->id=$item_country['id'];
         $item->name=$item_country['name'];
         $item->key=$item_country['key'];
-        $item->url='https://carrotstore.com/thumb.php?src=https://carrotstore.com/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
-        $item->{"icon"}='https://carrotstore.com/app_mygirl/img/'.$item_country['key'].'.png';
+        $item->url=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
+        $item->{"icon"}=$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png';
         array_push($app->list_data,$item);
     }
     echo json_encode($app);
@@ -99,8 +99,10 @@ if($func=='create_link'){
     $link_web=$_POST['link'];
     $id_device=$_POST['id_device'];
     $query_add_log=mysqli_query($link,"INSERT INTO `log` (`id_device`, `url`, `date`, `id_user`,`os`,`lang`) VALUES ('$id_device', '$link_web', NOW(), '1','$os','$lang');");
-    $query_add_link_shorten=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link_web', '$id_device', '', '0',NOW(),'$lang');");
-    $new_id_link=mysqli_insert_id($link);
+
+    $new_id_link=uniqid();
+    $query_add_link_shorten=mysqli_query($link,"INSERT INTO `link_$lang` (`id`,`link`, `id_user`, `password`, `status`,`date`) VALUES ('$new_id_link','$link_web', '$id_device', '', '0',NOW());");
+    $app->{"id"}=$new_id_link;
     $app->link=$url_carrot_store.'/link/'.$new_id_link;
     $new_url_link=$url_carrot_store.'/link/'.$new_id_link;
     QRcode::png($new_url_link, '../../phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
@@ -111,14 +113,14 @@ if($func=='create_link'){
 
 if($func=='show_list_link_by_account'){
     $id_device=$_POST['id_device'];
-    $query_link=mysqli_query($link,"SELECT `id`,`link` FROM carrotsy_virtuallover.`link` WHERE `id_user` = '$id_device' AND `lang`='$lang' LIMIT 50");
+    $query_link=mysqli_query($link,"SELECT `id`,`link` FROM `link_$lang` WHERE `id_user` = '$id_device' ORDER BY `date` DESC");
     $arr_link=array();
     while ($item_link=mysqli_fetch_assoc($query_link)){
         $item=new Item();
         $item->id=$item_link['id'];
         $item->url=$item_link['link'];
-        $item->{"detail"}="https://carrotstore.com/l/".$item_link['id'];
-        $item->{"link"}=$url_carrot_store.'/l/'.$item_link['id'];
+        $item->{"detail"}=$url_carrot_store."/l/".$item_link['id'];
+        $item->{"link"}=$url_carrot_store.'/link/'.$item_link['id'];
         array_push($arr_link,$item);
     }
     echo json_encode($arr_link);
@@ -127,7 +129,7 @@ if($func=='show_list_link_by_account'){
 
 if($func=='delete_link_by_account'){
     $id_link=$_POST['id_link'];
-    $query_delete=mysqli_query($link,"DELETE FROM carrotsy_virtuallover.`link` WHERE `id` = '$id_link'");
+    $query_delete=mysqli_query($link,"DELETE FROM `link_$lang` WHERE `id` = '$id_link'");
     exit;
 }
 
@@ -136,7 +138,7 @@ if($func=='other_app'){
     $arr_app=array();
     while($row_ads=mysqli_fetch_assoc($query_list_ads)){
         $item=new Item();
-        $item->id='https://carrotstore.com/thumb.php?src=https://carrotstore.com/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=50&trim=1';
+        $item->id=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=50&trim=1';
         $item->url=$row_ads['android'].'&hl='.$lang;
         array_push($arr_app,$item);
     }

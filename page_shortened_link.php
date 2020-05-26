@@ -1,5 +1,5 @@
 <?php
-$query_count_link=mysqli_query($link,"SELECT COUNT(`link`) as c FROM `link`");
+$query_count_link=mysqli_query($link,"SELECT COUNT(`link`) as c FROM carrotsy_shortenlinks.`link_$lang`");
 $count_toal_link=mysqli_fetch_assoc($query_count_link);
 $count_toal_link=$count_toal_link['c'];
 ?>

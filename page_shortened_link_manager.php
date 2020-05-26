@@ -4,9 +4,9 @@ if(isset($_GET['id_user'])){
     $id_user=$_GET['id_user'];
 }
 if($id_user!=''){
-    $query_list_link=mysqli_query($link,"SELECT * FROM `link` WHERE `id_user` = '$id_user'");
+    $query_list_link=mysqli_query($link,"SELECT * FROM carrotsy_shortenlinks.`link_$lang` WHERE `id_user` = '$id_user'");
 }else{
-    $query_list_link=mysqli_query($link,"SELECT * FROM `link` WHERE `status`='0' ORDER BY `date` DESC LIMIT 50");
+    $query_list_link=mysqli_query($link,"SELECT * FROM carrotsy_shortenlinks.`link_$lang` WHERE `status`='0' ORDER BY `date` DESC LIMIT 50");
 }
 ?>
 <style>

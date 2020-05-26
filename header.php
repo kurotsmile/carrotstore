@@ -159,6 +159,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="600" />
     <meta property="og:image:alt" content="<?php echo $title_page;?>" />
+    <link rel="apple-touch-icon" href="<?php echo $url;?>/images/80.png"/>
     <link href="<?php echo $url; ?>/assets/css/style.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
     <link hreflang="<?php echo $_SESSION['lang'];?>"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -177,7 +178,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <script type="text/javascript" src="<?php echo $url; ?>/libary/jquery.qtip.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="745653792874-8tn5rob2rdbkn6hkqhk6l10dv8t3etpu.apps.googleusercontent.com"/>
-    <script src="<?php echo $url;?>/dist/lazysizes.min.js" async"></script>
+    <script src="<?php echo $url;?>/dist/lazysizes.min.js" async></script>
     <script src="<?php echo $url; ?>/js/jquery.form.min.js" async defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
     <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>

@@ -79,11 +79,6 @@ $(window).scroll(function() {
                 });
    }
    
-        if($(window).scrollTop()>35){
-            $('#shopping_cart').addClass('shopping_cart_fixed');
-        }else{
-            $('#shopping_cart').removeClass('shopping_cart_fixed');
-        }
 });
 
     $(document).ready(function(){

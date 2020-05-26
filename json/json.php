@@ -358,7 +358,7 @@ if($_GET||$_POST){
             $user_login->name=$username;
             $user_login->type='admin';
             $user_login->link=$url.'/admin';
-            $user_login->avatar='http://work.carrotstore.com/avatar_user/'.$data_login_user['user_id'].'.png';
+            $user_login->avatar=$url_work.'/avatar_user/'.$data_login_user['user_id'].'.png';
             $user_login->email=$data_login_user['email'];
             $user_login->lang=$lang;
             echo '1';
@@ -450,8 +450,8 @@ if($_GET||$_POST){
         if(isset($user_login)){
             $user_id=$user_login->id;
         }
-        $query_add_link_shorten=mysqli_query($link,"INSERT INTO `link` (`link`, `id_user`, `password`, `status`,`date`,`lang`) VALUES ('$link_web', '$user_id', '', '0',NOW(),'$lang');");
-        $new_id_link=mysqli_insert_id($link);
+        $new_id_link=uniqid();
+        $query_add_link_shorten=mysqli_query($link,"INSERT INTO carrotsy_shortenlinks.`link_$lang` (`id`,`link`, `id_user`, `password`, `status`,`date`) VALUES ('$new_id_link','$link_web', '$user_id', '', '0',NOW());");
         $new_url_link=$url.'/link/'.$new_id_link;
         QRcode::png($new_url_link, 'phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
         echo '<strong style="color: slateblue;text-shadow: 1px 0px 11px #acff00;">'.$link_web.'</strong><br/>';

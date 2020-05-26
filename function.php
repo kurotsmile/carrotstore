@@ -225,7 +225,7 @@ function get_url_avatar_user($link,$id_user,$lang,$size=100,$is_admin=false,$sex
     $url_img='app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png';
     $url_avatar=URL.'/thumb.php?src='.URL.'/images/avatar_default.png&size='.$size.'&trim=1';
     if($is_admin){
-        $url_avatar='http://work.carrotstore.com/img.php?url=avatar_user/'.$id_user.'.png&size='.$size;
+        $url_avatar=$url_work.'/img.php?url=avatar_user/'.$id_user.'.png&size='.$size;
     }else{
         if(file_exists($url_img)){
             $url_avatar=URL.'/thumb.php?src='.URL.'/'.$url_img.'&size='.$size.'&trim=1';

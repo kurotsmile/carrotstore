@@ -9,7 +9,7 @@ if(isset($_GET['view'])){
 ?>
 <html>
 <head>
-    <title>CMS - Rút gọn liên kết</title>
+    <title>CMS - Tạo mật khẩu</title>
     <script src="<?php echo $url_carrot_store;?>/js/jquery.js"></script>
     <link href="<?php echo $url;?>/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php echo $url;?>/icon.ico"/>

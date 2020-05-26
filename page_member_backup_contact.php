@@ -36,7 +36,13 @@ $query_backup=mysqli_query($link,"SELECT * FROM carrotsy_contacts.`backup_contac
                 </div>
             </div>
             <div style="float: left;width: 50%">
-                <?php include "page_view_all_product_git_template.php"; ?>
+                <?php 
+                    $label_click_de_xem=lang($link,'click_de_xem');
+                    $label_download_on=lang($link,'download_on');
+                    $label_loai=lang($link,'loai');
+                    $label_chi_tiet=lang($link,'chi_tiet');
+                    include "page_view_all_product_git_template.php"; 
+                ?>
             </div>
         </div>
     <?php
