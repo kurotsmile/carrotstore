@@ -4,10 +4,9 @@ $func="add";
 $id_edit="";
 $lang_edit="";
 
-
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $lang_edit=$_GET['lang'];
+    if(isset($_GET['lang']))$lang_edit=$_GET['lang'];
     $key=$id_edit;
     $func="edit";
 }
@@ -21,9 +20,9 @@ if(isset($_GET['edit'])){
             while($l=mysqli_fetch_array($list_country)){
                 $key_lang=$l['key'];
                 $name_value='value_'.$key_lang;
-                $value=mysql_real_escape_string ($_POST[$name_value]);
+                $value=mysqli_real_escape_string($link,$_POST[$name_value]);
                 $add_key_lang=mysqli_query($link,"INSERT INTO `lang_value` (`key`,`value`,`lang`) VALUES ('$key','$value','$key_lang');");
-                echo mysql_error();
+                echo mysqli_error($link);
                 echo 'Thêm từ khóa "'.$key.'" vào ngôn ngữ ('.$key_lang.') thành công!<br/>';
             }
             mysqli_free_result($list_country);

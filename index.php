@@ -44,8 +44,6 @@ function ip_visitor_country()
 
 include "config.php";
 
-
-require_once('phpmailer/class.phpmailer.php');
 if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
 } else {
     include 'bbit-compress.php';

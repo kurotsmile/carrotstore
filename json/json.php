@@ -553,5 +553,44 @@ if($_GET||$_POST){
         exit;
     }
 
+    if(isset($_POST['function'])&&$_POST['function']=='forgot_passworrd'){
+        $email=trim($_POST['email']);
+        $msg="";
+        $type="";
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $msg = lang($link,'error_email');
+            $type="error";
+        }else{
+            $query_password=mysqli_query($link,"SELECT `password` FROM `app_my_girl_user_$lang` WHERE `email` = '$email' AND `password` != '' LIMIT 1");
+            if($query_password){
+                if(mysqli_num_rows($query_password)){
+                    $data_password=mysqli_fetch_assoc($query_password);
+                    $data_password=$data_password['password'];
+
+                    $subject = 'Carrot Store';
+
+                    $headers = "From: " . strip_tags('carrotstore@gmail.com') . "\r\n";
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+                    $message = '<p><strong>'.$data_password.'</strong></p>';
+
+                    mail($email, $subject, $message, $headers);
+
+                    $msg=lang($link,'quen_mat_khau_success');
+                    $type="success";
+                }else{
+                    $msg=lang($link,'quen_mat_khau_fail');
+                    $type="error";
+                }
+            }else{
+                $msg=lang($link,'quen_mat_khau_fail');
+            }
+        }
+
+        echo '{ "title":"'.lang($link,'quen_mat_khau').'", "msg":"'.$msg.'", "type":"'.$type.'" }';
+        exit;
+    }
+
 }
 ?>

@@ -248,7 +248,7 @@
         html_box_login = html_box_login + '<strong class="title"><?php echo lang($link,'dang_nhap_mxh');?></strong>';
         html_box_login = html_box_login + '<div id="box_login_other">';
         html_box_login = html_box_login + '<div id="my-signin2"></div>';
-        html_box_login = html_box_login + '<img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;width: 200px;height: 40px;" src="<?php echo $url;?>/images/btn_login_fb.jpg">';
+        html_box_login = html_box_login + '<img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;width: 200px;height: 40px;cursor: pointer;" src="<?php echo $url;?>/images/btn_login_fb.jpg">';
         html_box_login = html_box_login + '</div>';
         html_box_login = html_box_login + '</div>';
 
@@ -267,7 +267,7 @@
         html_box_login = html_box_login + '</div>';
 
         html_box_login = html_box_login + '<div style="float: left;width: 100%;">';
-        html_box_login = html_box_login + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span>  <span class="buttonPro light_blue" onclick="show_box_register();"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang($link,"dang_ky");?></span>';
+        html_box_login = html_box_login + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span>  <span class="buttonPro light_blue" onclick="show_box_register();"><i class="fa fa-user-plus" aria-hidden="true"></i> <?php echo lang($link,"dang_ky");?></span>   <span class="buttonPro" onclick="show_forgot_password();"><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang($link,"quen_mat_khau");?></span>';
         html_box_login = html_box_login + '</div>';
 
         html_box_login = html_box_login + '</div>';
@@ -275,6 +275,40 @@
         setTimeout(function () {
             renderButton();
         }, 100);
+    }
+
+    function show_forgot_password(){
+        var html_box_forgot_password='';
+        html_box_forgot_password='<div>';
+        html_box_forgot_password = html_box_forgot_password + '<div style="float: left;width: 100%;">';
+        html_box_forgot_password = html_box_forgot_password + '<img style="border-radius: 50%;" src="<?php echo $url;?>/images/email.gif"/><br/>';
+        html_box_forgot_password = html_box_forgot_password + '<div><?php echo lang($link,'quen_mat_khau_tip');?></div>';
+        html_box_forgot_password = html_box_forgot_password + '<label for="email_forgot_password"><i class="fa fa-mail" aria-hidden="true"></i> Email</label>';
+        html_box_forgot_password = html_box_forgot_password + '<input type="email" id="email_forgot_password" style="display:block;"/>';
+        html_box_forgot_password = html_box_forgot_password + '<span class="buttonPro" onclick="login_account();"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span> <span class="buttonPro blue" onclick="forgot_password();"><i class="fa fa-check" aria-hidden="true"></i> <?php echo lang($link,'hoan_tat'); ?></span>';
+        html_box_forgot_password = html_box_forgot_password + '</div>';
+        swal({html: true, title: '<?php echo lang($link,"quen_mat_khau"); ?>', text: html_box_forgot_password, showConfirmButton: false,});
+    }
+
+    function forgot_password(){
+        var inp_email_forgot_password=$("#email_forgot_password").val();
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: "function=forgot_passworrd&email="+inp_email_forgot_password,
+            success: function (data, textStatus, jqXHR) {
+                var obj_data=JSON.parse(data);
+                swal({ title:obj_data.title,text:obj_data.msg,type:obj_data.type},function(isConfirm){
+                    if (obj_data.type=="error") {
+                        login_account();
+                        setTimeout(function () {
+                            show_forgot_password();
+                        }, 300);
+                    }
+                });
+            }
+        });
     }
 
     function onSignIn(googleUser, goto_user = true) {
