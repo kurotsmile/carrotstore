@@ -18,9 +18,14 @@ if(isset($_GET['delete'])){
     }
     
     if($delete_type=='2'){
-        $msql_delete_not_music_key=mysqli_query($link,"DELETE m.* FROM `app_my_girl_log_key_music` as m, `app_my_girl_$langsel` as chat where m.key=chat.text or m.key=chat.chat");
-        $num_delete=mysqli_affected_rows();
-        show_alert('Đã xóa ('.$num_delete.') từ khóa không phải là bài hát!','alert');
+        $query_list_key=mysqli_query($link,"SELECT `key` FROM `app_my_girl_remove_key_music`");
+        $count_delete=0;
+        while($row_key=mysqli_fetch_assoc($query_list_key)){
+            $k=$row_key['key'];
+            $query_delete_key=mysqli_query($link,"DELETE FROM `app_my_girl_log_key_music` WHERE `key` = '$k' ");
+            $count_delete=$count_delete+mysqli_affected_rows($link);
+        }
+        show_alert('Đã xóa ('.$count_delete.') từ khóa không phải là bài hát!','alert');
     }
 }
 
@@ -89,6 +94,7 @@ if(mysqli_num_rows($result_tip)>0){
                         <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $row[1]; ?>&sex=0&character_sex=1&effect=2&answer=<?php echo $row[0];?>&actions=9" target="_blank" class="buttonPro small green"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm nhạc</a>
                         <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $row[1]; ?>&delete_key=<?php echo urlencode($row[0]);?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa từ khóa (Đã thêm)</a>
                         <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=check_music&key_word=<?php echo urlencode($row[0]);?>" target="_blank"  class="buttonPro small yellow"><i class="fa fa-search" aria-hidden="true"></i> kiểm tra đã tồn tại (<i class="fa fa-globe" aria-hidden="true"></i> Thế giới)</a>
+                        <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=remove_key_music&key=<?php echo urlencode($row[0]);?>" target="_blank"  class="buttonPro small blue" title="Thêm từ khóa này vao danh sách xóa" ><i class="fa fa-eraser" aria-hidden="true"></i> Chặn</a>
                     </td>
                 </tr>
                 <?php

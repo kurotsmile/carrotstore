@@ -261,8 +261,6 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                 overlays: {bottom: true}
             });
         </script>
-
-
         <?php
     }
     ?>
