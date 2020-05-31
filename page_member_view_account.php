@@ -187,6 +187,14 @@ if (sizeof($array_contact_same_name)> 0) {
     <div style="float: left;width: 100%;">
         <h2 style="padding-left: 30px;"><?php echo lang($link,'lien_he_cung_ten'); ?></h2>
         <?php
+        
+        $label_chi_tiet=lang($link,'chi_tiet');
+        $label_goi_dien=lang($link,'goi_dien');
+        $label_download_vcf=lang($link,'download_vcf');
+        $label_so_dien_thoai=lang($link,"so_dien_thoai");
+        $label_dia_chi=lang($link,"dia_chi");
+        $label_quoc_gia=lang($link,"quoc_gia");
+
         for($i_contact=0;$i_contact<sizeof($array_contact_same_name);$i_contact++){
             $row =$array_contact_same_name[$i_contact];
             include "page_member_view_git.php";

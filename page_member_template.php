@@ -26,6 +26,12 @@ $(window).scroll(function() {
 });
 </script>
 <?php
+        $label_chi_tiet=lang($link,'chi_tiet');
+        $label_goi_dien=lang($link,'goi_dien');
+        $label_download_vcf=lang($link,'download_vcf');
+        $label_so_dien_thoai=lang($link,"so_dien_thoai");
+        $label_dia_chi=lang($link,"dia_chi");
+        $label_quoc_gia=lang($link,"quoc_gia");
         while ($row = mysqli_fetch_array($result)) {
             include "page_member_view_git.php";
         }

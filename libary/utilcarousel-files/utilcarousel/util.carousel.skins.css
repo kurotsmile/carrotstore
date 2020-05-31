@@ -1,23 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
-@font-face {
-  font-family: 'util-fontello';
-  src: url('font-icon/util-fontello.eot?38368482');
-  src: url('font-icon/util-fontello.eot?38368482#iefix') format('embedded-opentype'),
-       url('font-icon/util-fontello.woff?38368482') format('woff'),
-       url('font-icon/util-fontello.ttf?38368482') format('truetype'),
-       url('font-icon/util-fontello.svg?38368482#util-fontello') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'util-fontello';
-    src: url('font-icon/util-fontello.svg?38368482#util-fontello') format('svg');
-  }
-}
-
- 
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "util-fontello";
   font-style: normal;

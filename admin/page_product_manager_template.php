@@ -1,4 +1,4 @@
-    <table style="width: 100%;" id="show_table" >
+    <table style="width: 100%;" id="show_table" class="tablePro" >
     <tr>
         <th style="width: 8%;">Biểu tượng</th>
         <th >Tên sản phẩm</th>

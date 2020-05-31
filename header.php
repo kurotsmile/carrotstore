@@ -161,6 +161,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta property="og:image:alt" content="<?php echo $title_page;?>" />
     <link rel="apple-touch-icon" href="<?php echo $url;?>/images/80.png"/>
     <link href="<?php echo $url; ?>/assets/css/style.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
+    <link href="<?php echo $url; ?>/assets/css/buttonPro.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
     <link hreflang="<?php echo $_SESSION['lang'];?>"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="<?php echo $seo_desc; ?>"/>
@@ -193,19 +194,49 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
 
 
     $(document).ready(function(){
-             $('#logo').qtip({
-                content: {
-                    title:"<?php echo lang($link,'home_url'); ?>",
-                    text:"<img src='<?php echo $url; ?>/images/home_url.png' style='width:100%'>"
-                },
-                style: {
-                    classes: 'qtip-green qtip-shadow',
-                },
-                 position: {
-                    at: 'bottom right',
+        $('.url_carrot').qtip({
+            content: {
+                title:"<i class='fa fa-home' aria-hidden='true'></i> <?php echo lang($link,'home_url'); ?>",
+                text:"<img src='<?php echo $url; ?>/images/home_url.png' style='width:100%'>"
+            },
+            style: {
+                classes: 'qtip-green qtip-shadow',
+            },
+            position: {
+                at: 'bottom right',
+            }
+        });
+
+        $('.jailbreak').qtip({
+            prerender: true,
+            content: {
+                title:"<?php echo lang($link,'jailbreak_ios'); ?>",
+                text: function(event, api) {
+                    var id_product=$(this).attr('id_product');
+                    $.ajax({
+                        url: "<?php echo $url;?>/index.php",type: "post",data: "function=jailbreak_tip&id_product="+id_product,
+                    })
+                    .then(function(content) { api.set('content.text', content);}, function(xhr, status, error) {});
+                    return '<?php echo lang($link,'dang_xu_ly');?>'; 
                 }
-            });
-            reset_tip();
+            },
+            style: { classes: 'qtip-green qtip-shadow'},
+            show: {modal: {on: true,blur: false}},
+            position: {
+                my: 'bottom center',
+                at: 'top center',
+                viewport: $('#contain'),
+                adjust: {
+                    mouse: false,
+                    scroll: false
+                }
+            },
+            hide: {fixed: true,delay:90},
+            style: {
+                classes: 'qtip-green qtip-shadow',
+            },
+        });
+        reset_tip();
     });
     
     function reset_tip(){

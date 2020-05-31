@@ -105,7 +105,7 @@ include "header.php";
 ?>
 
 <div id="header">
-    <a href="<?php echo $url; ?>"><img alt="Store Carrot" src="<?php echo $url; ?>/images/logo.png" id="logo"/></a>
+    <a href="<?php echo $url; ?>"><img alt="Store Carrot" src="<?php echo $url; ?>/images/logo.png" id="logo" class="url_carrot"/></a>
     <?php
     $type = 'products';
     $icon_search = '<i class="fa fa-product-hunt" aria-hidden="true"></i>';

@@ -41,6 +41,36 @@
 <img src="images/bk_rot_lieu.png" style="width: 320px;border-radius: 20px;box-shadow: 2px 2px 2px grey;" />
 !-->
     <?php echo lang($link,'thanks');?><br/>
-<img src="<?php echo $url;?>/images/signature.png">
-
+    <div id="site_author">
+    <i class="fa fa-heart heart" aria-hidden="true"></i>
+    <img src="<?php echo $url;?>/images/signature.png">
+    </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#site_author').each(function(){
+            var txt_author='<img style="width:100%" src="images/author.jpg"/>';
+            txt_author=txt_author+'<ul class="jailbreak_tip">';
+            txt_author=txt_author+'<li><i class="fa fa-beer" aria-hidden="true"></i> <b>Biệt danh</b>: Rốt</li>';
+            txt_author=txt_author+'<li><i class="fa fa-heart-o" aria-hidden="true"></i> <b>Kỹ năng</b>: Lập trình,thiết kế đồ họa,vẽ tranh</li>';
+            txt_author=txt_author+'<li><i class="fa fa-calendar-o" aria-hidden="true"></i> <b>Năm sinh</b>: 1993</li>';
+            txt_author=txt_author+'<li><i class="fa fa-map-marker" aria-hidden="true"></i> <b>Nơi ở</b>: Dương sơn hương toàn hương trà,Huế,Việt Nam</li>';
+            txt_author=txt_author+'</ul>';
+            $(this).qtip({
+                content: {
+                    text: txt_author,
+                    title: '<i class="fa fa-user" aria-hidden="true"></i> <?php echo lang($link,'Trần Thiện Thanh'); ?>',
+                },
+                style: {
+                    classes: 'qtip-green qtip-shadow',
+                } ,
+                position: {
+                    my: 'bottom center',
+                    at: 'top center'
+                }
+            }); 
+        });
+    });
+
+</script>

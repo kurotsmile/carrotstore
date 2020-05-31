@@ -1,53 +1,6 @@
 <?php
 if($_GET||$_POST){
 
-    if(isset($_GET['function'])&&$_GET['function']=='add_key'){
-        $key_name=$_GET['key_name'];
-        $key_contry=$_GET['key_contry'];
-        $key_txt=addslashes($_GET['key_txt']);
-        mysqli_query($link,"INSERT INTO `lang_key` (`key_contry`, `key_name`, `key_txt`) VALUES ('$key_contry', '$key_name', '$key_txt');");
-        exit;
-    }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='add_type'){
-        $id_type=$_GET['id_type'];
-        $icon_type=$_GET['icon_type'];
-        mysqli_query($link,"INSERT INTO `type` (`id`, `css_icon`)VALUES ('$id_type', '$icon_type');");
-        exit; 
-    }
-    
-    if(isset($_GET['function'])&&$_GET['function']=='delete_type'){
-        $key_id=$_GET['id'];
-        mysqli_query($link,"DELETE FROM `type` WHERE ((`id` = '$key_id'));");
-        exit; 
-    }
-
-    if(isset($_GET['function'])&&$_GET['function']=='update_key'){
-        $id=$_GET['id'];
-        $key_name=$_GET['key_name'];
-        $key_contry=$_GET['key_contry'];
-        $key_txt=$_GET['key_txt'];
-        mysqli_query($link,"UPDATE `lang_key` SET `key_contry` = '$key_contry',`key_name` = '$key_name',`key_txt` = '$key_txt' WHERE `id` = '$id';");
-        exit; 
-    }
-
-    if(isset($_GET['function'])&&$_GET['function']=='update_type'){
-        $id=$_GET['id_type'];
-        $icon_type=$_GET['icon_type'];
-        $a=mysqli_query($link,"UPDATE `type` SET `css_icon` = '$icon_type' WHERE `id` = '$id' ");
-        echo var_dump($a);
-        exit; 
-    }
-
-
-    
-    if(isset($_GET['function'])&&$_GET['function']=='search_key'){
-        $key=$_GET['key'];
-        $result = mysqli_query($link,"SELECT * FROM `lang_key` WHERE `key_txt` LIKE '%$key%' OR `key_name` LIKE '%$key%' LIMIT 50",$link);
-        include "admin/page_country_key_template.php";
-        exit; 
-    }
-    
     if(isset($_GET['function'])&&$_GET['function']=='search_product'){
         $key=$_GET['key'];
         $type=$_GET['type'];
@@ -61,6 +14,10 @@ if($_GET||$_POST){
                 $view_type=$_SESSION['view_type'];
                 include "$view_type.php";
             }else{
+                $label_click_de_xem=lang($link,'click_de_xem');
+                $label_download_on=lang($link,'download_on');
+                $label_loai=lang($link,'loai');
+                $label_chi_tiet=lang($link,'chi_tiet');
                 include "page_view_all_product_git.php";
             }
         }
@@ -138,6 +95,11 @@ if($_GET||$_POST){
             }else{
                $result = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$arr_id).") LIMIT 15");
             }
+            $label_click_de_xem=lang($link,'click_de_xem');
+            $label_download_on=lang($link,'download_on');
+            $label_loai=lang($link,'loai');
+            $label_chi_tiet=lang($link,'chi_tiet');
+
             while ($row = mysqli_fetch_assoc($result)) {
                include "page_view_all_product_git_template.php";
             }
@@ -156,6 +118,13 @@ if($_GET||$_POST){
             $lang_sel=$_SESSION['lang'];
         }
         if(count($arr_id)<intval($_GET['lenguser'])){
+            $label_chi_tiet=lang($link,'chi_tiet');
+            $label_goi_dien=lang($link,'goi_dien');
+            $label_download_vcf=lang($link,'download_vcf');
+            $label_so_dien_thoai=lang($link,"so_dien_thoai");
+            $label_dia_chi=lang($link,"dia_chi");
+            $label_quoc_gia=lang($link,"quoc_gia");
+
             $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 20");
             while ($row = mysqli_fetch_array($result)) {
                include "page_member_view_git.php";
@@ -204,42 +173,6 @@ if($_GET||$_POST){
     }
 
 
-    
-    if(isset($_GET['function'])&&$_GET['function']=='show_address'){
-        $lat=$_GET['lat'];
-        $lng=$_GET['lng'];
-        ?>
-        <div id="map_sub" style="width: 100%;height:300px;">&nbsp;</div>
-        </div>
-        <script type="text/javascript">
-        
-        var map;
-        function initMap() {
-              var pos = {
-                lat: <?php echo $lat; ?>,
-                lng: <?php echo $lng; ?>,
-              };
-              
-          var image = '<?php echo $url;?>/images/carot.png';
-        
-            map = new google.maps.Map(document.getElementById('map_sub'), {
-            center: pos,
-            zoom: 12
-            });
-              var meMarker = new google.maps.Marker({
-                position: pos,
-                map: map,
-                icon: '<?php echo thumb('images/position_me.png','60x60'); ?>',
-                animation: google.maps.Animation.BOUNCE
-              });
-        
-        }
-        initMap();
-        </script>
-        <?php
-        exit;
-    }
-
     if(isset($_GET['function'])&&$_GET['function']=='show_qr'){
         $id=$_GET['id'];
         $type=$_GET['type'];
@@ -275,41 +208,6 @@ if($_GET||$_POST){
     }
 
 
-
-
-
-    if(isset($_POST['function'])&&$_POST['function']=='get_member'){
-        $user=$_SESSION['username_login'];
-        $data_cur_user=get_account($user);
-        $get_member_data=mysqli_query($link,"SELECT  * FROM `account_friend` WHERE `user` = '$user' limit 20");
-        if(mysqli_num_rows($get_member_data)>0){
-            ?>
-            <p style="min-height: 200px;">
-            <input type="text"  class="inp boxmsg_search" placeholder="<?php echo lang($link,'tim_kiem');?>">
-            <span class="boxmsg_member" onclick="select_member('<?php echo $user; ?>',this)"><img src="<?php echo thumb($data_cur_user['avatar'],'20x20');?>"/> <?php echo show_name_User($user);?></span>
-            <?php
-            while($member=mysqli_fetch_array($get_member_data)){
-            $data_member=get_account($member['friend']);
-            ?>
-               <span class="boxmsg_member" onclick="select_member('<?php echo $member['friend']; ?>',this)"><img src="<?php echo thumb($data_member['avatar'],'20x20');?>"/> <?php echo show_name_User($member['friend']);?></span>
-            <?php
-            }
-            ?>
-            </p>
-            <?php
-        }else{
-            echo '<strong>'.lang($link,'khong_co_du_lieu').'</strong>';
-        }
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='select_member'){
-        $user=get_account($_POST['user']);
-        $position='ceo';
-        include "template/field_member.php";
-        exit;
-    }
-
     if(isset($_POST['function'])&&$_POST['function']=='rate_object'){
         $id=$_POST['id'];
         $objects=$_POST['objects'];
@@ -329,20 +227,6 @@ if($_GET||$_POST){
                 $content=json_encode(array($objects,$star,$id));
                 mysqli_query($link,"INSERT INTO `account_activity` (`type`, `content`, `user`,`wall`,`date`,`tip`) VALUES ('account', '$content', '$user','$user',NOW(),'$tip');");
             }
-        }
-        exit;
-    }
-
-    
-    if(isset($_POST['function'])&&$_POST['function']=='login_qr'){
-        $user_id=$_POST['user_id'];
-        $check_login=mysqli_query($link,"SELECT * FROM `account_login` WHERE `status` = '1' AND `user_id` = '$user_id'");
-        if(mysqli_num_rows($check_login)>0){
-            mysqli_query($link,"DELETE FROM `account_login` WHERE `user_id` = '$user_id'");
-            $_SESSION['username_login']=$user_id;
-            echo '1';
-        }else{
-            echo '0';
         }
         exit;
     }
@@ -589,6 +473,18 @@ if($_GET||$_POST){
         }
 
         echo '{ "title":"'.lang($link,'quen_mat_khau').'", "msg":"'.$msg.'", "type":"'.$type.'" }';
+        exit;
+    }
+
+    if(isset($_POST['function'])&&$_POST['function']=='jailbreak_tip'){
+        $id_product=$_POST['id_product'];
+        $url_file_ipa=$url."/product_data/".$id_product."/ios/Unity-iPhone.ipa";
+        $url_search="https://www.google.com/search?&q=how+to+jailbreak+ios&oq=how+to+jailbreak+ios";
+        echo "<ul class='jailbreak_tip'>";
+        echo "<li><i class='fa fa-apple' aria-hidden='true'></i> ".lang($link,'jailbreak_1')."</li>";
+        echo "<li><a href='".$url_file_ipa."' target='_blank'><i class='fa fa-apple' aria-hidden='true'></i> ".lang($link,'jailbreak_2')."</a></li>";
+        echo "<li><a href='".$url_search."' target='_blank'><i class='fa fa-apple' aria-hidden='true'></i> ".lang($link,'jailbreak_3')."</a> </li>";
+        echo "</ul>";
         exit;
     }
 

@@ -53,6 +53,7 @@ RewriteRule    ^appmusic   app_mobile/musicforlife/index.php [NC,L]
 RewriteRule    ^sheep   app_mobile/sheep/index.php [NC,L]
 RewriteRule    ^flower   app_mobile/flower/index.php [NC,L]
 RewriteRule    ^createpassword   app_mobile/createpassword/index.php
+RewriteRule    ^saveweboffline   app_mobile/saveweboffline/index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

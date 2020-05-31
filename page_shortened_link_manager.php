@@ -57,7 +57,11 @@ if($id_user!=''){
 
 <div id="containt" style="width: 100%;float: left;">
 <?php
-
+$label_chi_tiet=lang($link,'chi_tiet');
+$label_ngay_dang=lang($link,'ngay_dang');
+$label_luot_xem=lang($link,'luot_xem');
+$label_shorten_link_create=lang($link,'shorten_link_create');
+$label_link_full=lang($link,'link_full');
 while($row=mysqli_fetch_assoc($query_list_link)){
     ?>
     <div id="row<?php echo $row['id']; ?>" class="app">
@@ -71,19 +75,19 @@ while($row=mysqli_fetch_assoc($query_list_link)){
             </a>
         </div>
         
-        <div class="app_txt" style="float: left;width: 93%;height: 69px;padding: 10px;overflow-y: auto">
+        <div class="app_txt" style="float: left;width: 93%;height: 30px;padding: 10px;overflow-y: auto">
             <i class="fa fa-link" aria-hidden="true" style="float: left;margin-right: 5px;font-size: 40px;"></i> 
             <div style="word-break: break-word;">
-            <?php echo lang($link,'link_full');?>: <a href="<?php echo $row['link'];?>" target="_blank"><?php echo $row['link'];?></a>
+            <?php echo $label_link_full;?>: <a href="<?php echo $row['link'];?>" target="_blank"><?php echo $row['link'];?></a>
             </div>
         </div>
         
         <div class="app_type" style="color: #515151;font-size: 11px;font-weight: normal;">
-            <i class="fa fa-external-link-square" aria-hidden="true"></i> <?php echo lang($link,'shorten_link_create');?>: <a href="<?php echo $url;?>/link/<?php echo $row['id'];?>" target="_blank"><?php echo $url;?>/link/<?php echo $row['id'];?></a>
+            <i class="fa fa-external-link-square" aria-hidden="true"></i> <?php echo $label_shorten_link_create;?>: <a href="<?php echo $url;?>/link/<?php echo $row['id'];?>" target="_blank"><?php echo $url;?>/link/<?php echo $row['id'];?></a>
         </div>
         
         <div class="app_type" style="color: #515151;font-size: 11px;font-weight: normal;">
-            <i class="fa fa-tag" aria-hidden="true"></i> ID:<?php echo $row['id'];?></b> | <i class="fa fa-eye" aria-hidden="true"></i> <?php echo lang($link,'luot_xem'); ?>:<?php echo $row['view'];?> | <i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang($link,'ngay_dang');?>:
+            <i class="fa fa-tag" aria-hidden="true"></i> ID:<?php echo $row['id'];?></b> | <i class="fa fa-eye" aria-hidden="true"></i> <?php echo $label_luot_xem; ?>:<?php echo $row['view'];?> | <i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo $label_ngay_dang;?>:
             <?php 
             $date=date_create($row['date']);
             echo date_format($date,"Y/m/d");
@@ -91,7 +95,7 @@ while($row=mysqli_fetch_assoc($query_list_link)){
         </div>
         
         <div class="app_action">
-            <a href="<?php echo $url;?>/l/<?php echo $row['id'];?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo lang($link,'chi_tiet'); ?></a>
+            <a href="<?php echo $url;?>/l/<?php echo $row['id'];?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
         </div>
     </div>
     <?php

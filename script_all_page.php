@@ -396,7 +396,7 @@
         if (adBlockEnabled) {
             swal({
                     title: "<?php echo lang($link,"adblock_title"); ?>",
-                    text: "<img alt='<?php echo lang($link,"adblock_title");?>' style='width:100%' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang($link,"adblock_msg");?>",
+                    text: "<img alt='<?php echo lang($link,"adblock_title");?>' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang($link,"adblock_msg");?>",
                     html: true,
                     showCancelButton: true,
                     cancelButtonClass: "btn-info",

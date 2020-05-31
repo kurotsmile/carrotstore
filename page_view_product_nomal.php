@@ -41,7 +41,7 @@ $data_type=mysqli_fetch_array($query_type);
             <?php if($data['apk']!=''){ ?><li><a class="buttonPro orange" href="<?php echo $data['apk'];?>" target="_blank"><img src="<?php echo $url.'/images/apk_download.png';?>" /></a></li><?php }?>
             <?php if($data['carrot_store']!=''){ ?><li><a href="<?php echo $data['carrot_store'];?>" target="_blank"><img src="<?php echo $url.'/images/carrotstore_app_web.png';?>" /></a></li><?php }?>
 			<?php if($data['chrome_store']!=''){ ?><li><a href="<?php echo $data['chrome_store'];?>" target="_blank"><img src="<?php echo $url.'/images/chrome_store_download.png';?>" /></a></li><?php }?>
-            <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" title="<?php echo lang($link,'download_on').' (Carrot Store)';?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
+            <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" class="jailbreak"  id_product="<?php echo $data['id']; ?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
             </ul>
         </p>
 
@@ -59,16 +59,16 @@ $data_type=mysqli_fetch_array($query_type);
 			});
     </script>
     
-    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.css" />
-    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.skins.css" />
-    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.min.css" />
+    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.skins.min.css" />
+    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/magnific-popup.min.css" />
     		<div class="container" style="float: left;width: 100%;">
     			<div id="simpleImg" class="util-theme-default util-carousel sample-img">
-                <?php
-                $id_product=$data['id'];
-                $dirname = "product_data/".$id_product."/slide";
+            <?php
+            $id_product=$data['id'];
+            $dirname = "product_data/".$id_product."/slide";
             $dir = opendir($dirname);
-        
+            $label_click_de_xem=lang($link,'click_de_xem');
             while(false != ($file = readdir($dir)))
                 {
                   if(($file != ".") and ($file != "..") and ($file != "index.php"))
@@ -82,8 +82,8 @@ $data_type=mysqli_fetch_array($query_type);
 					<div class="hover-content">
 						<div class="overlay"></div>
 						<div class="link-contianer">
-							<a href="<?php echo $url.'/'.$img ?>" target="_blank"><i class="icon-link"></i></a>
-                            <a href="<?php echo $url.'/'.$img ?>" class="img-link" title="Sample image 1 description"><i class="icon-search"></i></a>
+							<a href="<?php echo $url.'/'.$img ?>" target="_blank" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                            <a href="<?php echo $url.'/'.$img ?>" class="img-link" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
 						</div>
 					</div>
 				    </div>
@@ -91,20 +91,13 @@ $data_type=mysqli_fetch_array($query_type);
     			</div>
     		</div>
 
-    
-
 <div style="float: left;width: 100%;background-color: white;">
     <div id="post_product">
     <?php
         echo get_desc_product_lang($link,$data['id'],$_SESSION['lang']);
         echo show_share($link,$seo_url); 
-        
     ?>
-                <iframe
-                src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
-                scrolling="no" frameborder="0"
-                style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;">
-            </iframe>
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts" scrolling="no" frameborder="0" style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;"></iframe>
     </div>
 
     <div id="sidebar_product">
