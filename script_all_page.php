@@ -440,9 +440,7 @@
 
 
 </script>
-<?php
-if ($protocol == 'https') {
-    ?>
+
     <script>
 
         window.fbAsyncInit = function () {
@@ -496,6 +494,4 @@ if ($protocol == 'https') {
             },{scope: 'public_profile,email'});
         }
     </script>
-    <?php
-}
-?>
+

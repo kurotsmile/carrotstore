@@ -14,13 +14,13 @@ while($country=mysqli_fetch_assoc($query_list_country)){
     }
     $query_count_data_key=mysqli_query($link,"SELECT `value` FROM `value_lang` WHERE `id_country` = '$key_country' LIMIT 1");
 
-    $count_password=0;
-    $query_count_password=mysqli_query($link,"SELECT COUNT(`id`) as p FROM `password_$key_country` LIMIT 50");
-    if($query_count_password){
-        $data_count_password=mysqli_fetch_assoc($query_count_password);
-        $count_password=$data_count_password['p'];
+    $count_web=0;
+    $query_count_web=mysqli_query($link,"SELECT COUNT(`id`) as p FROM `web_$key_country` ");
+    if($query_count_web){
+        $data_count_web=mysqli_fetch_assoc($query_count_web);
+        $count_web=$data_count_web['p'];
     }else{
-        $count_password=-1;  
+        $count_web=-1;  
     }
 
     if(mysqli_num_rows($query_count_data_key)>0){
@@ -46,7 +46,7 @@ while($country=mysqli_fetch_assoc($query_list_country)){
                     <?php }?>
                 </li>
                 <li>
-                    Có <b><?php echo $count_password;?></b> Mật khẩu được tạo
+                    Có <b><?php echo $count_web;?></b> Mật khẩu được tạo
                 </li>
                 <li>
                     Có <b><?php echo $count_data_key_lang;?></b> từ khóa ngôn ngữ ứng dụng được tạo

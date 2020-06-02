@@ -222,6 +222,7 @@ function get_url_icon_product_no_thumb($id_product){
 }
 
 function get_url_avatar_user($link,$id_user,$lang,$size=100,$is_admin=false,$sex_avatar=''){
+    global $url_work,$url;
     $url_img='app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png';
     $url_avatar=URL.'/thumb.php?src='.URL.'/images/avatar_default.png&size='.$size.'&trim=1';
     if($is_admin){

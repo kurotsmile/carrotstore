@@ -24,14 +24,12 @@ if(isset($_GET['lang_sel'])) $lang_sel=$_GET['lang_sel'];
 <?php
 if(isset($_POST['lang_sel'])){
     $txt_mysql_create_table="
-        CREATE TABLE `password_$lang_sel` (
-            `id` varchar(50) DEFAULT NULL,
-            `password` varchar(100) DEFAULT NULL,
-            `tag` varchar(50) DEFAULT NULL,
-            `username` varchar(50) DEFAULT NULL,
-            `date` datetime DEFAULT NULL,
-            `id_user` varchar(100) DEFAULT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        CREATE TABLE `web_$lang_sel` (
+            `id` varchar(50) NOT NULL,
+            `id_user` varchar(100) NOT NULL,
+            `data` text NOT NULL,
+            `url` text NOT NULL
+        )
     ";
     if(mysqli_query($link,$txt_mysql_create_table)){
         echo alert('Tạo bản mật khẩu thành công nước ('.$lang_sel.')','alert');

@@ -488,5 +488,23 @@ if($_GET||$_POST){
         exit;
     }
 
+
+    if(isset($_POST['function'])&&$_POST['function']=='show_work_user_tip'){
+        echo '<div class="work_user_tip">';
+        $user_id=$_POST['id'];
+        $query_user_work=mysqli_query($link,"SELECT `full_name`, `note`, `user_id` FROM carrotsy_work.`work_user` WHERE `user_id` = '$user_id' LIMIT 1");
+        $data_user_work=mysqli_fetch_assoc($query_user_work);
+        $url_avatar_work_user=$url.'/thumb.php?src='.$url_work.'/avatar_user/'.$user_id.'.png?v='.$ver.'&size=500x500&trim=1';
+        echo '<img src="'.$url_avatar_work_user.'">';
+        echo '<div class="user_info">';
+        echo '<div class="note">';
+        echo '<strong>'.lang($link,'ten_day_du').':</strong> '.$data_user_work['full_name'].'<br/>';
+        echo '<strong>'.lang($link,'gioi_thieu').':</strong> '.$data_user_work['note'];
+        echo '</div>';
+        echo '</div>';
+        echo '<div>';
+        exit;
+    }
+
 }
 ?>

@@ -69,7 +69,7 @@ if($func=='logincallback'){
 
 if($func=='show_select_lang'){
     $app->list_data=array();
-    $query_country=mysqli_query($link,"SELECT a.`id`,a.`name`,a.`key` FROM carrotsy_virtuallover.`app_my_girl_country` as a INNER JOIN carrotsy_createpassword.`country` as b ON b.key = a.key");
+    $query_country=mysqli_query($link,"SELECT a.`id`,a.`name`,a.`key` FROM carrotsy_virtuallover.`app_my_girl_country` as a INNER JOIN carrotsy_saveweboffline.`country` as b ON b.key = a.key");
     while($item_country=mysqli_fetch_assoc($query_country)){
         $item=new Item();
         $item->id=$item_country['id'];
@@ -79,6 +79,7 @@ if($func=='show_select_lang'){
         $item->{"icon"}=$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png';
         array_push($app->list_data,$item);
     }
+    echo mysqli_error($link);
     echo json_encode($app);
 }
 
@@ -97,44 +98,47 @@ if($func=='download_lang'){
 }
 
 if($func=='save_web'){
-    $id_create=uniqid().uniqid();
     $link_web=$_POST['link'];
+    $id_device=$_POST['id_device'];
     $c = curl_init($link_web);
     curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
     $html = curl_exec($c);
     if (curl_error($c))die(curl_error($c));
     $status = curl_getinfo($c, CURLINFO_HTTP_CODE);
     curl_close($c);
-    echo $html;
-    /*
-    $query_add_password=mysqli_query($link,"INSERT INTO `password_$lang` (`id`, `password`, `tag`, `date`,`username`,`id_user`) VALUES ('$id_create', '$password', '$tag', NOW(),'$username','$id_device');");
-    if($query_add_password){
-        echo "done";
+    if(trim($id_device)==''){
+        echo $html;
     }else{
-        echo mysqli_error($link);
+        $id_create=uniqid().uniqid();
+        $html=mysqli_real_escape_string($link,$html);
+        $query_add_web=mysqli_query($link,"INSERT INTO `web_$lang` (`id`, `data`, `url`,`id_user`) VALUES ('$id_create', '$html','$link_web','$id_device');");
+        if($query_add_web){
+            echo "done";
+        }else{
+            echo mysqli_error($link);
+        }
     }
-    */
+
 }
 
-if($func=='show_list_passwor_by_account'){
+if($func=='show_list_web_by_account'){
     $id_device=$_POST['id_device'];
-    $query_link=mysqli_query($link,"SELECT `id`,`tag`,`password`,`username` FROM `password_$lang` WHERE `id_user` = '$id_device' ");
-    $arr_password=array();
-    while ($item_passwod=mysqli_fetch_assoc($query_link)){
+    $query_link=mysqli_query($link,"SELECT `id`,`data`,`url` FROM `web_$lang` WHERE `id_user` = '$id_device' ");
+    $arr_web=array();
+    while ($item_web=mysqli_fetch_assoc($query_link)){
         $item=new Item();
-        $item->id=$item_passwod['id'];
-        $item->{'tag'}=$item_passwod['tag'];
-        $item->{'pass'}=$item_passwod['password'];
-        $item->{'username'}=$item_passwod['username'];
-        array_push($arr_password,$item);
+        $item->id=$item_web['id'];
+        $item->{'url'}=$item_web['url'];
+        $item->{'data'}=$item_web['data'];
+        array_push($arr_web,$item_web);
     }
-    echo json_encode($arr_password);
+    echo json_encode($arr_web);
     exit;
 }
 
-if($func=='delete_password_by_account'){
-    $id_password=$_POST['id_password'];
-    $query_delete=mysqli_query($link,"DELETE FROM `password_$lang` WHERE `id` = '$id_password'");
+if($func=='delete_web_by_account'){
+    $id_web=$_POST['id_web'];
+    $query_delete=mysqli_query($link,"DELETE FROM `web_$lang` WHERE `id` = '$id_web'");
     exit;
 }
 

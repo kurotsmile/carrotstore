@@ -176,25 +176,12 @@ include "header.php";
     
 
     <div id="bar_menu">
-        <a href="<?php echo $url; ?>/products" <?php if ($page_file == "page_view.php") {
-            echo 'class="active"';
-        } ?>><?php echo lang($link,'mua_sp'); ?></a>
-        <a href="<?php echo $url; ?>/member" <?php if ($page_file == "page_member.php") {
-            echo 'class="active"';
-        } ?>><?php echo lang($link,'luu_tru_lien_he'); ?></a>
-        <a href="<?php echo $url; ?>/music" <?php if ($page_file == "page_music.php") {
-            echo 'class="active"';
-        } ?>><?php echo lang($link,'am_nhac_cho_cuoc_song'); ?></a>
-        <a href="<?php echo $url; ?>/quote" <?php if ($page_file == "page_quote.php") {
-            echo 'class="active"';
-        } ?>><?php echo lang($link,'trich_dan'); ?></a>
-        <a href="<?php echo $url; ?>/link" <?php if ($page_file == "page_shortened_link.php" || $page_file == "page_shortened_link_manager.php" || $page_file == "page_shortened_link_detail.php") {
-            echo 'class="active"';
-        } ?>><?php echo lang($link,'rut_gon_link'); ?></a>
-        <a href="<?php echo $url; ?>/privacy_policy" <?php if ($page_file == "page_privacy_policy.php") {
-            echo 'class="active"';
-        } ?>><?php echo lang($link,'gioi_thieu'); ?></a>
-
+        <a href="<?php echo $url; ?>/products" <?php if ($page_file == "page_view.php") { echo 'class="active"';} ?>><?php echo lang($link,'mua_sp'); ?></a>
+        <a href="<?php echo $url; ?>/member" <?php if ($page_file == "page_member.php") { echo 'class="active"';} ?>><?php echo lang($link,'luu_tru_lien_he'); ?></a>
+        <a href="<?php echo $url; ?>/music" <?php if ($page_file == "page_music.php") { echo 'class="active"';} ?>><?php echo lang($link,'am_nhac_cho_cuoc_song'); ?></a>
+        <a href="<?php echo $url; ?>/quote" <?php if ($page_file == "page_quote.php") { echo 'class="active"';} ?>><?php echo lang($link,'trich_dan'); ?></a>
+        <a href="<?php echo $url; ?>/link" <?php if ($page_file == "page_shortened_link.php" || $page_file == "page_shortened_link_manager.php" || $page_file == "page_shortened_link_detail.php") { echo 'class="active"';} ?>><?php echo lang($link,'rut_gon_link'); ?></a>
+        <a href="<?php echo $url; ?>/privacy_policy" <?php if ($page_file == "page_privacy_policy.php") { echo 'class="active"';} ?>><?php echo lang($link,'gioi_thieu'); ?></a>
         <?php
         if(isset($user_login)){
             echo '<a style="float: right;margin-right: 5px;"  onclick="logout_account();return false"><i class="fa fa-sign-out" aria-hidden="true"></i></a> ';
@@ -221,7 +208,6 @@ include "header.php";
     <?php
     include $page_file;
     ?>
-
 </div>
 
 <div id="go_top" onclick="go_top()">
@@ -235,16 +221,9 @@ include "header.php";
     <span id="loading-page"></span>
 </div>
 
-<!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            xfbml: true,
-            version: 'v6.0'
-        });
-    };
-
+    window.fbAsyncInit = function () {FB.init({xfbml: true,version: 'v6.0'});};
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -252,21 +231,15 @@ include "header.php";
         js.id = id;
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
-<!-- Your customer chat code -->
-<div class="fb-customerchat"
-     attribution=setup_tool
-     page_id="232297850844551"
-     theme_color="#67b868"
-     logged_in_greeting="<?php echo lang($link,'message_tip'); ?>"
-     logged_out_greeting="<?php echo lang($link,'message_tip'); ?>"
->
-</div>
+<div class="fb-customerchat" attribution=setup_tool page_id="232297850844551" theme_color="#67b868" logged_in_greeting="<?php echo lang($link,'message_tip'); ?>" logged_out_greeting="<?php echo lang($link,'message_tip'); ?>"></div>
 
 <script>
     var URL = '<?php echo $url;?>';
 </script>
+
 <?php
 include "script_all_page.php";
 ?>

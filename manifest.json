@@ -1,7 +1,7 @@
 {
     "name": "Carrot store",
     "short_name": "Carrot",
-    "description": "Carrotstore.com is an archive, introducing entertainment applications and add-on utilities for people around the world. When you use one of these systems, you have an account that identifies each person with the mobile device.",
+    "description": "Carrotstore.com is an archive, introducing entertainment applications and add-on utilities for people around the world",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#000000",

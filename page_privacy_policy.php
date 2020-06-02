@@ -1,11 +1,13 @@
 
-<div style="width: 90%;padding: 10px;margin-left: auto;margin-right: auto;">
+<div style="width: 90%;padding: 10px;margin-left: auto;margin-right: auto;" id="contain">
 <p>
     <h2><i class="fa fa-universal-access icon_green" aria-hidden="true"></i> <?php echo lang($link,'gioi_thieu'); ?></h2>
 </p>
 
 <p>
-<?php echo strip_tags(lang($link,'gioi_thieu_tip')); ?>
+<?php 
+echo str_replace('Carrotstore.com','<a class="url_carrot" href="'.$url.'">Carrotstore.com</a>',strip_tags(lang($link,'gioi_thieu_tip')));
+?>
 </p>
 
 
@@ -20,6 +22,18 @@
     <li><?php echo lang($link,'policy_1'); ?></li>
     <li><?php echo lang($link,'policy_2'); ?></li>        
 </ul>
+
+<p>
+    <h2><i class="fa fa-fort-awesome icon_green" aria-hidden="true"></i> <?php echo lang($link,'development_team');?></h2>
+    <ul id="list_user_work">
+    <?php
+    $query_user_work=mysqli_query($link,"SELECT `user_id`, `full_name` FROM carrotsy_work.`work_user` WHERE `policy_show`='1'");
+    while($row_user=mysqli_fetch_assoc($query_user_work)){
+    ?>
+        <li><a href="#" class="ajax_tip" ajax_data='{"function":"show_work_user_tip","id":"<?php echo $row_user['user_id']; ?>"}'><i class="fa fa-user-o" aria-hidden="true"></i> <?php echo $row_user['full_name'];?></a></li>
+    <?php }?>
+    </ul>
+</p>
 
 <p>
     <h2><i class="fa fa-user-circle icon_green" aria-hidden="true"></i> <?php echo lang($link,'lien_he'); ?></h2>
@@ -45,32 +59,5 @@
     <i class="fa fa-heart heart" aria-hidden="true"></i>
     <img src="<?php echo $url;?>/images/signature.png">
     </div>
+
 </div>
-
-<script>
-    $(document).ready(function(){
-        $('#site_author').each(function(){
-            var txt_author='<img style="width:100%" src="images/author.jpg"/>';
-            txt_author=txt_author+'<ul class="jailbreak_tip">';
-            txt_author=txt_author+'<li><i class="fa fa-beer" aria-hidden="true"></i> <b>Biệt danh</b>: Rốt</li>';
-            txt_author=txt_author+'<li><i class="fa fa-heart-o" aria-hidden="true"></i> <b>Kỹ năng</b>: Lập trình,thiết kế đồ họa,vẽ tranh</li>';
-            txt_author=txt_author+'<li><i class="fa fa-calendar-o" aria-hidden="true"></i> <b>Năm sinh</b>: 1993</li>';
-            txt_author=txt_author+'<li><i class="fa fa-map-marker" aria-hidden="true"></i> <b>Nơi ở</b>: Dương sơn hương toàn hương trà,Huế,Việt Nam</li>';
-            txt_author=txt_author+'</ul>';
-            $(this).qtip({
-                content: {
-                    text: txt_author,
-                    title: '<i class="fa fa-user" aria-hidden="true"></i> <?php echo lang($link,'Trần Thiện Thanh'); ?>',
-                },
-                style: {
-                    classes: 'qtip-green qtip-shadow',
-                } ,
-                position: {
-                    my: 'bottom center',
-                    at: 'top center'
-                }
-            }); 
-        });
-    });
-
-</script>

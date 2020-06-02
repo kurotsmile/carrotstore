@@ -185,9 +185,16 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
     <link rel="manifest" href="<?php echo $url;?>/manifest.json" />
     <script>
-
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('<?php echo $url;?>/js/installApp.min.js');
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/installApp.js',{ scope: "/" }).then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+        });
+    });
     }
 
     var shortcut_key_music=true;
@@ -236,6 +243,38 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                 classes: 'qtip-green qtip-shadow',
             },
         });
+
+        $('.ajax_tip').qtip({
+            prerender: true,
+            content: {
+                title:"<i class='fa fa-question-circle' aria-hidden='true'></i> <?php echo lang($link,'chu_thich'); ?>",
+                text: function(event, api) {
+                    var ajax_data=$(this).attr('ajax_data');
+                    var ajax_data_obj=JSON.parse(ajax_data);
+                    $.ajax({
+                        url: "<?php echo $url;?>/index.php",type: "post",data:ajax_data_obj,
+                    })
+                    .then(function(content) { api.set('content.text', content);}, function(xhr, status, error) {});
+                    return '<?php echo lang($link,'dang_xu_ly');?>'; 
+                }
+            },
+            style: { classes: 'qtip-green qtip-shadow'},
+            show: {modal: {on: true,blur: false}},
+            position: {
+                my: 'bottom center',
+                at: 'top center',
+                viewport: $('#contain'),
+                adjust: {
+                    mouse: false,
+                    scroll: true
+                }
+            },
+            hide: {fixed: true,delay:90},
+            style: {
+                classes: 'qtip-green qtip-shadow',
+            },
+        });
+
         reset_tip();
     });
     

@@ -1079,30 +1079,10 @@ background-position: right center;
 	-o-transition: all 1s;
 	transition: all 1s;
 }
-
-
-
-      .audiojs { height: 22px; background: #404040;
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(0.5, #555), color-stop(0.51, #444), color-stop(1, #444));
-        background-image: -moz-linear-gradient(center top, #444 0%, #555 50%, #444 51%, #444 100%);
-        -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-        -o-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); }
-      .audiojs .play-pause { width: 15px; height: 20px; padding: 0px 8px 0px 0px; }
-      .audiojs p { width: 25px; height: 20px; margin: -3px 0px 0px -1px; }
-      .audiojs .scrubber { background: #5a5a5a; width: 310px; height: 10px; margin: 5px; }
-      .audiojs .progress { height: 10px; width: 0px; background: #ccc;
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(0.5, #ddd), color-stop(0.51, #ccc), color-stop(1, #ccc));
-        background-image: -moz-linear-gradient(center top, #ccc 0%, #ddd 50%, #ccc 51%, #ccc 100%); }
-      .audiojs .loaded { height: 10px; background: #000;
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #222), color-stop(0.5, #333), color-stop(0.51, #222), color-stop(1, #222));
-        background-image: -moz-linear-gradient(center top, #222 0%, #333 50%, #222 51%, #222 100%); }
-      .audiojs .time { float: left; height: 25px; line-height: 25px; }
-      .audiojs .error-message { height: 24px;line-height: 24px; }
-
-      .track-details { clear: both; height: auto; width: auto;max-width: 400px;; padding: 1px 6px; background: #eee; color: #222; font-family: monospace; font-size: 11px; line-height: 20px;
-        -webkit-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15); -moz-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15); }
-      .track-details:before { content: '♬ '; }
-      .track-details em { font-style: normal; color: #999; }
+.track-details { clear: both; height: auto; width: auto;max-width: 400px;; padding: 1px 6px; background: #eee; color: #222; font-family: monospace; font-size: 11px; line-height: 20px;
+-webkit-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15); -moz-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.15); }
+.track-details:before { content: '♬ '; }
+.track-details em { font-style: normal; color: #999; }
       
 #place_box_info_right .slide_img{
 	background-color: white;
@@ -1651,6 +1631,42 @@ textarea:focus {
 	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
 	text-shadow: 0 0 10px #ff9e8f;
+}
+
+#list_user_work{
+    width: 100%;
+    float: left;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin: 0;
+    margin-bottom: 15px;
+    list-style: none;
+}
+
+#list_user_work li{
+    float: left;
+    margin-right: 28px;
+}
+
+.work_user_tip{
+    float: left;
+    width: 100%;
+}
+
+.work_user_tip img{
+    float: left;width:30%;border-radius: 5px;
+}
+
+.work_user_tip .user_info{
+    float: left;width: 69%;
+}
+
+.work_user_tip .user_info .note{
+    float: left;padding: 10px;padding-top: 0px;
+}
+
+.work_user_tip .user_info .note ul{
+    margin: 0px;padding: 0px;margin-left: 20px;float: left;
 }
 
 @keyframes pulse {
