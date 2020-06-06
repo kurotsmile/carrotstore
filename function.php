@@ -269,8 +269,8 @@ function box_ads($link,$id_product,$lang){
     $query_product_ads=mysqli_query($link,"SELECT `id`,`chplay_store`,`app_store`,`galaxy_store`,`window_store`,`apk` FROM `products` WHERE `id` = '$id_product' LIMIT 1");
     $product_ads=mysqli_fetch_array($query_product_ads);
     $html_txt='';
-    $html_txt.='<div id="box_ads_app" style="background-color: #3FC73D;width: 100%;height: auto;float: left;margin-bottom: 20px;padding-bottom: 5px;">';
-    $html_txt.='<div style="background-color: green;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 100%;float: left;">';
+    $html_txt.='<div id="box_ads_app_page">';
+    $html_txt.='<div class="title">';
     $html_txt.='<span style="margin-left: 20px;">'.get_name_product_lang($link,$id_product,$lang).'</span>';
     $html_txt.='<i style="float: right;cursor: pointer;margin-right: 5px;" onclick="$(\'#box_ads_app\').fadeOut(100);" class="fa fa-mobile"></i>';
     $html_txt.='</div>';
@@ -331,8 +331,8 @@ function show_ads_box_main($link,$id_place_ads){
     $id_product_ads=$data_place_ads['id_product_main'];
     $query_product_ads=mysqli_query($link,"SELECT * FROM `products` WHERE `id` = '$id_product_ads' LIMIT 1");
     $data_product_ads=mysqli_fetch_array($query_product_ads);
-    $txt_html='<div title="'.lang($link,'click_de_xem').' ('.get_name_product_lang($link,$id_product_ads,$_SESSION["lang"]).')" id="box_ads_app" style="position: fixed;bottom: 8px;left: 8px;background-color: #3FC73D;width: 300px;height: 150px;border-bottom: solid 3px green;">';
-    $txt_html.='<div style="background-color: green;padding: 5px;padding: 10px;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 93%;">';
+    $txt_html='<div title="'.lang($link,'click_de_xem').' ('.get_name_product_lang($link,$id_product_ads,$_SESSION["lang"]).')" id="box_ads_app">';
+    $txt_html.='<div class="title">';
     $txt_html.=get_name_product_lang($link,$id_product_ads,$_SESSION["lang"]);
     $txt_html.='<i style="float: right;cursor: pointer" onclick="$(\'#box_ads_app\').fadeOut(100).remove();" class="fa fa-times-circle"></i>';
     $txt_html.='</div>';
@@ -446,4 +446,20 @@ function currentUrl($server){
     $host = $server['HTTP_HOST'];
     $requestUri = $server['REQUEST_URI'];
     return $http . '://' . htmlentities($host) . '/' . htmlentities($requestUri);
+}
+
+function data_json_tip($contain,$position=0){
+    $p_my='';
+    $p_at='';
+    if($position==0){
+        $p_my='bottom center';
+        $p_at='top center';
+    }
+
+    if($position==1){
+        $p_my='top right';
+        $p_at='bottom right';
+    }
+
+    return '{"msg":"'.$contain.'","my":"'.$p_my.'","at":"'.$p_at.'"}';
 }

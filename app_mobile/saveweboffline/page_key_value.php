@@ -45,7 +45,7 @@ if(isset($_POST['lang_key'])){
         $query_update_lang=mysqli_query($link,"UPDATE `value_lang` SET `value` = '$data_val_inst' WHERE `id_country` = '$lang_key' ");
         if($query_update_lang){
             $data_val=json_decode($data_val);
-            echo btn_add_work($lang_key,$lang_key,'lang_pass','add');
+            echo btn_add_work($lang_key,$lang_key,'lang_webof','add');
             echo alert("Cập nhật các giá trị ngôn ngữ thành công!!!","alert");
         }else{
             echo alert("Cập nhật các giá trị ngôn ngữ thất bại!!!".mysql_error(),"error");

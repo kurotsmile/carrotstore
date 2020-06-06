@@ -1611,11 +1611,13 @@ textarea:focus {
 }
 
 #site_author{
-	position: absolute;
+    position: absolute;
+    width: 340px;
+    height: 134px;
+    background-size: 100%;
+    background-image: url('../../images/signature.png');
 }
-#site_author img{
-	width: 340px;
-}
+
 #site_author .heart{
     color: red;
     position: absolute;
@@ -1699,4 +1701,34 @@ textarea:focus {
 		transform: scale3d(0.6, 0.6, 0.6) rotate(28deg);
 
     }
+}
+
+#btn_dark_mode{
+    float: right !important;
+}
+
+#area_product_content{
+    float: left;width: 100%;background-color: white;
+}
+
+#box_ads_app{
+    position: fixed;
+    bottom: 8px;
+    left: 8px;
+    background-color: #3FC73D;
+    width: 300px;
+    height: 150px;
+    border-bottom: solid 3px green;
+}
+
+#box_ads_app .title{
+    background-color: green;padding: 5px;padding: 10px;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 93%;
+}
+
+#box_ads_app_page{
+    background-color: #3FC73D;width: 100%;height: auto;float: left;margin-bottom: 20px;padding-bottom: 5px;
+}
+
+#box_ads_app_page .title{
+    background-color: green;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 100%;float: left;
 }

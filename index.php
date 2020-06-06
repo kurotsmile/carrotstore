@@ -62,6 +62,8 @@ if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
 include "database.php";
 
 $lang='en';
+$style_css_dark_mode='0';
+
 if (isset($_SESSION['lang'])) {
     $lang=$_SESSION['lang'];
 } else {
@@ -74,6 +76,10 @@ if (isset($_SESSION['lang'])) {
         $_SESSION['lang'] = 'en';
     }
     $lang=$_SESSION['lang'];
+}
+
+if(isset($_SESSION['style_css_dark_mode'])){
+    $style_css_dark_mode=$_SESSION['style_css_dark_mode'];
 }
 
 include "function.php";
@@ -182,6 +188,7 @@ include "header.php";
         <a href="<?php echo $url; ?>/quote" <?php if ($page_file == "page_quote.php") { echo 'class="active"';} ?>><?php echo lang($link,'trich_dan'); ?></a>
         <a href="<?php echo $url; ?>/link" <?php if ($page_file == "page_shortened_link.php" || $page_file == "page_shortened_link_manager.php" || $page_file == "page_shortened_link_detail.php") { echo 'class="active"';} ?>><?php echo lang($link,'rut_gon_link'); ?></a>
         <a href="<?php echo $url; ?>/privacy_policy" <?php if ($page_file == "page_privacy_policy.php") { echo 'class="active"';} ?>><?php echo lang($link,'gioi_thieu'); ?></a>
+        
         <?php
         if(isset($user_login)){
             echo '<a style="float: right;margin-right: 5px;"  onclick="logout_account();return false"><i class="fa fa-sign-out" aria-hidden="true"></i></a> ';
@@ -197,6 +204,7 @@ include "header.php";
             echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang($link,'dang_nhap').'</a> ';
         }
         ?>
+        <a id="btn_dark_mode" href="#" class="ajax_tip" ajax_data='{"function":"show_tip_dark_mode"}' onclick="style_dark_mode();return false;"><?php if($style_css_dark_mode=='0'){ echo '<i class="fa fa-moon-o" aria-hidden="true"></i>'; }else{ echo '<i class="fa fa-sun-o" aria-hidden="true"></i>'; } ?></a>
         <a onclick="show_menu_mobile();" id="btn_menu_mobile"><i class="fa fa-bars" aria-hidden="true"></i></a>
     </div>
 </div>

@@ -1,0 +1,125 @@
+.jumbotron {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+  background-color: #fff;
+  background-image: url('../images/bkbaner.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron h1 {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.text-muted { color: #a03400 !important; }
+#logo{float: left;width: 20px;height: 20px;margin-right: 10px;}
+.thumbnail{
+  min-height: 253px;
+}
+
+
+*,
+*:after,
+*:before {
+    box-sizing             : border-box;
+    -webkit-box-sizing     : border-box;
+    -moz-box-sizing        : border-box;
+    -webkit-font-smoothing : antialiased;
+    -moz-font-smoothing    : antialiased;
+    -o-font-smoothing      : antialiased;
+    font-smoothing         : antialiased;
+    text-rendering         : optimizeLegibility;
+
+}
+
+.mediPlayer .control {
+    opacity        : 0; /* transition: opacity .2s linear; */
+    pointer-events : none;
+    cursor         : pointer;
+}
+
+.mediPlayer .not-started .play, .mediPlayer .paused .play {
+    opacity : 1;
+
+}
+
+.mediPlayer .playing .pause {
+    opacity : 1;
+
+}
+
+.mediPlayer .playing .play {
+    opacity : 0;
+}
+
+.mediPlayer .ended .stop {
+    opacity        : 1;
+    pointer-events : none;
+}
+
+.mediPlayer .precache-bar .done {
+    opacity : 0;
+}
+
+.mediPlayer .not-started .progress-bar, .mediPlayer .ended .progress-bar {
+    display : none;
+}
+
+.mediPlayer .ended .progress-track {
+    stroke-opacity : 1;
+}
+
+.mediPlayer .progress-bar,
+.mediPlayer .precache-bar {
+    transition        : stroke-dashoffset 500ms;
+    stroke-dasharray  : 298.1371428256714;
+    stroke-dashoffset : 298.1371428256714;
+}
+
+a {
+  color: #d51198;
+}
+a:hover {
+  color: #c00000;
+}
+
+
+.btn_play{
+  background-color: #d51198;;
+  color: white;
+}
+
+.app_music_icon{
+  float: left;width: 60px;height: 60px;margin-right: 10px;
+}
+
+.navbar-dark .navbar-toggler {
+  color: rgb(212, 13, 151);
+  border-color: rgb(209, 34, 155);
+  border: solid 2px;
+}

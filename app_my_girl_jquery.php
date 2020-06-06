@@ -978,6 +978,7 @@ if($func=='update_info_music'){
 
 if ($func == 'get_chat_by_audio_url') {
     $url_file=$_GET['url_file'];
+    $name_file=basename($url_file);
     $extrac='';
     if(isset($_GET['extrac'])){
         $extrac=$_GET['extrac'];
@@ -985,7 +986,7 @@ if ($func == 'get_chat_by_audio_url') {
     $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
     while($row_lang=mysqli_fetch_array($query_list_lang)) {
         $lang=$row_lang['key'];
-        $query_check_chat = mysqli_query($link,"SELECT `id`,`chat` FROM `app_my_girl_".$lang."` WHERE `file_url` = '$url_file' AND `file_url` != '' LIMIT 1");
+        $query_check_chat = mysqli_query($link,"SELECT `id`,`chat` FROM `app_my_girl_".$lang."` WHERE `file_url` LIKE '%$name_file%' AND `file_url` != '' LIMIT 1");
         if(mysqli_num_rows($query_check_chat)>0) {
             $data_chat = mysqli_fetch_array($query_check_chat);
             if($extrac=='') {

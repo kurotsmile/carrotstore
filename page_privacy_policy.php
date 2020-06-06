@@ -51,13 +51,10 @@ echo str_replace('Carrotstore.com','<a class="url_carrot" href="'.$url.'">Carrot
     <i class="fa fa-skype" aria-hidden="true"></i> <b>Skype:</b> <a href="skype:kurotsmile2?call" >kurotsmile2</a>
 </p>
 
-<!--
-<img src="images/bk_rot_lieu.png" style="width: 320px;border-radius: 20px;box-shadow: 2px 2px 2px grey;" />
-!-->
+
     <?php echo lang($link,'thanks');?><br/>
     <div id="site_author">
     <i class="fa fa-heart heart" aria-hidden="true"></i>
-    <img src="<?php echo $url;?>/images/signature.png">
     </div>
 
 </div>

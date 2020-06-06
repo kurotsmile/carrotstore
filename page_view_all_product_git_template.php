@@ -30,7 +30,7 @@ $data_type=mysqli_fetch_assoc($query_type);
                         <?php }?>
                 </div>
                 <div class="app_type">
-                    <?php echo $label_loai.':<a  href="'.URL.'/type/'.$row['type'].'">'.lang($link,$row['type']).'</a>'; ?>
+                    <?php echo $label_loai.' : <a  href="'.URL.'/type/'.$row['type'].'"> '.lang($link,$row['type']).'</a>'; ?>
                 </div>
                 <div class="app_action">
                 <a href="<?php echo $link_app;?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="buttonPro small "><i class="fa fa-chevron-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>

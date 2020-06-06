@@ -20,15 +20,24 @@ if(isset($_GET['key'])) $key=$_GET['key'];
     if(isset($_GET['delete'])){
         $key=$_GET['delete'];
         $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_remove_key_music` WHERE `key` = '$key'");
-
+        show_alert('Đã xóa từ khóa '.$key.' ra khỏi danh sách!','alert');
     }
 
     if(isset($_POST['key'])){
         $key=$_POST['key'];
         $query_add=mysqli_query($link,"INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES ('$key');");
+        if($query_add){
+            show_alert('Đã thêm từ khóa '.$key.' vào  danh sách!','alert');
+        }else{
+            show_alert('Thêm từ khóa '.$key.' thất bại, kiểm tra lại từ khóa này đã có !','error');
+        }
     }
 
     $query_list_key=mysqli_query($link,"SELECT `key` FROM `app_my_girl_remove_key_music` ORDER BY  `key` ");
+    ?>
+        <div>Có <b><?php echo mysqli_num_rows($query_list_key);?></b> Từ khóa duyệt nhạc được đưa vào danh sách xóa</div>
+    <?php
+    $query_list_key=mysqli_query($link,"SELECT `key` FROM `app_my_girl_remove_key_music` ORDER BY RAND() LIMIT 50");
     while($row_key=mysqli_fetch_assoc($query_list_key)){
     ?>
     <span class="tag_remove_key_music">

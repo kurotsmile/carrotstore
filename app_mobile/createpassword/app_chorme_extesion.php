@@ -66,6 +66,19 @@ if($func=='logincallback'){
     }
 }
 
+if($func=='register_account'){
+    $lang=$_POST['lang'];
+    $id_device=uniqid().uniqid();
+    $user_phone=$_POST['user_phone'];
+    $user_password=$_POST['user_password'];
+    $user_address=$_POST['user_address'];
+    $user_email=$_POST['user_email'];
+    $user_name=$_POST['user_name'];
+    $user_sex=$_POST['user_sex'];
+    $query_register_account=mysqli_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES ('$id_device', '$user_name', '$user_sex', NOW(), NOW(), '$user_address', '$user_phone', '0', '$user_email', '', '$user_password');");
+    echo var_dump($_POST);
+}
+
 
 if($func=='show_select_lang'){
     $app->list_data=array();

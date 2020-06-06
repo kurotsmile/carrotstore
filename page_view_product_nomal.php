@@ -91,7 +91,7 @@ $data_type=mysqli_fetch_array($query_type);
     			</div>
     		</div>
 
-<div style="float: left;width: 100%;background-color: white;">
+<div id="area_product_content">
     <div id="post_product">
     <?php
         echo get_desc_product_lang($link,$data['id'],$_SESSION['lang']);

@@ -1,4 +1,8 @@
 <script>
+    $(document).ready(function(){
+        setup_qtip();
+    });
+
     function go_top(){
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, '500', 'swing', function() {
@@ -437,8 +441,127 @@
         });
     }
 
+    function style_dark_mode(){
+        if(style_css_dark_mode=='0'){
+            $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style-dark-mode.min.css?v=<?php echo $ver;?>");
+            style_css_dark_mode='1';
+            style_css_qtip='';
+            $("#btn_dark_mode").html('<i class="fa fa-sun-o" aria-hidden="true"></i>');
+        }else{
+            $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style.min.css?v=<?php echo $ver;?>");
+            style_css_dark_mode='0';
+            style_css_qtip='qtip-green';
+            $("#btn_dark_mode").html('<i class="fa fa-moon-o" aria-hidden="true"></i>');
+        }
 
+        $('#loading').fadeIn(100);
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: "function=style_dark_mode&mode="+style_css_dark_mode,
+            success: function(data, textStatus, jqXHR)
+            {
+                $('#loading').fadeOut(100);
+            }
+        });
 
+        setup_qtip();
+    }
+    
+    
+    function setup_qtip(){
+        $('.url_carrot').qtip({
+            content: {
+                title:"<i class='fa fa-home' aria-hidden='true'></i> <?php echo lang($link,'home_url'); ?>",
+                text:"<img src='<?php echo $url; ?>/images/home_url.png' style='width:100%'>"
+            },
+            style: {
+                classes: style_css_qtip+' qtip-shadow',
+            },
+            position: {
+                at: 'bottom right',
+            }
+        });
+
+        $('.jailbreak').qtip({
+            prerender: true,
+            content: {
+                title:"<?php echo lang($link,'jailbreak_ios'); ?>",
+                text: function(event, api) {
+                    var id_product=$(this).attr('id_product');
+                    $.ajax({
+                        url: "<?php echo $url;?>/index.php",type: "post",data: "function=jailbreak_tip&id_product="+id_product,
+                    })
+                    .then(function(content) { api.set('content.text', content);}, function(xhr, status, error) {});
+                    return '<?php echo lang($link,'dang_xu_ly');?>'; 
+                }
+            },
+            show: {modal: {on: true,blur: false}},
+            position: {
+                my: 'bottom center',
+                at: 'top center',
+                viewport: $('#contain'),
+                adjust: {
+                    mouse: false,
+                    scroll: false
+                }
+            },
+            hide: {fixed: true,delay:90},
+            style: {
+                classes: style_css_qtip+' qtip-shadow',
+            },
+        });
+
+        $('.ajax_tip').qtip({
+            prerender: true,
+            content: {
+                title:"<i class='fa fa-question-circle' aria-hidden='true'></i> <?php echo lang($link,'chu_thich'); ?>",
+                text: function(event, api) {
+                    var ajax_data=$(this).attr('ajax_data');
+                    var ajax_data_obj=JSON.parse(ajax_data);
+                    $.ajax({
+                        url: "<?php echo $url;?>/index.php",type: "post",data:ajax_data_obj,
+                    })
+                    .then(function(content) { 
+                        var obj_data=JSON.parse(content);
+                        api.set('content.text', obj_data.msg);
+                        api.set('position.my', obj_data.my);
+                        api.set('position.at', obj_data.at);
+                    }, function(xhr, status, error) {});
+                    return '<?php echo lang($link,'dang_xu_ly');?>'; 
+                }
+            },
+            show: {modal: {on: true,blur: false}},
+            position: {
+                my: 'bottom center',
+                at: 'top center',
+                adjust: {
+                    mouse: false,
+                    scroll: true
+                }
+            },
+            hide: {fixed: true,delay:90},
+            style: {
+                classes: style_css_qtip+'  qtip-shadow',
+            },
+        });
+
+        reset_tip();
+    }
+
+    function reset_tip(){
+        $('a[title],img[title],#share_link').each(function(){
+            $(this).qtip({
+                content: {
+                    text: $(this).attr('title'),
+                    title: "<i class='fa fa-question-circle' aria-hidden='true'></i> "+'<?php echo lang($link,'chu_thich'); ?>',
+                },
+                style: {
+                    classes: style_css_qtip+'  qtip-shadow',
+                }
+            }); 
+        });
+    }
 </script>
 
     <script>
@@ -494,4 +617,5 @@
             },{scope: 'public_profile,email'});
         }
     </script>
+
 

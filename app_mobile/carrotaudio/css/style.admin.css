@@ -1,0 +1,143 @@
+html,body{
+    margin: 0px;padding: 0px;
+    font-size: 10px;
+    font-family: Roboto, Arial, sans-serif;
+}
+a{
+    color:black;
+    text-decoration: none;
+}
+a:hover{
+    color:orangered;
+}
+#menu_header{
+    margin: 0px;
+    padding: 0px;
+    width:100%;
+    float: left;
+    list-style: none;
+    background-color: #242424;
+    color: white;
+}
+#menu_header li{
+    float: left;
+    padding: 8px;
+}
+#menu_header li a{color: white;}
+#menu_header li.active{
+    background-color: #F8C89C;
+    color: black;
+}
+#menu_header li.active a{
+    color:black;
+}
+
+.table_full{
+    width:100%;
+    float: left;
+    font-size: 10px;
+    text-align: left;
+}
+
+.table_full {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.table_full th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+.table_full th {
+    background-color: #d5a58b;
+    color: white;
+}
+.table_full tr:nth-child(even) {background-color: #f2f2f2;}
+.msg{float: left;width: 100%;font-size: 14px;}
+.msg .alert{float: left;display: block;background-color: beige;padding: 10px;margin: 3px;border-radius: 10px;}
+.item_file{
+    float: left;padding: 3px;
+    background-color: #f2e7db;
+    margin: 2px;
+    border: solid 2px #c0bfbc;
+    width: 20%;
+}
+.item_file.error{
+    background-color: #f29179;
+}
+
+#frm_login{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+#frm_login .row{
+    width: 100%;
+    float: left;
+    margin: 3px;
+}
+
+#frm_login .row label{
+    width: 50%;float: left;
+}
+
+#frm_login .row input{
+    width: 50%;float: left;
+}
+.tool_item{
+    float: left;
+    width: 180px;
+    margin: 8px;
+    text-align: center;
+}
+.tool_item i{
+    font-size: 50px;
+    margin: 3px;
+}
+.tool_item strong{
+    font-size: 15px;
+    margin-bottom: 5px;
+    width: 100%;
+    float: left;
+}
+
+.tool_item span{
+    float: left;
+}
+
+.box_info_update{
+    background-color: aliceblue;
+    width: auto;
+    float: left;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    list-style: none;
+}
+
+#bar_search{
+    background-color: orange;
+    float: left;
+    width: 100%;
+    margin: 0px;
+}
+
+#bar_search label,#bar_search input{
+    padding: 5px;
+    float: left;
+    margin: 3px;
+}
+#bar_search input{
+    border-radius: 5px;
+    border: solid 2px chocolate;
+    width: 400px;
+}
+
+#bar_search input[type=submit]{
+    background-color: chocolate;
+    width: auto;
+    color: white;
+    cursor: pointer;
+}
