@@ -25,11 +25,13 @@ $data_music_year='';
 $data_music_album='';
 $data_music_lyric='';
 
+$data_music_pic=$url.'/images/audio_default.jpg';
 if (isset($ThisFileInfo["id3v2"]["comments"])) {
     $data_music_tag = $ThisFileInfo["id3v2"]["comments"];
     if(isset($ThisFileInfo["id3v2"]['APIC'])) {
         $data_music_pic = $ThisFileInfo["id3v2"]['APIC'];
         $data_music_pic = $data_music_pic[0];
+        $data_music_pic="data:image/gif;base64,".base64_encode($data_music_pic['data']);
     }
     $data_music_artist=trim($data_music_tag["artist"][0]);
     $data_music_year=trim($data_music_tag["year"][0]);
@@ -38,6 +40,7 @@ if (isset($ThisFileInfo["id3v2"]["comments"])) {
 }
 $seo_title=$data_audio['name'].' - '.$seo_title;
 $seo_description=$data_audio['name'].' lyrics';
+
 
 include "header.php";
 ?>
@@ -49,14 +52,13 @@ include "header.php";
       <p class="lead text-muted"><?php echo $data_music_artist;?></p>
 
       <div class="mediPlayer">
-        <audio class="listen" preload="none" data-size="100" src="<?php echo $url_file;?>"></audio>
+        <audio class="listen" preload="none" data-size="100" src="<?php echo $url_file;?>" autoplay></audio>
       </div>
       <script>
             $(document).ready(function () {
                 $('.mediPlayer').mediaPlayer();
             });
         </script>
-
     </div>
   </section>
 
@@ -64,7 +66,11 @@ include "header.php";
     <div class="container">
 
       <div class="row">
-        <div class="col-md-12">
+
+        <div class="col-md-2">
+          <img class="bd-placeholder-img card-img-top rounded" src="<?php echo $data_music_pic;?>" alt="<?php echo $audio["name"];?>">
+        </div>
+        <div class="col-md-10">
         <?php
         if($data_music_artist!=''){ echo '<strong><svg class="bi bi-person-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
@@ -81,13 +87,32 @@ include "header.php";
             <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
             <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
           </svg> Album : </strong> '.$data_music_album.'<br/>';}
-        if($data_music_lyric!=''){ echo '<strong><svg class="bi bi-blockquote-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm5 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-            <path d="M3.734 6.352a6.586 6.586 0 0 0-.445.275 1.94 1.94 0 0 0-.346.299 1.38 1.38 0 0 0-.252.369c-.058.129-.1.295-.123.498h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 0 1-.187.463c-.12.14-.289.21-.503.21-.336 0-.577-.108-.721-.327C2.072 8.619 2 8.328 2 7.969c0-.254.055-.485.164-.692.11-.21.242-.398.398-.562.16-.168.33-.31.51-.428.18-.117.33-.213.451-.287l.211.352zm2.168 0a6.588 6.588 0 0 0-.445.275 1.94 1.94 0 0 0-.346.299c-.113.12-.199.246-.257.375a1.75 1.75 0 0 0-.118.492h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 0 1-.187.463c-.12.14-.289.21-.504.21-.335 0-.576-.108-.72-.327-.145-.223-.217-.514-.217-.873 0-.254.055-.485.164-.692.11-.21.242-.398.398-.562.16-.168.33-.31.51-.428.18-.117.33-.213.451-.287l.211.352z"/>
-          </svg> Lyric : </strong><br/><p>'.$data_music_lyric.'</p>'; }
         ?>
+        <br/>
+        <a href="<?php echo $url;?>/pay/<?php echo $data_audio['name_file'];?>" type="button" class="btn  btn-sm btn_play">
+          <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z"/>
+            <path fill-rule="evenodd" d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z"/>
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z"/>
+          </svg> Download  <cite>1$</cite>
+        </a>
+
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <?php
+          if($data_music_lyric!=''){ 
+            echo '<strong><svg class="bi bi-blockquote-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm5 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+            <path d="M3.734 6.352a6.586 6.586 0 0 0-.445.275 1.94 1.94 0 0 0-.346.299 1.38 1.38 0 0 0-.252.369c-.058.129-.1.295-.123.498h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 0 1-.187.463c-.12.14-.289.21-.503.21-.336 0-.577-.108-.721-.327C2.072 8.619 2 8.328 2 7.969c0-.254.055-.485.164-.692.11-.21.242-.398.398-.562.16-.168.33-.31.51-.428.18-.117.33-.213.451-.287l.211.352zm2.168 0a6.588 6.588 0 0 0-.445.275 1.94 1.94 0 0 0-.346.299c-.113.12-.199.246-.257.375a1.75 1.75 0 0 0-.118.492h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 0 1-.187.463c-.12.14-.289.21-.504.21-.335 0-.576-.108-.72-.327-.145-.223-.217-.514-.217-.873 0-.254.055-.485.164-.692.11-.21.242-.398.398-.562.16-.168.33-.31.51-.428.18-.117.33-.213.451-.287l.211.352z"/>
+            </svg> Lyric </strong><br/><p>'.$data_music_lyric.'</p>'; 
+          }
+          ?>
+        </div>
+      </div>
+
     </div>
   </div>
 

@@ -14,7 +14,7 @@ if(isset($_SESSION["user_login"])){
     <meta name="generator" content="carrotstore">
     <title><?php echo $seo_title;?></title>
 
-	<link href="<?php echo $url;?>/css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo $url;?>/css/bootstrap.css?v=<?php echo $ver;?>" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -31,9 +31,9 @@ if(isset($_SESSION["user_login"])){
         }
       }
     </style>
-    <link href="<?php echo $url;?>/css/style.css" rel="stylesheet">
-    <script src="<?php echo $url;?>/js/jquery.js"></script>
-    <script src="<?php echo $url;?>/js/player.js"></script>
+    <link href="<?php echo $url;?>/css/style.css?v=<?php echo $ver;?>" rel="stylesheet">
+    <script src="<?php echo $url;?>/js/jquery.js?v=<?php echo $ver;?>"></script>
+    <script src="<?php echo $url;?>/js/player.js?v=<?php echo $ver;?>"></script>
   </head>
   <body>
     <header>
@@ -54,6 +54,7 @@ if(isset($_SESSION["user_login"])){
             <li><a href="https://www.facebook.com/virtuallover" class="text-white">Like on Facebook</a></li>
             <li><a href="mailto:tranthienthanh93@gmail.com" class="text-white">Email me</a></li>
           </ul>
+
         </div>
       </div>
     </div>
@@ -64,6 +65,12 @@ if(isset($_SESSION["user_login"])){
         <img id="logo" src="<?php echo $url;?>/images/icon_music30.png" >
         <strong>Carrot Audio</strong>
       </a>
+
+      <form class="form-inline" action="<?php echo $url;?>/page_search.php" method="get" id="form_search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="key_search" id="key_search">
+          <button class="btn my-2 my-sm-0 btn-sm  btn_play" onclick="check_form_search();return false;" >Search</button>
+      </form>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

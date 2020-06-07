@@ -73,17 +73,18 @@ if($func=='load_view'){
     if($search!=''){
 		$txt_query_search=" AND `name` LIKE '%$search%' ";
     }
-	$list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_background` WHERE `version`='2' $txt_query_search ORDER BY RAND() LIMIT 15");
-    while($row=mysqli_fetch_array($list_view)){
-        $skin_item=new Skin_item();
-        $skin_item->name=$row['name'];
-        $skin_item->url=$url_s.'/app_mygirl/obj_background/view_'.$row[0].'.png';
-        $skin_item->url2=$url_s.'/app_mygirl/obj_background/place_'.$row[0].'.png';
-        $skin_item->icon=thumb('app_mygirl/obj_background/icon_'.$row[0].'.png','200');
-        array_push($skin_app->arr_skin,$skin_item);
+    $list_view=mysqli_query($link,"SELECT * FROM `app_my_girl_background` WHERE `version`='2' $txt_query_search ORDER BY RAND() LIMIT 15");
+    if($list_view){
+        while($row=mysqli_fetch_array($list_view)){
+            $skin_item=new Skin_item();
+            $skin_item->name=$row['name'];
+            $skin_item->url=$url_s.'/app_mygirl/obj_background/view_'.$row[0].'.png';
+            $skin_item->url2=$url_s.'/app_mygirl/obj_background/place_'.$row[0].'.png';
+            $skin_item->icon=thumb('app_mygirl/obj_background/icon_'.$row[0].'.png','200');
+            array_push($skin_app->arr_skin,$skin_item);
+        }
     }
     echo json_encode($skin_app);
-    mysqli_free_result($list_view);
     exit;
 }
 

@@ -389,7 +389,7 @@ tr:nth-child(even) {background-color: white}
 	position: absolute;
 	width: 70px;
 	height: 13px;
-	background-image: url('../../images/star1.png');
+	background-image: url('../../images/star1_white.png');
 	background-size: 70px 13px;
 }
 
@@ -657,6 +657,7 @@ tr:nth-child(even) {background-color: white}
     background-position: right center;
     border: solid 3px #444141;
     background-color: #202325;
+    color: white;
 }
 #tool_search .inp::placeholder{
     color: rgb(223, 223, 223);
@@ -1252,8 +1253,8 @@ pre code{
 
 #share_link{
     display: block;
-    background-color: green;
-    color: white;
+    background-color: rgba(255, 255, 255, 0.938);
+    color: black;
     padding: 2px;
     list-style: none;
     float: left;
@@ -1264,17 +1265,16 @@ pre code{
     border-bottom-left-radius: 5px;
 }
 #share_link li strong{
-    color:yellow
+    color:red;
 }
 #share_link li {
     display: block;
     float: left;
     margin: 8px;
-    color: white;
 }
 
 #share_link li a {
-    color: white;
+    color: black;
 }
 
 #share_link li a:hover {
@@ -1299,8 +1299,13 @@ pre code{
 }
 
 #download_song{
-    float: left;width:132px;height: 132px;background-color: #3fc73d;margin: 3px;text-align: center;
-    color: white;
+    float: left;
+    width: 132px;
+    height: 132px;
+    background-color: #ffffff;
+    margin: 3px;
+    text-align: center;
+    color: #000;
     border-radius: 6px;
 }
 
@@ -1534,9 +1539,9 @@ iframe.fb_customer_chat_bounce_out_v2 {
 .util-item{margin-right: 0px !important;margin-left: 0px !important;}
 .features-carousel .item.item-playlist{min-height: 200px;}
 
-#kr_player_music{background-color: #3fc73d;float: left;width: 100%;color: whitesmoke;border-radius: 17px;}
+#kr_player_music{background-color: white;float: left;width: 100%;color: black;border-radius: 17px;}
 #kr_player_music.error{background-color: #ff8080;}
-#kr_player_music.top_bar {position: fixed;top: 0px;left: 0px;border-radius: unset;box-shadow: 0px 5px 10px #2429298f;backdrop-filter: saturate(28%) blur(10px);background-color: #3fc73dab;}
+#kr_player_music.top_bar {position: fixed;top: 0px;left: 0px;border-radius: unset;box-shadow: 0px 5px 10px #2429298f;backdrop-filter: saturate(28%) blur(10px);background-color: #ffffffab;}
 #kr_player_music .box_area{float: left;width: 20%;}
 #kr_player_music .box_area.left{width: 9%;text-align: center;}
 #kr_player_music .box_area.mid{width: 65%;text-align: center;margin-right: 3%;}
@@ -1545,17 +1550,17 @@ iframe.fb_customer_chat_bounce_out_v2 {
 #kr_player_music .btn_play{font-size: 47px;margin: 20px;}
 #kr_player_name_song {margin-top: 11px;height: 18px;}
 #kr_player_music .kr_timer{margin-top: 35px;text-align: center;}
-#kr_player_music .bar_timer{width: 100%;height: 5px;background-color: green;margin-top: 11px;border-radius: 10px;margin-bottom: 10px;}
+#kr_player_music .bar_timer{width: 100%;height: 5px;background-color: orange;margin-top: 11px;border-radius: 10px;margin-bottom: 10px;}
 #kr_player_music #slider_timer_val{margin-top: 11px;display: none;margin-bottom: 12px;}
 #kr_player_music .slidecontainer_volume{margin-top: 32px;float: left;width: 100%;margin-bottom: 10px;}
-input#slider_volume,input#slider_timer_val {outline: none;-webkit-appearance: none;width: 100%;height: 5px;background: #008000;border-radius: 10px;outline: none;}
-input#slider_volume::-webkit-slider-thumb,input#slider_timer_val::-webkit-slider-thumb {-webkit-appearance: none;appearance: none;width: 15px;height: 15px;border-radius: 50%;background:  white;cursor: pointer;}
-input#slider_volume::-moz-range-thumb,input#slider_timer_val::-moz-range-thumb {width: 15px;height: 15px;border-radius: 50%;background:  white;cursor: pointer;}
+input#slider_volume,input#slider_timer_val {outline: none;-webkit-appearance: none;width: 100%;height: 5px;background:orange;border-radius: 10px;outline: none;}
+input#slider_volume::-webkit-slider-thumb,input#slider_timer_val::-webkit-slider-thumb {-webkit-appearance: none;appearance: none;width: 15px;height: 15px;border-radius: 50%;background:  black;cursor: pointer;}
+input#slider_volume::-moz-range-thumb,input#slider_timer_val::-moz-range-thumb {width: 15px;height: 15px;border-radius: 50%;background:  black;cursor: pointer;}
 #kr_timer_length{color: #2a7534;}
-#kr_player_music .box_area progress[value] {-webkit-appearance: none;appearance: none;background-color: #008000;color: blue;border-radius: 10px;height: 5px;}
-#kr_player_music .box_area progress[value]::-webkit-progress-bar {background-color: #008000;color: blue;border-radius: 10px;}
-#kr_player_music .box_area progress::-webkit-progress-value {background-color: white;border-radius: 10px;}
-.btn_control{cursor: pointer;color: white;display: inline-block;transition: color 2s}
+#kr_player_music .box_area progress[value] {-webkit-appearance: none;appearance: none;background-color: orange;color: blue;border-radius: 10px;height: 5px;}
+#kr_player_music .box_area progress[value]::-webkit-progress-bar {background-color: orange;color: blue;border-radius: 10px;}
+#kr_player_music .box_area progress::-webkit-progress-value {background-color: black;border-radius: 10px;}
+.btn_control{cursor: pointer;color: black;display: inline-block;transition: color 2s}
 .btn_control:hover{color: orange;}
 
 #box_lyrics{float: left;width: 100%;background-color: white;border-radius: 10px;padding: 10px;font-size: 11px;display: none;}
@@ -1760,13 +1765,18 @@ textarea:focus {
 }
 
 #box_ads_app_page{
-    background-color: #3FC73D;width: 100%;height: auto;float: left;margin-bottom: 20px;padding-bottom: 5px;
+    background-color: #444141;width: 100%;height: auto;float: left;margin-bottom: 20px;padding-bottom: 5px;
 }
 
 #box_ads_app_page .title{
-    background-color: green;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 100%;float: left;
+    background-color: #8a8a8a;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 100%;float: left;
 }
 #link_create{ color: black;}
 #link_create h2{
     color: black;
+}
+
+.music_no_rank{
+    font-style: italic;
+    color: orange;
 }

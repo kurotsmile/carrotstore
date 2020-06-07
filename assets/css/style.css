@@ -1732,3 +1732,7 @@ textarea:focus {
 #box_ads_app_page .title{
     background-color: green;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 100%;float: left;
 }
+
+.music_no_rank{
+    font-style: italic;
+}

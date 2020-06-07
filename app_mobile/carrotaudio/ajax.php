@@ -87,3 +87,22 @@ if($func=='save_avatar_music'){
     echo $img;
     exit;
 }
+
+if ($func=='pay_success') {
+    $pay_name=$_POST['pay_name'];
+    $id_file=$_POST['id_file'];
+    $pay_mail=$_POST['pay_mail'];
+    $query_add_pay=mysqli_query($link,"INSERT INTO `purchase` (`name_file`, `name_pay`,`mail`) VALUES ('$id_file', '$pay_name','$pay_mail');");
+    $query_audio=mysqli_query($link,"SELECT * FROM `data_file` WHERE `name_file` = '$id_file' LIMIT 1");
+    $data_audio=mysqli_fetch_assoc($query_audio);
+    $path_audio=$data_audio['path'];
+    $name_aduio=$data_audio['name'];
+    echo '<h3>Thank you for your payment</h3>';
+    echo '<form  method="post" action="'.$url.'/download.php" id="frm_download">';
+    echo '<input type="hidden" value="'.$path_audio.'" name="url">';
+    echo '<input type="hidden" value="'.$name_aduio.'" name="name_aduio">';
+    echo '<input type="submit" value="Get File" class="btn btn-primary btn-lg">';
+    echo '</form>';
+    echo '<script>$("#frm_download").submit();</script>';
+    exit;
+}

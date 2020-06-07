@@ -3,16 +3,23 @@ include "config.php";
 include "database.php";
 include "header.php";
 require("getid3/getid3.php");
+$key_search='';
+if(isset($_GET["key_search"])){
+    $key_search=$_GET["key_search"];
+}
+
+if(trim($key_search)==''){
+    header("location:$url");
+}
 ?>
 <main role="main">
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>Carrot Audio</h1>
-      <blockquote class="blockquote text-center">
-        <p class="lead mb-0 text-muted">“Remember that wherever your heart is, there you will find your treasure.”</p>
-        <p class="blockquote-footer"><cite title="Source Title">Paulo Coelho, The Alchemist</cite></p>
-      </blockquote>
+      <h1>Search</h1>
+      <p class="blockquote text-center">
+        <p class="lead mb-0 text-muted">Song search results with keyword "<?php echo $key_search;?>"</p>
+      </p>
     </div>
   </section>
 
@@ -21,7 +28,7 @@ require("getid3/getid3.php");
 
       <div class="row">
       <?php
-      $query_list_audio=mysqli_query($link,"SELECT `name_file`,`path`,`name`,`slug` FROM `data_file` ORDER BY RAND() LIMIT 20");
+      $query_list_audio=mysqli_query($link,"SELECT `name_file`,`path`,`name`,`slug` FROM `data_file` WHERE `name` LIKE '%$key_search%' OR `name_file` LIKE '%$key_search%' LIMIT 20");
       while($audio=mysqli_fetch_assoc($query_list_audio)){
         $getID3 = new getID3;
         $ThisFileInfo = $getID3->analyze($audio['path']);
@@ -47,7 +54,7 @@ require("getid3/getid3.php");
         <div class="col-md-3">
           <div class="card mb-4 shadow-sm">
             <a href="<?php echo $url_music;?>" class="thumbnail">
-              <img class="bd-placeholder-img card-img-top" src="<?php echo $data_music_pic;?>" alt="<?php echo $audio["name"];?>">
+              <img class="bd-placeholder-img card-img-top" src="<?php echo $data_music_pic;?>" alt="A forest!">
             </a>
 
             <div class="card-body">
@@ -58,14 +65,6 @@ require("getid3/getid3.php");
                   <svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                   </svg> Play
-                  </a>
-
-                  <a href="<?php echo $url;?>/pay/<?php echo $audio['name_file'];?>" type="button" class="btn btn-secondary btn-sm">
-                  <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M.5 8a.5.5 0 0 1 .5.5V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5a.5.5 0 0 1 1 0V12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8.5A.5.5 0 0 1 .5 8z"/>
-                    <path fill-rule="evenodd" d="M5 7.5a.5.5 0 0 1 .707 0L8 9.793 10.293 7.5a.5.5 0 1 1 .707.707l-2.646 2.647a.5.5 0 0 1-.708 0L5 8.207A.5.5 0 0 1 5 7.5z"/>
-                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0v-8A.5.5 0 0 1 8 1z"/>
-                  </svg> Download  <cite>1$</cite>
                   </a>
 
                   <?php if($is_user_login!=''){?><a href="<?php echo $url.'/file/'.$audio['name_file'];?>" class="btn btn-sm">Edit</a><?php }?>

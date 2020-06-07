@@ -34,7 +34,7 @@ if(isset($_GET['delete_father'])){
 if(isset($_GET['delete_all'])){
     $type_view_user = $_GET['type_view_user'];
     $query_delete_all=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE  `approved` = '1' AND `tick` = '1' AND `user_work_id` = '$type_view_user' ");
-    echo mysqli_error($query_delete_all);
+    echo mysqli_error($link);
     echo show_alert("Đã xóa tất cả","alert");
 }
 

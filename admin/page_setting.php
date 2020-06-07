@@ -32,6 +32,13 @@ $item_setting->val=get_setting($link,$item_setting->key);
 $item_setting->type='select';
 $item_setting->label='Quảng cáo ADsupply';
 array_push($array_setting,$item_setting);
+
+$item_setting=new Setting();
+$item_setting->key='login_facebook';
+$item_setting->val=get_setting($link,$item_setting->key);
+$item_setting->type='select';
+$item_setting->label='Đăng nhập bằng tài khoản Facebook';
+array_push($array_setting,$item_setting);
 ?>
 <form action="" method="post">
     <table>

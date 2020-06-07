@@ -7,4 +7,7 @@ RewriteRule    ^edit/([^/]*)/?$    admin.php?view=admin_edit&id=$1
 RewriteRule    ^delete/([^/]*)/?$    admin.php?view=admin_delete&id=$1 
 RewriteRule    ^song/([^/]*)/?$    page_audio.php?slug=$1
 RewriteRule    ^music/([^/]*)/?$    page_audio.php?id=$1
+RewriteRule    ^pay/([^/]*)/?$    page_pay.php?id=$1
 RewriteRule    ^tool  admin.php?view=admin_tool
+
+ErrorDocument 404 /404.php

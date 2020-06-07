@@ -271,26 +271,28 @@ if($func=='get_list_contact'){
         $list_users=mysqli_query($link,"SELECT `id_device`,`name`,`sex`,`sdt`,`address`,`status` FROM `app_my_girl_user_$lang_sel` WHERE `status` = '0'  AND `sdt`!='' $txt_query_sex ORDER BY RAND() LIMIT 21");
     }
     
-    while($row=mysqli_fetch_array($list_users)){
-        $filename_avatar= 'app_my_girl_'.$lang_sel.'_user/'.$row['id_device'].'.png';
-        if($row['sex']=='1'){
-            $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default1.png','80x50');
-        }else{
-            $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default.png','80x50');
+    if($list_users){
+        while($row=mysqli_fetch_array($list_users)){
+            $filename_avatar= 'app_my_girl_'.$lang_sel.'_user/'.$row['id_device'].'.png';
+            if($row['sex']=='1'){
+                $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default1.png','80x50');
+            }else{
+                $txt_img_url=thumb(URL.'/app_mygirl/img/avatar_default.png','80x50');
+            }
+            if (file_exists($filename_avatar)) {
+                $txt_img_url=thumb(URL.'/app_mygirl/'.$filename_avatar,'80x50');
+            } 
+            $u=new User();
+            $u->id=$row['id_device'];
+            $u->name=$row['name'];
+            $u->avatar=$txt_img_url;
+            $u->address=$row['address'];
+            $u->phone=$row['sdt'];
+            $u->status=$row['status'];
+            $u->sex=$row['sex'];
+            $u->type="0";
+            array_push($app->all_user,$u);
         }
-        if (file_exists($filename_avatar)) {
-              $txt_img_url=thumb(URL.'/app_mygirl/'.$filename_avatar,'80x50');
-        } 
-        $u=new User();
-        $u->id=$row['id_device'];
-        $u->name=$row['name'];
-        $u->avatar=$txt_img_url;
-        $u->address=$row['address'];
-        $u->phone=$row['sdt'];
-        $u->status=$row['status'];
-        $u->sex=$row['sex'];
-        $u->type="0";
-        array_push($app->all_user,$u);
     }
     
     $color_sel='000000';

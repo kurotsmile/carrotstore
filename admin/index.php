@@ -83,6 +83,7 @@ if($_GET&&isset($_GET['page_view'])){
     <link href="<?php echo $url_admin; ?>/style.min.css" rel="stylesheet" />
     <link href="<?php echo $url_carrot_store; ?>/assets/css/buttonPro.min.css" rel="stylesheet" />
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <script src="<?php echo $url; ?>/js/jquery.js"></script>
 </head>
 <body>
 <?php

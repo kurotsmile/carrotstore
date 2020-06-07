@@ -10,6 +10,7 @@ $mysql_host='localhost';
 $mysql_pass='28091993';
 $mysql_user='carrot';
 $mysql_database='data_music';
+$ver='1.0';
 
 //Seo
 $seo_title='Carrot Audio';

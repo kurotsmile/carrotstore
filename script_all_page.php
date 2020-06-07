@@ -252,7 +252,13 @@
         html_box_login = html_box_login + '<strong class="title"><?php echo lang($link,'dang_nhap_mxh');?></strong>';
         html_box_login = html_box_login + '<div id="box_login_other">';
         html_box_login = html_box_login + '<div id="my-signin2"></div>';
+        <?php
+        if(get_setting($link,'login_facebook')=='1') {
+        ?>
         html_box_login = html_box_login + '<img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;width: 200px;height: 40px;cursor: pointer;" src="<?php echo $url;?>/images/btn_login_fb.jpg">';
+        <?php
+        }
+        ?>
         html_box_login = html_box_login + '</div>';
         html_box_login = html_box_login + '</div>';
 
@@ -564,23 +570,23 @@
     }
 </script>
 
+<?php
+if(get_setting($link,'login_facebook')=='1') {
+?>
     <script>
-
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '852575091553164',
-                cookie: true,                     // Enable cookies to allow the server to access the session.
-                xfbml: true,                     // Parse social plugins on this webpage.
-                version: 'v5.0'           // Use this Graph API version for this call.
+                cookie: true, 
+                xfbml: true, 
+                version: 'v5.0' 
             });
-
-
-            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+            FB.getLoginStatus(function (response) { 
             });
         };
 
 
-        (function (d, s, id) {                      // Load the SDK asynchronously
+        (function (d,s,id){
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s);
@@ -588,7 +594,6 @@
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-
 
         function logoutFP() {
             FB.logout(function (response) {
@@ -617,5 +622,6 @@
             },{scope: 'public_profile,email'});
         }
     </script>
-
-
+<?php
+}
+?>

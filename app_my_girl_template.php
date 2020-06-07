@@ -84,7 +84,7 @@ class Data_app
 $data_app = new Data_app();
 //Máy chủ lưu trữ dữ liệu
 $item_upload = new item_sever_upload();
-$item_upload->name = "Máy chủ dữ liệu (mp3)";
+$item_upload->name = "Máy chủ dữ liệu";
 $item_upload->url_home='https://carrotaudio.com';
 $item_upload->url = $item_upload->url_home.'/ajax.php';
 array_push($data_app->arr_sever_upload, $item_upload);

@@ -17,4 +17,17 @@
 </footer>
       <script>window.jQuery || document.write('<script src="<?php echo $url;?>/js/vendor/jquery.slim.min.js"><\/script>')</script>
       <script src="<?php echo $url;?>/js/bootstrap.bundle.js"></script></body>
+  <script>
+  function check_form_search(){
+    var key_search=$("#key_search").val();
+    if(key_search!=""){
+      $("$form_search").submit();
+      return false;
+    }else{
+      $("#key_search").fadeOut(100).fadeIn(50).fadeOut(100).fadeIn(50);
+      return false;
+    }
+  }
+  </script>
+
 </html>
