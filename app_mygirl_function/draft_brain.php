@@ -251,7 +251,7 @@ function show_row_brain($link,$row,$type_view, $lang_key)
         $query_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $row['langs'] . "` WHERE `id` = '2' LIMIT 1");
         if (mysqli_num_rows($query_chat)) {
             $data_chat = mysqli_fetch_array($query_chat);
-            $txt_show_contain_father = '<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> chat:' . $data_chat['text'] . ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' . $data_msg['chat'] . '</span><br/>';
+            $txt_show_contain_father = '<span class="tag_brain"><i class="fa fa-angle-double-left" aria-hidden="true"></i> chat:' . $data_chat['text'] . ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ' . $data_chat['chat'] . '</span><br/>';
         }
     }
 

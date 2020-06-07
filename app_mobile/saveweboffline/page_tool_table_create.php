@@ -5,7 +5,7 @@ if(isset($_POST['lang_sel'])) $lang_sel=$_POST['lang_sel'];
 if(isset($_GET['lang_sel'])) $lang_sel=$_GET['lang_sel'];
 ?>
 <form method="post" action="" class="form">
-    <label for="lang_sel">Quốc gia muốn tạo bản <b>Password</b></label>
+    <label for="lang_sel">Quốc gia muốn tạo bản <b>Lưu trữ web</b></label>
     <br/>
     <select name="lang_sel" id="lang_sel">
     <?php

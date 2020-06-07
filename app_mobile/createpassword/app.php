@@ -36,7 +36,7 @@ if($func=='list_country'){
         $item->id=$item_country['id'];
         $item->name=$item_country['name'];
         $item->key=$item_country['key'];
-        $item->url='https://carrotstore.com/thumb.php?src=https://carrotstore.com/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
+        $item->url=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
         array_push($app->list_data,$item);
     }
 }

@@ -34,6 +34,7 @@ RewriteRule    ^paysuccess    index.php?page_view=page_pay_success.php [NC,L]
 RewriteRule    ^paycancel   index.php?page_view=page_pay_cancel.php  [NC,L]      
 RewriteRule    ^vl   app_my_girl_info.php [NC,L]
 RewriteRule    ^privacy_policy    index.php?page_view=page_privacy_policy.php   [NC,L]
+RewriteRule    ^copyright    index.php?page_view=page_privacy_policy.php   [NC,L]
 RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&view=info_quote&id=$1&lang=$2
 RewriteRule    ^quote    index.php?page_view=page_quote.php   [NC,L]
 RewriteRule    ^links/([^/]*)/?$  index.php?page_view=page_shortened_link_manager.php&id_user=$1   

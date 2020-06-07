@@ -46,7 +46,7 @@ while($country=mysqli_fetch_assoc($query_list_country)){
                     <?php }?>
                 </li>
                 <li>
-                    Có <b><?php echo $count_web;?></b> Mật khẩu được tạo
+                    Có <b><?php echo $count_web;?></b> Bản sao lưu web được tạo
                 </li>
                 <li>
                     Có <b><?php echo $count_data_key_lang;?></b> từ khóa ngôn ngữ ứng dụng được tạo
