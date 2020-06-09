@@ -4,11 +4,12 @@ include "database.php";
 include "function.php";
 include "app_my_girl_function.php";
 session_start();
+ob_start("ob_gzhandler");
 $sel_version = '0';
 $error_login_user = '';
 $data_user_carrot = '';
 $lang_2 = 'vi';
-$ver_cms='1.0';
+$ver_cms='1.1';
 
 if (isset($_GET['select_ver'])) {
     $sel_version = $_GET['select_ver'];
@@ -477,16 +478,16 @@ $arr_limit_day = array("", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 $arr_status_icon = array('<i class="fa fa-meh-o" aria-hidden="true"></i>', '<i class="fa fa-smile-o" aria-hidden="true"></i>', '<i class="fa fa-heart" aria-hidden="true"></i>', '<i class="fa fa-frown-o" aria-hidden="true"></i>');
 ?>
 <title>Người yêu ảo</title>
-<link rel="icon" href="<?php echo $url; ?>/app_mygirl/icon.ico" type="image/gif" sizes="16x16"/>
-<script src="<?php echo $url; ?>/js/jquery.js"></script>
+<link rel="icon" href="<?php echo $url; ?>/app_mygirl/icon.ico?v=<?php echo $ver_cms;?>" type="image/gif" sizes="16x16"/>
+<script src="<?php echo $url; ?>/js/jquery.min.js?v=<?php echo $ver_cms;?>"></script>
 <link href="<?php echo $url; ?>/app_mygirl/style.min.css?v=<?php echo $ver_cms;?>" rel="stylesheet"/>
-<link rel="stylesheet" href="<?php echo $url; ?>/assets/css/buttonPro.min.css"/>
-<link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="<?php echo $url; ?>/js/jquery-ui.css"/>
-<script src="<?php echo $url; ?>/js/jquery-ui.js"></script>
-<script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
-<script src="<?php echo $url; ?>/js/jquery.ajaxfileupload.min.js"></script>
+<link rel="stylesheet" href="<?php echo $url; ?>/assets/css/buttonPro.min.css?v=<?php echo $ver_cms;?>"/>
+<link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css?v=<?php echo $ver_cms;?>"/>
+<link rel="stylesheet" href="<?php echo $url; ?>/js/jquery-ui.min.css?v=<?php echo $ver_cms;?>"/>
+<script src="<?php echo $url; ?>/js/jquery-ui.min.js?v=<?php echo $ver_cms;?>"></script>
+<script src="<?php echo $url; ?>/dist/sweetalert.min.js?v=<?php echo $ver_cms;?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css?v=<?php echo $ver_cms;?>"/>
+<script src="<?php echo $url; ?>/js/jquery.ajaxfileupload.min.js?v=<?php echo $ver_cms;?>"></script>
 <?php
 
 if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
@@ -566,8 +567,8 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
     function view_pater(lang, id, type) {
         $.ajax({
             url: "app_my_girl_jquery.php",
-            type: "get", //kiểu dũ liệu truyền đi
-            data: "function=view_chat_father&id=" + id + "&lang=" + lang + "&type=" + type, //tham số truyền vào
+            type: "get",
+            data: "function=view_chat_father&id=" + id + "&lang=" + lang + "&type=" + type,
             success: function (data, textStatus, jqXHR) {
                 show_box(data);
             }

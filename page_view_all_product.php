@@ -11,15 +11,15 @@
 
 
     if($type==''){
-        $result = mysqli_query($link,"SELECT * FROM `products` WHERE  `status`='1' ORDER BY RAND() LIMIT 20");
-        $result_count=mysqli_query($link,"SELECT * FROM `products` WHERE  `status`='1' ORDER BY RAND()");
+        $result = mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` WHERE  `status`='1' ORDER BY RAND() LIMIT 20");
+        $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` WHERE  `status`='1' ORDER BY RAND()");
     }else{
-        $result = mysqli_query($link,"SELECT * FROM `products` $type AND `status`='1' ORDER BY RAND() LIMIT 20");
-        $result_count=mysqli_query($link,"SELECT * FROM `products` $type AND  `status`='1' ORDER BY RAND()");
+        $result = mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` $type AND `status`='1' ORDER BY RAND() LIMIT 20");
+        $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` $type AND  `status`='1' ORDER BY RAND()");
     }
 
 
-    $result_count=mysqli_num_rows($result_count);
+    $data_count=mysqli_fetch_assoc($result_count);
 
 
     $view_type="page_view_all_product_git";
@@ -49,11 +49,13 @@ var myJsonString;
 </script>
 
 <?php
-        include "$view_type.php";
+        if($view_type!=''){
+            include "$view_type.php";
+        }
 ?>
 
 <script>
-var count_p=<?php echo $result_count;?>;
+var count_p=<?php echo $data_count['c'];?>;
 $(window).scroll(function() {
 
    if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {

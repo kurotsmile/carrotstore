@@ -5,10 +5,14 @@ $id_user=$_GET['id_user'];
 $lang=$_GET['lang'];
 
 $query_account=mysqli_query($link,"SELECT `name`,`address`,`sdt`,`email`,`sex` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-if(mysqli_num_rows($query_account)>0) {
-    $data_user = mysqli_fetch_array($query_account);
+if($query_account){
+    if(mysqli_num_rows($query_account)>0) {
+        $data_user = mysqli_fetch_array($query_account);
+    }else{
+        exit;
+    }
 }else{
-    exit;
+    exit; 
 }
 
 header('Content-Description: File contact');

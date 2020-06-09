@@ -6,6 +6,7 @@ ini_set('max_execution_time', 900);
 
 header('Content-type: text/html; charset=utf-8');
 
+ob_start("ob_gzhandler");
 session_start();
 
 function ip_visitor_country()

@@ -700,9 +700,7 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
         </tr>
 
-        <tr style="background-color: #FFB591;<?php if ($arr['id_redirect'] != '') {
-            echo ';display:none';
-        } ?>" class="chat_1">
+        <tr style="background-color: #FFB591;<?php if(isset($arr['id_redirect'])&&($arr['id_redirect']!='')){ echo ';display:none'; } ?>" class="chat_1">
             <td>Action (v2)</td>
             <td>
                 <select name="action" id="action_nv" onchange="change_action(this.value)">
@@ -715,9 +713,7 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
         </tr>
 
-        <tr style="background-color: #FFB591;<?php if ($arr['id_redirect'] != '') {
-            echo ';display:none';
-        } ?>" class="chat_1">
+        <tr style="background-color: #FFB591;<?php if(isset($arr['id_redirect'])&&($arr['id_redirect']!='')){ echo ';display:none';} ?>" class="chat_1">
             <td>Face (v2)</td>
             <td>
                 <select name="face" id="face_nv" onchange="change_face(this.value)">

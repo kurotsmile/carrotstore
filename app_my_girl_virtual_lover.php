@@ -468,14 +468,11 @@ function get_name_device($link,$lang_sel)
     $name_user = "";
     if (isset($_POST['id_device'])) {
         $id_device = $_POST['id_device'];
-        $list_effect = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
+        $list_effect = mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
         if ($list_effect) {
-            if (mysqli_num_rows($list_effect) > 0) {
-                $arr_data = mysqli_fetch_array($list_effect);
-                $name_user = '"' . $arr_data[1] . '" ';
-            }
+            $arr_data = mysqli_fetch_array($list_effect);
+            $name_user = '"' . $arr_data['name'] . '" ';
         }
-        mysqli_free_result($list_effect);
     }
     return $name_user;
 }
@@ -563,13 +560,16 @@ function get_key_lang($link,$key, $lang)
 {
     $val = '';
     $query_get_value = mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
-    if (mysqli_num_rows($query_get_value) > 0) {
-        $data_val = mysqli_fetch_array($query_get_value);
-        $val = $data_val[0];
-    } else {
+    if($query_get_value){
+        if (mysqli_num_rows($query_get_value) > 0) {
+            $data_val = mysqli_fetch_array($query_get_value);
+            $val = $data_val[0];
+        } else {
+            $val = $key;
+        }
+    }else{
         $val = $key;
     }
-    mysqli_free_result($query_get_value);
     return $val;
 }
 

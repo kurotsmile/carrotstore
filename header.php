@@ -132,6 +132,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta name="robots" content="index, follow" />
     <meta http-equiv="content-language" content="<?php echo $lang;?>" />
     <meta name="Googlebot" content="index,follow,archive" />
+    <meta name="theme-color" content="#3fc73d"/>
 
     <meta property="og:title" content="<?php echo $title_page;?>" /> 
     <meta property="og:image" content="<?php echo $seo_img; ?>" />
@@ -174,7 +175,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
     <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico?v=<?php echo $ver;?>"/>
-    <script src="<?php echo $url; ?>/js/jquery.js"></script>
+    <script src="<?php echo $url; ?>/js/jquery.min.js"></script>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js" async></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/responsive.min.css?v=<?php echo $ver;?>"/>
@@ -236,14 +237,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <?php
     if(get_setting($link,'show_ads')=='1') {
         ?>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-5388516931803092",
-                enable_page_level_ads: true,
-                overlays: {bottom: true}
-            });
-        </script>
+		<script data-ad-client="ca-pub-5388516931803092" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <?php
     }
     ?>

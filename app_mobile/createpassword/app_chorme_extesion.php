@@ -69,13 +69,30 @@ if($func=='logincallback'){
 if($func=='register_account'){
     $lang=$_POST['lang'];
     $id_device=uniqid().uniqid();
-    $user_phone=$_POST['user_phone'];
-    $user_password=$_POST['user_password'];
-    $user_address=$_POST['user_address'];
-    $user_email=$_POST['user_email'];
-    $user_name=$_POST['user_name'];
-    $user_sex=$_POST['user_sex'];
+    $user_phone='';
+    $user_password='';
+    $user_address='';
+    $user_email='';
+    $user_name='';
+    $user_sex='';
+
+    if(isset($_POST['user_phone'])) $user_phone=$_POST['user_phone'];
+    if(isset($_POST['user_password'])) $user_password=$_POST['user_password'];
+    if(isset($_POST['user_address'])) $user_address=$_POST['user_address'];
+    if(isset($_POST['user_email'])) $user_email=$_POST['user_email'];
+    if(isset($_POST['user_name'])) $user_name=$_POST['user_name'];
+    if(isset($_POST['user_sex'])) $user_sex=$_POST['user_sex'];
+
+    if(trim($user_email)!=''){
+        if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+            echo 'error_user_email';
+            exit;
+        }
+    }
     $query_register_account=mysqli_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES ('$id_device', '$user_name', '$user_sex', NOW(), NOW(), '$user_address', '$user_phone', '0', '$user_email', '', '$user_password');");
+    if($query_register_account){
+        echo 'done';
+    }
     echo var_dump($_POST);
 }
 

@@ -1408,13 +1408,13 @@ iframe.fb_customer_chat_bounce_out_v2 {
 	float: left;
 	width: 45%;
 	margin: 2px;
-	background: linear-gradient(-120deg,#fff,#fff,#e9ffd4,#d7ffa6,#9cf769);
+    background: linear-gradient(-120deg,#fff,#fff,#feffa6,#ffcf64,#f7d269);
 	color: black;
 	text-align: left;
 	padding-bottom: 3px;
 	padding-top: 2px;
 	border-radius: 20px;
-	cursor: pointer;
+    cursor: pointer;
 }
 .item_contry.active{
 	background: linear-gradient(-120deg,#fff,#ffffff,#ffecc0,#7effe6,#ffcbf5);

@@ -23,8 +23,8 @@ Class Char
 $c = new Char();
 
 if ($char_view_type == '2') {
-    $log_month = mysqli_query($link,"SELECT * FROM `app_my_girl_log_data`");
-    while ($row_log = mysqli_fetch_array($log_month)) {
+    $log_month = mysqli_query($link,"SELECT `dates`,`key` FROM `app_my_girl_log_data`");
+    while ($row_log = mysqli_fetch_assoc($log_month)) {
         array_push($c->date, $row_log['dates']);
         array_push($c->data, $row_log['key']);
     }
@@ -37,8 +37,8 @@ if ($char_view_type == '2') {
     <div style="width: 100%;float:left;background-color: none !important;" id="menu_child_home">
         <?php
 
-        $query_app_work = mysqli_query($link,"SELECT * FROM carrotsy_work.`work_app`");
-        while ($row_app_work = mysqli_fetch_array($query_app_work)) {
+        $query_app_work = mysqli_query($link,"SELECT `id`,`name`,`url` FROM carrotsy_work.`work_app`");
+        while ($row_app_work = mysqli_fetch_assoc($query_app_work)) {
             echo '<a target="_blank"  href="' . $row_app_work['url'] . '">';
             echo '<img src="'.$url_work.'/thumb.php?src='.$url_work.'/avatar_app/' . $row_app_work['id'] . '.png&size=18&trim=1"/> ';
             echo $row_app_work['name'];
@@ -330,8 +330,10 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
             $result_count_brain_sex_1 = mysqli_query($link,"SELECT `question` FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `sex`='1' and  `character_sex` = '0' and `tick`='0'");
         }
     }
-    $result_count_report = mysqli_query($link,"SELECT * FROM `app_my_girl_report` WHERE `lang`='$langsel'");
-    $result_count_music_key = mysqli_query($link,"SELECT DISTINCT `key` FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");
+    $result_count_report = mysqli_query($link,"SELECT COUNT(*) as c FROM `app_my_girl_report` WHERE `lang`='$langsel'");
+    $data_count_report=mysqli_fetch_assoc($result_count_report);
+    $result_count_music_key = mysqli_query($link,"SELECT COUNT(DISTINCT `key`) as c FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");
+    $data_count_music_key=mysqli_fetch_assoc($result_count_music_key);
     $date = new DateTime("now", new DateTimeZone(get_key_lang($link,'timezone',$langsel)) );
     ?>
     <div class="box_lang">
@@ -463,11 +465,11 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                 </li>
 
                 <li>
-                    <a href="<?php echo $url; ?>/app_my_girl_report.php?lang=<?php echo $langsel; ?>" target="_blank">Báo lỗi:<?php echo mysqli_num_rows($result_count_report); ?></a>
+                    <a href="<?php echo $url; ?>/app_my_girl_report.php?lang=<?php echo $langsel; ?>" target="_blank">Báo lỗi:<?php echo $data_count_report['c'];?></a>
                 </li>
 
                 <li>
-                    <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>" target="_blank">Gợi ý âm nhạc:<?php echo mysqli_num_rows($result_count_music_key); ?></a>
+                    <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>" target="_blank">Gợi ý âm nhạc:<?php echo $data_count_music_key['c']; ?></a>
                 </li>
             </ul>
         </div>

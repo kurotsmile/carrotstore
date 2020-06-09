@@ -970,16 +970,19 @@ if($func=='chat'){
 		}
 
         $result_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `text` LIKE '%$text%' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' AND `disable` = '0' $txt_limit_os $txt_limit_ver $txt_limit_chat ORDER BY RAND() LIMIT 1");
-            if(mysqli_num_rows($result_chat)){
-                    Chat_report(mysqli_fetch_array($result_chat),'chat',$lang_sel,$link);
-            }else{
-                    $result_chat2=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE)  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' AND `disable` = '0' $txt_limit_os $txt_limit_ver $txt_limit_chat LIMIT 1");
-                        if(mysqli_num_rows($result_chat2)){
-                             Chat_report(mysqli_fetch_array($result_chat2),'chat',$lang_sel,$link);
+            if($result_chat){
+                if(mysqli_num_rows($result_chat)){
+                        Chat_report(mysqli_fetch_array($result_chat),'chat',$lang_sel,$link);
+                }else{
+                        $result_chat2=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE)  AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `pater`='' AND `disable` = '0' $txt_limit_os $txt_limit_ver $txt_limit_chat LIMIT 1");
+                        if($result_chat2){
+                            if(mysqli_num_rows($result_chat2)){
+                                Chat_report(mysqli_fetch_array($result_chat2),'chat',$lang_sel,$link);
+                            }
                         }
-                    Chat_report(chat_func($link,'bam_bay'),'msg',$lang_sel,$link);
+                        Chat_report(chat_func($link,'bam_bay'),'msg',$lang_sel,$link);
+                }
             }
-            mysqli_free_result($result_chat);
             Chat_report(chat_func($link,'bam_bay'),'msg',$lang_sel,$link);
     }
     array_push($app->all_chat,$chat);

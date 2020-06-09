@@ -346,8 +346,8 @@ function os_select(){
     
         $.ajax({
                 url: "app_my_girl_jquery.php",
-                type: "get", //kiểu dũ liệu truyền đi
-                data: "function=os_chat_select&id="+JSON.stringify(id_arr)+"&lang=<?php echo $langsel;?>&os="+os_inp+"", //tham số truyền vào
+                type: "get", 
+                data: "function=os_chat_select&id="+JSON.stringify(id_arr)+"&lang=<?php echo $langsel;?>&os="+os_inp+"",
                 success: function(data, textStatus, jqXHR)
                 {
                     alert(data);
