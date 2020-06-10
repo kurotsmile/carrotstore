@@ -438,15 +438,6 @@ function get_setting($link,$key_setting){
     return $data_setting['value'];
 }
 
-function currentUrl($server){
-    $http = 'http';
-    if(isset($server['HTTPS'])){
-        $http = 'https';
-    }
-    $host = $server['HTTP_HOST'];
-    $requestUri = $server['REQUEST_URI'];
-    return $http . '://' . htmlentities($host) . '/' . htmlentities($requestUri);
-}
 
 function data_json_tip($contain,$position=0){
     $p_my='';

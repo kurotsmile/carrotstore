@@ -150,7 +150,7 @@ function Chat_report($data_row,$type_chat,$lang_sel,$link){
                 if($location_lon=='0'){
                     Chat_report(chat_func($link,'chua_bat_dinh_vi'),'msg',$lang_sel,$link);
                 }
-                $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=$key_api_google";
+                $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I";
         
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, $place);

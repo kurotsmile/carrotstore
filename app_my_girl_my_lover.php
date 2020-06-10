@@ -194,7 +194,7 @@ function Chat_report($data_row,$type_chat,$lang_sel,$link){
                 if($location_lon=='0'){
                     Chat_report(chat_func($link,'chua_bat_dinh_vi'),'msg',$lang_sel,$link);
                 }
-                $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=$key_api_google";
+                $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I";
         
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, $place);
@@ -971,14 +971,18 @@ if($func=='chat'){
         if($id_question!=''){
                 $txt_table_chat_return='app_my_girl_'.$lang_sel;
                 $get_child_chat=mysqli_query($link,"SELECT * FROM  `$txt_table_chat_return`  WHERE `text`='$text' AND `pater` = '$id_question' AND `pater_type` = '$type_question' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `disable` = '0' ORDER BY RAND() LIMIT 1");
+                if($get_child_chat){
                     if(mysqli_num_rows($get_child_chat)){
                         Chat_report(mysqli_fetch_array($get_child_chat),'chat',$lang_sel,$link);
                     }
+                }
                 
                 $get_child_chat2=mysqli_query($link,"SELECT * FROM  `$txt_table_chat_return` WHERE MATCH (text)  AGAINST ('$text' IN BOOLEAN MODE) AND `pater` = '$id_question' AND `pater_type` = '$type_question' AND `sex` = '$sex' AND `character_sex`='$character_sex' AND `disable` = '0' LIMIT 1");
+                if($get_child_chat2){
                     if(mysqli_num_rows($get_child_chat2)){
                         Chat_report(mysqli_fetch_array($get_child_chat2),'chat',$lang_sel,$link);
                     }
+                }
         }
         
         

@@ -239,7 +239,7 @@ function Chat_report($data_row, $type_chat, $lang_sel, $link)
                 if ($location_lon == '0') {
                     Chat_report(chat_func($link,'chua_bat_dinh_vi'), 'msg', $lang_sel, $link);
                 }
-                $place = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=$key_api_google";
+                $place = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I";
 
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, $place);
@@ -898,39 +898,38 @@ if ($func == 'chat') {
     }
 
     $result = 0;
-    if ($text !== "sex") {
-
+    if($text!=="sex"){
+        
         // sanitize imput
-        $equation = preg_replace("/[^a-z0-9+\-.*\/()%]/", "", $text);
+        $equation = preg_replace("/[^a-z0-9+\-.*\/()%]/","",$text);
         // convert alphabet to $variabel 
-        $equation = preg_replace("/([a-z])+/i", "\$$0", $equation);
+        $equation = preg_replace("/([a-z])+/i", "\$$0", $equation); 
         // convert percentages to decimal
-        $equation = preg_replace("/([+-])([0-9]{1})(%)/", "*(1\$1.0\$2)", $equation);
-        $equation = preg_replace("/([+-])([0-9]+)(%)/", "*(1\$1.\$2)", $equation);
-        $equation = preg_replace("/([0-9]{1})(%)/", ".0\$1", $equation);
-        $equation = preg_replace("/([0-9]+)(%)/", ".\$1", $equation);
-
-        if ($equation != "") {
-            $chat = new Chat();
-            $giai_toan = chat_func($link,'giai_toan');
-            $chat->color = $giai_toan['color'];
-            $chat->effect = $giai_toan['effect'];
-
+        $equation = preg_replace("/([+-])([0-9]{1})(%)/","*(1\$1.0\$2)",$equation);
+        $equation = preg_replace("/([+-])([0-9]+)(%)/","*(1\$1.\$2)",$equation);
+        $equation = preg_replace("/([0-9]{1})(%)/",".0\$1",$equation);
+        $equation = preg_replace("/([0-9]+)(%)/",".\$1",$equation);
+    
+        if ( $equation != "" ){ 
+            $chat=new Chat();
+            $giai_toan=chat_func($link,'giai_toan');
+            $chat->color=$giai_toan['color'];
+            $chat->effect=$giai_toan['effect'];
+            
             try {
                 $result = @eval("return ".$equation.";");
             } catch (ParseError $e) {
                 $result = "0";
             }
+            $chat->chat=str_replace('{giai_toan}','='.$result,$giai_toan['chat']);
             
-            $chat->chat = str_replace('{giai_toan}', '=' . $result, $giai_toan['chat']);
-
-            $table_app_temp = 'app_mygirl/app_my_girl_temp_' . $lang_sel;
-            $table_app = 'app_mygirl/app_my_girl_msg_' . $lang_sel;
-            $id_device = $_POST['id_device'];
-            $voice_lang = get_key_lang($link,'voice_character_sex_' . $giai_toan['character_sex'], $lang_sel);
-            if ($voice_lang == 'google') {
-                $txt_chat = $chat->chat;
-                $link_audio = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=' . strlen($chat->chat) . '&client=tw-ob&q=' . urlencode($chat->chat) . '&tl=' . $lang_sel;
+            $table_app_temp='app_mygirl/app_my_girl_temp_'.$lang_sel;                        
+            $table_app='app_mygirl/app_my_girl_msg_'.$lang_sel;
+            $id_device=$_POST['id_device'];
+            $voice_lang=get_key_lang($link,'voice_character_sex_'.$giai_toan['character_sex'],$lang_sel);
+            if($voice_lang=='google'){
+                $txt_chat=$chat->chat;
+                $link_audio='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($chat->chat).'&client=tw-ob&q='.urlencode($chat->chat).'&tl='.$lang_sel;
                 $ch = curl_init($link_audio);
                 curl_setopt($ch, CURLOPT_HEADER, 0);
                 curl_setopt($ch, CURLOPT_NOBODY, 0);
@@ -941,18 +940,18 @@ if ($func == 'chat') {
                 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 curl_close($ch);
                 if ($status == 200) {
-                    file_put_contents(dirname(__FILE__) . '/' . $table_app_temp . '/' . $id_device . '.mp3', $output);
+                    file_put_contents(dirname(__FILE__) . '/'.$table_app_temp.'/'.$id_device.'.mp3', $output);
                 }
-                $chat->mp3 = URL.'/' . $table_app_temp . '/' . $id_device . '.mp3';
-            } else {
-                if (file_exists($table_app . '/' . $giai_toan['id'] . '.mp3')) {
-                    $chat->mp3 = URL.'/' . $table_app . '/' . $giai_toan['id'] . '.mp3';
-                }
+                $chat->mp3=URL.'/'.$table_app_temp.'/'.$id_device.'.mp3';
+            }else{
+                if (file_exists($table_app.'/'.$giai_toan['id'].'.mp3')) {
+                    $chat->mp3=URL.'/'.$table_app.'/'.$giai_toan['id'].'.mp3';
+                } 
             }
 
         }
-    } else {
-        $result == null;
+    }else{
+        $result==null;
     }
 
 

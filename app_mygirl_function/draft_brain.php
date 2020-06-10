@@ -1,19 +1,19 @@
 <?php
-$type_view = '0';
-$type_view_user = '0';
-$id_user_work = $data_user_carrot['user_id'];
-$url_act=$url . '/app_my_girl_handling.php?func=draft_brain';
-$cur_url = $url_act;
-$hide_help = '0';
+$type_view='0';
+$type_view_user='0';
+$id_user_work=$data_user_carrot['user_id'];
+$url_act=$url.'/app_my_girl_handling.php?func=draft_brain';
+$cur_url=$url_act;
+$hide_help='0';
 
 if (isset($_GET['type_view'])) {
-    $type_view = $_GET['type_view'];
-    $cur_url .= '&type_view=' . $type_view;
+    $type_view=$_GET['type_view'];
+    $cur_url.='&type_view='.$type_view;
 }
 
 if (isset($_GET['type_view_user'])) {
     $type_view_user = $_GET['type_view_user'];
-    $cur_url .= '&type_view_user=' . $type_view_user;
+    $cur_url.= '&type_view_user='.$type_view_user;
 }
 
 if (isset($_GET['hide_help'])) {
@@ -25,10 +25,12 @@ if (isset($_SESSION['hide_help'])) {
 }
 
 if(isset($_GET['delete_father'])){
-    $type_view_user = $_GET['type_view_user'];
-    $query_remove_father=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `id_question` = '' , `type_question` = '' WHERE  `approved` = '0' AND `tick` = '1' AND `user_work_id` = '$type_view_user' AND `id_question` != '' AND `ping_father` = '0'");
-    echo mysqli_error($link);
-    echo show_alert("Gỡ các câu thoại cha!","alert");
+    if(isset($_GET['type_view_user'])){
+        $type_view_user = $_GET['type_view_user'];
+        $query_remove_father=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `id_question` = '' , `type_question` = '' WHERE  `approved` = '0' AND `tick` = '1' AND `user_work_id` = '$type_view_user' AND `id_question` != '' AND `ping_father` = '0'");
+        echo mysqli_error($link);
+        echo show_alert("Đã Gỡ các câu thoại cha!","alert");
+    }
 }
 
 if(isset($_GET['delete_all'])){
@@ -53,17 +55,11 @@ if ($type_view == '1') {
 ?>
 <div class="contain notranslate" style="background-color: #fefff5;padding: 0px;min-width: 600px;" id="form_loc">
     <div style="width: 100%;float: left;background-color: #6edfff;">
-        <strong style="padding: 10px;float: left;"><i class="fa fa-info-circle" aria-hidden="true"></i> Những lưu ý khi
-            xuất bản <?php echo mysqli_num_rows($result_brain); ?> nội dung dạy do
-            "<?php echo $data_user_carrot['user_name']; ?>" xử lý</strong>
+        <strong style="padding: 10px;float: left;"><i class="fa fa-info-circle" aria-hidden="true"></i> Những lưu ý khi xuất bản <?php echo mysqli_num_rows($result_brain); ?> nội dung dạy do"<?php echo $data_user_carrot['user_name']; ?>" xử lý</strong>
         <?php if ($hide_help == '0') { ?>
-            <a href="<?php echo $cur_url; ?>&hide_help=1"
-               style="float: right;margin-right: 3px;font-size: 17px;padding: 7px;">Ẩn <i
-                        class="fa fa-caret-square-o-up" aria-hidden="true"></i></a>
+            <a href="<?php echo $cur_url; ?>&hide_help=1" style="float: right;margin-right: 3px;font-size: 17px;padding: 7px;">Ẩn <i class="fa fa-caret-square-o-up" aria-hidden="true"></i></a>
         <?php } else { ?>
-            <a href="<?php echo $cur_url; ?>&hide_help=0"
-               style="float: right;margin-right: 3px;font-size: 17px;padding: 7px;">Hiển thị <i
-                        class="fa fa-caret-square-o-down" aria-hidden="true"></i></a>
+            <a href="<?php echo $cur_url; ?>&hide_help=0" style="float: right;margin-right: 3px;font-size: 17px;padding: 7px;">Hiển thị <i class="fa fa-caret-square-o-down" aria-hidden="true"></i></a>
         <?php } ?>
     </div>
     <?php if ($hide_help == '0') { ?>
@@ -106,11 +102,6 @@ if ($type_view == '1') {
                         </li>
                     </ul>
                 </li>
-                <li style="color: red;" id="tip_i">Lưu ý khi xuất bản nội dung đối với các nước những câu liên quan tới
-                    tình dục,ma túy,bạo lực thì ở mục <b>hiển thị</b> chọn <b>Ios</b> <i class="fa fa-arrow-right"
-                                                                                         aria-hidden="true"></i> Không
-                    hiển thị và <b>Window</b> <i class="fa fa-arrow-right" aria-hidden="true"></i> Không hiển thị
-                </li>
                 <script>
                     $(document).ready(function () {
                         $(".tip_new").effect("highlight").effect("highlight").effect("highlight").effect("pulsate");
@@ -120,51 +111,31 @@ if ($type_view == '1') {
             <?php
             if ($data_user_carrot["user_role"] == "admin") {
                 ?>
-                <a class="buttonPro small <?php if ($type_view == '0') {
-                    echo 'yellow';
-                } else {
-                    echo 'blue';
-                } ?>" href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain">Chỉ mình tôi</a>
-                <a class="buttonPro small <?php if ($type_view == '1') {
-                    echo 'yellow';
-                } else {
-                    echo 'blue';
-                } ?>" href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain&type_view=1">Xem tất cả</a>
+                <a class="buttonPro small <?php if ($type_view == '0'){ echo 'yellow';} else {echo 'blue'; } ?>" href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain">Chỉ mình tôi</a>
+                <a class="buttonPro small <?php if ($type_view == '1'){ echo 'yellow'; } else { echo 'blue';} ?>" href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain&type_view=1">Xem tất cả</a>
                 <?php
                 $query_all_user_work = mysqli_query($link,"SELECT * FROM  carrotsy_work.`work_user` ");
                 while ($op_user = mysqli_fetch_array($query_all_user_work)) {
                     ?>
-                    <a class="buttonPro small <?php if ($type_view_user == $op_user['user_id']) {
-                        echo 'yellow';
-                    } else {
-                        echo 'blue';
-                    } ?>"
-                       href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain&type_view=1&type_view_user=<?php echo $op_user['user_id']; ?>">Xem
-                        của <?php echo $op_user['user_name']; ?></a>
+                    <a class="buttonPro small <?php if ($type_view_user == $op_user['user_id']) { echo 'yellow'; } else { echo 'blue';} ?>" href="<?php echo $url; ?>/app_my_girl_handling.php?func=draft_brain&type_view=1&type_view_user=<?php echo $op_user['user_id']; ?>">Xem của <?php echo $op_user['user_name']; ?></a>
                     <?php
                 }
                 ?>
-                <a href="<?php echo $cur_url; ?>&delete_father=1" class="buttonPro small red"><i class="fa fa-eraser"
-                                                                                 aria-hidden="true"></i> Gỡ toàn bộ nhữ
-                    đối tượng cha</a>
-                <a href="<?php echo $cur_url; ?>&type_view=2" class="buttonPro small blue"><i class="fa fa-list-alt" aria-hidden="true"></i>
-                    Xem lại các câu đã làm</a>
+                <a href="<?php echo $cur_url; ?>&delete_father=1" class="buttonPro small red"><i class="fa fa-eraser" aria-hidden="true"></i> Gỡ toàn bộ nhữ đối tượng cha</a>
+                <a href="<?php echo $cur_url; ?>&type_view=2" class="buttonPro small blue"><i class="fa fa-list-alt" aria-hidden="true"></i> Xem lại các câu đã làm</a>
+                <?php if ($type_view == '2'){?>
+                    <a href="<?php echo $url_act; ?>&type_view=2&type_view_user=<?php echo $id_user_work; ?>&delete_all=1" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa tất cả các dữ liệu đã làm</a>
                 <?php
+                }
             }else{
                 if($type_view!='2') {
                     ?>
-                    <a href="<?php echo $url_act; ?>&type_view=2&type_view_user=<?php echo $id_user_work; ?>"
-                       class="buttonPro small blue"><i class="fa fa-list-alt" aria-hidden="true"></i>
-                        Xem lại các câu đã làm</a>
+                    <a href="<?php echo $url_act; ?>&type_view=2&type_view_user=<?php echo $id_user_work; ?>" class="buttonPro small blue"><i class="fa fa-list-alt" aria-hidden="true"></i> Xem lại các câu đã làm</a>
                     <?php
                 }else{
                     ?>
-                    <a href="<?php echo $url_act; ?>&type_view=1&type_view_user=<?php echo $id_user_work; ?>"
-                       class="buttonPro small light_blue"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-                        trở lại danh sách chưa làm</a>
-                    <a href="<?php echo $url_act; ?>&type_view=2&type_view_user=<?php echo $id_user_work; ?>&delete_all=1"
-                       class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                        Xóa tất cả</a>
+                    <a href="<?php echo $url_act; ?>&type_view=1&type_view_user=<?php echo $id_user_work; ?>" class="buttonPro small light_blue"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> trở lại danh sách chưa làm</a>
+                    <a href="<?php echo $url_act; ?>&type_view=2&type_view_user=<?php echo $id_user_work; ?>&delete_all=1" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa tất cả</a>
                     <?php
                 }
             }
@@ -225,7 +196,7 @@ function show_row_brain($link,$row,$type_view, $lang_key)
     }
 
     if($type_view!='2') {
-        $txt_btn_add = '<a href="' . $url . '/app_my_girl_add.php?key=' . $row['question'] . '&lang=' . $row['langs'] . '&answer=' . $row['answer'] . '&sex=' . $row['sex'] . '&effect=' . $row['effect'] . '&action=' . $row['status'] . '&character_sex=' . $row['character_sex'] . '&' . $txt_color_chat . '' . $txt_add_father . '" target="_blank" class="buttonPro small blue" id_chat="' . $row['md5'] . '" lang_chat="' . $row['langs'] . '" onclick="approved(this);return false;">' . $txt_icon_add . ' Thêm </a>';
+        $txt_btn_add = '<a href="' . $url . '/app_my_girl_add.php?key='.urlencode($row['question']). '&lang=' . $row['langs'] . '&answer=' . $row['answer'] . '&sex=' . $row['sex'] . '&effect=' . $row['effect'] . '&action=' . $row['status'] . '&character_sex=' . $row['character_sex'] . '&' . $txt_color_chat . '' . $txt_add_father . '" target="_blank" class="buttonPro small blue" id_chat="' . $row['md5'] . '" lang_chat="' . $row['langs'] . '" onclick="approved(this);return false;">' . $txt_icon_add . ' Thêm </a>';
         $txt_btn_edit = '<a href="" onclick="show_edit_brain(\'' . $row['md5'] . '\',\'' . $row['langs'] . '\');return false;" title="Sửa nhanh trước khi thêm vào danh sách trò chuyện" class="buttonPro small yellow"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>';
     }else{
         $txt_icon_search='<i class="fa fa-search" aria-hidden="true"></i>';

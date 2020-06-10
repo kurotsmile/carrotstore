@@ -83,17 +83,32 @@ if($func=='register_account'){
     if(isset($_POST['user_name'])) $user_name=$_POST['user_name'];
     if(isset($_POST['user_sex'])) $user_sex=$_POST['user_sex'];
 
+    if(trim($user_phone)==''){
+        echo 'error_user_phone';
+        exit;
+    }
+
+    if(trim($user_name)==''){
+        echo 'error_user_name';
+        exit;
+    }
+
     if(trim($user_email)!=''){
-        if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($user_email,FILTER_VALIDATE_EMAIL)) {
             echo 'error_user_email';
             exit;
         }
     }
-    $query_register_account=mysqli_query("INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES ('$id_device', '$user_name', '$user_sex', NOW(), NOW(), '$user_address', '$user_phone', '0', '$user_email', '', '$user_password');");
+
+    if(trim($user_password)==''){
+        echo 'error_user_password';
+        exit;
+    }    
+
+    $query_register_account=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES ('$id_device', '$user_name', '$user_sex', NOW(), NOW(), '$user_address', '$user_phone', '0', '$user_email', '', '$user_password');");
     if($query_register_account){
         echo 'done';
     }
-    echo var_dump($_POST);
 }
 
 

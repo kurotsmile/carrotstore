@@ -787,7 +787,6 @@ if($func=='approved_brain'){
     $id_chat=$_GET['id_chat'];
     $lang=$_GET['lang'];
     $query_update_brain=mysqli_query($link,"UPDATE `app_my_girl_brain` SET `approved` = '1' WHERE `md5` = '$id_chat' AND `langs` = '$lang'  LIMIT 1;");
-    mysqli_free_result($query_update_brain);
     $query_brain=mysqli_query($link,"SELECT * FROM `app_my_girl_brain` WHERE `md5` = '$id_chat' AND `langs` = '$lang' LIMIT 1");
     $data_brain=mysqli_fetch_array($query_brain);
     if(strlen($data_brain['color_chat'])>=6){

@@ -10,6 +10,7 @@ $error_login_user = '';
 $data_user_carrot = '';
 $lang_2 = 'vi';
 $ver_cms='1.1';
+$url_cur=$protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 if (isset($_GET['select_ver'])) {
     $sel_version = $_GET['select_ver'];
@@ -49,7 +50,11 @@ if (isset($_POST['login_act'])) {
         $_SESSION['id_login_user'] = $data_user_carrot['user_pass'];
         $error_login_user = "Login success!";
         $url_cur=$_POST['url_cur'];
-        header("location:$url_cur");
+        if($url_cur==$url.'/vl/?logout=1'){
+            header("location:$url/vl");
+        }else{
+            header("location:$url_cur");
+        }
     } else {
         $error_login_user = "Username or password not match!";
         unset($_POST);
@@ -503,7 +508,7 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
             <input type="password" name="passw"/><br/>
             <input type="submit" value="Login" name="login_act" class="buttonPro small green"/><br/><br/>
             <?php if ($error_login_user != "") { ?><p style="color:red;font-weight: bold;"><?php echo $error_login_user; ?></p><?php } ?>
-            <input type="hidden" value="<?php echo currentUrl($_SERVER); ?>" name="url_cur"/><br/>
+            <input type="hidden" value="<?php echo $url_cur; ?>" name="url_cur"/><br/>
         </form>
     </div>
     <?php
