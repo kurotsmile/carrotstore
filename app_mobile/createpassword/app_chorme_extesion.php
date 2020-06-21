@@ -67,6 +67,7 @@ if($func=='logincallback'){
 }
 
 if($func=='register_account'){
+    $type_act='add';
     $lang=$_POST['lang'];
     $id_device=uniqid().uniqid();
     $user_phone='';
@@ -75,6 +76,7 @@ if($func=='register_account'){
     $user_email='';
     $user_name='';
     $user_sex='';
+    $user_rep_password='';
 
     if(isset($_POST['user_phone'])) $user_phone=$_POST['user_phone'];
     if(isset($_POST['user_password'])) $user_password=$_POST['user_password'];
@@ -82,13 +84,15 @@ if($func=='register_account'){
     if(isset($_POST['user_email'])) $user_email=$_POST['user_email'];
     if(isset($_POST['user_name'])) $user_name=$_POST['user_name'];
     if(isset($_POST['user_sex'])) $user_sex=$_POST['user_sex'];
+    if(isset($_POST['user_rep_password'])) $user_rep_password=$_POST['user_rep_password'];
+    if(isset($_POST['type_act'])) $type_act=$_POST['type_act'];
 
     if(trim($user_phone)==''){
         echo 'error_user_phone';
         exit;
     }
 
-    if(trim($user_name)==''){
+    if(trim($user_name)==''||strlen($user_name)<=5){
         echo 'error_user_name';
         exit;
     }
@@ -100,15 +104,55 @@ if($func=='register_account'){
         }
     }
 
-    if(trim($user_password)==''){
-        echo 'error_user_password';
-        exit;
-    }    
-
-    $query_register_account=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES ('$id_device', '$user_name', '$user_sex', NOW(), NOW(), '$user_address', '$user_phone', '0', '$user_email', '', '$user_password');");
-    if($query_register_account){
-        echo 'done';
+    if($type_act=='add'){
+        if(trim($user_password)==''||strlen($user_password)<=6){
+            echo 'error_user_password';
+            exit;
+        }
+        
+        if(trim($user_rep_password)!=trim($user_password)){
+            echo 'error_user_rep_password';
+            exit;
+        }
     }
+
+    if($type_act=='add'){
+        $query_check_account=mysqli_query($link,"SELECT `id_device` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `sdt` = '$user_phone' AND `password` = '$user_password' LIMIT 1");
+        if(mysqli_num_rows($query_check_account)>0){
+            echo 'error_user_already';
+            exit;
+        }
+
+        $query_register_account=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES ('$id_device', '$user_name', '$user_sex', NOW(), NOW(), '$user_address', '$user_phone', '0', '$user_email', '', '$user_password');");
+        if($query_register_account){
+            echo 'done';
+        }
+    }else{
+        $id_device=$_POST['id_device'];
+        $user_status_share=$_POST['user_status_share'];
+        $query_update=mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `name`='$user_name',`sex` = '$user_sex',`date_cur`=NOW(),`address`='$user_address',`sdt` = '$user_phone',`status` = '$user_status_share', `email` = '$user_email' WHERE `id_device` = '$id_device' LIMIT 1;");
+        if($query_update){
+            echo 'done_update';
+        }else{
+            echo 'done_update_fail';
+        }
+    }
+}
+
+if($func=='get_user_info'){
+    $lang=$_POST['lang'];
+    $id_device=$_POST['id_device'];
+    $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device` = '$id_device' LIMIT 1");
+    $data_user=mysqli_fetch_assoc($query_user);
+    if(does_url_exists($url_carrot_store.'/app_mygirl/app_my_girl_'.$lang.'_user/'.$data_user['id_device'].'.png')) {
+        $data_user["avatar_url"] = $url_carrot_store."/img.php?url=app_mygirl/app_my_girl_".$lang."_user/" . $data_user['id_device'] . ".png&size=60";
+        $data_user["avatar"]= $url_carrot_store."/app_mygirl/app_my_girl_".$lang."_user/" . $data_user['id_device'] . ".png";
+    }else{
+        $data_user["avatar"]= $data_user["avatar_url"];
+    }
+     $data_user["link"]=$url_carrot_store."/user/".$data_user['id_device']."/".$lang;
+    echo json_encode($data_user);
+    exit;
 }
 
 
@@ -188,5 +232,40 @@ if($func=='other_app'){
     }
     echo json_encode($arr_app);
     exit;
+}
+
+
+if($func=='change_password_user'){
+    $lang=$_POST['lang'];
+    $id_device=$_POST['id_device'];
+    $user_password_old=$_POST['user_password_old'];
+    $user_password=$_POST['user_password'];
+    $user_rep_password=$_POST['user_rep_password'];
+
+    $query_check_password=mysqli_query($link,"SELECT `id_device` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device` = '$id_device' AND `password` = '$user_password_old' LIMIT 1");   
+    if(mysqli_num_rows($query_check_password)==0){
+        echo 'error_password_old';
+        exit;
+    }
+
+    if(trim($user_password)==''||strlen($user_password)<=6){
+        echo 'error_user_password';
+        exit;
+    }
+    
+    if(trim($user_rep_password)!=trim($user_password)){
+        echo 'error_user_rep_password';
+        exit;
+    }
+
+    $query_change_password=mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `password` = '$user_password' WHERE `id_device` = '$id_device'");
+    if($query_change_password){
+        echo "done_update";
+        exit;
+    }else{
+        echo "error";
+        exit;
+    }
+    
 }
 ?>

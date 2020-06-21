@@ -159,7 +159,7 @@ function Chat_report($data_row,$type_chat,$lang_sel,$link){
                 if($location_lon=='0'){
                     Chat_report(chat_func($link,'chua_bat_dinh_vi'),'msg',$lang_sel,$link);
                 }
-                $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=$key_api_google";
+                $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&sensor=true&key=AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I";
         
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, $place);
@@ -820,51 +820,46 @@ if($func=='chat'){
         if ( $equation != "" ){ 
             $chat=new Chat();
             $giai_toan=chat_func($link,'giai_toan');
-            $table_app='app_mygirl/app_my_girl_msg_'.$lang_sel;
             $chat->color=$giai_toan['color'];
             $chat->effect=$giai_toan['effect'];
             
-            $result=@eval("return " . $equation . ";");
+            try {
+                $result = @eval("return ".$equation.";");
+            } catch (ParseError $e) {
+                $result = "0";
+            }
             $chat->chat=str_replace('{giai_toan}','='.$result,$giai_toan['chat']);
+            
+            $table_app_temp='app_mygirl/app_my_girl_temp_'.$lang_sel;                        
             $table_app='app_mygirl/app_my_girl_msg_'.$lang_sel;
-            if($os=='ios'){
-                if($chat->effect!='2'){
-                    $voice_lang=get_key_lang($link,'voice_character_sex_'.$giai_toan['character_sex'],$lang_sel);
-                    if($voice_lang=='google'){
-                        $voice_api=get_key_lang_app($link,'url_voice_sex_'.$giai_toan['sex'],$lang_sel);
-                        $chat->mp3=str_replace('{text}',$chat->chat,$voice_api);
-                    }else{
-                        if (file_exists($table_app.'/'.$giai_toan['id'].'.mp3')) {
-                            $chat->mp3=URL.'/'.$table_app.'/'.$giai_toan['id'].'.mp3';
-                        } 
-                    }
-                }else{
-                    if (file_exists($table_app.'/'.$giai_toan['id'].'.mp3')) {
-                        $chat->mp3=URL.'/'.$table_app.'/'.$giai_toan['id'].'.mp3';
-                    } 
+            $id_device=$_POST['id_device'];
+            $voice_lang=get_key_lang($link,'voice_character_sex_'.$giai_toan['character_sex'],$lang_sel);
+            if($voice_lang=='google'){
+                $txt_chat=$chat->chat;
+                $link_audio='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($chat->chat).'&client=tw-ob&q='.urlencode($chat->chat).'&tl='.$lang_sel;
+                $ch = curl_init($link_audio);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_NOBODY, 0);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+                $output = curl_exec($ch);
+                $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
+                if ($status == 200) {
+                    file_put_contents(dirname(__FILE__) . '/'.$table_app_temp.'/'.$id_device.'.mp3', $output);
                 }
+                $chat->mp3=URL.'/'.$table_app_temp.'/'.$id_device.'.mp3';
             }else{
                 if (file_exists($table_app.'/'.$giai_toan['id'].'.mp3')) {
                     $chat->mp3=URL.'/'.$table_app.'/'.$giai_toan['id'].'.mp3';
-                }else{
-                    if($giai_toan['character_sex']=='1'){
-                        if($chat->effect!='2'){
-                            $voice_api=get_key_lang_app($link,'url_voice_sex_'.$giai_toan['sex'],$lang_sel);
-                            $chat->mp3=str_replace('{text}',$chat->chat,$voice_api);
-                        }else{
-                            $chat->mp3='';
-                        }
-                    }else{
-                        $chat->mp3='';
-                    }
-                }
+                } 
             }
 
         }
     }else{
         $result==null;
     }
-    
     
     if ($result == null) {
         mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang_sel','$sex','$date_cur','$os',$character,$character_sex,$version,'$id_question','$type_question','$id_device','$location_lon','$location_lat');");

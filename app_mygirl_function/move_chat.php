@@ -22,7 +22,7 @@
         if($data_chat_move['effect']=='2'){
             $check_video=mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_move` WHERE `id_chat`='$id_chat_from' LIMIT 1");
             $btn_check_video='';
-            if(mysql_num_rows($check_video)>0){
+            if(mysqli_num_rows($check_video)>0){
                 $data_video=mysqli_fetch_array($check_video);
                 $link_video=$data_video['link'];
                 $query_copy_video=mysqli_query($link,"INSERT INTO `app_my_girl_video_$lang_to` (`id_chat`, `link`) VALUES ('$id_new', '$link_video');");
@@ -34,7 +34,7 @@
             mysqli_free_result($check_video);
             
             $check_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_move."_lyrics` WHERE `id_music` = '".$id_chat_from."' LIMIT 1");
-            if(mysql_num_rows($check_lyrics)>0){
+            if(mysqli_num_rows($check_lyrics)>0){
                 $data_lyric=mysqli_fetch_array($check_lyrics);
                 $txt_lyrics=$data_lyric['lyrics'];
                 $query_copy_lyrics=mysqli_query($link,"INSERT INTO `app_my_girl_".$lang_to."_lyrics` (`id_music`, `lyrics`) VALUES ('$id_new', '$txt_lyrics');");
