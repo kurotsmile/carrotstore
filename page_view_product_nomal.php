@@ -28,6 +28,8 @@ $data_type=mysqli_fetch_array($query_type);
                 ?></span><br/>
             <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
             <br />
+            <?php if($data["link_youtube"]!=''){?><a href="<?php echo $data["link_youtube"];?>" target="_blank"><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
+            <br/>
             <?php
             $type_rate='product';
             include "template/field_rate_show.php";

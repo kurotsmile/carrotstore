@@ -77,8 +77,8 @@ $(window).scroll(function() {
 
                 $.ajax({
                     url: "<?php echo $url; ?>/index.php",
-                    type: "get",
-                    data: "function=load_music&json="+myJsonString+"&lenguser="+count_p,
+                    type: "post",
+                    data: "function=load_music&json="+myJsonString+"&lenguser="+count_p+"&type=<?php echo $sub_view;?>",
                     success: function(data, textStatus, jqXHR)
                     {
                         myJsonString = JSON.stringify(arr_id_music);
@@ -121,7 +121,7 @@ if(!isset($query_list_music)){
 
 
 if($sub_view=='artist'){
-    $query_artis=mysqli_query($link,"SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
+    $query_artis=mysqli_query($link,"SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!='' ORDER BY RAND() LIMIT 60");
     while ($row = mysqli_fetch_assoc($query_artis)) {
         include "page_music_artist_git.php";
     }

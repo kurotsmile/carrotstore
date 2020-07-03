@@ -12,7 +12,7 @@ if(isset($_GET['ver'])){
 if(isset($_GET['delete'])){
     $delete_key=$_GET['delete'];
     $delete_ver=$_GET['ver'];
-    $query_delete=mysql_query("DELETE FROM `app_my_girl_display_lang_data` WHERE `key` = '$delete_key' AND `version` = '$delete_ver' LIMIT 1;");
+    $query_delete=mysqli_query($link,"DELETE FROM `app_my_girl_display_lang_data` WHERE `key` = '$delete_key' AND `version` = '$delete_ver' LIMIT 1;");
     if($query_delete===true){
         echo "Xóa thành công dữ liệu hiển thị giao diện (".$delete_key.")";
     }else{
@@ -35,17 +35,17 @@ if(isset($_POST['key'])){
     if(isset($_POST['edit'])){
         $edit=$_POST['edit'];
         $edit_ver=$_POST['edit_ver'];
-        $update_data_dislay=mysql_query("UPDATE `app_my_girl_display_lang_data` SET `key` = '$key',`version` = '$ver' WHERE `key` = '$edit'  AND `version` = '$edit_ver' LIMIT 1;");
+        $update_data_dislay=mysqli_query($link,"UPDATE `app_my_girl_display_lang_data` SET `key` = '$key',`version` = '$ver' WHERE `key` = '$edit'  AND `version` = '$edit_ver' LIMIT 1;");
         if($update_data_dislay===true){
             echo "Cập nhật dữ liệu hiển thị giao diện '".$key."' thành công!";
         }else{
             echo "Cập nhật dữ liệu hiển thị giao diện thất bại (".mysql_error().")";
         }
     }else{
-        if(mysql_num_rows(mysql_query("SELECT * FROM `app_my_girl_display_lang_data` WHERE `key` = '$key' AND `version` = '$ver' LIMIT 1"))){
+        if(mysqli_num_rows(mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang_data` WHERE `key` = '$key' AND `version` = '$ver' LIMIT 1"))){
             echo '<b>Lỗi:</b> Từ khóa dữ liệu hiển "'.$key.'" thị đã có với phiên bản "'.$ver.'" này!';
         }else{
-            $add_data_dislay=mysql_query("INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES ('$key', '$ver');");
+            $add_data_dislay=mysqli_query($link,"INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES ('$key', '$ver');");
             if($add_data_dislay===true){
                 echo "Tạo dữ liệu hiển thị giao diện '".$key."' thành công!";
                 $key='';
@@ -117,8 +117,8 @@ if($edit==''){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-$query_list_display_lang_data=mysql_query("SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='".$ver."'");
-while($row=mysql_fetch_array($query_list_display_lang_data)){
+$query_list_display_lang_data=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='".$ver."'");
+while($row=mysqli_fetch_array($query_list_display_lang_data)){
 ?>
     <tr>
         <td><i class="fa fa-tag" aria-hidden="true"></i> <?php echo $row['key'];?></td>
@@ -130,6 +130,6 @@ while($row=mysql_fetch_array($query_list_display_lang_data)){
     </tr>
 <?php
 }
-mysql_free_result($query_list_display_lang_data);
+mysqli_free_result($query_list_display_lang_data);
 ?>
 </table>

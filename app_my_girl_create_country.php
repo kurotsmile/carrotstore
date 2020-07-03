@@ -1,10 +1,10 @@
+<?php
+include "app_my_girl_template.php";
+?>
 <script src="<?php echo $url; ?>/dist/sweetalert.min.js"></script> 
 <script src="<?php echo $url; ?>/js/jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.css"/>
 
-<?php
-include "app_my_girl_template.php";
-?>
 <div style="padding: 5px;">
 <h3>Tạo quốc gia mới</h3>
 <?php
@@ -15,10 +15,10 @@ include "app_my_girl_template.php";
         $key_country=$_POST['key_country'];
         $name_country=$_POST['name_country'];
         
-        if(mysql_num_rows(mysql_query("SELECT `key` FROM `app_my_girl_country` WHERE `key` = '$key_country' LIMIT 1"))){
+        if(mysqli_num_rows(mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `key` = '$key_country' LIMIT 1"))){
             echo '<p>Từ khóa quốc gia này ('.$key_country.') đã được tạo!!!</p>';
         }else{
-            $query_add_country=mysql_query("INSERT INTO `app_my_girl_country` (`key`, `name`) VALUES ('$key_country', '$name_country');");
+            $query_add_country=mysqli_query($link,"INSERT INTO `app_my_girl_country` (`key`, `name`) VALUES ('$key_country', '$name_country');");
             
             $target_dir = "app_mygirl/img/".$key_country.".png";
             if (move_uploaded_file($_FILES['icon_country']["tmp_name"], $target_dir)) {
@@ -30,7 +30,7 @@ include "app_my_girl_template.php";
             
             if($query_add_country===true){
                 //Create chat country
-                $query_create_country=mysql_query("
+                $query_create_country=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_".$key_country."` (
                       `id` int(11) NOT NULL AUTO_INCREMENT,
                       `text` text NOT NULL,
@@ -77,7 +77,7 @@ include "app_my_girl_template.php";
                 }
         
                 //Create Msg country
-                $query_create_msg=mysql_query("
+                $query_create_msg=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_msg_".$key_country."` (
                       `id` bigint(20) NOT NULL AUTO_INCREMENT,
                       `func` varchar(30) NOT NULL,
@@ -117,7 +117,7 @@ include "app_my_girl_template.php";
                 }
                 
                 //Create user country
-                $query_create_user=mysql_query("
+                $query_create_user=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_user_".$key_country."` (
                       `id_device` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
                       `name` varchar(20) NOT NULL,
@@ -138,7 +138,7 @@ include "app_my_girl_template.php";
                 }
                 
                 //Create lyrics country
-                $query_create_lyrics=mysql_query("
+                $query_create_lyrics=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_".$key_country."_lyrics` (
                       `id_music` varchar(20) NOT NULL,
                       `lyrics` text NOT NULL,
@@ -152,7 +152,7 @@ include "app_my_girl_template.php";
                 }
                 
                 //Create Field data chat
-                $query_create_field_chat=mysql_query("
+                $query_create_field_chat=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_field_".$key_country."` (
                       `id_chat` varchar(11) NOT NULL,
                       `type_chat` varchar(5) NOT NULL,
@@ -169,7 +169,7 @@ include "app_my_girl_template.php";
                 }
                 
                 //Create data music country
-                $query_create_data_music=mysql_query("
+                $query_create_data_music=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_music_data_".$key_country."` (
                       `device_id` varchar(50) NOT NULL,
                       `value` varchar(1) NOT NULL,
@@ -183,7 +183,7 @@ include "app_my_girl_template.php";
                 }
                 
                 //Create video ytb country
-                $query_create_video_ytb=mysql_query("
+                $query_create_video_ytb=mysqli_query($link,"
                     CREATE TABLE `app_my_girl_video_".$key_country."` (
                       `id_chat` varchar(11) NOT NULL,
                       `link` text NOT NULL

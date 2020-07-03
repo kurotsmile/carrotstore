@@ -445,10 +445,7 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                         ý trò chuyện của người dùng:<?php echo mysqli_num_rows($result_count_brain); ?></a>
                     <ul>
                         <li>
-                            <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1"
-                               target="_blank">Nam:<?php echo mysqli_num_rows($result_count_brain_sex_0); ?></a> <a
-                                    href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&criterion=1"
-                                    target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> (đúng chuẩn)</a>
+                            <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam:<?php echo mysqli_num_rows($result_count_brain_sex_0); ?></a> <a href="<?php echo $url; ?>/app_my_girl_brain.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&criterion=1" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> (đúng chuẩn)</a>
                         </li>
                         <?php if ($disable_girl == 0) { ?>
                             <?php if ($sel_version == '1') { ?>

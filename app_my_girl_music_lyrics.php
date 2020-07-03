@@ -4,11 +4,19 @@ $langsel = 'vi';
 $txt_search = '';
 $txt_msg_error = '';
 $limit = '100';
+$type_view='';
+$txt_query_info='';
 
 if (isset($_GET['lang'])) {
-    $langsel = $_GET['lang'];
+    $langsel =$_GET['lang'];
 }
 
+if(isset($_GET['type_view'])){
+    $type_view=$_GET['type_view'];
+    if($type_view=='1'){
+        $txt_query_info=" AND artist='' AND album='' AND  `year`='' AND `genre`='' ";
+    }
+}
 
 if (isset($_GET['delete'])) {
     $id_delete = $_GET['delete'];
@@ -16,13 +24,12 @@ if (isset($_GET['delete'])) {
     $txt_msg_error = 'Xóa thành công lời bái hát của bài nhạc có id:' . $id_delete;
 }
 
-
 if (isset($_POST['loc'])) {
     $langsel = $_POST['lang'];
     $txt_search = addslashes($_POST['txt_seacrh']);
 }
 
-$query_count_all = mysqli_query($link,"SELECT COUNT(`id_music`) FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC");
+$query_count_all = mysqli_query($link,"SELECT COUNT(`id_music`) FROM `app_my_girl_" . $langsel . "_lyrics` WHERE 1=1 $txt_query_info ORDER BY `id_music` DESC");
 $data_all_lyrics = mysqli_fetch_array($query_count_all);
 $total_records = $data_all_lyrics[0];
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -35,12 +42,12 @@ if ($current_page > $total_page) {
 $start = ($current_page - 1) * $limit;
 
 if ($txt_search == '') {
-    $result_lyrics = mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre` FROM `app_my_girl_" . $langsel . "_lyrics`  ORDER BY `id_music` DESC LIMIT $start, $limit ");
+    $result_lyrics = mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre` FROM `app_my_girl_" . $langsel . "_lyrics`  WHERE 1=1 $txt_query_info ORDER BY `id_music` DESC LIMIT $start, $limit ");
 } else {
-    $result_lyrics = mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre`  FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `lyrics` LIKE '%" . $txt_search . "%' LIMIT $start, $limit ");
+    $result_lyrics = mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l , `id_music`,`artist`,`album`,`year`,`genre`  FROM `app_my_girl_" . $langsel . "_lyrics` WHERE 1=1 $txt_query_info AND `lyrics` LIKE '%" . $txt_search . "%' LIMIT $start, $limit ");
 }
 ?>
-<form method="post" id="form_loc" style="width: 500px;">
+<form method="post" id="form_loc" style="width:auto;">
 
     <div style="display: inline-block;float: left;margin: 2px;width: 90px;">
         <label>Ngôn ngữ:</label>
@@ -60,8 +67,9 @@ if ($txt_search == '') {
         <input type="text" name="txt_seacrh" value="<?php echo $txt_search; ?>"/>
     </div>
 
-    <div style="display: inline-block;float: left;margin: 2px;">
+    <div style="display: inline-block;float: left;margin: 2px;width:auto;">
         <input type="submit" name="loc" value="Lọc" class="link_button"/>
+        
     </div>
 
 
@@ -69,8 +77,10 @@ if ($txt_search == '') {
 
 <div id="form_loc" style="font-size: 11px;">
     <div style="display: inline-block;float: left;margin: 2px;">
-        <i class="fa fa-audio-description" aria-hidden="true"></i> Hiển thị <?php echo mysqli_num_rows($result_lyrics); ?>
-        /<?php echo $total_records; ?> lời bài hát
+        <i class="fa fa-audio-description" aria-hidden="true"></i> Hiển thị <?php echo mysqli_num_rows($result_lyrics); ?> /<?php echo $total_records; ?> lời bài hát
+    </div>
+    <div style="display: inline-block;float: left;margin: 2px;">
+        <a href="<?php echo $url;?>/app_my_girl_music_lyrics.php?lang=<?php echo $langsel;?>&type_view=1" class="buttonPro small blue"><i class="fa fa-list-alt" aria-hidden="true"></i> Liệt kê các bài hát chưa có thông tin âm nhạc</a>
     </div>
 </div>
 <?php
@@ -84,7 +94,7 @@ if ($txt_search == '') {
             if ($i == $current_page) {
                 $colo_btn = 'black';
             }
-            echo '<a href="' . $url . '/app_my_girl_music_lyrics.php?lang=' . $langsel . '&page=' . $i . '" class="buttonPro ' . $colo_btn . ' small">' . $i . '</a>';
+            echo '<a href="' . $url . '/app_my_girl_music_lyrics.php?lang=' . $langsel . '&page=' . $i . '&type_view='.$type_view.'" class="buttonPro ' . $colo_btn . ' small">' . $i . '</a>';
         }
         ?>
     </div>
@@ -108,8 +118,16 @@ while ($row = mysqli_fetch_assoc($result_lyrics)) {
     } else {
         $is_ready = false;
     }
+	
+	$data_info_music=$row;
+	unset($data_info_music['l']);
+	$data_json=json_encode($data_info_music);
+	$data_json=str_replace("'","",$data_json);
+	$data_json=str_replace("-","",$data_json);
+	$data_json=str_replace("&","",$data_json);
+	
     ?>
-    <tr <?php if ($is_ready == false) {echo "style='background-color:pink;'";} ?> class="item_info_music_<?php echo $row['id_music']; ?>" data_info='<?php echo json_encode($row);?>'>
+    <tr <?php if ($is_ready == false) {echo "style='background-color:pink;'";} ?> class="item_info_music_<?php echo $row['id_music']; ?>" data_info='<?php echo $data_json;?>'>
         <td><a target="_blank"
                href="<?php echo $url; ?>/app_my_girl_update.php?id=<?php echo $row['id_music']; ?>&lang=<?php echo $langsel; ?>"><i class="fa fa-audio-description" aria-hidden="true"></i> <?php echo $row['id_music']; ?></a>
         </td>
@@ -142,8 +160,6 @@ mysqli_free_result($result_lyrics);
         var data_info=$(".item_info_music_"+id_music).attr('data_info');
         var obj_info=JSON.parse(data_info);
         var lang_info='<?php echo $langsel;?>';
-        alert(data_info);
-
         var html_edit_info='<form id="frm_update_info_music">';
         html_edit_info=html_edit_info+"<label style='float: left'>Artist</label>";
         html_edit_info=html_edit_info+"<input name='artist' style='display: block' value='"+obj_info.artist+"'/>";

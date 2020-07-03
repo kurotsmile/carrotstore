@@ -72,7 +72,7 @@ $txt_title=$data_music['chat'];
                     ?>
                     <script>
                     function open_edit(){
-                        window.open("<?php echo $url;?>/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
+                        window.open("<?php echo 'http://'.$name_host;?>/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
                     }
                     </script>
                     <br />

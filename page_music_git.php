@@ -23,7 +23,7 @@
         $url_video=$my_array_of_vars['v'];
         $url_img_thumb_ytb='https://img.youtube.com/vi/'.$my_array_of_vars['v'].'/hqdefault.jpg'; 
     }
-            
+
     $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
     if(file_exists($filename_img_avatar)){
         $url_img_thumb=$url.'/'.$filename_img_avatar;

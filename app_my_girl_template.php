@@ -523,7 +523,7 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
     <li <?php if ($cur_url == '/app_my_girl_chat.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_chat.php"><i class="fa fa-comments" aria-hidden="true"></i> Trò chuyện</a></li>
     <li <?php if ($cur_url == '/app_my_girl_effect.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_effect.php"><i class="fa fa-gratipay" aria-hidden="true"></i> Hiệu ứng</a></li>
     <li <?php if ($cur_url == '/app_my_girl_background.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_background.php"><i class="fa fa-university" aria-hidden="true"></i>Khung cảnh</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_ads.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_ads.php"><i class="fa fa-bandcamp" aria-hidden="true"></i> Quảng cáo</a></li>
+    <li <?php if ($cur_url == '/app_my_girl_ads.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_ads.php"><i class="fa fa-bandcamp syn app_my_girl_ads" aria-hidden="true" syn="app_my_girl_ads"></i> Quảng cáo</a></li>
     <li <?php if ($cur_url == '/app_my_girl_preson.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_preson.php"><i class="fa fa-heart"></i> Nhân vật</a>
         <ul class="sub_menu">
             <li><a href="<?php echo $url; ?>/app_my_girl_preson_category.php"><i class="fa fa-th-list" aria-hidden="true"></i> Quảng lý Chủ đề nhân vật</a></li>

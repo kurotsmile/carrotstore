@@ -15,6 +15,7 @@ $slug='';
 $apk_file='';
 $func='add';
 $type_view_img='0';
+$link_youtube='';
 
 $sel_tap_desc='en';
 $msg_alert='';
@@ -34,6 +35,7 @@ if(isset($_POST['type_product'])){
     $huawei_store=$_POST['huawei_store'];
 	$chrome_store=$_POST['chrome_store'];
     $carrot_store=$_POST['carrot_store'];
+    $link_youtube=$_POST['link_youtube'];
     $status_product=$_POST['status_product'];
     $type_view_img=$_POST['type_view_img'];
     $apk_file=$_POST['apk'];
@@ -41,11 +43,11 @@ if(isset($_POST['type_product'])){
     $slug=$_POST['slug_product'];
     
     if($func=='add'){
-        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`chrome_store`,`slug`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$chrome_store','$slug');");
-        $id_product=mysqli_insert_id();
+        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`chrome_store`,`link_youtube`,`slug`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$chrome_store','$link_youtube','$slug');");
+        $id_product=mysqli_insert_id($link);
         $func='edit';
     }else{
-        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' ,`chrome_store`='$chrome_store' WHERE `id` = '$id_product'");
+        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' ,`chrome_store`='$chrome_store',`link_youtube`='$link_youtube' WHERE `id` = '$id_product'");
     }
     
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
@@ -125,7 +127,8 @@ if($id_product!=''){
     $status_product=$data_product['status'];
     $type_view_img=$data_product['type_view_img'];
     $carrot_store=$data_product['carrot_store'];
-	$chrome_store=$data_product['chrome_store'];
+    $chrome_store=$data_product['chrome_store'];
+    $link_youtube=$data_product['link_youtube'];
     $apk_file=$data_product['apk'];
     $slug=$data_product['slug'];
     if(file_exists($path_folder_product.'/'.$id_product.'/icon.jpg')){
@@ -335,6 +338,13 @@ if($msg_alert!=''){
         <td>Liên kết Carrot store </td>
         <td>
             <input type="text" name="carrot_store" value="<?php echo $carrot_store;?>"  style="width:100%" />
+        </td>
+    </tr>
+
+    <tr>
+        <td>Liên kết Youtube</td>
+        <td>
+            <input type="text" name="link_youtube" value="<?php echo $link_youtube;?>"  style="width:100%" />
         </td>
     </tr>
     

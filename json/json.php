@@ -1,4 +1,8 @@
 <?php
+$function='';
+if(isset($_POST['function'])) $function=$_POST['function'];
+if(isset($_GET['function'])) $function=$_GET['function'];
+
 if($_GET||$_POST){
 
     if(isset($_GET['function'])&&$_GET['function']=='search_product'){
@@ -133,23 +137,34 @@ if($_GET||$_POST){
         exit; 
     }
     
-    if(isset($_GET['function'])&&$_GET['function']=='load_music'){
-        $arr_id=json_decode($_GET['json']);
+    if($function=='load_music'){
+
+        $arr_id=json_decode($_POST['json']);
         $lang_sel='vi';
+        $type=$_POST['type'];
         if(isset($_SESSION['lang'])){
             $lang_sel=$_SESSION['lang'];
         }
-        if(count($arr_id)<intval($_GET['lenguser'])){
-            $list_style='list';
-            $label_choi_nhac=lang($link,'choi_nhac');
-            $label_chi_tiet=lang($link,'chi_tiet');
-            $label_loi_bai_hat=lang($link,'loi_bai_hat');
-            $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
-            $label_music_no_rank=lang($link,'music_no_rank');
-            
-            $result = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20");
-            while ($row = mysqli_fetch_assoc($result)) {
-               include "page_music_git.php";
+        if(count($arr_id)<intval($_POST['lenguser'])){
+            if($type=='all'){
+                $list_style='list';
+                $label_choi_nhac=lang($link,'choi_nhac');
+                $label_chi_tiet=lang($link,'chi_tiet');
+                $label_loi_bai_hat=lang($link,'loi_bai_hat');
+                $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
+                $label_music_no_rank=lang($link,'music_no_rank');
+                
+                $result = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20");
+                while ($row = mysqli_fetch_assoc($result)) {
+                include "page_music_git.php";
+                }
+            }
+
+            if($type=='artist'){
+                $query_artis=mysqli_query($link,"SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''  ORDER BY RAND() LIMIT 60");
+                while ($row = mysqli_fetch_assoc($query_artis)) {
+                    include "page_music_artist_git.php";
+                }
             }
         }
         exit; 

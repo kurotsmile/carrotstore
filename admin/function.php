@@ -21,8 +21,9 @@ function alert($msg,$type='alert'){
 
 
 function btn_add_work($id_object,$lang,$type,$action){
+	global $url_work;
     $txt_html='';
-    $txt_html.='<a  target="_blank" class="buttonPro blue" href="http://work.carrotstore.com/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn làm việc</a>';
+    $txt_html.='<a  target="_blank" class="buttonPro blue" href="'.$url_work.'/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-desktop" aria-hidden="true"></i> Thêm vào bàn làm việc</a>';
     return $txt_html;
 }
 
