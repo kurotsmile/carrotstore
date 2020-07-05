@@ -439,7 +439,7 @@ audio{
     border: solid 2px #dadada;
 }
 
-.box_tool i{
+.box_tool .fa{
     font-size: 35px;float: left;margin: 5px;
 }
 

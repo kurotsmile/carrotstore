@@ -63,9 +63,15 @@ function restart_music(){
 var myJsonString='';
 var arr_id_music=[];
 <?php
-    $query_count_music=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_vi` WHERE `effect` = '2'");
+    if($sub_view=='artist'){
+        $query_count_music=mysqli_query($link,"SELECT COUNT(DISTINCT `artist`) as c FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
+    }else{
+        $query_count_music=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_vi` WHERE `effect` = '2'");
+    }
     $data_count_music=mysqli_fetch_assoc($query_count_music);
     $count_p=$data_count_music['c'];
+
+if($sub_view=='all'||$sub_view=='artist'||$sub_view=='0'||$sub_view=='1'||$sub_view=='2'||$sub_view=='3'){
 ?>
 var count_p=<?php echo $count_p; ?>;
 $(window).scroll(function() {
@@ -89,6 +95,9 @@ $(window).scroll(function() {
                 });
    }
 });
+<?php
+}
+?>
 
 function play_video(id_video){
     $(".menu_app").removeClass('music_color');

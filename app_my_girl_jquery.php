@@ -982,7 +982,7 @@ if ($func == 'get_chat_by_audio_url') {
     if(isset($_GET['extrac'])){
         $extrac=$_GET['extrac'];
     }
-    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active` = '1' ORDER BY `id`");
     while($row_lang=mysqli_fetch_array($query_list_lang)) {
         $lang=$row_lang['key'];
         $query_check_chat = mysqli_query($link,"SELECT `id`,`chat` FROM `app_my_girl_".$lang."` WHERE `file_url` LIKE '%$name_file%' AND `file_url` != '' LIMIT 1");

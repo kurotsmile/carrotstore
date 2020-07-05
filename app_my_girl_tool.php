@@ -207,9 +207,9 @@ include "app_my_girl_template.php";
 
         <a href="<?php echo $url;?>/app_my_girl_handling.php?func=remove_key_music">
             <li class="box_tool">
-                <i class="fa fa-music" aria-hidden="true"></i>
+                <i class="fa fa-music" syn="app_my_girl_remove_key_music" aria-hidden="true"><span class="syn app_my_girl_remove_key_music" syn="app_my_girl_remove_key_music"></span></i>
                 <b>Thêm các từ khóa âm nhạc đã duyệt</b><br />
-                Công cụ để biên tập viên đánh dấu từ khóa âm nhạc đã duyện, để tránh thêm các bài hát đã có
+                Công cụ để biên tập viên đánh dấu từ khóa âm nhạc đã duyệt, để tránh thêm các bài hát đã có
             </li>
         </a>
 

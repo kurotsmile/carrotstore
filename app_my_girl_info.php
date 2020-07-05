@@ -203,53 +203,6 @@ if ($char_view_type == '2') {
                     }
                 });
             }
-
-    function  check_data_syn() {
-        $(".tag_data_syn").remove();
-        var arr_syn=[];
-        $(".syn").each(function () {
-            var data_syn=$(this).attr("syn");
-            arr_syn.push(data_syn);
-        });
-
-        $.ajax({
-            url: "<?php echo $url;?>/app_my_girl_jquery.php",
-            type: "post",
-            data: {function:'count_data_syn',table:JSON.stringify(arr_syn)},
-            success: function (data, textStatus, jqXHR) {
-                var arr_item=JSON.parse(data);
-                for (var i=0;i<arr_item.length;i++){
-                    $('.syn.'+arr_item[i].key_table).attr("syn-count",arr_item[i].count_table);
-                }
-
-                $.ajax({
-                    url: "<?php echo $url_syn;?>/app_my_girl_jquery.php",
-                    type: "post",
-                    data: {function:'check_data_syn',table:JSON.stringify(arr_syn)},
-                    success: function (data, textStatus, jqXHR) {
-                        var arr_item=JSON.parse(data);
-                        for (var i=0;i<arr_item.length;i++){
-                            var count_data=$('.syn.'+arr_item[i].key_table).attr("syn-count");
-                            if(count_data==arr_item[i].count_table) {
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;" ><i class="fa fa-check-circle" aria-hidden="true"></i></span>');
-                            }else if(count_data>arr_item[i].count_table) {
-                                var s_count=count_data-parseInt(arr_item[i].count_table);
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;">-'+s_count+'</span>');
-                            }else{
-                                var s_count=parseInt(arr_item[i].count_table)-parseInt(count_data);
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;"> +' +s_count + '</span>');
-                            }
-                        }
-                    }
-                });
-            }
-        });
-    }
-
-    function backup_mysql_table(s_table){
-        var url_backup="<?php echo $url_syn;?>/adminer.php?username=carrotsy_carrot&db=carrotsy_virtuallover&dump="+s_table;
-        window.open(url_backup,'_blank');
-    }
 </script>
 
 
