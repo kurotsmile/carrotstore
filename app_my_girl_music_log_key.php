@@ -89,7 +89,18 @@ if(mysqli_num_rows($result_tip)>0){
                 <tr>
                     <td><?php echo $row[0]; ?></td>
                     <td><?php echo $row[1]; ?></td>
-                    <td><?php if($row[2]=='0'){?><i class="fa fa-map-marker" aria-hidden="true"></i> Khu vực<?php }else{?><i class="fa fa-globe" aria-hidden="true"></i> Thế giới<?php }?></td>
+                    <td>
+                        <?php 
+                            if($row[2]=='0'){?>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> Khu vực
+                            <?php 
+                            }elseif($row[2]=='2'){?>
+                            <i class="fa fa-empire" aria-hidden="true"></i> Từ web
+                            <?php }
+                            else{?><i class="fa fa-globe" aria-hidden="true"></i> Thế giới
+                            <?php }?>
+                        
+                    </td>
                     <td>
                         <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $row[1]; ?>&sex=0&character_sex=1&effect=2&answer=<?php echo $row[0];?>&actions=9" target="_blank" class="buttonPro small green"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm nhạc</a>
                         <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $row[1]; ?>&delete_key=<?php echo urlencode($row[0]);?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa từ khóa (Đã thêm)</a>

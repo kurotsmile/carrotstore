@@ -38,6 +38,7 @@ if($_GET||$_POST){
         
         if($type=='music'){
             $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+            $query_add_log=mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music` (`key`, `lang`, `type`) VALUES ('$key', '$lang', '2');");
             $txt_query='';
             $txt_query_2='';
             $count_l=mysqli_num_rows($list_country);
@@ -54,10 +55,13 @@ if($_GET||$_POST){
             }
             
             $query_list_music=mysqli_query($link,$txt_query);
-            if(mysqli_num_rows($query_list_music)==0){
-                $query_list_music=mysqli_query($link,$txt_query_2);
+            if($query_list_music){
+                if(mysqli_num_rows($query_list_music)==0){
+                    $query_list_music=
+                    mysqli_query($link,$txt_query_2);
+                }
             }
-			$sub_view='all';
+            $sub_view='all';
             include "page_music_list.php";
         }
         
