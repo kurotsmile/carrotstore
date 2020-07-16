@@ -185,53 +185,76 @@ if($pay_device!=''&&$pay_item!=''){
             <?php if($pay_status!='1'){?>
             <b style="color: #e27f00;">$0.99</b><br/>
             <?php }?>
-			<?php
-            if($pay_status!=''){
-                if($pay_status=='0'){
-                   echo lang($link,'pay_tip_buy_now');
+            <div id="pay_container">
+                <?php
+                if($pay_status!=''){
+                    if($pay_status=='0'){
+                    echo lang($link,'pay_method').'<br/>';
+                    }
+                    
+                    if($pay_status=='1'){
+                        echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
+                    }
+                    
+                    if($pay_status=='2'){
+                        echo '<strong style="color:#de0a0a"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'pay_fail').'</strong>';
+                    }
+                    
                 }
-                
-                if($pay_status=='1'){
-                    echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
-                }
-                
-                if($pay_status=='2'){
-                    echo '<strong style="color:#de0a0a"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'pay_fail').'</strong>';
-                }
-                
-            }
-            ?>
-            <br />
-			<?php if($pay_status!='1'){?>
-            <form id="frm_pay" style="width: 100%;float: left;"  action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="KHJJKPUQ7YVEJ">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form>
-            <?php
-            }else{
-
                 ?>
-				<script>
-				function showlikepage(){
-					swal({
-						title: "<?php echo lang($link,'download_song');?>",
-						text: "<iframe src='http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/virtuallover&width=292&colorscheme=light&show_faces=false&stream=false&header=false&height=80' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:100%; height:62px;float:left;;margin-bottom:20px;margin-left: 91px;' allowTransparency='true'></iframe> <?php echo lang($link,'tai_thanh_cong_tip'); ?>",
-						type: "success",
-						html:true
-					});
-				}
-				</script>
-				<a style="width: 100%;" href="<?php echo $url;?>/download.php?id=<?php echo $pay_id_music;?>&lang=<?php echo $lang_sel; ?>" onclick="showlikepage();" id="download_song" >
-					<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-					<span><?php echo lang($link,'download_song');?></span>
-				</a>
-            <?php }?>
+                <br />
+                <?php
+                if($pay_status=='1'){
+                ?>
+                    <a style="width: 100%;" href="<?php echo $url;?>/download.php?id=<?php echo $pay_id_music;?>&lang=<?php echo $lang_sel; ?>" id="download_song" >
+                        <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
+                        <span><?php echo lang($link,'download_song');?></span>
+                    </a>
+                <?php }?>
+                <div id="paypal-button-container"></div>
+            </div>
+            <script>
+                var PAYPAL_CLIENT = 'AYgLieFpLUDxi_LBdzDqT2ucT4MIa-O0vwX7w3CKGfQgMGROOHu-xz2y5Jes77owCYQ1eLmOII_ch2VZ';
+                var PAYPAL_SECRET = 'ELkToqss_tBZdsHFOHfMFiyu23mNr9HDu1X--jqaZWCbS3xr_xg4hlCBHvV8GcyD15HIPgcwFi9BgqMp';
+                var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+            </script>
+            <script src="https://www.paypal.com/sdk/js?client-id=AYgLieFpLUDxi_LBdzDqT2ucT4MIa-O0vwX7w3CKGfQgMGROOHu-xz2y5Jes77owCYQ1eLmOII_ch2VZ"></script>
+            <script>
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                        amount: {
+                            currency_code:'USD',
+                            value: '0.99',
+                            breakdown: {
+                                item_total: {value: '0.99', currency_code: 'USD'}
+                            }
+                        }
+                        }]
+                    });
+                    },
+                    onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        pay_success(details.payer.name.given_name,details.payer.email_address);
+                    });
+                    }
+                }).render('#paypal-button-container');
+
+                function pay_success(pay_name,pay_mail){
+                    $.ajax({
+                        url: "<?php echo $url;?>/index.php",
+                        type: "post",
+                        data: "function=order_music&id_music=<?php echo $pay_id_music;?>&lang_music=<?php echo $lang_sel; ?>&pay_name="+pay_name+"&pay_mail="+pay_mail,
+                        success: function (data, textStatus, jqXHR) {
+                            $("#pay_container").html(data);
+                        }
+                    });
+                }
+            </script>
 		</div>
 	</div>
-	<?php }?>		
-    <div style="width: 100%;float: left;">
-       <!-- <a class="buttonPro small" href="<?php echo $url?>/?page_view=page_pay.php&cancel_pay=1">Hủy bỏ</a>!-->
-    </div>
+	<?php }?>
+
+    <div style="width: 100%;float: left;">&nbsp</div>
 </div>

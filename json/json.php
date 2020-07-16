@@ -75,9 +75,7 @@ if($_GET||$_POST){
         }
         exit; 
     }
-    
 
-    
     if(isset($_GET['function'])&&$_GET['function']=='search_member'){
         $key=$_GET['key'];
         $lang_sel='vi';
@@ -547,6 +545,21 @@ if($_GET||$_POST){
         $html_show.="</div>";
         $html_show.="<div>";
         echo data_json_tip($html_show,1);
+        exit;
+    }
+
+    if($function=='order_music'){
+        $id_music=$_POST['id_music'];
+        $lang_music=$_POST['lang_music'];
+        $pay_name=$_POST['pay_name'];
+        $pay_mail=$_POST['pay_mail'];
+        $id_order=uniqid().''.uniqid();
+        $query_add=mysqli_query($link,"INSERT INTO `order` (`id_order`,`id`, `lang`, `pay_mail`, `pay_name`, `type`) VALUES ('$id_order','$id_music', '$lang_music', '$pay_mail', '$pay_name', 'music');");
+        echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
+        echo '<a style="width: 100%;" href="'.$url.'/download.php?id='.$id_music.'&lang='.$lang_music.'" id="download_song" >';
+        echo '<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
+        echo '<span>'.lang($link,'download_song').'</span>';
+        echo '</a>';
         exit;
     }
 }

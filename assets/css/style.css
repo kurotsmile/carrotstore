@@ -837,8 +837,8 @@ background-position: right center;
 
 #go_top{
     position: fixed;
-    bottom: 10px;
-    right: 15px;
+    bottom: 94px;
+    right: 26px;
 	backdrop-filter: saturate(28%) blur(10px);background-color: #3fc73dab;
     padding: 10px;
     -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);

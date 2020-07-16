@@ -6,8 +6,8 @@
         <th >Hành động</th>
     </tr>
     <?php
-    $result = mysql_query("SELECT * FROM `product_category` ORDER BY `id`",$link);
-    while ($row = mysql_fetch_array($result)) {
+    $result = mysqli_query($link,"SELECT * FROM `product_category` ORDER BY `id`");
+    while ($row = mysqli_fetch_array($result)) {
         ?>
         <tr id="row<?php echo $row[0]; ?>">
             <td><span class="<?php echo $row[3]; ?> fa-3x"> </span></td>

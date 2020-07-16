@@ -6,8 +6,8 @@
         <th >Hành động</th>
     </tr>
     <?php
-    $result = mysql_query("SELECT * FROM `type` ORDER BY `position`",$link);
-    while ($row = mysql_fetch_array($result)) {
+    $result = mysqli_query($link,"SELECT * FROM `type` ORDER BY `position`");
+    while ($row = mysqli_fetch_array($result)) {
         ?>
         <tr id="listItem_<?php echo $row['id_order'];?>">
             <td><span class="<?php echo $row[1]; ?> fa-3x"> </span></td>

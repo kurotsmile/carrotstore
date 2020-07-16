@@ -110,6 +110,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     <a href="<?php echo $url_admin;?>/?page_view=page_login_manager" <?php if($page_file=='page_login_manager'){ echo 'class="active"';} ?>>Quản lý đăng nhập</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_trash" <?php if($page_file=='page_trash'){ echo 'class="active"';} ?>>Dọn rác</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_setting" <?php if($page_file=='page_setting'){ echo 'class="active"';} ?>>Cài đặt</a>
+    <a href="<?php echo $url_admin;?>/?page_view=page_order" <?php if($page_file=='page_order'){ echo 'class="active"';} ?>>Đơn đặt hàng</a>
 
         <form  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
             <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />

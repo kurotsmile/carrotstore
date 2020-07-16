@@ -86,11 +86,12 @@ if(isset($_GET['lang'])){
     <script src="http://carrotstore.com/js/jquery.js"></script>
 </head>
 <body>
-<form method="post" action="https://speech.openfpt.vn/speech" id="frm">
+<form method="post" action="https://demo-backend.openfpt.vn/hmi/tts" id="frm">
     <input name="text" value="<?php echo $text;?>" type="text">
     <input name="gender" value="leminh" type="hidden">
     <input name="voice-type" value="new" type="hidden">
     <input name="speed" value="0" type="hidden" >
+	<input name="token" value="03AGdBq27TkQ5hYlGdfh_Ng5b0nJs7EBMIAR_8Qlje4xAdqpINM2NBCM9-yHCZvRETJ_Vc66e5QTobMUfPIABecOSSbsg1OOk_yLg5w-BzOrUWDRVM7tk9y4EP1Qr2nPWBpOZ2w0BCLDH-BXKo11iZbROALIoJANKRh3u7pRlqDek5aDfU-rOS7cL20mvOfgHpYirJDGxGuObpcl2r8Rg-Lo26MyzTitW6sjRv8D6Jef96UjDuvkx4fyowzvKo8I8oRyWRoGX6ey7tyOzWz9CZLTrKsnKJbT_o-soPDSW7s3CW6xEV6c5u5EMD6UoGY36YJb9pjt0p7eoc4w2nnYwfC5TQJV9YLiUqXO2-aTmPZYMcbQ9HKGUzt6-BK6GY4Rn0PexCQKNOBlX60ETki35WcIW53ekWYGlWwpIyyZperrFYYac2E8aZbgc6Ia4CooNKWnzgSvWnxNst" type="text" >
     <input type="submit">
 </form>
 <button onclick="get_voice();return false;">Lấy giọng</button>

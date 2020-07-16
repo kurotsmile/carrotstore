@@ -601,7 +601,6 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
     }
 
     function copy_tag(name_tag) {
-        ;
         var $temp = $("<input>");
         $("body").append($temp);
         $temp.val($("#" + name_tag).val()).select();
@@ -610,7 +609,6 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
     }
 
     function paste_tag(name_tag) {
-        ;
         navigator.clipboard.readText().then(text => {
             document.querySelector('#out').value = text;
             ChromeSamples.log('Text pasted.');
