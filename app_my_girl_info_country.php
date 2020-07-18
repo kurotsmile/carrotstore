@@ -1,8 +1,9 @@
-
 <?php
 include "app_my_girl_template.php";
 $langsel=$_GET['lang'];
 $timezone='';
+$date='';
+
 $list_log=mysqli_query($link,"SELECT `data`,`dates` FROM `app_my_girl_log_data` ");
 
 $char_category=array();
@@ -16,15 +17,14 @@ while($row_log=mysqli_fetch_array($list_log)){
         }
     }
 }
+
 $list_log_android=mysqli_query($link,"SELECT COUNT(`id_device`) FROM `app_my_girl_key` WHERE `lang` = '$langsel' AND `os` = 'android' ");
 $data_log_android=mysqli_fetch_array($list_log_android);
 $list_log_ios=mysqli_query($link,"SELECT COUNT(`id_device`) FROM `app_my_girl_key` WHERE `lang` = '$langsel' AND `os` = 'ios' ");
 $data_log_ios=mysqli_fetch_array($list_log_ios);
 ?>
-
 <script src="<?php echo $url;?>/js/Chart.min.js"></script>
 <h2><img src="<?php echo  thumb('/app_mygirl/img/'.$langsel.'.png','50');?>" style="width: 20px;margin-right: 2px;float: left;" /> (<?php echo  $langsel;?>) <?php echo show_name_country_by_key($link,$langsel); ?></h2><br />
-
 <?php
 if(isset($_GET['func'])){
     $func=$_GET['func'];
@@ -41,6 +41,7 @@ if(isset($_GET['func'])){
     }
 }
 ?>
+
 <div style="width: 100%;float:left;background-color: none !important;" id="menu_child_home">
     <a href="#"><i class="fa fa-android" aria-hidden="true"></i> Thiết bị Android đang hoặt động <strong><?php echo $data_log_android[0]; ?></strong></a>
     <a href="#"><i class="fa fa-apple" aria-hidden="true"></i> Thiết bị Ios đang hoặt động <strong><?php echo $data_log_ios[0]; ?></strong></a>
@@ -83,16 +84,21 @@ function _date($format="r", $timestamp=false, $timezone=false)
 $house=_date('H', false,$timezone);
 $house=intval($house);
 
+if(isset($_GET['house_sel'])){
+    $house=intval($_GET['house_sel']);
+}
+
 $date = date('Y/m/d', time());
 
-if(isset($_POST['date_sel'])){
-      $date=$_POST['date_sel'];
+if(isset($_GET['date_sel'])){
+      $date=$_GET['date_sel'];
 }
 $date_in_month=date('d', strtotime($date));
 $weekday = date('l', strtotime($date));
 $month=date('m', strtotime($date));
 ?>
-<form id="frm_seach" action="<?php echo $url; ?>/app_my_girl_info_country.php?lang=<?php echo $langsel;  ?>" method="post" >
+<form id="frm_seach" action="<?php echo $url; ?>/app_my_girl_info_country.php" method="get" >
+    <input type="hidden" name="lang" value="<?php echo $langsel;  ?>">
     <div class="col">
     <label style="float: left;"><i class="fa fa-calendar" aria-hidden="true"></i> Ngày Xem</label>
     </div>
@@ -160,10 +166,10 @@ mysqli_free_result($query_msg_current);
   $(document).ready(function(){
     $("#datepicker").datepicker();
     $("#datepicker").datepicker("option", "dateFormat","yy-mm-dd");
-    $("#datepicker").val("<?php echo $sel_date;?>");
+    $("#datepicker").val("<?php echo $date;?>");
   });
   </script>
-<h2><i class="fa fa-clock-o" aria-hidden="true"></i> Sự kiện theo giờ <?php echo _date('H:i:s', false,'Asia/Ho_Chi_Minh');?> <a target="_blank" href="<?php echo $url;?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1&func=chao_<?php echo $house; ?>"><img src="<?php echo $url;?>/app_mygirl/img/0.png" /></a> <a target="_blank" href="<?php echo $url;?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1&func=chao_<?php echo $house; ?>&sex=1&character_sex=0"><img src="<?php echo $url;?>/app_mygirl/img/1.png" /></a></h2> 
+<h2><i class="fa fa-clock-o" aria-hidden="true"></i> Sự kiện theo giờ <?php echo $house;?> <a target="_blank" href="<?php echo $url;?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1&func=chao_<?php echo $house; ?>"><img src="<?php echo $url;?>/app_mygirl/img/0.png" /></a> <a target="_blank" href="<?php echo $url;?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1&func=chao_<?php echo $house; ?>&sex=1&character_sex=0"><img src="<?php echo $url;?>/app_mygirl/img/1.png" /></a></h2> 
 <?php
 $list_msg_event=mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$langsel` WHERE `func` = 'chao_$house'");
 echo '<table  style="border:solid 1px green">';

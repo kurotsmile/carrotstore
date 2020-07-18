@@ -212,19 +212,13 @@ if ($char_view_type == '2') {
         <div class="col">
 
             <?php if ($char_view_type == '1') { ?>
-                <a href="<?php echo $url; ?>/vl?char_view_type=0" class="buttonPro small yellow"><i
-                            class="fa fa-line-chart"></i> Hôm nay</a>
+                <a href="<?php echo $url; ?>/vl?char_view_type=0" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Hôm nay</a>
             <?php } else { ?>
-                <a href="<?php echo $url; ?>/vl?char_view_type=2" class="buttonPro small yellow"><i
-                            class="fa fa-line-chart"></i> Tổng </a>
+                <a href="<?php echo $url; ?>/vl?char_view_type=2" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Tổng </a>
             <?php } ?>
-            <button onclick="show_all_data_os()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Nền tản
-            </button>
-            <button onclick="show_all_data_ver()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Phiên
-                bản
-            </button>
-            <button onclick="show_data_month()" class="buttonPro small yellow"><i class="fa fa-bar-chart"></i> Tháng
-            </button>
+            <button onclick="show_all_data_os()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Nền tản</button>
+            <button onclick="show_all_data_ver()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Phiên bản</button>
+            <button onclick="show_data_month()" class="buttonPro small yellow"><i class="fa fa-bar-chart"></i> Tháng</button>
 
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_brain" class="buttonPro small red"><i class="fa fa-trash"></i> dạy</a>
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_report" class="buttonPro small red"><i class="fa fa-trash"></i> báo lỗi</a>
@@ -291,11 +285,10 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
     ?>
     <div class="box_lang">
         <div class="title">
-            <a target="_blank" href="<?php echo $url; ?>/app_my_girl_info_country.php?lang=<?php echo $langsel; ?>"><img
-                        class="icon" src="<?php echo thumb('app_mygirl/img/' . $langsel . '.png', '60'); ?>"/></a>
+            <a target="_blank" href="<?php echo $url; ?>/app_my_girl_info_country.php?lang=<?php echo $langsel; ?>"><img class="icon" src="<?php echo thumb('app_mygirl/img/' . $langsel . '.png', '60'); ?>"/></a>
             <strong><?php echo $name_country; ?></strong><br/>
             Từ khóa ngôn ngữ:<?php echo $langsel; ?><br/>
-            <i class="fa fa-clock-o" aria-hidden="true"></i> Múi giờ:<?php  echo $date->format('H:i:s d/m/Y'); ?><br/>
+            <a href="<?php echo $url; ?>/app_my_girl_info_country.php?lang=<?php echo $langsel; ?>&date_sel=<?php  echo $date->format('Y-m-d'); ?>&house_sel=<?php  echo $date->format('H'); ?>"><i class="fa fa-clock-o" aria-hidden="true"></i> Múi giờ:<?php  echo $date->format('H:i:s d/m/Y'); ?></a><br/>
             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>" title="Thêm trò chuyện" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Chat</a>
             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1" title="Thêm câu thoại" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-circle"></i> Msg</a>
             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=2&actions=9" title="Thêm bài hát" class="buttonPro small blue" target="_blank"><i class="fa fa-plus"></i> Music</a>
