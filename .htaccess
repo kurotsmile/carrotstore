@@ -37,11 +37,7 @@ RewriteRule    ^privacy_policy    index.php?page_view=page_privacy_policy.php   
 RewriteRule    ^copyright    index.php?page_view=page_privacy_policy.php   [NC,L]
 RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&view=info_quote&id=$1&lang=$2
 RewriteRule    ^quote    index.php?page_view=page_quote.php   [NC,L]
-RewriteRule    ^links/([^/]*)/?$  index.php?page_view=page_shortened_link_manager.php&id_user=$1   
-RewriteRule    ^links    index.php?page_view=page_shortened_link_manager.php  
-RewriteRule    ^link/([^/]*)/?$  page_shortened_link_show.php?id_link=$1    [NC,L]
-RewriteRule    ^link    index.php?page_view=page_shortened_link.php   [NC,L]
-RewriteRule    ^l/([^/]*)/?$   index.php?page_view=page_shortened_link_detail.php&id=$1  [NC,L]
+
 RewriteRule    ^oauth oauth.php
 RewriteRule    ^remove_block_ads index.php?page_view=page_remove_block_ads.php  [NC,L]
 

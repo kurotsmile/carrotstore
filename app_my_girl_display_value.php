@@ -11,6 +11,17 @@ if(isset($_GET['lang'])){
     if(isset($_GET['key'])) $edit_key_sel=$_GET['key'];
 }
 
+	$url_cur=$url.'/app_my_girl_display_value.php';
+	
+	if(isset($_GET['lang_to'])){
+		$lang_key_to=$_GET['lang_to'];
+		$lang_2=$_GET['lang_to'];
+	}else{
+		$lang_key_to=$lang_2;
+	}
+
+	$query_list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country`");
+
 
 if($edit_lang==''){
     echo '<p><h3>Ngôn ngữ ở ứng dụng</h3><i>Đây là trang quản lý dữ liệu ngôn ngữ hiển thị ở giao diện ứng dụng</i></p>';
@@ -85,6 +96,7 @@ if(isset($_POST['key'])){
         $query_update_data=mysqli_query($link,"UPDATE `app_my_girl_display_lang` SET `data` = '$data' WHERE `lang` = '$key'  AND `version` = '$ver' LIMIT 1;");
         if($query_update_data===true){
             echo 'Cập nhật dữ liệu giao diện thành công!';
+			echo btn_add_work($ver,$edit_lang,'lang_vl','edit');
         }else{
             echo 'Cập nhật dữ liệu giao diện thất bại!';
         }
@@ -92,6 +104,7 @@ if(isset($_POST['key'])){
         $query_add_data=mysqli_query($link,"INSERT INTO `app_my_girl_display_lang` (`lang`, `data`, `version`) VALUES ('$key', '$data', '$ver');");
         if($query_add_data===true){
             echo 'Thêm dữ liệu giao diện thành công!';
+			echo btn_add_work($ver,$edit_lang,'lang_vl','add');
         }else{
             echo 'Thêm dữ liệu giao diện thất bại!';
         }
@@ -116,7 +129,7 @@ if(isset($_POST['key'])){
             <td><input id="inp_<?php echo $row['key'];?>" name="<?php echo $row['key'];?>" value="<?php if(isset($data_display[$row['key']])){ echo $data_display[$row['key']];}?>" /></td>
             <td>
                 <span class="buttonPro small" onclick="paste_tag('inp_<?php echo $row['key'];?>');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
-                <span class="buttonPro small" onclick="translation_tag('inp_<?php echo $row['key'];?>','<?php echo $edit_lang;?>','<?php echo $lang_2;?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch thuật</span>
+                <span class="buttonPro small" onclick="$(this).css('color','red');translation_tag('inp_<?php echo $row['key'];?>','<?php echo $edit_lang;?>','<?php echo $lang_2;?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch thuật (<?php echo $lang_2;?>)</span>
             </td>
         </tr>
     <?php 
@@ -130,3 +143,21 @@ if(isset($_POST['key'])){
 <?php
 }
 ?>
+
+<div class="box_form">
+<label>Chọn ngôn ngữ dịch sang</label>
+<select name="lang_to" onchange="change_lang_to(this);return false;">
+    <?php
+    while($row_lang=mysqli_fetch_array($query_list_country)){
+    ?>
+    <option value="<?php echo $row_lang['key']; ?>" <?php if($row_lang['key']==$lang_key_to){?>selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
+    <?php 
+    }
+    ?>
+</select>
+<script>
+function change_lang_to(emp){
+    var val_lang=$(emp).val();
+    window.location="<?php echo $url_cur;?>?lang=<?php echo $edit_lang;?>&ver=<?php echo $ver;?>&lang_to="+val_lang;
+}
+</script>

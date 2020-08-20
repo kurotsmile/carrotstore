@@ -174,7 +174,6 @@ if (isset($_POST['chat'])) {
         $data_field = json_encode($arr_data_field_chat, JSON_UNESCAPED_UNICODE);
         $author = "unclear";
         $query_add_field = mysqli_query($link, "INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`) VALUES ('$id_new', '$type_chat', '$data_field', 'field_chat', '$author');");
-        mysqli_free_result($query_add_field);
     }
 
     if (mysqli_error($link) == '') {
@@ -696,17 +695,11 @@ if (isset($_POST['chat'])) {
                 <td>Bản lựa chọn</td>
                 <td id="box_select_content">&nbsp;</td>
                 <td>
-                    <button class="buttonPro green small" onclick="add_field_chat('');return false;">Thêm trường tùy
-                        chỉnh
-                    </button>
-                    <button class="buttonPro green small" onclick="add_field_chat('show_chat');return false;">Hiện trò
-                        chuyện
-                    </button>
-                    <button class="buttonPro green small" onclick="add_field_chat('inp_chat');return false;">Nhập trò
-                        chuyện
-                    </button>
-                    <button class="buttonPro green small" onclick="add_field_chat('link');return false;">Liên kết
-                    </button>
+                    <button class="buttonPro green small" onclick="add_field_chat('');return false;">Thêm trường tùy chỉnh</button>
+                    <button class="buttonPro green small" onclick="add_field_chat('show_chat');return false;">Hiện trò chuyện</button>
+                    <button class="buttonPro green small" onclick="add_field_chat('inp_chat');return false;">Nhập trò chuyện</button>
+                    <button class="buttonPro green small" onclick="add_field_chat('link');return false;">Liên kết</button>
+                    <button class="buttonPro blue small" onclick="add_field_chat('facebook');return false;"><i class="fa fa-facebook-square" aria-hidden="true"></i></button>
                 </td>
             </tr>
 

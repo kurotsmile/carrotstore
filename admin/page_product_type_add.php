@@ -13,40 +13,7 @@
         </p>
         
         <p>
-            <button class="buttonPro purple" onclick="add_type(this);return false;">Thêm</button>
+            <button class="buttonPro purple" onclick="">Thêm</button>
         </p>
     </form>
 </div>
-
-<script>
-function add_type(emp){
-    if($('#id_type').val()==''){
-        swal('<?php echo lang($link,'loi');?>','Id không được để trống','error');
-        return false;
-    }
-    
-    
-    if($('#icon_type').val()=='' ){
-        swal('<?php echo lang($link,'loi');?>','icon không được để trống','error');
-        return false;
-    }
-    
-    var txt_data=$("#form_add_product").serialize();
-    $('#loading').fadeIn(200);
-    $.ajax({
-        url: "<?php echo $url;?>/index.php",
-        type: "get", //kiểu dũ liệu truyền đi
-        data: "function=add_type&"+txt_data, //tham số truyền vào
-        success: function(data, textStatus, jqXHR)
-        {
-                swal('<?php echo lang($link,'thanh_cong'); ?>','Thêm loại cho sản phẩm thành công','success');
-                $('#loading').fadeOut(200);
-                $('#icons').val('');
-                $('#names').val('');
-            
-        }
-    
-    });
-    return false;
-}
-</script>

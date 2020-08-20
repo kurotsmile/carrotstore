@@ -140,13 +140,13 @@ function show_share($link,$url){
 
 
 function get_name_product_lang($link,$id_product,$key_l,$is_adim_site=false){
-    $query_data=mysqli_query($link,"SELECT `data` FROM `product_name` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
+    $query_data=mysqli_query($link,"SELECT `data` FROM `product_name_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
     $data_name=mysqli_fetch_array($query_data);
     if($data_name['data']!=""){
         return $data_name['data'];
     }else{
         if($is_adim_site==false){
-            $query_data_en=mysqli_query($link,"SELECT `data` FROM `product_name` WHERE `id_product` = '$id_product' AND `key_country` = 'en' LIMIT 1");
+            $query_data_en=mysqli_query($link,"SELECT `data` FROM `product_name_en` WHERE `id_product` = '$id_product'  LIMIT 1");
             $data_name_en=mysqli_fetch_array($query_data_en);
             return $data_name_en['data'];
         }else{
@@ -176,13 +176,13 @@ function get_username_by_id($link,$id_user,$is_admin=false){
 }
 
 function get_desc_product_lang($link,$id_product,$key_l,$is_adim_site=false){
-    $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
+    $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
     $data_desc=mysqli_fetch_assoc($query_data);
     if($data_desc['data']!=""){
         return $data_desc['data'];
     }else{
         if($is_adim_site==false){
-            $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc` WHERE `id_product` = '$id_product' AND `key_country` = 'en' LIMIT 1");
+            $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
             $data_desc=mysqli_fetch_assoc($query_data);
             return $data_desc['data'];
         }else{

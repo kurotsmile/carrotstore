@@ -1,16 +1,28 @@
 <?php
 $id_quote=$row['id'];
 $query_count_like=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
-$count_like=mysqli_fetch_array($query_count_like);
-$count_like=$count_like[0];
+if($query_count_like){
+	$count_like=mysqli_fetch_array($query_count_like);
+	$count_like=$count_like[0];
+}else{
+	$count_like=0;
+}
 
 $query_count_distlike=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
-$count_distlike=mysqli_fetch_array($query_count_distlike);
-$count_distlike=$count_distlike[0];
+if($query_count_distlike){
+	$count_distlike=mysqli_fetch_array($query_count_distlike);
+	$count_distlike=$count_distlike[0];
+}else{
+	$count_distlike=0;
+}
 
 $query_count_comment=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
-$count_comment=mysqli_fetch_array($query_count_comment);
-$count_comment=$count_comment[0];
+if($query_count_comment){
+	$count_comment=mysqli_fetch_array($query_count_comment);
+	$count_comment=$count_comment[0];
+}else{
+	$count_comment=0;
+}
 
 
 $img=$url.'/app_mygirl/obj_effect/927.png';

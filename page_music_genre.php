@@ -28,6 +28,7 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
 
     $string_search=substr($string_search,0,strlen($string_search)-3);
     $list_music = mysqli_query($link,"SELECT m.`id`, m.`chat`, m.`file_url`, m.`slug`,m.`author` From `app_my_girl_".$lang_genre."` as `m` LEFT JOIN `app_my_girl_".$lang_genre."_lyrics` as `l` ON m.id= l.id_music  WHERE $string_search ORDER BY RAND() LIMIT 30");
+    if($list_music){
     if(mysqli_num_rows($list_music)>0){
         ?>
         <div style="float: left;padding: 10px;">
@@ -42,6 +43,6 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
             }
             ?>
         </div>
-    <?php }?>
+    <?php }}?>
     </div>
 </div>

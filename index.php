@@ -187,7 +187,6 @@ include "header.php";
         <a href="<?php echo $url; ?>/member" <?php if ($page_file == "page_member.php") { echo 'class="active"';} ?>><?php echo lang($link,'luu_tru_lien_he'); ?></a>
         <a href="<?php echo $url; ?>/music" <?php if ($page_file == "page_music.php") { echo 'class="active"';} ?>><?php echo lang($link,'am_nhac_cho_cuoc_song'); ?></a>
         <a href="<?php echo $url; ?>/quote" <?php if ($page_file == "page_quote.php") { echo 'class="active"';} ?>><?php echo lang($link,'trich_dan'); ?></a>
-        <a href="<?php echo $url; ?>/link" <?php if ($page_file == "page_shortened_link.php" || $page_file == "page_shortened_link_manager.php" || $page_file == "page_shortened_link_detail.php") { echo 'class="active"';} ?>><?php echo lang($link,'rut_gon_link'); ?></a>
         <a href="<?php echo $url; ?>/privacy_policy" <?php if ($page_file == "page_privacy_policy.php") { echo 'class="active"';} ?>><?php echo lang($link,'gioi_thieu'); ?></a>
         
         <?php

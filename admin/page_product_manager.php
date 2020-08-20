@@ -5,13 +5,30 @@ $row_in_page=15;
 $toal_row=mysqli_num_rows($result);
 $number_page=$toal_row/$row_in_page;
 $page=0;
+
+$type_view_app='all';
+$txt_query_type_app="";
+
+if(isset($_GET['type'])){
+	$type_view_app=$_GET['type'];
+	if($type_view_app=='carrot_app'){
+		$txt_query_type_app="WHERE `company` ='Carrot'";
+	}else{
+		$txt_query_type_app="WHERE `company`!='Carrot'";
+	}
+}
+
+
+
 if(isset($_GET['page'])){
     $page=intval($_GET['page']);
     $row_statr=intval($_GET['page'])*$row_in_page;
     $row_end=$row_statr+$row_in_page;
-    $result = mysqli_query($link,"SELECT * FROM `products` ORDER BY `id` DESC limit $row_statr,$row_end");
+	
+    $result = mysqli_query($link,"SELECT * FROM `products` ".$txt_query_type_app." ORDER BY `id` DESC limit $row_statr,$row_end");
+	echo mysqli_error($link);
 }else{
-    $result = mysqli_query($link,"SELECT * FROM `products` ORDER BY `id` DESC limit 0,$row_in_page");
+    $result = mysqli_query($link,"SELECT * FROM `products` ".$txt_query_type_app."  ORDER BY `id` DESC limit 0,$row_in_page");
 }
 ?>
 
@@ -27,6 +44,8 @@ if(isset($_GET['page'])){
     <span> / trong </span>
     <span><?php echo $toal_row; ?></span>
     <span>Sản phẩm</span>
+	<a href="<?php echo $url_page;?>&type=carrot_app" <?php if($type_view_app=='carrot_app'){?>style="color:yellow;"<?php }?>><i class="fa fa-space-shuttle" aria-hidden="true"></i> Carrot App</a>
+	<a href="<?php echo $url_page;?>&type=other_app" <?php if($type_view_app=='other_app'){?>style="color:yellow;"<?php }?>><i class="fa fa-product-hunt" aria-hidden="true"></i> Othe App</a>
 </div>
 <div style="float: left;width: 100%;">
 

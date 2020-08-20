@@ -13,7 +13,7 @@ if($_GET||$_POST){
             if(isset($_SESSION['lang'])){
                 $lang_sel=$_SESSION['lang'];
             }
-            $result = mysqli_query($link,"SELECT * FROM `products` as p INNER JOIN `product_name` as n ON p.`id` = n.`id_product` WHERE n.`key_country` = '$lang_sel' AND n.`data` LIKE '%$key%' AND p.`status`=1 LIMIT 50");
+            $result = mysqli_query($link,"SELECT * FROM `products` as p INNER JOIN `product_name_en` as n ON p.`id` = n.`id_product` WHERE n.`data` LIKE '%$key%' AND p.`status`=1 Group by p.`id` LIMIT 50");
             if(isset($_SESSION['view_type'])){
                 $view_type=$_SESSION['view_type'];
                 include "$view_type.php";
@@ -24,6 +24,8 @@ if($_GET||$_POST){
                 $label_chi_tiet=lang($link,'chi_tiet');
                 include "page_view_all_product_git.php";
             }
+
+            $query_add_log_search_product=mysqli_query($link,"INSERT INTO `product_log_key` (`key`, `lang`) VALUES ('$key', '$lang_sel');");
         }
 
 
@@ -99,7 +101,7 @@ if($_GET||$_POST){
             }else if($tags!=''){
                $result = mysqli_query($link,"SELECT p.* FROM product_tag tag,products p WHERE tag.product_id=p.id AND tag.tag LIKE '%$tags%' AND p.id NOT IN (".implode(",",$arr_id).") LIMIT 15");
             }else{
-               $result = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$arr_id).") LIMIT 15");
+               $result = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$arr_id).") AND `company` !='Carrot' ORDER BY RAND()  LIMIT 15");
             }
             $label_click_de_xem=lang($link,'click_de_xem');
             $label_download_on=lang($link,'download_on');
@@ -109,6 +111,7 @@ if($_GET||$_POST){
             while ($row = mysqli_fetch_assoc($result)) {
                include "page_view_all_product_git_template.php";
             }
+            exit; 
         }
         exit; 
     }

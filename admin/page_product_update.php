@@ -16,6 +16,8 @@ $apk_file='';
 $func='add';
 $type_view_img='0';
 $link_youtube='';
+$company='';
+$link_download='';
 
 $sel_tap_desc='en';
 $msg_alert='';
@@ -41,32 +43,41 @@ if(isset($_POST['type_product'])){
     $apk_file=$_POST['apk'];
     $func=$_POST['func'];
     $slug=$_POST['slug_product'];
+    $company=$_POST['company'];
+    $link_download='';
+    if(isset($_POST['link_download'])){
+        $link_download=$_POST['link_download'];
+        $link_download=json_encode($link_download);
+    }
     
     if($func=='add'){
-        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`chrome_store`,`link_youtube`,`slug`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$chrome_store','$link_youtube','$slug');");
+        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`chrome_store`,`link_youtube`,`slug`,`company`,`link_download`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$chrome_store','$link_youtube','$slug','$company','$link_download');");
         $id_product=mysqli_insert_id($link);
         $func='edit';
     }else{
-        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' ,`chrome_store`='$chrome_store',`link_youtube`='$link_youtube' WHERE `id` = '$id_product'");
+        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' ,`chrome_store`='$chrome_store',`link_youtube`='$link_youtube',`company`='$company',`link_download`='$link_download' WHERE `id` = '$id_product'");
     }
     
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-    $query_clear_data=mysqli_query($link,"DELETE FROM `product_desc` WHERE `id_product` = '$id_product'");
+    
     while($l=mysqli_fetch_array($list_country)){
+        $lang_data=$l['key'];
         $name_desc='desc_'.$l['key'];
+        $query_clear_data=mysqli_query($link,"DELETE FROM `product_desc_$lang_data` WHERE `id_product` = '$id_product'");
         if($_POST[$name_desc]!=''){
             $desc_data=addslashes($_POST[$name_desc]);
-            $query_add=mysqli_query($link,"INSERT INTO `product_desc` (`id_product`, `key_country`, `data`) VALUES ('$id_product', '".$l['key']."', '$desc_data');");
+            $query_add=mysqli_query($link,"INSERT INTO `product_desc_$lang_data` (`id_product`, `data`) VALUES ('$id_product', '$desc_data');");
         }
     }
     
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
-    $query_clear_data=mysqli_query($link,"DELETE FROM `product_name` WHERE `id_product` = '$id_product'");
     while($l=mysqli_fetch_array($list_country)){
+        $lang_data=$l['key'];
         $name_inp='name_product_'.$l['key'];
+        $query_clear_data=mysqli_query($link,"DELETE FROM `product_name_$lang_data` WHERE `id_product` = '$id_product'");
         if($_POST[$name_inp]!=''){
             $name_data=addslashes($_POST[$name_inp]);
-            $query_add=mysqli_query($link,"INSERT INTO `product_name` (`id_product`, `key_country`, `data`) VALUES ('$id_product', '".$l['key']."', '$name_data');");
+            $query_add=mysqli_query($link,"INSERT INTO `product_name_$lang_data` (`id_product`, `data`) VALUES ('$id_product', '$name_data');");
         }
     }
     
@@ -131,6 +142,10 @@ if($id_product!=''){
     $link_youtube=$data_product['link_youtube'];
     $apk_file=$data_product['apk'];
     $slug=$data_product['slug'];
+    $company=$data_product['company'];
+    if($data_product['link_download']!=''){
+        $link_download=json_decode($data_product['link_download']);
+    }
     if(file_exists($path_folder_product.'/'.$id_product.'/icon.jpg')){
         $url_img_icon=$url.'/product_data/'.$id_product.'/icon.jpg';
     }
@@ -171,12 +186,14 @@ if($msg_alert!=''){
             while($l=mysqli_fetch_array($list_country)){
                 $key_l=$l['key'];
                 if($id_product!=''){
-                    $query_data=mysqli_query($link,"SELECT `data` FROM `product_name` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
+                    $query_data=mysqli_query($link,"SELECT `data` FROM `product_name_$key_l` WHERE `id_product` = '$id_product' LIMIT 1");
                     $data_name=mysqli_fetch_array($query_data);
                     $data_name=$data_name['data'];
                     if($data_name!=''){
                         array_push($arr_is_data_name,$key_l);
-                    }
+                    }else{
+						$data_name='';
+					}
                 }else{
                     $data_name='';
                 }
@@ -212,12 +229,18 @@ if($msg_alert!=''){
             $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
             while($l=mysqli_fetch_array($list_country)){
                 $key_l=$l['key'];
-                $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc` WHERE `id_product` = '$id_product' AND `key_country` = '$key_l' LIMIT 1");
-                $data_desc=mysqli_fetch_array($query_data);
-                $data_desc=$data_desc['data'];
-                if($data_desc!=''){
-                    array_push($arr_is_data,$key_l);
-                }
+				if($id_product!=''){
+					$query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product' LIMIT 1");
+					$data_desc=mysqli_fetch_array($query_data);
+					$data_desc=$data_desc['data'];
+					if($data_desc!=''){
+						array_push($arr_is_data,$key_l);
+					}else{
+						$data_desc='';
+					}
+				}else{
+					$data_desc='';
+				}
             ?>
                 <textarea class="tap_desc" id="desc_<?php echo $key_l;?>" style="width: 100%;height: 400px;;display: none;" name="desc_<?php echo $key_l;?>"><?php echo $data_desc;?></textarea>
             <?php }?>
@@ -247,18 +270,19 @@ if($msg_alert!=''){
         <td>Ảnh mô tả</td>
         <td>
         <?php
-            $dirname = "../product_data/".$id_product."/slide";
-            $dir = opendir($dirname);
-        
-            while(false != ($file = readdir($dir)))
-                {
-                  if(($file != ".") and ($file != "..") and ($file != "index.php"))
-                     {
-                      echo("<img src='$url/product_data/$id_product/slide/$file' style='width:70px;'/><input type='checkbox' name='file_delete[]' value='../product_data/$id_product/slide/$file' />");
+            if($id_product!=''){
+                $dirname = "../product_data/".$id_product."/slide";
+                $dir = opendir($dirname);
+            
+                while(false != ($file = readdir($dir)))
+                    {
+                    if(($file != ".") and ($file != "..") and ($file != "index.php"))
+                        {
+                        echo("<img src='$url/product_data/$id_product/slide/$file' style='width:70px;'/><input type='checkbox' name='file_delete[]' value='../product_data/$id_product/slide/$file' />");
+                    }
                 }
             }
         ?>
-        
             <div id="file_slide_contain">
                 <span><input  type="file" name="img_desc[]"/> <span class="buttonPro small red" onclick="$(this).parent().remove();"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</span></span>
             </div>
@@ -289,6 +313,13 @@ if($msg_alert!=''){
             }
             ?>
             </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Nhà phát triển</td>
+        <td>
+            <input type="text" name="company" value="<?php echo $company;?>"  style="width:100%" />
         </td>
     </tr>
     
@@ -354,8 +385,7 @@ if($msg_alert!=''){
             <input type="text" name="apk" value="<?php echo $apk_file;?>"  style="width:100%" />
         </td>
     </tr>
-    
-    
+
     <tr>
         <td>Trạng thái</td>
         <td>
@@ -363,6 +393,25 @@ if($msg_alert!=''){
                 <option value="0" <?php if($status_product=='0'){?>selected="true"<?php }?>>Bản nháp</option>
                 <option value="1" <?php if($status_product=='1'){?>selected="true"<?php }?>>Xuất bản</option>
             </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Liên kết (Download)</td>
+        <td>
+            <div id="area_all_link">
+            <?php
+            if($data_product['link_download']!=''){
+                $arr_link_download=json_decode($data_product['link_download']);
+                for($i=0;$i<count($arr_link_download);$i++){
+            ?>
+                <div>
+                    <input type="text" name="link_download[]" value="<?php echo $arr_link_download[$i]; ?>">
+                    <span class="buttonPro red small" onclick="delete_link_download(this);return false;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
+                </div>
+            <?php }}?>
+            </div>
+            <span class="buttonPro small green" onclick="add_link_download();return false;"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
         </td>
     </tr>
     
@@ -381,7 +430,7 @@ if($msg_alert!=''){
         <td><?php echo $data_product['date_edit']; ?></td>
     </tr>
     <?php }?>
-    
+
     <tr>
         <td>Liên kết seo (slug)</td>
         <td><input value="<?php echo $slug; ?>" name="slug_product" style="width:100%"/></td>
@@ -444,4 +493,13 @@ function add_file_thumb(){
 $(document).ready(function(){
     show_tap_lang('<?php echo $sel_tap_desc;?>');
 });
+
+function add_link_download(){
+    var html_field_download='<div><input type="text" name="link_download[]" value=""><span class="buttonPro red small" onclick="delete_link_download(this);return false;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span></div>';
+    $("#area_all_link").append(html_field_download);
+}
+
+function delete_link_download(emp){
+    $(emp).parent().remove();
+}
 </script>

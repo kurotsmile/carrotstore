@@ -147,11 +147,9 @@ if ($_POST) {
 
         if (mysqli_num_rows($check_field_chat) > 0) {
             $query_update_field = mysqli_query($link,"UPDATE `app_my_girl_field_$lang_sel` SET `data` = '$data_field' , `option`='$box_select_short'  WHERE `id_chat` = '$id' AND `type_chat` = '$type_chat' LIMIT 1;");
-            mysql_freeresult($query_update_field);
             echo "Cập nhật trường dữ liệu (Field chat) thành công!<br/>";
         } else {
             $query_add_field = mysqli_query($link,"INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`,`option`) VALUES ('$id', '$type_chat', '$data_field', 'field_chat', '$author','$box_select_short');");
-            mysql_free_result($query_add_field);
             echo "Thêm mới trường dữ liệu (Field chat) thành công!<br/>";
         }
     } else {
@@ -958,19 +956,11 @@ $arr = mysqli_fetch_array($result_chat);
                 <table>
                     <tr>
                         <td>
-                            <label>Thêm chức năng</label><br/>
-                            <button class="buttonPro green small" onclick="add_field_chat('');return false;">Thêm trường
-                                tùy chỉnh
-                            </button>
-                            <button class="buttonPro green small" onclick="add_field_chat('show_chat');return false;">
-                                Hiện trò chuyện
-                            </button>
-                            <button class="buttonPro green small" onclick="add_field_chat('inp_chat');return false;">
-                                Nhập trò chuyện
-                            </button>
-                            <button class="buttonPro green small" onclick="add_field_chat('link');return false;">Liên
-                                kết
-                            </button>
+                            <button class="buttonPro green small" onclick="add_field_chat('');return false;">Thêm trường tùy chỉnh</button>
+                            <button class="buttonPro green small" onclick="add_field_chat('show_chat');return false;">Hiện trò chuyện</button>
+                            <button class="buttonPro green small" onclick="add_field_chat('inp_chat');return false;">Nhập trò chuyện</button>
+                            <button class="buttonPro green small" onclick="add_field_chat('link');return false;">Liên kết</button>
+                            <button class="buttonPro blue small" onclick="add_field_chat('facebook');return false;"><i class="fa fa-facebook-square" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                     <tr>

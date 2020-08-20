@@ -14,6 +14,30 @@ $data_type=mysqli_fetch_array($query_type);
             <img style="float: left;width: 100%;" src="<?php echo $url;?>/phpqrcode/img_product/<?php echo $data['id'];?>.png" />
             <span class="tag_download">QR Code</span>
             </span>
+
+            <?php
+            if($data['link_download']){
+            ?>
+            <a href="#" onclick="show_box_download_link();return false;"  id="download_song" style="height: 154px;margin-left: -2px;" >
+                <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br /><br />
+                <span><?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i></span>
+                <br />
+                <?php if($data['price']!=''){?>
+                    <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$<?php echo $data['price'] ?></span>
+                <?php }?>
+            </a>
+            <script>
+            function show_box_download_link(){
+                var arr_link_download= JSON.parse('<?php echo $data['link_download'];?>');
+                var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
+                for(var i=0;i<arr_link_download.length;i++){
+                    html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
+                }
+                html_box_link=html_box_link+"</div>";
+                swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
+            }
+            </script>
+            <?php }?>
    
             
             <strong><?php echo lang($link,'loai'); ?>:</strong>
@@ -27,9 +51,22 @@ $data_type=mysqli_fetch_array($query_type);
                 mysqli_query($link,"UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data['id']."';");
                 ?></span><br/>
             <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
-            <br />
-            <?php if($data["link_youtube"]!=''){?><a href="<?php echo $data["link_youtube"];?>" target="_blank"><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
-            <br/>
+            
+            <?php if($data["link_youtube"]!=''){?><br /><a href="<?php echo $data["link_youtube"];?>" target="_blank"><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
+			<?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>" target="_blank"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
+			<?php
+            if(isset($user_login)&&$user_login->type=='admin'){
+                    ?>
+                    <script>
+                    function open_edit(){
+                        window.open("<?php echo $url.'/admin/?page_view=page_product&sub_view=page_product_update&id='.$data['id'];?>");
+                    }
+                    </script>
+                    <br />
+                    <span class="buttonPro  blue" target="_blank" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa sản phẩm</span>
+                    <?php
+            }
+            ?>
             <?php
             $type_rate='product';
             include "template/field_rate_show.php";

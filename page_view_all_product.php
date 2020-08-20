@@ -11,7 +11,7 @@
 
 
     if($type==''){
-        $result = mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` WHERE  `status`='1' ORDER BY RAND() LIMIT 20");
+        $result = mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` WHERE  `status`='1' AND `company`='Carrot' ORDER BY RAND() LIMIT 20");
         $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` WHERE  `status`='1' ORDER BY RAND()");
     }else{
         $result = mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` $type AND `status`='1' ORDER BY RAND() LIMIT 20");
@@ -61,8 +61,8 @@ $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {
                 $('#loading').fadeIn(200);
                 $('#loading-page').html(arr_id_product.length+"/"+count_p);
-                 myJsonString = JSON.stringify(arr_id_product);
-
+                myJsonString = JSON.stringify(arr_id_product);
+                
                 var type='';
                 var category='';
                 var tags='';

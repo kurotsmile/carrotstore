@@ -49,7 +49,7 @@ if(isset($_POST['user_name'])){
         $user_login->name=$user_name;
         $user_login->type='admin';
         $user_login->link=$url.'/admin';
-        $user_login->avatar='http://work.carrotstore.com/avatar_user/'.$data_login_user['user_id'].'.png';
+        $user_login->avatar=$url_work.'/avatar_user/'.$data_login_user['user_id'].'.png';
         $user_login->email=$data_login_user['email'];
         $user_login->lang=$_SESSION['lang'];
         $_SESSION['user_login']=json_encode($user_login);

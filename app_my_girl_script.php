@@ -61,11 +61,15 @@ function add_field_chat(func_ins){
         var id_func_field_chat="";
         var name_func_field_chat="";
         var value_field_chat="";
-        
-        id_field_chat=prompt("id","","Nhập id trường xử lý chức năng");
-        if(id_field_chat==""){
-            add_field_chat(func_ins);
-            return 0;
+        var color_field_chat="";
+
+        if(func_ins!="facebook"){
+            id_field_chat=prompt("id","","Nhập id trường xử lý chức năng");
+            color_field_chat="000000";
+            if(id_field_chat==""){
+                add_field_chat(func_ins);
+                return 0;
+            }
         }
         
         if(func_ins==""){
@@ -77,6 +81,15 @@ function add_field_chat(func_ins){
                 id_field_chat=prompt("Nhập liên kết trỏ đến:");
             }
             name_func_field_chat=func_ins;
+
+            if(func_ins=="facebook"){
+                id_field_chat='12';
+                name_func_field_chat="link";
+                value_field_chat='Virtual lover Facebook';
+                id_func_field_chat="https://www.facebook.com/virtuallover/";
+                color_field_chat="983DFF";
+            }
+            
         }
         var btn_act_field="";
         var btn_get_id="";
@@ -94,7 +107,7 @@ function add_field_chat(func_ins){
         data_field=data_field+"<div  class='col'><label>ID Func:</label><input name='id_func_field_chat[]' value='"+id_func_field_chat+"' type='text'/></div> ";
         data_field=data_field+"<div  class='col'><label>Name Func:</label><input name='name_func_field_chat[]' value='"+name_func_field_chat+"' type='text'/></div> ";
         data_field=data_field+"<div  class='col'><label>Lable:</label><input name='value_field_chat[]' value='"+value_field_chat+"' type='text'/></div> ";
-        data_field=data_field+"<div  class='col'><label>Color:</label><input name='color_field_chat[]' class='jscolor'  value='000000' type='text'/></div> ";
+        data_field=data_field+"<div  class='col'><label>Color:</label><input name='color_field_chat[]' class='jscolor'  value='"+color_field_chat+"' type='text'/></div> ";
         $('#box_select_content').append("<div class='box_fiel_chat_item field_chat_"+id_field_chat+"'>"+data_field+""+btn_act_field+"<i class='fa fa-sort' aria-hidden='true' style='float: right;margin: 3px;cursor: pointer;'></i></div>");
         
         

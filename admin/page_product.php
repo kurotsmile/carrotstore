@@ -11,6 +11,7 @@ if(isset($_GET['sub_view'])){
     <a href="<?php echo $url_admin; ?>/?page_view=page_product&sub_view=page_product_type_add" <?php if($sub_view=='page_product_type_add'){ echo 'class="active"';} ?> ><i class="fa fa-plus"></i> Thêm loại sản phẩm</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_product&sub_view=page_product_category" <?php if($sub_view=='page_product_category'){ echo 'class="active"';} ?> ><i class="fa fa-list"></i> Quảng lý chuyên mục</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_product&sub_view=page_product_category_add" <?php if($sub_view=='page_product_category_add'){ echo 'class="active"';} ?> ><i class="fa fa-plus"></i> Thêm chuyên mục</a>
+    <a href="<?php echo $url_admin; ?>/?page_view=page_product&sub_view=page_product_key_log" <?php if($sub_view=='page_product_key_log'){ echo 'class="active"';} ?> ><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Gợ ý</a>
 </div>
 
 <?php
