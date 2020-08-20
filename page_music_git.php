@@ -102,7 +102,7 @@ mysqli_free_result($count_status_3);
         <a href="<?php echo $url_song;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
         <?php if($list_style=='list'){?>
             <a href="#" onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
-            <?php if($url_video!=''){ ?><a href="#" onclick="play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
+            <?php if($url_video!=''){ ?><a href="#" onclick="stop_music_where_play_video();play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
         <?php }?>
 
         <?php if(isset($user_login)){?>
@@ -115,7 +115,7 @@ mysqli_free_result($count_status_3);
         <hr />
         <div style="font-size: 40px;">
         <i style="cursor: pointer;" class="fa fa-pause-circle" aria-hidden="true" onclick="$(this).parent().parent().removeClass('menu_app');pause_music();return false;"></i>
-        <?php if($url_video!=''){ ?><i style="cursor: pointer;" class="fa fa-youtube-square" aria-hidden="true" onclick="play_video('<?php echo $url_video ?>')"></i><?php }?>
+        <?php if($url_video!=''){ ?><i style="cursor: pointer;" class="fa fa-youtube-square" aria-hidden="true" onclick="stop_music_where_play_video();play_video('<?php echo $url_video ?>');"></i><?php }?>
         </div>
     </div>
     

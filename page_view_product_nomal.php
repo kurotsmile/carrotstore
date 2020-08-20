@@ -52,7 +52,7 @@ $data_type=mysqli_fetch_array($query_type);
                 ?></span><br/>
             <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
             
-            <?php if($data["link_youtube"]!=''){?><br /><a href="<?php echo $data["link_youtube"];?>" target="_blank"><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
+            <?php if($data["link_youtube"]!=''){?><br /><a onclick="play_video('<?php echo $data["link_youtube"];?>');return false;" ><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
 			<?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>" target="_blank"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
 			<?php
             if(isset($user_login)&&$user_login->type=='admin'){

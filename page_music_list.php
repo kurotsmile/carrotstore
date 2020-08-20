@@ -99,14 +99,11 @@ $(window).scroll(function() {
 }
 ?>
 
-function play_video(id_video){
+function stop_music_where_play_video(){
     $(".menu_app").removeClass('music_color');
+    $(".app").removeClass('menu_app');
     $("#player_music").hide();
     audioElement.pause();
-    swal({
-            html: true, title: '<i class="fa fa-youtube-square" aria-hidden="true" "></i>',
-            text: '<iframe width="100%" height="360px" src="https://www.youtube.com/embed/'+id_video+'?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-    });
     show_player_music(false);
 }
 </script>

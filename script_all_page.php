@@ -56,6 +56,17 @@
         swal_loading();
     }
 
+    function play_video(id_video){
+        var id_video_rep=id_video.replace("https://www.youtube.com/watch?v=", "");
+        id_video_rep=id_video_rep.replace("https://www.youtube.com/watch?v=", "");
+        swal({
+                html: true, title: '<i class="fa fa-youtube-square" aria-hidden="true" "></i>',
+                text: '<iframe width="100%" height="360px" src="https://www.youtube-nocookie.com/embed/'+id_video_rep+'?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        }, function() {
+            swal('');
+        });
+    }
+
     function show_header_carrot(emp){
         var var_show=$(emp).data("show");
         if(var_show==1){
