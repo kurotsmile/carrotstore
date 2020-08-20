@@ -22,6 +22,7 @@ RewriteRule    ^playlist/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php
 RewriteRule    ^products   index.php?page_view=page_view.php   [NC,L]     
 RewriteRule    ^product/([^/]*)/([^/]*)/?$   index.php?page_view=page_view.php&view_product=$1&invite=$2    [NC,L]    
 RewriteRule    ^product/([0-9]+)/?$    index.php?page_view=page_view.php&view_product=$1    [NC,L]
+RewriteRule    ^company/([^/]*)/?$    index.php?page_view=page_view_product_company.php&name_company=$1    [NC,L]
 RewriteRule    ^p/([^/]*)/?$    index.php?page_view=page_view.php&view_product=$1&slug=$1    [NC,L]
 RewriteRule    ^product_app_info/([0-9]+)/?$    index.php?page_view=page_view.php&view_product=$1&viewss=info    [NC,L]
 RewriteRule    ^product_tags/([^/]*)/?$   index.php?page_view=page_view.php&tags=$1    [NC,L]     
@@ -37,7 +38,6 @@ RewriteRule    ^privacy_policy    index.php?page_view=page_privacy_policy.php   
 RewriteRule    ^copyright    index.php?page_view=page_privacy_policy.php   [NC,L]
 RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&view=info_quote&id=$1&lang=$2
 RewriteRule    ^quote    index.php?page_view=page_quote.php   [NC,L]
-
 RewriteRule    ^oauth oauth.php
 RewriteRule    ^remove_block_ads index.php?page_view=page_remove_block_ads.php  [NC,L]
 
