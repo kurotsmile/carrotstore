@@ -401,6 +401,7 @@ if($msg_alert!=''){
         <td>
             <div id="area_all_link">
             <?php
+            if(isset($data_product['link_download'])){
             if($data_product['link_download']!=''){
                 $arr_link_download=json_decode($data_product['link_download']);
                 for($i=0;$i<count($arr_link_download);$i++){
@@ -409,7 +410,7 @@ if($msg_alert!=''){
                     <input type="text" name="link_download[]" value="<?php echo $arr_link_download[$i]; ?>">
                     <span class="buttonPro red small" onclick="delete_link_download(this);return false;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
                 </div>
-            <?php }}?>
+            <?php }}}?>
             </div>
             <span class="buttonPro small green" onclick="add_link_download();return false;"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
         </td>
