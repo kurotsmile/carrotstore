@@ -25,7 +25,7 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 	echo '<strong> '.$row['name'].' </strong></br>';
 	echo '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> Mã quốc gia:<b>'.$row['country_code'].'</b> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> Từ khóa ngôn ngữ:<b>'.$row['key'].'</b></br>';
 	echo '<ul>';
-	echo '<li><a href="'.$url.'/admin/?page_view=page_login_manager&lang='.$key_country.'">Số tài khoản đã xác thực:<b>'.$data_count_account['c'].'</b></a></li>';
+	echo '<li><a href="'.$url.'/admin/?page_view=page_login_manager&lang='.$key_country.'"><span class="syn app_my_girl_user_'.$key_country.'" syn="app_my_girl_user_'.$key_country.'"></span> Số tài khoản đã xác thực:<b>'.$data_count_account['c'].'</b></a></li>';
 	echo '<li>Đơn hàng đã thanh toán:<b>'.$data_count_order['c'].'</b></li>';
 	echo '<li>';
 		echo 'Lịch sử tìm kiếm';
