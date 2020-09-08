@@ -16,13 +16,12 @@ $data_type=mysqli_fetch_assoc($query_type);
                     <div class="desc">
                     <?php echo limit_words(get_desc_product_lang($link,$row['id'],$_SESSION['lang']),20); ?>
                     </div>
-                        <?php if($row['chplay_store']!=''){ ?><a title="<?php echo $label_download_on.' (Chplay)';?>" alt="<?php echo $label_download_on.' (Chplay)';?>" class="buttonPro small green" href="<?php echo $row['chplay_store'];?>&hl=<?php echo $_SESSION["lang"];?>" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a><?php }?>
-                        <?php if($row['app_store']!=''){ ?><a title="<?php echo $label_download_on.' (App Store)';?>" alt="<?php echo $label_download_on.' (App Store)';?>" class="buttonPro small green" href="<?php echo $row['app_store'];?>" target="_blank"><i class="fa fa-apple" aria-hidden="true"></i></a><?php }?>
-                        <?php if($row['galaxy_store']!=''){ ?><a title="<?php echo $label_download_on.' (Galaxy store)';?>" alt="<?php echo $label_download_on.' (Galaxy store)';?>" class="buttonPro small green" href="<?php echo $row['galaxy_store'];?>" target="_blank"><i class="fa fa-scribd" aria-hidden="true"></i></a><?php }?>
-                        <?php if($row['window_store']!=''){ ?><a title="<?php echo $label_download_on.' (Microsoft Store)';?>" alt="<?php echo $label_download_on.' (Microsoft Store)';?>" class="buttonPro small green" href="<?php echo $row['window_store'];?>" target="_blank"><i class="fa fa-windows" aria-hidden="true"></i></a><?php }?>
-                        <?php if($row['huawei_store']!=''){ ?><a title="<?php echo $label_download_on.' (Huawei AppGallery)';?>" alt="<?php echo $label_download_on.' (Huawei AppGallery)';?>" class="buttonPro small green" href="<?php echo $row['huawei_store'];?>" target="_blank"><i class="fa fa-pagelines" aria-hidden="true"></i></a><?php }?>
-						<?php if($row['chrome_store']!=''){ ?><a title="<?php echo $label_download_on.' (Chrome store)';?>" alt="<?php echo $label_download_on.' (Chrome store)';?>" class="buttonPro small green" href="<?php echo $row['chrome_store'];?>" target="_blank"><i class="fa fa-chrome" aria-hidden="true"></i></a><?php }?>
-                        <?php if($row['apk']!=''){ ?><a title="<?php echo $label_download_on.' (Carrot Store)';?>" alt="<?php echo $label_download_on.' (Carrot Store)';?>" class="buttonPro small green" href="<?php echo $row['apk'];?>" target="_blank"><i class="fa fa-cloud-download" aria-hidden="true"></i></a><?php }?>
+						<?php
+						$query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
+						while($row_l=mysqli_fetch_assoc($query_link_list)){
+						?>
+                        <a title="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" alt="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" class="buttonPro small green" href="<?php echo $row_l['link'];?>" target="_blank"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i></a>
+						<?php }?>
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/manifest.plist')){
                         ?>
@@ -37,14 +36,12 @@ $data_type=mysqli_fetch_assoc($query_type);
                 <button onclick="show_menu_app(this,0);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
                 </div>
                     <div class="menu_more">
-                        <?php if($row['chplay_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['chplay_store'];?>&hl=<?php echo $_SESSION["lang"];?>" target="_blank"><i class="fa fa-android" aria-hidden="true"></i> <?php echo $label_download_on.' (Chplay)';?></a><?php }?>
-                        <?php if($row['app_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['app_store'];?>" target="_blank"><i class="fa fa-apple" aria-hidden="true"></i> <?php echo $label_download_on.' (App Store)';?></a><?php }?>
-                        <?php if($row['galaxy_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['galaxy_store'];?>" target="_blank"><i class="fa fa-scribd" aria-hidden="true"></i> <?php echo $label_download_on.' (Galaxy store)';?></a><?php }?>
-                        <?php if($row['window_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['window_store'];?>" target="_blank"><i class="fa fa-windows" aria-hidden="true"></i> <?php echo $label_download_on.' (Microsoft Store)';?></a><?php }?>
-                        <?php if($row['huawei_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['huawei_store'];?>" target="_blank"><i class="fa fa-pagelines" aria-hidden="true"></i> <?php echo $label_download_on.' (Huawei AppGallery)';?></a><?php }?>
-                        <?php if($row['carrot_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['carrot_store'];?>" target="_blank"><i class="fa fa-adn" aria-hidden="true"></i> <?php echo $label_download_on.' (Carrot store)';?></a><?php }?>
-						<?php if($row['chrome_store']!=''){ ?><a class="buttonPro orange small" href="<?php echo $row['chrome_store'];?>" target="_blank"><i class="fa fa-chrome" aria-hidden="true"></i> <?php echo $label_download_on.' (Chrome store)';?></a><?php }?>
-                        <?php if($row['apk']!=''){ ?><a class="buttonPro orange" href="<?php echo $row['apk'];?>" target="_blank"><i class="fa fa-cloud-download" aria-hidden="true"></i> <?php echo $label_download_on.' (Carrot Store)';?></a><?php }?>
+						<?php
+						$query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
+						while($row_l=mysqli_fetch_assoc($query_link_list)){
+						?>
+						<a class="buttonPro orange small" href="<?php echo $row_l['link'];?>" target="_blank"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i> <?php echo $label_download_on.' ('.$row_l['name'].')';?></a>
+						<?php }?>
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/manifest.plist')){
                         ?>

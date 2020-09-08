@@ -72,15 +72,14 @@ $data_type=mysqli_fetch_array($query_type);
             include "template/field_rate_show.php";
             ?>
             <ul id="menu_download">
-            <?php if($data['chplay_store']!=''){ ?><li><a href="<?php echo $data['chplay_store'];?>" target="_blank"><img src="<?php echo $url.'/images/chplay_download.png';?>" /></a></li><?php }?>
-            <?php if($data['app_store']!=''){ ?><li><a href="<?php echo $data['app_store'];?>" target="_blank"><img src="<?php echo $url.'/images/app_store_download.png';?>" /></a></li><?php }?>
-            <?php if($data['galaxy_store']!=''){ ?><li><a href="<?php echo $data['galaxy_store'];?>" target="_blank"><img src="<?php echo $url.'/images/galaxy_store_download.png';?>" /></a></li><?php }?>
-            <?php if($data['window_store']!=''){ ?><li><a href="<?php echo $data['window_store'];?>" target="_blank"><img src="<?php echo $url.'/images/window_store_download.png';?>" /></a></li><?php }?>
-            <?php if($data['huawei_store']!=''){ ?><li><a href="<?php echo $data['huawei_store'];?>" target="_blank"><img src="<?php echo $url.'/images/huawei_store_download.png';?>" /></a></li><?php }?>
-            <?php if($data['apk']!=''){ ?><li><a class="buttonPro orange" href="<?php echo $data['apk'];?>" target="_blank"><img src="<?php echo $url.'/images/apk_download.png';?>" /></a></li><?php }?>
-            <?php if($data['carrot_store']!=''){ ?><li><a href="<?php echo $data['carrot_store'];?>" target="_blank"><img src="<?php echo $url.'/images/carrotstore_app_web.png';?>" /></a></li><?php }?>
-			<?php if($data['chrome_store']!=''){ ?><li><a href="<?php echo $data['chrome_store'];?>" target="_blank"><img src="<?php echo $url.'/images/chrome_store_download.png';?>" /></a></li><?php }?>
+			<?php
+			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
+			while($link_store=mysqli_fetch_assoc($query_link_store)){
+				echo '<li><a href="'.$link_store['link'].'" target="_blank"><img title="'.$link_store['name'].'" src="'.$url.'/assets/img_link/'.$link_store['icon'].'.jpg" /></a></li>';
+			}
+			?>
             <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" class="jailbreak"  id_product="<?php echo $data['id']; ?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
+			
             </ul>
         </p>
 

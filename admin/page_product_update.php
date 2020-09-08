@@ -4,20 +4,16 @@ $path_folder_product='../product_data';
 $url_img_icon='';
 $type_product='';
 $status_product='';
-$galaxy_store='';
-$window_store='';
-$app_store='';
-$chplay_store='';
-$huawei_store='';
-$chrome_store='';
-$carrot_store='';
 $slug='';
-$apk_file='';
 $func='add';
 $type_view_img='0';
 $link_youtube='';
 $company='';
 $link_download='';
+
+$link_store='';
+$link_store_name='';
+$link_store_icon='';
 
 $sel_tap_desc='en';
 $msg_alert='';
@@ -30,17 +26,9 @@ if(isset($_GET['id'])){
 if(isset($_POST['type_product'])){
     $id_product=$_POST['id_product'];
     $type_product=$_POST['type_product'];
-    $galaxy_store=$_POST['galaxy_store'];
-    $app_store=$_POST['app_store'];
-    $chplay_store=$_POST['chplay_store'];
-    $window_store=$_POST['window_store'];
-    $huawei_store=$_POST['huawei_store'];
-	$chrome_store=$_POST['chrome_store'];
-    $carrot_store=$_POST['carrot_store'];
     $link_youtube=$_POST['link_youtube'];
     $status_product=$_POST['status_product'];
     $type_view_img=$_POST['type_view_img'];
-    $apk_file=$_POST['apk'];
     $func=$_POST['func'];
     $slug=$_POST['slug_product'];
     $company=$_POST['company'];
@@ -51,11 +39,11 @@ if(isset($_POST['type_product'])){
     }
     
     if($func=='add'){
-        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`galaxy_store`, `app_store`, `chplay_store`,`window_store`,`huawei_store`, `status`,`apk`,`type_view_img`,`carrot_store`,`chrome_store`,`link_youtube`,`slug`,`company`,`link_download`) VALUES ('$type_product',NOW(),NOW(),'$galaxy_store','$app_store','$chplay_store','$window_store','$huawei_store','$status_product','$apk_file','$type_view_img','$carrot_store','$chrome_store','$link_youtube','$slug','$company','$link_download');");
+        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`status`,`type_view_img`,`link_youtube`,`slug`,`company`,`link_download`) VALUES ('$type_product',NOW(),NOW(),'$status_product','$type_view_img','$link_youtube','$slug','$company','$link_download');");
         $id_product=mysqli_insert_id($link);
         $func='edit';
     }else{
-        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`chplay_store`='$chplay_store',`app_store`='$app_store',`galaxy_store`='$galaxy_store',`status`='$status_product',`apk`='$apk_file',`window_store`='$window_store',`huawei_store`='$huawei_store' ,`type_view_img`='$type_view_img', `carrot_store`='$carrot_store' , `slug`='$slug' ,`chrome_store`='$chrome_store',`link_youtube`='$link_youtube',`company`='$company',`link_download`='$link_download' WHERE `id` = '$id_product'");
+        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`status`='$status_product',`type_view_img`='$type_view_img', `slug`='$slug' ,`link_youtube`='$link_youtube',`company`='$company',`link_download`='$link_download' WHERE `id` = '$id_product'");
     }
     
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
@@ -89,9 +77,7 @@ if(isset($_POST['type_product'])){
         $target_file=$path_folder_product.'/'.$id_product.'/icon.jpg';
         if (move_uploaded_file($_FILES["icon_product"]["tmp_name"], $target_file)) {
             $msg_alert.=alert("Tệp tin ". basename( $_FILES["icon_product"]["name"]). " đã được tải lên!",'info');
-        } else {
-            $msg_alert.=alert("Tải tập tin lên không thành công","error");
-        }
+        } 
     }
     
     if(isset($_FILES['img_desc'])){
@@ -118,13 +104,27 @@ if(isset($_POST['type_product'])){
                 $target_file=$path_folder_product.'/'.$id_product.'/slide/'.md5(date("Y-m-d H:i:s")).'_'.$i.'.png';
                 if (move_uploaded_file($_FILES["img_desc"]["tmp_name"][$i], $target_file)) {
                     $msg_alert.=alert("Tệp tin ". basename( $_FILES["img_desc"]["name"][$i]). " đã được tải lên!","info");
-                } else {
-                    $msg_alert.=alert("Tải tập tin lên không thành công","error");
-                }
+                } 
         }
     }
     $msg_alert.=alert("Cập nhật thành công!","alert");
     echo mysqli_error($link);
+	
+	if(isset($_POST['link_store'])){
+		
+		$link_store=$_POST['link_store'];
+		
+		$query_delete=mysqli_query($link,"DELETE FROM `product_link` WHERE `id_product` = '$id_product'");
+		
+		$link_store_name=$_POST['link_store_name'];
+		$link_store_icon=$_POST['link_store_icon'];
+		for($i=0;$i<count($link_store);$i++){
+			$store_link=$link_store[$i];
+			$store_name=$link_store_name[$i];
+			$store_icon=$link_store_icon[$i];
+			$query_store=mysqli_query($link,"INSERT INTO `product_link` (`id_product`, `icon`, `link`, `name`) VALUES ('$id_product', '$store_icon', '$store_link', '$store_name');");
+		}
+	}
 }
 
 if($id_product!=''){
@@ -323,54 +323,6 @@ if($msg_alert!=''){
         </td>
     </tr>
     
-    <tr>
-        <td>Liên kết Chplay</td>
-        <td>
-            <input type="text" name="chplay_store" value="<?php echo $chplay_store;?>"  style="width:100%" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Liên kết Ios</td>
-        <td>
-            <input type="text" name="app_store" value="<?php echo $app_store;?>" style="width:100%" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Liên kết Samsung store (Galaxy store)</td>
-        <td>
-            <input type="text" name="galaxy_store" value="<?php echo $galaxy_store;?>"  style="width:100%" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Liên kết Microsoft store (Window)</td>
-        <td>
-            <input type="text" name="window_store" value="<?php echo $window_store;?>"  style="width:100%" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Liên kết Huawei AppGallery </td>
-        <td>
-            <input type="text" name="huawei_store" value="<?php echo $huawei_store;?>"  style="width:100%" />
-        </td>
-    </tr>
-	
-	<tr>
-        <td>Liên kết Chrome store </td>
-        <td>
-            <input type="text" name="chrome_store" value="<?php echo $chrome_store;?>"  style="width:100%" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Liên kết Carrot store </td>
-        <td>
-            <input type="text" name="carrot_store" value="<?php echo $carrot_store;?>"  style="width:100%" />
-        </td>
-    </tr>
 
     <tr>
         <td>Liên kết Youtube</td>
@@ -379,12 +331,7 @@ if($msg_alert!=''){
         </td>
     </tr>
     
-    <tr>
-        <td>Liên kết APK</td>
-        <td>
-            <input type="text" name="apk" value="<?php echo $apk_file;?>"  style="width:100%" />
-        </td>
-    </tr>
+
 
     <tr>
         <td>Trạng thái</td>
@@ -395,6 +342,33 @@ if($msg_alert!=''){
             </select>
         </td>
     </tr>
+
+    <tr>
+        <td>Liên kết (Store)</td>
+        <td>
+            <table id="area_all_link_store">
+			<?php
+			if($id_product!=''){
+			$query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '$id_product'");
+			while($row_l=mysqli_fetch_assoc($query_link_list)){
+			?>
+			<tr>
+				<td><i class="fa <?php echo $row_l['icon']; ?>" aria-hidden="true"></i> <?php echo $row_l['name']; ?><td>
+				<td style="width:60%">
+					<input type="hidden" name="link_store_name[]" value="<?php echo $row_l['name'];?>">
+					<input type="hidden" name="link_store_icon[]" value="<?php echo $row_l['icon'];?>">
+					<input type="text" name="link_store[]" value="<?php echo $row_l['link'];?>" style="width:100%" />
+				<td>
+				<td><span onclick="$(this).parent().parent().remove();" class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</span><td>
+			</tr>
+			<?php
+			}}
+			?>
+			</table>
+            <span class="buttonPro small green" onclick="show_list_store();return false;"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+        </td>
+    </tr>
+	
 
     <tr>
         <td>Liên kết (Download)</td>
@@ -496,11 +470,43 @@ $(document).ready(function(){
 });
 
 function add_link_download(){
-    var html_field_download='<div><input type="text" name="link_download[]" value=""><span class="buttonPro red small" onclick="delete_link_download(this);return false;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span></div>';
+    var html_field_download='<div><i class="fa fa-download" aria-hidden="true"></i> <input type="text" name="link_download[]" value=""><span class="buttonPro red small" onclick="delete_link_download(this);return false;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span></div>';
     $("#area_all_link").append(html_field_download);
 }
 
 function delete_link_download(emp){
     $(emp).parent().remove();
 }
+
+function show_list_store(){
+	<?php
+	$html_box='<table>';
+	$query_list_store=mysqli_query($link,"SELECT * FROM `product_link_struct`");
+	while($row_link=mysqli_fetch_assoc($query_list_store)){
+		$html_box.='<tr>';
+		$html_box.='<td><i class="fa '.$row_link['icon'].'" aria-hidden="true"></i><td>';
+		$html_box.='<td>'.$row_link['name'].'<td>';
+		$html_box.='<td><span class="buttonPro small green" onclick="add_link_store(this)" data-icon="'.$row_link['icon'].'" data-name="'.$row_link['name'].'"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm</span><td>';
+		$html_box.='</tr>';
+	}
+	$html_box.='</table>';
+	?>
+    swal({
+        html: true, title: 'Chọn các liên kết store muốn thêm vào sản phẩm',
+        text: '<?php echo $html_box;?>',
+        showCancelButton: false
+    });
+}
+
+function add_link_store(emp){
+	var data_icon=$(emp).attr("data-icon");
+	var data_name=$(emp).attr("data-name");
+	var txt_row="<tr>";
+	txt_row=txt_row+'<td><i class="fa '+data_icon+'" aria-hidden="true"></i> <b>'+data_name+'</b><td>';
+	txt_row=txt_row+'<td style="width:60%"><input type="hidden" name="link_store_name[]" value="'+data_name+'"><input type="hidden" name="link_store_icon[]" value="'+data_icon+'"><input type="text" name="link_store[]" style="width:100%" /><td>';
+	txt_row=txt_row+'<td><span onclick="$(this).parent().parent().remove();" class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</span><td>';
+	txt_row=txt_row+"<tr/>";
+	$("#area_all_link_store").append(txt_row);
+}
+
 </script>
