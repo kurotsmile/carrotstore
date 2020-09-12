@@ -32,8 +32,14 @@ $label_download_vcf=lang($link,'download_vcf');
 $label_so_dien_thoai=lang($link,"so_dien_thoai");
 $label_dia_chi=lang($link,"dia_chi");
 $label_quoc_gia=lang($link,"quoc_gia");
+$count_member_item=0;
 while ($row = mysqli_fetch_array($result)) {
+    $count_member_item++;
     include "page_member_view_git.php";
+}
+
+if($count_member_item==0){
+    include "404_search.php";
 }
 echo show_ads_box_main($link,'contact_page');
 ?>

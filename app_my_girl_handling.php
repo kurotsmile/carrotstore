@@ -93,6 +93,23 @@ if($func=='delete_field_music_error'){
     exit;
 }
 
+if($func=='delete_rank_music'){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
+    while($l=mysqli_fetch_array($list_country)){
+        $key_lang=$l['key'];
+        $query_delete_field=mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$key_lang`");
+        if(mysqli_error($link)==""){
+            $count_delete_row=mysqli_affected_rows($link);
+            echo "</br>Xóa ($count_delete_row) bản đánh giá xếp hạng âm nhạc ($key_lang)!";
+        }else{
+            echo "</br>Xóa bản đánh giá xếp hạng âm nhạc thất bại ($key_lang)!";
+        }
+        
+    }
+    exit;
+}
+
+
 
 if($func=='lang_2'){
     $msg='';

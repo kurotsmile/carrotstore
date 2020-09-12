@@ -59,8 +59,7 @@ if($_GET||$_POST){
             $query_list_music=mysqli_query($link,$txt_query);
             if($query_list_music){
                 if(mysqli_num_rows($query_list_music)==0){
-                    $query_list_music=
-                    mysqli_query($link,$txt_query_2);
+                    $query_list_music=mysqli_query($link,$txt_query_2);
                 }
             }
             $sub_view='all';

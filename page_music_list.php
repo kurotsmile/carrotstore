@@ -151,8 +151,14 @@ if($sub_view=='artist'){
         $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
         $label_music_no_rank=lang($link,'music_no_rank');
 
+        $count_item_music=0;
         while ($row = mysqli_fetch_array($query_list_music)) {
+            $count_item_music++;
             include "page_music_git.php";
+        }
+
+        if($count_item_music==0){
+            include "404_search.php";
         }
     }
 }

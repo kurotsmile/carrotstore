@@ -135,7 +135,6 @@ if($function=='create_playlist'){
     $data_playlist=json_encode($array_playlist,JSON_UNESCAPED_UNICODE);
 
     $query_add_playlist=mysqli_query($link,"INSERT INTO carrotsy_music.`playlist_$lang` (`id`, `user_id`, `data`, `name`,`length`)VALUES ('$new_id_playlist', '$id_u', '$data_playlist', '$name_playlist','1');");
-    echo mysql_error();
     echo var_dump($_POST);
     echo "thanh";
     exit;

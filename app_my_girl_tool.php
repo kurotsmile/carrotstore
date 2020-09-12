@@ -213,5 +213,13 @@ include "app_my_girl_template.php";
             </li>
         </a>
 
+        <a href="<?php echo $url;?>/app_my_girl_handling.php?func=delete_rank_music">
+            <li class="box_tool">
+                <i class="fa fa-ban" aria-hidden="true"></i>
+                <b>Xóa bản thứ hạng âm nhạc</b><br />
+                Công cụ xóa các bản thứ hạng âm nhạc ở mỗi quốc gia
+            </li>
+        </a>
+
     </ul>
 </div>

@@ -131,16 +131,9 @@ if($id_product!=''){
     $query_product=mysqli_query($link,"SELECT * FROM `products` WHERE `id` = '$id_product' LIMIT 1");
     $data_product=mysqli_fetch_array($query_product);
     $type_product=$data_product['type'];
-    $galaxy_store=$data_product['galaxy_store'];
-    $app_store=$data_product['app_store'];
-    $window_store=$data_product['window_store'];
-    $chplay_store=$data_product['chplay_store'];
     $status_product=$data_product['status'];
     $type_view_img=$data_product['type_view_img'];
-    $carrot_store=$data_product['carrot_store'];
-    $chrome_store=$data_product['chrome_store'];
     $link_youtube=$data_product['link_youtube'];
-    $apk_file=$data_product['apk'];
     $slug=$data_product['slug'];
     $company=$data_product['company'];
     if($data_product['link_download']!=''){

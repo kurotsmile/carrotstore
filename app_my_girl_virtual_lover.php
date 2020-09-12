@@ -478,7 +478,6 @@ function check_func_msg_sevrer($type_question, $id_device, $text, $lang_sel, $li
                 Chat_report(mysqli_fetch_array($result_music), 'chat', $lang_sel, $link);
             }
         }
-        mysqli_free_result($result_music);
     }
 
     if ($type_question == "tim_loi_nhac") {

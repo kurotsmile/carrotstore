@@ -200,6 +200,16 @@ include "header.php";
             if($count_playlist>0) {
                 echo '<a style="float: right;margin-right: 5px;"  onclick="show_all_playlist();return false"><i class="fa fa-music" aria-hidden="true"></i></a> ';
             }
+            
+            if($user_login->email!=''){
+                $user_login_email=$user_login->email;
+                $query_check_order=mysqli_query($link,"SELECT COUNT(`id_order`) as c FROM `order` WHERE `pay_mail` = '$user_login_email' LIMIT 1");
+                $count_order=mysqli_fetch_assoc($query_check_order);
+                $count_order=$count_order['c'];
+                if($count_order>0){
+                    echo '<a style="float: right;margin-right: 5px;" href="'.$url.'/order" ><i class="fa fa-shopping-cart" aria-hidden="true"></i></a> ';
+                }
+            }
         }else{
             echo '<a id="btn_login_acc" style="float: right;margin-right: 5px;" onclick="login_account();"  oncontextmenu="login_admin();return false;"><i class="fa fa-sign-in" aria-hidden="true"></i> '.lang($link,'dang_nhap').'</a> ';
         }
