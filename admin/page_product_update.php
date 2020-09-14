@@ -4,6 +4,7 @@ $path_folder_product='../product_data';
 $url_img_icon='';
 $type_product='';
 $status_product='';
+$price_product='';
 $slug='';
 $func='add';
 $type_view_img='0';
@@ -31,6 +32,7 @@ if(isset($_POST['type_product'])){
     $type_view_img=$_POST['type_view_img'];
     $func=$_POST['func'];
     $slug=$_POST['slug_product'];
+    $price_product=$_POST['price_product'];
     $company=$_POST['company'];
     $link_download='';
     if(isset($_POST['link_download'])){
@@ -39,11 +41,11 @@ if(isset($_POST['type_product'])){
     }
     
     if($func=='add'){
-        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`status`,`type_view_img`,`link_youtube`,`slug`,`company`,`link_download`) VALUES ('$type_product',NOW(),NOW(),'$status_product','$type_view_img','$link_youtube','$slug','$company','$link_download');");
+        $query_add=mysqli_query($link,"INSERT INTO `products` (`type`,`date`, `date_edit`,`status`,`type_view_img`,`link_youtube`,`slug`,`company`,`link_download`,`price`) VALUES ('$type_product',NOW(),NOW(),'$status_product','$type_view_img','$link_youtube','$slug','$company','$link_download','$price_product');");
         $id_product=mysqli_insert_id($link);
         $func='edit';
     }else{
-        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`status`='$status_product',`type_view_img`='$type_view_img', `slug`='$slug' ,`link_youtube`='$link_youtube',`company`='$company',`link_download`='$link_download' WHERE `id` = '$id_product'");
+        $query_update=mysqli_query($link,"UPDATE `products` SET `type`='$type_product',`status`='$status_product',`type_view_img`='$type_view_img', `slug`='$slug' ,`link_youtube`='$link_youtube',`company`='$company',`link_download`='$link_download',`price`='$price_product' WHERE `id` = '$id_product'");
     }
     
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1'");
@@ -135,6 +137,7 @@ if($id_product!=''){
     $type_view_img=$data_product['type_view_img'];
     $link_youtube=$data_product['link_youtube'];
     $slug=$data_product['slug'];
+    $price_product=$data_product['price'];
     $company=$data_product['company'];
     if($data_product['link_download']!=''){
         $link_download=json_decode($data_product['link_download']);
@@ -398,6 +401,11 @@ if($msg_alert!=''){
         <td><?php echo $data_product['date_edit']; ?></td>
     </tr>
     <?php }?>
+
+    <tr>
+        <td>Giá</td>
+        <td><input value="<?php echo $price_product;?>" name="price_product" style="width:100%"/></td>
+    </tr>
 
     <tr>
         <td>Liên kết seo (slug)</td>

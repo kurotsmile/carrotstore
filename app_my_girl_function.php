@@ -536,33 +536,35 @@ function show_row_map($link,$chat_item)
     }
 	
 	$result_chat1 = mysqli_query($link,"SELECT * FROM `$table_show` WHERE `id` = $id ");
-    if (mysqli_num_rows($result_chat1) > 0) {
-        $arr_item = mysqli_fetch_array($result_chat1);
+	if($result_chat1){
+		if (mysqli_num_rows($result_chat1) > 0) {
+			$arr_item = mysqli_fetch_array($result_chat1);
 
-        echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['character_sex'] . '.png" style="width:13px">';
-        if ($chat_item['type_question'] == 'chat') {
-            $txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id . '&lang=' . $chat_item['lang'] . '" target="_blank" >' . $arr_item['text'] . '</a>';
-        } else {
-            $txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id . '&lang=' . $chat_item['lang'] . '&msg=1" target="_blank" >' . $arr_item['func'] . '</a>';
-        }
+			echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['character_sex'] . '.png" style="width:13px">';
+			if ($chat_item['type_question'] == 'chat') {
+				$txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id . '&lang=' . $chat_item['lang'] . '" target="_blank" >' . $arr_item['text'] . '</a>';
+			} else {
+				$txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id . '&lang=' . $chat_item['lang'] . '&msg=1" target="_blank" >' . $arr_item['func'] . '</a>';
+			}
 
-        if ($chat_item['type_question'] == 'msg') {
-            echo '<span style="color:yellow">' . $chat_item['type_question'] . ' > ' . $arr_item['chat'] . '</span> (' . $txt_update . ')<br/>';
-        } else {
-            echo '<span style="color:#77ff8e">' . $chat_item['type_question'] . ' > ' . $arr_item['chat'] . '</span> (' . $txt_update . ')<br/>';
-        }
-        echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['sex'] . '.png" style="width:13px"> <b>' . $chat_item['key'] . '</b><br/>';
+			if ($chat_item['type_question'] == 'msg') {
+				echo '<span style="color:yellow">' . $chat_item['type_question'] . ' > ' . $arr_item['chat'] . '</span> (' . $txt_update . ')<br/>';
+			} else {
+				echo '<span style="color:#77ff8e">' . $chat_item['type_question'] . ' > ' . $arr_item['chat'] . '</span> (' . $txt_update . ')<br/>';
+			}
+			echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['sex'] . '.png" style="width:13px"> <b>' . $chat_item['key'] . '</b><br/>';
 
-        $txt_btn_add = '<a href="' . $url . '/app_my_girl_add.php?key=' . $chat_item['key'] . '&lang=' . $chat_item['lang'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '" target="_blank" >Thêm</a>';
-        $txt_btn_add = $txt_btn_add . '<a href="' . $url . '/app_my_girl_add.php?key=' . $chat_item['key'] . '&lang=' . $chat_item['lang'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '&type_question=' . $chat_item['type_question'] . '&id_question=' . $chat_item['id_question'] . '" target="_blank" >- Thêm đầy đủ (gồ trò chuyện cha)</a>';
-        $txt_btn_return1 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'=\')" >trả lời giống</a>';
-        $txt_btn_return2 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'like\')" >trả lời gần giống</a>';
-        $txt_btn_return3 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'search\')" >trả lời xàm</a>';
-        $txt_btn_history = ' <a href="' . $url . '/app_my_girl_history.php?lang=' . $chat_item['lang'] . '&id_chat_see=' . $id . '&type_chat_see=' . $chat_item['type_question'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi</a>';
-        $txt_btn_history .= ' <a href="' . $url . '/app_my_girl_handling.php?func=check_key&key=' . $chat_item['key'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '&lang=' . $chat_item['lang'] . '" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Kiểm tra tồn tại</a> ';
-        echo '<span style="font-size:9px;cursor: pointer;">' . $txt_btn_add . ' - ' . $txt_btn_return1 . ' - ' . $txt_btn_return2 . '-' . $txt_btn_return3 . '-' . $txt_btn_history . '</span> ';
-        echo '<hr/>';
-    }
+			$txt_btn_add = '<a href="' . $url . '/app_my_girl_add.php?key=' . $chat_item['key'] . '&lang=' . $chat_item['lang'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '" target="_blank" >Thêm</a>';
+			$txt_btn_add = $txt_btn_add . '<a href="' . $url . '/app_my_girl_add.php?key=' . $chat_item['key'] . '&lang=' . $chat_item['lang'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '&type_question=' . $chat_item['type_question'] . '&id_question=' . $chat_item['id_question'] . '" target="_blank" >- Thêm đầy đủ (gồ trò chuyện cha)</a>';
+			$txt_btn_return1 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'=\')" >trả lời giống</a>';
+			$txt_btn_return2 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'like\')" >trả lời gần giống</a>';
+			$txt_btn_return3 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'search\')" >trả lời xàm</a>';
+			$txt_btn_history = ' <a href="' . $url . '/app_my_girl_history.php?lang=' . $chat_item['lang'] . '&id_chat_see=' . $id . '&type_chat_see=' . $chat_item['type_question'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi</a>';
+			$txt_btn_history .= ' <a href="' . $url . '/app_my_girl_handling.php?func=check_key&key=' . $chat_item['key'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '&lang=' . $chat_item['lang'] . '" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Kiểm tra tồn tại</a> ';
+			echo '<span style="font-size:9px;cursor: pointer;">' . $txt_btn_add . ' - ' . $txt_btn_return1 . ' - ' . $txt_btn_return2 . '-' . $txt_btn_return3 . '-' . $txt_btn_history . '</span> ';
+			echo '<hr/>';
+		}
+	}
 }
 
 

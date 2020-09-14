@@ -17,8 +17,9 @@ $data_type=mysqli_fetch_array($query_type);
 
             <?php
             if($data['link_download']){
+                $price_product=$data['price'];
             ?>
-            <a href="#" onclick="show_box_download_link();return false;"  id="download_song" style="height: 154px;margin-left: -2px;" >
+            <a href="<?php if($price_product!=''){ echo $url.'/pay/product/0/'.$data['id']; }else{ echo '#';} ?>" onclick="<?php if($price_product==''){ echo 'show_box_download_link();return false;'; }?>"  id="download_song" style="height: 154px;margin-left: -2px;" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br /><br />
                 <span><?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i></span>
                 <br />
@@ -26,17 +27,19 @@ $data_type=mysqli_fetch_array($query_type);
                     <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$<?php echo $data['price'] ?></span>
                 <?php }?>
             </a>
-            <script>
-            function show_box_download_link(){
-                var arr_link_download= JSON.parse('<?php echo $data['link_download'];?>');
-                var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
-                for(var i=0;i<arr_link_download.length;i++){
-                    html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
+                <?php if($data['price']==''){?>
+                <script>
+                function show_box_download_link(){
+                    var arr_link_download= JSON.parse('<?php echo $data['link_download'];?>');
+                    var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
+                    for(var i=0;i<arr_link_download.length;i++){
+                        html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
+                    }
+                    html_box_link=html_box_link+"</div>";
+                    swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
                 }
-                html_box_link=html_box_link+"</div>";
-                swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
-            }
-            </script>
+                </script>
+                <?php }?>
             <?php }?>
    
             
