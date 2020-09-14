@@ -564,5 +564,20 @@ if($_GET||$_POST){
         echo '</a>';
         exit;
     }
+
+    if($function=='order_product'){
+        $id_music=$_POST['id_music'];
+        $lang_music=$_POST['lang_music'];
+        $pay_name=$_POST['pay_name'];
+        $pay_mail=$_POST['pay_mail'];
+        $id_order=uniqid().''.uniqid();
+        $query_add=mysqli_query($link,"INSERT INTO `order` (`id_order`,`id`, `lang`, `pay_mail`, `pay_name`, `type`) VALUES ('$id_order','$id_music', '$lang_music', '$pay_mail', '$pay_name', 'product');");
+        echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
+        echo '<a style="width: 100%;" href="#" onclick="show_box_download_link();return false;" id="download_song" >';
+        echo '<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
+        echo '<span>'.lang($link,'download_game').'</span>';
+        echo '</a>';
+        exit;
+    }
 }
 ?>

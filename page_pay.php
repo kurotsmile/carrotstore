@@ -190,17 +190,6 @@ if($pay_device!=''&&$pay_item!=''){
                         <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                         <span><?php echo lang($link,'download_game');?></span>
                     </a>
-                    <script>
-                        function show_box_download_link(){
-                            var arr_link_download= JSON.parse('<?php echo $data_product['link_download'];?>');
-                            var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
-                            for(var i=0;i<arr_link_download.length;i++){
-                                html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
-                            }
-                            html_box_link=html_box_link+"</div>";
-                            swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
-                        }
-                    </script>
                 <?php }?>
                 <div id="paypal-button-container"></div>
             </div>
@@ -208,6 +197,16 @@ if($pay_device!=''&&$pay_item!=''){
                 var PAYPAL_CLIENT = 'AYgLieFpLUDxi_LBdzDqT2ucT4MIa-O0vwX7w3CKGfQgMGROOHu-xz2y5Jes77owCYQ1eLmOII_ch2VZ';
                 var PAYPAL_SECRET = 'ELkToqss_tBZdsHFOHfMFiyu23mNr9HDu1X--jqaZWCbS3xr_xg4hlCBHvV8GcyD15HIPgcwFi9BgqMp';
                 var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+
+                function show_box_download_link(){
+                            var arr_link_download= JSON.parse('<?php echo $data_product['link_download'];?>');
+                            var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
+                            for(var i=0;i<arr_link_download.length;i++){
+                                html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
+                            }
+                            html_box_link=html_box_link+"</div>";
+                            swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
+                }
             </script>
             <script src="https://www.paypal.com/sdk/js?client-id=AYgLieFpLUDxi_LBdzDqT2ucT4MIa-O0vwX7w3CKGfQgMGROOHu-xz2y5Jes77owCYQ1eLmOII_ch2VZ"></script>
             <script>
@@ -236,7 +235,7 @@ if($pay_device!=''&&$pay_item!=''){
                     $.ajax({
                         url: "<?php echo $url;?>/index.php",
                         type: "post",
-                        data: "function=order_music&id_music=<?php echo $pay_id_music;?>&lang_music=<?php echo $lang_sel; ?>&pay_name="+pay_name+"&pay_mail="+pay_mail,
+                        data: "function=order_product&id_music=<?php echo $pay_id_music;?>&lang_music=<?php echo $lang_sel; ?>&pay_name="+pay_name+"&pay_mail="+pay_mail,
                         success: function (data, textStatus, jqXHR) {
                             $("#pay_container").html(data);
                         }
