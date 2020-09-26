@@ -28,7 +28,7 @@ if($data_quote['effect_customer']!=''){
     </p>
     <br />
     <p style="width: 100%;float: left;">
-        <i class="fa fa-commenting" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_comment); ?> | <i class="fa fa-thumbs-up" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_like); ?> | <i class="fa fa-thumbs-down" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_distlike); ?>
+        <i class="fa fa-commenting" aria-hidden="true"></i> <?php if($query_comment) echo mysqli_num_rows($query_comment); ?> | <i class="fa fa-thumbs-up" aria-hidden="true"></i> <?php if($query_like) echo mysqli_num_rows($query_like); ?> | <i class="fa fa-thumbs-down" aria-hidden="true"></i> <?php echo mysqli_num_rows($query_distlike); ?>
     </p>
     
     <p style="width: 100%;float: left;">

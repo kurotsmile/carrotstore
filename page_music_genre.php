@@ -23,7 +23,7 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
     $arr_tag_name=explode(',',$name_genre);
     $string_search='';
 	foreach ($arr_tag_name as $val) {
-		$string_search.= "l.genre like '%".trim($val)."%' OR ";
+		$string_search.= "(l.genre like '%".trim($val)."%') OR ";
 	}
 
     $string_search=substr($string_search,0,strlen($string_search)-3);

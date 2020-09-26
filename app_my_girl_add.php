@@ -125,7 +125,9 @@ if (isset($_POST['chat'])) {
         if (move_uploaded_file($_FILES["file_audio"]["tmp_name"], $target_file)) {
             show_alert('Tải tập tin âm thanh ' . basename($_FILES["file_audio"]["name"]) . 'Thành công!', "aler");
         } else {
-            show_alert("Không thể tải tệp âm thanh trò chuyện vào hệ thống", "error");
+            if(get_key_lang($link,'voice_character_sex_'.$character_sex,$lang_sel)!='google'){
+                show_alert("Không thể tải tệp âm thanh trò chuyện vào hệ thống", "error");
+            }
         }
     } else {
         $txt_table_brain = 'app_mygirl/app_my_girl_' . $lang_sel . '_brain/' . $id_audio . '.mp3';
