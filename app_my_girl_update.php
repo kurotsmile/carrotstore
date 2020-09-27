@@ -387,22 +387,12 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
         </tr>
 
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {if ($arr['id_redirect'] != '') {echo 'style="display:none"';}} ?> >
             <td>Sex</td>
             <td>
                 <select name="sex" id="sex1" onchange="check_sex();">
-                    <option value="0" <?php if ($arr['sex'] == '0') {
-                        echo 'selected="true"';
-                    } ?> >Nam
-                    </option>
-                    <option value="1" <?php if ($arr['sex'] == '1') {
-                        echo 'selected="true"';
-                    } ?> >Nữ
-                    </option>
+                    <option value="0" <?php if ($arr['sex'] == '0') { echo 'selected="true"'; } ?> >Nam</option>
+                    <option value="1" <?php if ($arr['sex'] == '1') { echo 'selected="true"'; } ?> >Nữ</option>
                 </select>
             </td>
 
@@ -410,24 +400,18 @@ $arr = mysqli_fetch_array($result_chat);
                 <td rowspan="15" style="width: 400px;">
                     <div style="float: left;width: 100%; margin-bottom: 5px;">
                         Mô tả khuôn mặt <br/>
-                        <img src="<?php echo $url; ?>/app_mygirl/img/face/<?php echo $arr['face']; ?>.png" id="id_img_face"
-                             style="width: 100px;cursor: pointer;" onclick="choice_face();"/>
+                        <img src="<?php echo $url; ?>/app_mygirl/img/face/<?php echo $arr['face']; ?>.png" id="id_img_face" style="width: 100px;cursor: pointer;" onclick="choice_face();"/>
                     </div>
 
                     <div style="float: left;width: 100%;">
                         Mô tả hành động <br/>
-                        <img src="<?php echo $url; ?>/app_mygirl/img/action/<?php echo $arr['action']; ?>.png" id="id_img"
-                             style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
+                        <img src="<?php echo $url; ?>/app_mygirl/img/action/<?php echo $arr['action']; ?>.png" id="id_img" style="width: 100px;cursor: pointer;" onclick="choice_action();"/>
                     </div>
                 </td>
             <?php }?>
         </tr>
 
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
             <td>Character sex</td>
             <td>
                 <select name="character_sex" id="character_sex" onchange="check_sex();">
@@ -442,11 +426,7 @@ $arr = mysqli_fetch_array($result_chat);
                 </select>
             </td>
         </tr>
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
             <td>effect</td>
             <td>
                 <select name="effect" onchange="check_effect(this)" id="effect">
@@ -468,11 +448,7 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
         </tr>
 
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])){ if ($arr['id_redirect'] != '') { echo 'style="display:none"'; }} ?> >
             <td>effect customer</td>
             <td>
                 <input type="hidden" name="effect_customer" id="effect_chat"  value="<?php echo $arr['effect_customer']; ?>"/>
@@ -734,19 +710,16 @@ $arr = mysqli_fetch_array($result_chat);
                 <div style="float: left;width: 50%;">
                     <?php
                     if (is_file('app_mygirl/' . $txt_table . '/' . $arr['id'] . '.mp3')) {
-                        ?>
+                    ?>
                         <audio controls="true" id="control_audio">
-                            <source src="<?php echo $url . '/app_mygirl/' . $txt_table . '/' . $arr['id'] . '.mp3'; ?>"
-                                    type="audio/ogg"/>
+                            <source src="<?php echo $url . '/app_mygirl/' . $txt_table . '/' . $arr['id'] . '.mp3'; ?>" type="audio/ogg"/>
                         </audio>
-                        <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_audio&id=<?php echo $arr['id']; ?>&lang=<?php echo $lang_sel; ?>&type=<?php echo $type_chat; ?>"
-                           class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa âm thanh</a>
+                        <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=info_audio&id=<?php echo $arr['id']; ?>&lang=<?php echo $lang_sel; ?>&type=<?php echo $type_chat; ?>"  class="buttonPro small yellow"><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa thông tin âm thanh</a>
+                        <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_audio&id=<?php echo $arr['id']; ?>&lang=<?php echo $lang_sel; ?>&type=<?php echo $type_chat; ?>"  class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa âm thanh</a>
                     <?php } else {
-                        if ($arr['effect'] != '2') {
-                            ?>
+                        if ($arr['effect'] != '2') {?>
                             <span id="show_audio_test"></span>
-                        <?php }
-                    } ?>
+                        <?php }} ?>
                     <input type="file" id="file_audio" name="file_audio"/>
                     <br/>
 

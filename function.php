@@ -32,7 +32,7 @@ function lang($link,$key,$lang_sel=null){
     }else{
         $lang=$lang_sel;
     }
-    $return=mysqli_query($link,"SELECT `value` FROM `lang_value` WHERE `key` = '$key' AND `lang`='$lang' LIMIT 1");
+    $return=mysqli_query($link,"SELECT `value` FROM `lang_$lang` WHERE `key` = '$key' LIMIT 1");
     $data=mysqli_fetch_array($return);
     if($data){
         return addslashes($data['value']);

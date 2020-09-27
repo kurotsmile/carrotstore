@@ -78,3 +78,8 @@ printf("Có %d ảnh QR của Âm nhạc", iterator_count($dir_qr_music)); echo 
 printf("Có %d ảnh QR của Liên kết", iterator_count($dir_qr_link)); echo '<br/>';
 ?>
 </a>
+
+<a href="<?php echo $url_admin;?>/?page_view=page_trash&delete_trash=2" class="box_trash">
+ <i class="fa fa-th-large" aria-hidden="true"></i>
+ <strong>Xóa lịch sử tìm kiếm sản phẩm</strong><br /> 
+</a>

@@ -106,18 +106,20 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
         ?>
         <i class="fa fa-rocket fa-3x" style="float: left;margin-right: 10px;"></i>
         <strong style="font-size: 15px;width: 100px;">Thêm sản phẩm</strong><br />
-        <span>(<span id="num_cart_show"><?php echo $data_count_product['c'];?></span>) <?php echo lang($link,'sp'); ?></span>
+        <span>(<span id="num_cart_show"><?php echo $data_count_product['c'];?></span>) Sản phẩm</span>
     </a>
 
     <div id="bar_menu">
+    <a href="<?php echo $url_admin; ?>/?page_view=page_overview" <?php if($page_file=="page_overview"){ echo 'class="active"';} ?>> Tổng quang</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_product" <?php if($page_file=="page_product"){ echo 'class="active"';} ?>><span class="syn products" syn="products"></span> Quản lý sản phẩm</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_ads" <?php if($page_file=="page_ads"){ echo 'class="active"';} ?>><span class="syn ads" syn="ads"></span> Quảng cáo</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_music_lyrics" <?php if($page_file=="page_music_lyrics"){ echo 'class="active"';} ?>>Đóng góp lời</a>
-    <a href="<?php echo $url_admin;?>/?page_view=page_country_key_manager" <?php if($page_file=='page_country_key_manager'){ echo 'class="active"';} ?>><span class="syn lang_value" syn="lang_value"></span> Ngôn ngữ hệ thống</a>
+    <a href="<?php echo $url_admin;?>/?page_view=page_lang" <?php if($page_file=='page_lang'){ echo 'class="active"';} ?>> Ngôn ngữ hệ thống</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_login_manager" <?php if($page_file=='page_login_manager'){ echo 'class="active"';} ?>>Quản lý đăng nhập</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_trash" <?php if($page_file=='page_trash'){ echo 'class="active"';} ?>>Dọn rác</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_setting" <?php if($page_file=='page_setting'){ echo 'class="active"';} ?>><span class="syn setting" syn="setting"></span> Cài đặt</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_order" <?php if($page_file=='page_order'){ echo 'class="active"';} ?>><span class="syn order" syn="order"></span> Đơn đặt hàng</a>
+    <a href="<?php echo $url;?>/adminer.php?username=<?php echo $mysql_user;?>&db=<?php echo $mysql_database; ?>" target="_blank"><i class="fa fa-database" aria-hidden="true"></i></a>
 
         <form  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
             <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />

@@ -42,12 +42,10 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
         $query_lyrics_desc=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if(mysqli_num_rows($query_lyrics_desc)){
             $data_lyrics=mysqli_fetch_assoc($query_lyrics_desc);
-            $seo_desc='';
+            $seo_desc='download ';
             if ($data_lyrics['artist'] != '') $seo_desc.=lang($link,'song_artist').':'.$data_lyrics['artist'].' ';
             if ($data_lyrics['album'] != '') $seo_desc.=lang($link,'song_album').':'. $data_lyrics['album'].' ';
-            if ($data_lyrics['genre'] != '') $seo_desc.=lang($link,'song_genre').':'.$data_lyrics['genre'].' ';
-            if ($data_lyrics['year'] != '') $seo_desc.=lang($link,'song_year').':'.$data_lyrics['year'].' ';
-            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang($link,'loi_bai_hat').' ('.$title_page.') '. $data_lyrics['l'].'... ';
+            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang($link,'loi_bai_hat').' '.$title_page.'  '. $data_lyrics['l'].'... ';
         }
 
         if($data_music['slug']!=''){
@@ -193,10 +191,8 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/installApp.js',{ scope: "/" }).then(function(registration) {
-        // Registration was successful
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, function(err) {
-        // registration failed :(
         console.log('ServiceWorker registration failed: ', err);
         });
     });

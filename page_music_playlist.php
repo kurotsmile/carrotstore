@@ -97,6 +97,7 @@ if(isset($user_login)){
         <?php }?>
     </table>
 	<?php }?>
+    <?php echo show_share($link,$url.'/playlist/'.$id.'/'.$lang); ?>
     </div>
 
     <div id="sidebar_product">

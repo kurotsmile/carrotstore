@@ -12,7 +12,7 @@ $key_api_google='AIzaSyCcYpVI8I4osXUeqWkPe-nPrakxNnaND5I';
 $ver=3.8;
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 $url=$protocol.$name_host;
-$url_syn='http://carrotstore.com';
+$url_syn='https://carrotstore.com';
 $url_carrot_store=$url;
 $url_cms=$url.'/app_mobile';
 $url_work=$url_cms.'/work';

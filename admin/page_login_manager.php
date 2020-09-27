@@ -16,7 +16,7 @@ $query_all_country=mysqli_query($link,"SELECT `key`, `name` FROM `app_my_girl_co
 echo '<div id="bar_menu_sub">';
 while ($country=mysqli_fetch_assoc($query_all_country)) {
     ?>
-    <a href="<?php echo $url_admin;?>/?page_view=page_login_manager&lang=<?php echo $country['key'];?>"><img style="float: left" src="<?php echo $url;?>/thumb.php?src=<?php echo $url;?>/app_mygirl/img/<?php echo $country['key'];?>.png&size=16x16&trim=1"><?php echo $country['name'];?></a>
+    <a href="<?php echo $url_admin;?>/?page_view=page_login_manager&lang=<?php echo $country['key'];?>" <?php if($lang==$country['key']){ ?>class="active"<?php }?>><img style="float: left" src="<?php echo $url;?>/thumb.php?src=<?php echo $url;?>/app_mygirl/img/<?php echo $country['key'];?>.png&size=16x16&trim=1"><?php echo $country['name'];?></a>
     <?php
 }
 echo '</div>';

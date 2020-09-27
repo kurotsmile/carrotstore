@@ -20,10 +20,13 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 	$query_count_product_desc=mysqli_query($link,"SELECT COUNT(`id_product`) as c FROM `product_desc_$key_country` LIMIT 1");
 	$data_count_product_desc=mysqli_fetch_assoc($query_count_product_desc);
 
+	$query_count_lang_value=mysqli_query($link,"SELECT COUNT(`key`) as c FROM `lang_$key_country` LIMIT 1");
+	$data_count_lang_value=mysqli_fetch_assoc($query_count_lang_value);
+
 	echo '<div class="box">';
 	echo '<img style="float: left" src="'.$url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$row['key'].'.png&size=16x16&trim=1"/>';
 	echo '<strong> '.$row['name'].' </strong></br>';
-	echo '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> Mã quốc gia:<b>'.$row['country_code'].'</b> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> Từ khóa ngôn ngữ:<b>'.$row['key'].'</b></br>';
+	echo '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> Mã quốc gia:<b>'.$row['country_code'].'</b> <br/> <a href="'.$url_admin.'/?page_view=page_lang&lang='.$key_country.'"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Từ khóa ngôn ngữ:<b>'.$row['key'].'</b> ('.$data_count_lang_value['c'].')</a></br>';
 	echo '<ul>';
 	echo '<li><a href="'.$url.'/admin/?page_view=page_login_manager&lang='.$key_country.'"><span class="syn app_my_girl_user_'.$key_country.'" syn="app_my_girl_user_'.$key_country.'"></span> Số tài khoản đã xác thực:<b>'.$data_count_account['c'].'</b></a></li>';
 	echo '<li>Đơn hàng đã thanh toán:<b>'.$data_count_order['c'].'</b></li>';

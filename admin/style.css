@@ -102,8 +102,8 @@ label{
 #logo{
     float: left;
     margin: 8px;
-    width: 120px;
-    margin-top: 1px;
+    width: 115px;
+    margin-top: 12px;
 }
 
 form{
@@ -149,7 +149,7 @@ form{
 }
 
 #bar_menu_sub a.active{
-    color:black;
+    color:white;
     font-weight: bold;
 }
 
