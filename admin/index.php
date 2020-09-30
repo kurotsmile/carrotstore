@@ -21,12 +21,11 @@ if(isset($_SESSION['lang'])){
 }
 
 
-
 include "../database.php";
 include "../function.php";  
 include "function.php";  
 
-if(isset($_POST['logout'])){
+if(isset($_GET['logout'])){
     unset($_SESSION['user_login']);
 }
 
@@ -110,7 +109,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     </a>
 
     <div id="bar_menu">
-    <a href="<?php echo $url_admin; ?>/?page_view=page_overview" <?php if($page_file=="page_overview"){ echo 'class="active"';} ?>> Tổng quang</a>
+    <a href="<?php echo $url_admin; ?>/?page_view=page_overview" <?php if($page_file=="page_overview"){ echo 'class="active"';} ?>> Tổng quan</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_product" <?php if($page_file=="page_product"){ echo 'class="active"';} ?>><span class="syn products" syn="products"></span> Quản lý sản phẩm</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_ads" <?php if($page_file=="page_ads"){ echo 'class="active"';} ?>><span class="syn ads" syn="ads"></span> Quảng cáo</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_music_lyrics" <?php if($page_file=="page_music_lyrics"){ echo 'class="active"';} ?>>Đóng góp lời</a>
@@ -121,15 +120,12 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     <a href="<?php echo $url_admin;?>/?page_view=page_order" <?php if($page_file=='page_order'){ echo 'class="active"';} ?>><span class="syn order" syn="order"></span> Đơn đặt hàng</a>
     <a href="<?php echo $url;?>/adminer.php?username=<?php echo $mysql_user;?>&db=<?php echo $mysql_database; ?>" target="_blank"><i class="fa fa-database" aria-hidden="true"></i></a>
 
-        <form  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
+        <div  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
             <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />
             <strong class="username"><a target="_blank" style="float: left;color: yellow;padding: 5px;" href="http://work.carrotstore.com/?page_show=info_user"><?php echo $user_login->name ?></a></strong>
-            <input class="buttonPro small blue" type="button" onclick="window.location.replace('<?php echo $url;?>')" value="CarrotStore"/>
-            <input style="float: none;" type="submit" value="Đăng xuất" class="buttonPro purple small" id="btn_logout"  />
-            <input type="hidden" name="logout" value="1" />
-            <input type="hidden" value="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" name="urls" />
-        </form>
-
+            <span onclick="window.location.replace('<?php echo $url;?>')" class="buttonPro small blue" id="btn_logout"><i class="fa fa-home" aria-hidden="true"></i> Store</span>
+            <span onclick="window.location.replace('<?php echo $url_admin;?>?logout=1')" class="buttonPro small purple" id="btn_logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</span>
+        </div>
 
     </div>
 </div>

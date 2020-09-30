@@ -11,7 +11,7 @@ $song_genre = '';
 $song_comment = 'Songs downloaded from Carrotstore.com';
 $song_lyrics = '';
 $song_lang = 'vi';
-$song_id = '';
+$song_id = $id_file;
 $fd = fopen('images/192.png', 'rb');
 $song_data_pic = fread($fd, filesize('images/192.png'));
 fclose($fd);
@@ -79,26 +79,11 @@ if(isset($_POST['song_title'])) {
         echo 'Failed to write tags!<br>' . implode('<br><br>', $tagwriter->errors);
     }
 
-    if ($song_id != '') {
-        echo '<ul style="list-style: none" class="box_info_update">';
-        echo '<li><strong><i class="fa fa-star" aria-hidden="true"></i> Các biên tập viên cần bấm vào nút "Cập nhật vào Carrotstore Music" Trước khi thêm tác vụ vào bàn làm việc!</strong></li>';
-        echo '<li>ID đối tượng:<span id="data_song_id">' . $song_id . '</span></li>';
-        echo '<li>Nước:<span id="data_song_lang">' . $song_lang . '</span></li>';
-        echo '<li>Artist:<span id="data_song_artist">' . $song_artist . '</span></li>';
-        echo '<li>Album:<span id="data_song_album">' . $song_album . '</span></li>';
-        echo '<li>Year:<span id="data_song_year">' . $song_year . '</span></li>';
-        echo '<li>Genre:<span id="data_song_genre">' . $song_genre . '</span></li>';
-        echo '<li><a class="buttonPro small" target="_blank" href="http://carrotstore.com/music/'.$song_id.'/'.$song_lang.'"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Xem trên Carrotstore Music</a></li>';
-        echo '<li><a class="buttonPro small" target="_blank" href="http://carrotstore.com/app_my_girl_update.php?id='.$song_id.'&lang='.$song_lang.'"><i class="fa fa-pencil-square" aria-hidden="true"></i> Xem đối tượng trong cms Virtual lover</a></li>';
-        echo '<li><span class="buttonPro blue" onclick="update_carrotstore_music();$(this).hide(500);return false;"><i class="fa fa-music" aria-hidden="true"></i> Cập nhật vào Carrotstore Music</span></li>';
-        echo '</ul>';
-    }
-
     echo show_alert("Cập nhật thành công","alert");
 }
 
 
-    $path_file = 'app_mygirl/app_my_girl_vi/'.$id_file.'.mp3';
+    $path_file = 'app_mygirl/app_my_girl_'.$song_lang.'/'.$id_file.'.mp3';
     $getID3 = new getID3;
     $ThisFileInfo = $getID3->analyze($path_file);
     $data_music_tag = $ThisFileInfo["id3v2"]["comments"];
@@ -227,12 +212,12 @@ $data_info_audio['title']=$data_name_audio['chat'];
 
             <tr>
                 <td>year</td>
-                <td><input name="song_year" type="text" value="<?php echo $song_year; ?>"></td>
+                <td><input name="song_year" id="song_year" type="text" value="<?php echo $song_year; ?>"></td>
             </tr>
 
             <tr>
                 <td>genre</td>
-                <td><input name="song_genre" type="text" value="<?php echo $song_genre; ?>"><br><br>
+                <td><input name="song_genre" id="song_genre" type="text" value="<?php echo $song_genre; ?>"><br><br>
                     <i style="font-size: 12px;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Trường (Thể loại - genre) này nhập vào phải là dữ liệu ngôn ngữ tiếng anh hoặc trùng với ngôn ngữ lời bài hát (Editor nên đăng xuất tài khoản google ra khỏi trình duyệt để không hiển thị tiếng việt khi tìm kiếm thông tin)</i>
                 </td>
             </tr>
@@ -261,7 +246,8 @@ $data_info_audio['title']=$data_name_audio['chat'];
         </table>
         <input type="hidden" name="id_file" value="<?php echo $id_file; ?>">
         <input type="hidden" name="path_file" value="<?php echo $path_file; ?>">
-        <input value="Cập nhật" class="buttonPro yellow" type="submit">
+        <input value="Cập nhật thông tin âm thanh" class="buttonPro large yellow" type="submit">
+        <input value="Cập nhật lên dữ liệu máy chủ" class="buttonPro  light_blue" type="submit" onclick="update_info_music();return false;">
         <input type="hidden" name="song_id" id="song_id" value="<?php echo $song_id; ?>">
         <input type="hidden" name="song_lang" id="song_lang" value="<?php echo $song_lang; ?>">
     </form>
@@ -280,6 +266,23 @@ $data_info_audio['title']=$data_name_audio['chat'];
         if($("#val_year").length) $("#song_year").val($("#val_year").html());
         if($("#val_title").length) $("#song_title").val($("#val_title").html());
         if($("#val_lyrics").length) $("#song_lyrics").val($("#val_lyrics").html());
+    }
+
+    function  update_info_music(){
+        var song_artist=$("#song_artist").val();
+        var song_album=$("#song_album").val();
+        var song_year=$("#song_year").val();
+        var song_genre=$("#song_genre").val();
+        var id_music ="<?php echo $song_id;?>";
+        var lang = "<?php echo $song_lang;?>";
+        $.ajax({
+            url: "app_my_girl_jquery.php",
+            type: "post",
+            data: "function=update_info_music&song_artist="+song_artist+"&song_album="+song_album+"&song_year="+song_year+"&song_genre="+song_genre+"&id_music="+id_music+"&lang="+lang,
+            success: function (data, textStatus, jqXHR) {
+                swal("Âm nhạc", "Cập nhật thông tin và các thuột tính bài hát thành công!", "success");
+            }
+        });
     }
 </script>
 

@@ -199,7 +199,7 @@ if ($_POST) {
         if (move_uploaded_file($_FILES["file_audio"]["tmp_name"], $target_file)) {
             echo "The file " . $target_file . " has been uploaded.";
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo "Sorry, there was an error uploading your file#".$_FILES["file_audio"]["error"];
         }
     }
 
@@ -415,14 +415,8 @@ $arr = mysqli_fetch_array($result_chat);
             <td>Character sex</td>
             <td>
                 <select name="character_sex" id="character_sex" onchange="check_sex();">
-                    <option value="0" <?php if ($arr['character_sex'] == '0') {
-                        echo 'selected="true"';
-                    } ?> >Nam
-                    </option>
-                    <option value="1" <?php if ($arr['character_sex'] == '1') {
-                        echo 'selected="true"';
-                    } ?> >Nữ
-                    </option>
+                    <option value="0" <?php if ($arr['character_sex'] == '0') { echo 'selected="true"';} ?> >Nam</option>
+                    <option value="1" <?php if ($arr['character_sex'] == '1') { echo 'selected="true"';} ?> >Nữ</option>
                 </select>
             </td>
         </tr>
@@ -430,20 +424,13 @@ $arr = mysqli_fetch_array($result_chat);
             <td>effect</td>
             <td>
                 <select name="effect" onchange="check_effect(this)" id="effect">
-                    <option value="" <?php if ($arr['effect'] == '') {
-                        echo 'selected="true"';
-                    } ?>>None
-                    </option>
+                    <option value="" <?php if ($arr['effect'] == '') { echo 'selected="true"'; } ?>>None</option>
                     <?php
                     for ($i = 0; $i < count($data_app->arr_function_app); $i++) {
                         $data_i = $data_app->arr_function_app[$i];
                         ?>
-                        <option value="<?php echo $data_i->key; ?>" <?php if ($arr['effect'] == $data_i->key) {
-                            echo 'selected="true"';
-                        } ?>><?php echo $data_i->name; ?></option>
-                        <?php
-                    }
-                    ?>
+                        <option value="<?php echo $data_i->key; ?>" <?php if ($arr['effect'] == $data_i->key) { echo 'selected="true"';} ?>><?php echo $data_i->name; ?></option>
+                        <?php } ?>
                 </select>
             </td>
         </tr>
@@ -463,28 +450,21 @@ $arr = mysqli_fetch_array($result_chat);
                     <?php
                 }
                 ?>
-                <button class="buttonPro blue small" oncontextmenu="show_effect_chat('rand','');return false;"
-                        onclick="sel_effect_random('');return false;">gẫu nhiên
-                </button>
+                <button class="buttonPro blue small" oncontextmenu="show_effect_chat('rand','');return false;" onclick="sel_effect_random('');return false;">gẫu nhiên</button>
 
                 <?php for ($i = 0; $i < count($arr_tag_effect); $i++) { ?>
-                    <button class="buttonPro light_blue small"
-                            oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>','');return false;"
-                            onclick="sel_effect_random('<?php echo $arr_tag_effect[$i]; ?>');return false;"><?php echo $arr_tag_effect[$i]; ?></button>
+                    <button class="buttonPro light_blue small" oncontextmenu="show_effect_chat('<?php echo $arr_tag_effect[$i]; ?>','');return false;" onclick="sel_effect_random('<?php echo $arr_tag_effect[$i]; ?>');return false;"><?php echo $arr_tag_effect[$i]; ?></button>
                 <?php } ?>
 
 
                 <?php
                 if ($arr['effect_customer'] != '') {
                     ?>
-                    <a class="buttonPro yellow small" id="edit_effect"
-                       href="<?php echo $url; ?>/app_my_girl_effect.php?edit=<?php echo $arr['effect_customer']; ?>"
-                       target="_blank">chỉnh sửa hiệu ứng</a>
+                    <a class="buttonPro yellow small" id="edit_effect" href="<?php echo $url; ?>/app_my_girl_effect.php?edit=<?php echo $arr['effect_customer']; ?>" target="_blank">chỉnh sửa hiệu ứng</a>
                     <?php
                 } else {
                     ?>
-                    <a class="buttonPro yellow small" id="edit_effect" style="display: none;" href="" target="_blank">chỉnh
-                        sửa hiệu ứng</a>
+                    <a class="buttonPro yellow small" id="edit_effect" style="display: none;" href="" target="_blank">chỉnh sửa hiệu ứng</a>
                     <?php
                 }
                 ?>
@@ -493,9 +473,7 @@ $arr = mysqli_fetch_array($result_chat);
 
         <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {if ($arr['id_redirect'] != '') {echo 'style="display:none"';}} ?> >
             <td>color</td>
-            <td><input type="text" name="color" id="chat_color" class="jscolor"
-                       value="<?php echo $arr['color']; ?>"/>
-            </td>
+            <td><input type="text" name="color" id="chat_color" class="jscolor" value="<?php echo $arr['color']; ?>"/></td>
         </tr>
 
         <?php if ($arr['effect'] != '2') {?>
@@ -503,35 +481,20 @@ $arr = mysqli_fetch_array($result_chat);
                 <td>vibrate</td>
                 <td>
                     <select name="vibrate">
-                        <option value="" <?php if ($arr['vibrate'] == '') {
-                            echo 'selected="true"';
-                        } ?>>off
-                        </option>
-                        <option value="1" <?php if ($arr['vibrate'] == '1') {
-                            echo 'selected="true"';
-                        } ?>>on
-                        </option>
+                        <option value="" <?php if ($arr['vibrate'] == '') { echo 'selected="true"';} ?>>off</option>
+                        <option value="1" <?php if ($arr['vibrate'] == '1') { echo 'selected="true"';} ?>>on</option>
                     </select>
                 </td>
             </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-                if ($arr['id_redirect'] != '') {
-                    echo 'style="display:none"';
-                }
-            } ?> >
+            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"'; }} ?> >
                 <td>q1</td>
                 <td>
                     <input type="text" name="q1" id="q1" value='<?php echo $arr['q1']; ?>'/>
-                    <span class="key_func"
-                          onclick="add_key_question(this,$('#q1'));return false;"><?php echo get_key_lang($link,'key_yes_question', $lang_sel); ?></span>
+                    <span class="key_func"  onclick="add_key_question(this,$('#q1'));return false;"><?php echo get_key_lang($link,'key_yes_question', $lang_sel); ?></span>
                     <span onclick="add_key_customer('q1');return false;" class="buttonPro small yellow">Thêm thẻ</span>
                 </td>
             </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-                if ($arr['id_redirect'] != '') {
-                    echo 'style="display:none"';
-                }
-            } ?> >
+            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
                 <td>q2</td>
                 <td>
                     <input type="text" name="q2" id="q2" value='<?php echo $arr['q2']; ?>'/>
@@ -540,17 +503,11 @@ $arr = mysqli_fetch_array($result_chat);
                     <span onclick="add_key_customer('q2');return false;" class="buttonPro small yellow">Thêm thẻ</span>
                 </td>
             </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-                if ($arr['id_redirect'] != '') {
-                    echo 'style="display:none"';
-                }
-            } ?> >
+            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
                 <td>r1</td>
                 <td>
                     <input type="text" name="r1" id="r1" value="<?php echo $arr['r1']; ?>"/>
-                    <button onclick="show_id_chat('<?php echo $lang_sel; ?>','r1',0);return false;"
-                            class="buttonPro small yellow">Get ID chat
-                    </button>
+                    <button onclick="show_id_chat('<?php echo $lang_sel; ?>','r1',0);return false;" class="buttonPro small yellow">Get ID chat</button>
                     <button onclick="add_new_chat();return false;" class="buttonPro small yellow">Add chat</button>
                     <?php
                     if ($arr['r1'] != '') {
@@ -562,11 +519,7 @@ $arr = mysqli_fetch_array($result_chat);
                     ?>
                 </td>
             </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-                if ($arr['id_redirect'] != '') {
-                    echo 'style="display:none"';
-                }
-            } ?>>
+            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') {echo 'style="display:none"'; }} ?>>
                 <td>r2</td>
                 <td>
                     <input type="text" name="r2" id="r2" value="<?php echo $arr['r2']; ?>"/>
@@ -605,22 +558,12 @@ $arr = mysqli_fetch_array($result_chat);
             </tr>
             <?php }?>
 
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-                if ($arr['id_redirect'] != '') {
-                    echo 'style="display:none"';
-                }
-            } ?> >
+            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"'; }} ?> >
                 <td>tip</td>
                 <td>
                     <select name="tip">
-                        <option value="" <?php if ($arr['tip'] == '') {
-                            echo 'selected="true"';
-                        } ?>>off
-                        </option>
-                        <option value="1" <?php if ($arr['tip'] == '1') {
-                            echo 'selected="true"';
-                        } ?>>on
-                        </option>
+                        <option value="" <?php if ($arr['tip'] == '') { echo 'selected="true"';} ?>>off</option>
+                        <option value="1" <?php if ($arr['tip'] == '1') { echo 'selected="true"';} ?>>on</option>
                     </select>
                 </td>
             </tr>
@@ -635,9 +578,7 @@ $arr = mysqli_fetch_array($result_chat);
                         <?php
                         foreach ($arr_func_sever as $key_func_sever) {
                             ?>
-                            <option value="<?php echo $key_func_sever ?>" <?php if ($arr['func_sever'] == $key_func_sever) {
-                                echo 'selected="true"';
-                            } ?>><?php echo $key_func_sever ?></option>
+                            <option value="<?php echo $key_func_sever ?>" <?php if ($arr['func_sever'] == $key_func_sever) { echo 'selected="true"';} ?>><?php echo $key_func_sever ?></option>
                             <?php
                         }
                         ?>
@@ -646,30 +587,14 @@ $arr = mysqli_fetch_array($result_chat);
             </tr>
         <?php } ?>
 
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') {  echo 'style="display:none"';}} ?> >
             <td>status</td>
             <td>
                 <select name="status">
-                    <option value="1" <?php if ($arr['status'] == '1') {
-                        echo 'selected="true"';
-                    } ?>>Nomal
-                    </option>
-                    <option value="0" <?php if ($arr['status'] == '0') {
-                        echo 'selected="true"';
-                    } ?>>Ban đầu
-                    </option>
-                    <option value="2" <?php if ($arr['status'] == '2') {
-                        echo 'selected="true"';
-                    } ?>>Xúc động
-                    </option>
-                    <option value="3" <?php if ($arr['status'] == '3') {
-                        echo 'selected="true"';
-                    } ?>>Tức giận
-                    </option>
+                    <option value="1" <?php if ($arr['status'] == '1') { echo 'selected="true"';} ?>>Nomal</option>
+                    <option value="0" <?php if ($arr['status'] == '0') { echo 'selected="true"'; } ?>>Ban đầu</option>
+                    <option value="2" <?php if ($arr['status'] == '2') { echo 'selected="true"'; } ?>>Xúc động</option>
+                    <option value="3" <?php if ($arr['status'] == '3') { echo 'selected="true"';} ?>>Tức giận</option>
                 </select>
             </td>
         </tr>
@@ -700,11 +625,7 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
         </tr>
 
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
             <td>audio</td>
             <td colspan="3">
                 <div style="float: left;width: 50%;">
@@ -714,7 +635,7 @@ $arr = mysqli_fetch_array($result_chat);
                         <audio controls="true" id="control_audio">
                             <source src="<?php echo $url . '/app_mygirl/' . $txt_table . '/' . $arr['id'] . '.mp3'; ?>" type="audio/ogg"/>
                         </audio>
-                        <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=info_audio&id=<?php echo $arr['id']; ?>&lang=<?php echo $lang_sel; ?>&type=<?php echo $type_chat; ?>"  class="buttonPro small yellow"><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa thông tin âm thanh</a>
+                        <?php if ($arr['effect']=='2') {?><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=info_audio&id=<?php echo $arr['id']; ?>&lang=<?php echo $lang_sel; ?>&type=<?php echo $type_chat; ?>"  class="buttonPro small yellow"><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa thông tin âm thanh</a><?php }?>
                         <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_audio&id=<?php echo $arr['id']; ?>&lang=<?php echo $lang_sel; ?>&type=<?php echo $type_chat; ?>"  class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa âm thanh</a>
                     <?php } else {
                         if ($arr['effect'] != '2') {?>
@@ -727,18 +648,13 @@ $arr = mysqli_fetch_array($result_chat);
                     if ($arr['effect'] == '2') {
                         if (!is_file($url . '/app_mygirl/' . $txt_table . '/' . $arr['id'] . '.mp3')) {
                             ?>
-                            <a href="#" onclick="search_song();" class="buttonPro small light_blue"><i
-                                        class="fa fa-search-plus" aria-hidden="true"></i> Tìm kiếm bài hát</a>
+                            <a href="#" onclick="search_song();" class="buttonPro small light_blue"><i class="fa fa-search-plus" aria-hidden="true"></i> Tìm kiếm bài hát</a>
                             <?php
                         }
                     } else {
                         ?>
-                        <a href="#" onclick="get_audio_file('<?php echo $lang_sel; ?>');" id="btn_add_audio"
-                           class="buttonPro small yellow"><i class="fa fa-download" aria-hidden="true"></i> get link
-                            audio</a>
-                        <a target="_blank" class="buttonPro small blue" id="btn_tool_cms_audio" href="#"
-                           onclick="goto_create_audio();return false;"><i class="fa fa-headphones"
-                                                                          aria-hidden="true"></i> Công cụ tạo giọng dài</a>
+                        <a href="#" onclick="get_audio_file('<?php echo $lang_sel; ?>');" id="btn_add_audio" class="buttonPro small yellow"><i class="fa fa-download" aria-hidden="true"></i> get link audio</a>
+                        <a target="_blank" class="buttonPro small blue" id="btn_tool_cms_audio" href="#"  onclick="goto_create_audio();return false;"><i class="fa fa-headphones"  aria-hidden="true"></i> Công cụ tạo giọng dài</a>
                         <span id="msg_audio"></span>
                     <?php } ?>
                     <?php
@@ -768,29 +684,16 @@ $arr = mysqli_fetch_array($result_chat);
                     <div style="float: left; width: 23%;margin: 2px;">
                         <label><i class="fa fa-android" aria-hidden="true"></i> Android</label>
                         <select name="os_android">
-                            <option value="0" <?php if ($arr['os_android'] == '0') {
-                                echo 'selected="true"';
-                            } ?>>Hiển thị
-                            </option>
-                            <option value="1" <?php if ($arr['os_android'] == '1') {
-                                echo 'selected="true"';
-                            } ?>>Không hiển thị
-                            </option>
+                            <option value="0" <?php if ($arr['os_android'] == '0') { echo 'selected="true"';} ?>>Hiển thị</option>
+                            <option value="1" <?php if ($arr['os_android'] == '1') { echo 'selected="true"';} ?>>Không hiển thị</option>
                         </select>
                     </div>
-
 
                     <div style="float: left; width: 23%;margin: 2px;">
                         <label><i class="fa fa-windows" aria-hidden="true"></i> Window</label>
                         <select name="os_window">
-                            <option value="0" <?php if ($arr['os_window'] == '0') {
-                                echo 'selected="true"';
-                            } ?>>Hiển thị
-                            </option>
-                            <option value="1" <?php if ($arr['os_window'] == '1') {
-                                echo 'selected="true"';
-                            } ?>>Không hiển thị
-                            </option>
+                            <option value="0" <?php if ($arr['os_window'] == '0') { echo 'selected="true"'; } ?>>Hiển thị</option>
+                            <option value="1" <?php if ($arr['os_window'] == '1') { echo 'selected="true"';} ?>>Không hiển thị</option>
                         </select>
                     </div>
 
@@ -811,18 +714,9 @@ $arr = mysqli_fetch_array($result_chat);
                     <div style="float: left; width: 23%;margin: 2px;">
                         <label><i class="fa fa-adjust" aria-hidden="true" tyle="Phiên bản triển khai"></i> Phiên bản</label>
                         <select name="limit_ver">
-                            <option value="0" <?php if ($arr['ver'] == '0') {
-                                echo 'selected="true"';
-                            } ?>>Tất cả
-                            </option>
-                            <option value="1" <?php if ($arr['ver'] == '1') {
-                                echo 'selected="true"';
-                            } ?>>Không hiển thị 2D
-                            </option>
-                            <option value="2" <?php if ($arr['ver'] == '2') {
-                                echo 'selected="true"';
-                            } ?>>Không hiển thị 3D
-                            </option>
+                            <option value="0" <?php if ($arr['ver'] == '0') { echo 'selected="true"';} ?>>Tất cả</option>
+                            <option value="1" <?php if ($arr['ver'] == '1') { echo 'selected="true"';} ?>>Không hiển thị 2D</option>
+                            <option value="2" <?php if ($arr['ver'] == '2') { echo 'selected="true"';} ?>>Không hiển thị 3D</option>
                         </select>
                     </div>
                 </td>
@@ -882,42 +776,22 @@ $arr = mysqli_fetch_array($result_chat);
                         $item_field = $data_field[$i];
                         ?>
                         <div class="box_fiel_chat_item field_chat_<?php echo $item_field[0]; ?>">
-                            <div class="col"><label>ID :</label><input name="id_field_chat[]"
-                                                                       id="id_field_chat_<?php echo $item_field[0]; ?>"
-                                                                       value="<?php echo $item_field[0]; ?>"
-                                                                       type="text"/>
-                            </div>
-                            <div class="col"><label>ID Func:</label><input name="id_func_field_chat[]"
-                                                                           value="<?php echo $item_field[1]; ?>"
-                                                                           type="text"/></div>
-                            <div class="col"><label>Name Func:</label><input name="name_func_field_chat[]"
-                                                                             value="<?php echo $item_field[2]; ?>"
-                                                                             type="text"/></div>
-                            <div class="col"><label>Lable:</label><input name="value_field_chat[]"
-                                                                         value="<?php echo $item_field[3]; ?>"
-                                                                         type="text"/>
-                            </div>
-                            <div class="col"><label>Color:</label><input class="jscolor jscolor-active"
-                                                                         name="color_field_chat[]"
-                                                                         value="<?php if (isset($item_field[4])) {
-                                                                             echo $item_field[4];
-                                                                         } else {
-                                                                             echo '#000000';
-                                                                         } ?>" type="text"/></div>
+                            <div class="col"><label>ID :</label><input name="id_field_chat[]" id="id_field_chat_<?php echo $item_field[0]; ?>" value="<?php echo $item_field[0]; ?>" type="text"/></div>
+                            <div class="col"><label>ID Func:</label><input name="id_func_field_chat[]" value="<?php echo $item_field[1]; ?>" type="text"/></div>
+                            <div class="col"><label>Name Func:</label><input name="name_func_field_chat[]" value="<?php echo $item_field[2]; ?>" type="text"/></div>
+                            <div class="col"><label>Lable:</label><input name="value_field_chat[]" value="<?php echo $item_field[3]; ?>" type="text"/></div>
+                            <div class="col"><label>Color:</label><input class="jscolor jscolor-active" name="color_field_chat[]" value="<?php if (isset($item_field[4])) { echo $item_field[4];} else { echo '#000000';} ?>" type="text"/></div>
                             <div class="col" style="width:240px;padding-top: 6px;">
                                 <?php
                                 if ($item_field[2] == "show_chat" || $item_field[2] == "inp_chat") {
                                     ?>
-                                    <span class="buttonPro light_blue"
-                                          onclick="show_id_chat('<?php echo $lang_sel; ?>','id_field_chat_<?php echo $item_field[0]; ?>','0');return false;">Lấy id chat</span>
+                                    <span class="buttonPro light_blue" onclick="show_id_chat('<?php echo $lang_sel; ?>','id_field_chat_<?php echo $item_field[0]; ?>','0');return false;">Lấy id chat</span>
                                     <?php
                                 }
                                 ?>
-                                <span class="buttonPro red"
-                                      onclick="delete_field_chat('<?php echo $item_field[0]; ?>')">Xóa</span>
+                                <span class="buttonPro red" onclick="delete_field_chat('<?php echo $item_field[0]; ?>')">Xóa</span>
                             </div>
-                            <i class="fa fa-sort" aria-hidden="true"
-                               style="float: right;margin: 3px;cursor: pointer;"></i>
+                            <i class="fa fa-sort" aria-hidden="true" style="float: right;margin: 3px;cursor: pointer;"></i>
                         </div>
                         <?php
                     }
@@ -944,10 +818,8 @@ $arr = mysqli_fetch_array($result_chat);
                             ?>
                             <label>Tùy chỉnh sắp xếp</label>
                             <select name="box_select_short">
-                                <option value="0" <?php if ($sel_short == '0'){ ?>selected="true"<?php } ?>>Bằng tay
-                                </option>
-                                <option value="1" <?php if ($sel_short == '1'){ ?>selected="true"<?php } ?>>Ngẫu nhiên
-                                </option>
+                                <option value="0" <?php if ($sel_short == '0'){ ?>selected="true"<?php } ?>>Bằng tay</option>
+                                <option value="1" <?php if ($sel_short == '1'){ ?>selected="true"<?php } ?>>Ngẫu nhiên</option>
                             </select>
                         </td>
                     </tr>
@@ -957,11 +829,7 @@ $arr = mysqli_fetch_array($result_chat);
         <tr>
             <td>định dạng mức độ thô tục và tình dục</td>
             <td colspan="2">
-                <input name="limit_chat" type="range" min="1" max="4" step="1"
-                       value="<?php if ($arr['limit_chat'] == '0') {
-                           $arr['limit_chat'] = 1;
-                       };
-                       echo $arr['limit_chat']; ?>"/>
+                <input name="limit_chat" type="range" min="1" max="4" step="1" value="<?php if ($arr['limit_chat'] == '0') { $arr['limit_chat'] = 1;}; echo $arr['limit_chat']; ?>"/>
             </td>
         </tr>
         <tr>

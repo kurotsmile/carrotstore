@@ -1,4 +1,15 @@
 <?php
+$sub_view='summary';
+$url_page=$url_admin.'/?page_view=page_overview';
+if(isset($_GET['sub_view'])){
+	$sub_view=$_GET['sub_view'];
+}
+?>
+<div id="bar_menu_sub">
+    <a href="<?php echo $url_page;?>&sub_view=summary" <?php if($sub_view=='summary'){?>class="active"<?php }?>><i class="fa fa-th-list" aria-hidden="true"></i> Sơ lượt</a>
+    <a href="<?php echo $url_page;?>&sub_view=full" <?php if($sub_view=='full'){?>class="active"<?php }?>><i class="fa fa-list" aria-hidden="true"></i> Đầy đủ</a>
+</div>
+<?php
 $query_list_country=mysqli_query($link,"SELECT `key`, `name`, `country_code`, `id` FROM `app_my_girl_country` LIMIT 50");
 while($row=mysqli_fetch_assoc($query_list_country)){
 	$key_country=$row['key'];
@@ -26,7 +37,7 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 	echo '<div class="box">';
 	echo '<img style="float: left" src="'.$url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$row['key'].'.png&size=16x16&trim=1"/>';
 	echo '<strong> '.$row['name'].' </strong></br>';
-	echo '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> Mã quốc gia:<b>'.$row['country_code'].'</b> <br/> <a href="'.$url_admin.'/?page_view=page_lang&lang='.$key_country.'"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Từ khóa ngôn ngữ:<b>'.$row['key'].'</b> ('.$data_count_lang_value['c'].')</a></br>';
+	echo '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> Mã quốc gia:<b>'.$row['country_code'].'</b> <br/> <a href="'.$url_admin.'/?page_view=page_lang&lang='.$key_country.'"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Từ khóa ngôn ngữ:<b>'.$row['key'].'</b> <span class="syn lang_'.$key_country.'" syn="lang_'.$key_country.'"></span> ('.$data_count_lang_value['c'].')</a></br>';
 	echo '<ul>';
 	echo '<li><a href="'.$url.'/admin/?page_view=page_login_manager&lang='.$key_country.'"><span class="syn app_my_girl_user_'.$key_country.'" syn="app_my_girl_user_'.$key_country.'"></span> Số tài khoản đã xác thực:<b>'.$data_count_account['c'].'</b></a></li>';
 	echo '<li>Đơn hàng đã thanh toán:<b>'.$data_count_order['c'].'</b></li>';
