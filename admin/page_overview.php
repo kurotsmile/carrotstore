@@ -34,6 +34,27 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 	$query_count_lang_value=mysqli_query($link,"SELECT COUNT(`key`) as c FROM `lang_$key_country` LIMIT 1");
 	$data_count_lang_value=mysqli_fetch_assoc($query_count_lang_value);
 
+	if($sub_view=='full'){
+		$query_count_msg=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_msg_$key_country` LIMIT 1");
+		$data_count_msg=mysqli_fetch_assoc($query_count_msg);
+
+		$query_count_chat=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$key_country` LIMIT 1");
+		if($query_count_chat){
+			$data_count_chat=mysqli_fetch_assoc($query_count_chat);
+			if(!isset($data_count_chat['c'])){
+				$data_count_chat['c']='0';
+			}
+		}else{
+			$data_count_chat['c']='0';
+		}
+
+		$query_count_lyrics=mysqli_query($link,"SELECT COUNT(`id_music`) as c FROM `app_my_girl_".$key_country."_lyrics` LIMIT 1");
+		$data_count_lyrics=mysqli_fetch_assoc($query_count_lyrics);
+
+		$query_count_ytb=mysqli_query($link,"SELECT COUNT(`id_chat`) as c FROM `app_my_girl_video_".$key_country."` LIMIT 1");
+		$data_count_ytb=mysqli_fetch_assoc($query_count_ytb);
+	}
+
 	echo '<div class="box">';
 	echo '<img style="float: left" src="'.$url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$row['key'].'.png&size=16x16&trim=1"/>';
 	echo '<strong> '.$row['name'].' </strong></br>';
@@ -55,6 +76,19 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 		echo '<li><span class="syn product_desc_'.$key_country.'" syn="product_desc_'.$key_country.'"></span>Mô tả (<b>'.$data_count_product_desc['c'].'</b>)</li>';
 		echo '</ul>';
 	echo '</li>';
+
+	if($sub_view=='full'){
+		echo '<li>';
+			echo 'Các dữ liệu khác';
+			echo '<ul>';
+			echo '<li><a href="'.$url.'/app_my_girl_msg.php?lang='.$key_country.'&character_sex=1" target="_blank">Msg</a> <span class="syn app_my_girl_msg_'.$key_country.'" syn="app_my_girl_msg_'.$key_country.'"></span>(<b>'.$data_count_msg['c'].'</b>)</li>';
+			echo '<li><a href="'.$url.'/app_my_girl_chat.php?lang='.$key_country.'&character_sex=1" target="_blank">Chat</a> <span class="syn app_my_girl_'.$key_country.'" syn="app_my_girl_'.$key_country.'"></span>(<b>'.$data_count_chat['c'].'</b>)</li>';
+			echo '<li><a href="'.$url.'/app_my_girl_music_lyrics.php?lang='.$key_country.'" target="_blank">Lyrics</a> <span class="syn app_my_girl_'.$key_country.'_lyrics" syn="app_my_girl_'.$key_country.'_lyrics"></span>(<b>'.$data_count_lyrics['c'].'</b>)</li>';
+			echo '<li><a href="'.$url.'/app_my_girl_music_link_youtube.php?lang='.$key_country.'" target="_blank">Youtube link</a> <span class="syn app_my_girl_video_'.$key_country.'" syn="app_my_girl_video_'.$key_country.'"></span>(<b>'.$data_count_ytb['c'].'</b>)</li>';
+			echo '</ul>';
+		echo '</li>';
+	}
+
 	echo '</ul>';
 	echo '</div>';
 }

@@ -144,6 +144,7 @@ echo '<table  style="border:solid 1px green">';
 echo '<tr style="border:solid 1px green"><th>id</th><th>func</th><th>chat</th><th>Character sex</th><th>Ver 1</th><th>Ver 2</th><th>Giới hạng</th><th>Audio</th><th>Disable</th><th>Action</th></tr>';
 while($row_mssg=mysqli_fetch_array($query_msg_current)){
     $btn_check='<input style="width:auto" type="checkbox" name="msg_act[]" value="'.$row_mssg['id'].'" />';
+    $btn_check='';
     show_row_msg_prefab($row_mssg,$langsel,$btn_check);
 }
 echo '</table>';

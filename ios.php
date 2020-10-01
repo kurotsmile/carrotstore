@@ -198,6 +198,65 @@ if($function=='clear'){
         $query_delete_product=mysqli_query($link,"DELETE FROM `product_log_key`");
         echo 'Đã xóa '.mysqli_affected_rows($link).' từ khóa tìm kiếm sản phẩm!';
     }
+
+    if($sel_menu=='2'){
+        $dir_qr_account = 'phpqrcode/img_account';
+        $dir_qr_product = 'phpqrcode/img_product';
+        $dir_qr_login = 'phpqrcode/img_login';
+        $dir_qr_music = 'phpqrcode/img';
+        $dir_qr_link = 'phpqrcode/img_link';
+
+
+        $files = glob($dir_qr_account . '/*');
+        $c_count=0;
+        foreach ($files as $file) { 
+            if (is_file($file)) {
+                unlink($file); 
+                $c_count=$c_count+1;
+            }
+        }
+        echo "Đã xóa ".$c_count." tệp tin qr tài khoản người dùng\n";
+        
+        $files = glob($dir_qr_product . '/*'); 
+        $c_count=0;
+        foreach ($files as $file) { 
+            if (is_file($file)) {
+                unlink($file); 
+                $c_count=$c_count+1;
+            }
+        }
+        echo "Đã xóa ".$c_count." tệp tin qr sản phẩm\n";
+        
+        $files = glob($dir_qr_login . '/*'); 
+        $c_count=0;
+        foreach ($files as $file) { 
+            if (is_file($file)) {
+                unlink($file); 
+                $c_count=$c_count+1;
+            }
+        }
+        echo "Đã xóa ".$c_count."  tệp tin qr đăng nhập\n";
+
+        $files = glob($dir_qr_music . '/*'); 
+        $c_count=0;
+        foreach ($files as $file) { 
+            if (is_file($file)) {
+                unlink($file); 
+                $c_count=$c_count+1;
+            }
+        }
+        echo "Đã xóa ".$c_count." các tệp tin qr âm nhạc\n";
+        
+        $files = glob($dir_qr_link . '/*'); 
+        $c_count=0;
+        foreach ($files as $file) { 
+            if (is_file($file)) {
+                unlink($file); 
+                $c_count=$c_count+1;
+            }
+        }
+        echo "Đã xóa ".$c_count." tệp tin qr liên kết rút gọn\n";
+    }
 }
 
 ?>

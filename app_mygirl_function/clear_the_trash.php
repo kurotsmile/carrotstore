@@ -74,55 +74,6 @@ $lang_audio_sel = '';
             echo '</ul>';
         }
 
-        $dir_qr_account = 'phpqrcode/img_account';
-        $dir_qr_product = 'phpqrcode/img_product';
-        $dir_qr_login = 'phpqrcode/img_login';
-        $dir_qr_music = 'phpqrcode/img';
-        $dir_qr_link = 'phpqrcode/img_link';
-
-
-        echo '<ul>';
-        echo '<li><strong>Xóa các tệp tin qr tài khoản người dùng</strong></li>';
-        $files = glob($dir_qr_account . '/*'); // get all file names
-        foreach ($files as $file) { // iterate files
-            if (is_file($file)) {
-                echo '<li>'.$file . '</li>';
-                unlink($file); // delete file
-            }
-        }
-        echo '<li><strong>Xóa các tệp tin qr sản phẩm</strong></li>';
-        $files = glob($dir_qr_product . '/*'); // get all file names
-        foreach ($files as $file) { // iterate files
-            if (is_file($file)) {
-                echo $file . '<br/>';
-                unlink($file); // delete file
-            }
-        }
-        echo '<li><strong>Xóa các tệp tin qr đăng nhập</strong></li>';
-        $files = glob($dir_qr_login . '/*'); // get all file names
-        foreach ($files as $file) { // iterate files
-            if (is_file($file)) {
-                echo '<li>'.$file . '</li>';
-                unlink($file); // delete file
-            }
-        }
-        echo '<li><strong>Xóa các tệp tin qr âm nhạc</strong></li>';
-        $files = glob($dir_qr_music . '/*'); // get all file names
-        foreach ($files as $file) { // iterate files
-            if (is_file($file)) {
-                echo '<li>'.$file . '</li>';
-                unlink($file); // delete file
-            }
-        }
-        echo '<li><strong>Xóa các tệp tin qr liên kết rút gọn</strong></li>';
-        $files = glob($dir_qr_link . '/*'); // get all file names
-        foreach ($files as $file) { // iterate files
-            if (is_file($file)) {
-                echo '<li>'.$file . '</li>';
-                unlink($file); // delete file
-            }
-        }
-        echo '</ul>';
 
     } else {
         $msg = '';

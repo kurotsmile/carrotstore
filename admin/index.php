@@ -9,7 +9,6 @@ session_start();
 
 include "../config.php";
 
-
 if(isset($_POST['key_contry'])){
    $_SESSION['lang']=$_POST['key_contry'];     
 }
@@ -19,7 +18,6 @@ if(isset($_SESSION['lang'])){
 }else{
     $_SESSION['lang']='vi';
 }
-
 
 include "../database.php";
 include "../function.php";  
@@ -35,7 +33,6 @@ if(isset($_SESSION['user_login'])) {
 
 $user_name='';
 $error_login='';
-
 
 if(isset($_POST['user_name'])){
     $user_name=$_POST['user_name'];
@@ -56,8 +53,6 @@ if(isset($_POST['user_name'])){
         $error_login=alert("Đăng nhập không thành công! Hãy kiểm tra lại mật khẩu và tên đăng nhập","error");
     }
 }
-
-
 
 if($_GET&&isset($_GET['page_view'])){
     $page_file=$_GET['page_view'];
