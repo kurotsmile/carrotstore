@@ -14,8 +14,12 @@ $count_rate=mysqli_query($link,"SELECT * FROM `".$type_rate."_rate` WHERE `".$ty
 $user_rate=$count_rate;
 $count_rate=mysqli_num_rows($count_rate);
 if($check_rate){
-    $check_rate=mysqli_fetch_array($check_rate);
-    $rate=$check_rate[0];
+    $check_rate=mysqli_fetch_assoc($check_rate);
+    if($check_rate){
+        $rate=$check_rate['rate'];
+    }else{
+        $rate=0;
+    }
 }
 ?>
 <p style="font-size: 40px;margin-bottom: 10px;margin-top: 8px;" id="bar-star">
@@ -44,7 +48,11 @@ while($user_r=mysqli_fetch_array($user_rate)){
     echo '<div style="width: 90%;">';
     $pos = strpos($user_r[1], '@');
     if ($pos === false) {
-        echo '<img src="'.thumb($user_rs['avatar'],'20x20').'"/> ';
+        if(isset($user_rs['avatar'])){
+            echo '<img src="'.thumb($user_rs['avatar'],'20x20').'"/> ';
+        }else{
+            echo '<img src="'.thumb('','20x20').'"/> ';
+        }
         echo ''.$user_r[1].'';
     } else {
         echo '<a href="'.$url.'/user/'.$user_r[1].'" class="show_user" id_user="'.$user_r[1].'"><img src="'.thumb($user_rs['avatar'],'20x20').'"></a> ';

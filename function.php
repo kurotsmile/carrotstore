@@ -142,7 +142,7 @@ function show_share($link,$url){
 function get_name_product_lang($link,$id_product,$key_l,$is_adim_site=false){
     $query_data=mysqli_query($link,"SELECT `data` FROM `product_name_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
     $data_name=mysqli_fetch_array($query_data);
-    if($data_name['data']!=""){
+    if(isset($data_name['data'])){
         return $data_name['data'];
     }else{
         if($is_adim_site==false){
@@ -178,7 +178,7 @@ function get_username_by_id($link,$id_user,$is_admin=false){
 function get_desc_product_lang($link,$id_product,$key_l,$is_adim_site=false){
     $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
     $data_desc=mysqli_fetch_assoc($query_data);
-    if($data_desc['data']!=""){
+    if(isset($data_desc['data'])){
         return $data_desc['data'];
     }else{
         if($is_adim_site==false){
