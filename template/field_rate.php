@@ -3,14 +3,14 @@
 ?>
 <label><?php echo lang($link,'danh_gia');?></label>
 <?php
-if(isset($_SESSION['username_login'])){
-    $users=$_SESSION['username_login'];
+if(isset($user_login)){
+    $users=$user_login->id;
 }else{
     $users= $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
 }
 $rate=0;
-$check_rate=mysqli_query($link,"SELECT `rate` FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."' AND `user` = '$users'");
-$count_rate=mysqli_query($link,"SELECT * FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."'");
+$check_rate=mysqli_query($link,"SELECT `rate` FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."' AND `user` = '$users' ");
+$count_rate=mysqli_query($link,"SELECT * FROM `".$type_rate."_rate` WHERE `".$type_rate."` = '".$data['id']."' AND `lang`='$lang'");
 $user_rate=$count_rate;
 $count_rate=mysqli_num_rows($count_rate);
 if($check_rate){
@@ -27,9 +27,9 @@ if($check_rate){
     for($i=1;$i<=5;$i++){
         if($i<=$rate){
             ?>
-            <i title="<?php echo lang($link,'tip_star'.$i); ?>" class="fa fa-star star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" style="color: #fdb021;" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
+            <i title="<?php echo lang($link,'tip_star'.$i); ?>" class="fa fa-star star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" style="color: #fdb021;cursor: pointer;" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
         <?php }else{ ?>
-            <i title="<?php echo lang($link,'tip_star'.$i); ?>" class="fa fa-star-o star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>" onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
+            <i title="<?php echo lang($link,'tip_star'.$i); ?>" class="fa fa-star-o star star_<?php echo $i; ?>" data-index="<?php echo $i; ?>"  style="cursor: pointer;"  onclick="rate_object('<?php echo $type_rate ?>',<?php echo $i; ?>,<?php echo $data['id'];?>);return false;"></i>
             <?php
         }
     }
@@ -43,23 +43,27 @@ if($count_rate>0){
 <?php }?>
 <div>
 <?php
-while($user_r=mysqli_fetch_array($user_rate)){
-    $user_rs=get_account($link,$user_r[1],$lang);
+while($user_r=mysqli_fetch_assoc($user_rate)){
+    $user_rs=get_account($link,$user_r['user'],$lang);
+    $rate_user_name='';
+    $rate_user_avata='';
+
+    $user_info=json_decode(get_info_user_comment($link,$user_r['user'],$lang));
+    if(isset($user_info->name))$rate_user_name=$user_info->name;
+    if(isset($user_info->avatar))$rate_user_avatar=$user_info->avatar;
+
     echo '<div style="width: 90%;">';
-    $pos = strpos($user_r[1], '@');
-    if ($pos === false) {
-        if(isset($user_rs['avatar'])){
-            echo '<img src="'.thumb($user_rs['avatar'],'20x20').'"/> ';
-        }else{
-            echo '<img src="'.thumb('','20x20').'"/> ';
-        }
-        echo ''.$user_r[1].'';
+
+    if (isset($user_info)) {
+        $url_link_user=$url.'/user/'.$user_r['user'].'/'.$lang;
+        echo '<a href="'.$url_link_user.'" ><img style="width:20px;height:20px;" src="'.$rate_user_avatar.'"/> ';
+        echo ''.$rate_user_name.'</a>';
     } else {
-        echo '<a href="'.$url.'/user/'.$user_r[1].'" class="show_user" id_user="'.$user_r[1].'"><img src="'.thumb($user_rs['avatar'],'20x20').'"></a> ';
-        echo ' <a href="'.$url.'/user/'.$user_r[1].'" class="show_user" id_user="'.$user_r[1].'">'.$user_r[1].'</a>';
+        echo '<span><img src="'.thumb('','20x20').'"></span> ';
+        echo ' <i>'.$user_r['user'].'</i>';
     }
     echo ' <span>';
-    for($i=0;$i<intval($user_r[2]);$i++){
+    for($i=0;$i<intval($user_r['rate']);$i++){
         echo '<i class="fa fa-star" style="color: rgb(253, 176, 33);"></i>';
     }
     echo '</span> ';

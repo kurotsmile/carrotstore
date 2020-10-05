@@ -227,20 +227,20 @@ if($_GET||$_POST){
     }
 
 
-    if(isset($_POST['function'])&&$_POST['function']=='rate_object'){
+    if($function=='rate_object'){
         $id=$_POST['id'];
         $objects=$_POST['objects'];
         $star=$_POST['star'];
-        if(isset($_SESSION['username_login'])){
-            $user=$_SESSION['username_login'];
+        if(isset($user_login)){
+            $user=$user_login->id;
         }else{
             $user= $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
         }
         $check_rate=mysqli_query($link,"SELECT * FROM `".$objects."_rate` WHERE `".$objects."` = '$id' AND `user` = '$user'");
         if(mysqli_num_rows($check_rate)>0){
-            mysqli_query($link,"UPDATE `".$objects."_rate` SET `rate` = '$star' WHERE `".$objects."` = '$id' AND `user` = '$user' ");
+            mysqli_query($link,"UPDATE `".$objects."_rate` SET `rate` = '$star' WHERE `".$objects."` = '$id' AND `user` = '$user' AND `lang`='$lang' ");
         }else{
-            mysqli_query($link,"INSERT INTO `".$objects."_rate` (`".$objects."`, `user`, `rate`) VALUES ('$id', '$user', '$star');");
+            mysqli_query($link,"INSERT INTO `".$objects."_rate` (`".$objects."`, `user`, `rate`,`lang`) VALUES ('$id', '$user', '$star','$lang');");
             if(isset($_SESSION['username_login'])){
                 $tip='act_da_danh_gia_'.$objects;
                 $content=json_encode(array($objects,$star,$id));

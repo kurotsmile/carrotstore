@@ -65,7 +65,7 @@ while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
                         :</strong> <?php echo $address_account; ?></li><?php } ?>
                 <?php
                 $contact_query = mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`user_field_data` WHERE `id_device` = '" . $id_user . "' LIMIT 1");
-                if (mysqli_num_rows($contact_query)) {
+                if($contact_query){if (mysqli_num_rows($contact_query)) {
                     $data_contact = mysqli_fetch_assoc($contact_query);
                     $data_contact = $data_contact['data'];
                     $data_contact = json_decode($data_contact);
@@ -81,7 +81,7 @@ while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
                     foreach ($data_contact as $k => $v) {
                         echo '<li><b>' . $k . ':</b> ' . $v . '</li>';
                     }
-                }
+                }}
                 ?>
             </ul>
             <?php if ($address_account != '') { ?>
