@@ -8,6 +8,7 @@ if(isset($_GET['sub_view'])){
 <div id="bar_menu_sub">
     <a href="<?php echo $url_page;?>&sub_view=summary" <?php if($sub_view=='summary'){?>class="active"<?php }?>><i class="fa fa-th-list" aria-hidden="true"></i> Sơ lượt</a>
     <a href="<?php echo $url_page;?>&sub_view=full" <?php if($sub_view=='full'){?>class="active"<?php }?>><i class="fa fa-list" aria-hidden="true"></i> Đầy đủ</a>
+	<a href="<?php echo $url_page;?>&sub_view=comment" <?php if($sub_view=='comment'){?>class="active"<?php }?>><i class="fa fa-comment" aria-hidden="true"></i> <span class="syn comment" syn="comment"></span>Bình luận</a>
 </div>
 <?php
 $query_list_country=mysqli_query($link,"SELECT `key`, `name`, `country_code`, `id` FROM `app_my_girl_country` LIMIT 50");

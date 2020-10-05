@@ -184,7 +184,7 @@ if($msg_alert!=''){
                 if($id_product!=''){
                     $query_data=mysqli_query($link,"SELECT `data` FROM `product_name_$key_l` WHERE `id_product` = '$id_product' LIMIT 1");
                     $data_name=mysqli_fetch_array($query_data);
-                    $data_name=$data_name['data'];
+                    if(isset($data_name['data']))$data_name=$data_name['data'];
                     if($data_name!=''){
                         array_push($arr_is_data_name,$key_l);
                     }else{
@@ -228,7 +228,7 @@ if($msg_alert!=''){
 				if($id_product!=''){
 					$query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product' LIMIT 1");
 					$data_desc=mysqli_fetch_array($query_data);
-					$data_desc=$data_desc['data'];
+					if(isset($data_desc['data']))$data_desc=$data_desc['data'];
 					if($data_desc!=''){
 						array_push($arr_is_data,$key_l);
 					}else{

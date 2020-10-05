@@ -28,7 +28,7 @@ $(document).ready(function(){
         var commentsArray = [
             <?php
             $result=mysqli_query($link,"SELECT * FROM `comment` WHERE `productid` = '$id_product' AND `type_comment`='$type_comment' AND `lang`='".$_SESSION['lang']."'");
-            while ($row = mysqli_fetch_array($result)) {
+            if($result){while ($row = mysqli_fetch_array($result)) {
                 $comment_user_name='';
                 $comment_user_avatar='';
 
@@ -37,8 +37,8 @@ $(document).ready(function(){
                     $comment_user_avatar=thumb('images/avatar_default.png','40x40');
                 }else{
                     $user_comment=json_decode(get_info_user_comment($link,$row['username'],$row['lang']));
-                    $comment_user_name=$user_comment->name;
-                    $comment_user_avatar=$user_comment->avatar;
+                    if(isset($user_comment->name))$comment_user_name=$user_comment->name;
+                    if(isset($user_comment->avatar))$comment_user_avatar=$user_comment->avatar;
                 }
             ?>
             {
@@ -51,7 +51,7 @@ $(document).ready(function(){
                 user_has_upvoted: false,
                 parent: <?php if(intval($row['parent'])==0){ echo 'null';}else{echo $row['parent'];} ?>
             },
-            <?php }?>
+            <?php }}?>
         ];
         success(commentsArray);
     },
