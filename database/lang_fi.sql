@@ -253,4 +253,4 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('no_return_search',	'Ei tuloksia yllä oleville avainsanoille'),
 ('ngon_ngu_hien_thi',	'Valitse maa ja kieli');
 
--- 2020-10-05 09:39:03
+-- 2020-10-08 16:20:25

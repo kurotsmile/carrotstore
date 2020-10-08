@@ -233,4 +233,4 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (189,	'thong_bao',	'¡El invierno es tan frío, {ten_user}! Si sale, ¡póngase mucha ropa abrigada para evitarlo!',	0,	1,	'#FEFFC2',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'es',	1,	1,	0,	'',	1,	0,	12,	'1127',	'',	'',	'4',	'0',	'0',	'0',	''),
 (191,	'bat_chuyen',	'¡Durante la temporada de Covid 19, debes tener cuidado de no concentrarte en lugares abarrotados y usar una máscara donde sea que vayas!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'es',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2020-10-05 07:51:44
+-- 2020-10-08 15:37:41

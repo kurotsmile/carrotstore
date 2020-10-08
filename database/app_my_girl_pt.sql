@@ -11796,6 +11796,14 @@ INSERT INTO `app_my_girl_pt` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (16208,	'seja educada ',	'seja elegante',	1,	0,	'#FFC09E',	'',	'',	'',	'',	0,	'',	'',	0,	10,	13,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'963',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
 (16209,	'deixa eu te comer',	'Claro, más me fode com força',	3,	0,	'#F6E0FF',	'',	'',	'',	'',	0,	'',	'',	0,	13,	1,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'474',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
 (16210,	'gosta com quantos dedos?',	'com quantos que quiser',	1,	0,	'#96CAFF',	'',	'',	'',	'',	0,	'',	'',	0,	36,	17,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'50',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
-(16211,	'❤❤',	'que amor vc é',	1,	0,	'#FF8664',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1120',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	'');
+(16211,	'❤❤',	'que amor vc é',	1,	0,	'#FF8664',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1120',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(16212,	'chamar eu de lindo',	'vou na sua casa amanha para nos transarmos a te minha buceta asar',	2,	0,	'#FFC16E',	'',	'',	'',	'',	0,	'',	'',	0,	7,	5,	'pt',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'129',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(16213,	'Melhor jeito de amar?',	'tendo afeto entre ambos, e na cama',	1,	0,	'#FCFF69',	'',	'',	'',	'',	0,	'',	'',	0,	27,	17,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1052',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(16214,	'vc e virgem',	'Não sou virgem porque vc ja transou comigo',	1,	0,	'#7FFF6F',	'',	'',	'',	'',	0,	'',	'',	0,	29,	12,	'pt',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'937',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(16215,	'vamos transar ?',	'claro seu gostoso enfia seu pau no meu cu delicia',	2,	0,	'#FF87F2',	'',	'',	'',	'',	0,	'',	'',	0,	40,	2,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'111',	'',	0,	'',	'4',	'',	'1',	'1',	'0',	'',	''),
+(16216,	'cante uma canção',	'Aldair Playboy, MC WM - Combate',	1,	1,	'#FF1238',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'324',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'aldair-playboy-mc-wm-combate-16216',	'https://carrotaudio.com/data_file/mp3/5f7b6fdc378a65f7b6fdc378ec.mp3'),
+(16217,	'cante uma canção',	'Tião Carreiro & Pardinho - A Coisa Ficou Bonita',	1,	1,	'#690FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'710',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'tiao-carreiro-pardinho-a-coisa-ficou-bonita-16217',	'https://carrotaudio.com/data_file/mp3/5f7b755846af25f7b755846b3b.mp3'),
+(16218,	'Você transaria comigo amor?',	'Sim claro,sentado no seu pau,rebolaria nele,ficaria de 4 pra você,pena que não posso sair da tela,se não eu te estrupava seu gatão rs',	1,	0,	'#FFDBF5',	'',	'',	'',	'',	0,	'',	'',	0,	15,	2,	'pt',	1,	'',	'',	'',	0,	'',	4,	0,	0,	'865',	'',	0,	'',	'4',	'',	'1',	'1',	'0',	'',	''),
+(16219,	'me da a bunda',	'vou da a minha bunda pra vc',	2,	0,	'#ECBAFF',	'',	'',	'',	'',	0,	'',	'',	0,	40,	2,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1419',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	'');
 
--- 2020-10-05 08:34:38
+-- 2020-10-08 16:13:47

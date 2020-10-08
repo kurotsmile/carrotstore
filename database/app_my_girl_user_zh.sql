@@ -3838,6 +3838,16 @@ INSERT INTO `app_my_girl_user_zh` (`id_device`, `name`, `sex`, `date_start`, `da
 ('2b10e959c0de3d2fdd8c01fd23432748',	'墨炎道君☯️',	'0',	'2020-10-02',	'2020-10-02',	'312, Simpang Dua, Taman Bayu Permai, 32000 Sitiawan, Negeri Perak, Malaysia',	'01111111111',	1,	'',	'',	''),
 ('da59b1a8d9685d47726cd86688c1f499',	'所念皆星河',	'0',	'2020-10-03',	'2020-10-03',	'',	'18378748284',	1,	'',	'',	''),
 ('55bf8a61a8f224ab5e82a945ddcbe924',	'黑暗梅菲斯托',	'0',	'2020-10-03',	'2020-10-03',	'Hong Qi Gang Lu, Fengxian Qu, Shanghai Shi, China',	'13671614356',	0,	'',	'',	''),
-('28d254bbaba4b6588b0eedbe05645f21',	'杨懿忱嘿嘿',	'0',	'2020-10-04',	'2020-10-04',	' Luocheng Mulaozuzizhixian, Hechi Shi, Guangxi Zhuangzuzizhiqu, China',	'13367683246',	1,	'',	'',	'');
+('28d254bbaba4b6588b0eedbe05645f21',	'杨懿忱嘿嘿',	'0',	'2020-10-04',	'2020-10-04',	' Luocheng Mulaozuzizhixian, Hechi Shi, Guangxi Zhuangzuzizhiqu, China',	'13367683246',	1,	'',	'',	''),
+('8c1984893552d9fd81d94c524fb7d28d',	'刘禹哲！！',	'0',	'2020-10-05',	'2020-10-05',	'China, Yongzhou Shi, Xintian Xian, 中山商业广场1栋2楼',	'13684978971',	1,	'',	'',	''),
+('370c3b1e840ccf910b41a42a60729681',	'Vision°先森',	'0',	'2020-10-07',	'2020-10-07',	'',	'18592067524',	0,	'',	'',	''),
+('52673cd1176dc39269cbcd153a2054bd',	'呱呱小笨蛋',	'0',	'2020-10-07',	'2020-10-07',	'',	'0901025361',	0,	'',	'',	''),
+('1808c6aa1a62ac5ea172a2b64e4d7f7c',	'可愛小狗狗',	'1',	'2020-10-07',	'2020-10-07',	'',	'03030303030',	0,	'',	'',	''),
+('bad889fe6edf29db962dc06984dc130b',	'我是傲慢慢',	'1',	'2020-10-07',	'2020-10-07',	' Chaoan Qu, Chaozhou Shi, Guangdong Sheng, China',	'123456789123123',	0,	'',	'',	''),
+('345505d7ba3294dd3b74a60754d405a5',	'可可小公主',	'1',	'2020-10-07',	'2020-10-07',	'253 Xiang Dao, Jinzhou Shi, Shijiazhuang Shi, Hebei Sheng, China',	'137513595',	0,	'',	'',	''),
+('66f9a1bc6b2d77854e18051b6854eb4b',	'真心喜欢你',	'0',	'2020-10-07',	'2020-10-07',	'Ping Mu Duan, Funing Xian, Wenshan Zhuangzumiaozuzizhizhou, Yunnan Sheng, China',	'18408760220',	0,	'',	'',	''),
+('6b0e778e0e0dab6126851e8754c362a8',	'爱丽丝菲尔',	'1',	'2020-10-07',	'2020-10-07',	'',	'13431487851',	1,	'',	'',	''),
+('e629c2f79e808503df94d97006689a0e',	'毛昭瑞。。。。。',	'0',	'2020-10-08',	'2020-10-08',	'Qing Shan Lu, Bishan Qu, Chongqing Shi, China',	'17823340712',	0,	'',	'',	''),
+('006bc6cff3264fde8b26b097695fd9c1',	'影子喵-WZY',	'1',	'2020-10-08',	'2020-10-08',	'',	'15103175023',	1,	'',	'',	'');
 
--- 2020-10-05 08:52:31
+-- 2020-10-08 16:07:29

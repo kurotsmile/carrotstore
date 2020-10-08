@@ -73,4 +73,4 @@ INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('ejacule',	'pt'),
 ('muschi',	'de');
 
--- 2020-10-05 07:47:10
+-- 2020-10-08 14:45:11

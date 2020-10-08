@@ -15,7 +15,7 @@ include "app_my_girl_template.php";
 
         <a href="<?php echo $url; ?>/app_my_girl_storage.php">
             <li class="box_tool">
-                <i class="fa fa-archive" aria-hidden="true"></i>
+                <i class="fa fa-archive" aria-hidden="true"><span class="syn app_my_girl_storage" syn="app_my_girl_storage"></span></i>
                 <b>Lưu trữ</b><br />
                 Lưu trữ các đối tượng dễ nhớ, thuận tiện cho quá trình cập nhật
             </li>

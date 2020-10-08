@@ -6629,6 +6629,15 @@ INSERT INTO `app_my_girl_video_en` (`id_chat`, `link`) VALUES
 ('33970',	'https://www.youtube.com/watch?v=oorVWW9ywG0'),
 ('33971',	'https://www.youtube.com/watch?v=jwt2KVvZxhs'),
 ('33972',	'https://www.youtube.com/watch?v=Qc9c12q3mrc'),
-('33973',	'https://www.youtube.com/watch?v=i-qT5n_5Mys');
+('33973',	'https://www.youtube.com/watch?v=i-qT5n_5Mys'),
+('33980',	'https://www.youtube.com/watch?v=T8FFZnPFKRg'),
+('33981',	'https://www.youtube.com/watch?v=zLnPd7lzT4g'),
+('33982',	'https://www.youtube.com/watch?v=U16Xg_rQZkA'),
+('33983',	'https://www.youtube.com/watch?v=nbc7S3hWlgk'),
+('33984',	'https://www.youtube.com/watch?v=aCHg5r6rFoI'),
+('33985',	'https://www.youtube.com/watch?v=OS3GqQY4u54'),
+('33986',	'https://www.youtube.com/watch?v=doQ3zKnJ9Q4'),
+('33987',	'https://www.youtube.com/watch?v=TPE9uSFFxrI'),
+('33988',	'https://www.youtube.com/watch?v=978iHuFKfS4');
 
--- 2020-10-05 08:47:09
+-- 2020-10-08 16:15:26

@@ -107,7 +107,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     <a href="<?php echo $url_admin; ?>/?page_view=page_overview" <?php if($page_file=="page_overview"){ echo 'class="active"';} ?>> Tổng quan</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_product" <?php if($page_file=="page_product"){ echo 'class="active"';} ?>><span class="syn products" syn="products"></span> Quản lý sản phẩm</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_ads" <?php if($page_file=="page_ads"){ echo 'class="active"';} ?>><span class="syn ads" syn="ads"></span> Quảng cáo</a>
-    <a href="<?php echo $url_admin; ?>/?page_view=page_music_lyrics" <?php if($page_file=="page_music_lyrics"){ echo 'class="active"';} ?>><span class="syn music_contribute_lyrics" syn="music_contribute_lyrics"></span> Đóng góp slời</a>
+    <a href="<?php echo $url_admin; ?>/?page_view=page_music_lyrics" <?php if($page_file=="page_music_lyrics"){ echo 'class="active"';} ?>><span class="syn music_contribute_lyrics" syn="music_contribute_lyrics"></span> Đóng góp lời</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_lang" <?php if($page_file=='page_lang'){ echo 'class="active"';} ?>> Ngôn ngữ hệ thống</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_login_manager" <?php if($page_file=='page_login_manager'){ echo 'class="active"';} ?>>Quản lý đăng nhập</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_trash" <?php if($page_file=='page_trash'){ echo 'class="active"';} ?>>Dọn rác</a>
