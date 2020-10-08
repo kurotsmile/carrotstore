@@ -34,4 +34,4 @@ INSERT INTO `product_name_fi` (`id_product`, `data`) VALUES
 (138,	'Numero Magic'),
 (136,	'Luo salasana');
 
--- 2020-10-05 09:42:30
+-- 2020-10-08 16:54:39

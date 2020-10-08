@@ -1,3 +1,4 @@
+<div style="float:left;width:auto;padding:20px">
 <?php
 
 function remote_file_exists($url)
@@ -72,6 +73,9 @@ if($query_chat){
     $data_audio_chat=mysqli_fetch_assoc($query_chat);
     $path_create_file='../app_mygirl/app_my_girl_'.$lang_view.'/'.$id_view.'.mp3';
     $url_create_file=$url.'/app_mygirl/app_my_girl_'.$lang_view.'/'.$id_view.'.mp3';
+    
+    
+
     if($data_audio_chat!=""){
         $id_next=intval($data_audio_chat['id'])+1;
         $id_prev=intval($data_audio_chat['id'])-1;
@@ -103,6 +107,17 @@ if($query_chat){
         if(file_exists($path_create_file)){
             echo '<li><i class="fa fa-check-circle" aria-hidden="true"></i> Tệp tin đã đồng bộ: <a href="'.$url_create_file.'" target="_blank">'.$url_create_file.'</a></li>';
         }
+
+        $url_check_img_file=$url_syn.'/app_mygirl/app_my_girl_'.$lang_view.'_img/'.$id_view.'.png';
+        $path_create_img_file='../app_mygirl/app_my_girl_'.$lang_view.'_img/'.$id_view.'.png';
+        $url_view_img=$url.'/app_mygirl/app_my_girl_'.$lang_view.'_img/'.$id_view.'.png';
+        if(remote_file_exists($url_check_img_file)){
+            echo '<li>Tệp tin ảnh đích: <a href="'.$url_check_img_file.'" target="_blank">'.$url_check_img_file.'</a></li>';
+            downloadUrlToFile($url_check_img_file,$path_create_img_file);
+            echo '<li><i class="fa fa-check-circle" aria-hidden="true"></i> Tệp ảnh tin đã đồng bộ: <a href="'.$url_view_img.'" target="_blank">'.$url_view_img.'</a></li>';
+        }
+
+
         echo '</ul>';
 
     }else{
@@ -120,7 +135,7 @@ if($query_chat){
 ?>
 
 <a class="buttonPro small blue" href="<?php echo  $cur_link;?>"><i class="fa fa-pause" aria-hidden="true"></i> Dừng</a>
-<a class="buttonPro small blue" href="<?php echo  $cur_link.'&id='.$id_prev;?>"><i class="fa fa-step-forward" aria-hidden="true"></i> Về trước</a>
+<a class="buttonPro small blue" href="<?php echo  $cur_link.'&id='.$id_prev;?>"><i class="fa fa-step-backward" aria-hidden="true"></i> Về trước</a>
 <a class="buttonPro small blue" href="<?php echo  $cur_link.'&id='.$id_next;?>"><i class="fa fa-step-forward" aria-hidden="true"></i> Tiếp tục</a>
 
 <?php
@@ -134,3 +149,4 @@ $(document).ready(function(){
 <?php
 }
 ?>
+</div>

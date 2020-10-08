@@ -34,4 +34,4 @@ INSERT INTO `product_name_tr` (`id_product`, `data`) VALUES
 (138,	'Magic Sayısı'),
 (136,	'Şifre oluştur');
 
--- 2020-10-05 09:44:43
+-- 2020-10-08 16:40:11

@@ -34,4 +34,4 @@ INSERT INTO `product_name_da` (`id_product`, `data`) VALUES
 (138,	'Antal magi'),
 (136,	'Opret adgangskode');
 
--- 2020-10-05 09:47:19
+-- 2020-10-08 16:56:39

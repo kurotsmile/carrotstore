@@ -253,4 +253,4 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('no_return_search',	'Ingen resultater for ovenstående nøgleord'),
 ('ngon_ngu_hien_thi',	'Vælg land og sprog');
 
--- 2020-10-05 09:39:34
+-- 2020-10-08 16:39:20

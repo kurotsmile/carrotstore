@@ -34,4 +34,4 @@ INSERT INTO `product_name_id` (`id_product`, `data`) VALUES
 (138,	'Angka Sihir'),
 (136,	'Buat Kata Sandi');
 
--- 2020-10-05 09:42:51
+-- 2020-10-08 16:57:46
