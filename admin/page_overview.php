@@ -38,9 +38,9 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 
 	$query_count_key_music=mysqli_query($link,"SELECT COUNT(DISTINCT `key`) as c FROM `app_my_girl_log_key_music` WHERE `type` = '2' AND `lang` = '$key_country'");
 	if($query_count_key_music){
-		$data_count_key_music['c']='0';
-	}else{
 		$data_count_key_music=mysqli_fetch_assoc($query_count_key_music);
+	}else{
+		$data_count_key_music['c']='0';
 	}
 
 	$query_count_product_name=mysqli_query($link,"SELECT COUNT(`id_product`) as c FROM `product_name_$key_country` LIMIT 1");
