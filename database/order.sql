@@ -39,6 +39,8 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('5f613000c55895f613000c55c4',	'29215',	'en',	'foxarchitect@gmail.com',	'Nathan',	'music',	1),
 ('5f63ec9a212f55f63ec9a21330',	'27036',	'en',	'ulegro@yahoo.com',	'Regulo',	'music',	0),
 ('5f666859011625f6668590119e',	'14223',	'pt',	'dustinluebberswow@web.de',	'Dustin',	'music',	0),
-('5f722312959505f7223129598b',	'28931',	'en',	'jlmorris7033@gmail.com',	'James',	'music',	1);
+('5f722312959505f7223129598b',	'28931',	'en',	'jlmorris7033@gmail.com',	'James',	'music',	1),
+('5f822a43732435f822a4373285',	'803',	'de',	'klausvandongen@live.de',	'Klaus',	'music',	1),
+('5f86875da51575f86875da5194',	'30140',	'en',	'jyw4u@naver.com',	'민준',	'music',	0);
 
--- 2020-10-05 09:11:37
+-- 2020-10-16 11:49:23

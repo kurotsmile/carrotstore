@@ -16,4 +16,4 @@ TRUNCATE `music_contribute_lyrics`;
 INSERT INTO `music_contribute_lyrics` (`id_music`, `lyrics`, `lang`) VALUES
 (53155,	' sdasdasd',	'vi');
 
--- 2020-10-08 11:19:46
+-- 2020-10-16 11:50:18
