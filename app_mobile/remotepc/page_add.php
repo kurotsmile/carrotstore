@@ -3,23 +3,41 @@
 $act_txt='';
 $act_type='';
 $act_val='';
-
-    if(isset($_POST['act_txt'])){
-        echo var_dump($_POST);
-        $act_txt=$_POST['act_txt'];
-        $act_type=$_POST['act_type'];
-        $act_val=$_POST['act_val'];
-        $query_add_act=mysqli_query($link,"INSERT INTO `action` (`txt`, `type`, `value`, `mp3`) VALUES ('$act_txt', '$act_type', '$act_val', '');");
-    }
+$act_func='add';
+$act_id='';
 
     if(isset($_GET['edit'])){
-        $id_edit=$_GET['edit'];
-        $query_get_act=mysqli_query($link,"SELECT * FROM `action` WHERE `id` = '$id_edit' ORDER BY `id` DESC LIMIT 1");
+        $act_id=$_GET['edit'];
+        $query_get_act=mysqli_query($link,"SELECT * FROM `action` WHERE `id` = '$act_id' ORDER BY `id` DESC LIMIT 1");
         $data_act=mysqli_fetch_assoc($query_get_act);
         $act_txt=$data_act['txt'];
         $act_type=$data_act['type'];
         $act_val=$data_act['value'];
+        $act_func='edit';
     }
+
+    if(isset($_POST['act_txt'])){
+        $act_func=$_POST['act_func'];
+        $act_txt=trim(strtolower($_POST['act_txt']));
+        $act_type=$_POST['act_type'];
+        $act_val=$_POST['act_val'];
+        if($act_func=='add'){
+            $query_add_act=mysqli_query($link,"INSERT INTO `action` (`txt`, `type`, `value`, `mp3`) VALUES ('$act_txt', '$act_type', '$act_val', '');");
+            if($query_add_act){
+                $act_txt='';
+                $act_type='';
+                $act_val='';
+                echo msg('Thêm câu lệnh mới thành công!');
+            }
+        }else{
+            $act_id=$_POST['act_id'];
+            $query_update_act=mysqli_query($link,"UPDATE `action` SET `txt` = '$act_txt', `type` = '$act_type',`value`='$act_val' WHERE `id` = '$act_id';");
+            if($query_update_act){
+                echo msg('Cập nhật câu lệnh thành công!');
+            }
+        }
+    }
+
 ?>
 <form method="post" >
 <table style="width:auto">
@@ -51,7 +69,17 @@ $act_val='';
     <td><input name="act_val" value="<?php echo $act_val;?>"></td>
 </tr>
 <tr>
-    <td><input type="submit" class="buttonPro green" value="Hoàn tất"></td>
+    <td>
+        <?php
+        if($act_func=='add'){
+        ?>
+            <input type="submit" class="buttonPro green" value="Hoàn tất">
+        <?php }else{?>
+            <input type="submit" class="buttonPro orange" value="Cập nhật">
+            <input type="hidden" name="act_id" value="<?php echo $act_id;?>">
+        <?php } ?>
+        <input type="hidden" name="act_func" value="<?php echo $act_func;?>">
+    </td>
     <td></td>
 </tr>
 </table>

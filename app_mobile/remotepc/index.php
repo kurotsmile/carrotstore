@@ -1,6 +1,7 @@
 <?php
 include "config.php";
 include "database.php";
+include "function.php";
 $view_page='list';
 if(isset($_GET['view'])){
     $view_page=$_GET['view'];
@@ -13,6 +14,9 @@ if(isset($_GET['view'])){
     <link href="<?php echo $url;?>/style.css" rel="stylesheet" />
     <link href="<?php echo $url_carrot_store;?>/assets/css/buttonPro.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $url_carrot_store;?>/dist/sweetalert.min.css"/>
+    <script src="<?php echo $url_carrot_store;?>/js/jquery.min.js"></script>
+    <script src="<?php echo $url_carrot_store;?>/dist/sweetalert.min.js"></script>
 </header>
 <body>
 <ul id="menu_top">

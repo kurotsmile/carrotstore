@@ -24,3 +24,6 @@ function vn_to_str ($str){
     return $str;
 }
 
+function msg($txt,$type='warning'){
+    return '<script>swal("Thông báo", "'.$txt.'", "'.$type.'");</script>';
+}

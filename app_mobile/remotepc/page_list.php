@@ -4,6 +4,7 @@ $url_cur=$url.'/index.php?view=list';
 if(isset($_GET['delete'])){
     $id_delete=$_GET['delete'];
     $query_delete_action=mysqli_query($link,"DELETE FROM `action` WHERE (`id` = '$id_delete');");
+    echo msg('Xóa thành công ('.$id_delete.')','success');
 }
 ?>
 <table>
@@ -16,7 +17,7 @@ while($row_act=mysqli_fetch_assoc($query_list_act)){
         <td><a href="<?php echo $row_act['value']; ?>" target="_blank"><?php echo $row_act['value']; ?></a></td>
         <td>
             <a href="<?php echo $url;?>/index.php?view=add&edit=<?php echo $row_act['id'];?>" class="buttonPro small yellow"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa</a>
-            <a href="<?php echo $url_cur;?>&delete=<?php echo $row_act['id'];?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+            <a href="<?php echo $url_cur;?>&delete=<?php echo $row_act['id'];?>" onclick="return confirm('Có chắc chắn là muốn xóa?');" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
         </td>
     </tr>
     <?php
