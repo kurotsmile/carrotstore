@@ -5,6 +5,7 @@ $act_type='';
 $act_val='';
 $act_func='add';
 $act_id='';
+$act_audio='';
 
     if(isset($_GET['edit'])){
         $act_id=$_GET['edit'];
@@ -13,6 +14,7 @@ $act_id='';
         $act_txt=$data_act['txt'];
         $act_type=$data_act['type'];
         $act_val=$data_act['value'];
+        $act_audio=$data_act['mp3'];
         $act_func='edit';
     }
 
@@ -21,8 +23,9 @@ $act_id='';
         $act_txt=trim(strtolower($_POST['act_txt']));
         $act_type=$_POST['act_type'];
         $act_val=$_POST['act_val'];
+        $act_audio=$_POST['act_audio'];
         if($act_func=='add'){
-            $query_add_act=mysqli_query($link,"INSERT INTO `action` (`txt`, `type`, `value`, `mp3`) VALUES ('$act_txt', '$act_type', '$act_val', '');");
+            $query_add_act=mysqli_query($link,"INSERT INTO `action` (`txt`, `type`, `value`, `mp3`) VALUES ('$act_txt', '$act_type', '$act_val', '$act_audio');");
             if($query_add_act){
                 $act_txt='';
                 $act_type='';
@@ -31,7 +34,7 @@ $act_id='';
             }
         }else{
             $act_id=$_POST['act_id'];
-            $query_update_act=mysqli_query($link,"UPDATE `action` SET `txt` = '$act_txt', `type` = '$act_type',`value`='$act_val' WHERE `id` = '$act_id';");
+            $query_update_act=mysqli_query($link,"UPDATE `action` SET `txt` = '$act_txt', `type` = '$act_type',`value`='$act_val',`mp3`='$act_audio' WHERE `id` = '$act_id';");
             if($query_update_act){
                 echo msg('Cập nhật câu lệnh thành công!');
             }
@@ -69,6 +72,13 @@ $act_id='';
     <td><input name="act_val" value="<?php echo $act_val;?>"></td>
 </tr>
 <tr>
+    <td>Âm thanh phản hồi</td>
+    <td><input name="act_audio" id="act_audio" value="<?php echo $act_audio;?>"></td>
+    <td>
+        <span class="buttonPro small" onclick="show_list_audio();" ><i class="fa fa-music" aria-hidden="true"></i></span>
+    </td>
+</tr>
+<tr>
     <td>
         <?php
         if($act_func=='add'){
@@ -93,5 +103,33 @@ $act_id='';
             document.getElementById('act_txt').value = event.results[0][0].transcript;
         }
         recognition.start();
+    }
+
+    function show_list_audio(){
+        $.ajax({
+            url: "ajaxpc.php",
+            type: "post",
+            data: "function=list_audio",
+            success: function (data, textStatus, jqXHR) {
+                var list_audio=JSON.parse(data);
+                var html='<table>';
+                for(var i=0;i<list_audio.length;i++){
+                    html=html+"<tr>";
+                    html=html+"<td><a href='<?php echo $url;?>/sound/"+list_audio[i]+"' target='_blank'>"+list_audio[i]+"</a><td>";
+                    html=html+"<td><span class='buttonPro small blue' onclick='sel_audio(\""+list_audio[i]+"\")'><i class='fa fa-check-circle' aria-hidden='true'></i></span><td>";
+                    html=html+"</tr>";
+                }
+                swal({
+                    title: "Danh sách các tệp tin âm thanh",
+                    html: true,
+                    text: html
+                });
+            }
+        });
+    }
+
+    function sel_audio(name_audio){
+        $("#act_audio").val(name_audio);
+        swal.close();
     }
 </script>

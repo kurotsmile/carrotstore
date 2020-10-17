@@ -22,7 +22,7 @@ if(isset($_GET['view'])){
 <ul id="menu_top">
     <li><a href="<?php echo $url;?>/index.php?view=list"><i class="fa fa-list" aria-hidden="true"></i> Danh sách các câu lệnh</a></li>
     <li><a href="<?php echo $url;?>/index.php?view=add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm mới</a></li>
-    <li><a><i class="fa fa-file-audio-o" aria-hidden="true"></i> Giọng đọc</a></li>
+    <li><a href="<?php echo $url;?>/index.php?view=audio"><i class="fa fa-file-audio-o" aria-hidden="true"></i> Giọng đọc</a></li>
 </ul>
 
 <?php

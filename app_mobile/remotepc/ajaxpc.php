@@ -82,4 +82,13 @@ if($function=='send_action'){
     $type='voice';
     $query_add_log=mysqli_query($link,"INSERT INTO `log` (`ip`, `type`, `value`) VALUES ('1', '$type', '$value');");
 }
+
+if($function=='list_audio'){
+    $arr_audio=array();
+    $query_list_audio=mysqli_query($link,"SELECT * FROM `audio`");
+    while($row_audio=mysqli_fetch_assoc($query_list_audio)){
+        array_push($arr_audio,$row_audio['file']);
+    }
+    echo json_encode($arr_audio);
+}
 ?>

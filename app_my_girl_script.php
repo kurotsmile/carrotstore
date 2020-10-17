@@ -220,7 +220,7 @@ function goto_create_audio(){
 function show_effect_chat(str_tag,str_page) {
     $.ajax({
         url: "app_my_girl_jquery.php",
-        type: "get", //kiểu dũ liệu truyền đi
+        type: "get",
         data: "function=show_effect_chat&tag=" + str_tag+"&page="+str_page,
         success: function (data, textStatus, jqXHR) {
             swal({
@@ -236,8 +236,8 @@ function show_effect_chat(str_tag,str_page) {
 function sel_effect_random(tag) {
     $.ajax({
         url: "app_my_girl_jquery.php",
-        type: "get", //kiểu dũ liệu truyền đi
-        data: "function=select_random_effect&tag=" + tag, //tham số truyền vào
+        type: "get",
+        data: "function=select_random_effect&tag=" + tag,
         success: function (data, textStatus, jqXHR) {
             var data = $.parseJSON(data);
 
