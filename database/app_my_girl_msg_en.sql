@@ -328,4 +328,4 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (285,	'bat_chuyen',	'During the season of Covid 19, you have to be careful not to focus on crowded places and have to wear a mask wherever you go!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (286,	'bat_chuyen',	'During the season of Covid 19, you have to be careful not to focus on crowded places and have to wear a mask wherever you go!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'2',	'0',	'0',	'0',	'');
 
--- 2020-10-08 14:50:19
+-- 2020-10-17 02:50:23

@@ -69,6 +69,16 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 			$data_count_chat['c']='0';
 		}
 
+		$query_count_field_chat=mysqli_query($link,"SELECT COUNT(`id_chat`) as c FROM `app_my_girl_field_$key_country` LIMIT 1");
+		if($query_count_field_chat){
+			$data_count_field_chat=mysqli_fetch_assoc($query_count_field_chat);
+			if(!isset($data_count_field_chat['c'])){
+				$data_count_field_chat['c']='0';
+			}
+		}else{
+			$data_count_field_chat['c']='0';
+		}
+
 		$query_count_lyrics=mysqli_query($link,"SELECT COUNT(`id_music`) as c FROM `app_my_girl_".$key_country."_lyrics` LIMIT 1");
 		if($query_count_lyrics){
 			$data_count_lyrics=mysqli_fetch_assoc($query_count_lyrics);
@@ -81,6 +91,16 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 			$data_count_ytb=mysqli_fetch_assoc($query_count_ytb);
 		}else{
 			$data_count_ytb['c']='0';
+		}
+
+		$query_count_rate_music=mysqli_query($link,"SELECT COUNT(`device_id`) as c FROM `app_my_girl_music_data_pt` LIMIT 1");
+		if($query_count_rate_music){
+			$data_count_rate_music=mysqli_fetch_assoc($query_count_rate_music);
+			if(!isset($data_count_rate_music['c'])){
+				$data_count_rate_music['c']='0';
+			}
+		}else{
+			$data_count_rate_music['c']='0';
 		}
 	}
 
@@ -112,12 +132,48 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 			echo '<ul>';
 			echo '<li><a href="'.$url.'/app_my_girl_msg.php?lang='.$key_country.'&character_sex=1" target="_blank">Msg</a> <span class="syn app_my_girl_msg_'.$key_country.'" syn="app_my_girl_msg_'.$key_country.'"></span>(<b>'.$data_count_msg['c'].'</b>)</li>';
 			echo '<li><a href="'.$url.'/app_my_girl_chat.php?lang='.$key_country.'&character_sex=1" target="_blank">Chat</a> <span class="syn app_my_girl_'.$key_country.'" syn="app_my_girl_'.$key_country.'"></span>(<b>'.$data_count_chat['c'].'</b>)</li>';
+			echo '<li><a href="#">Trường dữ liệu Chat</a> <span class="syn app_my_girl_field_'.$key_country.'" syn="app_my_girl_field_'.$key_country.'"></span>(<b>'.$data_count_field_chat['c'].'</b>)</li>';
 			echo '<li><a href="'.$url.'/app_my_girl_music_lyrics.php?lang='.$key_country.'" target="_blank">Lyrics</a> <span class="syn app_my_girl_'.$key_country.'_lyrics" syn="app_my_girl_'.$key_country.'_lyrics"></span>(<b>'.$data_count_lyrics['c'].'</b>)</li>';
 			echo '<li><a href="'.$url.'/app_my_girl_music_link_youtube.php?lang='.$key_country.'" target="_blank">Youtube link</a> <span class="syn app_my_girl_video_'.$key_country.'" syn="app_my_girl_video_'.$key_country.'"></span>(<b>'.$data_count_ytb['c'].'</b>)</li>';
+			echo '<li><a href="#">Đánh giá âm nhạc</a> <span class="syn app_my_girl_music_data_'.$key_country.'" syn="app_my_girl_music_data_'.$key_country.'"></span>(<b>'.$data_count_rate_music['c'].'</b>)</li>';
 			echo '</ul>';
 		echo '</li>';
 	}
 
+	echo '</ul>';
+	echo '</div>';
+}
+
+if($sub_view=='full'){
+	echo '<div class="box">';
+	echo '<strong>Các đối tượng khác</strong>';
+	echo '<ul>';
+	echo '<li>Cài đặt <span class="syn setting" syn="setting"></span></li>';
+	echo '<li>Đánh giá sản phẩm <span class="syn product_rate" syn="product_rate"></span></li>';
+	echo '<li>Bình luận sản phẩm <span class="syn comment" syn="comment"></span></li>';
+	echo '<li>Radio <span class="syn app_my_girl_radio" syn="app_my_girl_radio"></span></li>';
+	echo '<li>Hiệu ứng trò chuyện (biểu tượng)<span class="syn app_my_girl_effect" syn="app_my_girl_effect"></span></li>';
+	echo '<li>Nhân vật <span class="syn app_my_girl_preson" syn="app_my_girl_preson"></span></li>';
+	echo '<li>Từ khóa trò chuyện cảnh báo (các mứt độ giới hạng trò chuyện) <span class="syn app_my_girl_keyword_warning" syn="app_my_girl_keyword_warning"></span></li>';
+	echo '<li>Ảnh nền <span class="syn app_my_girl_background" syn="app_my_girl_background"></span></li>';
+	echo '<li>Các chuyên đề ảnh nền <span class="syn app_my_girl_bk_category" syn="app_my_girl_bk_category"></span></li>';
+	echo '<li>Từ khóa âm nhạc đã duyệt <span class="syn app_my_girl_remove_key_music" syn="app_my_girl_remove_key_music"></span></li>';
+
+	echo '<li> Lịch sử';
+	echo '<ul>';
+	echo '<li>Lịch sử từ khóa tìm kiếm âm nhạc <span class="syn app_my_girl_log_key_music" syn="app_my_girl_log_key_music"></span></li>';
+	echo '<li>Lịch sử thống kê lượt trò chuyện theo năm <span class="syn app_my_girl_log_data" syn="app_my_girl_log_data"></span></li>';
+	echo '<li>Lịch sử thống kê lượt trò chuyện theo tháng <span class="syn app_my_girl_log_month" syn="app_my_girl_log_month"></span></li>';
+	echo '<li>Lịch sử trò chuyện trong ngày <span class="syn app_my_girl_key" syn="app_my_girl_key"></span></li>';
+	echo '</ul>';
+	echo '</li>';
+
+	echo '<li>Dữ liệu dạy trò chuyện <span class="syn app_my_girl_brain" syn="app_my_girl_brain"></span></li>';
+	echo '<li>Ngôn ngữ hiển thị (vl) <span class="syn app_my_girl_display_lang" syn="app_my_girl_display_lang"></span></li>';
+	echo '<li>Ngôn ngữ cms (vl) <span class="syn app_my_girl_display_lang_data" syn="app_my_girl_display_lang_data"></span></li>';
+	echo '<li>Ngôn ngữ ứng dụng (vl) <span class="syn app_my_girl_key_lang" syn="app_my_girl_key_lang"></span></li>';
+	echo '<li><a href="'.$url.'/app_my_girl_storage.php" target="_blank">Lưu trữ các mục trò chuyện (đánh dấu trò chuyện)</a> <span class="syn app_my_girl_storage" syn="app_my_girl_storage"></span></li>';
+	echo '<li><a href="'.$url.'/app_my_girl_manager_country.php" target="_blank">Cấu trúc các quốc gia</a> <span class="syn app_my_girl_country" syn="app_my_girl_country"></span></li>';
 	echo '</ul>';
 	echo '</div>';
 }
