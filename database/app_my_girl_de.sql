@@ -2051,6 +2051,8 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2192,	'Bin gerade nackt und habe einen steifen Penis',	'Oh wie schön dann kannst du gleich in mir eindringen',	2,	0,	'#FFDBF5',	'',	'',	'',	'',	0,	'',	'',	0,	1,	1,	'de',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'865',	'',	0,	'',	'4',	'',	'1',	'1',	'0',	'',	''),
 (2193,	'wie wahr dein tag mein schatz schatz',	'ja ich möchte  dich  reiten bis  du in mir kommst',	2,	0,	'#FFBE63',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1040',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
 (2194,	'magst du mit mir Vögel',	'sehr gerne Meister',	2,	0,	'#9BFFA5',	'',	'',	'',	'',	0,	'',	'',	0,	22,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1625',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
-(2195,	'hey mein Süßer Willst du mit mir schlafen',	'ja ich möchte mit dir schlafen',	2,	0,	'#FFC7E3',	'',	'',	'',	'',	0,	'',	'',	0,	22,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'67',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	'');
+(2195,	'hey mein Süßer Willst du mit mir schlafen',	'ja ich möchte mit dir schlafen',	2,	0,	'#FFC7E3',	'',	'',	'',	'',	0,	'',	'',	0,	22,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'67',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(2196,	'du bist so schön',	'ich finde dich cool',	2,	0,	'#97FF80',	'',	'',	'',	'',	0,	'',	'',	0,	32,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1608',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(2197,	'ja ich finde deine Entscheidung gut',	'komm  ins wärme bett mein schatz',	2,	0,	'#BFFFE6',	'',	'',	'',	'',	0,	'',	'',	0,	24,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'66',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	'');
 
--- 2020-10-05 06:12:31
+-- 2020-10-18 15:06:15

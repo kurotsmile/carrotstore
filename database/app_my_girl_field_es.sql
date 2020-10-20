@@ -20,4 +20,4 @@ INSERT INTO `app_my_girl_field_es` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('50060',	'chat',	'[[\"983\",\"es\",\"show_chat\",\"música abierta\",\"000000\"],[\"42\",\"es\",\"show_chat\",\"abrir facebook\",\"000000\"],[\"2975\",\"es\",\"show_chat\",\"abrir whats app\",\"000000\"],[\"49375\",\"es\",\"show_chat\",\"abrir recordatorio\",\"000000\"],[\"29501\",\"es\",\"show_chat\",\"radio abierta\",\"000000\"],[\"53\",\"es\",\"show_chat\",\"abrir sms\",\"000000\"]]',	'field_chat',	'unclear',	'0'),
 ('50921',	'chat',	'[[\"3\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover\"]]',	'field_chat',	'unclear',	'0');
 
--- 2020-10-05 07:26:38
+-- 2020-10-18 12:50:50

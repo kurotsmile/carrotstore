@@ -19,4 +19,4 @@ TRUNCATE `app_my_girl_field_ar`;
 INSERT INTO `app_my_girl_field_ar` (`id_chat`, `type_chat`, `data`, `type`, `author`, `option`) VALUES
 ('271',	'chat',	'[[\"https://www.facebook.com/virtuallover/\",\"\",\"link\",\"Virtual lover\"]]',	'field_chat',	'unclear',	'0');
 
--- 2020-10-05 07:22:29
+-- 2020-10-18 15:24:52

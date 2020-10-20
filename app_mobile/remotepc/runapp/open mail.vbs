@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "C:\Windows\explorer.exe shell:AppsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.mail"

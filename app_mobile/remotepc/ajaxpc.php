@@ -91,4 +91,61 @@ if($function=='list_audio'){
     }
     echo json_encode($arr_audio);
 }
+
+if($function=='get_info_to_day'){
+    Class info{
+        public $weather_description='';
+        public $weather_temp='';
+        public $weather_icon='';
+        public $sunrise='';
+        public $sunset='';
+        public $visibility='';
+        public $wind_speed='';
+        public $wind_deg='';
+    }
+    $i=new info();
+
+    $date = new DateTime("now", new DateTimeZone("Asia/Ho_Chi_Minh") );
+    $data_cur=$date->format('Y-m-d');
+    $query_weather=mysqli_query($link,"SELECT * FROM `weather` WHERE `date` = '$data_cur' LIMIT 1");
+    $data_weather=mysqli_fetch_assoc($query_weather);
+    if($data_weather==null){
+        $str_weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=hue,duong%20son,vn&appid=1cfc8822c6c366984da4d0abbb58eaf2&lang=vi&mode=json&units=metric');
+        $json_weather=json_decode($str_weather);
+        $query_add_weather=mysqli_query($link,"INSERT INTO `weather` (`data`, `date`) VALUES ('$str_weather', NOW());");
+    }else{
+        $str_weather=$data_weather['data'];
+        $json_weather=json_decode($str_weather);
+    }
+
+    $data_weather=$json_weather->weather;
+    $data_weather_description=$data_weather[0]->description;
+    $data_weather_icon=$data_weather[0]->icon;
+
+    $data_main=$json_weather->main;
+    $data_main_temp=$data_main->temp;
+
+    $data_sys=$json_weather->sys;
+    $data_wind=$json_weather->wind;
+
+    $weather_temp=round($data_main_temp,2)-273.15;
+
+    $i->weather_description=$data_weather_description;
+    $i->weather_temp=$weather_temp.'°C';
+    $i->sunrise=$data_sys->sunrise;
+    $i->sunset=$data_sys->sunset;
+    $i->visibility=$json_weather->visibility.'km';
+    $i->wind_speed=$data_wind->speed.'km/h';
+    $i->wind_deg=$data_wind->deg.'°';
+    $i->weather_icon="http://openweathermap.org/img/wn/$data_weather_icon@2x.png";
+
+    echo json_encode($i);
+}
+
+if($function=='open_music'){
+    $query_get_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url` FROM carrotsy_virtuallover.`app_my_girl_en` WHERE `effect` = '2' ORDER BY RAND() LIMIT 1");
+    $data_music=mysqli_fetch_assoc($query_get_music);
+    $data_music['name']=$data_music['chat'];
+    echo json_encode($data_music);
+}
 ?>

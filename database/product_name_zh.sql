@@ -34,4 +34,4 @@ INSERT INTO `product_name_zh` (`id_product`, `data`) VALUES
 (138,	'数字魔术'),
 (136,	'创建密码');
 
--- 2020-10-08 16:29:41
+-- 2020-10-18 13:45:59

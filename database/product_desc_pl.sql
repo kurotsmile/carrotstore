@@ -34,4 +34,4 @@ INSERT INTO `product_desc_pl` (`id_product`, `data`) VALUES
 (138,	'<p>Użyj logicznego mózgu, aby ustawić dekodowanie matryc na każdym etapie gry, aby poprawić swoje myślenie. Dzięki niezwykle prostej grze, która zapewni rozrywkę w czasie relaksu<br />Jak grać:<br />Kontrolujesz każdy zestaw liczb wokół czarnego przycisku sterującego w wierszach i kolumnach w matrycach numerycznych, liczby będą obracane zgodnie z ruchem wskazówek zegara, wykorzystujesz swoją inteligencję, aby znaleźć zasady ustawiania liczb od małych do dużych. Po zakończeniu będziesz zwycięzcą</p>'),
 (136,	'<p>Aplikacja służy do tworzenia haseł i zarządzania hasłami za pomocą różnych wstępnie ustawionych opcji, odpowiednich do tworzenia kont, takich jak poczta e-mail, sieci społecznościowe i strony internetowe. Możesz tworzyć kopie zapasowe i zarządzać nimi za pomocą wygenerowanych haseł. Pomóż Ci nie zapomnieć lub zgubić hasła.</p>\r\n\r\n<p>Zapewnia profesjonalne dekodowanie ciągów MD5 i nieograniczoną pamięć.</p>\r\n\r\n<p>Intuicyjny, łatwy w obsłudze interaktywny interfejs pomaga zwiększyć efektywność tworzenia kont online.</p>\r\n');
 
--- 2020-10-08 16:58:57
+-- 2020-10-18 09:11:02

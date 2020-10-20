@@ -613,6 +613,10 @@ INSERT INTO `app_my_girl_video_zh` (`id_chat`, `link`) VALUES
 ('7339',	'https://www.youtube.com/watch?v=C0oUGAeVN1I'),
 ('7352',	'https://www.youtube.com/watch?v=8EA71rLoY5s'),
 ('7353',	'https://www.youtube.com/watch?v=1xlASR2bfGk'),
-('7354',	'https://www.youtube.com/watch?v=5gFxDvQJfLM');
+('7354',	'https://www.youtube.com/watch?v=5gFxDvQJfLM'),
+('7373',	'https://www.youtube.com/watch?v=z2KDv8Xj8wM'),
+('7374',	'https://www.youtube.com/watch?v=hFxTpZpmYps'),
+('7375',	'https://www.youtube.com/watch?v=VEi38LbRUak'),
+('7376',	'https://www.youtube.com/watch?v=euwpeHyWwTI');
 
--- 2020-10-05 08:56:04
+-- 2020-10-18 13:53:48

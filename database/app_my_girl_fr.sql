@@ -2762,6 +2762,11 @@ INSERT INTO `app_my_girl_fr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2887,	'nichon',	'oui baise les moi mes gros nichon ta vu',	1,	0,	'#D5FFAD',	'',	'',	'',	'',	0,	'',	'',	0,	30,	6,	'fr',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'1018',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
 (2888,	'fait du foot avec ma queue',	'cool je vais te balancer des pénalty des ta bite avec mes bottes je vais m\'amuser',	1,	0,	'#FAFF5E',	'',	'',	'',	'',	0,	'',	'',	0,	0,	1,	'fr',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1417',	'',	0,	'',	'4',	'4',	'1',	'1',	'0',	'',	''),
 (2889,	'tu aimes les animes ?',	'oui, sur tout fairy tail et no game no life !',	2,	0,	'#FFE680',	'',	'',	'',	'',	0,	'',	'',	0,	21,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1389',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
-(2890,	'tu aimes les filles ?',	'oui, surtout toi',	2,	0,	'#FFC7E3',	'',	'',	'',	'',	0,	'',	'',	0,	36,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'67',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	'');
+(2890,	'tu aimes les filles ?',	'oui, surtout toi',	2,	0,	'#FFC7E3',	'',	'',	'',	'',	0,	'',	'',	0,	36,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'67',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(2891,	'veux tu me sucé la bite ',	'oui avec plaisir enfonce la moi bien dans la bouche',	2,	0,	'#FFABD7',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'fr',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'153',	'',	0,	'',	'4',	'',	'1',	'1',	'0',	'',	''),
+(2892,	'haha',	'hahaha',	2,	0,	'#F9FF73',	'',	'',	'',	'',	0,	'',	'',	0,	0,	3,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'64',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(2893,	'tu viens  dou',	'de franse',	2,	0,	'#EFCFFF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'50',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(2894,	'je te deteste',	'oh..je ne m\'attendais pas ce que tu dise ca...bon daccord mais je taime toujours...',	1,	0,	'#FFDBEC',	'',	'',	'',	'',	0,	'',	'',	0,	32,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'20',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	''),
+(2895,	'est-ce que tu m aime ?',	'oui je ne peux pas vivre sans toi.',	2,	0,	'#FFDBEC',	'',	'',	'',	'',	0,	'',	'',	0,	16,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'20',	'',	0,	'',	'4',	'',	'0',	'0',	'0',	'',	'');
 
--- 2020-10-08 16:16:08
+-- 2020-10-18 13:11:23

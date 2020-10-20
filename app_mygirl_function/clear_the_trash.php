@@ -62,14 +62,18 @@ $lang_audio_sel = '';
         while ($l = mysqli_fetch_array($list_country)) {
             $langsel = $l['key'];
             $dirname = 'app_mygirl/app_my_girl_temp_' . $langsel;
-            $dir = opendir($dirname);
             echo '<ul>';
-            echo '<li><strong><img src="' . thumb('/app_mygirl/img/' . $langsel . '.png', '14') . '"/> Dã xóa các tệp tin rác nước (' . $l['name'] . ')</strong></li>';
-            while (false != ($file = readdir($dir))) {
-                if (($file != ".") and ($file != "..") and ($file != "index.php")) {
-                    echo '<li>' . $file . '</li>';
-                    unlink($dirname . '/' . $file);
+            if(is_dir($dirname)){
+                $dir = opendir($dirname);
+                echo '<li><strong><img src="' . thumb('/app_mygirl/img/' . $langsel . '.png', '14') . '"/> Dã xóa các tệp tin rác nước (' . $l['name'] . ')</strong></li>';
+                while (false != ($file = readdir($dir))) {
+                    if (($file != ".") and ($file != "..") and ($file != "index.php")) {
+                        echo '<li>' . $file . '</li>';
+                        unlink($dirname . '/' . $file);
+                    }
                 }
+            }else{
+                echo '<li><strong><img src="'.thumb('/app_mygirl/img/'.$langsel.'.png', '14').'"/> <a target="_blank" href="'.$url.'/app_mygirl_function/fix_country.php?type=folder&val=app_my_girl_temp_'.$langsel.'">Chưa có thư mục lưu trữ tệp tạm (temp)</a> (' . $l['name'] . ')</strong></li>';
             }
             echo '</ul>';
         }
