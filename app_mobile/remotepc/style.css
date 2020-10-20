@@ -54,3 +54,12 @@ tr:nth-child(even) {background-color: white}
     font-weight: bold;
 }
 h3{float: left;width: 100%;}
+.box_info{
+    float: left;
+    width: 100%;
+    background-color: #c2acef;
+}
+.box_info ul{
+    list-style: none;
+    float: left;
+}

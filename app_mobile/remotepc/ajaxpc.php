@@ -40,7 +40,19 @@ if($function=='get_log'){
         if($data_log['type']=='voice'){
             $txt_search_act=$data_log['value'];
             $query_action=mysqli_query($link,"SELECT `txt`,`type`, `id`,`value`, `mp3` FROM `action` WHERE MATCH (`txt`) AGAINST ('$txt_search_act' IN BOOLEAN MODE) LIMIT 1");
+            $is_action=0;
             if($query_action){
+                if(mysqli_num_rows($query_action)>0){
+                    $is_action=1;
+                }else{
+                    $is_action=0;
+                }
+            }else{
+                $is_action=0;
+            }
+
+            if($is_action==1){
+                //Thự hiện các câu lệnh
                 $data_action=mysqli_fetch_assoc($query_action);
                 if($data_action['type']=='search'){
                     $txt_search_act=vn_to_str($txt_search_act);
@@ -61,8 +73,18 @@ if($function=='get_log'){
                         $data_log['mp3']=$url.'/sound/a'.$index_music.'.ogg';
                     }
                 }
+            }else{
+                //Trả lời các câu trò chuyện
+                $query_chat=mysqli_query($link,"SELECT `chat` FROM carrotsy_virtuallover.`app_my_girl_en` WHERE MATCH (`text`) AGAINST ('$txt_search_act' IN BOOLEAN MODE) ORDER BY RAND() LIMIT 1");
+                if($query_chat){
+                    $data_chat=mysqli_fetch_assoc($query_chat);
+                    $data_log['nv_chat']= $data_chat['chat'];
+                }
+                $data_log['mp3']="";
             }
             $query_delete_log=mysqli_query($link,"DELETE FROM `log`");
+        }else{
+
         }
     }
     echo json_encode($data_log);
@@ -95,13 +117,19 @@ if($function=='list_audio'){
 if($function=='get_info_to_day'){
     Class info{
         public $weather_description='';
+        public $weather_tomorrow_description='';
         public $weather_temp='';
         public $weather_icon='';
+        public $weather_tip='';
+        public $weather_tomorrow_icon='';
         public $sunrise='';
         public $sunset='';
         public $visibility='';
         public $wind_speed='';
         public $wind_deg='';
+        public $rain='';
+        public $humidity='';
+        public $clouds='';
     }
     $i=new info();
 
@@ -110,7 +138,7 @@ if($function=='get_info_to_day'){
     $query_weather=mysqli_query($link,"SELECT * FROM `weather` WHERE `date` = '$data_cur' LIMIT 1");
     $data_weather=mysqli_fetch_assoc($query_weather);
     if($data_weather==null){
-        $str_weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=hue,duong%20son,vn&appid=1cfc8822c6c366984da4d0abbb58eaf2&lang=vi&mode=json&units=metric');
+        $str_weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=hue,duong%20son,vn&appid=1cfc8822c6c366984da4d0abbb58eaf2&lang=vi&mode=json&units=metric&cnt=3');
         $json_weather=json_decode($str_weather);
         $query_add_weather=mysqli_query($link,"INSERT INTO `weather` (`data`, `date`) VALUES ('$str_weather', NOW());");
     }else{
@@ -121,24 +149,55 @@ if($function=='get_info_to_day'){
     $data_weather=$json_weather->weather;
     $data_weather_description=$data_weather[0]->description;
     $data_weather_icon=$data_weather[0]->icon;
+    
 
     $data_main=$json_weather->main;
     $data_main_temp=$data_main->temp;
+    $data_main_feels_like=$data_main->feels_like;
+    $data_main_temp_min=$data_main->temp_min;
+    $data_main_temp_max=$data_main->temp_max;
+    $data_weather_humidity=$data_main->humidity;
 
     $data_sys=$json_weather->sys;
     $data_wind=$json_weather->wind;
+    $data_rain=$json_weather->rain;
+    $data_clouds=$json_weather->clouds;
 
     $weather_temp=round($data_main_temp,2)-273.15;
+    $weather_feels_like=round($data_main_feels_like,2)-273.15;
+    $weather_temp_min=round($data_main_temp_min,2)-273.15;
+    $weather_temp_max=round($data_main_temp_max,2)-273.15;
 
     $i->weather_description=$data_weather_description;
+    $i->weather_tomorrow_description=$data_weather[1]->description;
     $i->weather_temp=$weather_temp.'°C';
     $i->sunrise=$data_sys->sunrise;
     $i->sunset=$data_sys->sunset;
-    $i->visibility=$json_weather->visibility.'km';
-    $i->wind_speed=$data_wind->speed.'km/h';
+    $i->visibility=$json_weather->visibility.'m';
+    $i->wind_speed=$data_wind->speed.'m/s';
     $i->wind_deg=$data_wind->deg.'°';
-    $i->weather_icon="http://openweathermap.org/img/wn/$data_weather_icon@2x.png";
+    $i->rain=$data_rain->{"1h"}.' mm/h';
+    $i->humidity=$data_weather_humidity.'%';
+    $i->clouds=$data_clouds->all.'%';
+    if($weather_temp_min==$weather_temp_max){
+        $i->weather_tip="Nhiệt độ trung bình ".$weather_feels_like."°C, thấp nhất từ ".$weather_temp_min."°C";
+    }else{
+        $i->weather_tip="Nhiệt độ trung bình ".$weather_feels_like."°C, thấp nhất từ ".$weather_temp_min."°C đến ".$weather_temp_max."°C";
+    }
 
+    $data_weather_icon=$data_weather[0]->icon;
+    if(file_exists('images/'.$data_weather_icon.'@2x.png')){
+        $i->weather_icon=$url."/images/$data_weather_icon@2x.png";
+    }else{
+        $i->weather_icon="http://openweathermap.org/img/wn/$data_weather_icon@2x.png";
+    }
+
+    $data_weather_tomorrow_icon=$data_weather[1]->icon;
+    if(file_exists('images/'.$data_weather_tomorrow_icon.'@2x.png')){
+        $i->weather_tomorrow_icon=$url."/images/$data_weather_tomorrow_icon@2x.png";
+    }else{
+        $i->weather_tomorrow_icon="http://openweathermap.org/img/wn/$data_weather_tomorrow_icon@2x.png";
+    }
     echo json_encode($i);
 }
 
