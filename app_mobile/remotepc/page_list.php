@@ -17,7 +17,7 @@ if($data_weather==null){
 $data_weather=$json_weather->weather;
 $data_weather_description=$data_weather[0]->description;
 
-$data_tomorrow=$data_weather[1];
+
 
 $data_main=$json_weather->main;
 $data_main_temp=$data_main->temp;
@@ -34,11 +34,14 @@ if(file_exists('images/'.$data_weather_icon.'@2x.png')){
     $weather_icon="http://openweathermap.org/img/wn/$data_weather_icon@2x.png";
 }
 
-$url_icon_tomorrow=$data_tomorrow->icon;
-if(file_exists('images/'.$url_icon_tomorrow.'@2x.png')){
-    $url_icon_tomorrow=$url."/images/$url_icon_tomorrow@2x.png";
-}else{
-    $url_icon_tomorrow="http://openweathermap.org/img/wn/$url_icon_tomorrow@2x.png";
+if(isset($data_weather[1])){
+    $data_tomorrow=$data_weather[1];
+    $url_icon_tomorrow=$data_tomorrow->icon;
+    if(file_exists('images/'.$url_icon_tomorrow.'@2x.png')){
+        $url_icon_tomorrow=$url."/images/$url_icon_tomorrow@2x.png";
+    }else{
+        $url_icon_tomorrow="http://openweathermap.org/img/wn/$url_icon_tomorrow@2x.png";
+    }
 }
 ?>
 
@@ -52,11 +55,17 @@ if(file_exists('images/'.$url_icon_tomorrow.'@2x.png')){
         <li><b>Tốc độ gió</b> : <?php echo $data_wind->speed.'km/h'; ?></li>
     </ul>
 
+    <?php
+    if(isset($data_weather[1])){
+    ?>
     <ul>
         <li><strong>Ngày mai</strong></li>
         <li><img style="width:50px" src="<?php echo $url_icon_tomorrow;?>"/></li>
         <li><b>Mô tả thời tiết</b> : <?php echo $data_tomorrow->description; ?></li>
     </ul>
+    <?php
+    }
+    ?>
 
 </div>
 

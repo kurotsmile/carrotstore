@@ -253,6 +253,15 @@ function sel_effect_random(tag) {
 
     });
 }
+
+function record(emp_add,lang_act){
+    var recognition = new webkitSpeechRecognition();
+    recognition.lang = lang_act;
+        recognition.onresult = function(event) {
+            document.getElementById(emp_add).value = event.results[0][0].transcript;
+        }
+    recognition.start();
+}
 </script>
 <?php
 

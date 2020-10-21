@@ -1,7 +1,4 @@
 <?php
-
-
-
 function alert($msg,$type='alert'){
     $txt_html='<div class="alert">';
     if($type=='alert'){
@@ -42,6 +39,35 @@ function deleteDirectory($dir) {
         if (!deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {return false;}
     }
     return rmdir($dir);
+}
+
+function remote_file_exists($url)
+{
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_NOBODY, 1);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); # handles 301/2 redirects
+    curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if( $httpCode == 200 ){return true;}
+}
+
+function downloadUrlToFile($url, $outFileName)
+{   
+    if(is_file($url)) {
+        copy($url, $outFileName); 
+    } else {
+        $options = array(
+          CURLOPT_FILE    => fopen($outFileName, 'w'),
+          CURLOPT_TIMEOUT =>  28800,
+          CURLOPT_URL     => $url
+        );
+
+        $ch = curl_init();
+        curl_setopt_array($ch, $options);
+        curl_exec($ch);
+        curl_close($ch);
+    }
 }
 
 ?>

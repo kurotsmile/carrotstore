@@ -296,10 +296,9 @@ $arr = mysqli_fetch_array($result_chat);
                             win.focus();
                         }
                     </script>
-                    <span class="buttonPro small black"
-                          onclick="translation_tag('key_inp','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i
-                                class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                    <span class="buttonPro small black" onclick="translation_tag('key_inp','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch</span>
                     <a href="#" class="buttonPro small yellow" target="_blank" onclick="check_key();return false;"><i class="fa fa-share-square-o" aria-hidden="true"></i> kiểm tra tồn tại</a>
+                    <a href="#" class="buttonPro small light_blue" target="_blank" onclick="record('key_inp','<?php echo $lang_sel; ?>');return false;"><i class="fa fa-microphone" aria-hidden="true"></i></a>
                 </td>
             </tr>
         <?php } ?>
@@ -315,21 +314,18 @@ $arr = mysqli_fetch_array($result_chat);
                     <tr>
                         <td>
                             <label>Không kích hoạt</label>
-                            <input style="width: auto;" type="checkbox" name="disable"
-                                   <?php if ($arr['disable'] == "1") { ?>checked="on"<?php } ?> />
+                            <input style="width: auto;" type="checkbox" name="disable" <?php if ($arr['disable'] == "1") { ?>checked="on"<?php } ?> />
                             <i class="fa fa-toggle-on" aria-hidden="true"></i>
                         </td>
                         <td>
                             <label>Lưu trữ</label>
-                            <input style="width: auto;" type="checkbox" name="storage"
-                                   <?php if ($chat_storage == "on") { ?>checked="on"<?php } ?> />
+                            <input style="width: auto;" type="checkbox" name="storage" <?php if ($chat_storage == "on") { ?>checked="on"<?php } ?> />
                             <i class="fa fa-archive" aria-hidden="true"></i>
                             <select style="width: 150px;float: none;margin-left: 3px;" name="storage_category">
                                 <?php
                                 for ($i = 0; $i < count($array_category_store); $i++) {
                                     ?>
-                                    <option value="<?php echo $array_category_store[$i]->key; ?>"
-                                            <?php if ($storage_category == $array_category_store[$i]->key){ ?>selected="true"<?php } ?>><?php echo $array_category_store[$i]->value; ?></option>
+                                    <option value="<?php echo $array_category_store[$i]->key; ?>" <?php if ($storage_category == $array_category_store[$i]->key){ ?>selected="true"<?php } ?>><?php echo $array_category_store[$i]->value; ?></option>
                                     <?php
                                 }
                                 ?>
@@ -360,15 +356,10 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
         </tr>
 
-        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {
-            if ($arr['id_redirect'] != '') {
-                echo 'style="display:none"';
-            }
-        } ?> >
+        <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {if ($arr['id_redirect'] != '') {echo 'style="display:none"';}} ?> >
             <td>Chat</td>
             <td colspan="2">
-                <textarea style="height: 240px;" id="chat" onkeyup="check_chat_txt_length()"
-                          name="chat"><?php echo $arr['chat']; ?></textarea>
+                <textarea style="height: 240px;" id="chat" onkeyup="check_chat_txt_length()" name="chat"><?php echo $arr['chat']; ?></textarea>
                 <div style="float: left;width: 100%;">
                     <?php
                     foreach ($arr_func as $key_func) {
@@ -378,11 +369,9 @@ $arr = mysqli_fetch_array($result_chat);
                         <?php
                     }
                     ?>
-                    <span class="buttonPro small black"
-                          onclick="translation_tag('chat','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');"><i
-                                class="fa fa-language" aria-hidden="true"></i> Dịch</span>
-                    <span class="buttonPro small black" onclick="paste_tag('chat');return false;"><i
-                                class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
+                    <span class="buttonPro small black" onclick="translation_tag('chat','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');"><i class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                    <span class="buttonPro small black" onclick="paste_tag('chat');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
+                    <a href="#" class="buttonPro small light_blue" target="_blank" onclick="record('chat','<?php echo $lang_sel; ?>');return false;"><i class="fa fa-microphone" aria-hidden="true"></i></a>
                 </div>
             </td>
         </tr>

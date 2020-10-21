@@ -8,16 +8,16 @@ if(isset($_GET['view'])){
 }
 ?>
 <html>
-<header>
+<head>
     <title>Trợ lý ảo PC</title>
-    <link rel="shortcut icon" href="<?php echo $url;?>/icon.ico">
+    <link rel="shortcut icon" href="<?php echo $url;?>/icon.ico"/>
     <link href="<?php echo $url;?>/style.css" rel="stylesheet" />
     <link href="<?php echo $url_carrot_store;?>/assets/css/buttonPro.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $url_carrot_store;?>/dist/sweetalert.min.css"/>
     <script src="<?php echo $url_carrot_store;?>/js/jquery.min.js"></script>
     <script src="<?php echo $url_carrot_store;?>/dist/sweetalert.min.js"></script>
-</header>
+</head>
 <body>
 
 <ul id="menu_top">

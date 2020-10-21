@@ -6,6 +6,9 @@ $act_val='';
 $act_func='add';
 $act_id='';
 $act_audio='';
+    if(isset($_GET['key'])){
+        $act_txt=$_GET['key'];
+    }
 
     if(isset($_GET['edit'])){
         $act_id=$_GET['edit'];

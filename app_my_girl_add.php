@@ -274,17 +274,11 @@ if (isset($_POST['chat'])) {
                         <?php
                         $txt_key_text = '';
 
-                        if (isset($_POST['text'])) {
-                            $txt_key_text = $_POST['text'];
-                        } else {
-                            $txt_key_text = $key;
-                        }
+                        if (isset($_POST['text'])) { $txt_key_text = $_POST['text'];} else { $txt_key_text = $key;}
 
                         if (isset($_GET['effect'])) {
                         if ($_GET['effect'] == '2') {
-                            if ($txt_key_text == '') {
-                                $txt_key_text = get_key_lang($link,'key_music', $lang_sel);
-                            }
+                            if ($txt_key_text == '') {$txt_key_text = get_key_lang($link,'key_music', $lang_sel); }
                             ?>
                             <script>
                                 $(document).ready(function () {
@@ -302,13 +296,8 @@ if (isset($_POST['chat'])) {
                         <?php
                         }
 
-                        if ($_GET['effect'] == '36') {
-                            $txt_key_text = get_key_lang($link,'key_quote', $lang_sel);
-                        }
-
-                        if ($_GET['effect'] == '49') {
-                            $txt_key_text = get_key_lang($link,'key_story', $lang_sel);
-                        }
+                        if ($_GET['effect'] == '36') {$txt_key_text = get_key_lang($link,'key_quote', $lang_sel);}
+                        if ($_GET['effect'] == '49') { $txt_key_text = get_key_lang($link,'key_story', $lang_sel);}
                         }else{
                         ?>
                             <script>
@@ -343,14 +332,10 @@ if (isset($_POST['chat'])) {
                         </script>
                     </td>
                     <td>
-                        <a class="buttonPro small yellow" id="btn_reset_key" style="display: none;"
-                           onclick="reset_key();return false;">Làm mới từ khóa</a>
-                        <span class="buttonPro small black"
-                              onclick="translation_tag('key_inp','<?php echo $lang_sel; ?>','vi');return false;"><i
-                                class="fa fa-language" aria-hidden="true"></i> Dịch</span>
-                        <a href="#" class="buttonPro small yellow" target="_blank"
-                           onclick="check_key();return false;"><i class="fa fa-share-square-o" aria-hidden="true"></i>
-                            kiểm tra tồn tại</a>
+                        <a class="buttonPro small yellow" id="btn_reset_key" style="display: none;" onclick="reset_key();return false;">Làm mới từ khóa</a>
+                        <span class="buttonPro small black" onclick="translation_tag('key_inp','<?php echo $lang_sel; ?>','vi');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                        <a href="#" class="buttonPro small yellow" target="_blank" onclick="check_key();return false;"><i class="fa fa-share-square-o" aria-hidden="true"></i> kiểm tra tồn tại</a>
+                        <a href="#" class="buttonPro small light_blue" target="_blank" onclick="record('key_inp','<?php echo $lang_sel; ?>');return false;"><i class="fa fa-microphone" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             <?php } ?>
@@ -392,24 +377,18 @@ if (isset($_POST['chat'])) {
             <tr class="chat_1">
                 <td>Chat</td>
                 <td colspan="2">
-                    <textarea style="height: 240px;" id="chat" name="chat"
-                              onkeyup="check_chat_txt_length()"><?php if (isset($_GET['answer'])) {
-                            echo $_GET['answer'];
-                        } ?></textarea>
+                    <textarea style="height: 240px;" id="chat" name="chat" onkeyup="check_chat_txt_length()"><?php if (isset($_GET['answer'])) { echo $_GET['answer'];} ?></textarea>
                     <div style="float: left;width: 100%;">
                         <?php
                         foreach ($arr_func as $key_func) {
                             ?>
-                            <span class="key_func"
-                                  onclick="add_key_func('<?php echo $key_func; ?>');return false;"><?php echo $key_func; ?></span>
+                            <span class="key_func" onclick="add_key_func('<?php echo $key_func; ?>');return false;"><?php echo $key_func; ?></span>
                             <?php
                         }
                         ?>
-                        <span class="buttonPro small black"
-                              onclick="translation_tag('chat','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i
-                                class="fa fa-language" aria-hidden="true"></i> Dịch</span>
-                        <span class="buttonPro small black" onclick="paste_tag('chat');return false;"><i
-                                class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
+                        <span class="buttonPro small black" onclick="translation_tag('chat','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                        <span class="buttonPro small black" onclick="paste_tag('chat');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
+                        <a href="#" class="buttonPro small light_blue" target="_blank" onclick="record('chat','<?php echo $lang_sel; ?>');return false;"><i class="fa fa-microphone" aria-hidden="true"></i></a>
                     </div>
                 </td>
             </tr>
@@ -443,14 +422,8 @@ if (isset($_POST['chat'])) {
                 <td>Character sex (giới tính nhân vật)</td>
                 <td>
                     <select name="character_sex" id="character_sex" onchange="check_sex();">
-                        <option value="0" <?php if ($character_sex == '0') {
-                            echo 'selected="true"';
-                        } ?> >Nam
-                        </option>
-                        <option value="1" <?php if ($character_sex == '1') {
-                            echo 'selected="true"';
-                        } ?>>Nữ
-                        </option>
+                        <option value="0" <?php if ($character_sex == '0') { echo 'selected="true"';} ?> >Nam</option>
+                        <option value="1" <?php if ($character_sex == '1') { echo 'selected="true"';} ?>>Nữ</option>
                     </select>
                 </td>
             </tr>
@@ -459,8 +432,7 @@ if (isset($_POST['chat'])) {
                 <td>effect</td>
                 <td>
                     <select name="effect" onchange="check_function_chat(this.value);return false;"  id="effect">
-                        <option value="" <?php if (isset($_GET['effect'])) {if ($_GET['effect'] == '0') {echo 'selected="true"';}}?>>None
-                        </option>
+                        <option value="" <?php if (isset($_GET['effect'])) {if ($_GET['effect'] == '0') {echo 'selected="true"';}}?>>None</option>
                         <?php
                         for ($i = 0;$i<count($data_app->arr_function_app); $i++) {
                             $data_i = $data_app->arr_function_app[$i];

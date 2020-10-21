@@ -15,6 +15,8 @@ if(isset($_GET['sub_view'])){
 <?php
 if($sub_view=='file'){
 	include "page_overview_syn_file.php";
+}else if($sub_view=='syn_product'){
+	include "page_overview_syn_product.php";
 }else{
 	include "page_overview_all.php";
 }
