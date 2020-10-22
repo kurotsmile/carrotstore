@@ -67,6 +67,7 @@ $act_audio='';
             <option value="web" <?php if($act_type=='web'){ echo 'selected';}?>>web</option>
             <option value="app" <?php if($act_type=='app'){ echo 'selected';}?>>app</option>
             <option value="search" <?php if($act_type=='search'){ echo 'selected';}?>>search</option>
+            <option value="control" <?php if($act_type=='control'){ echo 'selected';}?>>control</option>
         </select>
     </td>
 </tr>

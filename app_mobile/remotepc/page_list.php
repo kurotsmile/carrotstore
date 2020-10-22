@@ -85,6 +85,7 @@ while($row_act=mysqli_fetch_assoc($query_list_act)){
     ?>
     <tr>
         <td><i class="fa fa-microphone" aria-hidden="true"></i> <?php echo $row_act['txt']; ?></td>
+        <td><?php echo $row_act['type']; ?></td>
         <td><a href="<?php echo $row_act['value']; ?>" target="_blank"><?php echo $row_act['value']; ?></a></td>
         <td><a href="<?php echo $url;?>/sound/<?php echo $row_act['mp3']; ?>" target="_blank"><?php echo $row_act['mp3']; ?></a></td>
         <td>

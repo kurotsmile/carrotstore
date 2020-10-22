@@ -62,7 +62,7 @@ INSERT INTO `action` (`id`, `txt`, `type`, `value`, `mp3`) VALUES
 (41,	'cancel',	'app',	'C:/runapp/close.vbs',	'close.ogg'),
 (42,	'stop',	'app',	'C:\\runapp\\music pause.vbs',	''),
 (43,	'open menu',	'app',	'C:/runapp/start.vbs',	''),
-(44,	'open browser',	'app',	'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',	''),
+(44,	'open browser',	'app',	'C:/Program Files/Google/Chrome/Application/chrome.exe',	'open browser.ogg'),
 (45,	'open task manager',	'app',	'C:\\runapp\\open task manager.vbs',	''),
 (46,	'what time',	'app',	'C:\\runapp\\what time.vbs',	''),
 (47,	'hủy',	'app',	'C:/runapp/close.vbs',	'close.ogg'),
@@ -71,31 +71,47 @@ INSERT INTO `action` (`id`, `txt`, `type`, `value`, `mp3`) VALUES
 (57,	'mấy giờ rồi',	'app',	'C:/runapp/what time.vbs',	''),
 (58,	'wallpaper',	'app',	'C:/Users/trant/Desktop/nex background.vbs',	''),
 (59,	'developer',	'app',	'C:/Users/trant/AppData/Local/Programs/Microsoft VS Code/Code.exe',	''),
-(60,	'mở tường lửa',	'app',	'C:/runapp/open firewall.vbs',	''),
+(60,	'mở tường lửa',	'app',	'C:/runapp/open firewall.vbs',	'open firewall.ogg'),
 (61,	'game controller',	'web',	'C:/runapp/Game Controllers.vbs',	''),
 (62,	'display',	'app',	'C:/runapp/display.vbs',	''),
 (63,	'driver manager',	'app',	'C:/runapp/open device manager.vbs',	''),
 (64,	'open mail',	'app',	'C:/runapp/open mail.vbs',	''),
 (65,	'calculator',	'web',	'C:/runapp/calculator.vbs',	''),
 (66,	'open camera',	'app',	'C:/runapp/camera.vbs',	''),
-(67,	'open notepad',	'app',	'c:/windows/system32/notepad.exe',	'');
+(67,	'open notepad',	'app',	'c:/windows/system32/notepad.exe',	''),
+(68,	'open visual studio',	'app',	'C:/Users/trant/AppData/Local/Programs/Microsoft VS Code/Code.exe',	'open code.ogg'),
+(69,	'cài đặt màn hình',	'app',	'C:/runapp/display.vbs',	''),
+(70,	'mở cài đặt thời gian',	'web',	'C:/runapp/what time.vbs',	''),
+(71,	'thời tiết',	'control',	'weather',	''),
+(72,	'thông tin máy tính',	'control',	'info_pc',	''),
+(73,	'information computer',	'control',	'info_pc',	''),
+(74,	'setting application',	'control',	'setting',	''),
+(75,	'open unity',	'app',	'C:/Program Files/Unity Hub/Unity Hub.exe',	''),
+(76,	'sing a song',	'control',	'music_play',	''),
+(77,	'music',	'control',	'music',	'');
 
 DROP TABLE IF EXISTS `audio`;
 CREATE TABLE `audio` (
   `file` varchar(50) NOT NULL,
+  `type` varchar(20) NOT NULL,
   PRIMARY KEY (`file`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `audio`;
-INSERT INTO `audio` (`file`) VALUES
-('1.ogg'),
-('a0.ogg'),
-('a1.ogg'),
-('a2.ogg'),
-('a3.ogg'),
-('close.ogg'),
-('ip.ogg'),
-('work.ogg');
+INSERT INTO `audio` (`file`, `type`) VALUES
+('1.ogg',	''),
+('a0.ogg',	'done'),
+('a1.ogg',	'done'),
+('a2.ogg',	'done'),
+('a3.ogg',	'done'),
+('close.ogg',	''),
+('ip.ogg',	''),
+('open browser.ogg',	''),
+('open code.ogg',	''),
+('open firewall.ogg',	''),
+('sorry1.ogg',	'none'),
+('sorry2.ogg',	'none'),
+('work.ogg',	'');
 
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
@@ -115,6 +131,8 @@ CREATE TABLE `weather` (
 TRUNCATE `weather`;
 INSERT INTO `weather` (`data`, `date`) VALUES
 ('{\"coord\":{\"lon\":107.6,\"lat\":16.47},\"weather\":[{\"id\":500,\"main\":\"Rain\",\"description\":\"mưa nhẹ\",\"icon\":\"10d\"}],\"base\":\"stations\",\"main\":{\"temp\":299.15,\"feels_like\":301.11,\"temp_min\":299.15,\"temp_max\":299.15,\"pressure\":1009,\"humidity\":83},\"visibility\":10000,\"wind\":{\"speed\":4.6,\"deg\":290},\"rain\":{\"1h\":0.52},\"clouds\":{\"all\":75},\"dt\":1603087298,\"sys\":{\"type\":1,\"id\":9310,\"country\":\"VN\",\"sunrise\":1603060972,\"sunset\":1603103155},\"timezone\":25200,\"id\":1580240,\"name\":\"Huế\",\"cod\":200}',	'2020-10-19'),
-('{\"coord\":{\"lon\":107.6,\"lat\":16.47},\"weather\":[{\"id\":803,\"main\":\"Clouds\",\"description\":\"mây cụm\",\"icon\":\"04n\"}],\"base\":\"stations\",\"main\":{\"temp\":297.15,\"feels_like\":300.32,\"temp_min\":297.15,\"temp_max\":297.15,\"pressure\":1011,\"humidity\":88},\"visibility\":10000,\"wind\":{\"speed\":2.1,\"deg\":300},\"clouds\":{\"all\":75},\"dt\":1603127186,\"sys\":{\"type\":1,\"id\":9310,\"country\":\"VN\",\"sunrise\":1603147388,\"sunset\":1603189518},\"timezone\":25200,\"id\":1580240,\"name\":\"Huế\",\"cod\":200}',	'2020-10-20');
+('{\"coord\":{\"lon\":107.6,\"lat\":16.47},\"weather\":[{\"id\":500,\"main\":\"Rain\",\"description\":\"mưa nhẹ\",\"icon\":\"10d\"},{\"id\":701,\"main\":\"Mist\",\"description\":\"sương mờ\",\"icon\":\"50d\"}],\"base\":\"stations\",\"main\":{\"temp\":296.15,\"feels_like\":300.34,\"temp_min\":296.15,\"temp_max\":296.15,\"pressure\":1012,\"humidity\":100},\"visibility\":3500,\"wind\":{\"speed\":1.5,\"deg\":300},\"rain\":{\"1h\":0.65},\"clouds\":{\"all\":75},\"dt\":1603159521,\"sys\":{\"type\":1,\"id\":9310,\"country\":\"VN\",\"sunrise\":1603147388,\"sunset\":1603189518},\"timezone\":25200,\"id\":1580240,\"name\":\"Huế\",\"cod\":200}',	'2020-10-20'),
+('{\"coord\":{\"lon\":107.6,\"lat\":16.47},\"weather\":[{\"id\":803,\"main\":\"Clouds\",\"description\":\"mây cụm\",\"icon\":\"04n\"}],\"base\":\"stations\",\"main\":{\"temp\":296.15,\"feels_like\":299.57,\"temp_min\":296.15,\"temp_max\":296.15,\"pressure\":1013,\"humidity\":100},\"visibility\":8000,\"wind\":{\"speed\":2.6,\"deg\":320},\"clouds\":{\"all\":75},\"dt\":1603213402,\"sys\":{\"type\":1,\"id\":9310,\"country\":\"VN\",\"sunrise\":1603233804,\"sunset\":1603275883},\"timezone\":25200,\"id\":1580240,\"name\":\"Huế\",\"cod\":200}',	'2020-10-21'),
+('{\"coord\":{\"lon\":107.6,\"lat\":16.47},\"weather\":[{\"id\":802,\"main\":\"Clouds\",\"description\":\"mây rải rác\",\"icon\":\"03n\"}],\"base\":\"stations\",\"main\":{\"temp\":22,\"feels_like\":23.49,\"temp_min\":22,\"temp_max\":22,\"pressure\":1014,\"humidity\":88},\"visibility\":10000,\"wind\":{\"speed\":3.1,\"deg\":250},\"clouds\":{\"all\":40},\"dt\":1603299862,\"sys\":{\"type\":1,\"id\":9310,\"country\":\"VN\",\"sunrise\":1603320221,\"sunset\":1603362248},\"timezone\":25200,\"id\":1580240,\"name\":\"Huế\",\"cod\":200}',	'2020-10-22');
 
--- 2020-10-20 01:34:26
+-- 2020-10-22 11:45:02

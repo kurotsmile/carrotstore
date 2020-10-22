@@ -211,10 +211,17 @@ if($function=='get_info_to_day'){
     if(isset($json_weather->rain)) $data_rain=$json_weather->rain;
     $data_clouds=$json_weather->clouds;
 
-    $weather_temp=round($data_main_temp,2)-273.15;
-    $weather_feels_like=round($data_main_feels_like,2)-273.15;
-    $weather_temp_min=round($data_main_temp_min,2)-273.15;
-    $weather_temp_max=round($data_main_temp_max,2)-273.15;
+    if(round($data_main_temp,2)>100){
+        $weather_temp=round($data_main_temp,2)-273.15;
+        $weather_feels_like=round($data_main_feels_like,2)-273.15;
+        $weather_temp_min=round($data_main_temp_min,2)-273.15;
+        $weather_temp_max=round($data_main_temp_max,2)-273.15;
+    }else{
+        $weather_temp=round($data_main_temp,2);
+        $weather_feels_like=round($data_main_feels_like,2);
+        $weather_temp_min=round($data_main_temp_min,2);
+        $weather_temp_max=round($data_main_temp_max,2);
+    }
 
     $i->weather_description=$data_weather_description;
     if(isset($data_weather[1]->description)) $i->weather_tomorrow_description=$data_weather[1]->description;
@@ -252,9 +259,23 @@ if($function=='get_info_to_day'){
 }
 
 if($function=='open_music'){
-    $query_get_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url` FROM carrotsy_virtuallover.`app_my_girl_en` WHERE `effect` = '2' ORDER BY RAND() LIMIT 1");
+    $query_get_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url` FROM carrotsy_virtuallover.`app_my_girl_en` WHERE `effect` = '2' AND `id`='33988' ORDER BY RAND() LIMIT 1");
     $data_music=mysqli_fetch_assoc($query_get_music);
+    $id_music=$data_music['id'];
     $data_music['name']=$data_music['chat'];
+    //$data_music['avatar']=$url_carrot_store."/app_mygirl/app_my_girl_en_img/$id_music.png";
+    $data_music['avatar']=$url_syn.'/app_mygirl/app_my_girl_en_img/'.$id_music.'.png';
+
+    $query_lyrics=mysqli_query($link,"SELECT `artist`, `album`, `year`, `genre` FROM carrotsy_virtuallover.`app_my_girl_en_lyrics`  WHERE `id_music` = '$id_music' LIMIT 1");
+    if($query_lyrics){
+        $data_lyrics=mysqli_fetch_assoc($query_lyrics);
+        if($data_lyrics!=''){
+            $data_music['album']=$data_lyrics['album'];
+            $data_music['artist']=$data_lyrics['artist'];
+            $data_music['genre']=$data_lyrics['genre'];
+            $data_music['year']=$data_lyrics['year'];
+        }
+    }
     echo json_encode($data_music);
 }
 ?>
