@@ -19,4 +19,4 @@ INSERT INTO `type` (`id`, `css_icon`, `id_order`, `position`) VALUES
 ('mobile_application',	'fa fa-cube',	1,	0),
 ('mobile_game',	'fa fa-gamepad',	9,	0);
 
--- 2020-10-05 06:49:37
+-- 2020-10-23 09:45:36

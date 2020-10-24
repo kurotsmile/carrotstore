@@ -3296,4 +3296,4 @@ INSERT INTO `app_my_girl_video_es` (`id_chat`, `link`) VALUES
 ('63159',	'https://www.youtube.com/watch?v=nX6RZh_W_OM'),
 ('63160',	'https://www.youtube.com/watch?v=ySB3ZHoSwkg');
 
--- 2020-10-18 12:51:20
+-- 2020-10-23 17:13:22

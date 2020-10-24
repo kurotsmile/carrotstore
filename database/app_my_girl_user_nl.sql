@@ -26,4 +26,4 @@ TRUNCATE `app_my_girl_user_nl`;
 INSERT INTO `app_my_girl_user_nl` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES
 ('113237668453466205169',	'Vurgil Bossi',	'0',	'2020-07-28',	'2020-07-29',	'',	'',	0,	'bvurgil@gmail.com',	'https://lh5.googleusercontent.com/-y4yqaSzf87o/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnrlLsPsFRsidJEUd7nukKPi30R6A/s96-c/photo.jpg',	'');
 
--- 2020-10-19 02:22:52
+-- 2020-10-24 15:19:56

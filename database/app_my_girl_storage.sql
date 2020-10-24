@@ -138,4 +138,4 @@ INSERT INTO `app_my_girl_storage` (`id`, `lang`, `type`, `category`) VALUES
 ('17',	'pl',	'msg',	'delete'),
 ('627',	'vi',	'msg',	'delete');
 
--- 2020-10-17 02:42:24
+-- 2020-10-23 09:39:01

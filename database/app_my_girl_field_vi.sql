@@ -81,4 +81,4 @@ INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('67670',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\",\"983DFF\"]]',	'field_chat',	'unclear',	'0'),
 ('74589',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0');
 
--- 2020-10-17 02:56:30
+-- 2020-10-23 09:40:04

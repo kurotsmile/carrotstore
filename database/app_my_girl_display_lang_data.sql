@@ -470,4 +470,4 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('setting_color_chat_0',	'0'),
 ('setting_color_chat_1',	'0');
 
--- 2020-10-05 06:13:47
+-- 2020-10-23 09:39:38

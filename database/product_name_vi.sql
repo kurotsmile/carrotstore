@@ -35,4 +35,4 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (138,	'Số ma thuật'),
 (136,	'Tạo mật khẩu');
 
--- 2020-10-05 07:07:07
+-- 2020-10-23 09:47:43

@@ -27,4 +27,4 @@ INSERT INTO `product_link_struct` (`name`, `icon`) VALUES
 ('Apk link',	'fa-leaf'),
 ('Nintendo Store',	'fa-codiepie');
 
--- 2020-10-05 06:47:20
+-- 2020-10-23 09:43:02

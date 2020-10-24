@@ -253,4 +253,4 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('no_return_search',	'Tidak ada hasil untuk kata kunci di atas'),
 ('ngon_ngu_hien_thi',	'Pilih negara dan bahasa');
 
--- 2020-10-08 16:38:08
+-- 2020-10-24 15:24:40

@@ -253,4 +253,4 @@ INSERT INTO `lang_ja` (`key`, `value`) VALUES
 ('no_return_search',	'上記のキーワードに一致する結果はありません'),
 ('ngon_ngu_hien_thi',	'国と言語を選択');
 
--- 2020-10-05 09:32:11
+-- 2020-10-24 15:23:50

@@ -150,6 +150,7 @@ if($sub_view=='full'){
 	echo '<ul>';
 	echo '<li>Cài đặt <span class="syn setting" syn="setting"></span></li>';
 	echo '<li>Đánh giá sản phẩm <span class="syn product_rate" syn="product_rate"></span></li>';
+	echo '<li>Các loại sản phẩm <span class="syn type" syn="type"></span></li>';
 	echo '<li>Bình luận sản phẩm <span class="syn comment" syn="comment"></span></li>';
 	echo '<li>Radio <span class="syn app_my_girl_radio" syn="app_my_girl_radio"></span></li>';
 	echo '<li>Hiệu ứng trò chuyện (biểu tượng)<span class="syn app_my_girl_effect" syn="app_my_girl_effect"></span></li>';

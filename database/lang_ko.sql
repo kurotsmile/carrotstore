@@ -253,4 +253,4 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('no_return_search',	'위 키워드에 대한 결과가 없습니다.'),
 ('ngon_ngu_hien_thi',	'국가 및 언어 선택');
 
--- 2020-10-05 09:31:50
+-- 2020-10-24 15:20:56

@@ -273,4 +273,4 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (281,	'fa-codepen',	'PlayStation Store',	'https://store.playstation.com/en-us/product/UP2251-CUSA13180_00-YIIKPOMORPGACKK1'),
 (228,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/253330/Neverending_Nightmares/');
 
--- 2020-10-05 06:46:57
+-- 2020-10-23 09:42:49

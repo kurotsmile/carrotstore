@@ -253,4 +253,4 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('no_return_search',	'Yukarıdaki anahtar kelimeler için sonuç yok'),
 ('ngon_ngu_hien_thi',	'Ülke ve dil seçiniz');
 
--- 2020-10-05 09:33:28
+-- 2020-10-24 15:24:01

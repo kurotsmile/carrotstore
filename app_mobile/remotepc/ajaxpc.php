@@ -83,6 +83,7 @@ if($function=='get_log'){
                         $data_log['nv_chat']= $data_chat['chat'];
                         $lang_chat='en';
                         $data_log['link_edit']=$url_carrot_store.'/app_my_girl_update.php?id='.$id_chat.'&lang='.$lang_chat;
+                        $data_log['type']="chat";
                         $is_chat_en=true;
                     }else{
                         $is_chat_en=false;
@@ -98,10 +99,10 @@ if($function=='get_log'){
                     $data_log['nv_chat']= $data_chat_vi['chat'];
                     $id_chat=$data_chat['id'];
                     $data_log['link_edit']=$url_carrot_store.'/app_my_girl_update.php?id='.$id_chat.'&lang='.$lang_chat;
-                    
+                    $data_log['type']="chat";
                 }
 
-                /*
+
                 $txt_chat=$data_chat['chat'];
                 $link_audio='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($txt_chat).'&client=tw-ob&q='.urlencode($txt_chat).'&tl=en';
                 $ch = curl_init($link_audio);
@@ -114,15 +115,10 @@ if($function=='get_log'){
                 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 curl_close($ch);
                 if ($status == 200) {
-                    //if(file_exists("input.mp3")) unlink("input.mp3");
-                    file_put_contents(dirname(__FILE__) . '/input.mp3', $output);
-                    $absolute_path_in = realpath("input.mp3");
-                    $absolute_path_in=str_replace("\\","/",$absolute_path_in);
-                    $absolute_path_out=str_replace("input.mp3","sound.ogg",$absolute_path_in);
-                    //if(file_exists("sound.mp3")) unlink("sound.ogg");
-                    exec("ffmpeg -i $absolute_path_in -c:a libvorbis -q:a 4 $absolute_path_out");
+                    file_put_contents(dirname(__FILE__) . '/chat.mp3', $output);
                 }
-                $data_log['mp3']=$url.'/sound.ogg';
+                $data_log['mp3']=$url.'/chat.mp3';
+
                 /*
                 $query_audio=mysqli_query($link,"SELECT `file` FROM `audio` WHERE `type` = 'none' ORDER BY RAND() LIMIT 1");
                 $data_audio=mysqli_fetch_assoc($query_audio);
@@ -162,119 +158,47 @@ if($function=='list_audio'){
     echo json_encode($arr_audio);
 }
 
-if($function=='get_info_to_day'){
-    Class info{
-        public $weather_description='';
-        public $weather_tomorrow_description='';
-        public $weather_temp='';
-        public $weather_icon='';
-        public $weather_tip='';
-        public $weather_tomorrow_icon='';
-        public $sunrise='';
-        public $sunset='';
-        public $visibility='';
-        public $wind_speed='';
-        public $wind_deg='';
-        public $rain='';
-        public $humidity='';
-        public $clouds='';
-    }
-    $i=new info();
-
-    $date = new DateTime("now", new DateTimeZone("Asia/Ho_Chi_Minh") );
-    $data_cur=$date->format('Y-m-d');
-    $query_weather=mysqli_query($link,"SELECT * FROM `weather` WHERE `date` = '$data_cur' LIMIT 1");
-    $data_weather=mysqli_fetch_assoc($query_weather);
-    if($data_weather==null){
-        $str_weather = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=hue,duong%20son,vn&appid=1cfc8822c6c366984da4d0abbb58eaf2&lang=vi&mode=json&units=metric&cnt=3');
-        $json_weather=json_decode($str_weather);
-        $query_add_weather=mysqli_query($link,"INSERT INTO `weather` (`data`, `date`) VALUES ('$str_weather', NOW());");
-    }else{
-        $str_weather=$data_weather['data'];
-        $json_weather=json_decode($str_weather);
-    }
-
-    $data_weather=$json_weather->weather;
-    $data_weather_description=$data_weather[0]->description;
-    $data_weather_icon=$data_weather[0]->icon;
-    
-
-    $data_main=$json_weather->main;
-    $data_main_temp=$data_main->temp;
-    $data_main_feels_like=$data_main->feels_like;
-    $data_main_temp_min=$data_main->temp_min;
-    $data_main_temp_max=$data_main->temp_max;
-    $data_weather_humidity=$data_main->humidity;
-
-    $data_sys=$json_weather->sys;
-    $data_wind=$json_weather->wind;
-    if(isset($json_weather->rain)) $data_rain=$json_weather->rain;
-    $data_clouds=$json_weather->clouds;
-
-    if(round($data_main_temp,2)>100){
-        $weather_temp=round($data_main_temp,2)-273.15;
-        $weather_feels_like=round($data_main_feels_like,2)-273.15;
-        $weather_temp_min=round($data_main_temp_min,2)-273.15;
-        $weather_temp_max=round($data_main_temp_max,2)-273.15;
-    }else{
-        $weather_temp=round($data_main_temp,2);
-        $weather_feels_like=round($data_main_feels_like,2);
-        $weather_temp_min=round($data_main_temp_min,2);
-        $weather_temp_max=round($data_main_temp_max,2);
-    }
-
-    $i->weather_description=$data_weather_description;
-    if(isset($data_weather[1]->description)) $i->weather_tomorrow_description=$data_weather[1]->description;
-    $i->weather_temp=$weather_temp.'°C';
-    $i->sunrise=$data_sys->sunrise;
-    $i->sunset=$data_sys->sunset;
-    $i->visibility=$json_weather->visibility.'m';
-    $i->wind_speed=$data_wind->speed.'m/s';
-    $i->wind_deg=$data_wind->deg.'°';
-    if(isset($data_rain))$i->rain=$data_rain->{"1h"}.' mm/h';
-    $i->humidity=$data_weather_humidity.'%';
-    $i->clouds=$data_clouds->all.'%';
-    if($weather_temp_min==$weather_temp_max){
-        $i->weather_tip="Nhiệt độ trung bình ".$weather_feels_like."°C, thấp nhất từ ".$weather_temp_min."°C";
-    }else{
-        $i->weather_tip="Nhiệt độ trung bình ".$weather_feels_like."°C, thấp nhất từ ".$weather_temp_min."°C đến ".$weather_temp_max."°C";
-    }
-
-    $data_weather_icon=$data_weather[0]->icon;
-    if(file_exists('images/'.$data_weather_icon.'@2x.png')){
-        $i->weather_icon=$url."/images/$data_weather_icon@2x.png";
-    }else{
-        $i->weather_icon="http://openweathermap.org/img/wn/$data_weather_icon@2x.png";
-    }
-
-    if(isset($data_weather[1]->icon)){
-        $data_weather_tomorrow_icon=$data_weather[1]->icon;
-        if(file_exists('images/'.$data_weather_tomorrow_icon.'@2x.png')){
-            $i->weather_tomorrow_icon=$url."/images/$data_weather_tomorrow_icon@2x.png";
-        }else{
-            $i->weather_tomorrow_icon="http://openweathermap.org/img/wn/$data_weather_tomorrow_icon@2x.png";
-        }
-    }
-    echo json_encode($i);
-}
-
 if($function=='open_music'){
-    $query_get_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url` FROM carrotsy_virtuallover.`app_my_girl_en` WHERE `effect` = '2' AND `id`='33988' ORDER BY RAND() LIMIT 1");
+    $query_get_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url`,`author`,`slug` FROM carrotsy_virtuallover.`app_my_girl_vi` WHERE `effect` = '2' ORDER BY RAND() LIMIT 1");
     $data_music=mysqli_fetch_assoc($query_get_music);
     $id_music=$data_music['id'];
+    $lang_music=$data_music['author'];
+    if($data_music['file_url']==''){
+        $data_music["audio"]="http://carrotstore.com/app_mygirl/app_my_girl_".$lang_music."/$id_music.mp3";
+    }else{
+        $data_music["audio"]=$data_music['file_url'];
+    }
     $data_music['name']=$data_music['chat'];
-    //$data_music['avatar']=$url_carrot_store."/app_mygirl/app_my_girl_en_img/$id_music.png";
-    $data_music['avatar']=$url_syn.'/app_mygirl/app_my_girl_en_img/'.$id_music.'.png';
+    $data_music['avatar']=$url_syn.'/app_mygirl/app_my_girl_'.$lang_music.'_img/'.$id_music.'.png';
+    $data_music['album']='';
+    $data_music['artist']='';
+    $data_music['genre']='';
+    $data_music['year']='';
+    $data_music['link_store']=$url_syn."/music/$id_music/$lang_music";
+    $data_music['link_edit']=$url_syn."/app_my_girl_update.php?id=$id_music&lang=$lang_music";
+    $data_music['link_edit_local']=$url_carrot_store."/app_my_girl_update.php?id=$id_music&lang=$lang_music";
+    $data_music['link_youtube']='';
+    $data_music['lyrics']='';
+    $data_music['lang']=$data_music['author'];
+    unset($data_music['author']);
 
-    $query_lyrics=mysqli_query($link,"SELECT `artist`, `album`, `year`, `genre` FROM carrotsy_virtuallover.`app_my_girl_en_lyrics`  WHERE `id_music` = '$id_music' LIMIT 1");
+
+    $query_lyrics=mysqli_query($link,"SELECT `artist`, `album`, `year`, `genre`,`lyrics` FROM carrotsy_virtuallover.`app_my_girl_".$lang_music."_lyrics`  WHERE `id_music` = '$id_music' LIMIT 1");
     if($query_lyrics){
         $data_lyrics=mysqli_fetch_assoc($query_lyrics);
         if($data_lyrics!=''){
+            $data_music['lyrics']=$data_lyrics['lyrics'];
             $data_music['album']=$data_lyrics['album'];
             $data_music['artist']=$data_lyrics['artist'];
             $data_music['genre']=$data_lyrics['genre'];
             $data_music['year']=$data_lyrics['year'];
         }
+    }
+
+    $query_ytb=mysqli_query($link,"SELECT `link` FROM carrotsy_virtuallover.`app_my_girl_video_$lang_music` WHERE `id_chat` = '$id_music' LIMIT 1");
+    if($query_ytb){
+        $data_ytb=mysqli_fetch_assoc($query_ytb);
+        $data_music['link_youtube']=$data_ytb['link'];
     }
     echo json_encode($data_music);
 }

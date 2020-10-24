@@ -182,10 +182,10 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
                                 $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;" ><i class="fa fa-check-circle" aria-hidden="true"></i></span>');
                             }else if(count_data>arr_item[i].count_table) {
                                 var s_count=count_data-parseInt(arr_item[i].count_table);
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;">-'+s_count+'</span>');
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn colon" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');$(this).removeClass(\'colon\').addClass(\'check\');return false;">-'+s_count+'</span>');
                             }else{
                                 var s_count=parseInt(arr_item[i].count_table)-parseInt(count_data);
-                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');return false;"> +' +s_count + '</span>');
+                                $('.syn.' + arr_item[i].key_table).after('<span class="tag_data_syn lost" onclick="backup_mysql_table(\''+arr_item[i].key_table+'\');$(this).removeClass(\'lost\').addClass(\'check\');return false;"> +' +s_count + '</span>');
                             }
                         }
                         close_loading();

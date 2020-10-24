@@ -34,4 +34,4 @@ INSERT INTO `product_name_fr` (`id_product`, `data`) VALUES
 (138,	'Nombre magique'),
 (136,	'Créer un mot de passe');
 
--- 2020-10-18 13:09:44
+-- 2020-10-24 15:29:14

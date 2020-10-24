@@ -32,4 +32,4 @@ INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `create
 (31,	'c2',	'andanh@gmail.com',	'Does not Download',	119,	'2019-08-14T10:21:32.393Z',	0,	0,	'products',	'en'),
 (32,	'c5',	'113330601155622987105',	'Mọi người vẫn còn sử dụng người yêu ảo chứ?',	120,	'2020-01-13T18:53:52.631Z',	0,	0,	'products',	'vi');
 
--- 2020-10-05 15:01:46
+-- 2020-10-23 09:46:46

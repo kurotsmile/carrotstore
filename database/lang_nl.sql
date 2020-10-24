@@ -253,4 +253,4 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('no_return_search',	'Geen resultaten voor de bovenstaande zoekwoorden'),
 ('ngon_ngu_hien_thi',	'Selecteer land en taal');
 
--- 2020-10-08 16:34:55
+-- 2020-10-24 15:25:06

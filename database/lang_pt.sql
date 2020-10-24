@@ -253,4 +253,4 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('no_return_search',	'Nenhum resultado para as palavras-chave acima'),
 ('ngon_ngu_hien_thi',	'Selecione o país e o idioma');
 
--- 2020-10-05 09:13:38
+-- 2020-10-23 16:59:57
