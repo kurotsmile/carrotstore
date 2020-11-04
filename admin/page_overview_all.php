@@ -169,6 +169,7 @@ if($sub_view=='full'){
 	echo '</ul>';
 	echo '</li>';
 
+	echo '<li>Báo lỗi người dùng <span class="syn app_my_girl_report" syn="app_my_girl_report"></span></li>';
 	echo '<li>Dữ liệu dạy trò chuyện <span class="syn app_my_girl_brain" syn="app_my_girl_brain"></span></li>';
 	echo '<li>Ngôn ngữ hiển thị (vl) <span class="syn app_my_girl_display_lang" syn="app_my_girl_display_lang"></span></li>';
 	echo '<li>Ngôn ngữ cms (vl) <span class="syn app_my_girl_display_lang_data" syn="app_my_girl_display_lang_data"></span></li>';

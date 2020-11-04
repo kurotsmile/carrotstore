@@ -158,48 +158,40 @@ if($function=='list_audio'){
     echo json_encode($arr_audio);
 }
 
-if($function=='open_music'){
-    $query_get_music=mysqli_query($link,"SELECT `id`, `chat`, `file_url`,`author`,`slug` FROM carrotsy_virtuallover.`app_my_girl_vi` WHERE `effect` = '2' ORDER BY RAND() LIMIT 1");
-    $data_music=mysqli_fetch_assoc($query_get_music);
-    $id_music=$data_music['id'];
-    $lang_music=$data_music['author'];
-    if($data_music['file_url']==''){
-        $data_music["audio"]="http://carrotstore.com/app_mygirl/app_my_girl_".$lang_music."/$id_music.mp3";
-    }else{
-        $data_music["audio"]=$data_music['file_url'];
+if($function=='get_siri'){
+    $query_log=mysqli_query($link,"SELECT * FROM `log` LIMIT 1");
+    $data_log=mysqli_fetch_assoc($query_log);
+    $txt_search_act='';
+    if($data_log!=null){
+        $txt_search_act=mysqli_real_escape_string($link,$data_log['value']);
+        $data_log['value']=strtolower($txt_search_act);
+        $query_delete_log=mysqli_query($link,"DELETE FROM `log`");
+        echo json_encode($data_log);
     }
-    $data_music['name']=$data_music['chat'];
-    $data_music['avatar']=$url_syn.'/app_mygirl/app_my_girl_'.$lang_music.'_img/'.$id_music.'.png';
-    $data_music['album']='';
-    $data_music['artist']='';
-    $data_music['genre']='';
-    $data_music['year']='';
-    $data_music['link_store']=$url_syn."/music/$id_music/$lang_music";
-    $data_music['link_edit']=$url_syn."/app_my_girl_update.php?id=$id_music&lang=$lang_music";
-    $data_music['link_edit_local']=$url_carrot_store."/app_my_girl_update.php?id=$id_music&lang=$lang_music";
-    $data_music['link_youtube']='';
-    $data_music['lyrics']='';
-    $data_music['lang']=$data_music['author'];
-    unset($data_music['author']);
-
-
-    $query_lyrics=mysqli_query($link,"SELECT `artist`, `album`, `year`, `genre`,`lyrics` FROM carrotsy_virtuallover.`app_my_girl_".$lang_music."_lyrics`  WHERE `id_music` = '$id_music' LIMIT 1");
-    if($query_lyrics){
-        $data_lyrics=mysqli_fetch_assoc($query_lyrics);
-        if($data_lyrics!=''){
-            $data_music['lyrics']=$data_lyrics['lyrics'];
-            $data_music['album']=$data_lyrics['album'];
-            $data_music['artist']=$data_lyrics['artist'];
-            $data_music['genre']=$data_lyrics['genre'];
-            $data_music['year']=$data_lyrics['year'];
-        }
-    }
-
-    $query_ytb=mysqli_query($link,"SELECT `link` FROM carrotsy_virtuallover.`app_my_girl_video_$lang_music` WHERE `id_chat` = '$id_music' LIMIT 1");
-    if($query_ytb){
-        $data_ytb=mysqli_fetch_assoc($query_ytb);
-        $data_music['link_youtube']=$data_ytb['link'];
-    }
-    echo json_encode($data_music);
 }
+
+if($function=='call_act'){
+    $txt_search_act=$_POST['txt'];
+    $lang_chat='';
+    $data_chat='';
+    $query_chat=mysqli_query($link,"SELECT `chat`,`id` FROM carrotsy_virtuallover.`app_my_girl_en` WHERE MATCH (`text`) AGAINST ('$txt_search_act' IN BOOLEAN MODE) AND `sex`='0' AND `character_sex`='1' ORDER BY RAND() LIMIT 1");
+    $is_chat_en=false;
+    if($query_chat){
+        $data_chat=mysqli_fetch_assoc($query_chat);
+        if($data_chat!=null){
+            $is_chat_en=true;
+        }else{
+            $is_chat_en=false;
+        }
+    }else{
+        $is_chat_en=false;
+    }
+
+    if($is_chat_en==false){
+        $query_chat=mysqli_query($link,"SELECT `chat` FROM carrotsy_virtuallover.`app_my_girl_vi` WHERE MATCH (`text`) AGAINST ('$txt_search_act' IN BOOLEAN MODE) AND `sex`='0' AND `character_sex`='1' ORDER BY RAND() LIMIT 1");
+        $data_chat=mysqli_fetch_assoc($query_chat);
+    }
+    echo json_encode($data_chat);
+}
+
 ?>

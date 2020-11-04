@@ -34,6 +34,7 @@ if($edit_lang==''){
             <option value="0" <?php if($ver=='0'){?>selected="true"<?php }?>>Phiên bản 2d</option>
             <option value="1" <?php if($ver=='1'){?>selected="true"<?php }?>>Phiên bản 3d - Onichan</option>
             <option value="2" <?php if($ver=='2'){?>selected="true"<?php }?>>Phiên bản 3d - Pro</option>
+            <option value="3" <?php if($ver=='3'){?>selected="true"<?php }?>>Phiên bản 3d - Ai (new)</option>
         </select>
     </div>
     

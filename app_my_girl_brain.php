@@ -57,11 +57,11 @@ if(isset($_POST['filter'])){
 
 if(isset($_POST)&&isset($_POST['clear'])){
     mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' ");
-    $files = glob('app_mygirl/app_my_girl_'.$langsel.'_brain/*'); // get all file names
-    foreach($files as $file){ // iterate files
+    $files = glob('app_mygirl/app_my_girl_'.$langsel.'_brain/*');
+    foreach($files as $file){ 
       if(is_file($file))
         echo "Delete file audio ".$file." <br/>";
-        unlink($file); // delete file
+        unlink($file);
     }
     echo "Delete all success!";
 }
@@ -94,8 +94,8 @@ function delete_brain(id){
         $(".brain_"+id).remove();
         $.ajax({
             url: "app_my_girl_jquery.php",
-            type: "get", //kiểu dũ liệu truyền đi
-            data: "function=delete_brain&id="+id+"&lang="+lang+"&character_sex="+character_sex, //tham số truyền vào
+            type: "get",
+            data: "function=delete_brain&id="+id+"&lang="+lang+"&character_sex="+character_sex,
             success: function(data, textStatus, jqXHR)
             {
                    alert(data);
@@ -120,8 +120,8 @@ function delete_select(){
         
         $.ajax({
                 url: "app_my_girl_jquery.php",
-                type: "post", //kiểu dũ liệu truyền đi
-                data: "delete_select_brain="+JSON.stringify(id_arr)+"&lang=<?php echo $langsel;?>", //tham số truyền vào
+                type: "post",
+                data: "delete_select_brain="+JSON.stringify(id_arr)+"&lang=<?php echo $langsel;?>",
                 success: function(data, textStatus, jqXHR)
                 {
                     alert(data);
@@ -148,8 +148,8 @@ function draft_select(){
         
         $.ajax({
                 url: "app_my_girl_jquery.php",
-                type: "post", //kiểu dũ liệu truyền đi
-                data: "draft_brain="+JSON.stringify(id_arr)+"&lang=<?php echo $langsel;?>&user_work="+user_work_send, //tham số truyền vào
+                type: "post",
+                data: "draft_brain="+JSON.stringify(id_arr)+"&lang=<?php echo $langsel;?>&user_work="+user_work_send,
                 success: function(data, textStatus, jqXHR)
                 {
                     alert(data);
@@ -276,16 +276,6 @@ function select_all_check(){
 </div>
 
 <div style="display: inline-block;float: left;margin: 2px;">
-<label>Duyệt nhạc:</label> 
-<input type="checkbox" name="is_music" <?php if($is_music!=''){echo 'checked="true"';}?> />
-</div>
-
-<div style="display: inline-block;float: left;margin: 2px;">
-<label>Unicode:</label> 
-<input type="checkbox" name="is_unicode" <?php if($is_unicode!=''){echo 'checked="true"';}?> />
-</div>
-
-<div style="display: inline-block;float: left;margin: 2px;">
     <input type="submit" name="loc" value="Lọc" class="link_button" />
 </div>
 
@@ -303,29 +293,24 @@ function select_all_check(){
     <?php }?>
 
 </div>
-
-
-
 </form>
 
-<form method="post" id="form_loc" class="notranslate" style="display: none;">
+<form method="post" id="form_loc" class="notranslate" >
     <div style="display: inline-block;float: left;margin: 2px;">
-        <label>Giới hạn câu hỏi</label>
-        <input type="text" value="<?php echo $lenth_question; ?>" name="lenth_question" />
+        <label>Dịch sang ngôn ngữ khác</label>
+        <div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({pageLanguage: '<?php echo $langsel;?>'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
     </div>
-    
-    <div style="display: inline-block;float: left;margin: 2px;">
-        <label>Giới hạn trả lời</label>
-        <input type="text" value="<?php echo $lenth_answer; ?>" name="lenth_answer" />
-    </div>
-    
-    <div style="display: inline-block;float: left;margin: 2px;">
-        <input type="submit" value="Lọc" name="filter" class="buttonPro lager blue" />
-    </div>
-    <input name="character_sex"  value="<?php echo $character_sex;?>"  type="hidden"/>
-    <input name="sex"  value="<?php echo $sex;?>" type="hidden"/>
-    <input name="lang" value="<?php echo $langsel;?>" type="hidden"  />
 </form>
+
 
 <?php
 if(isset($_POST)&&isset($_POST['clear'])){
@@ -461,7 +446,6 @@ function show_row_brain($link,$row,$lang_key){
 </div>
 
 <script>
-
 $(document).ready(function(){
    $(".row_brain").contextmenu(function(){
         $(this).find("input").click();
@@ -475,6 +459,4 @@ function add_key_func(key){
     return false;
 }
 </script>
-
-
 
