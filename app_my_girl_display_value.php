@@ -113,8 +113,30 @@ if(isset($_POST['key'])){
 
 }
 ?>
-<form method="post" name="update_data_display">
-<table>
+
+<div  style="float:left;width:100%;">
+<div class="box_form" style="float:left;width:auto;">
+<label>Chọn ngôn ngữ dịch sang</label>
+<select name="lang_to" onchange="change_lang_to(this);return false;">
+    <?php
+    while($row_lang=mysqli_fetch_assoc($query_list_country)){
+    ?>
+    <option value="<?php echo $row_lang['key']; ?>" <?php if($row_lang['key']==$lang_key_to){?>selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
+    <?php 
+    }
+    ?>
+</select>
+<script>
+function change_lang_to(emp){
+    var val_lang=$(emp).val();
+    window.location="<?php echo $url_cur;?>?lang=<?php echo $edit_lang;?>&ver=<?php echo $ver;?>&lang_to="+val_lang;
+}
+</script>
+</div>
+</div>
+
+<form method="post" name="update_data_display" style="width:auto;float:left">
+<table style="width:auto;float:left">
     <?php
     $data_display='';
     $query_data_display=mysqli_query($link,"SELECT `data` FROM `app_my_girl_display_lang` WHERE `lang` = '$edit_lang' AND `version`='$ver' LIMIT 1");
@@ -144,21 +166,3 @@ if(isset($_POST['key'])){
 <?php
 }
 ?>
-
-<div class="box_form">
-<label>Chọn ngôn ngữ dịch sang</label>
-<select name="lang_to" onchange="change_lang_to(this);return false;">
-    <?php
-    while($row_lang=mysqli_fetch_array($query_list_country)){
-    ?>
-    <option value="<?php echo $row_lang['key']; ?>" <?php if($row_lang['key']==$lang_key_to){?>selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
-    <?php 
-    }
-    ?>
-</select>
-<script>
-function change_lang_to(emp){
-    var val_lang=$(emp).val();
-    window.location="<?php echo $url_cur;?>?lang=<?php echo $edit_lang;?>&ver=<?php echo $ver;?>&lang_to="+val_lang;
-}
-</script>

@@ -58,6 +58,7 @@ if($pay_device!=''&&$pay_item!=''){
 			<strong style="font-size: 16px;"><?php echo lang($link,'download_song'); ?></strong><br /><br />
 			<?php
             $query_music=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$pay_id_music'");
+            if($query_music){
             $data_music=mysqli_fetch_array($query_music);
             $title_page=$data_music['chat'];
         
@@ -143,6 +144,7 @@ if($pay_device!=''&&$pay_item!=''){
                     });
                 }
             </script>
+            <?php }?>
 		</div>
 	</div>
 	<?php }?>
