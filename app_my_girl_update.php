@@ -236,27 +236,18 @@ $arr = mysqli_fetch_array($result_chat);
     <?php if (isset($_GET['msg'])) {?>
         <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_msg&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>" class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển hoặc sao chép sang nước khác</a></li>
         <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&type=msg" class="buttonPro small red"><i class="fa fa-trash"></i> Xóa câu thoại này</a></li>
-        <?php
-    } else { ?>
-        <li>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>"
-               class="buttonPro small red"><i class="fa fa-trash"></i> Xóa câu trò chuyện này</a></li>
-        <li>
-            <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>"
-               class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển sang nước khác</a>
-        </li>
+    <?php }else{ ?>
+        <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>" class="buttonPro small red"><i class="fa fa-trash"></i> Xóa câu trò chuyện này</a></li>
+        <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>"  class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển sang nước khác</a></li>
+        <li><a href="#"  class="buttonPro small blue" onclick="check_obj_syn('<?php echo $id; ?>','<?php echo $lang_sel; ?>');return false;"><i class="fa fa-refresh" aria-hidden="true"></i> Đồng bộ</a></li>
         <?php if ($arr['effect'] == '2') { ?>
-            <li>
-                <a target="_blank" class="buttonPro small light_blue" href="<?php echo $url; ?>/music/<?php echo $id; ?>/<?php echo $lang_sel; ?>"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên store</a>
-            </li>
-            <?php } ?>
+        <li><a target="_blank" class="buttonPro small light_blue" href="<?php echo $url; ?>/music/<?php echo $id; ?>/<?php echo $lang_sel; ?>"><i class="fa fa-gg-circle" aria-hidden="true"></i> Xem bài hát này trên store</a></li>
+        <?php } ?>
     <?php } ?>
     <?php
     if ($data_user_carrot["user_role"] == "admin" || $data_user_carrot["user_role"] == "leader") {
         ?>
-        <li>
-            <a target="_blank" href="<?php echo $url_work;?>/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($link,$arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>" class="buttonPro small red"><i class="fa fa-bug" aria-hidden="true"></i> Báo lỗi</a>
-        </li>
+        <li><a target="_blank" href="<?php echo $url_work;?>/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($link,$arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>" class="buttonPro small red"><i class="fa fa-bug" aria-hidden="true"></i> Báo lỗi</a></li>
     <?php } ?>
 </ul>
 
@@ -659,6 +650,7 @@ $arr = mysqli_fetch_array($result_chat);
                         $url_sever=$data_app->arr_sever_upload[0]->url_home;
                         echo '<a target="_blank" class="buttonPro small blue"  href="' . $arr['file_url'] . '"><i class="fa fa-headphones" aria-hidden="true"></i> Nghe tệp âm thanh</a>';
                         echo '<a target="_blank" class="buttonPro small blue"  href="'.$url_sever.'/file/' . basename($arr['file_url']) . '"><i class="fa fa-delicious" aria-hidden="true"></i> Chi tiết âm thanh</a>';
+                        echo '<span onclick="send_file_obj_syn(\''.$arr['id'].'\',\''.$lang_sel.'\',\''.$url.'\',\''.$arr['file_url'].'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
                     }
                     echo box_upload("mp3", $data_app->arr_sever_upload, $arr['file_url']);
                     ?>

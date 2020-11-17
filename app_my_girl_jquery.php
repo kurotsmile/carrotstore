@@ -1128,4 +1128,115 @@ if($func=='count_data_syn'){
     exit;
 }
 
+if($func=='check_obj_syn'){
+    $id=$_POST['id'];
+    $lang_obj=$_POST['lang'];
+    $url_mp3='';
+    $url_avatar_music='';
+    $query_obj=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_obj` WHERE `id` = '$id' LIMIT 1");
+    $data_obj=mysqli_fetch_assoc($query_obj);
+    if(file_exists("app_mygirl/app_my_girl_".$lang_obj."_img/".$id.".png")){
+         $data_obj['avatar_music']=URL."/app_mygirl/app_my_girl_".$lang_obj."_img/".$id.".png";
+         $url_avatar_music=$data_obj['avatar_music'];
+    }
+    if(file_exists("app_mygirl/app_my_girl_".$lang_obj."/".$id.".mp3")){
+        $data_obj['mp3']=URL."/app_mygirl/app_my_girl_".$lang_obj."/".$id.".mp3";
+        $url_mp3=$data_obj['mp3'];
+    }
+    $query_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_obj."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+    $data_lyrics=mysqli_fetch_assoc($query_lyrics);
+    $data_obj = (object) array_merge((array) $data_lyrics, (array) $data_obj);
+    $query_link=mysqli_query($link,"SELECT * FROM `app_my_girl_video_".$lang_obj."` WHERE `id_chat` = '$id' LIMIT 1");
+    $data_link=mysqli_fetch_assoc($query_link);
+    $data_obj = (object) array_merge((array) $data_obj, (array) $data_link);
+
+    echo '<div style="max-height: 437px;overflow-y: scroll;float: left;">';
+
+    echo '<div style="width:45%;float:left">';
+    echo '<strong>Máy chủ kiểm tra</strong><br/>';
+    echo '<i>'.$url.'</i>';
+    echo '<table >';
+        foreach($data_obj as $key=>$val){
+            if($val!='') echo '<tr><td><b>'.$key.'</b>:</td><td><a href="'.$val.'"  target="_blank">'.$val.'</a></td></tr>';
+        }
+    echo '</table>';
+    if($url_mp3!='') echo '<span onclick="send_file_obj_syn(\''.$id.'\',\''.$lang_obj.'\',\''.$url_syn.'\',\''.$url_mp3.'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
+    if($url_avatar_music!='') echo '<span onclick="send_file_obj_syn(\''.$id.'\',\''.$lang_obj.'\',\''.$url_syn.'\',\''.$url_avatar_music.'\')" class="buttonPro small blue"><i class="fa fa-file-image-o" aria-hidden="true"></i> Lấy ảnh</span>';
+    echo '<a href="'.$url.'/app_my_girl_update.php?id='.$id.'&lang='.$lang_obj.'" class="buttonPro small blue" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>';
+    echo '</div>';
+
+    echo '<div style="width:10%;float:left">So sánh<br/><i class="fa fa-exchange" aria-hidden="true"></i></div>';
+
+    echo '<div style="width:45%;float:left" id="check_obj_syn">';
+    echo '<strong>Máy chủ chính</strong><br/>';
+    echo '<i>'.$url_syn.'</i><br/><i class="fa fa-spinner" aria-hidden="true"></i>';
+    echo '</div>';
+
+    echo '</div>';
+}
+
+if($func=='get_obj_syn'){
+    $id=$_POST['id'];
+    $lang_obj=$_POST['lang'];
+    $url_mp3='';
+    $url_avatar_music='';
+    $query_obj=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_obj` WHERE `id` = '$id' LIMIT 1");
+    $data_obj=mysqli_fetch_assoc($query_obj);
+    if(file_exists("app_mygirl/app_my_girl_".$lang_obj."_img/".$id.".png")){
+         $data_obj['avatar_music']=URL."/app_mygirl/app_my_girl_".$lang_obj."_img/".$id.".png";
+         $url_avatar_music=$data_obj['avatar_music'];
+    }
+    if(file_exists("app_mygirl/app_my_girl_".$lang_obj."/".$id.".mp3")){
+        $data_obj['mp3']=URL."/app_mygirl/app_my_girl_".$lang_obj."/".$id.".mp3";
+        $url_mp3=$data_obj['mp3'];
+    }
+    $query_lyrics=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_obj."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+    $data_lyrics=mysqli_fetch_assoc($query_lyrics);
+    $data_obj = (object) array_merge((array) $data_lyrics, (array) $data_obj);
+    $query_link=mysqli_query($link,"SELECT * FROM `app_my_girl_video_".$lang_obj."` WHERE `id_chat` = '$id' LIMIT 1");
+    $data_link=mysqli_fetch_assoc($query_link);
+    $data_obj = (object) array_merge((array) $data_obj, (array) $data_link);
+
+    echo '<strong>Máy chủ hiện tại</strong><br/>';
+    echo '<i>'.$url.'</i><br/></i>';
+    echo '<table >';
+        foreach($data_obj as $key=>$val){
+            if($val!='') echo '<tr><td><b>'.$key.'</b>:</td><td><a href="'.$val.'"  target="_blank">'.$val.'</a></td></tr>';
+        }
+    echo '</table>';
+    if($url_mp3!='') echo '<span onclick="send_file_obj_syn(\''.$id.'\',\''.$lang_obj.'\',\''.$url_syn.'\',\''.$url_mp3.'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
+    if($url_avatar_music!='') echo '<span onclick="send_file_obj_syn(\''.$id.'\',\''.$lang_obj.'\',\''.$url_syn.'\',\''.$url_avatar_music.'\')" class="buttonPro small blue"><i class="fa fa-file-image-o" aria-hidden="true"></i> Lấy ảnh</span>';
+}
+
+
+if($func=='send_file_obj_syn'){
+    $id=$_POST['id'];
+    $lang_obj=$_POST['lang'];
+    $url_obj=$_POST['url'];;
+    $ch = curl_init($url_obj);
+    set_time_limit(0);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_NOBODY, 0);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+    $output = curl_exec($ch);
+    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if ($status == 200) {
+        $ext=pathinfo(basename($url_obj), PATHINFO_EXTENSION);
+        if($ext=="mp3")
+        {
+            file_put_contents(dirname(__FILE__) . '/app_mygirl/app_my_girl_'.$lang_obj.'/'.$id.'.mp3', $output);
+            $path = dirname(__FILE__) . '/app_mygirl/app_my_girl_'.$lang_obj.'/'.$id.'.mp3';
+        }
+
+        if($ext=="png")
+        {
+            file_put_contents(dirname(__FILE__) . '/app_mygirl/app_my_girl_'.$lang_obj.'_img/'.$id.'.png', $output);
+            $path = dirname(__FILE__) . '/app_mygirl/app_my_girl_'.$lang_obj.'_img/'.$id.'.png';
+        }
+    }
+    echo $path;
+}
 ?>

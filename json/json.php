@@ -159,8 +159,10 @@ if($_GET||$_POST){
                 $label_music_no_rank=lang($link,'music_no_rank');
                 
                 $result = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20");
-                while ($row = mysqli_fetch_assoc($result)) {
-                include "page_music_git.php";
+                if($result){
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        include "page_music_git.php";
+                    }
                 }
             }
 

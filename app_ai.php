@@ -87,31 +87,31 @@ if($function=='hello'){
 
 if($function=='chat'){
     $text=mysqli_real_escape_string($link,$_POST['text']);
-    $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
+    $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
     $data_chat=get_chat($link,$txt_query_pater,$lang);
 
     if($data_chat==null){
-        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
+        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_pater,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
+        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_pater,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
+        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='' AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
+        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='' AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex'  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
+        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`=''  AND `limit_chat` <= $limit_chat ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
@@ -198,9 +198,15 @@ if($function=='send_report'){
     $type_report=$_POST['type_report'];
     $value_report=$_POST['value_report'];
     $sel_report=$_POST['sel_report'];
-
     $query_add_report=mysqli_query($link,"INSERT INTO `app_my_girl_report` (`type`, `sel_report`, `value_report`, `id_question`, `type_question`, `id_device`, `limit_chat`, `lang`, `os`) VALUES ('$type_report', '$sel_report', '$value_report', '$id_chat', '$type_chat', '$id_device', '$limit_chat', '$lang', '$id_device');");
-    echo 'lỗi mysql:'.mysqli_error($link);
-    echo var_dump($_POST);
+}
+
+if($function=='get_command_offline'){
+    $arr_data_offline=array();
+    $query_get_command_offline=mysqli_query($link,"SELECT `text`,`chat`,`effect`,`action`,`face` FROM `app_my_girl_$lang` WHERE `id_redirect` = '' AND `pater` = '' AND `pater_type` = '' AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `limit_day` <=$limit_chat AND `effect`!='2' ORDER BY RAND() LIMIT 50");
+    while($data_offline=mysqli_fetch_assoc($query_get_command_offline)){
+        array_push($arr_data_offline,$data_offline);
+    }
+    echo json_encode($arr_data_offline);
 }
 ?>

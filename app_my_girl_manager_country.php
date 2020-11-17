@@ -380,7 +380,13 @@ function check_show_btn($link,$key_lang,$version,$ver_check){
             <?php }?>
         </td>
         <td><img src="<?php echo thumb('app_mygirl/img/'.$row['key'].'.png','20');?>"/></td>
-        <td><?php echo $row['key']; ?> | code: <?php echo $row['country_code']; ?></td>
+        <td>
+            <?php echo $row['key']; ?> | code: <?php echo $row['country_code']; ?>
+            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=0"><i class="fa fa-empire" aria-hidden="true"></i></a>
+            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=1"><i class="fa fa-empire" aria-hidden="true"></i></a>
+            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=2"><i class="fa fa-empire" aria-hidden="true"></i></a>
+            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=3"><i class="fa fa-empire" aria-hidden="true"></i></a>
+        </td>
         <td><?php echo $row['name']; ?></td>
         <?php
             if($show_full=='1'){

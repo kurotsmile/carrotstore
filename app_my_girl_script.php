@@ -146,15 +146,11 @@ function get_audio_file(lang){
         }
     }
 
-    
     var win = window.open(link_audios, '_blank');
 
-    
     if (win) {
-        //Browser has allowed it to be opened
         win.focus();
     } else {
-        //Browser has blocked it
         alert('Please allow popups for this website');
     }
 }
@@ -262,7 +258,45 @@ function record(emp_add,lang_act){
         }
     recognition.start();
 }
-</script>
-<?php
 
-?>
+function check_obj_syn(id_obj,lang_obj){
+    show_loading();
+    $.ajax({
+        url: "<?php echo $url_syn;?>/app_my_girl_jquery.php",
+        type: "post",
+        data: "function=check_obj_syn&id="+id_obj+"&lang="+lang_obj,
+        success: function (data, textStatus, jqXHR) {
+            swal({
+                html: true, title: 'Đồng bộ',
+                text: data
+             });
+             get_obj_syn(id_obj,lang_obj);
+        }
+
+    });
+}
+
+function get_obj_syn(id_obj,lang_obj){
+    $.ajax({
+        url: "<?php echo $url;?>/app_my_girl_jquery.php",
+        type: "post",
+        data: "function=get_obj_syn&id="+id_obj+"&lang="+lang_obj,
+        success: function (data, textStatus, jqXHR) {
+            $("#check_obj_syn").html(data);
+        }
+    });
+}
+
+function send_file_obj_syn(id_obj,lang_obj,server_to,url){
+    swal("Sao chép tệp","Sao chép tệp :"+url+" tới "+server_to);
+    $.ajax({
+        url: server_to+"/app_my_girl_jquery.php",
+        type: "post",
+        data: "function=send_file_obj_syn&id="+id_obj+"&lang="+lang_obj+"&url="+url,
+        success: function (data, textStatus, jqXHR) {
+            swal('Thành công!','Sao chép tệp '+data+' thành công!','success');
+        }
+    });
+}
+
+</script>
