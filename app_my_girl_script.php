@@ -299,4 +299,9 @@ function send_file_obj_syn(id_obj,lang_obj,server_to,url){
     });
 }
 
+function search_info_music(){
+    var txt_chat=$("#chat").val();
+    window.open("https://www.google.com/search?q="+txt_chat,"_blank");
+}
+
 </script>

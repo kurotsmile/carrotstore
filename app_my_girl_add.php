@@ -138,11 +138,15 @@ if (isset($_POST['chat'])) {
         }
     }
     $result_chat = mysqli_query($link,"SELECT * FROM `$txt_table` WHERE `id`='$id_new'");
-    $result_chat = mysqli_fetch_array($result_chat);
+    $result_chat = mysqli_fetch_assoc($result_chat);
 
     if (isset($_POST['music_lyrics']) && $_POST['music_lyrics'] != '') {
         $music_lyrics = $_POST['music_lyrics'];
-        $query_add_lyrics = mysqli_query($link,"INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`) VALUES ('$id_new', '" . addslashes($music_lyrics) . "');");
+        $song_album=addslashes(trim($_POST['song_album']));
+        $song_artist=addslashes(trim($_POST['song_artist']));
+        $song_genre=addslashes(trim($_POST['song_genre']));
+        $song_year=addslashes(trim($_POST['song_year']));
+        $query_add_lyrics = mysqli_query($link,"INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`,`artist`,`album`,`year`,`genre`) VALUES ('$id_new', '" . addslashes($music_lyrics) . "','$song_artist','$song_album','$song_year','$song_genre');");
     }
 
     if (isset($_POST['link_ytb']) && $_POST['link_ytb'] != '') {
@@ -181,9 +185,11 @@ if (isset($_POST['chat'])) {
     if (mysqli_error($link) == '') {
         echo "<h2 style='width:100%;'>Add success!!! $id_new</h2><br/>";
         echo "<b>Sex</b>:<img src='$url/app_mygirl/img/".$result_chat['sex'].".png'/> ,<img src='".$url."/app_mygirl/img/".$result_chat['character_sex'].".png'/><br/>";
-        echo "<b>Chat</b>:" . $result_chat['chat'] . '<br/>';
-        echo "<b>Face</b>:" . $result_chat['face'] . '<br/>';
-        echo "<b>Action</b>:" . $result_chat['face'] . '<br/>';
+
+        foreach($result_chat as $key_chat=>$val_chat){
+            if($val_chat!='') echo "<b>".$key_chat."</b>: ".$val_chat.'<br/>';
+        }
+
         if ($result_chat['effect'] == '49') {
             echo btn_add_work($id_new,$lang_sel,'story','add');
         }else{
@@ -756,8 +762,7 @@ if (isset($_POST['chat'])) {
         <?php
         if (isset($_GET['effect']) && $_GET['effect'] == '2') {
             ?>
-            <table id="music_box_data"
-                   style="width: 90%;border: solid 2px #CDCDCD;margin: 10px;box-shadow: 5px 5px 5px #949494;">
+            <table id="music_box_data" style="width: 90%;border: solid 2px #CDCDCD;margin: 10px;box-shadow: 5px 5px 5px #949494;">
                 <tr>
                     <th><i class="fa fa-music" aria-hidden="true"></i> Âm nhạc</th>
                     <th>Thêm mới các siêu dữ liệu liên quan đến bài hát</th>
@@ -765,11 +770,8 @@ if (isset($_POST['chat'])) {
                 <tr>
                     <td><i class="fa fa-book" aria-hidden="true"></i> Lời bài hát</td>
                     <td>
-                        <a href="#" class="buttonPro small purple" onclick="search_music_lyrics();return false;"><i
-                                class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát
-                            (search.azlyrics.com)</a>
-                        <a href="#" class="buttonPro small purple" onclick="search_gg();return false;"><i
-                                class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
+                        <a href="#" class="buttonPro small purple" onclick="search_music_lyrics();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát (search.azlyrics.com)</a>
+                        <a href="#" class="buttonPro small purple" onclick="search_gg();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
                         <textarea id="music_lyrics_contain" style="height: 240px;" name="music_lyrics"></textarea>
                     </td>
                 </tr>
@@ -780,6 +782,20 @@ if (isset($_POST['chat'])) {
                         <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
                         <a href="#" class="buttonPro small purple" onclick="download_ytb(false);return false;"><i class="fa fa-download" aria-hidden="true"></i> Tải video từ youtube</a>
                         <input type="text" id="link_ytb" value="" name="link_ytb"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa fa-info" aria-hidden="true"></i> Các thuột tính âm nhạc khác
+                    </td>
+                    <td>
+                        <ul style="padding: 0px;margin: 0px;margin-top: 3px;margin-bottom: 3px;">
+                            <li><b style="width: 200px;float: left;">Artist (Nghệ sĩ thể hiện)</b> <input style="float: none;width: 300px;" type="text" id="song_artist" name="song_artist"></li>
+                            <li><b style="width: 200px;float: left;">Album</b> <input style="float: none;width: 300px;" type="text"  id="song_album" name="song_album"></li>
+                            <li><b style="width: 200px;float: left;">Year (Năm xuất bản)</b> <input style="float: none;width: 300px;" type="text"  id="song_year" name="song_year"></li>
+                            <li><b style="width: 200px;float: left;">Genre (Thể loại)</b> <input style="float: none;width: 300px;" type="text"  id="song_genre" name="song_genre"></li>
+                            <span class="buttonPro small purple" onclick="search_info_music()"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm thông tin (trên google)</span></li>
+                        </ul>
                     </td>
                 </tr>
             </table>

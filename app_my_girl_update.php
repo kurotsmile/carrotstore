@@ -966,10 +966,6 @@ $arr = mysqli_fetch_array($result_chat);
                 });
             }
 
-            function search_info_music(){
-                var txt_chat=$("#chat").val();
-                window.open("https://www.google.com/search?q="+txt_chat,"_blank");
-            }
         </script>
 
         <table style="width: 90%;border: solid 2px #CDCDCD;margin: 10px;box-shadow: 5px 5px 5px #949494;">
@@ -980,12 +976,9 @@ $arr = mysqli_fetch_array($result_chat);
             <tr>
                 <td><i class="fa fa-book" aria-hidden="true"></i> Lời bài hát</td>
                 <td>
-                    <a href="#" class="buttonPro small blue" onclick="add_music_lyrics();return false;"><i
-                                class="fa fa-plus-circle" aria-hidden="true"></i> cập nhật lời bài hát</a>
-                    <a href="#" class="buttonPro small purple" onclick="search_music_lyrics();return false;"><i
-                                class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát (search.azlyrics.com)</a>
-                    <a href="#" class="buttonPro small purple" onclick="search_gg();return false;"><i
-                                class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
+                    <a href="#" class="buttonPro small blue" onclick="add_music_lyrics();return false;"><i class="fa fa-plus-circle" aria-hidden="true"></i> cập nhật lời bài hát</a>
+                    <a href="#" class="buttonPro small purple" onclick="search_music_lyrics();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát (search.azlyrics.com)</a>
+                    <a href="#" class="buttonPro small purple" onclick="search_gg();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
                     <?php
                     $txt_lyrics = '';
                     $data_lyrics='';
@@ -995,8 +988,7 @@ $arr = mysqli_fetch_array($result_chat);
                         $txt_lyrics = $data_lyrics[1];
                     }
                     mysqli_free_result($show_lyrics);
-                    ?><textarea id="music_lyrics_contain" name="lyrics"
-                                style="height: 240px;"><?php echo $txt_lyrics; ?></textarea>
+                    ?><textarea id="music_lyrics_contain" name="lyrics" style="height: 240px;"><?php echo $txt_lyrics; ?></textarea>
                 </td>
             </tr>
 
