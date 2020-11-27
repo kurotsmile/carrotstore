@@ -551,18 +551,6 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
         $("#menu li").hover(function () {
             $(this).find(".sub_menu").toggle();
         });
-
-        var xhr = new window.XMLHttpRequest();
-        xhr.upload.addEventListener("progress", function (evt) {
-            if (evt.lengthComputable) {
-                var percentComplete = evt.loaded / evt.total;
-                percentComplete = parseInt(percentComplete * 100);
-                console.log(percentComplete);
-                if (percentComplete === 100) {
-                    alert("Hoàn tất!");
-                }
-            }
-        }, false);
     });
 
     function show_box(datas) {
@@ -677,8 +665,37 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
         });
     }
 
-    function close_loading(){
-        swal.close();
+    function close_loading(){swal.close();}
+
+    function active_obj(emp){
+        show_loading();
+        var emp_id=$(emp).attr("emp_id");
+        var emp_lang=$(emp).attr("emp_lang");
+        var emp_status=$(emp).attr("emp_status");
+        
+        if(emp_status=="0") emp_status="1"; else emp_status="0";
+
+        $.ajax({
+            url: "<?php echo $url;?>/app_my_girl_jquery.php",
+            type: "post",
+            data: {function:'active_obj',lang:emp_lang,id:emp_id,status:emp_status},
+            success: function (data, textStatus, jqXHR) {
+                if($(emp).hasClass('fa-toggle-on')){
+                    $(emp).removeClass('fa-toggle-on');
+                    $(emp).addClass('fa-toggle-off');
+                    $(emp).css('color','red');
+                    $(emp).parent().parent().css('background-color','#ffcece');
+                    $(emp).attr("emp_status","1");
+                }else{
+                    $(emp).removeClass('fa-toggle-off');
+                    $(emp).addClass('fa-toggle-on');
+                    $(emp).css('color', 'green');
+                    $(emp).parent().parent().css('background-color','unset');
+                    $(emp).attr("emp_status","0");
+                }
+                swal("Thay đổi trạng thái hoặt động","Thay đổi thành công","success");
+            }
+        });
     }
 
 </script>

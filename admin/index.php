@@ -114,6 +114,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     <a href="<?php echo $url_admin;?>/?page_view=page_setting" <?php if($page_file=='page_setting'){ echo 'class="active"';} ?>><span class="syn setting" syn="setting"></span> Cài đặt</a>
     <a href="<?php echo $url_admin;?>/?page_view=page_order" <?php if($page_file=='page_order'){ echo 'class="active"';} ?>><span class="syn order" syn="order"></span> Đơn đặt hàng</a>
     <a href="<?php echo $url;?>/adminer.php?username=<?php echo $mysql_user;?>&db=<?php echo $mysql_database; ?>" target="_blank"><i class="fa fa-database" aria-hidden="true"></i></a>
+    <a href="<?php echo $url;?>/vl" target="_blank"><i class="fa fa-heart" aria-hidden="true"></i></a>
 
         <div  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
             <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />

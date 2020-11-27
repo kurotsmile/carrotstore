@@ -41,6 +41,7 @@ RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&vi
 RewriteRule    ^quote    index.php?page_view=page_quote.php   [NC,L]
 RewriteRule    ^oauth oauth.php
 RewriteRule    ^remove_block_ads index.php?page_view=page_remove_block_ads.php  [NC,L]
+RewriteRule    ^404 index.php?page_view=404.php
 
 #Other CMS
 RewriteRule    ^shortenlinks   app_mobile/shortenlinks/index.php [NC,L]
@@ -58,7 +59,7 @@ RewriteRule    ^ajaxpc   app_mobile/remotepc/ajaxpc.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-ErrorDocument 404 /index.php?page_view=404.php
+ErrorDocument 404 http://carrot.ddns.net/404
 Options All -Indexes
 
 # BEGIN cPanel-generated php ini directives, do not edit

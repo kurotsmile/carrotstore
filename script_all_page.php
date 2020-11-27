@@ -279,7 +279,7 @@
         html_box_login = html_box_login + '<div style="float: left;padding: 20px;" id="box_login_body">';
         html_box_login = html_box_login + '<div><img src="<?php echo $url;?>/images/icon.png"/></div>';
         html_box_login = html_box_login + '<strong id="box_login_error"></strong>';
-        html_box_login = html_box_login + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang($link,'so_dien_thoai');?></label><br/>';
+        html_box_login = html_box_login + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang($link,'field_login');?></label><br/>';
         html_box_login = html_box_login + '<input id="user_phone_login" name="user_phone_login" type="text"></input>';
         html_box_login = html_box_login + '<label><i class="fa fa-key" aria-hidden="true"></i> <?php echo lang($link,'mat_khau');?></label><br/>';
         html_box_login = html_box_login + '<input id="user_password_login"  name="user_password_login" type="password"></input>';

@@ -1150,14 +1150,14 @@ if($func=='check_obj_syn'){
     $data_link=mysqli_fetch_assoc($query_link);
     $data_obj = (object) array_merge((array) $data_obj, (array) $data_link);
 
-    echo '<div style="max-height: 437px;overflow-y: scroll;float: left;">';
+    echo '<div style="max-height: 437px;overflow-y: scroll;float: left;width:100%">';
 
     echo '<div style="width:45%;float:left">';
     echo '<strong>Máy chủ kiểm tra</strong><br/>';
     echo '<i>'.$url.'</i>';
     echo '<table >';
         foreach($data_obj as $key=>$val){
-            if($val!='') echo '<tr><td><b>'.$key.'</b>:</td><td><a href="'.$val.'"  target="_blank">'.$val.'</a></td></tr>';
+            if($val!='') echo field_table_data_chat($key,$val);
         }
     echo '</table>';
     if($url_mp3!='') echo '<span onclick="send_file_obj_syn(\''.$id.'\',\''.$lang_obj.'\',\''.$url_syn.'\',\''.$url_mp3.'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
@@ -1201,7 +1201,7 @@ if($func=='get_obj_syn'){
     echo '<i>'.$url.'</i><br/></i>';
     echo '<table >';
         foreach($data_obj as $key=>$val){
-            if($val!='') echo '<tr><td><b>'.$key.'</b>:</td><td><a href="'.$val.'"  target="_blank">'.$val.'</a></td></tr>';
+            if($val!='') echo field_table_data_chat($key,$val);
         }
     echo '</table>';
     if($url_mp3!='') echo '<span onclick="send_file_obj_syn(\''.$id.'\',\''.$lang_obj.'\',\''.$url_syn.'\',\''.$url_mp3.'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
@@ -1238,5 +1238,14 @@ if($func=='send_file_obj_syn'){
         }
     }
     echo $path;
+}
+
+if($func=='active_obj'){
+    $lang_obj=$_POST['lang'];
+    $id_obj=$_POST['id'];
+    $status=$_POST['status'];
+    $query_act=mysqli_query($link,"UPDATE `app_my_girl_msg_$lang_obj` SET `disable` = '$status' WHERE `id` = '$id_obj';");
+    echo $query_act;
+    exit;
 }
 ?>

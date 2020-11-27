@@ -144,7 +144,7 @@ function change_lang_to(emp){
     $data_display=$data_display[0];
     $data_display=json_decode($data_display,JSON_UNESCAPED_UNICODE);
                     
-    $query_list_display_lang_data=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='$ver'");
+    $query_list_display_lang_data=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='$ver' ORDER BY `key`");
     while($row=mysqli_fetch_array($query_list_display_lang_data)){
     ?>
         <tr <?php if($edit_key_sel==$row['key']){ ?>style="background-color: yellowgreen;"<?php }?> >

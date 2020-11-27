@@ -400,7 +400,7 @@ if($_GET||$_POST){
         }
 
         if($txt_error=='') {
-            $check_login = mysqli_query($link,"SELECT `id_device`,`name`,`email`,`sdt` FROM `app_my_girl_user_$lang` WHERE `sdt` = '$user_phone_login' AND `password`='$user_password_login' ");
+            $check_login = mysqli_query($link,"SELECT `id_device`,`name`,`email`,`sdt` FROM `app_my_girl_user_$lang` WHERE (`sdt` = '$user_phone_login' AND `password`='$user_password_login') OR (`email` = '$user_phone_login' AND `password`='$user_password_login') ");
             if (mysqli_num_rows($check_login) > 0) {
                 $data_login_user = mysqli_fetch_assoc($check_login);
                 $user_login = new User_login();

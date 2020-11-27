@@ -183,12 +183,12 @@ if (isset($_POST['chat'])) {
     }
 
     if (mysqli_error($link) == '') {
-        echo "<h2 style='width:100%;'>Add success!!! $id_new</h2><br/>";
-        echo "<b>Sex</b>:<img src='$url/app_mygirl/img/".$result_chat['sex'].".png'/> ,<img src='".$url."/app_mygirl/img/".$result_chat['character_sex'].".png'/><br/>";
-
+        echo "<h2 style='width:100%;'>Thêm mới thành công !!!</h2><br/>";
+        echo '<table>';
         foreach($result_chat as $key_chat=>$val_chat){
-            if($val_chat!='') echo "<b>".$key_chat."</b>: ".$val_chat.'<br/>';
+            if($val_chat!='') echo field_table_data_chat($key_chat,$val_chat);
         }
+        echo '</table>';
 
         if ($result_chat['effect'] == '49') {
             echo btn_add_work($id_new,$lang_sel,'story','add');

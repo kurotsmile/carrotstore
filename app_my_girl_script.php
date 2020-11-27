@@ -1,6 +1,3 @@
-<?php
-//Script for page add and update
-?>
 <script>
 var url_voice_chat='';
 function check_sex(){
@@ -303,5 +300,4 @@ function search_info_music(){
     var txt_chat=$("#chat").val();
     window.open("https://www.google.com/search?q="+txt_chat,"_blank");
 }
-
 </script>

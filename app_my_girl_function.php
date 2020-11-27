@@ -216,44 +216,18 @@ function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
         $txt_limit = $txt_limit . ' <i class="fa fa-apple" aria-hidden="true" title="Hiển thị trên nền tản Ios"></i> ';
     }
 
-    if ($data['effect'] == '1') {
-        $txt_type_func .= '<i class="fa fa-heart" aria-hidden="true" title="Thả tim"></i>';
-    }
-    if ($data['effect'] == '2') {
-        $txt_type_func .= '<i class="fa fa-music" aria-hidden="true" title="Âm nhạc"></i>';
-    }
-    if ($data['effect'] == '3') {
-        $txt_type_func .= '<i class="fa fa-asterisk" aria-hidden="true" title="Vinh danh"></i>';
-    }
-    if ($data['effect'] == '4') {
-        $txt_type_func .= '<i class="fa fa-power-off" aria-hidden="true" title="Thoát ứng dụng"></i>';
-    }
-    if ($data['effect'] == '5') {
-        $txt_type_func .= '<i class="fa fa-tint" aria-hidden="true" title="Mưa rơi"></i>';
-    }
-    if ($data['effect'] == '6') {
-        $txt_type_func .= '<i class="fa fa-camera" aria-hidden="true" title="Chụp ảnh"></i>';
-    }
-    if ($data['effect'] == '7') {
-        $txt_type_func .= '<i class="fa fa-snowflake-o" aria-hidden="true" title="Tuyết rơi"></i>';
-    }
-    if ($data['effect'] == '45') {
-        $txt_type_func .= '<i class="fa fa-star" aria-hidden="true" title="Đánh giá ứng dụng"></i>';
-    }
-    if ($data['effect'] == '48') {
-        $txt_type_func .= '<i class="fa fa-history" aria-hidden="true" title="Lịch sử trò chuyện"></i>';
-    }
-    if ($data['effect'] == '29') {
-        $txt_type_func .= '<img src="' . $url . '/app_mygirl/img/statu29.png"/>';
-    }
-
-    if ($data['effect'] == '36') {
-        $txt_type_func .= '<i class="fa fa-quote-left" aria-hidden="true" title="Châm ngôn" ></i>';
-    }
-
-    if ($data['effect'] == '49') {
-        $txt_type_func .= '<i class="fa fa-book" aria-hidden="true" title="Kể chuyện"></i>';
-    }
+    if ($data['effect'] == '1') $txt_type_func .= '<i class="fa fa-heart" aria-hidden="true" title="Thả tim"></i>';
+    if ($data['effect'] == '2') $txt_type_func .= '<i class="fa fa-music" aria-hidden="true" title="Âm nhạc"></i>';
+    if ($data['effect'] == '3') $txt_type_func .= '<i class="fa fa-asterisk" aria-hidden="true" title="Vinh danh"></i>';
+    if ($data['effect'] == '4') $txt_type_func .= '<i class="fa fa-power-off" aria-hidden="true" title="Thoát ứng dụng"></i>';
+    if ($data['effect'] == '5') $txt_type_func .= '<i class="fa fa-tint" aria-hidden="true" title="Mưa rơi"></i>';
+    if ($data['effect'] == '6') $txt_type_func .= '<i class="fa fa-camera" aria-hidden="true" title="Chụp ảnh"></i>';
+    if ($data['effect'] == '7') $txt_type_func .= '<i class="fa fa-snowflake-o" aria-hidden="true" title="Tuyết rơi"></i>';
+    if ($data['effect'] == '45') $txt_type_func .= '<i class="fa fa-star" aria-hidden="true" title="Đánh giá ứng dụng"></i>';
+    if ($data['effect'] == '48') $txt_type_func .= '<i class="fa fa-history" aria-hidden="true" title="Lịch sử trò chuyện"></i>';
+    if ($data['effect'] == '29') $txt_type_func .= '<img src="' . $url . '/app_mygirl/img/statu29.png"/>';
+    if ($data['effect'] == '36') $txt_type_func .= '<i class="fa fa-quote-left" aria-hidden="true" title="Châm ngôn" ></i>';
+    if ($data['effect'] == '49') $txt_type_func .= '<i class="fa fa-book" aria-hidden="true" title="Kể chuyện"></i>';
 
     if (isset($_SESSION['off_color'])) {
         $txt_color = '';
@@ -341,27 +315,20 @@ function show_row_msg_prefab($link,$row, $langsel, $btn_more = null)
     $bnt_history .= '<a href="" ' . $bnt_history_func . ' class="buttonPro small yellow" title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
 
     if ($row['disable'] == '0') {
-        $txt_disable = '<i class="fa fa-toggle-on" aria-hidden="true" style="color:green"></i>';
+        $txt_disable = '<i class="fa fa-toggle-on" emp_status="0" emp_id="'.$row['id'].'" emp_lang="'.$langsel.'" onclick="active_obj(this)" aria-hidden="true" style="color:green;cursor: pointer;"></i>';
     } else {
         $txt_style = 'background:#ffcece';
-        $txt_disable = '<i class="fa fa-toggle-off" aria-hidden="true" style="color:red"></i>';
-    }
-    if ($row['os'] == '') {
-        $txt_limit = 'version:' . $row['ver'] . ' - os:none';
-    } else {
-        $txt_limit = 'version:' . $row['ver'] . ' - os:' . $row['os'];
-    }
-    $txt_limit = $txt_limit . ' - limit chat:' . $row['limit_chat'] . ' ' . $row['limit_day'];
-    if ($row['limit_day'] != '') {
-        $txt_limit = $txt_limit . ' - Day (' . $row['limit_day'] . ')';
+        $txt_disable = '<i class="fa fa-toggle-off" emp_status="1" emp_id="'.$row['id'].'" emp_lang="'.$langsel.'" onclick="active_obj(this)" aria-hidden="true" style="color:red;cursor: pointer;"></i>';
     }
 
-    if ($row['limit_month'] != '') {
-        $txt_limit = $txt_limit . ' - Month (' . $row['limit_month'] . ')';
-    }
+    $txt_limit='';
+    if($row['os']!= '') $txt_limit.= 'os:'.$row['os'].' ';
+    if($row['ver']!='0') $txt_limit.= 'phiên bản:'.$row['ver'].' ';
+    if ($row['limit_day'] !='') $txt_limit.='Thứ:'.$row['limit_day'].' ';
+    if ($row['limit_date']!='0') $txt_limit.='Ngày:'.$row['limit_date'].' ';
+    if ($row['limit_month']!='') $txt_limit.='Tháng:'.$row['limit_month'];
 
     if (file_exists('app_mygirl/app_my_girl_msg_' . $langsel . '/' . $row['id'] . '.mp3')) {
-        //$txt_audio='<audio controls><source src="'.$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$data['id'].'.mp3" type="audio/ogg"></audio>';
         $txt_audio = '<a href="' . $url . '/app_mygirl/app_my_girl_msg_' . $langsel . '/' . $row['id'] . '.mp3" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> File sever</a>';
     } else {
         $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $row['character_sex'], $langsel);
@@ -826,6 +793,25 @@ function btn_add_work($id_object,$lang,$type,$action){
 	global $url_work;
     $txt_html='';
     $txt_html.='<a  target="_blank" class="buttonPro blue" href="'.$url_work.'/?id_object='.$id_object.'&lang='.$lang.'&type_chat='.$type.'&type_action='.$action.'"><i class="fa fa-plus-square"></i> Thêm vào bàn làm việc</a>';
+    return $txt_html;
+}
+
+function field_table_data_chat($key,$val){
+    $val_show=$val;
+    if($key=='sex'||$key=='character_sex') $val_show='<img src="'.URL.'/app_mygirl/img/'.$val.'.png"/>';
+    if($key=='file_url'||$key=='mp3') $val_show='<audio controls><source src="'.$val.'" type="audio/mpeg"></audio><br/><a href="'.$val.'" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i> Xem liên kết ('.$val.')</a>';
+    if($key=='link') $val_show='<a target="_blank" href="'.$val.'">'.$val.'</a>';
+    if($key=='color') $val_show='<span style="background-color:'.$val.'">'.$val.'</span>';
+    if($key=='effect_customer') $val_show='<a target="_blank" href="'.URL.'/app_my_girl_effect.php?edit='.$val.'"><img src="'.URL.'/app_mygirl/obj_effect/'.$val.'.png"/></a>';
+    if($key=='avatar_music') $val_show='<img style="width:60px;" src="'.$val.'"/>';
+    if($key=='user_create') if($val_show!='') $val_show='<img src="'.URL.'/app_mobile/work/img.php?url=avatar_user/'.$val.'.png&size=50"/>';
+    if($key=='face') $val_show='<img style="width:50px;" src="'.URL.'/app_mygirl/img/face/'.$val.'.png"/>';
+    if($key=='action') $val_show='<img style="width:50px;" src="'.URL.'/app_mygirl/img/action/'.$val.'.png"/>';
+    if($key=='author') $val_show='<img style="width:20px;" src="'.URL.'/thumb.php?src='.URL.'/app_mygirl/img/'.$val.'.png&size=60&trim=1"/> ('.$val.')';
+    $txt_html='<tr>';
+    $txt_html.='<td><b>'.$key.'</b></td>';
+    $txt_html.='<td>'.$val_show.'</td>';
+    $txt_html.='</tr>';
     return $txt_html;
 }
 
