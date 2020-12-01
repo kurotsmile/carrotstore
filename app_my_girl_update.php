@@ -551,7 +551,7 @@ $arr = mysqli_fetch_array($result_chat);
 
         <?php if ($type_add == 'chat'&&$arr['effect'] != '2') { ?>
             <tr class="chat_1">
-                <td>Chức năng sever</td>
+                <td>Chức năng server</td>
                 <td>
                     <select name="func_sever">
                         <option value="">none</option>

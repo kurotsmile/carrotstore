@@ -29,14 +29,16 @@ if(isset($_POST['edit'])){
     $ver0='0';
     $ver1='0';
     $ver2='0';
+    $ver3='0';
     $active=0;
     
     if(isset($_POST['ver0'])) $ver0='1';
     if(isset($_POST['ver1'])) $ver1='1';
     if(isset($_POST['ver2'])) $ver2='1';
+    if(isset($_POST['ver3'])) $ver3='1';
     if(isset($_POST['active'])) $active=1;
     
-    $update_country=mysqli_query($link,"UPDATE `app_my_girl_country` SET `name` = '$edit_name', `country_code`='$country_code' , `ver0`='$ver0' , `ver1`='$ver1' , `ver2`='$ver2' ,`active`=$active WHERE `key` = '$edit_key' LIMIT 1;");
+    $update_country=mysqli_query($link,"UPDATE `app_my_girl_country` SET `name` = '$edit_name', `country_code`='$country_code' , `ver0`='$ver0' , `ver1`='$ver1' , `ver2`='$ver2' , `ver3`='$ver3' ,`active`=$active WHERE `key` = '$edit_key' LIMIT 1;");
     
     if(isset_file($_FILES['icon'])){
             $target_file = 'app_mygirl/img/'.$edit_key.'.png';
@@ -86,7 +88,8 @@ if($edit!=''){
         <label>Phiên bản ứng dụng triễn khai</label><br />
         <input type="checkbox" style="width: auto;float: none;" name="ver0" <?php if($data_country['ver0']=='1'){?> checked="on" <?php } ?> /> 2D<br />
         <input type="checkbox" style="width: auto;float: none;" name="ver1" <?php if($data_country['ver1']=='1'){?> checked="on" <?php } ?> /> 3D - Onichan<br />
-        <input type="checkbox" style="width: auto;float: none;" name="ver2" <?php if($data_country['ver2']=='1'){?> checked="on" <?php } ?> /> 3D - Pro
+        <input type="checkbox" style="width: auto;float: none;" name="ver2" <?php if($data_country['ver2']=='1'){?> checked="on" <?php } ?> /> 3D - Pro<br/>
+        <input type="checkbox" style="width: auto;float: none;" name="ver3" <?php if($data_country['ver3']=='1'){?> checked="on" <?php } ?> /> 3D - App ai
     </div>
     
     <div style="display: inline-block;float: left;margin: 2px;">
@@ -364,8 +367,9 @@ function check_show_btn($link,$key_lang,$version,$ver_check){
         <th>Thao tác</th>
     </tr>
     <?php
-    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` ORDER BY `id`");
+    $list_country=mysqli_query($link,"SELECT `id`,`key`,`country_code`,`active`,`name`,`ver0`, `ver1`, `ver2`, `ver3` FROM `app_my_girl_country` ORDER BY `id`");
     while($row=mysqli_fetch_assoc($list_country)){
+        $c_key=$row['key'];
     ?>
     <tr <?php if($row['active']=='0'){?>style="background-color: #FFD9D9;"<?php }?>>
         <td>
@@ -382,23 +386,34 @@ function check_show_btn($link,$key_lang,$version,$ver_check){
         <td><img src="<?php echo thumb('app_mygirl/img/'.$row['key'].'.png','20');?>"/></td>
         <td>
             <?php echo $row['key']; ?> | code: <?php echo $row['country_code']; ?>
-            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=0"><i class="fa fa-empire" aria-hidden="true"></i></a>
-            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=1"><i class="fa fa-empire" aria-hidden="true"></i></a>
-            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=2"><i class="fa fa-empire" aria-hidden="true"></i></a>
-            <a href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row['key'];?>&ver=3"><i class="fa fa-empire" aria-hidden="true"></i></a>
+            <?php
+                for($i=0;$i<4;$i++){
+                    $query_count_data_lang=mysqli_query($link,"SELECT COUNT(`data`) as c FROM `app_my_girl_display_lang` WHERE `lang` = '".$row['key']."' AND `version` = '$i' LIMIT 1");
+                    $data_count=mysqli_fetch_assoc($query_count_data_lang);
+                    $count_ver=$data_count['c'];
+                    $color_ver='red';
+                    $key_ver='ver'.$i;
+                    if($row[$key_ver]=='1') $color_ver='green';
+                    
+                    if($count_ver!="0")
+                        echo '<a style="color:'.$color_ver.'" target="_blank" href="'.$url.'/app_my_girl_display_value.php?lang='.$c_key.'&ver='.$i.'"><i class="fa fa-empire" aria-hidden="true"></i></a>';
+                    else
+                        echo '<a style="color:'.$color_ver.'" target="_blank" href="'.$url.'/app_my_girl_display_value.php?lang='.$c_key.'&ver='.$i.'"><i class="fa fa fa-slideshare" aria-hidden="true"></i></a>';
+                }
+            ?>
         </td>
         <td><?php echo $row['name']; ?></td>
         <?php
             if($show_full=='1'){
-                echo check_show_btn($link,$row['key'],$row['ver0'],'0');
-                echo check_show_btn($link,$row['key'],$row['ver1'],'1');
-                echo check_show_btn($link,$row['key'],$row['ver2'],'2');
+                echo check_show_btn($link,$c_key,$row['ver0'],'0');
+                echo check_show_btn($link,$c_key,$row['ver1'],'1');
+                echo check_show_btn($link,$c_key,$row['ver2'],'2');
             }
         ?>
         <td>
-            <a href="<?php echo $url;?>/app_my_girl_manager_country.php?edit=<?php echo $row['key']; ?>" class="buttonPro small yellow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật</a>
-            <a href="<?php echo $url;?>/app_my_girl_manager_country.php?fix=<?php echo $row['key']; ?>" class="buttonPro small orange" ><i class="fa fa-wrench" aria-hidden="true"></i> Kiểm tra lỗi</a>
-            <?php if($data_user_carrot["user_role"]=='admin'){?><a href="<?php echo $url;?>/app_my_girl_manager_country.php?delete=<?php echo $row['key']; ?>" class="buttonPro small red"  onclick="return confirm('Có chắc chắn là muốn xóa?');" ><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a><?php }?>
+            <a href="<?php echo $url;?>/app_my_girl_manager_country.php?edit=<?php echo $c_key; ?>" class="buttonPro small yellow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật</a>
+            <a href="<?php echo $url;?>/app_my_girl_manager_country.php?fix=<?php echo $c_key; ?>" class="buttonPro small orange" ><i class="fa fa-wrench" aria-hidden="true"></i> Kiểm tra lỗi</a>
+            <?php if($data_user_carrot["user_role"]=='admin'){?><a href="<?php echo $url;?>/app_my_girl_manager_country.php?delete=<?php echo $c_key; ?>" class="buttonPro small red"  onclick="return confirm('Có chắc chắn là muốn xóa?');" ><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a><?php }?>
         </td>
     </tr>
     <?php

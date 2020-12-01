@@ -17,7 +17,8 @@ if(isset($_GET['lang'])){
 		$lang_key_to=$_GET['lang_to'];
 		$lang_2=$_GET['lang_to'];
 	}else{
-		$lang_key_to=$lang_2;
+        $lang_key_to=$lang_2;
+        $lang_2='';
 	}
 
 	$query_list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country`");
@@ -116,7 +117,7 @@ if(isset($_POST['key'])){
 
 <div  style="float:left;width:100%;">
 <div class="box_form" style="float:left;width:auto;">
-<label>Chọn ngôn ngữ dịch sang</label>
+<label>Chọn ngôn ngữ dịch sang</label><br/>
 <select name="lang_to" onchange="change_lang_to(this);return false;">
     <?php
     while($row_lang=mysqli_fetch_assoc($query_list_country)){
@@ -125,15 +126,21 @@ if(isset($_POST['key'])){
     <?php 
     }
     ?>
-</select>
+</select><br/><br/>
+<span class="buttonPro small blue" onclick="hide_row_true();"><i class="fa fa-eye-slash" aria-hidden="true"></i> Hiện các trường còn thiếu</span><br/><br/>
+</div>
+</div>
+
 <script>
 function change_lang_to(emp){
     var val_lang=$(emp).val();
     window.location="<?php echo $url_cur;?>?lang=<?php echo $edit_lang;?>&ver=<?php echo $ver;?>&lang_to="+val_lang;
 }
+
+function hide_row_true(){
+    $(".row_true").hide(100);
+}
 </script>
-</div>
-</div>
 
 <form method="post" name="update_data_display" style="width:auto;float:left">
 <table style="width:auto;float:left">
@@ -145,14 +152,19 @@ function change_lang_to(emp){
     $data_display=json_decode($data_display,JSON_UNESCAPED_UNICODE);
                     
     $query_list_display_lang_data=mysqli_query($link,"SELECT * FROM `app_my_girl_display_lang_data` WHERE `version`='$ver' ORDER BY `key`");
+    $count_index=0;
     while($row=mysqli_fetch_array($query_list_display_lang_data)){
+        $count_index++;
+        $val_lang='';
+        if(isset($data_display[$row['key']])){ $val_lang=$data_display[$row['key']];}
     ?>
-        <tr <?php if($edit_key_sel==$row['key']){ ?>style="background-color: yellowgreen;"<?php }?> >
+        <tr class="<?php if($val_lang!=''){ echo 'row_true';}else{ echo 'row_false';}?>" <?php if($edit_key_sel==$row['key']){ ?>style="background-color: yellowgreen;"<?php }?> >
+            <td><?php echo $count_index;?></td>
             <td><?php echo $row['key'];?></td>
-            <td><input id="inp_<?php echo $row['key'];?>" name="<?php echo $row['key'];?>" value="<?php if(isset($data_display[$row['key']])){ echo $data_display[$row['key']];}?>" /></td>
+            <td><input id="inp_<?php echo $row['key'];?>" name="<?php echo $row['key'];?>" value="<?php echo $val_lang;?>" /></td>
             <td>
                 <span class="buttonPro small" onclick="paste_tag('inp_<?php echo $row['key'];?>');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
-                <span class="buttonPro small" onclick="$(this).css('color','red');translation_tag('inp_<?php echo $row['key'];?>','<?php echo $edit_lang;?>','<?php echo $lang_2;?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch thuật (<?php echo $lang_2;?>)</span>
+    <?php if($lang_2!=''){?><span class="buttonPro small" onclick="$(this).css('color','red');translation_tag('inp_<?php echo $row['key'];?>','<?php echo $edit_lang;?>','<?php echo $lang_2;?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch thuật (<?php echo $lang_2;?>)</span><?php }?>
             </td>
         </tr>
     <?php 

@@ -435,6 +435,16 @@ $item_data->name = "Mở Thực tế ảo";
 $item_data->key = "50";
 array_push($data_app->arr_function_app, $item_data);
 
+$item_data = new item_data();
+$item_data->name = "thời tiết";
+$item_data->key = "51";
+array_push($data_app->arr_function_app, $item_data);
+
+$item_data = new item_data();
+$item_data->name = "chạy chức năng ở máy chủ (Thay thế từ khóa và thự hiện lệnh tương ứng vd mở bài {tên bài hát} -> chức năng server)";
+$item_data->key = "52";
+array_push($data_app->arr_function_app, $item_data);
+
 
 $array_category_store = array();
 

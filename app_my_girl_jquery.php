@@ -1248,4 +1248,14 @@ if($func=='active_obj'){
     echo $query_act;
     exit;
 }
+
+if($func=='save_order'){
+    $type_obj=$_POST['type_obj'];
+    $arr_id=json_decode($_POST['arr_id']);
+    for($i=0;$i<sizeof($arr_id);$i++){
+        $query_update_order=mysqli_query($link,"UPDATE `".$type_obj."` SET `orders` = '$i' WHERE `id` = '".$arr_id[$i]."';");
+    }
+    echo "Lưu lại thứ tự các sách thành công!";
+    exit;
+}
 ?>

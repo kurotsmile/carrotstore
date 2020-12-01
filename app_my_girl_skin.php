@@ -3,7 +3,7 @@ include "app_my_girl_template.php";
 
 $name_bk="";
 $price_bk="";
-$id_store_bk="";
+$type_skin="";
 $func="add";
 $img_edit_icon="";
 $img_edit_view="";
@@ -16,7 +16,7 @@ if(isset($_GET['edit'])){
     $edit_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_skin` WHERE ((`id` = '$id_edit')) LIMIT 1;");
     $arr_data_effect=mysqli_fetch_array($edit_effect);
     $name_bk=$arr_data_effect[1];
-    $id_store_bk=$arr_data_effect['id_store'];
+    $type_skin=$arr_data_effect['type'];
     $price_bk=$arr_data_effect['price'];
     $filename = 'app_mygirl/obj_skin/icon_'.$id_edit.'.png';
     if (file_exists($filename)) {
@@ -34,9 +34,9 @@ if(isset($_GET['edit'])){
 if(isset($_POST['func'])){
     if($_POST['func']=="add"){
         $name_bk=$_POST['name_bk'];
-        $id_store_bk=$_POST['id_store_bk'];
+        $type_skin=$_POST['type_skin'];
         $price_bk=$_POST['price_bk'];
-        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_skin` (`name`,`price`,`id_store`) VALUES ('$name_bk','$price_bk','$id_store_bk');");
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_skin` (`name`,`price`,`type`) VALUES ('$name_bk','$price_bk','$type_skin');");
         $id_new=mysqli_insert_id($link);
         $target_dir = "app_mygirl/obj_skin/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_icon"]["tmp_name"], $target_dir);
@@ -45,9 +45,11 @@ if(isset($_POST['func'])){
     }else{
         $name_bk=$_POST['name_bk'];
         $id_edit=$_POST['id_edit'];
-        $id_store_bk=$_POST['id_store_bk'];
+        $type_skin=$_POST['type_skin'];
         $price_bk=$_POST['price_bk'];
-        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_skin` SET `name` = '$name_bk',`price`='$price_bk',`id_store`='$id_store_bk' WHERE `id` = '$id_edit';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_skin` SET `name` = '$name_bk',`price`='$price_bk',`type`='$type_skin' WHERE `id` = '$id_edit';");
+        
+        echo mysqli_error($link);
         
         if(isset_file($_FILES["file_bk_icon"])){
             $filename = 'app_mygirl/obj_skin/icon_'.$id_edit.'.png';
@@ -101,12 +103,15 @@ if(isset($_POST['func'])){
     
     <div style="display: inline-block;float: left;margin: 2px;width: 180px;">
     <label>Giá:</label> 
-    <input type="text" id="price_bk" name="price_bk" value="<?php echo $price_bk;?>" />
+    <select name="price_bk">
+        <option value="0" <?php if($price_bk=='0'){ echo 'selected="true"';}?>>Miễn phí</option>
+        <option value="1" <?php if($price_bk=='1'){ echo 'selected="true"';}?>>Tính phí</option>
+    </select>
     </div>
     
     <div style="display: inline-block;float: left;margin: 2px;width: 180px;">
-    <label>ID store:</label> 
-    <input type="text" id="id_store_bk" name="id_store_bk" value="<?php echo $id_store_bk;?>" />
+    <label>type:</label> 
+    <input type="text"  name="type_skin" value="<?php echo $type_skin;?>" />
     </div>
     
     <div style="display: inline-block;float: left;margin: 2px;">
@@ -146,7 +151,7 @@ if(isset($_GET['del'])){
     <th>biểu tượng</th>
     <th>Skin</th>
     <th>Giá</th>
-    <th>id store</th>
+    <th>Loại</th>
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
@@ -158,8 +163,8 @@ while($row=mysqli_fetch_array($list_effect)){
         <td><?php echo $row[1];?></td>
         <td><img src="<?php echo thumb('/app_mygirl/obj_skin/icon_'.$row[0].'.png','50'); ?>" style="width: 50px;height: 50px;" /></td>
         <td><img src="<?php echo thumb('/app_mygirl/obj_skin/skin_'.$row[0].'.png','50'); ?>" style="width: 50px;height: 50px;" /></td>
-        <td><?php echo $row['price'];?></td>
-        <td><?php echo $row['id_store'];?></td>
+        <td><?php if($row['price']=='0'){;?><i class="fa fa-money" aria-hidden="true"></i> Miễn phí<?php }else{?><i class="fa fa-shopping-cart" aria-hidden="true"></i> Tính phí<?php } ?></td>
+        <td><?php echo $row['type'];?></td>
         <td>
             <a class="buttonPro small orange" href="<?php echo $url.'/app_my_girl_skin.php';?>?edit=<?php echo $row['id'];?>">Sửa</a>
             <a class="buttonPro small red" href="<?php echo $url.'/app_my_girl_skin.php';?>?del=<?php echo $row['id'];?>">Xóa</a>

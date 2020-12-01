@@ -365,17 +365,14 @@ function show_row_msg_prefab($link,$row, $langsel, $btn_more = null)
 function show_alert($msg, $type)
 {
     echo '<div class="show_alert">';
-    if ($type == 'alert') {
-        echo '<div class="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . $msg . '</div>';
-    }
-    if ($type == 'info') {
-        echo '<div class="info"><i class="fa fa-info-circle" aria-hidden="true"></i> ' . $msg . '</div>';
-    }
-
-    if ($type == 'error') {
-        echo '<div class="error"><i class="fa fa-exclamation" aria-hidden="true"></i> ' . $msg . '</div>';
-    }
+    if ($type == 'alert') echo '<div class="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . $msg . '</div>';
+    if ($type == 'info') echo '<div class="info"><i class="fa fa-info-circle" aria-hidden="true"></i> ' . $msg . '</div>';
+    if ($type == 'error') echo '<div class="error"><i class="fa fa-exclamation" aria-hidden="true"></i> ' . $msg . '</div>';
     echo '</div>';
+}
+
+function msg($msg,$type='success'){
+    echo '<script>swal("Thông báo","'.$msg.'","'.$type.'");</script>';
 }
 
 function get_key_lang($link,$key, $lang)

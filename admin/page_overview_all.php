@@ -176,6 +176,7 @@ if($sub_view=='full'){
 	echo '<li>Ngôn ngữ ứng dụng (vl) <span class="syn app_my_girl_key_lang" syn="app_my_girl_key_lang"></span></li>';
 	echo '<li><a href="'.$url.'/app_my_girl_storage.php" target="_blank">Lưu trữ các mục trò chuyện (đánh dấu trò chuyện)</a> <span class="syn app_my_girl_storage" syn="app_my_girl_storage"></span></li>';
 	echo '<li><a href="'.$url.'/app_my_girl_manager_country.php" target="_blank">Cấu trúc các quốc gia</a> <span class="syn app_my_girl_country" syn="app_my_girl_country"></span></li>';
+	echo '<li><a href="'.$url.'/app_my_girl_handling.php?func=manager_function" target="_blank" title="app_my_girl_function">Chức năng ứng dụng (vl)</a> <span class="syn app_my_girl_function" syn="app_my_girl_function"></span></li>';
 	echo '</ul>';
 	echo '</div>';
 }

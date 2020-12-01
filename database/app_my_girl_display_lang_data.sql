@@ -637,6 +637,16 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('error_email_already',	'3'),
 ('forgot_password',	'3'),
 ('forgot_password_tip',	'3'),
-('rules',	'3');
+('rules',	'3'),
+('user_avatar',	'3'),
+('voice_command_stop',	'3'),
+('voice_command_start',	'3'),
+('loading',	'3'),
+('exit_msg',	'3'),
+('exit_app_other_title',	'3'),
+('voice_command_no_support',	'3'),
+('voice_command_error',	'3'),
+('voice_command_ready',	'3'),
+('voice_command_no_authorization',	'3');
 
--- 2020-11-26 15:42:02
+-- 2020-11-30 19:23:38
