@@ -6,9 +6,6 @@ $type_book='';
 $chapter_book=0;
 $id_edit='';
 
-
-
-
 if(isset($_GET['lang'])){
     $lang_book=$_GET['lang'];
 }
@@ -27,7 +24,7 @@ if(isset($_POST['edit'])){
 
 if($id_edit!=''){
     $query_book=mysqli_query($link,"SELECT * FROM `book` WHERE `id` = '$id_edit' LIMIT 1");
-    $data_book=mysql_fetch_array($query_book);
+    $data_book=mysqli_fetch_array($query_book);
     $name_book=$data_book['name'];
     $type_book=$data_book['type'];
     $lang_book=$data_book['lang'];
@@ -74,8 +71,6 @@ $orders=mysqli_num_rows($query_count_book);
                 echo "Cập nhật sách thất bại";
             }
         }
-        
-        
     }
     ?>
     </div>

@@ -31,9 +31,9 @@ if(isset($_POST['chapter_book'])){
 <h3>Chi tiết sách (<?php echo $data_book['name']; ?>)</h3>
 
 <ul>
-    <li><a class="buttonPro large blue" href="<?php echo $url;?>/?page=manager_book&lang=<?php echo $data_book['lang']; ?>&type=<?php echo $data_book['type']; ?>"><i class="fas fa-list-alt"></i> Quảng lý sách</a></li>
-    <li><a class="buttonPro large yellow" href="<?php echo $url;?>/?page=add_book&edit=<?php echo $id_book;?>"> <i class="fas fa-wrench"></i> Sửa sách này</a></li>
-    <li><a class="buttonPro large red" href="<?php echo $url;?>/?page=view_book&delete=<?php echo $id_book;?>"> <i class="fas fa-trash-alt"></i> Xóa tất cả các chương</a></li>
+    <li><a class="buttonPro large blue" href="<?php echo $url;?>/?page=manager_book&lang=<?php echo $data_book['lang']; ?>&type=<?php echo $data_book['type']; ?>"><i class="fa fa-list-alt"></i> Quảng lý sách</a></li>
+    <li><a class="buttonPro large yellow" href="<?php echo $url;?>/?page=add_book&edit=<?php echo $id_book;?>"> <i class="fa fa-wrench"></i> Sửa sách này</a></li>
+    <li><a class="buttonPro large red" href="<?php echo $url;?>/?page=view_book&delete=<?php echo $id_book;?>"> <i class="fa fa-trash"></i> Xóa tất cả các chương</a></li>
 </ul>
 
 <?php
@@ -217,13 +217,13 @@ if(isset($_POST['web_link'])){
         $count_p=mysqli_fetch_array($query_count_paragraph);
     ?>
     <li <?php if($i==$id_chapter){?>style="background-color: #ff9158;"<?php }?>>Chương <?php echo $i; ?> 
-        <a class="buttonPro small blue" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fas fa-play"></i> Xem các đoạn (<?php echo $count_p[0]; ?>)</a>
-        <a class="buttonPro small green" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fas fa-plus-square"></i> Thêm đoạn vào chương này</a>
-        <a class="buttonPro small yellow" href="<?php echo $url;?>/?page=view_book&id=<?php echo $id_book;?>&chapter=<?php echo $i;?>"><i class="fas fa-pen-square"></i> Cập nhật tệp âm thanh</a>
+        <a class="buttonPro small blue" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fa fa-play"></i> Xem các đoạn (<?php echo $count_p[0]; ?>)</a>
+        <a class="buttonPro small green" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fa fa-plus-square"></i> Thêm đoạn vào chương này</a>
+        <a class="buttonPro small yellow" href="<?php echo $url;?>/?page=view_book&id=<?php echo $id_book;?>&chapter=<?php echo $i;?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật tệp âm thanh</a>
         <?php if($url_audio_chapter==""){?>
             <i style="color: red;"><i class="fas fa-exclamation-circle"></i> Chưa có tệp âm thanh</i>
         <?php }else{?>
-            <a href="<?php echo $url_audio_chapter;?>" target="_blank"><i class="fas fa-volume-up"></i> Nghe chương này</a>
+            <a href="<?php echo $url_audio_chapter;?>" target="_blank"><i class="fa fa-volume-up"></i> Nghe chương này</a>
         <?php }?>
     </li>
     <?php }?>

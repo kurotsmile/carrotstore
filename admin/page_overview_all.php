@@ -9,6 +9,20 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 		$data_count_account['c']='0';
 	}
 
+	$query_count_account_18=mysqli_query($link,"SELECT COUNT(`id_device`) as c FROM `app_my_girl_user_$key_country` WHERE `status`='2'");
+	if($query_count_account_18){
+		$data_count_account_18=mysqli_fetch_assoc($query_count_account_18);
+	}else{
+		$data_count_account_18['c']='0';
+	}
+
+	$query_count_account_report=mysqli_query($link,"SELECT COUNT(`id_device`) as c FROM `acc_report` WHERE `lang`='$key_country' ");
+	if($query_count_account_report){
+		$data_count_account_report=mysqli_fetch_assoc($query_count_account_report);
+	}else{
+		$data_count_account_report['c']='0';
+	}
+
 	$query_count_order=mysqli_query($link,"SELECT COUNT(`id_order`) as c FROM `order` WHERE `lang` = '$key_country'");
 	if($query_count_order){
 		$data_count_order=mysqli_fetch_assoc($query_count_order);
@@ -110,7 +124,9 @@ while($row=mysqli_fetch_assoc($query_list_country)){
 	echo '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> Mã quốc gia:<b>'.$row['country_code'].'</b> <br/> <a href="'.$url_admin.'/?page_view=page_lang&lang='.$key_country.'"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Từ khóa ngôn ngữ:<b>'.$row['key'].'</b> <span class="syn lang_'.$key_country.'" syn="lang_'.$key_country.'"></span> ('.$data_count_lang_value['c'].')</a></br>';
 	echo '<ul>';
 	echo '<li><a href="'.$url.'/admin/?page_view=page_login_manager&lang='.$key_country.'"><span class="syn app_my_girl_user_'.$key_country.'" syn="app_my_girl_user_'.$key_country.'"></span> Số tài khoản đã xác thực:<b>'.$data_count_account['c'].'</b></a></li>';
-	echo '<li>Đơn hàng đã thanh toán:<b>'.$data_count_order['c'].'</b></li>';
+	echo '<li><a href="'.$url.'/admin/?page_view=page_login_manager&lang='.$key_country.'&acc_status=2"> Tài khoản 18+:<b>'.$data_count_account_18['c'].'</b></a></li>';
+	echo '<li><a href="'.$url.'/admin/?page_view=page_report_account&lang='.$key_country.'"> Khiếu nại tài khoản sai phạm:<b>'.$data_count_account_report['c'].'</b></a></li>';
+	echo '<li><a href="'.$url.'/admin/?page_view=page_order&lang_order='.$key_country.'"> Đơn hàng đã thanh toán:<b>'.$data_count_order['c'].'</b></a></li>';
 	echo '<li>';
 		echo 'Lịch sử tìm kiếm';
 		echo '<ul>';

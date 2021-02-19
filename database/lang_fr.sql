@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -104,7 +104,6 @@ INSERT INTO `lang_fr` (`key`, `value`) VALUES
 ('tip_star1',	'Tant pis'),
 ('trich_dan',	'Citation'),
 ('doc_cham_ngon',	'Lire la citation'),
-('gioi_thieu_tip',	'Carrotstore.com est une archive qui présente des applications de divertissement et des utilitaires complémentaires pour les utilisateurs du monde entier. Lorsque vous utilisez l\'un de ces systèmes, vous disposez d\'un compte qui identifie chaque personne avec le périphérique mobile.'),
 ('download_app_quote_tip',	'Téléchargez ces applications sur l’app store et l’appstore de ch play pour lire de bonnes citations et utiliser de nombreux autres utilitaires de divertissement.'),
 ('download_song',	'Téléchargez cette chanson'),
 ('khong_co_du_lieu',	'Pas de données'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_fr` (`key`, `value`) VALUES
 ('nha_phat_trien',	'Les développeurs'),
 ('purchase_orders',	'Acheter en ligne'),
 ('no_return_search',	'Aucun résultat pour les mots clés ci-dessus'),
-('ngon_ngu_hien_thi',	'Sélectionnez un pays et une langue');
+('ngon_ngu_hien_thi',	'Sélectionnez un pays et une langue'),
+('field_login',	'Email ou numéro de téléphone'),
+('gioi_thieu_tip',	'Carrotstore.com est une archive qui présente des applications de divertissement et des utilitaires complémentaires pour les utilisateurs du monde entier. Lorsque vous utilisez l\'un de ces systèmes, vous disposez d\'un compte qui identifie chaque personne avec le périphérique mobile.'),
+('account_report',	'Signaler un abus sur ce compte'),
+('account_report_success',	'Merci d\'avoir signalé des problèmes avec ce compte, nous essaierons de le résoudre dès que possible'),
+('account_report_1',	'Le compte contient du contenu sexuel, images érotiques'),
+('account_report_2',	'Comptes usurpation d\'identité'),
+('account_report_3',	'D\'autres problèmes'),
+('account_report_3_tip',	'Veuillez saisir ici une description détaillée du mauvais compte');
 
--- 2020-10-23 13:53:46
+-- 2021-02-17 10:53:54

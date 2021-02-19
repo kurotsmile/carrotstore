@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -102,7 +102,6 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('tip_star1',	'Terlalu buruk'),
 ('trich_dan',	'Kutipan'),
 ('doc_cham_ngon',	'Baca kutipan'),
-('gioi_thieu_tip',	'Carrotstore.com adalah arsip, memperkenalkan aplikasi hiburan dan utilitas tambahan untuk orang-orang di seluruh dunia. Ketika Anda menggunakan salah satu aplikasi, Anda telah mendaftarkan akun yang mengidentifikasi setiap orang dengan id di perangkat seluler.'),
 ('download_app_quote_tip',	'Unduh aplikasi ini di ch play app store dan appstore untuk membaca kutipan bagus dan menggunakan banyak utilitas hiburan lainnya.'),
 ('download_song',	'Unduh lagu ini'),
 ('khong_co_du_lieu',	'Tidak ada data'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('nha_phat_trien',	'Pengembang'),
 ('purchase_orders',	'Order pembelian'),
 ('no_return_search',	'Tidak ada hasil untuk kata kunci di atas'),
-('ngon_ngu_hien_thi',	'Pilih negara dan bahasa');
+('ngon_ngu_hien_thi',	'Pilih negara dan bahasa'),
+('field_login',	'Email atau nomor telepon'),
+('gioi_thieu_tip',	'Carrotstore.com adalah arsip, memperkenalkan aplikasi hiburan dan utilitas tambahan untuk orang-orang di seluruh dunia. Ketika Anda menggunakan salah satu aplikasi, Anda telah mendaftarkan akun yang mengidentifikasi setiap orang dengan id di perangkat seluler.'),
+('account_report',	'Laporkan penyalahgunaan di akun ini'),
+('account_report_success',	'Terima kasih telah melaporkan masalah dengan akun ini, kami akan mencoba memperbaikinya sesegera mungkin'),
+('account_report_1',	'Akun berisi konten seksual, pornografi'),
+('account_report_2',	'akun meniru'),
+('account_report_3',	'Masalah lainnya'),
+('account_report_3_tip',	'Harap masukkan penjelasan rinci tentang akun yang salah di sini');
 
--- 2020-10-24 15:24:40
+-- 2021-02-17 10:54:34

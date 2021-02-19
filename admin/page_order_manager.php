@@ -1,6 +1,11 @@
 <?php
 $url_page_order=$url_admin.'?page_view=page_order&sub_view=page_order_manager';
 $id_send='';
+$lang_order='';
+if(isset($_GET['lang_order'])){
+    $lang_order=$_GET['lang_order'];
+}
+
 if(isset($_GET['send'])){
     $id_send=$_GET['send'];
     $query_order=mysqli_query($link,"SELECT * FROM `order` WHERE `id_order` = '$id_send' LIMIT 1");
@@ -42,7 +47,11 @@ if(isset($_GET['send'])){
     <th>Thao tác</th>
 </tr>
 <?php
-$list_order=mysqli_query($link,"SELECT * FROM `order`");
+if($lang_order==''){
+    $list_order=mysqli_query($link,"SELECT * FROM `order`");
+}else{
+    $list_order=mysqli_query($link,"SELECT * FROM `order` WHERE `lang`='$lang_order' ");
+}
 if($list_order){
 while($row=mysqli_fetch_assoc($list_order)){
     $url_product=$url.'/music/'.$row['id'].'/'.$row['lang'];

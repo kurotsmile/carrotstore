@@ -28,7 +28,6 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (104,	'Contact store'),
 (105,	'Love or No love'),
 (119,	'virtual lover 3D'),
-(120,	'Virtual lover'),
 (121,	' Virtual lover 2 (Onichan)'),
 (122,	'Counting sheep - go to bed'),
 (123,	'Music for life'),
@@ -177,6 +176,8 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (279,	'Underhero'),
 (280,	'Verlet Swing'),
 (281,	'YIIK: A Postmodern RPG'),
-(228,	'Neverending Nightmares');
+(228,	'Neverending Nightmares'),
+(120,	'Virtual lover'),
+(282,	'My virtual lover');
 
--- 2020-10-23 06:05:23
+-- 2020-12-28 19:35:20

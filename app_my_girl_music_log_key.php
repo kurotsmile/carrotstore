@@ -8,8 +8,8 @@ if(isset($_GET['lang'])){
 
 if(isset($_GET['delete'])){
     $delete_type=$_GET['delete'];
+    $langsel=$_GET['lang']; 
     if($delete_type=='1'){
-        $langsel=$_GET['lang']; 
         $msql_delete=mysqli_query($link,"DELETE FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");
     }
     
@@ -56,7 +56,7 @@ if($langsel==''){
 <div style="display: inline-block;float: left;margin: 2px;width: 90px;">
     <label>Ngôn ngữ:</label> 
     <select name="lang">
-    <option value=""  selected="true"  <?php if($langsel==""){?> selected="true"<?php }?>>Tất cả</option>
+    <option value="" <?php if($langsel==""){?>selected="true"<?php }?>>Tất cả</option>
     <?php 
     $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active` = '1'");
     while($row_lang=mysqli_fetch_array($list_country)){
@@ -91,19 +91,14 @@ if(mysqli_num_rows($result_tip)>0){
                     <td><?php echo $row[1]; ?></td>
                     <td>
                         <?php 
-                            if($row[2]=='0'){?>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> Khu vực
-                            <?php 
-                            }elseif($row[2]=='2'){?>
-                            <i class="fa fa-empire" aria-hidden="true"></i> Từ web
-                            <?php }
-                            else{?><i class="fa fa-globe" aria-hidden="true"></i> Thế giới
-                            <?php }?>
-                        
+                            if($row[2]=='0'){?><i class="fa fa-map-marker" aria-hidden="true"></i> Khu vực<?php 
+                            }elseif($row[2]=='2'){?><i class="fa fa-empire" aria-hidden="true"></i> Từ web<?php }
+                            else{?><i class="fa fa-globe" aria-hidden="true"></i> Thế giới<?php }
+                        ?>
                     </td>
                     <td>
                         <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $row[1]; ?>&sex=0&character_sex=1&effect=2&answer=<?php echo $row[0];?>&actions=9" target="_blank" class="buttonPro small green"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm nhạc</a>
-                        <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $row[1]; ?>&delete_key=<?php echo urlencode($row[0]);?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa từ khóa (Đã thêm)</a>
+                        <a href="<?php echo $url; ?>/app_my_girl_music_log_key.php?lang=<?php echo $langsel; ?>&delete_key=<?php echo urlencode($row[0]);?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa từ khóa (Đã thêm)</a>
                         <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=check_music&key_word=<?php echo urlencode($row[0]);?>" target="_blank"  class="buttonPro small yellow"><i class="fa fa-search" aria-hidden="true"></i> kiểm tra đã tồn tại (<i class="fa fa-globe" aria-hidden="true"></i> Thế giới)</a>
                         <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=remove_key_music&key=<?php echo urlencode($row[0]);?>" target="_blank"  class="buttonPro small blue" title="Thêm từ khóa này vao danh sách xóa" ><i class="fa fa-eraser" aria-hidden="true"></i> Chặn</a>
                     </td>
@@ -115,5 +110,7 @@ if(mysqli_num_rows($result_tip)>0){
 }else{
     show_alert('Chưa có dữ liệu từ người dùng','alert');
 }
+
+echo $langsel;
 ?>
 

@@ -12,15 +12,11 @@ while($item_country=mysqli_fetch_array($query_list_country)){
 ?>
     <div class="box_country <?php if($is_sel=='on'){?>active<?php }?>">
         <div class="header">
-            <img class="icon" src="http://carrotstore.com/thumb.php?src=http://carrotstore.com/app_mygirl/img/<?php echo $key_country; ?>.png&size=30&trim=1" />
+            <img class="icon" src="<?php echo $url_carrot_store;?>/thumb.php?src=<?php echo $url_carrot_store;?>/app_mygirl/img/<?php echo $key_country; ?>.png&size=30&trim=1" />
             <strong class="title"><?php echo $item_country['name'];?></strong><br />
             <i style="font-size: 10px;float: left;width: 90%">
             <?php
-                if($is_sel=='on'){
-                    echo 'Đã triển khai nội dung tại đất nước này';
-                }else{
-                    echo 'Chưa kích hoạt';
-                }
+                if($is_sel=='on'){ echo 'Đã triển khai nội dung tại đất nước này'; }else{ echo 'Chưa kích hoạt';}
             ?>
             </i>
         </div>

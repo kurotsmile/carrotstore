@@ -185,4 +185,13 @@ if($function=='show_all_playlist'){
     echo $txt_show;
     exit;
 }
+
+if($function=='report_account'){
+    $error_txt=addslashes($_POST['error_txt']);
+    $id_device=$_POST['id_device'];
+    $lang=$_POST['lang'];
+    $type=$_POST['type'];
+    $query_report=mysqli_query($link,"INSERT INTO `acc_report` (`id_device`, `lang`, `txt`, `type`) VALUES ('$id_device', '$lang', '$error_txt', '$type');");
+    exit;
+}
 ?>

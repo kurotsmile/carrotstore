@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -101,7 +101,6 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('tip_star1',	'Jammer'),
 ('trich_dan',	'Citaat'),
 ('doc_cham_ngon',	'Lees de citatie'),
-('gioi_thieu_tip',	'Carrotstore.com  is een archief met entertainmenttoepassingen en add-on-hulpprogramma\'s voor mensen over de hele wereld. Wanneer u een van de applicaties gebruikt, hebt u een account geregistreerd dat elke persoon identificeert met de ID op het mobiele apparaat.'),
 ('download_app_quote_tip',	'Download deze applicaties in de ch play app store en appstore om goede quotes te lezen en gebruik veel andere entertainmenthulpprogramma\'s.'),
 ('download_song',	'Download dit nummer'),
 ('khong_co_du_lieu',	'Geen gegevens'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('nha_phat_trien',	'Ontwikkelaars'),
 ('purchase_orders',	'Inkooporders'),
 ('no_return_search',	'Geen resultaten voor de bovenstaande zoekwoorden'),
-('ngon_ngu_hien_thi',	'Selecteer land en taal');
+('ngon_ngu_hien_thi',	'Selecteer land en taal'),
+('field_login',	'E-mail of telefoonnummer'),
+('gioi_thieu_tip',	'Carrotstore.com  is een archief met entertainmenttoepassingen en add-on-hulpprogramma\'s voor mensen over de hele wereld. Wanneer u een van de applicaties gebruikt, hebt u een account geregistreerd dat elke persoon identificeert met de ID op het mobiele apparaat.'),
+('account_report',	'Meld misbruik op dit account'),
+('account_report_success',	'Bedankt voor het melden van problemen met dit account. We zullen proberen het zo snel mogelijk op te lossen'),
+('account_report_1',	'Account bevat seksuele inhoud, pornografie'),
+('account_report_2',	'accounts die zich voordoen'),
+('account_report_3',	'Andere problemen'),
+('account_report_3_tip',	'Voer hier een gedetailleerde beschrijving van het verkeerde account in');
 
--- 2020-10-24 15:25:06
+-- 2021-02-17 10:56:17

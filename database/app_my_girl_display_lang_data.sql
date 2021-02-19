@@ -647,6 +647,9 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('voice_command_no_support',	'3'),
 ('voice_command_error',	'3'),
 ('voice_command_ready',	'3'),
-('voice_command_no_authorization',	'3');
+('voice_command_no_authorization',	'3'),
+('brain_update',	'3'),
+('contact',	'3'),
+('contact_tip',	'3');
 
--- 2020-11-30 19:23:38
+-- 2020-12-08 05:42:40

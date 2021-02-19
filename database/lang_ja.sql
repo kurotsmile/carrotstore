@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -102,7 +102,6 @@ INSERT INTO `lang_ja` (`key`, `value`) VALUES
 ('tip_star1',	'悪すぎる'),
 ('trich_dan',	'見積もり'),
 ('doc_cham_ngon',	'引用を読む'),
-('gioi_thieu_tip',	'Carrotstore.com は、世界中の人々にエンターテイメントアプリケーションとアドオンユーティリティを紹介するアーカイブです。 あなたがアプリケーションの1つを使用するとき、あなたはモバイルデバイス上のIDで各人を識別するアカウントを登録しました。'),
 ('download_app_quote_tip',	'これらのアプリケーションをch playアプリストアおよびappstoreでダウンロードして、良い引用符を読み、他の多くのエンターテイメントユーティリティを使用してください。'),
 ('download_song',	'この曲をダウンロードする'),
 ('khong_co_du_lieu',	'データなし'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_ja` (`key`, `value`) VALUES
 ('nha_phat_trien',	'開発者'),
 ('purchase_orders',	'注文書'),
 ('no_return_search',	'上記のキーワードに一致する結果はありません'),
-('ngon_ngu_hien_thi',	'国と言語を選択');
+('ngon_ngu_hien_thi',	'国と言語を選択'),
+('field_login',	'メールアドレスまたは電話番号'),
+('gioi_thieu_tip',	'Carrotstore.com は、世界中の人々にエンターテイメントアプリケーションとアドオンユーティリティを紹介するアーカイブです。 あなたがアプリケーションの1つを使用するとき、あなたはモバイルデバイス上のIDで各人を識別するアカウントを登録しました。'),
+('account_report',	'このアカウントでの不正使用を報告する'),
+('account_report_success',	'このアカウントの問題を報告していただきありがとうございます。できるだけ早く修正するよう努めます'),
+('account_report_1',	'アカウントには性的なコンテンツ、ポルノが含まれています'),
+('account_report_2',	'アカウントのなりすまし'),
+('account_report_3',	'その他の問題'),
+('account_report_3_tip',	'間違ったアカウントの詳細な説明をここに入力してください');
 
--- 2020-10-24 15:23:50
+-- 2021-02-17 10:55:16

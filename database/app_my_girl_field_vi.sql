@@ -79,6 +79,7 @@ INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('73448',	'chat',	'[[\"null\",\"vi\",\"show_chat\",\"\"]]',	'field_chat',	'unclear',	'0'),
 ('72934',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\",\"983DFF\"]]',	'field_chat',	'unclear',	'0'),
 ('67670',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\",\"983DFF\"]]',	'field_chat',	'unclear',	'0'),
-('74589',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0');
+('74589',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
+('75338',	'chat',	'[[\"12\",\"https://play.google.com/store/apps/details?id=com.kurotsmile.demcuu3d\",\"link\",\"Counting sheep\",\"40FF36\"]]',	'field_chat',	'unclear',	'0');
 
--- 2020-10-23 09:40:04
+-- 2020-12-19 18:44:14

@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -102,7 +102,6 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('tip_star1',	'Çok kötü'),
 ('trich_dan',	'Alıntı'),
 ('doc_cham_ngon',	'Alıntıyı oku'),
-('gioi_thieu_tip',	'Carrotstore.com , dünyadaki insanlar için eğlence uygulamaları ve ek hizmet programları sunan bir arşivdir. Uygulamalardan birini kullandığınızda, her bir kişiyi mobil cihazdaki kimliğiyle tanımlayan bir hesap kaydettiniz.'),
 ('download_app_quote_tip',	'İyi teklifler okumak ve diğer pek çok eğlence yardımcı programını kullanmak için bu uygulamaları ch play app store ve appstore\'da indirin.'),
 ('download_song',	'Bu şarkıyı indir'),
 ('khong_co_du_lieu',	'Veri yok'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('nha_phat_trien',	'Geliştiriciler'),
 ('purchase_orders',	'Satın alma siparişleri'),
 ('no_return_search',	'Yukarıdaki anahtar kelimeler için sonuç yok'),
-('ngon_ngu_hien_thi',	'Ülke ve dil seçiniz');
+('ngon_ngu_hien_thi',	'Ülke ve dil seçiniz'),
+('field_login',	'E-posta veya telefon numarası'),
+('gioi_thieu_tip',	'Carrotstore.com , dünyadaki insanlar için eğlence uygulamaları ve ek hizmet programları sunan bir arşivdir. Uygulamalardan birini kullandığınızda, her bir kişiyi mobil cihazdaki kimliğiyle tanımlayan bir hesap kaydettiniz.'),
+('account_report',	'Bu hesapla ilgili kötüye kullanım bildirin'),
+('account_report_success',	'Bu hesapla ilgili sorunları bildirdiğiniz için teşekkür ederiz, mümkün olan en kısa sürede düzeltmeye çalışacağız'),
+('account_report_1',	'Hesap cinsel içerik, pornografi içeriyor'),
+('account_report_2',	'kimliğe bürünen hesaplar'),
+('account_report_3',	'Diğer problemler'),
+('account_report_3_tip',	'Lütfen buraya yanlış hesabın ayrıntılı bir açıklamasını girin');
 
--- 2020-10-24 15:24:01
+-- 2021-02-17 10:57:51

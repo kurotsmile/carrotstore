@@ -1780,3 +1780,9 @@ textarea:focus {
     font-style: italic;
     color: orange;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
+    #btn_dark_mode{background-color:orange;color:black !important;}
+    #add_company {color:#fff;}
+    #header {border-top-color: orange;}
+}

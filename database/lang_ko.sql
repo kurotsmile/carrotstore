@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -103,7 +103,6 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('tip_star1',	'너무 나쁨'),
 ('trich_dan',	'인용문'),
 ('doc_cham_ngon',	'인용문 읽기'),
-('gioi_thieu_tip',	'Carrotstore.com 은 전세계 사람들에게 엔터테인먼트 응용 프로그램 및 부가 기능 유틸리티를 소개하는 자료실입니다. 응용 프로그램 중 하나를 사용하면 모바일 장치에서 ID를 가진 각 사람을 식별하는 계정을 등록한 것입니다.'),
 ('download_app_quote_tip',	'이러한 응용 프로그램을 ch 플레이 앱 스토어 및 appstore에서 다운로드하여 좋은 견적을 읽고 다른 많은 엔터테인먼트 유틸리티를 사용하십시오.'),
 ('download_song',	'이 노래 다운로드'),
 ('khong_co_du_lieu',	'데이터 없음'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('nha_phat_trien',	'개발자'),
 ('purchase_orders',	'구매 주문'),
 ('no_return_search',	'위 키워드에 대한 결과가 없습니다.'),
-('ngon_ngu_hien_thi',	'국가 및 언어 선택');
+('ngon_ngu_hien_thi',	'국가 및 언어 선택'),
+('field_login',	'이메일 또는 전화 번호'),
+('gioi_thieu_tip',	'Carrotstore.com 은 전세계 사람들에게 엔터테인먼트 응용 프로그램 및 부가 기능 유틸리티를 소개하는 자료실입니다. 응용 프로그램 중 하나를 사용하면 모바일 장치에서 ID를 가진 각 사람을 식별하는 계정을 등록한 것입니다.'),
+('account_report',	'이 계정에 대한 악용 사례 신고'),
+('account_report_success',	'이 계정의 문제를 신고 해 주셔서 감사합니다. 최대한 빨리 문제를 해결하도록 노력하겠습니다.'),
+('account_report_1',	'계정에 성적인 콘텐츠, 포르노가 포함되어 있습니다.'),
+('account_report_2',	'가장하는 계정'),
+('account_report_3',	'기타 문제'),
+('account_report_3_tip',	'여기에 잘못된 계정에 대한 자세한 설명을 입력하세요.');
 
--- 2020-10-24 15:20:56
+-- 2021-02-17 10:56:00

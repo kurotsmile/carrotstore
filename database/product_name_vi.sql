@@ -18,7 +18,6 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (104,	'Tìm kiếm danh bạ'),
 (105,	'Yêu hay không yêu'),
 (119,	'người yêu ảo 3D'),
-(120,	'Người yêu ảo'),
 (121,	'Người yêu ảo 2'),
 (122,	'Đếm cừu - Đi ngủ'),
 (123,	'Âm nhạc cho cuộc sống'),
@@ -33,6 +32,8 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (149,	'Tây Du kỳ hiệp'),
 (139,	'Con sâu háu ăn'),
 (138,	'Số ma thuật'),
-(136,	'Tạo mật khẩu');
+(136,	'Tạo mật khẩu'),
+(120,	'Người yêu ảo'),
+(282,	'Người yêu ảo Pro');
 
--- 2020-10-23 09:47:43
+-- 2020-12-28 19:29:29

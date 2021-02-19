@@ -28,8 +28,10 @@ include_once "page_member_header_account.php";
 
 $array_contact_same_name=array();
 $list_contact_same_name = mysqli_query($link,"SELECT id_device,name,sex,sdt,address,avatar_url FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user' AND `status`='0' ORDER BY RAND()  LIMIT 10");
-while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
-    array_push($array_contact_same_name,$row_contact_same);
+if($list_contact_same_name){
+    while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
+        array_push($array_contact_same_name,$row_contact_same);
+    }
 }
 ?>
     <div id="post_product">
@@ -54,6 +56,7 @@ while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
                     ?>
                     <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_sel; ?>.png" class="box_get_info_contact"/>
                     <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang_sel;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'download_vcf');?></span></a>
+                    <span style="cursor: pointer;" onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,"account_report"); ?></span></span>
                 </li>
                 <?php
                 if($is_me){
@@ -85,9 +88,7 @@ while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
                 ?>
             </ul>
             <?php if ($address_account != '') { ?>
-                <iframe width="100%" height="310" id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=<?php echo $address_account; ?>&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <iframe width="100%" height="310" id="gmap_canvas" src="https://maps.google.com/maps?q=<?php echo $address_account; ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
             <?php } ?>
         </div>
         <?php echo show_share($link,$url_cur_page); ?>
@@ -121,10 +122,7 @@ while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
             </div>
         <?php } ?>
 
-        <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
-                scrolling="no" frameborder="0"
-                style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;">
-        </iframe>
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts" scrolling="no" frameborder="0" style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;"></iframe>
 
     </div>
 
@@ -202,3 +200,49 @@ if (sizeof($array_contact_same_name)> 0) {
         ?>
     </div>
 <?php } ?>
+
+<script>
+function show_user_report(){
+    var txt_html_report='<ul style="padding: 0px;margin: 0px;text-align: left;margin-left: 10%;">';
+    txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(0)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'account_report_1');?></li>';
+    txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(1)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'account_report_2');?></li>';
+    txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(2)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'account_report_3');?></li>';
+    txt_html_report=txt_html_report+'</ul>';
+    swal({html: true, title: '<?php echo lang($link,"account_report"); ?>', text: txt_html_report, showConfirmButton: false, cancelButtonText: "<?php echo lang($link,'box_no');?>", closeOnConfirm: false,closeOnCancel: false,showCancelButton: true});
+}
+
+function sel_user_report(sel_val){
+    if(sel_val=='0'||sel_val=='1'){
+        submit_acc_report(sel_val,'');
+    }
+
+    if(sel_val=='2'){
+        var txt_other_report='<p><?php echo lang($link,'account_report_3'); ?></p><br/><textarea id="acc_report_error" rows="9" cols="10" style="width:100%" placeholder="<?php echo lang($link,'account_report_3_tip');?>"></textarea>';
+        swal({html: true, title: '<?php echo lang($link,"account_report"); ?>',text:txt_other_report,
+                showConfirmButton: true,
+                showCancelButton: true,
+                cancelButtonClass: "btn-info",
+                confirmButtonText: "<?php echo lang($link,'box_yes');?>",
+                cancelButtonText: "<?php echo lang($link,'box_no');?>",
+                closeOnConfirm: true,
+                closeOnCancel: true},function(isConfirm){ 
+                if(isConfirm){
+                    var acc_report_error=$("#acc_report_error").val();
+                    submit_acc_report(sel_val,acc_report_error);
+                }
+        });
+    }
+}
+
+function submit_acc_report(sel_val,error_val){
+    swal_loading();
+    $.ajax({
+        url: "<?php echo $url;?>/json/json_account.php",
+        type: "post",
+        data: "function=report_account&lang=<?php echo $lang;?>&type="+sel_val+"&id_device=<?php echo $id_user;?>&error_txt="+error_val,
+        success: function (data, textStatus, jqXHR) {
+            swal("<?php echo lang($link,"account_report"); ?>", "<?php echo lang($link,'account_report_success');?>", "success");
+        }
+    });
+}
+</script>

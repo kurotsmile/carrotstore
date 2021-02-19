@@ -8,16 +8,10 @@ function arithmetic($expression)
 	$temp_op = explode(' ', trim($temp_op));
 	foreach ($temp_op as $key => $val) if ($val) $operators[] = $val;
 	$numbers = preg_replace('([^0-9])', ' ', trim($expression));
-	$numbers = explode(' ', $numbers);
-	$i = 0;
-	
+	$numbers = explode(' ', $numbers);$i = 0;
 	foreach ($numbers AS $key => $val)
 	{
-		if ($key == 0)
-		{
-			$answer = $val;continue;
-		}
-	
+		if ($key == 0){ $answer = $val;continue;}
 		if ($val)
 		{
 			switch ($operators[$i])
@@ -32,7 +26,6 @@ function arithmetic($expression)
 			$i++;
 		}
 	}
-
 	return $answer;
 }
 
@@ -73,8 +66,7 @@ function get_chat($link,$txt_sqli_query,$lang){
         $data_chat['pater']=$data_chat['id'];
 
         if(isset($data_chat['func_sever'])){
-            if($data_chat['func_sever']!='') $data_chat['pater_type']=$data_chat['func_sever'];
-            else $data_chat['pater_type']="chat";
+            if($data_chat['func_sever']!='') $data_chat['pater_type']=$data_chat['func_sever']; else $data_chat['pater_type']="chat";
         }else
             $data_chat['pater_type']="chat";
 
@@ -102,10 +94,7 @@ function get_chat($link,$txt_sqli_query,$lang){
             $data_link_ytb=mysqli_fetch_assoc($query_link_ytb);
             if($data_link_ytb!=null) $data_chat['link_ytb']=$data_link_ytb['link'];
 
-            if($data_chat['slug']!='')
-                $data_chat['link_store']=URL.'/song/'.$lang.'/'.$data_chat['slug'];
-            else
-                $data_chat['link_store']=URL.'/music/'.$id_music.'/'.$lang;
+            if($data_chat['slug']!='') $data_chat['link_store']=URL.'/song/'.$lang.'/'.$data_chat['slug']; else $data_chat['link_store']=URL.'/music/'.$id_music.'/'.$lang;
         }
     }
     return $data_chat;
@@ -128,6 +117,10 @@ function get_new_song($link,$name_song,$lang){
                 $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang_key` WHERE MATCH (`chat`) AGAINST ('$name_song' IN BOOLEAN MODE) AND `effect` = '2' AND `id_redirect` = ''  LIMIT 1",$lang_key);
                 if($data_song!=null) break;
             }
+        }
+
+        if($data_song==null){
+            $query_add_key_music=mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music`(`key`, `lang`,`type`) VALUES ('$name_song', '$lang','1')");
         }
     }
     return $data_song;
@@ -158,6 +151,51 @@ function get_lyrics_song($link,$text,$lang){
     return $data_song;
 }
 
+function get_list_info_by_user($data_user){
+    $array_field_info=array();
+    $item_field=array('name','user_name',$data_user['name'],0);
+    array_push($array_field_info,$item_field);
+
+    if($data_user['sdt']!=""){
+        $item_field=array('sdt','user_sdt',$data_user['sdt'],0);
+        array_push($array_field_info,$item_field);
+    }
+
+    if($data_user['address']!=""){
+        $item_field=array('address','user_address',$data_user['address'],0);
+        array_push($array_field_info,$item_field);
+    }
+
+    if($data_user['email']!=""){
+        $item_field=array('email','',$data_user['email'],0);
+        array_push($array_field_info,$item_field);
+    }
+
+    $item_field=array('sex','setting_your_sex','sex_'.$data_user['sex'],1);
+    array_push($array_field_info,$item_field);
+    $item_field=array('user_status','user_status','user_status_'.$data_user['status'],1);
+    array_push($array_field_info,$item_field);
+    return $array_field_info;
+}
+
+function get_user($link,$sdt_or_name_or_mail,$lang){
+    $list_user=array();
+    $query_list_user=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `name` LIKE '%$sdt_or_name_or_mail%' OR `sdt` LIKE '%$sdt_or_name_or_mail%' OR `email` LIKE '%$sdt_or_name_or_mail%' LIMIT 20");
+    while($row_user=mysqli_fetch_assoc($query_list_user)){
+        $user=new stdClass();
+        $id_user=$row_user['id_device'];
+        $user->avatar_url=$row_user['avatar_url'];
+        if(file_exists("app_mygirl/app_my_girl_".$lang."_user/".$id_user.".png")){
+            $user->avatar_url=URL.'/thumb.php?src='.URL.'/app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png&size=50&trim=1';
+        }
+        $user->list_info=get_list_info_by_user($row_user);
+        $user->name=$row_user['name'];
+        $user->sdt=$row_user['sdt'];
+        array_push($list_user,json_encode($user));
+    }
+    return $list_user;
+}
+
 $function='';
 $lang='vi';
 $sex='0';
@@ -170,13 +208,10 @@ $limit_day='';
 $limit_date='';
 $limit_month='';
 $os='';
+$date_cur=date("Y-m-d");
 
-if(isset($_GET['function']))$function=$_GET['function'];
 if(isset($_POST['function']))$function=$_POST['function'];
-
-if(isset($_GET['lang']))$lang=$_GET['lang'];
 if(isset($_POST['lang']))$lang=$_POST['lang'];
-
 if(isset($_POST['sex']))$sex=$_POST['sex'];
 if(isset($_POST['character_sex']))$character_sex=$_POST['character_sex'];
 if(isset($_POST['pater']))$pater=$_POST['pater'];
@@ -203,29 +238,15 @@ if($function=='chat'){
         $data_chat['link']="https://maps.google.com/maps?q=".urlencode($text);
     }else if($pater_type=='tim_loi_nhac'){
         $data_chat=get_lyrics_song($link,$text,$lang);
-    }else{
-        /*
-        $is_use_host_key=false;
-        $arr_hot_key=array();
-        $arr_host_id=array();
-        $query_hot_key=mysqli_query($link,"SELECT `id`, `text` FROM `app_my_girl_$lang` WHERE `effect` = '52'");
-        while($hot_key=mysqli_fetch_assoc($query_hot_key)){
-            array_push($arr_hot_key,$hot_key['text']);
-            array_push($arr_host_id,$hot_key['id']);
+    }else if($pater_type=='tim_danh_ba'){
+        $contacts=get_user($link,$text,$lang);
+        if($contacts!=null){
+            $data_chat=get_msg($link,'hien_ds_sdt',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
+            $data_chat['contact']=$contacts;
+        }else{
+            $data_chat=get_msg($link,'khong_tim_thay',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
         }
-
-        for($i=0;$i<count($arr_hot_key);$i++){
-            if($text==$arr_hot_key[$i]) break;
-
-            if (stripos($text,$arr_hot_key[$i]) !== false) {
-                $text_run=str_replace($arr_hot_key[$i],"",$text);
-                $id_chat_host_key=$arr_host_id[$i];
-                $txt_query_id="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang` WHERE `id`='$id_chat_host_key'  AND `disable`=0  LIMIT 1";
-                $data_chat=get_chat($link,$txt_query_id,$lang);
-                $data_chat["music"]=get_new_song($link,$text_run,$lang);
-                $is_use_host_key=true;
-            }
-        }*/
+    }else{
         $math=arithmetic($text);
         if($math!=""){
             $data_chat=get_msg($link,'giai_toan',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
@@ -234,7 +255,6 @@ if($function=='chat'){
             $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
             $data_chat=get_chat($link,$txt_query_pater,$lang);
         }
-    
     }
 
     if($data_chat==null){
@@ -262,8 +282,10 @@ if($function=='chat'){
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
-    if($data_chat==null) $data_chat=get_msg($link,'bam_bay',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
-    
+    if($data_chat==null) {
+        $data_chat=get_msg($link,'bam_bay',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
+        mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang','$sex','$date_cur','$os','0',$character_sex,'3','$pater','$pater_type','$id_device','','');");
+    }
     echo json_encode($data_chat);
 }
 
@@ -368,7 +390,7 @@ if($function=='get_app_carrot'){
         $txt_sql_limit=" LIMIT $limit";
     }
 
-    $query_app_carrot=mysqli_query($link,"SELECT `$os`, `name`, `id` FROM `app_my_girl_ads` WHERE `$os` != ''  $txt_sql_limit ");
+    $query_app_carrot=mysqli_query($link,"SELECT `$os`, `name`, `id` FROM `app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND()  $txt_sql_limit ");
     while($app=mysqli_fetch_assoc($query_app_carrot)){
         $app['icon']=$url."/thumb.php?src=".$url."/app_mygirl/obj_ads/icon_".$app['id'].".png&size=50&trim=1";
         array_push($arr_app,$app);
@@ -408,30 +430,7 @@ if($function=='get_user'){
                 $user->data['avatar_url']=$url."/app_mygirl/app_my_girl_".$lang."_user/".$id_user.".png";
             }
 
-            $array_field_info=array();
-            $item_field=array('name','user_name',$data_user['name'],0);
-            array_push($array_field_info,$item_field);
-
-            if($data_user['sdt']!=""){
-                $item_field=array('sdt','user_sdt',$data_user['sdt'],0);
-                array_push($array_field_info,$item_field);
-            }
-
-            if($data_user['address']!=""){
-                $item_field=array('address','user_address',$data_user['address'],0);
-                array_push($array_field_info,$item_field);
-            }
-
-            if($data_user['email']!=""){
-                $item_field=array('email','',$data_user['email'],0);
-                array_push($array_field_info,$item_field);
-            }
-
-            $item_field=array('sex','setting_your_sex','sex_'.$data_user['sex'],1);
-            array_push($array_field_info,$item_field);
-            $item_field=array('user_status','user_status','user_status_'.$data_user['status'],1);
-            array_push($array_field_info,$item_field);
-            $user->list_info=$array_field_info;
+            $user->list_info=get_list_info_by_user($data_user);
 
             $array_field_edit=array();
             $item_field=array('name','user_name',$data_user['name'],0);
@@ -440,7 +439,7 @@ if($function=='get_user'){
             array_push($array_field_edit,$item_field);
             $item_field=array('sdt','user_sdt',$data_user['sdt'],0);
             array_push($array_field_edit,$item_field);
-            $item_field=array('address','user_address',$data_user['address'],0);
+            $item_field=array('address','user_address',$data_user['address'],4);
             array_push($array_field_edit,$item_field);
             $user_avatar_url=$user->data['avatar_url'];
             $item_field=array('user_avatar','user_avatar',$user_avatar_url,3);
@@ -448,6 +447,8 @@ if($function=='get_user'){
             $item_field=array('email','',$data_user['email'],0);
             array_push($array_field_edit,$item_field);
             $item_field=array('user_status','user_status',$data_user['status'],1);
+            array_push($array_field_edit,$item_field);
+            $item_field=array('user_limit_chat','chat_limit',3,5);
             array_push($array_field_edit,$item_field);
             $user->field_edit=$array_field_edit;
         }else{
@@ -548,7 +549,7 @@ if($function=='add_user'){
     }
 
     if($is_error==0){
-        $query_add_user=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `password`) VALUES ('$id_device', '$name', '$sex', NOW(),NOW(),'$sdt', '0', '$email', '$password');");
+        $query_add_user=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `password`) VALUES ('$id_device', '$name', '$sex', NOW(),NOW(), '0', '$email', '$password');");
         if($query_add_user){
             $alert->status="success";
             $alert->title="register";
@@ -564,7 +565,7 @@ if($function=='add_user'){
         }else{
             $alert->status="error";
             $alert->title="register";
-            $alert->msg="register_fail";
+            $alert->msg="register_fail".mysqli_error($link);
         }
     }
 
@@ -612,4 +613,67 @@ if($function=='forgot_password'){
     
     echo json_encode($alert);
 }
+
+if($function=='get_list_music'){
+    $info_type='';
+    $info_val='';
+
+    if(isset($_POST['info_type'])) $info_type=$_POST['info_type'];
+    if(isset($_POST['info_val'])) $info_val=$_POST['info_val'];
+    $arr_music=array();
+
+    if($info_type!='')
+    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_vi as m INNER JOIN app_my_girl_vi_lyrics as l ON m.id= l.id_music WHERE l.$info_type='$info_val' ORDER BY RAND() LIMIT 20");
+    else
+    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_vi as m INNER JOIN app_my_girl_vi_lyrics as l ON m.id= l.id_music WHERE l.year='2020' ORDER BY RAND() LIMIT 20");
+
+    while($music=mysqli_fetch_assoc($query_list_music)){
+        array_push($arr_music,$music);
+    }
+    echo json_encode($arr_music);
+}
+
+if($function=='get_info_music_by_type'){
+    $info_type=$_POST['info_type'];
+    $arr_info_music=array();
+    $query_list_music=mysqli_query($link,"SELECT `$info_type` FROM `app_my_girl_".$lang."_lyrics` WHERE `$info_type` != '' GROUP BY `$info_type` ORDER BY RAND() LIMIT 30");
+    while($music=mysqli_fetch_assoc($query_list_music)){
+        $music['type']=$info_type;
+        array_push($arr_info_music,$music);
+    }
+    echo json_encode($arr_info_music);
+}
+
+if($function=='get_chat_by_id'){
+    $id=$_POST['id'];
+    $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever` FROM `app_my_girl_$lang` WHERE `id`='$id'  AND `disable`=0  LIMIT 1";
+    echo json_encode(get_chat($link,$txt_query_chat,$lang));
+}
+
+if($function=='get_gprs'){
+    $location_lat=$_POST['lat'];
+    $location_lon=$_POST['lng'];
+    $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&key=$key_api_google";
+        
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $place);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_ENCODING, "");
+    $curlData = curl_exec($curl);
+    curl_close($curl);
+                
+    $place = json_decode($curlData);
+    $txt_dc=$place->results[0]->formatted_address;
+    $txt_address=str_replace('Unnamed Road,','',$txt_dc);
+    echo $txt_address;
+    exit;
+}
+
+if($function=='list_music_by_account'){
+    $id_user=$_POST['id_user'];
+    exit;
+}
+
 ?>

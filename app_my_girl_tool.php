@@ -10,7 +10,7 @@ include "app_my_girl_template.php";
         while($func=mysqli_fetch_assoc($query_function)){
             ?>
             <a href="<?php echo $url;?>/<?php echo $func['url'];?>">
-                <li class="box_tool">
+                <li class="box_tool" style="min-height: 50px;max-height:50px;height: 50px;overflow-y: hidden;">
                     <i class="<?php echo $func['icon'];?>" aria-hidden="true"></i>
                     <b><?php echo $func['name'];?></b><br />
                     <?php echo $func['describe'];?>

@@ -21,7 +21,8 @@
         overflow-x: hidden;
     }
     #header {
-        border-top: solid 5px green;
+        border-top-style: solid;
+        border-top-width: 5px;
         text-align: center;padding-top: 10px;
     }
     #logo {
@@ -40,7 +41,7 @@
         float: left;
         width: 50%;padding: 0px;margin: 0px;text-align: center;min-width: auto;
         border-top-left-radius:unset; border-bottom-right-radius: unset;
-        margin-bottom: 10px;color: black;background-color: unset;
+        margin-bottom: 10px;background-color: unset;
     }
 
     #add_company i,#add_company img{
@@ -121,50 +122,51 @@
         top: 547px;
         display: none;
     }
-#account_menu ul{
-    margin-left: 0px;
-}
-#account_avatar_page{
-    margin: 0px;position: static;
-    margin-left: 28%;
-    margin-right: 40%;
-}
+    #account_menu ul{
+        margin-left: 0px;
+    }
+    #account_avatar_page{
+        margin: 0px;position: static;
+        margin-left: 28%;
+        margin-right: 40%;
+    }
 
-#box-account-info .acc_username{
-    margin: 0px;position: static;
-    font-size: 18px;
-}
+    #box-account-info .acc_username{
+        margin: 0px;position: static;
+        font-size: 18px;
+    }
 
-#box-account-info .acc_info{
-    margin: 0px;
-}
-#account_menu ul li{
-    width: 90%;
-}
+    #box-account-info .acc_info{
+        margin: 0px;
+    }
+    #account_menu ul li{
+        width: 90%;
+    }
 
-.box_info_acc_left{
-    padding:10px;
-}
-#box-account-info{
-    position: static !important;
-}
-#box-account-content{
-    width: 100%;
-    margin-left: 0px;
-}
+    .box_info_acc_left{
+        padding:10px;
+    }
+    #box-account-info{
+        position: static !important;
+    }
+    #box-account-content{
+        width: 100%;
+        margin-left: 0px;
+    }
 
-#post_product{
-    width: 95%;
-    padding: 3px;
-}
-#inp_link, .inp_link_show{width: 65% !important;float: none;}
-.audiojs { width: 300px !important;}
-.track-details {width: 300px;}
-.audiojs .scrubber {width: 268px;}
-#sidebar_product {width: 85%;}
-#box_comments{width: 100% !important;}
-#box_rates{ width: 100% !important;text-align: center;}
-.row_info_link{width: 90% !important;}
+    #post_product{
+        width: 95%;
+        padding: 3px;
+    }
+    #inp_link, .inp_link_show{width: 65% !important;float: none;}
+    .audiojs { width: 300px !important;}
+    .track-details {width: 300px;}
+    .audiojs .scrubber {width: 268px;}
+    #sidebar_product {width: 85%;}
+    #box_comments{width: 100% !important;}
+    #box_rates{ width: 100% !important;text-align: center;}
+    .row_info_link{width: 90% !important;}
     .neon-text{font-size: 100%}
+    #btn_dark_mode{ position: fixed;height: 20px; width: 20px !important;right: 10px;bottom: 100px; padding: 10px !important; text-align: center !important;display: block !important;    box-shadow: 0px 0px 2px 1px black;}
 }
 

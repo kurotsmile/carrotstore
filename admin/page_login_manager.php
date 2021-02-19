@@ -1,8 +1,15 @@
 <?php
 $lang='vi';
+$acc_status='';
+
 if(isset($_GET['lang'])){
     $lang=$_GET['lang'];
 }
+
+if(isset($_GET['acc_status'])){
+    $acc_status=$_GET['acc_status'];
+}
+
 if(isset($_GET['delete'])){
     $sdt_delete=$_GET['delete'];
     $user_password=$_GET['password'];
@@ -30,13 +37,46 @@ echo '</div>';
     <th>Thao tác</th>
 </tr>
 <?php
-$list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!=''");
+$url_cur_page=$url_admin.'?page_view=page_login_manager&lang='.$lang;
+$limit = '80';
+$query_count_all = mysqli_query($link,"SELECT COUNT(`id_device`) as c FROM `app_my_girl_user_".$lang."` where `password`!='' AND `sdt`!='' ");
+$data_count_all_acc = mysqli_fetch_assoc($query_count_all);
+$total_records =intval($data_count_all_acc['c']);
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$total_page = ceil($total_records / $limit);
+if ($current_page > $total_page) {
+    $current_page = $total_page;
+} else if ($current_page < 1) {
+    $current_page = 1;
+}
+$start = ($current_page - 1) * $limit;
+?>
+<tr>
+    <td colspan="5">
+        <strong>Trang</strong>:
+        <?php 
+            for($i=1;$i<=$total_page;$i++){ 
+                if($i==$current_page){
+                    echo '<a href="'.$url_cur_page.'&page='.$i.'" class="buttonPro small black">'.$i.'</a>'; 
+                }else{
+                    echo '<a href="'.$url_cur_page.'&page='.$i.'" class="buttonPro small blue">'.$i.'</a>'; 
+                }
+            }
+        ?>
+    </td>
+</tr>
+<?php
+if($acc_status==''){
+    $list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!='' LIMIT $start, $limit");
+}else{
+    $list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!='' AND `status`='$acc_status' LIMIT $start, $limit");
+}
 echo mysqli_error($link);
 while($row=mysqli_fetch_assoc($list_login)){
 ?>
     <tr>
         <td>
-            <a class="buttonPro small" href="<?php echo $url;?>/user/<?php echo $row['id_device'];?>/vi" target="_blank">
+            <a class="buttonPro small" href="<?php echo $url;?>/user/<?php echo $row['id_device'];?>/<?php echo $lang;?>" target="_blank">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <?php echo $row['name'];?>
             </a>
@@ -64,4 +104,18 @@ while($row=mysqli_fetch_assoc($list_login)){
 }
 mysqli_free_result($list_login);
 ?>
+<tr>
+    <td colspan="5">
+        <strong>Trang</strong>:
+        <?php 
+            for($i=1;$i<=$total_page;$i++){ 
+                if($i==$current_page){
+                    echo '<a href="'.$url_cur_page.'&page='.$i.'" class="buttonPro small black">'.$i.'</a>'; 
+                }else{
+                    echo '<a href="'.$url_cur_page.'&page='.$i.'" class="buttonPro small blue">'.$i.'</a>'; 
+                }
+            }
+        ?>
+    </td>
+</tr>
 </table>

@@ -45,7 +45,7 @@ if(isset($_POST['user_name'])){
     <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/js/jquery-ui.css"/>
     <script src="<?php echo $url_carrot_store;?>/js/jquery-ui.js"></script>
-    <script src="<?php echo $url;?>/js/sweetalert.min.js"></script>
+    <script src="<?php echo $url_carrot_store;?>/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <div id="header">
@@ -57,7 +57,7 @@ if(isset($_POST['user_name'])){
 $query_list_app=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_app` WHERE `id` != '$app_id'");
 while($item_app=mysqli_fetch_array($query_list_app)){
 ?>
-    <li><a href="<?php echo $item_app['url'] ?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app"  title="<?php echo $item_app['nam']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
+    <li><a href="<?php echo $item_app['url'] ?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app"  title="<?php echo $item_app['name']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
 <?php
 }
 ?>

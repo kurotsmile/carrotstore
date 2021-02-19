@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -103,7 +103,6 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('tip_star1',	'太糟糕了'),
 ('trich_dan',	'引用'),
 ('doc_cham_ngon',	'阅读引文'),
-('gioi_thieu_tip',	'Carrotstore.com 是一个存档，为世界各地的人们介绍娱乐应用程序和附加工具。 当您使用其中一个系统时，您拥有一个帐户，可以通过移动设备识别每个人。'),
 ('download_app_quote_tip',	'在ch play app store和appstore上下载这些应用程序，以阅读好的报价并使用许多其他娱乐实用程序。'),
 ('download_song',	'下载这首歌'),
 ('khong_co_du_lieu',	'没有数据'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('nha_phat_trien',	'开发者'),
 ('purchase_orders',	'订单'),
 ('no_return_search',	'以上关键字无结果'),
-('ngon_ngu_hien_thi',	'选择国家和语言');
+('ngon_ngu_hien_thi',	'选择国家和语言'),
+('field_login',	'电子邮件或电话号码'),
+('gioi_thieu_tip',	'Carrotstore.com 是一个存档，为世界各地的人们介绍娱乐应用程序和附加工具。 当您使用其中一个系统时，您拥有一个帐户，可以通过移动设备识别每个人。'),
+('account_report',	'报告此帐户的滥用情况'),
+('account_report_success',	'感谢您报告此帐户的问题，我们将尝试尽快对其进行修复。'),
+('account_report_1',	'帐户包含色情内容，色情图片'),
+('account_report_2',	'冒充帐户'),
+('account_report_3',	'其他问题'),
+('account_report_3_tip',	'请在此处输入错误帐户的详细说明');
 
--- 2020-10-24 15:21:23
+-- 2021-02-17 10:58:46

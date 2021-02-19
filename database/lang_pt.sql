@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -104,7 +104,6 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('tip_star1',	'Muito ruim'),
 ('trich_dan',	'Citar'),
 ('doc_cham_ngon',	'Leia a citação'),
-('gioi_thieu_tip',	'Carrotstore.com es un archivo que presenta aplicaciones de entretenimiento y utilidades adicionales para personas de todo el mundo. Cuando utiliza uno de estos sistemas, tiene una cuenta que identifica a cada persona con el dispositivo móvil.'),
 ('download_app_quote_tip',	'Faça o download desses aplicativos na app store e na appstore ch play para ler citações e usar muitos outros utilitários de entretenimento.'),
 ('download_song',	'Faça o download desta música'),
 ('khong_co_du_lieu',	'Sem dados'),
@@ -251,6 +250,14 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('nha_phat_trien',	'Desenvolvedores'),
 ('purchase_orders',	'Ordens de compra'),
 ('no_return_search',	'Nenhum resultado para as palavras-chave acima'),
-('ngon_ngu_hien_thi',	'Selecione o país e o idioma');
+('ngon_ngu_hien_thi',	'Selecione o país e o idioma'),
+('field_login',	'Email ou número de telefone'),
+('gioi_thieu_tip',	'Carrotstore.com es un archivo que presenta aplicaciones de entretenimiento y utilidades adicionales para personas de todo el mundo. Cuando utiliza uno de estos sistemas, tiene una cuenta que identifica a cada persona con el dispositivo móvil.'),
+('account_report',	'Denunciar abuso nesta conta'),
+('account_report_success',	'Obrigado por relatar problemas com esta conta, tentaremos corrigi-lo o mais rápido possível'),
+('account_report_1',	'A conta contém conteúdo sexual, imagens eróticas'),
+('account_report_2',	'Representação de contas'),
+('account_report_3',	'Outros problemas'),
+('account_report_3_tip',	'Insira uma descrição detalhada da conta errada aqui');
 
--- 2020-10-23 16:59:57
+-- 2021-02-17 10:56:53

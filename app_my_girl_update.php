@@ -647,10 +647,12 @@ $arr = mysqli_fetch_array($result_chat);
                 <div style="float: left;width: 50%;">
                     <?php
                     if ($arr['file_url'] != '') {
-                        $url_sever=$data_app->arr_sever_upload[0]->url_home;
-                        echo '<a target="_blank" class="buttonPro small blue"  href="' . $arr['file_url'] . '"><i class="fa fa-headphones" aria-hidden="true"></i> Nghe tệp âm thanh</a>';
-                        echo '<a target="_blank" class="buttonPro small blue"  href="'.$url_sever.'/file/' . basename($arr['file_url']) . '"><i class="fa fa-delicious" aria-hidden="true"></i> Chi tiết âm thanh</a>';
-                        echo '<span onclick="send_file_obj_syn(\''.$arr['id'].'\',\''.$lang_sel.'\',\''.$url.'\',\''.$arr['file_url'].'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
+                        if(count($data_app->arr_sever_upload)>0){
+                            $url_sever=$data_app->arr_sever_upload[0]->url_home;
+                            echo '<a target="_blank" class="buttonPro small blue"  href="' . $arr['file_url'] . '"><i class="fa fa-headphones" aria-hidden="true"></i> Nghe tệp âm thanh</a>';
+                            echo '<a target="_blank" class="buttonPro small blue"  href="'.$url_sever.'/file/' . basename($arr['file_url']) . '"><i class="fa fa-delicious" aria-hidden="true"></i> Chi tiết âm thanh</a>';
+                            echo '<span onclick="send_file_obj_syn(\''.$arr['id'].'\',\''.$lang_sel.'\',\''.$url.'\',\''.$arr['file_url'].'\')" class="buttonPro small blue"><i class="fa fa-volume-up" aria-hidden="true"></i> Lấy mp3</span>';
+                        }
                     }
                     echo box_upload("mp3", $data_app->arr_sever_upload, $arr['file_url']);
                     ?>

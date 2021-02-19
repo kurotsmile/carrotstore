@@ -4,7 +4,7 @@ include "database.php";
 include "function.php";
 include "app_my_girl_function.php";
 session_start();
-ob_start("ob_gzhandler");
+ob_start();
 $sel_version = '0';
 $error_login_user = '';
 $data_user_carrot = '';
@@ -86,14 +86,15 @@ class Data_app
     public $msg_func = array();
     public $arr_sever_upload = array();
 }
-
 $data_app = new Data_app();
+
 //Máy chủ lưu trữ dữ liệu
 $item_upload = new item_sever_upload();
 $item_upload->name = "Máy chủ dữ liệu";
 $item_upload->url_home='https://carrotaudio.com';
 $item_upload->url = $item_upload->url_home.'/ajax.php';
 array_push($data_app->arr_sever_upload, $item_upload);
+
 
 //Chức năng msg
 class msg_func_item

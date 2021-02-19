@@ -28,7 +28,7 @@ while($item_country=mysqli_fetch_array($query_list_country)){
 ?>
     <tr>
         <td>
-            <img src="http://carrotstore.com/thumb.php?src=http://carrotstore.com/app_mygirl/img/<?php echo $key_country;?>.png&size=30&trim=1" />
+            <img src="<?php echo $url_carrot_store;?>/thumb.php?src=<?php echo $url_carrot_store;?>/app_mygirl/img/<?php echo $key_country;?>.png&size=30&trim=1" />
         </td>
         <td>
             <?php echo $item_country['name']; ?>
