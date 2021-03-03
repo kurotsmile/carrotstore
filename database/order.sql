@@ -1,4 +1,4 @@
--- Adminer 4.7.8 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -61,11 +61,14 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('5ff1421aeda525ff1421aeda96',	'60738',	'es',	'alexrg62@gmail.com',	'alex',	'music',	1),
 ('5ff36b442aa705ff36b442aaaf',	'33318',	'en',	'mailson.gomesdesouza@gmail.com',	'Maílson',	'music',	1),
 ('5ff36bb0384f95ff36bb038537',	'33318',	'en',	'mailson.gomesdesouza@gmail.com',	'Maílson',	'music',	1),
-('5ff6d41937b845ff6d41937bc2',	'28725',	'en',	'kyfaulky@gmail.com',	'george',	'music',	0),
-('6004a3e7d2c7d6004a3e7d2cc0',	'30408',	'en',	'djcalmado02021992@gmail.com',	'Pedro',	'music',	0),
-('600581c1053d0600581c10540b',	'803',	'de',	'wkurzhals@outlook.de',	'Wilfried',	'music',	0),
-('600d875c748b7600d875c748f2',	'9386',	'pt',	'marcos.assuncao.rocha@gmail.com',	'Marcos',	'music',	0),
-('600ef02f0a871600ef02f0a8b4',	'803',	'de',	'indraluke9@gmail.com',	'Indra-Maureen Ashley',	'music',	0),
-('6010f395435bc6010f395435f7',	'23726',	'en',	'familyofqueens@bigpond.com',	'Paul',	'music',	0);
+('5ff6d41937b845ff6d41937bc2',	'28725',	'en',	'kyfaulky@gmail.com',	'george',	'music',	1),
+('6004a3e7d2c7d6004a3e7d2cc0',	'30408',	'en',	'djcalmado02021992@gmail.com',	'Pedro',	'music',	1),
+('600581c1053d0600581c10540b',	'803',	'de',	'wkurzhals@outlook.de',	'Wilfried',	'music',	1),
+('600d875c748b7600d875c748f2',	'9386',	'pt',	'marcos.assuncao.rocha@gmail.com',	'Marcos',	'music',	1),
+('600ef02f0a871600ef02f0a8b4',	'803',	'de',	'indraluke9@gmail.com',	'Indra-Maureen Ashley',	'music',	1),
+('6010f395435bc6010f395435f7',	'23726',	'en',	'familyofqueens@bigpond.com',	'Paul',	'music',	1),
+('60159d717949360159d71794cf',	'16072',	'en',	'sirjared.boden@gmail.com',	'Jared',	'music',	1),
+('6024e44a5ba4d6024e44a5ba99',	'133',	'fi',	'ikrimey16@gmail.com',	'İkrime',	'music',	1),
+('602e662b3ed63602e662b3ed8d',	'27737',	'en',	'markus.kitzol@t-online.de',	'Markus',	'music',	0);
 
--- 2021-01-29 09:16:20
+-- 2021-02-23 13:05:32

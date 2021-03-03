@@ -3,7 +3,7 @@ $edit_lang='';
 $edit_key_sel='';
 $lang_key_to='';
 
-$url_cur=$url.'//index.php?view=lang_value';
+$url_cur=$url.'/index.php?view=lang_value';
 
 if(isset($_GET['lang'])){
     $edit_lang=$_GET['lang'];
@@ -23,7 +23,7 @@ $query_list_country=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app
 if(isset($_POST['key'])){
     $key=$_POST['key'];
     $data=addslashes(json_encode($_POST,JSON_UNESCAPED_UNICODE));
-    if(mysql_num_rows(mysqli_query($link,"SELECT `lang` FROM carrotsy_music.`key_value` WHERE `lang`='$key' "))){
+    if(mysqli_num_rows(mysqli_query($link,"SELECT `lang` FROM carrotsy_music.`key_value` WHERE `lang`='$key' "))){
         $query_update_data=mysqli_query($link,"UPDATE carrotsy_music.`key_value` SET `data` = '$data' WHERE `lang` = '$key'  LIMIT 1;");
         if($query_update_data===true){
             echo 'Cập nhật dữ liệu giao diện thành công!';

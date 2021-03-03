@@ -117,14 +117,17 @@
         position: static;
         width: 100%;
     }
+
     #account_menu{
         position: absolute;
         top: 547px;
         display: none;
     }
+
     #account_menu ul{
         margin-left: 0px;
     }
+
     #account_avatar_page{
         margin: 0px;position: static;
         margin-left: 28%;
@@ -132,8 +135,7 @@
     }
 
     #box-account-info .acc_username{
-        margin: 0px;position: static;
-        font-size: 18px;
+        margin: 0px;position: static;font-size: 18px;
     }
 
     #box-account-info .acc_info{
@@ -146,18 +148,19 @@
     .box_info_acc_left{
         padding:10px;
     }
+
     #box-account-info{
         position: static !important;
     }
+
     #box-account-content{
-        width: 100%;
-        margin-left: 0px;
+        width: 100%;margin-left: 0px;
     }
 
     #post_product{
-        width: 95%;
-        padding: 3px;
+        width: 95%; padding: 3px;
     }
+
     #inp_link, .inp_link_show{width: 65% !important;float: none;}
     .audiojs { width: 300px !important;}
     .track-details {width: 300px;}
@@ -167,6 +170,9 @@
     #box_rates{ width: 100% !important;text-align: center;}
     .row_info_link{width: 90% !important;}
     .neon-text{font-size: 100%}
+    #download_song.full{width: 100%;}
     #btn_dark_mode{ position: fixed;height: 20px; width: 20px !important;right: 10px;bottom: 100px; padding: 10px !important; text-align: center !important;display: block !important;    box-shadow: 0px 0px 2px 1px black;}
+
+
 }
 

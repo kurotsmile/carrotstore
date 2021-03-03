@@ -304,11 +304,11 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
             <strong><?php echo $name_country; ?></strong><br/>
             Từ khóa ngôn ngữ:<?php echo $langsel; ?><br/>
             <a href="<?php echo $url; ?>/app_my_girl_info_country.php?lang=<?php echo $langsel; ?>&date_sel=<?php  echo $date->format('Y-m-d'); ?>&house_sel=<?php  echo $date->format('H'); ?>"><i class="fa fa-clock-o" aria-hidden="true"></i> Múi giờ:<?php  echo $date->format('H:i:s d/m/Y'); ?></a><br/>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>" title="Thêm trò chuyện" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Chat</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1" title="Thêm câu thoại" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-circle"></i> Msg</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=2&actions=9" title="Thêm bài hát" class="buttonPro small blue" target="_blank"><i class="fa fa-plus"></i> Music</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=36" title="Thêm châm ngôn" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square"></i> Quote</a>
-            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=49" title="Thêm chuyện ngắn" class="buttonPro small blue" target="_blank"><i class="fa fa-plus-square-o"></i> Story</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>" title="Thêm trò chuyện" class="buttonPro small green" target="_blank"><i class="fa fa-plus-square"></i> Chat</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&msg=1" title="Thêm câu thoại" class="buttonPro small green" target="_blank"><i class="fa fa-plus-circle"></i> Msg</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=2&actions=9" title="Thêm bài hát" class="buttonPro small green" target="_blank"><i class="fa fa-plus"></i> Music</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=36" title="Thêm châm ngôn" class="buttonPro small green" target="_blank"><i class="fa fa-plus-square"></i> Quote</a>
+            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&effect=49" title="Thêm chuyện ngắn" class="buttonPro small green" target="_blank"><i class="fa fa-plus-square-o"></i> Story</a>
             <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>" title="Danh sách trò chuyện" class="buttonPro small blue" target="_blank"><i class="fa fa-comments"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>" title="Danh sách câu thoại" class="buttonPro small blue" target="_blank"><i class="fa fa-commenting-o"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_music.php?lang=<?php echo $langsel; ?>" title="Danh sách nhạc" class="buttonPro small blue" target="_blank"><i class="fa fa-music"></i></a>
@@ -322,7 +322,8 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
             <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=0" class="buttonPro small blue" title="Ngôn ngữ giao diện 2D" target="_blank"><i class="fa fa-file-word-o" aria-hidden="true"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_display_value.php?lang=<?php echo $langsel; ?>&ver=2" class="buttonPro small blue" title="Ngôn ngữ giao diện 3D" target="_blank"><i class="fa fa-wpforms" aria-hidden="true"></i></a>
             <a href="<?php echo $url; ?>/app_my_girl_music_lyrics.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Danh sách lời bài hát" target="_blank" ><i class="fa fa-audio-description syn app_my_girl_<?php echo $langsel; ?>_lyrics" aria-hidden="true"   syn="app_my_girl_<?php echo $langsel; ?>_lyrics"></i></a>
-            <a href="<?php echo $url; ?>/app_my_girl_music_link_youtube.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Liên kết youtube" ><i class="fa fa-youtube-play syn app_my_girl_video_<?php echo $langsel; ?>" aria-hidden="true" target="_blank"  syn="app_my_girl_video_<?php echo $langsel; ?>"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_music_link_youtube.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Liên kết youtube" target="_blank"><i class="fa fa-youtube-play syn app_my_girl_video_<?php echo $langsel; ?>" aria-hidden="true" target="_blank"  syn="app_my_girl_video_<?php echo $langsel; ?>"></i></a>
+            <a href="<?php echo $url; ?>/app_my_girl_storage.php?lang=<?php echo $langsel; ?>" class="buttonPro small blue" title="Các câu thoại lưu trữ để cập nhật" target="_blank"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a>
             <?php
             echo mysqli_error($link);
             ?>

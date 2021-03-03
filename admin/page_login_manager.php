@@ -39,7 +39,11 @@ echo '</div>';
 <?php
 $url_cur_page=$url_admin.'?page_view=page_login_manager&lang='.$lang;
 $limit = '80';
-$query_count_all = mysqli_query($link,"SELECT COUNT(`id_device`) as c FROM `app_my_girl_user_".$lang."` where `password`!='' AND `sdt`!='' ");
+if($acc_status==''){
+    $query_count_all = mysqli_query($link,"SELECT COUNT(`id_device`) as c FROM `app_my_girl_user_".$lang."` where `password`!='' AND `sdt`!='' ");
+}else{
+    $query_count_all = mysqli_query($link,"SELECT COUNT(`id_device`) as c FROM `app_my_girl_user_".$lang."` where `status`='$acc_status' ");
+}
 $data_count_all_acc = mysqli_fetch_assoc($query_count_all);
 $total_records =intval($data_count_all_acc['c']);
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -69,7 +73,7 @@ $start = ($current_page - 1) * $limit;
 if($acc_status==''){
     $list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!='' LIMIT $start, $limit");
 }else{
-    $list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where `password`!='' AND `sdt`!='' AND `status`='$acc_status' LIMIT $start, $limit");
+    $list_login=mysqli_query($link,"SELECT `name`,`id_device`,`password`,`sdt`,`date_start`,`status` FROM `app_my_girl_user_$lang` where  `status`='$acc_status' LIMIT $start, $limit");
 }
 echo mysqli_error($link);
 while($row=mysqli_fetch_assoc($list_login)){

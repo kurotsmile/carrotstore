@@ -258,6 +258,10 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('account_report_1',	'Account bevat seksuele inhoud, pornografie'),
 ('account_report_2',	'accounts die zich voordoen'),
 ('account_report_3',	'Andere problemen'),
-('account_report_3_tip',	'Voer hier een gedetailleerde beschrijving van het verkeerde account in');
+('account_report_3_tip',	'Voer hier een gedetailleerde beschrijving van het verkeerde account in'),
+('warning',	'waarschuwing'),
+('account_view_yes',	'Ik wil dit account blijven bekijken'),
+('account_view_no',	'Ik wil dit account niet zien'),
+('account_view_18',	'Het account dat u wilt bekijken, bevat mogelijk alleen inhoud voor volwassenen');
 
--- 2021-02-17 10:56:17
+-- 2021-02-23 13:00:55

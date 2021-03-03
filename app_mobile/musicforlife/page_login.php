@@ -30,7 +30,7 @@
 <tr>
 <td></td>
 <td>
-<input type="submit" value="Ðang nhập" />
+<input type="submit" value="Ðang nhập" class="buttonPro green"/>
 </td>
 </tr>
 </table>

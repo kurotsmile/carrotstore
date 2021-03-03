@@ -4,6 +4,7 @@ $langsel='';
 $id_edit='';
 $query_search='';
 $search_category='all';
+$type_search='all';
 
 function get_value_category($key_check,$array_category_store){
     for($i=0;$i<count($array_category_store);$i++){
@@ -12,6 +13,11 @@ function get_value_category($key_check,$array_category_store){
         }
     }
     return $key_check;
+}
+
+if(isset($_GET['lang'])){
+    $langsel=$_GET['lang'];
+    $query_search="WHERE `lang`='$langsel' ";
 }
 
 if(isset($_POST['lang'])){

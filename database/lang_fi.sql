@@ -258,6 +258,10 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('account_report_1',	'Tili sisältää seksuaalista sisältöä, pornografiaa'),
 ('account_report_2',	'tilintarkastajat'),
 ('account_report_3',	'Muut ongelmat'),
-('account_report_3_tip',	'Kirjoita tähän yksityiskohtainen kuvaus väärästä tilistä');
+('account_report_3_tip',	'Kirjoita tähän yksityiskohtainen kuvaus väärästä tilistä'),
+('warning',	'Varoitus'),
+('account_view_yes',	'Haluan jatkaa tämän tilin tarkastelua'),
+('account_view_no',	'En halua nähdä tätä tiliä'),
+('account_view_18',	'Tarkastamasi tili voi sisältää vain aikuisille suunnattua sisältöä');
 
--- 2021-02-17 10:53:40
+-- 2021-02-23 12:59:38

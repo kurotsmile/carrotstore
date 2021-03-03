@@ -68,7 +68,7 @@ include "function.php";
         while($row_app=mysqli_fetch_array($query_app_work)){
         ?>
         <li>
-            <a target="_blank" href="<?php echo $row_app['url']; ?>"><img style="float: left;width:30px" title="<?php echo $row_app['name']; ?>" src="<?php echo url_image_app($row_app['id'],'30'); ?>" /></a>
+            <a target="_blank" href="<?php echo $url_carrot_store; ?>/<?php echo $row_app['url']; ?>"><img style="float: left;width:30px" title="<?php echo $row_app['name']; ?>" src="<?php echo url_image_app($row_app['id'],'30'); ?>" /></a>
         </li>
         <?php }?>
     </ul>

@@ -258,6 +258,10 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('account_report_1',	'帐户包含色情内容，色情图片'),
 ('account_report_2',	'冒充帐户'),
 ('account_report_3',	'其他问题'),
-('account_report_3_tip',	'请在此处输入错误帐户的详细说明');
+('account_report_3_tip',	'请在此处输入错误帐户的详细说明'),
+('warning',	'警告'),
+('account_view_yes',	'我想继续查看此帐户'),
+('account_view_no',	'我不想看到这个帐户'),
+('account_view_18',	'您要查看的帐户可能包含成人内容');
 
--- 2021-02-17 10:58:46
+-- 2021-02-23 12:56:46

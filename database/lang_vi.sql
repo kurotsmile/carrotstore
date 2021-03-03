@@ -258,6 +258,10 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('account_report_1',	'Tài khoản chứa nội dung khiêu dâm,ảnh khiêu dâm'),
 ('account_report_2',	'Tài khoản giả mạo'),
 ('account_report_3',	'Vấn đề khác'),
-('account_report_3_tip',	'Bạn hãy nhập mô tả chi tiết vần đề sai trái của tài khoản vào đây');
+('account_report_3_tip',	'Bạn hãy nhập mô tả chi tiết vần đề sai trái của tài khoản vào đây'),
+('warning',	'Cảnh báo'),
+('account_view_yes',	'Tôi muốn tiếp tục xem tài khoản này'),
+('account_view_no',	'Tôi không muốn xem tài khoản này'),
+('account_view_18',	'Tài khoản mà bạn sắp xem có thể chứa nội dung chỉ phù hợp với người lớn');
 
--- 2021-02-17 10:58:20
+-- 2021-02-23 12:52:56

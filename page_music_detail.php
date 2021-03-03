@@ -95,12 +95,6 @@ $txt_title=$data_music['chat'];
                 QRcode::png($url.'/music/'.$id_music.'/'.$lang_sel, 'phpqrcode/img/music'.$id_music.'_'.$lang_sel.'.png', 'M', 4, 2);
             ?>
             <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" />
-            <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song" >
-                <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-                <span><?php echo lang($link,'download_song');?></span>
-                <br />
-                <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$0.99</span>
-            </a>
 
             <?php
                 $txt_function='onclick="login_account();"';
@@ -113,6 +107,13 @@ $txt_title=$data_music['chat'];
                     <i class="fa fa-plus-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                     <span><?php echo lang($link,'song_add_playlist');?></span>
              </a>
+
+             <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song" class="full" >
+                <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
+                <span><?php echo lang($link,'download_song');?></span>
+                <br />
+                <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$0.99</span>
+            </a>
 
 			<?php
 			if(isset($data_lyrics)){

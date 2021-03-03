@@ -49,12 +49,12 @@ if(isset($_POST['key'])){
     <?php
     $data_display='';
     $query_data_display=mysqli_query($link,"SELECT `data` FROM carrotsy_music.`game_key_value` WHERE `lang` = '$edit_lang' LIMIT 1");
-    $data_display=mysql_fetch_array($query_data_display);
-    $data_display=$data_display[0];
+    $data_display=mysqli_fetch_array($query_data_display);
+    $data_display=$data_display['data'];
     $data_display=json_decode($data_display,JSON_UNESCAPED_UNICODE);
                     
     $query_list_display_lang_data=mysqli_query($link,"SELECT * FROM carrotsy_music.`game_key_lang`");
-    while($row=mysql_fetch_array($query_list_display_lang_data)){
+    while($row=mysqli_fetch_assoc($query_list_display_lang_data)){
     ?>
         <tr <?php if($edit_key_sel==$row['key']){ ?>style="background-color: yellowgreen;"<?php }?> >
             <td><?php echo $row['key'];?></td>
@@ -68,7 +68,7 @@ if(isset($_POST['key'])){
                         $txt_lang_to='zh-CN';
                     }
                 ?>
-                <a href="https://translate.google.com/#view=home&op=translate&sl=<?php echo $edit_lang;?>&tl=<?php echo $txt_lang_to;?>&text=<?php echo $data_display[$row['key']];?>" target="_blank" class="buttonPro small yellow" onclick="$(this).css('color','red');"><i class="fas fa-language"></i> <?php echo $lang_key_to; ?></a>
+                <a href="https://translate.google.com/#view=home&op=translate&sl=<?php echo $edit_lang;?>&tl=<?php echo $txt_lang_to;?>&text=<?php echo $data_display[$row['key']];?>" target="_blank" class="buttonPro small yellow" onclick="$(this).css('color','red');"><i class="fa fa-language"></i> <?php echo $lang_key_to; ?></a>
                 <?php }?>
             </td>
         </tr>
@@ -84,7 +84,7 @@ if(isset($_POST['key'])){
 <label>Chọn ngôn ngữ dịch sang</label>
 <select name="lang_to" onchange="change_lang_to(this);return false;">
     <?php
-    while($row_lang=mysql_fetch_array($query_list_country)){
+    while($row_lang=mysqli_fetch_assoc($query_list_country)){
     ?>
     <option value="<?php echo $row_lang['key']; ?>" <?php if($row_lang['key']==$lang_key_to){?>selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
     <?php 

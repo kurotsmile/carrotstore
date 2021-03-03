@@ -258,6 +258,10 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('account_report_1',	'Kontoen indeholder seksuelt indhold, pornografi'),
 ('account_report_2',	'konti efterligner'),
 ('account_report_3',	'Andre problemer'),
-('account_report_3_tip',	'Indtast en detaljeret beskrivelse af den forkerte konto her');
+('account_report_3_tip',	'Indtast en detaljeret beskrivelse af den forkerte konto her'),
+('warning',	'advarsel'),
+('account_view_yes',	'Jeg vil fortsætte med at se denne konto'),
+('account_view_no',	'Jeg vil ikke se denne konto'),
+('account_view_18',	'Den konto, du er ved at se, kan indeholde kun seksuelt indhold');
 
--- 2021-02-17 10:52:36
+-- 2021-02-23 13:00:36

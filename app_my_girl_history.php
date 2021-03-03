@@ -304,24 +304,26 @@ if($type_view=="on"){
 if($type_view=="on"){
     include "app_my_girl_history_map.php";
 }else{
-    ?>
-    <div id="form_loc">
-    <strong>Trang hiển thị:</strong>
-        <?php
-            for($i=1;$i<=$total_page;$i++){
-                if($i==$current_page){
-                    echo '<a href="'.$url.'/app_my_girl_history.php?page='.$i.'&sex='.$sex.'&character_sex='.$character_sex.'&dates='.$sel_date.'&lang='.$langsel.'" class="buttonPro small">'.$i.'</a>';
-                }else{
-                    echo '<a href="'.$url.'/app_my_girl_history.php?page='.$i.'&sex='.$sex.'&character_sex='.$character_sex.'&dates='.$sel_date.'&lang='.$langsel.'" class="buttonPro small blue">'.$i.'</a>';
-                }
-            }
+    if($result_tip){
         ?>
-         / <?php echo $limit;?> từ khóa
-    </div>
-    <?php
-    echo '<p class="tip">Có '.mysqli_num_rows($result_tip).' từ khóa được chat trong '.mysqli_num_rows($result_count).' câu được chat </p>';
-    include "app_my_girl_history_nomal.php";
+        <div id="form_loc">
+        <strong>Trang hiển thị:</strong>
+            <?php
+                for($i=1;$i<=$total_page;$i++){
+                    if($i==$current_page){
+                        echo '<a href="'.$url.'/app_my_girl_history.php?page='.$i.'&sex='.$sex.'&character_sex='.$character_sex.'&dates='.$sel_date.'&lang='.$langsel.'" class="buttonPro small">'.$i.'</a>';
+                    }else{
+                        echo '<a href="'.$url.'/app_my_girl_history.php?page='.$i.'&sex='.$sex.'&character_sex='.$character_sex.'&dates='.$sel_date.'&lang='.$langsel.'" class="buttonPro small blue">'.$i.'</a>';
+                    }
+                }
+            ?>
+            / <?php echo $limit;?> từ khóa
+        </div>
+        <?php
+        echo '<p class="tip">Có '.mysqli_num_rows($result_tip).' từ khóa được chat trong '.mysqli_num_rows($result_count).' câu được chat </p>';
+        include "app_my_girl_history_nomal.php";
+    }else{
+        echo '<p style="width:100%;float:left;text-align: center;"><strong>Không có lịch sử trò chuyện nào của đối tượng này!<strong></p>';
+    }
 }
-
 ?>
-

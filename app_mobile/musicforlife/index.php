@@ -8,7 +8,6 @@ if(isset($_GET['view'])){
     $view=$_GET['view'];   
 }
 
-
 if(isset($_GET['log_out'])){
     unset($_SESSION['login']);
 }
@@ -22,7 +21,6 @@ if(isset($_POST['username'])){
     }
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +33,8 @@ if(isset($_POST['username'])){
         <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css" />
         <link rel="stylesheet" href="<?php echo $url;?>/css/manager.css" />
         <script src="<?php echo $url_carrot_store;?>/js/jquery.js"></script>
+        <script src="<?php echo $url_carrot_store;?>/dist/sweetalert.min.js?v=<?php echo $ver;?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo $url_carrot_store;?>/dist/sweetalert.min.css?v=<?php echo $ver;?>"/>
 	</head>
 	<body>
     <?php

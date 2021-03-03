@@ -258,6 +258,10 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('account_report_1',	'계정에 성적인 콘텐츠, 포르노가 포함되어 있습니다.'),
 ('account_report_2',	'가장하는 계정'),
 ('account_report_3',	'기타 문제'),
-('account_report_3_tip',	'여기에 잘못된 계정에 대한 자세한 설명을 입력하세요.');
+('account_report_3_tip',	'여기에 잘못된 계정에 대한 자세한 설명을 입력하세요.'),
+('warning',	'경고'),
+('account_view_yes',	'이 계정을 계속보고 싶습니다.'),
+('account_view_no',	'이 계정을보고 싶지 않습니다.'),
+('account_view_18',	'보려는 계정에 성인 전용 콘텐츠가 포함되어있을 수 있습니다.');
 
--- 2021-02-17 10:56:00
+-- 2021-02-23 12:58:21

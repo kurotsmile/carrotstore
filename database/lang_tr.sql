@@ -258,6 +258,10 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('account_report_1',	'Hesap cinsel içerik, pornografi içeriyor'),
 ('account_report_2',	'kimliğe bürünen hesaplar'),
 ('account_report_3',	'Diğer problemler'),
-('account_report_3_tip',	'Lütfen buraya yanlış hesabın ayrıntılı bir açıklamasını girin');
+('account_report_3_tip',	'Lütfen buraya yanlış hesabın ayrıntılı bir açıklamasını girin'),
+('warning',	'uyarı'),
+('account_view_yes',	'Bu hesabı görüntülemeye devam etmek istiyorum'),
+('account_view_no',	'Bu hesabı görmek istemiyorum'),
+('account_view_18',	'Görüntülemek üzere olduğunuz hesap yalnızca yetişkinlere yönelik içerik barındırıyor olabilir');
 
--- 2021-02-17 10:57:51
+-- 2021-02-23 12:59:20

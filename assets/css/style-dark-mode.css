@@ -1781,6 +1781,10 @@ textarea:focus {
     color: orange;
 }
 
+#box_pay{
+    margin: 5px;border-radius:2px;background-color: unset;padding: 10px;max-width: 400px;margin-left: auto;margin-right: auto;min-height: 400px;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
     #btn_dark_mode{background-color:orange;color:black !important;}
     #add_company {color:#fff;}

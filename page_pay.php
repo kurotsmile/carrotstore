@@ -6,8 +6,6 @@ $pay_id_music='';
 $pay_lang='';
 $lang_sel='';
 
-
-
 if(isset($_GET['item'])){
     $pay_item=$_GET['item'];
 }
@@ -54,7 +52,7 @@ if($pay_device!=''&&$pay_item!=''){
     
 	<?php if($pay_item=='music'){?>
 	<div style="float: left;width: 100%;">
-		<div style="margin: 5px;border-radius:2px;background-color: white;padding: 10px;max-width: 400px;margin-left: auto;margin-right: auto;min-height: 400px;">
+		<div id="box_pay">
 			<strong style="font-size: 16px;"><?php echo lang($link,'download_song'); ?></strong><br /><br />
 			<?php
             $query_music=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$pay_id_music'");
@@ -151,7 +149,7 @@ if($pay_device!=''&&$pay_item!=''){
 
     <?php if($pay_item=='product'){?>
 	<div style="float: left;width: 100%;">
-		<div style="margin: 5px;border-radius:2px;background-color: white;padding: 10px;max-width: 400px;margin-left: auto;margin-right: auto;min-height: 400px;">
+		<div id="box_pay">
 			<strong style="font-size: 16px;"><?php echo lang($link,'mua_sp'); ?></strong><br /><br />
 			<?php
             $query_product=mysqli_query($link,"SELECT `price`,`link_download` FROM `products` WHERE `id`='$pay_id_music' LIMIT 1");

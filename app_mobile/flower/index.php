@@ -31,9 +31,7 @@ if(isset($_POST['username'])){
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="<?php echo $url_carrot_store;?>/assets/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="<?php echo $url;?>/style.css"/>
-        <script src="<?php echo $url;?>/js/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="<?php echo $url;?>/js/jscolor.min.min.js"></script>
-
+        <script src="<?php echo $url_carrot_store;?>/js/jquery.js"></script>
     </head>
 <body>
 

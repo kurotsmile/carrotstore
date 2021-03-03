@@ -1258,4 +1258,86 @@ if($func=='save_order'){
     echo "Lưu lại thứ tự các sách thành công!";
     exit;
 }
+
+if($func=='load_tree_chat'){
+    $id_view=$_POST['id_view'];
+    $lang_view=$_POST['lang_view'];
+    $type_chat=$_POST['type_view'];
+
+    $txt_json='';
+
+    if(isset($_GET['id'])){ $id_view=$_GET['id'];}
+    if(isset($_GET['lang'])){ $lang_view=$_GET['lang'];}
+    if(isset($_GET['type_chat'])){ $type_chat=$_GET['type_chat'];}
+
+    $query_count_history=mysqli_query($link,"SELECT COUNT(`key`) as c FROM `app_my_girl_key` WHERE `id_question` = '$id_view' AND `type_question` = '$type_chat' AND `lang`='$lang_view' LIMIT 1");
+    $data_count_history=mysqli_fetch_assoc($query_count_history);
+    $txt_count_history='';
+    if($data_count_history['c']>0){
+        $txt_count_history=',"comments":"⌚ Lịch sử :'.$data_count_history['c'].'"';
+    }
+
+    if($type_chat=='chat'){
+        $query_chat=mysqli_query($link,"SELECT `id`,`text`,`chat`,`sex`,`character_sex` FROM  `app_my_girl_$lang_view` WHERE `id` = '$id_view'");
+        $data_chat=mysqli_fetch_assoc($query_chat);
+        $txt_json=$txt_json.'{"id":"'.$data_chat['id'].'","key":'.$data_chat['id'].', "name":"'.$data_chat['text'].'", "title":"'.$data_chat['chat'].'","type":"chat","sex":"'.$data_chat['sex'].'","character_sex":"'.$data_chat['character_sex'].'"'. $txt_count_history.'},';
+    }else{
+        $query_chat=mysqli_query($link,"SELECT `id`,`func`,`chat`,`sex`,`character_sex` FROM `app_my_girl_msg_$lang_view` WHERE `id` = '$id_view'");
+        $data_chat=mysqli_fetch_assoc($query_chat);
+        $txt_json=$txt_json.'{"id":"'.$data_chat['id'].'","key":'.$data_chat['id'].', "name":"'.$data_chat['func'].'", "title":"'.$data_chat['chat'].'","type":"msg","sex":"'.$data_chat['sex'].'","character_sex":"'.$data_chat['character_sex'].'"'. $txt_count_history.'},'; 
+    }
+
+    function check_is_pater($link,$id_chat,$index_note,$type_chat){
+        global $txt_json;
+        global $lang_view;
+        $query_check=mysqli_query($link,"SELECT `id`,`text`,`chat`,`pater`,`sex`,`character_sex` FROM  `app_my_girl_$lang_view` WHERE `pater` = '$id_chat' AND `pater_type`='$type_chat' AND `id_redirect`='' ");
+        if(mysqli_num_rows($query_check)>0){
+            while($row_chat=mysqli_fetch_assoc($query_check)){
+                $id_chat_check=$row_chat['id'];
+                $query_count_history=mysqli_query($link,"SELECT COUNT(`key`) as c FROM `app_my_girl_key` WHERE `id_question` = '$id_chat_check' AND `type_question` = '$type_chat' AND `lang`='$lang_view' LIMIT 1");
+                $data_count_history=mysqli_fetch_assoc($query_count_history);
+                $txt_count_history='';
+                if($data_count_history['c']>0){
+                    $txt_count_history=',"comments":"⌚ Lịch sử :'.$data_count_history['c'].'"';
+                }
+                $txt_json=$txt_json.'{"id":"'.$row_chat['id'].'","key":'.$row_chat['id'].', "name":"'.$row_chat['text'].'", "title":"'.$row_chat['chat'].'", "parent":'.$row_chat['pater'].',"type":"chat","sex":"'.$row_chat['sex'].'","character_sex":"'.$row_chat['character_sex'].''.$txt_count_history.'"},';
+                check_is_pater($link,$row_chat['id'],$row_chat['pater'],'chat');
+            }
+        }
+    }
+
+    check_is_pater($link,$id_view,$id_view,$type_chat);
+    echo substr($txt_json,0,strlen($txt_json)-1);
+    exit;
+}
+
+if($func=='get_chat_tree'){
+    $lang_view=$_POST['lang_view'];
+    $type_chat=$_POST['type_chat'];
+
+    if($type_chat=='chat'){
+        $query_chat=mysqli_query($link,"SELECT `id` FROM `app_my_girl_$lang_view` WHERE `id_redirect` = '' AND `pater` = '' AND `effect` != '2' AND `effect` != '36' AND `disable`='0' ORDER BY RAND() LIMIT 1");
+        $data_chat=mysqli_fetch_assoc($query_chat);
+        echo $data_chat['id'];
+    }
+
+    if($type_chat=='msg'){
+        $query_msg=mysqli_query($link,"SELECT `id` FROM `app_my_girl_msg_$lang_view` WHERE `disable` = '0' ORDER BY RAND() LIMIT 1");
+        $data_chat=mysqli_fetch_assoc($query_msg);
+        echo $data_chat['id'];
+    }
+
+    if($type_chat=='key_chat'){
+        $query_chat=mysqli_query($link,"SELECT `id_question` FROM `app_my_girl_key` WHERE `type_question` = 'chat' AND `lang` = '$lang_view'  ORDER BY RAND() LIMIT 1");
+        $data_chat=mysqli_fetch_assoc($query_chat);
+        echo $data_chat['id_question'];
+    }
+
+    if($type_chat=='key_msg'){
+        $query_msg=mysqli_query($link,"SELECT `id_question` FROM `app_my_girl_key` WHERE `type_question` = 'msg' AND `lang` = '$lang_view'  ORDER BY RAND() LIMIT 1");
+        $data_chat=mysqli_fetch_assoc($query_msg);
+        echo $data_chat['id_question'];
+    }
+    exit;
+}
 ?>

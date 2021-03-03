@@ -258,6 +258,10 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('account_report_1',	'Akun berisi konten seksual, pornografi'),
 ('account_report_2',	'akun meniru'),
 ('account_report_3',	'Masalah lainnya'),
-('account_report_3_tip',	'Harap masukkan penjelasan rinci tentang akun yang salah di sini');
+('account_report_3_tip',	'Harap masukkan penjelasan rinci tentang akun yang salah di sini'),
+('warning',	'peringatan'),
+('account_view_yes',	'Saya ingin terus melihat akun ini'),
+('account_view_no',	'Saya tidak ingin melihat akun ini'),
+('account_view_18',	'Akun yang akan Anda lihat mungkin berisi konten khusus dewasa');
 
--- 2021-02-17 10:54:34
+-- 2021-02-23 13:00:18

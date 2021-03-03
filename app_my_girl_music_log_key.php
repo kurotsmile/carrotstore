@@ -1,6 +1,8 @@
 <?php
 include "app_my_girl_template.php";
 $langsel='';
+$type_key='';
+$txt_query_type='';
 
 if(isset($_GET['lang'])){
     $langsel=$_GET['lang']; 
@@ -38,13 +40,21 @@ if(isset($_GET['delete_key'])){
 }
 
 if(isset($_POST['loc'])){
-    $langsel=$_POST['lang']; 
+    $langsel=$_POST['lang'];
+    $type_key=$_POST['type_key'];
+    if($type_key=='0'){
+        $txt_query_type=" AND (`type`='0' OR `type`='1') ";
+    }
+
+    if($type_key=='2'){
+        $txt_query_type=" AND `type`='2' ";
+    }
 }
 
 if($langsel==''){
-    $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_log_key_music`");
+    $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_log_key_music` WHERE 1=1 $txt_query_type");
 }else{
-    $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel'");  
+    $result_tip=mysqli_query($link,"SELECT DISTINCT * FROM `app_my_girl_log_key_music` WHERE `lang` = '$langsel' $txt_query_type");  
 }
 ?>
 <form method="post" id="form_loc" style="width: 800px;">
@@ -66,6 +76,15 @@ if($langsel==''){
     </select>
 </div>
 
+<div style="display: inline-block;float: left;margin: 2px;width: 90px;">
+    <label>Loại:</label> 
+    <select name="type_key">
+    <option value="" <?php if($type_key==""){?>selected="true"<?php }?>>Tất cả</option>
+    <option value="0" <?php if($type_key=="0"){?>selected="true"<?php }?>>Từ ứng dụng</option>
+    <option value="2" <?php if($type_key=="2"){?>selected="true"<?php }?>>Từ web</option>
+    </select>
+</div>
+
 
 <div style="display: inline-block;float: left;margin: 2px;">
     <input type="submit" name="loc" value="Lọc" class="link_button" />
@@ -77,8 +96,6 @@ if($langsel==''){
 </div>
 
 </form>
-
-
 
 <?php
 if(mysqli_num_rows($result_tip)>0){
@@ -110,7 +127,5 @@ if(mysqli_num_rows($result_tip)>0){
 }else{
     show_alert('Chưa có dữ liệu từ người dùng','alert');
 }
-
-echo $langsel;
 ?>
 

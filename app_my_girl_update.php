@@ -231,8 +231,7 @@ $arr = mysqli_fetch_array($result_chat);
 <script src="<?php echo $url; ?>/js/jscolor.min.js"></script>
 <h2><img src="<?php echo $url; ?>/app_mygirl/img/<?php echo $lang_sel; ?>.png" style="width: 20px;margin-right: 2px;float: left;"/> <?php echo $txt_title; ?></h2>
 <ul id="menu_page">
-    <li>
-        <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $lang_sel; ?>&id_chat_see=<?php echo $id; ?>&type_chat_see=<?php echo $type_chat; ?>&sex=<?php echo $arr['sex']; ?>&character_sex=<?php echo $arr['character_sex']; ?>" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi theo câu trả lời này</a></li>
+    <li><a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $lang_sel; ?>&id_chat_see=<?php echo $id; ?>&type_chat_see=<?php echo $type_chat; ?>&sex=<?php echo $arr['sex']; ?>&character_sex=<?php echo $arr['character_sex']; ?>" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi theo câu trả lời này</a></li>
     <?php if (isset($_GET['msg'])) {?>
         <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=move_msg&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>" class="buttonPro small blue"><i class="fa fa-plane" aria-hidden="true"></i> Di chuyển hoặc sao chép sang nước khác</a></li>
         <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_chat&id=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&type=msg" class="buttonPro small red"><i class="fa fa-trash"></i> Xóa câu thoại này</a></li>
@@ -249,6 +248,8 @@ $arr = mysqli_fetch_array($result_chat);
         ?>
         <li><a target="_blank" href="<?php echo $url_work;?>/?page_show=manager_report&find=<?php echo $id; ?>&lang=<?php echo $lang_sel; ?>&username=<?php echo get_user_name_by_id($link,$arr['user_create']); ?>&chat_type=<?php echo $type_chat; ?>" class="buttonPro small red"><i class="fa fa-bug" aria-hidden="true"></i> Báo lỗi</a></li>
     <?php } ?>
+    <li>
+    <li><a href="<?php echo $url; ?>/app_my_girl_handling.php?func=tree_chat&id=<?php echo $id; ?>&type_chat=<?php echo $type_chat; ?>&lang=<?php echo $lang_sel; ?>" class="buttonPro small blue" target="_blank"><i class="fa fa-tree" aria-hidden="true"></i> Xem dưới dạng cây</a></li>
 </ul>
 
 

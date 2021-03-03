@@ -258,6 +258,10 @@ INSERT INTO `lang_es` (`key`, `value`) VALUES
 ('account_report_1',	'La cuenta incluye contenido sexual, imagenes eroticas'),
 ('account_report_2',	'Cuentas suplantando'),
 ('account_report_3',	'Otros problemas'),
-('account_report_3_tip',	'Introduzca aquí una descripción detallada de la cuenta incorrecta');
+('account_report_3_tip',	'Introduzca aquí una descripción detallada de la cuenta incorrecta'),
+('warning',	'Advertencia'),
+('account_view_yes',	'Quiero seguir viendo esta cuenta'),
+('account_view_no',	'No quiero ver esta cuenta'),
+('account_view_18',	'La cuenta que está a punto de ver puede incluir contenido solo para adultos.');
 
--- 2021-02-17 10:53:25
+-- 2021-02-23 12:54:43

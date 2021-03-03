@@ -5,6 +5,13 @@ if(isset($_GET['delete_report'])){
     echo alert("Xóa đơn khiếu nại tài khoản '$delete_report' thành công !!!");
 }
 
+if(isset($_GET['acc_report_18'])){
+    $lang_report=$_GET['lang_report'];
+    $acc_report_18=$_GET['acc_report_18'];
+    $query_set_acc_18=mysqli_query($link,"UPDATE `app_my_girl_user_$lang_report` SET `status`='2' WHERE `id_device`='$acc_report_18'");
+    echo alert("Đã đánh dấu tài khoàn '$acc_report_18' vào mục 18+ thành công !!!");
+}
+
 $arr_type=array('Tài khoản kích dục,kiêu dâm','Giả mạo người khác','Vấn đề khác');
 ?>
 <table>
@@ -31,7 +38,10 @@ while($row_acc_report=mysqli_fetch_assoc($query_acc_report)){
         <td><?php echo $acc_type;?></td>
         <td><?php echo $row_acc_report['txt'];?></td>
         <td><?php echo $row_acc_report['lang'];?></td>
-        <td><a href="<?php echo $url_cur;?>&delete_report=<?php echo $row_acc_report['id_device'];?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a></td>
+        <td>
+            <a href="<?php echo $url_cur;?>&delete_report=<?php echo $row_acc_report['id_device'];?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+            <a href="<?php echo $url_cur;?>&acc_report_18=<?php echo $row_acc_report['id_device'];?>&lang_report=<?php echo $row_acc_report['lang'];?>" class="buttonPro small yellow"><i class="fa fa-grav" aria-hidden="true"></i> Xát thực đây là tài khoản 18+</a>
+        </td>
     </tr>
     <?php
 }

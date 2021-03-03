@@ -1,6 +1,9 @@
 <?php
 $id_user = $_GET['user'];
-if (!isset($data_user)) {
+$sex_content=0;
+if(isset($_GET['sex_content'])){ $sex_content=$_GET['sex_content'];}
+
+if (!isset($data_user)){
     ?>
     <div id="containt" style="width: 100%;float: left;text-align: center;">
         <p style="float: left;width: 100%;margin-top: 40px;">
@@ -15,8 +18,22 @@ if (!isset($data_user)) {
         </p>
     </div>
     <?php
-    exit;
-}
+}elseif($data_user['status']=='2'&&$sex_content=='0'){ 
+        ?>
+        <div id="containt" style="width: 100%;float: left;text-align: center;">
+            <p style="float: left;width: 100%;margin-top: 40px;">
+                <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i><br/>
+                <b style="margin-top: 10px;"><?php echo lang($link,'warning');?></b>
+                <p><?php echo lang($link,'account_view_18');?></p>
+                <br/>
+                <a class="buttonPro green" href="#" onclick="window.location.replace('<?php echo $url; ?>/user/<?php echo $id_user;?>/<?php echo $lang;?>&sex_content=1');"><i class="fa fa-check-circle" aria-hidden="true"></i> <?php echo lang($link,'account_view_yes');?></a><br/>
+                <a class="buttonPro red" href="<?php echo $url; ?>/member"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'account_view_no');?></a>
+                </a>
+            </p>
+        </div>
+        <?php
+}else{
+
 include "phpqrcode/qrlib.php";
 
 $sdt = $data_user['sdt'];
@@ -204,7 +221,9 @@ if (sizeof($array_contact_same_name)> 0) {
 <script>
 function show_user_report(){
     var txt_html_report='<ul style="padding: 0px;margin: 0px;text-align: left;margin-left: 10%;">';
+    <?php if($sex_content==0){?>
     txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(0)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'account_report_1');?></li>';
+    <?php }?>
     txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(1)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'account_report_2');?></li>';
     txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(2)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'account_report_3');?></li>';
     txt_html_report=txt_html_report+'</ul>';
@@ -245,4 +264,6 @@ function submit_acc_report(sel_val,error_val){
         }
     });
 }
+
 </script>
+<?php }?>

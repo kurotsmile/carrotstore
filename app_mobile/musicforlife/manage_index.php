@@ -69,7 +69,7 @@ show_char_log_day();
 </script>
       
         <ul id="menu_sub">
-            <li><a class="buttonPro small red" href="<?php echo $url; ?>index.php?view=handle&funcs=del_all_key"><i class="fa fa-trash" aria-hidden="true"></i> Xóa tất cả các từ khóa</a></li>
+            <li><a class="buttonPro small red" href="<?php echo $url; ?>/index.php?view=handle&funcs=del_all_key"><i class="fa fa-trash" aria-hidden="true"></i> Xóa tất cả các từ khóa</a></li>
         </ul>
 
             <?php 
@@ -90,7 +90,7 @@ show_char_log_day();
                     <a href="https://play.google.com/store/apps/details?id=com.CarrotApp.musicforlife&hl=<?php echo $l['key'];?>" title="Chplay" target="_blank"><i class="fa fa-android" aria-hidden="true"></i> CH play</a><br />
                     <a href="<?php echo $url;?>/index.php?view=lang_value&lang=<?php echo $l['key'];?>"><i class="fa fa-language" aria-hidden="true"></i> Ngô ngữ <b style="font-weight: bold;font-size: 10px;font-size: 7px;color: #5f5f5f;">(<i class="fa fa-mobile" aria-hidden="true"></i> Ứng dụng)</b></a><br />
                     <a href="<?php echo $url;?>/index.php?view=game_lang_value&lang=<?php echo $l['key'];?>"><i class="fa fa-language" aria-hidden="true"></i> Ngô ngữ <b style="font-weight: bold;font-size: 10px;font-size: 7px;color: #5f5f5f;">(<i class="fa fa-gamepad" aria-hidden="true"></i> Trò chơi)</b></a><br />
-                    <a href=""><i class="fa fa-play-circle" aria-hidden="true"></i> Danh sách phát:<?php echo $data_playlist_count[0];?></b></a>
+                    <a href="<?php echo $url;?>/index.php?view=playlist&lang=<?php echo $l['key'];?>"><i class="fa fa-play-circle" aria-hidden="true"></i> Danh sách phát:<?php echo $data_playlist_count[0];?></b></a>
                 </div>
                 </div>
                 <?php

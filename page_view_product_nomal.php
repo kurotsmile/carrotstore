@@ -19,7 +19,7 @@ $data_type=mysqli_fetch_array($query_type);
             if($data['link_download']){
                 $price_product=$data['price'];
             ?>
-            <a href="<?php if($price_product!=''){ echo $url.'/pay/product/0/'.$data['id']; }else{ echo '#';} ?>" onclick="<?php if($price_product==''){ echo 'show_box_download_link();return false;'; }?>"  id="download_song" style="height: 154px;margin-left: -2px;" >
+            <a href="<?php if($price_product!=''){ echo $url.'/pay/product/0/'.$data['id']; }else{ echo '#';} ?>" onclick="<?php if($price_product==''){ echo 'show_box_download_link();return false;'; }?>"  id="download_song" class="full" style="height: 154px;margin-left: -2px;" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br /><br />
                 <span><?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i></span>
                 <br />
