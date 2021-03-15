@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -138,4 +138,4 @@ INSERT INTO `app_my_girl_storage` (`id`, `lang`, `type`, `category`) VALUES
 ('17',	'pl',	'msg',	'delete'),
 ('627',	'vi',	'msg',	'delete');
 
--- 2020-10-23 09:39:01
+-- 2021-03-10 07:29:57

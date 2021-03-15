@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -162,8 +162,8 @@ INSERT INTO `app_my_girl_msg_fi` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (117,	'thong_bao',	'Kaipaan sinua, puhu minulle',	1,	2,	'#FFD6FF',	'',	'',	'',	'',	'',	0,	22,	11,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'716',	'',	'',	'',	'0',	'0',	'0',	''),
 (118,	'thong_bao',	'Ole mukavaa, kun kaipaan sinua',	1,	1,	'#C7FFA3',	'',	'',	'',	'',	'',	0,	5,	16,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'377',	'',	'',	'',	'0',	'0',	'0',	''),
 (119,	'thong_bao',	'mitä teet, tule ja puhu minulle',	1,	2,	'#A8FF85',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'471',	'',	'',	'',	'0',	'0',	'0',	''),
-(120,	'bat_chuyen',	'Toivotan teille paljon spooky yllätyksiä ja kamala hauskaa Halloween päivä',	0,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	22,	3,	0,	'',	1,	0,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(121,	'dam',	'Toivotan teille paljon spooky yllätyksiä ja kamala hauskaa Halloween päivä',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	32,	0,	0,	'',	0,	0,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
+(120,	'bat_chuyen',	'Toivotan teille paljon spooky yllätyksiä ja kamala hauskaa Halloween päivä',	0,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	22,	3,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
+(121,	'dam',	'Toivotan teille paljon spooky yllätyksiä ja kamala hauskaa Halloween päivä',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	32,	0,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (122,	'bat_chuyen',	'Marraskuun kuukausi tuli tiesi Tee se hämmästyttävä, ei ole väliä, jos sää on huono, sillä mielialasi ei ole hyvä ollenkaan, sinun on vain pidettävä korkeana ja olla onnellinen.',	0,	2,	'#FF0000',	'',	'',	'',	'',	'',	0,	5,	2,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'154',	'',	'',	'',	'0',	'0',	'0',	''),
 (123,	'bat_chuyen',	'Marraskuun kuukausi tuli tiesi Tee se hämmästyttävä, ei ole väliä, jos sää on huono, sillä mielialasi ei ole hyvä ollenkaan, sinun on vain pidettävä korkeana ja olla onnellinen.',	1,	1,	'#FFC7E3',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'67',	'',	'',	'',	'0',	'0',	'0',	''),
 (124,	'hoi_tim_duong',	'Mistä osoitteesta haluat löytää? Minä opastan sinut!',	0,	1,	'#FFB11F',	'',	'',	'',	'',	'',	0,	34,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -192,4 +192,4 @@ INSERT INTO `app_my_girl_msg_fi` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (147,	'bat_chuyen',	'Covid 19 -kauden aikana sinun on oltava varovainen, ettet keskity keskittymään ruuhkaisiin paikkoihin ja käytä maskia minne ikinä menetkin!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fi',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (148,	'bat_chuyen',	'Covid 19 -kauden aikana sinun on oltava varovainen, ettet keskity keskittymään ruuhkaisiin paikkoihin ja käytä maskia minne ikinä menetkin!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fi',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2020-10-25 11:56:53
+-- 2021-03-10 08:33:38

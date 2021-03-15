@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -1338,7 +1338,7 @@ INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (1338,	'vàng',	0,	'chat',	'FFCE1C'),
 (1339,	'dung dịch',	0,	'',	'FFB0D3'),
 (1340,	'nước hoa',	0,	'',	'FCFFC7'),
-(1341,	'lol biểu tượng',	0,	'',	'FFEE2B'),
+(1341,	'lol lmht',	0,	'app',	'FFEE2B'),
 (1342,	'lol yasuo',	0,	'',	'6EE9FF'),
 (1343,	'lol zed',	0,	'',	'8AFFC3'),
 (1344,	'lol Annie',	0,	'',	'FF1212'),
@@ -1645,4 +1645,4 @@ INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (1657,	'gà tây',	0,	'animal',	'6BFF75'),
 (1658,	'con rùa',	0,	'animal',	'77FFF7');
 
--- 2020-10-25 11:42:23
+-- 2021-03-10 07:33:55

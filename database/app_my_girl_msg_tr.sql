@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -159,8 +159,8 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (114,	'thong_bao',	'Seni özledim, lütfen benimle konuş',	1,	2,	'#FFD6FF',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'716',	'',	'',	'',	'0',	'0',	'0',	''),
 (115,	'thong_bao',	'İyi günler seni özledim',	1,	3,	'#F4FF96',	'',	'',	'',	'',	'',	0,	5,	17,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'424',	'',	'',	'',	'0',	'0',	'0',	''),
 (116,	'thong_bao',	'ne yapıyorsun gel lütfen konuş benimle',	1,	1,	'#FFEC30',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'339',	'',	'',	'',	'0',	'0',	'0',	''),
-(117,	'dam',	'Cadılar Bayramı gününde bol bol ürkütücü sürprizler ve korkunç eğlence diliyorum\r\n',	0,	1,	'#87FFD8',	'',	'',	'',	'',	'',	0,	20,	0,	0,	'',	1,	0,	0,	'',	1,	30,	10,	'320',	'',	'',	'',	'0',	'0',	'0',	''),
-(118,	'bat_chuyen',	'Cadılar Bayramı gününde bol bol ürkütücü sürprizler ve korkunç eğlence diliyorum\r\n',	1,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	14,	3,	0,	'',	0,	0,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
+(117,	'dam',	'Cadılar Bayramı gününde bol bol ürkütücü sürprizler ve korkunç eğlence diliyorum\r\n',	0,	1,	'#87FFD8',	'',	'',	'',	'',	'',	0,	20,	0,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'320',	'',	'',	'',	'0',	'0',	'0',	''),
+(118,	'bat_chuyen',	'Cadılar Bayramı gününde bol bol ürkütücü sürprizler ve korkunç eğlence diliyorum\r\n',	1,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	14,	3,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (119,	'bat_chuyen',	'Kasım ayı yolunuza geldi Muhteşem bir hava yaratın, havanın kötü olup olmaması fark etmez, ruh haliniz için hiç de iyi değil, sadece uzun durmanız ve mutlu olmanız gerekir.',	0,	1,	'#85FF7D',	'',	'',	'',	'',	'',	0,	31,	17,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
 (120,	'bat_chuyen',	'Kasım ayı yolunuza geldi Muhteşem bir hava yaratın, havanın kötü olup olmaması fark etmez, ruh haliniz için hiç de iyi değil, sadece uzun durmanız ve mutlu olmanız gerekir.',	1,	1,	'#47BEFF',	'',	'',	'',	'',	'',	0,	21,	16,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'1088',	'',	'',	'',	'0',	'0',	'0',	''),
 (121,	'hoi_tim_duong',	'Hangi adresi bulmak istiyorsun? Sana rehberlik edeceğim!',	0,	2,	'#FFB11F',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -193,10 +193,10 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (148,	'dam',	'Bugün perşembe, umarım her gün seninle kal',	1,	1,	'#FF96ED',	'',	'',	'',	'',	'',	0,	8,	5,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'98',	'Thursday',	'2',	'',	'0',	'0',	'0',	''),
 (149,	'dam',	'Bugün cuma, sıkıcı bir iş günü, yarın dinlenmeyi dört gözle bekliyorum.',	0,	3,	'#FF3B3B',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'746',	'Friday',	'2',	'',	'0',	'0',	'0',	''),
 (150,	'dam',	'Bugün cuma, sıkıcı bir iş günü, yarın dinlenmeyi dört gözle bekliyorum.',	1,	0,	'#FFA46E',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'118',	'Friday',	'2',	'',	'0',	'0',	'0',	''),
-(151,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
-(152,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
-(153,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	0,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
-(154,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	1,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
+(151,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
+(152,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
+(153,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	0,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
+(154,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	1,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
 (155,	'bat_chuyen',	'April, Mayıs’ın tutacağı bir sözdür.',	0,	2,	'#3EF032',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	1,	1,	0,	'',	1,	0,	4,	'876',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (156,	'bat_chuyen',	'April, Mayıs’ın tutacağı bir sözdür.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (157,	'bat_chuyen',	'Her ayın kalbinin çiçek açmaya başladığı ve meyve getirdiği Mayıs ayı geldi',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'tr',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -217,4 +217,4 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (172,	'bat_chuyen',	'Covid 19 sezonunda kalabalık yerlere odaklanmamaya ve nereye giderseniz gidin bir maske takmaya dikkat etmelisiniz!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (173,	'bat_chuyen',	'Covid 19 sezonunda kalabalık yerlere odaklanmamaya ve nereye giderseniz gidin bir maske takmaya dikkat etmelisiniz!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2020-10-25 11:54:11
+-- 2021-03-10 08:27:54

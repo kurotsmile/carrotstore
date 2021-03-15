@@ -56,6 +56,7 @@ RewriteRule    ^saveweboffline   app_mobile/saveweboffline/index.php
 RewriteRule    ^remote   app_mobile/remotepc/index.php
 RewriteRule    ^pc   app_mobile/remotepc/action.php
 RewriteRule    ^ajaxpc   app_mobile/remotepc/ajaxpc.php
+RewriteRule    ^piano   app_mobile/piano/index.php [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

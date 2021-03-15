@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -152,10 +152,10 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (107,	'dam',	'Sexta-feira é um dia chato, espero que você pense mais sobre mim!',	1,	3,	'#73FEFF',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'669',	'Friday',	'',	'',	'0',	'0',	'0',	''),
 (108,	'dam',	'Setembro é o mês do amor',	0,	3,	'#65F04A',	'',	'',	'',	'',	'',	0,	8,	15,	0,	'',	1,	1,	0,	'',	1,	0,	9,	'159',	'',	'',	'',	'0',	'0',	'0',	''),
 (109,	'dam',	'Setembro é o mês do amor',	1,	3,	'#9CFFC4',	'',	'',	'',	'',	'',	0,	8,	8,	0,	'',	0,	1,	0,	'',	1,	0,	9,	'929',	'',	'',	'',	'0',	'0',	'0',	''),
-(110,	'dam',	'Outubro na rua é fácil de pena. Quando o tempo é suficiente para as pessoas se sentirem sozinhas porque se esquecem de usar mais roupas.',	0,	3,	'#FFFA47',	'',	'',	'',	'',	'',	0,	8,	5,	0,	'',	1,	0,	0,	'',	1,	0,	10,	'756',	'',	'',	'',	'0',	'0',	'0',	''),
-(111,	'dam',	'Outubro na rua é fácil de pena. Quando o tempo é suficiente para as pessoas se sentirem sozinhas porque se esquecem de usar mais roupas.',	1,	3,	'#D1FFBF',	'',	'',	'',	'',	'',	0,	8,	17,	0,	'',	0,	0,	0,	'',	1,	0,	10,	'1003',	'',	'',	'',	'0',	'0',	'0',	''),
-(112,	'dam',	'Desejo-lhe muitas surpresas assustadoras é muito divertido no dia de Halloween',	0,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	0,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(113,	'dam',	'Desejo-lhe muitas surpresas assustadoras é muito divertido no dia de Halloween',	1,	2,	'#E8FFEF',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	0,	0,	0,	'',	1,	30,	10,	'895',	'',	'',	'',	'0',	'0',	'0',	''),
+(110,	'dam',	'Outubro na rua é fácil de pena. Quando o tempo é suficiente para as pessoas se sentirem sozinhas porque se esquecem de usar mais roupas.',	0,	3,	'#FFFA47',	'',	'',	'',	'',	'',	0,	8,	5,	0,	'',	1,	1,	0,	'',	1,	0,	10,	'756',	'',	'',	'',	'0',	'0',	'0',	''),
+(111,	'dam',	'Outubro na rua é fácil de pena. Quando o tempo é suficiente para as pessoas se sentirem sozinhas porque se esquecem de usar mais roupas.',	1,	3,	'#D1FFBF',	'',	'',	'',	'',	'',	0,	8,	17,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'1003',	'',	'',	'',	'0',	'0',	'0',	''),
+(112,	'dam',	'Desejo-lhe muitas surpresas assustadoras é muito divertido no dia de Halloween',	0,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
+(113,	'dam',	'Desejo-lhe muitas surpresas assustadoras é muito divertido no dia de Halloween',	1,	2,	'#E8FFEF',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'895',	'',	'',	'',	'0',	'0',	'0',	''),
 (114,	'bat_chuyen',	'O mês de novembro veio do seu jeito Faça um incrível, não importa se o tempo está ruim, pois o seu humor não é bom de jeito nenhum, você só precisa ficar de pé e ser feliz.',	0,	2,	'#C7FFA3',	'',	'',	'',	'',	'',	0,	21,	15,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'377',	'',	'',	'',	'0',	'0',	'0',	''),
 (115,	'bat_chuyen',	'O mês de novembro veio do seu jeito Faça um incrível, não importa se o tempo está ruim, pois o seu humor não é bom de jeito nenhum, você só precisa ficar de pé e ser feliz.',	1,	1,	'#FFEACF',	'',	'',	'',	'',	'',	0,	0,	14,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'423',	'',	'',	'4',	'0',	'0',	'0',	''),
 (116,	'hoi_tim_duong',	'Qual endereço você quer encontrar? Vou te guiar!',	0,	2,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	14,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -178,10 +178,10 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (133,	'dam',	'O mês do amor está aqui Para espalhar o amor ao redor Então torne isso adorável Feliz novo mês',	1,	2,	'#4A97FF',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	1,	0,	'',	1,	0,	2,	'459',	'',	'3',	'',	'0',	'0',	'0',	''),
 (134,	'bat_chuyen',	'Espero que você tenha um feliz e feliz dia dos namorados com seu amor. Desejo-lhe Dia dos Namorados!',	1,	1,	'#FF033C',	'',	'',	'',	'',	'',	1,	20,	3,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'419',	'',	'3',	'2',	'0',	'0',	'0',	''),
 (135,	'dam',	'Desejo-lhe um feliz e feliz Dia dos Namorados com quem você ama',	1,	2,	'#FF0000',	'',	'',	'',	'',	'',	0,	31,	15,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'267',	'',	'3',	'2',	'0',	'0',	'0',	''),
-(136,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(137,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(138,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(139,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	1,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(136,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(137,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(138,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(139,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	1,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
 (140,	'bat_chuyen',	'Abril é uma promessa que May deve manter.',	0,	2,	'#3EF032',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	1,	1,	0,	'',	1,	0,	4,	'876',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (141,	'bat_chuyen',	'Abril é uma promessa que May deve manter.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (142,	'bat_chuyen',	'O mês de maio chegou, quando todo coração vigoroso começa a desabrochar e a frutificar.',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'pt',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -204,4 +204,4 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (159,	'bat_chuyen',	'Durante a temporada de Covid 19, você deve ter cuidado para não se concentrar em lugares lotados e usar uma máscara onde quer que vá!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pt',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (160,	'bat_chuyen',	'Durante a temporada de Covid 19, você deve ter cuidado para não se concentrar em lugares lotados e usar uma máscara onde quer que vá!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pt',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2020-10-25 12:33:47
+-- 2021-03-10 07:23:59

@@ -264,4 +264,4 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('account_view_no',	'Tôi không muốn xem tài khoản này'),
 ('account_view_18',	'Tài khoản mà bạn sắp xem có thể chứa nội dung chỉ phù hợp với người lớn');
 
--- 2021-02-23 12:52:56
+-- 2021-03-10 06:53:16

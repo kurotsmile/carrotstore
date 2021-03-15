@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -25,7 +25,6 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (128,	'Kinh Thánh Thế Giới'),
 (130,	'Người yêu AI'),
 (131,	'Trợ lý ảo dễ thương'),
-(132,	'Người yêu của tôi'),
 (133,	'Nhanh mắt'),
 (134,	'Chạy cùng em'),
 (135,	'Lưu web ngoại tuyến'),
@@ -34,6 +33,7 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (138,	'Số ma thuật'),
 (136,	'Tạo mật khẩu'),
 (120,	'Người yêu ảo'),
-(282,	'Người yêu ảo Pro');
+(282,	'Người yêu ảo Pro'),
+(132,	'Người yêu của tôi');
 
--- 2020-12-28 19:29:29
+-- 2021-03-10 06:59:17

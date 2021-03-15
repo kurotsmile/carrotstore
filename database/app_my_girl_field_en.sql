@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,4 +22,4 @@ INSERT INTO `app_my_girl_field_en` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('24627',	'chat',	'[[\"6324\",\"en\",\"show_chat\",\"Open music\",\"000000\"],[\"15268\",\"en\",\"show_chat\",\"Open radio\",\"000000\"],[\"23837\",\"en\",\"show_chat\",\"Open Skype\",\"000000\"],[\"23828\",\"en\",\"show_chat\",\"Open calendar\",\"000000\"],[\"23832\",\"en\",\"show_chat\",\"Open reminder\",\"000000\"],[\"15268\",\"en\",\"show_chat\",\"Open radio\",\"000000\"],[\"23896\",\"en\",\"show_chat\",\"Open Cake Browser\",\"000000\"],[\"49\",\"en\",\"show_chat\",\"Open facebook\",\"000000\"],[\"23885\",\"en\",\"show_chat\",\"Open twitter\",\"000000\"]]',	'field_chat',	'unclear',	'0'),
 ('24628',	'chat',	'[[\"6326\",\"en\",\"show_chat\",\"Open music\",\"000000\"],[\"2239\",\"en\",\"show_chat\",\"Open facebook\",\"000000\"]]',	'field_chat',	'unclear',	'1');
 
--- 2020-10-25 12:31:24
+-- 2021-03-10 07:11:13

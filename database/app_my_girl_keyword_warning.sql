@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -73,4 +73,4 @@ INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('ejacule',	'pt'),
 ('muschi',	'de');
 
--- 2020-10-25 11:54:49
+-- 2021-03-10 07:33:25

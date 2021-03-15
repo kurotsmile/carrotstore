@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -561,4 +561,4 @@ INSERT INTO `app_my_girl_radio` (`id`, `name_radio`, `stream`, `lang`) VALUES
 (560,	'Radio10 - 80s Hits',	'https://20103.live.streamtheworld.com/TLPSTR20_SC',	'nl'),
 (561,	'Radio 10 - 90s Hits',	'https://20133.live.streamtheworld.com/TLPSTR22_SC',	'nl');
 
--- 2020-10-25 11:41:47
+-- 2021-03-10 07:34:10

@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -14,9 +14,6 @@ CREATE TABLE `app_my_girl_music_data_it` (
 
 TRUNCATE `app_my_girl_music_data_it`;
 INSERT INTO `app_my_girl_music_data_it` (`device_id`, `value`, `id_chat`) VALUES
-('114.119.134.110',	'3',	'11'),
-('114.119.157.51',	'0',	'13'),
-('114.119.149.83',	'0',	'13'),
-('95.250.240.70',	'0',	'19');
+('617f68bead9b0349a614a2d6f2318f61',	'1',	'3');
 
--- 2020-10-25 12:13:07
+-- 2021-03-10 08:42:27

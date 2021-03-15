@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -138,6 +138,7 @@ INSERT INTO `app_my_girl_id` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (85,	'riwayat obrolan',	'Saya telah membuka riwayat obrolan, Anda dapat meninjau percakapan saya dan Anda',	1,	0,	'#70EBFF',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'id',	1,	'',	'',	'',	2,	'',	1,	0,	0,	'831',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (86,	'riwayat obrolan',	'Saya telah membuka riwayat obrolan, Anda dapat meninjau percakapan saya dan Anda',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'id',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (87,	'apa bedanya kamu sama langit?',	'kalau langit diatas kalau kamu di hatiku',	2,	0,	'#66EAFF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	0,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'642',	'',	0,	'',	'4',	'4',	'0',	'0',	'0',	'',	''),
-(88,	'menyanyikan sebuah lagu',	'Glenn Fredly - Januari (Lirik)',	1,	1,	'#1DE300',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'502',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'glenn-fredly-januari-lirik--88',	'https://carrotaudio.com/data_file/mp3/5ec01074f07ce5ec01074f0814.mp3');
+(88,	'menyanyikan sebuah lagu',	'Glenn Fredly - Januari (Lirik)',	1,	1,	'#1DE300',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'502',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'glenn-fredly-januari-lirik--88',	''),
+(89,	'menyanyikan sebuah lagu',	'SISITIPSI - Alkohol',	1,	1,	'#00FFB7',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1139',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sisitipsi-alkohol-89',	'');
 
--- 2020-10-25 12:11:54
+-- 2021-03-10 08:43:33

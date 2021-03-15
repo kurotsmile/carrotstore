@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -53,4 +53,4 @@ INSERT INTO `app_my_girl_video_fi` (`id_chat`, `link`) VALUES
 ('137',	'https://www.youtube.com/watch?v=VBCogPNHLzE'),
 ('358',	'https://www.youtube.com/watch?v=7yh9i0PAjck');
 
--- 2020-10-25 12:05:24
+-- 2021-03-10 08:34:23

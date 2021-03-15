@@ -3286,7 +3286,7 @@ INSERT INTO `app_my_girl_video_vi` (`id_chat`, `link`) VALUES
 ('52649',	'https://www.youtube.com/watch?v=24Gnjs5g8UQ'),
 ('28618',	'https://www.youtube.com/watch?v=_YlsyhExruo'),
 ('39782',	'https://www.youtube.com/watch?v=voKzZ-oVVgw'),
-('43649',	'https://www.youtube.com/watch?v=rYzxxKnP4EM'),
+('43649',	'https://www.youtube.com/watch?v=TjmFnDzC6tc'),
 ('28617',	'https://www.youtube.com/watch?v=nyBhpCyouEw'),
 ('55162',	'https://www.youtube.com/watch?v=poEKraQUXu8'),
 ('53903',	'https://www.youtube.com/watch?v=Bhb3TqtX8hg'),
@@ -5161,6 +5161,21 @@ INSERT INTO `app_my_girl_video_vi` (`id_chat`, `link`) VALUES
 ('75675',	'https://www.youtube.com/watch?v=ljN7Pv3cnIo'),
 ('75682',	'https://www.youtube.com/watch?v=QDJgzJVVE2Y'),
 ('75683',	'https://www.youtube.com/watch?v=wxZT4LXXIp4'),
-('75684',	'https://www.youtube.com/watch?v=LhTwcqI71n0');
+('75684',	'https://www.youtube.com/watch?v=LhTwcqI71n0'),
+('75741',	'https://www.youtube.com/watch?v=ZWeEr_udCXM'),
+('75767',	'https://www.youtube.com/watch?v=8-k4Gn1_S0I'),
+('75773',	'https://www.youtube.com/watch?v=amyPCmf9jrw'),
+('75774',	'https://www.youtube.com/watch?v=3w5sepozKig'),
+('75775',	'https://www.youtube.com/watch?v=L8H58kiypGQ'),
+('75776',	'https://www.youtube.com/watch?v=O81_4VAson4'),
+('75780',	'https://www.youtube.com/watch?v=yF1rUhDRzG0'),
+('75819',	'https://www.youtube.com/watch?v=sgTJpyR5NrU'),
+('75820',	'https://www.youtube.com/watch?v=M4Yx4W3MIU8'),
+('75821',	'https://www.youtube.com/watch?v=RR67zZs4bmY'),
+('75842',	'https://www.youtube.com/watch?v=5rKLpmsjlWQ'),
+('75843',	'https://www.youtube.com/watch?v=UmcZNkYjY4s'),
+('75844',	'https://www.youtube.com/watch?v=Thrln5eWtbE'),
+('75845',	'https://www.youtube.com/watch?v=5tZ-HYpNL78'),
+('75849',	'https://www.youtube.com/watch?v=1KHmzzUMnTc');
 
--- 2021-02-23 13:13:50
+-- 2021-03-10 07:04:30

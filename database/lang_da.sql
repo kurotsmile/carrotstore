@@ -264,4 +264,4 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('account_view_no',	'Jeg vil ikke se denne konto'),
 ('account_view_18',	'Den konto, du er ved at se, kan indeholde kun seksuelt indhold');
 
--- 2021-02-23 13:00:36
+-- 2021-03-10 08:41:05

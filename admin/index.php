@@ -103,6 +103,17 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
         <span>(<span id="num_cart_show"><?php echo $data_count_product['c'];?></span>) Sản phẩm</span>
     </a>
 
+    <ul id="menu_work">
+<?php
+$query_list_app=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_app` ");
+while($item_app=mysqli_fetch_array($query_list_app)){
+?>
+    <li><a href="<?php echo $url_carrot_store.'/'.$item_app['url'];?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app"  title="<?php echo $item_app['name']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
+<?php
+}
+?>
+</ul>
+
     <div id="bar_menu">
     <a href="<?php echo $url_admin; ?>/?page_view=page_overview" <?php if($page_file=="page_overview"){ echo 'class="active"';} ?>> Tổng quan</a>
     <a href="<?php echo $url_admin; ?>/?page_view=page_product" <?php if($page_file=="page_product"){ echo 'class="active"';} ?>><span class="syn products" syn="products"></span> Quản lý sản phẩm</a>

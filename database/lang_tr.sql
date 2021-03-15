@@ -264,4 +264,4 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('account_view_no',	'Bu hesabı görmek istemiyorum'),
 ('account_view_18',	'Görüntülemek üzere olduğunuz hesap yalnızca yetişkinlere yönelik içerik barındırıyor olabilir');
 
--- 2021-02-23 12:59:20
+-- 2021-03-10 08:26:34

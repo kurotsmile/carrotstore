@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -136,8 +136,8 @@ INSERT INTO `app_my_girl_nl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (83,	'Speel muziek af vanaf mijn telefoon',	'Ik heb de muziek van je apparaat aangezet, ik wens je veel luisterplezier',	2,	1,	'#FF196C',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'nl',	0,	'',	'',	'',	1,	'',	1,	0,	0,	'851',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (84,	'chatgeschiedenis',	'Ik heb de chatgeschiedenis geopend, je kunt mijn en jij gesprekken bekijken',	1,	0,	'#70EBFF',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'nl',	1,	'',	'',	'',	2,	'',	1,	0,	0,	'831',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (85,	'chatgeschiedenis',	'Ik heb de chatgeschiedenis geopend, je kunt mijn en jij gesprekken bekijken',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'nl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
-(86,	'zing een liedje',	'Sugarfree - Comment ça va',	1,	0,	'#FFF419',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1166',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'sugarfree-comment-ca-va-86',	'https://carrotaudio.com/data_file/mp3/5ee2efbb6668f5ee2efbb666d6.mp3'),
-(87,	'zing een liedje',	'Małe TGD - Siema',	1,	0,	'#9CB4D9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'145',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ma-e-tgd-siema-87',	'https://carrotaudio.com/data_file/mp3/5ef0d09a7c0105ef0d09a7c059.mp3'),
-(88,	'zing een liedje',	'SLM - Kifesh',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'slm-kifesh-88',	'https://carrotaudio.com/data_file/mp3/5f0142e936a955f0142e936afd.mp3');
+(86,	'zing een liedje',	'Sugarfree - Comment ça va',	1,	0,	'#FFF419',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1166',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'sugarfree-comment-ca-va-86',	''),
+(87,	'zing een liedje',	'Małe TGD - Siema',	1,	0,	'#9CB4D9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'145',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ma-e-tgd-siema-87',	''),
+(88,	'zing een liedje',	'SLM - Kifesh',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'slm-kifesh-88',	'');
 
--- 2020-10-25 12:02:30
+-- 2021-03-10 08:39:10

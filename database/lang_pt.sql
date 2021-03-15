@@ -264,4 +264,4 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('account_view_no',	'Não quero ver esta conta'),
 ('account_view_18',	'A conta que você está prestes a visualizar pode conter conteúdo somente para adultos');
 
--- 2021-02-23 12:55:35
+-- 2021-03-10 07:21:51

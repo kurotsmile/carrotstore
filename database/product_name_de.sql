@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -18,7 +18,6 @@ INSERT INTO `product_name_de` (`id_product`, `data`) VALUES
 (104,	'Nach Kontakten suchen'),
 (105,	'Liebe oder keine Liebe'),
 (119,	'virtueller Liebhaber 3D'),
-(120,	'Virtueller Liebhaber'),
 (121,	'Virtueller Liebhaber 2'),
 (122,	'Schafe zählen - ins Bett gehen'),
 (123,	'Musik fürs Leben'),
@@ -26,12 +25,13 @@ INSERT INTO `product_name_de` (`id_product`, `data`) VALUES
 (128,	'Bibelwelt'),
 (130,	'AI Liebhaber'),
 (131,	'Netter virtueller Assistent'),
-(132,	'Mein Liebhaber'),
 (133,	'Schnelles Auge'),
 (134,	'Lauf mit mir'),
 (135,	'Speichern Sie das Web offline'),
 (139,	'Wurmmeister'),
 (138,	'Zahlenmagie'),
-(136,	'Passwort erstellen');
+(136,	'Passwort erstellen'),
+(120,	'Virtueller Liebhaber'),
+(132,	'Mein Liebhaber');
 
--- 2020-10-25 12:43:46
+-- 2021-03-10 07:48:55

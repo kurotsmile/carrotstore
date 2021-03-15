@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -19,4 +19,4 @@ TRUNCATE `app_my_girl_field_ar`;
 INSERT INTO `app_my_girl_field_ar` (`id_chat`, `type_chat`, `data`, `type`, `author`, `option`) VALUES
 ('271',	'chat',	'[[\"https://www.facebook.com/virtuallover/\",\"\",\"link\",\"Virtual lover\"]]',	'field_chat',	'unclear',	'0');
 
--- 2020-10-25 11:49:12
+-- 2021-03-10 08:25:03

@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -61,4 +61,4 @@ INSERT INTO `app_my_girl_msg_pl` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (16,	'bat_chuyen',	'W sezonie Covid 19 musisz uważać, aby nie skupiać się na zatłoczonych miejscach i nosić maskę gdziekolwiek jesteś!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pl',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (17,	'bat_chuyen',	'W sezonie Covid 19 musisz uważać, aby nie skupiać się na zatłoczonych miejscach i nosić maskę gdziekolwiek jesteś!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pl',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'2',	'0',	'0',	'0',	'');
 
--- 2020-10-25 12:01:13
+-- 2021-03-10 08:36:50

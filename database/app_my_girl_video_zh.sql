@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -533,7 +533,6 @@ INSERT INTO `app_my_girl_video_zh` (`id_chat`, `link`) VALUES
 ('6711',	'https://www.youtube.com/watch?v=qr9C5VWLGaw'),
 ('6712',	'https://www.youtube.com/watch?v=9CInTGdSTf0'),
 ('6713',	'https://www.youtube.com/watch?v=PBH7JY3Ldgk'),
-('6714',	'https://www.youtube.com/watch?v=aDSf3QoK3uQ'),
 ('6715',	'https://www.youtube.com/watch?v=7q2DrrQ33OQ'),
 ('6716',	'https://www.youtube.com/watch?v=9Vu83sxWPtA'),
 ('6717',	'https://www.youtube.com/watch?v=9WEYFqCUze8'),
@@ -617,6 +616,32 @@ INSERT INTO `app_my_girl_video_zh` (`id_chat`, `link`) VALUES
 ('7373',	'https://www.youtube.com/watch?v=z2KDv8Xj8wM'),
 ('7374',	'https://www.youtube.com/watch?v=hFxTpZpmYps'),
 ('7375',	'https://www.youtube.com/watch?v=VEi38LbRUak'),
-('7376',	'https://www.youtube.com/watch?v=euwpeHyWwTI');
+('7376',	'https://www.youtube.com/watch?v=euwpeHyWwTI'),
+('7409',	'https://www.youtube.com/watch?v=uXBfvtE4haE'),
+('7410',	'https://www.youtube.com/watch?v=TK7XIgszMNE'),
+('7411',	'https://www.youtube.com/watch?v=vWcVQZ-NQsg'),
+('7412',	'https://www.youtube.com/watch?v=fgWLAYFv9G0'),
+('7413',	'https://www.youtube.com/watch?v=TuADbqZIuRo'),
+('7414',	'https://www.youtube.com/watch?v=LbM6Q9HZgDE'),
+('7415',	'https://www.youtube.com/watch?v=sHNy8muYwdU'),
+('7416',	'https://www.youtube.com/watch?v=btjDxlXGBVs'),
+('7417',	'https://www.youtube.com/watch?v=_JkUAohki2o'),
+('7418',	'https://www.youtube.com/watch?v=OYbg6k85dO0'),
+('7419',	'https://www.youtube.com/watch?v=iyfvMgleceE'),
+('7420',	'https://www.youtube.com/watch?v=j4qVhOaRBSY'),
+('7421',	'https://www.youtube.com/watch?v=ShuiFwitJIM'),
+('7422',	'https://www.youtube.com/watch?v=22PF83zIW0k'),
+('7423',	'https://www.youtube.com/watch?v=fNnQqokjv_0'),
+('7424',	'https://www.youtube.com/watch?v=QOPTkoK0MXI'),
+('7435',	'https://www.youtube.com/watch?v=SQKFzrGuqqM'),
+('7436',	'https://www.youtube.com/watch?v=f9AYtduepEY'),
+('7509',	'https://www.youtube.com/watch?v=tqFqPL7ylfY'),
+('7531',	'https://www.youtube.com/watch?v=4rGJOSXFmwc'),
+('7658',	'https://www.youtube.com/watch?v=yFzQRMXEuqU'),
+('7659',	'https://www.youtube.com/watch?v=uCrhgnkqtEE'),
+('7660',	'https://www.youtube.com/watch?v=ulaK4F_PfVU'),
+('7661',	'https://www.youtube.com/watch?v=1v1CiLQXho8'),
+('7662',	'https://www.youtube.com/watch?v=6gq-ofyduxA'),
+('7674',	'https://www.youtube.com/watch?v=ssdFRk-wY0A');
 
--- 2020-10-25 12:24:51
+-- 2021-03-10 07:45:06

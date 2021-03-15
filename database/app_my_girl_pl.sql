@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -132,6 +132,7 @@ INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (82,	'Odtwarzaj muzykę z mojego telefonu',	'Włączyłem muzykę z twojego urządzenia, życzę szczęśliwego słuchania muzyki',	2,	0,	'#D72EFF',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'pl',	1,	'',	'',	'',	1,	'',	1,	0,	0,	'379',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (83,	'Odtwarzaj muzykę z mojego telefonu',	'Włączyłem muzykę z twojego urządzenia, życzę szczęśliwego słuchania muzyki',	2,	1,	'#FF196C',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'pl',	0,	'',	'',	'',	1,	'',	1,	0,	0,	'851',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (84,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	0,	'#70EBFF',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	1,	'',	'',	'',	2,	'',	1,	0,	0,	'831',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
-(85,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	'');
+(85,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
+(86,	'Zaśpiewaj piosenkę',	'Zeamsone - San Andreas',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'zeamsone-san-andreas-86',	'');
 
--- 2020-10-25 12:01:32
+-- 2021-03-10 08:37:06

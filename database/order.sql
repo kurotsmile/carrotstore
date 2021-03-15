@@ -69,6 +69,11 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('6010f395435bc6010f395435f7',	'23726',	'en',	'familyofqueens@bigpond.com',	'Paul',	'music',	1),
 ('60159d717949360159d71794cf',	'16072',	'en',	'sirjared.boden@gmail.com',	'Jared',	'music',	1),
 ('6024e44a5ba4d6024e44a5ba99',	'133',	'fi',	'ikrimey16@gmail.com',	'İkrime',	'music',	1),
-('602e662b3ed63602e662b3ed8d',	'27737',	'en',	'markus.kitzol@t-online.de',	'Markus',	'music',	0);
+('602e662b3ed63602e662b3ed8d',	'27737',	'en',	'markus.kitzol@t-online.de',	'Markus',	'music',	0),
+('603b1883709d4603b188370a0f',	'482',	'ja',	'SOPFIE@LIVE.CN',	'YUHUI',	'music',	0),
+('603bf9704cf5e603bf9704cf9a',	'75',	'de',	'rthalheim@web.de',	'René',	'music',	0),
+('603ec77045a0a603ec77045a46',	'18854',	'en',	'dadenewsham07@gmail.com',	'dade',	'music',	0),
+('6042ef80af2666042ef80af64e',	'27762',	'en',	'cit6377@gmail.com',	'태휘',	'music',	0),
+('6043fe33ec8f26043fe33ec92f',	'31890',	'en',	'Lgreenaway25@gmail.com',	'Laura',	'music',	0);
 
--- 2021-02-23 13:05:32
+-- 2021-03-10 06:52:24

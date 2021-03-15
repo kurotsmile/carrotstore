@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -151,10 +151,10 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (106,	'dam',	'Aujourd\'hui c\'est mercredi, une journée très ennuyeuse',	1,	0,	'#AFE0CA',	'',	'',	'',	'',	'',	0,	8,	8,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'622',	'Wednesday',	'',	'',	'0',	'0',	'0',	''),
 (107,	'dam',	'Septembre est le mois de l\'amour',	0,	3,	'#E3FF9C',	'',	'',	'',	'',	'',	0,	8,	2,	0,	'',	1,	1,	0,	'',	1,	0,	9,	'971',	'',	'',	'',	'0',	'0',	'0',	''),
 (108,	'dam',	'Septembre est le mois de l\'amour',	1,	3,	'#D1F2B8',	'',	'',	'',	'',	'',	0,	8,	2,	0,	'',	0,	1,	0,	'',	1,	0,	9,	'493',	'',	'',	'',	'0',	'0',	'0',	''),
-(109,	'dam',	'Octobre dans la rue est facile d\'être seul. Quand les gens ont le temps de se sentir seuls parce qu’ils oublient de porter des vêtements de rechange.',	0,	3,	'#ADFEFF',	'',	'',	'',	'',	'',	5,	8,	0,	0,	'',	1,	0,	0,	'',	1,	0,	10,	'623',	'',	'',	'',	'0',	'0',	'0',	''),
-(110,	'dam',	'Octobre dans la rue est facile d\'être seul. Quand les gens ont le temps de se sentir seuls parce qu’ils oublient de porter des vêtements de rechange.',	1,	3,	'#DEC7FF',	'',	'',	'',	'',	'',	5,	8,	0,	0,	'',	0,	0,	0,	'',	1,	0,	10,	'945',	'',	'',	'2',	'0',	'0',	'0',	''),
-(111,	'dam',	'Je vous souhaite beaucoup de surprises effrayantes, c\'est très amusant le jour de l\'Halloween',	0,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	29,	3,	0,	'',	1,	0,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(112,	'bat_chuyen',	'Je vous souhaite beaucoup de surprises effrayantes, c\'est très amusant le jour de l\'Halloween',	1,	1,	'#4DFFA0',	'',	'',	'',	'',	'',	0,	32,	2,	0,	'',	0,	0,	0,	'',	1,	30,	10,	'895',	'',	'',	'',	'0',	'0',	'0',	''),
+(109,	'dam',	'Octobre dans la rue est facile d\'être seul. Quand les gens ont le temps de se sentir seuls parce qu’ils oublient de porter des vêtements de rechange.',	0,	3,	'#ADFEFF',	'',	'',	'',	'',	'',	5,	8,	0,	0,	'',	1,	1,	0,	'',	1,	0,	10,	'623',	'',	'',	'',	'0',	'0',	'0',	''),
+(110,	'dam',	'Octobre dans la rue est facile d\'être seul. Quand les gens ont le temps de se sentir seuls parce qu’ils oublient de porter des vêtements de rechange.',	1,	3,	'#DEC7FF',	'',	'',	'',	'',	'',	5,	8,	0,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'945',	'',	'',	'2',	'0',	'0',	'0',	''),
+(111,	'dam',	'Je vous souhaite beaucoup de surprises effrayantes, c\'est très amusant le jour de l\'Halloween',	0,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	29,	3,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
+(112,	'bat_chuyen',	'Je vous souhaite beaucoup de surprises effrayantes, c\'est très amusant le jour de l\'Halloween',	1,	1,	'#4DFFA0',	'',	'',	'',	'',	'',	0,	32,	2,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'895',	'',	'',	'',	'0',	'0',	'0',	''),
 (113,	'bat_chuyen',	'Le mois de novembre est arrivé à votre façon. Faites-en un incroyable, peu importe si le temps est mauvais, car votre humeur n\'est pas bonne du tout, vous devez simplement vous tenir debout et être heureux.',	0,	1,	'#FFA747',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'957',	'',	'',	'4',	'0',	'0',	'0',	''),
 (114,	'bat_chuyen',	'Le mois de novembre est arrivé à votre façon. Faites-en un incroyable, peu importe si le temps est mauvais, car votre humeur n\'est pas bonne du tout, vous devez simplement vous tenir debout et être heureux.',	1,	2,	'#FF808A',	'',	'',	'',	'',	'',	0,	33,	15,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'997',	'',	'',	'4',	'0',	'0',	'0',	''),
 (115,	'hoi_tim_duong',	'Quelle adresse voulez-vous trouver? Je vous guiderai!',	0,	2,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -176,11 +176,11 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (132,	'dam',	'Février signifie un nouveau départ De l\'amour et de toutes les roses Alors soyez prêt pour cela Bon mois',	1,	1,	'#F4FF96',	'',	'',	'',	'',	'',	0,	20,	17,	0,	'',	0,	1,	0,	'',	1,	0,	2,	'424',	'',	'3',	'',	'0',	'0',	'0',	''),
 (133,	'bat_chuyen',	'Notre amour est comme un film d\'amour, mais la meilleure partie est qu\'il ne finit jamais. Joyeuse saint Valentin!',	1,	1,	'#FF8A93',	'',	'',	'',	'',	'',	0,	31,	17,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'1151',	'',	'3',	'2',	'0',	'0',	'0',	''),
 (134,	'dam',	'En ce jour de la Saint-Valentin, je désire vos doux baisers, votre chaude étreinte et la magie qui unit nos cœurs.',	1,	2,	'#FFADC5',	'',	'',	'',	'',	'',	0,	5,	17,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'15',	'',	'3',	'2',	'0',	'0',	'0',	''),
-(135,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	7,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(136,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(137,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(138,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(139,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(135,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	7,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(136,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(137,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(138,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(139,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
 (140,	'bat_chuyen',	'Avril est une promesse que May est tenue de tenir.',	0,	2,	'#3EF032',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	1,	1,	0,	'',	1,	0,	4,	'876',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (141,	'bat_chuyen',	'Avril est une promesse que May est tenue de tenir.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (142,	'bat_chuyen',	'Le mois de mai était arrivé, quand chaque cœur vigoureux commençait à fleurir et à porter des fruits',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'fr',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -203,4 +203,4 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (159,	'bat_chuyen',	'Pendant la saison de Covid 19, vous devez faire attention à ne pas vous concentrer sur les endroits bondés et porter un masque partout où vous allez!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (160,	'bat_chuyen',	'Pendant la saison de Covid 19, vous devez faire attention à ne pas vous concentrer sur les endroits bondés et porter un masque partout où vous allez!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2020-10-25 12:36:21
+-- 2021-03-10 07:28:45

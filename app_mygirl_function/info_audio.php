@@ -112,6 +112,31 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
     return true;
 }
 
+function vn_to_str_name($str)
+{
+    $unicode = array(
+        'a' => 'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
+        'd' => 'đ',
+        'e' => 'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+        'i' => 'í|ì|ỉ|ĩ|ị',
+        'o' => 'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+        'u' => 'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+        'y' => 'ý|ỳ|ỷ|ỹ|ỵ',
+        'A' => 'Á|À|Ả|Ã|Ạ|Ă|Ắ|Ặ|Ằ|Ẳ|Ẵ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ',
+        'D' => 'Đ',
+        'E' => 'É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ',
+        'I' => 'Í|Ì|Ỉ|Ĩ|Ị',
+        'O' => 'Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ',
+        'U' => 'Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự',
+        'Y' => 'Ý|Ỳ|Ỷ|Ỹ|Ỵ',
+    );
+
+    foreach ($unicode as $nonUnicode => $uni) {
+        $str = preg_replace("/($uni)/i", $nonUnicode, $str);
+    }
+    return $str;
+}
+
 require_once("getid3/getid3.php");
 require_once('getid3/write.php');
 $id_file = $_GET['id'];
@@ -139,14 +164,18 @@ if(isset($_POST['song_title'])) {
     $id_file = $_POST['id_file'];
 
     $song_title = trim($_POST['song_title']);
+    $song_title=vn_to_str_name($song_title);
     $song_artist = trim($_POST['song_artist']);
+    $song_artist=vn_to_str_name($song_artist);
     $song_album = trim($_POST['song_album']);
+    $song_album=vn_to_str_name($song_album);
     $song_year = trim($_POST['song_year']);
     $song_genre = trim($_POST['song_genre']);
     $song_genre=str_replace("&"," and ",$song_genre);
     $song_comment = trim($_POST['song_comment']);
     $song_lang = $_POST['song_lang'];
-    $song_lyrics = addslashes($_POST['song_lyrics']);
+    $song_lyrics = trim($_POST['song_lyrics']);
+    $song_lyrics=vn_to_str_name($song_lyrics);
 
     $TextEncoding = 'UTF-8';
 

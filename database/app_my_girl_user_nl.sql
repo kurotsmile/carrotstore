@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -26,4 +26,4 @@ TRUNCATE `app_my_girl_user_nl`;
 INSERT INTO `app_my_girl_user_nl` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `address`, `sdt`, `status`, `email`, `avatar_url`, `password`) VALUES
 ('113237668453466205169',	'Vurgil Bossi',	'0',	'2020-07-28',	'2020-07-29',	'',	'',	0,	'bvurgil@gmail.com',	'https://lh5.googleusercontent.com/-y4yqaSzf87o/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnrlLsPsFRsidJEUd7nukKPi30R6A/s96-c/photo.jpg',	'');
 
--- 2020-10-24 15:19:56
+-- 2021-03-10 08:37:37

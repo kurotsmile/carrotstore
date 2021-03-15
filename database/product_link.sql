@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -29,8 +29,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (105,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/maxim-flower-garden/9nqqbl6nkm2v?activetab=pivot:overviewtab'),
 (105,	'fa-play',	'Carrot store',	'http://carrotstore.com/quote'),
 (119,	'fa-android',	'Google Play',	'http://carrotstore.com/product_data/119/virtual3d.apk'),
-(120,	'fa-windows',	'Microsoft Store',	'https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl'),
-(120,	'fa-android',	'Google Play',	'https://www.microsoft.com/store/productId/9NSG2344SGX8'),
 (121,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.nguoiyeuao'),
 (122,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.demcuu3d'),
 (122,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.kurotsmile.demcuu3d'),
@@ -50,8 +48,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (131,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.cutelover'),
 (131,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.cutelover'),
 (131,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9MSW2143779F'),
-(132,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.mylover'),
-(132,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.mylover'),
 (133,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.quickeye'),
 (133,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.quickeye'),
 (133,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P2MFZJ17P7D'),
@@ -271,6 +267,12 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (280,	'fa-codepen',	'PlayStation Store',	'https://store.playstation.com/en-us/product/UP2187-CUSA15193_00-VSPS4SIEADIGI001'),
 (281,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/459080/YIIK_A_Postmodern_RPG/'),
 (281,	'fa-codepen',	'PlayStation Store',	'https://store.playstation.com/en-us/product/UP2251-CUSA13180_00-YIIKPOMORPGACKK1'),
-(228,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/253330/Neverending_Nightmares/');
+(228,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/253330/Neverending_Nightmares/'),
+(120,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9NSG2344SGX8'),
+(120,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl'),
+(282,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.appai'),
+(132,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.mylover'),
+(132,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.mylover'),
+(283,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano');
 
--- 2020-10-23 09:42:49
+-- 2021-03-10 06:47:38

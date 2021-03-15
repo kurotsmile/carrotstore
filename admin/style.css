@@ -619,3 +619,9 @@ background-position: right center;
 .tag_data_syn.lost{background-color: red;}
 .tag_data_syn.colon{background-color: #f9a804;}
 .tag_data_syn.check{background-color: #00d9ff;}
+
+#menu_work{ float: left;list-style: none;width: 100%;background-color: #ff8303;padding: 0px;margin: 0px;}
+#menu_work li{float: left;margin: 2px;padding: 4px;}
+#menu_work a{color: black;}
+#menu_work a img{float: left;margin-right:2px;}
+#menu_work a .name{margin-top: 2px;float: left;}
