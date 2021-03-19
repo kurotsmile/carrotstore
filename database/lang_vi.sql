@@ -262,6 +262,18 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('warning',	'Cảnh báo'),
 ('account_view_yes',	'Tôi muốn tiếp tục xem tài khoản này'),
 ('account_view_no',	'Tôi không muốn xem tài khoản này'),
-('account_view_18',	'Tài khoản mà bạn sắp xem có thể chứa nội dung chỉ phù hợp với người lớn');
+('account_view_18',	'Tài khoản mà bạn sắp xem có thể chứa nội dung chỉ phù hợp với người lớn'),
+('download_app_piano_tip',	'Đánh đàn và học đàn mọi lúc với ứng dụng ở dụng dưới đây để thỏa chí đam mê'),
+('hoc_dan_piano',	'Học đàn Piano'),
+('tac_gia',	'Tác giả'),
+('cap_do',	'Cấp độ'),
+('toc_do_nhip',	'Tốc độ đánh nhịp'),
+('so_not_nhac',	'Số nốt nhạc'),
+('ten_bai_hat',	'Tên bài nhạc'),
+('level_de',	'Dễ dàng'),
+('level_trung_binh',	'bình thường'),
+('level_kho',	'Khó'),
+('level_sieu_kho',	'Siêu khó'),
+('midi_info',	'Thông tin của bản saọn thảo Midi đàn  dương cầm');
 
--- 2021-03-10 06:53:16
+-- 2021-03-17 17:53:30

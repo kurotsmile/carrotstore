@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON `carrotsy_piano`.* TO 'carrotsy_carrot'@'localhost'
+FLUSH PRIVILEGES;

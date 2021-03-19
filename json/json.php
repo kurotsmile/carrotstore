@@ -74,6 +74,11 @@ if($_GET||$_POST){
             $list_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `chat` LIKE '%$key%' ORDER BY RAND() LIMIT 30");
             include "page_quote.php";
         }
+
+        if($type=='piano'){
+            $query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`author` FROM  carrotsy_piano.`midi` WHERE `name` LIKE '%$key%' ORDER BY RAND() LIMIT 50");
+            include "page_piano.php";
+        }
         exit; 
     }
 

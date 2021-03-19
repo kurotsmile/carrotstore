@@ -179,6 +179,7 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (120,	'Virtual lover'),
 (282,	'My virtual lover'),
 (132,	'My Lover'),
-(283,	'Midi Piano Editor');
+(283,	'Midi Piano Editor'),
+(284,	'Fish of prey');
 
--- 2021-03-10 07:02:02
+-- 2021-03-15 19:29:32

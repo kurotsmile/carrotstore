@@ -4,6 +4,34 @@ if(isset($_GET['lang'])){
     $lang=$_GET['lang'];
 }
 
+$limit = '50';
+$query_count_all = mysqli_query($link,"SELECT COUNT(`key`) as c FROM `lang_$lang`");
+$data_count_all_acc = mysqli_fetch_assoc($query_count_all);
+$total_records =intval($data_count_all_acc['c']);
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$total_page = ceil($total_records / $limit);
+if ($current_page > $total_page) {
+    $current_page = $total_page;
+} else if ($current_page < 1) {
+    $current_page = 1;
+}
+$start = ($current_page - 1) * $limit;
+?>
+<div id="filter">
+    <strong>Trang:</strong>
+    <?php
+        for($i=1;$i<=$total_page;$i++){
+            ?>
+            <a <?php if($i==$current_page){ echo 'class="active"';}?> href="<?php echo $url;?>/admin/?page_view=page_lang&sub_view=lang_key&<?php echo '&page='.$i;?>" ><?php echo $i;?></a>
+            <?php
+        }
+    ?>
+    <span> / trong </span>
+    <span><?php echo $total_records; ?></span>
+    <span>Từ khóa</span>
+</div>
+
+<?php
 if(isset($_GET['delete'])){
     $key_delete=$_GET['delete'];
     $query_list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country`");
@@ -20,9 +48,10 @@ if(isset($_GET['delete'])){
     }
 }
 ?>
+
 <table>
 <?php
-$query_list_key=mysqli_query($link,"SELECT `key`,`value` FROM `lang_$lang`");
+$query_list_key=mysqli_query($link,"SELECT `key`,`value` FROM `lang_$lang` limit $start,$limit");
 while($row_key=mysqli_fetch_assoc($query_list_key)){
     echo '<tr>';
     echo '<td>'.$row_key['key'].'</td>';
@@ -33,3 +62,17 @@ while($row_key=mysqli_fetch_assoc($query_list_key)){
 }
 ?>
 </table>
+
+<div id="filter">
+    <strong>Trang:</strong>
+    <?php
+        for($i=1;$i<=$total_page;$i++){
+            ?>
+            <a <?php if($i==$current_page){ echo 'class="active"';}?> href="<?php echo $url;?>/admin/?page_view=page_lang&sub_view=lang_key&<?php echo '&page='.$i;?>" ><?php echo $i;?></a>
+            <?php
+        }
+    ?>
+    <span> / trong </span>
+    <span><?php echo $total_records; ?></span>
+    <span>Từ khóa</span>
+</div>

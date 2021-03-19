@@ -47,8 +47,8 @@ if(isset($_GET['page'])){
 	<a href="<?php echo $url_page;?>&type=carrot_app" <?php if($type_view_app=='carrot_app'){?>style="color:yellow;"<?php }?>><i class="fa fa-space-shuttle" aria-hidden="true"></i> Carrot App</a>
 	<a href="<?php echo $url_page;?>&type=other_app" <?php if($type_view_app=='other_app'){?>style="color:yellow;"<?php }?>><i class="fa fa-product-hunt" aria-hidden="true"></i> Othe App</a>
 </div>
-<div style="float: left;width: 100%;">
 
+<div style="float: left;width: 100%;">
 <?php
 if(mysqli_num_rows($result)>0){
     include "page_product_manager_template.php";
@@ -58,5 +58,21 @@ if(mysqli_num_rows($result)>0){
 <?php
 }
 ?>
+</div>
+
+<div id="filter">
+    <strong>Trang:</strong>
+    <?php
+        for($i=0;$i<$number_page;$i++){
+            ?>
+            <a <?php if($i==$page){ echo 'class="active"';}?> href="<?php echo $url_page.'&page='.$i;?>" ><?php echo $i+1;?></a>
+            <?php
+        }
+    ?>
+    <span> / trong </span>
+    <span><?php echo $toal_row; ?></span>
+    <span>Sản phẩm</span>
+	<a href="<?php echo $url_page;?>&type=carrot_app" <?php if($type_view_app=='carrot_app'){?>style="color:yellow;"<?php }?>><i class="fa fa-space-shuttle" aria-hidden="true"></i> Carrot App</a>
+	<a href="<?php echo $url_page;?>&type=other_app" <?php if($type_view_app=='other_app'){?>style="color:yellow;"<?php }?>><i class="fa fa-product-hunt" aria-hidden="true"></i> Othe App</a>
 </div>
 

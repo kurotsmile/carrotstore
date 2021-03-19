@@ -6,6 +6,9 @@ $id_device='b8aab5bff0258b764ea64e5a8cc1dfb2aad4a9c6';
 $speed_midi='0,2';
 $name_midi='New Midi';
 $sell_midi=0;
+$category_midi="";
+$level_midi="";
+$author_midi="";
 
 $arr_note_white=array('c2','d2','e2','f2','g2','a2','b2','c3','d3','e3','f3','g3','a3','b3','c4','d4','e4','f4','g4','a4','b4','c5','d5','e5','f5','g5','a5','b5','c6','d6','e6','f6','g6','a6','b6','c7');
 $arr_pc_note_white=array('1','2','3','4','5','6','7','8','9','0','q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m');
@@ -66,6 +69,8 @@ if($id_midi!=''){
     $name_midi=$data_midi['name'];
     $speed_midi=$data_midi['speed'];
     $sell_midi=$data_midi['sell'];
+    $level_midi=$data_midi['level'];
+    $author_midi=$data_midi['author'];
 
     $data_line_0=json_decode($data_midi['data0']);
     $data_line_1=json_decode($data_midi['data1']);
@@ -91,12 +96,12 @@ if($id_midi!=''){
 <table style="float:left">
     <tr>
         <td>Tên midi</td>
-        <td><input id="name_midi" value="<?php echo $name_midi;?>"></td>
+        <td><input type="text" id="name_midi" value="<?php echo $name_midi;?>"></td>
     </tr>
 
     <tr>
         <td>Tốc độ đánh</td>
-        <td><input id="speed_midi" value="<?php echo $speed_midi;?>"></td>
+        <td><input type="text" id="speed_midi" value="<?php echo $speed_midi;?>"></td>
     </tr>
 
     <tr>
@@ -106,6 +111,37 @@ if($id_midi!=''){
                 <option value="0" <?php if($sell_midi=='0'){ echo 'selected=true'; };?>>Bản nháp</option>
                 <option value="1" <?php if($sell_midi=='1'){ echo 'selected=true'; };?>>Xuất bản</option>
                 <option value="2" <?php if($sell_midi=='2'){ echo 'selected=true'; };?>>Thương mại hóa</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Cấp độ</td>
+        <td>
+            <select id="level_midi">
+                <option value="0" <?php if($level_midi=='0'){ echo 'selected=true'; };?>>Dễ</option>
+                <option value="1" <?php if($level_midi=='1'){ echo 'selected=true'; };?>>Trung bình</option>
+                <option value="2" <?php if($level_midi=='2'){ echo 'selected=true'; };?>>Khó</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Tác gải</td>
+        <td><input type="text" id="author_midi" value="<?php echo $author_midi;?>"></td>
+    </tr>
+
+    <tr>
+        <td>Chủ đề</td>
+        <td>
+            <select id="category_midi">
+                <option value="" <?php if($category_midi==''){ echo 'selected=true'; };?>>Không chọn</option>
+                <?php
+                    $query_list_category=mysqli_query($link,"SELECT `name` FROM `category`");
+                    while($row_category=mysqli_fetch_assoc($query_list_category)){
+                ?>
+                    <option value="<?php echo $row_category['name'];?>" <?php if($category_midi==$row_category['name']){ echo 'selected=true'; };?>><?php echo $row_category['name'];?></option>
+                <?php } ?>
             </select>
         </td>
     </tr>
@@ -156,8 +192,6 @@ if($id_midi!=''){
     </div>
 </div>
 
-<div id="pc_edit">
-    <div class="line" id="pc_edit_all_item">
         <?php
             $txt_pc_key='';
             for($i=0;$i<count($data_line_0);$i++){
@@ -167,14 +201,13 @@ if($id_midi!=''){
                 }else{
                     $txt_pc_key.=$txt_show;
                 }
-                echo '<div class="midi">'.$txt_show.'</div>';
             }
         ?>
-    </div>
-</div>
 
-<textarea rows="9" cols="70" id="midi_pc"><?php echo $txt_pc_key;?></textarea>
-<br/>
+
+<textarea rows="9" cols="70" id="midi_pc" style="width:100%;float:left;"><?php echo $txt_pc_key;?></textarea>
+
+<div style="width:100%;float:left;">
 <span class="buttonPro small" onclick="conver_pc_to_midi_auto();return false;"><i class="fa fa-compress" aria-hidden="true"></i> Tự động </span>
 <span id="btn_delete_midi_sel" class="buttonPro small red" onclick="delete_midi_sel();"><i class="fa fa-trash" aria-hidden="true"></i> Xóa cột midi </span>
 <span id="btn_empty_midi_sel" class="buttonPro small red" onclick="empty_midi_sel();"><i class="fa fa-eraser" aria-hidden="true"></i> Làm rỗng</span>
@@ -189,6 +222,7 @@ if($id_midi!=''){
 <?php }else{?>
     <span class="buttonPro green" onclick="save_midi('add');return false;"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm mới Midi </span>
 <?php }?>
+</div>
 
 <script>
 var id_midi='<?php echo $id_midi;?>';
@@ -243,6 +277,7 @@ function add_line_midi_empty(index_line){
 
 function conver_pc_to_midi_auto(){
     var midi_pc=$("#midi_pc").val().replace(/\n|\r/g, " ");
+    midi_pc=midi_pc.replace("-", " ");
     var arr_pc_data=midi_pc.split(" ");
 
     $("#midi_edit_line0").html('');
@@ -252,16 +287,17 @@ function conver_pc_to_midi_auto(){
     for(var i=0;i<arr_pc_data.length;i++){
         var s_txt=arr_pc_data[i];
         if(s_txt.length==1){
-            add_line_midi(s_txt,0);
-            add_line_midi_empty(1);
-            add_line_midi_empty(2);
-        }else{
-            if(s_txt[0]=='|'){
+            if(s_txt=='|'){
                 add_line_midi_empty(0);
                 add_line_midi_empty(1);
                 add_line_midi_empty(2);
+            }else{
+                add_line_midi(s_txt,0);
+                add_line_midi_empty(1);
+                add_line_midi_empty(2);
             }
-            else if(s_txt[0]=='['){
+        }else{
+            if(s_txt[0]=='['){
                 if(s_txt.length==3){
                     add_line_midi(s_txt[1],0);
                     add_line_midi_empty(1);
@@ -405,7 +441,9 @@ function save_midi(type_act){
 
                 data_line2:JSON.stringify(piano_index_arr3),
                 data_type2:JSON.stringify(piano_type_arr3),
-
+                category:$("#category_midi").val(),
+                level_midi:$("#level_midi").val(),
+                author_midi:$("#author_midi").val(),
                 id:id_midi,
                 act:type_act,
                 name_midi:midi_name,

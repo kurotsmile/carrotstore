@@ -328,6 +328,5 @@ if(mysqli_num_rows($list_music)>0){
 ?>
 </div>
 <?php }?>
-
 </div>
 

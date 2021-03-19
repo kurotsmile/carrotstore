@@ -262,6 +262,18 @@ INSERT INTO `lang_en` (`key`, `value`) VALUES
 ('warning',	'Warning'),
 ('account_view_yes',	'I want to continue viewing this account'),
 ('account_view_no',	'I do not want to see this account'),
-('account_view_18',	'The account you\'re about to view may contain adult-only content');
+('account_view_18',	'The account you\'re about to view may contain adult-only content'),
+('download_app_piano_tip',	'Play and learn all the time with the application below to delight your passion'),
+('hoc_dan_piano',	'Piano'),
+('tac_gia',	'Author'),
+('cap_do',	'Level'),
+('toc_do_nhip',	'Beat speed'),
+('so_not_nhac',	'Number of musical notes'),
+('ten_bai_hat',	'Name of the track'),
+('level_de',	'Easy'),
+('level_trung_binh',	'normal'),
+('level_kho',	'Difficult'),
+('level_sieu_kho',	'Super difficult'),
+('midi_info',	'Information of Midi piano compositions');
 
--- 2021-02-23 12:53:44
+-- 2021-03-17 17:53:51

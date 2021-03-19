@@ -92,8 +92,6 @@ if(isset($_SESSION['user_login'])) {
 include "json/json.php";
 include "json/json2.php";
 
-
-
 $page_file = "page_view.php";
 if(isset($_GET['page_view'])) {
     $page_file = $_GET['page_view'];
@@ -115,26 +113,13 @@ include "header.php";
     <a href="<?php echo $url; ?>"><img alt="Store Carrot" src="<?php echo $url; ?>/images/logo.png" id="logo" class="url_carrot"/></a>
     <?php
     $type = 'products';
-    $icon_search = '<i class="fa fa-product-hunt" aria-hidden="true"></i>';
-
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_music.php") {
-        $type = 'music';
-        $icon_search = '<i class="fa fa-music" aria-hidden="true"></i>';
-    }
-
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_quote.php") {
-        $type = 'quote';
-        $icon_search = '<i class="fa fa-quote-left" aria-hidden="true"></i>';
-    }
-
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_member.php") {
-        $type = 'accounts';
-        $icon_search = '<i class="fa fa-users" aria-hidden="true"></i>';
-    }
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_music.php") {$type='music';}
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_quote.php") {$type='quote';}
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_member.php") {$type='accounts';}
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_piano.php") {$type='piano';}
     ?>
     <div class="" id="tool_search">
-        <input type="text" placeholder="<?php echo lang($link,'tip_search'); ?>" onchange="search_product(this.value)"
-               name="search" class="inp" id="inp_search"/>
+        <input type="text" placeholder="<?php echo lang($link,'tip_search'); ?> " onchange="search_product(this.value)" name="search" class="inp" id="inp_search"/>
         <span id="proccess" style="display: none;float: left;"> <?php echo lang($link,'dang_xu_ly'); ?></span>
     </div>
 
@@ -144,8 +129,8 @@ include "header.php";
             $("#inp_search").prop('disabled', true);
             $.ajax({
                 url: "<?php echo $url; ?>/index.php",
-                type: "get", //kiểu dũ liệu truyền đi
-                data: "function=search_product&key=" + key_search + "&type=<?php echo $type ?>", //tham số truyền vào
+                type: "get",
+                data: "function=search_product&key=" + key_search + "&type=<?php echo $type ?>",
                 success: function (data, textStatus, jqXHR) {
                     $("#inp_search").prop('disabled', false);
                     $('#containt').html(data);
@@ -187,6 +172,7 @@ include "header.php";
         <a href="<?php echo $url; ?>/member" <?php if ($page_file == "page_member.php") { echo 'class="active"';} ?>><?php echo lang($link,'luu_tru_lien_he'); ?></a>
         <a href="<?php echo $url; ?>/music" <?php if ($page_file == "page_music.php") { echo 'class="active"';} ?>><?php echo lang($link,'am_nhac_cho_cuoc_song'); ?></a>
         <a href="<?php echo $url; ?>/quote" <?php if ($page_file == "page_quote.php") { echo 'class="active"';} ?>><?php echo lang($link,'trich_dan'); ?></a>
+        <a href="<?php echo $url; ?>/piano" <?php if ($page_file == "page_piano.php") { echo 'class="active"';} ?>><?php echo lang($link,'hoc_dan_piano'); ?></a>
         <a href="<?php echo $url; ?>/privacy_policy" <?php if ($page_file == "page_privacy_policy.php") { echo 'class="active"';} ?>><?php echo lang($link,'gioi_thieu'); ?></a>
         
         <?php

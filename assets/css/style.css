@@ -1279,7 +1279,7 @@ pre code{
 }
 
 #share_link li a:hover {
-    color: yellow;
+    color: orange;
 }
 
 .music_color{
@@ -1740,6 +1740,99 @@ textarea:focus {
 #box_pay{
     margin: 5px;border-radius:2px;background-color: white;padding: 10px;max-width: 400px;margin-left: auto;margin-right: auto;min-height: 400px;
 }
+
+#piano_title{
+    width:100%;
+    float:left;
+    background-color: green;
+    text-align: center;color:white;
+    font-size:20px;
+    padding-top:10px;
+    padding-bottom:20px;
+}
+#piano_title .btn{color: white;}
+#piano_title .btn:hover{color: orange;}
+#piano_title .btn.left{float: left;margin-left: 5px;}
+#piano_title .btn.right{float: right;margin-right: 5px;}
+#piano{
+    width:100%;
+    float:left;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 172px;
+    background-color: green;
+}
+#piano #note_white{width:1800px;float:left;}
+#piano #note_white .note{ width: 2.5%;
+    float: left;height:100px;background-color: white;
+    text-align: center;
+    border: solid 1px green;    height: 150px;
+}
+#piano #note_black{
+    float: left;
+    position: relative;
+    left: 34px;
+    top: -155px;
+    width: 1800px;}
+#note_white .note{width: 30px;float: left;height: 80px;border: solid 1px grey;margin: 1px;text-align: center;cursor: pointer;}
+#note_white .note span{margin-top: 100px;float: left;text-align: center;width: 100%;}
+#note_white .note span.key_name{margin-top: 0px;
+    font-size: 11px;
+    color: slategray;}
+#note_white .note span.key_pc{background-color: #f7f7f761;
+    color: forestgreen;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 3px;
+    padding-bottom: 3px;}
+#note_black .note{
+    width: 30px;
+    float: left;
+    height: 80px;
+    border: solid 1px green;
+    margin: 1px;
+    text-align: center;
+    background-color: #008000;
+    color: white;
+    margin-right: 16.5px;
+    cursor: pointer;}
+#piano #note_white .note.sel{background-color: orange;}
+#note_black .note span{margin-top: 17px;float: left;text-align: center;width: 100%;font-size: 10px;}
+#note_black .note.sel{background-color: orange;color: black;}
+#note_black .note.none{border: unset;background-color: unset;}
+
+#editor{
+    width:100%;
+    float:left;
+}
+#editor_control{
+    width: 5%;
+    float: left;
+    text-align: center;
+    padding-top: 28px;
+}
+#editor_control .btn{cursor: pointer;color:green;}
+#editor_control .btn:hover{color: #ff5e00;}
+#editor_data{
+    width:95%;
+    float:left;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+#editor_all_line{width:100%;float:left;}
+#editor_all_line .line{width:100%;float:left;}
+#editor_all_line .line .midi{
+    width: 33px;
+    height: 30px;
+    background-color: white;
+    float: left;
+    margin: 3px;
+    text-align: center;
+    line-height: 33px;cursor: pointer;border-radius: 3px;
+}
+#editor_all_line .line .midi.sel{background-color: orange;}
+#editor_all_line .line .midi.play{background-color: green;color:white;}
+#piano_lyrics{float:left;width:100%;background-color:white;word-wrap: break-word;}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
     #btn_dark_mode{background-color:green;color:white;}

@@ -28,6 +28,7 @@ if(isset($_GET['view'])){
 <div id="menu_head">
     <a href="<?php echo $url;?>" class="title">Piano Carrot</a>
     <a href="<?php echo $url;?>?view=edit" class="item_menu" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm mới</a>
+    <a href="<?php echo $url;?>?view=category" class="item_menu" ><i class="fa fa-list" aria-hidden="true"></i> Chủ đề</a>
 </div>
 <?php
     include "page_".$page_view.".php";

@@ -78,4 +78,5 @@ tr:nth-child(even) {background-color: white}
 #pc_edit{width: 95%;float: left;border: solid 3px rgb(108, 0, 129);margin: 5px;overflow-x: scroll;}
 #pc_edit .line{width: 100%;float: left; width: 9100%;}
 #pc_edit .line .midi{float: left;width: 30px;background-color: rgb(248, 91, 0);margin: 3px;color: white;text-align: center;}
-input,textarea{border: solid 3px blueviolet;}
+input[type=text],textarea{border: solid 3px blueviolet;}
+.bar_page{width: 100%;float: left;background-color: rgb(25, 2, 48);color: wheat;padding-top: 5px;padding-bottom: 5px;}

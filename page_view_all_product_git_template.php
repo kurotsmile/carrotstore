@@ -7,7 +7,7 @@ if(trim($row['slug'])!=''){
 }
 $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
 $data_type=mysqli_fetch_assoc($query_type);
-    $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
+$p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
 ?>
             <div id="row<?php echo $row['id']; ?>" class="app" oncontextmenu="show_menu_app(this,1);return false;">
                 <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>"><h1><span class="<?php echo $data_type['css_icon'];?>"></span> <?php echo $p_name_product; ?></h1></a></div>

@@ -39,6 +39,8 @@ RewriteRule    ^privacy_policy    index.php?page_view=page_privacy_policy.php   
 RewriteRule    ^copyright    index.php?page_view=page_privacy_policy.php   [NC,L]
 RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&view=info_quote&id=$1&lang=$2
 RewriteRule    ^quote    index.php?page_view=page_quote.php   [NC,L]
+RewriteRule    ^piano/([^/]*)?$   index.php?page_view=page_piano.php&view=detail&id=$1
+RewriteRule    ^piano    index.php?page_view=page_piano.php   [NC,L]
 RewriteRule    ^oauth oauth.php
 RewriteRule    ^remove_block_ads index.php?page_view=page_remove_block_ads.php  [NC,L]
 RewriteRule    ^404 index.php?page_view=404.php
@@ -56,7 +58,7 @@ RewriteRule    ^saveweboffline   app_mobile/saveweboffline/index.php
 RewriteRule    ^remote   app_mobile/remotepc/index.php
 RewriteRule    ^pc   app_mobile/remotepc/action.php
 RewriteRule    ^ajaxpc   app_mobile/remotepc/ajaxpc.php
-RewriteRule    ^piano   app_mobile/piano/index.php [NC,L]
+RewriteRule    ^midi   app_mobile/piano/index.php [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

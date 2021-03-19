@@ -1,7 +1,6 @@
 <?php
-$name_host='carrot.ddns.net';
-//$name_host='14.236.117.1';
-$name_host='localhost';
+$name_host='carrot.servehttp.com';
+//$name_host='localhost';
 $ch_url='https://play.google.com/store/apps/details?id=';
 $itune_url='https://itunes.apple.com/us/app/';
 $paypal_url='https://www.paypal.com/cgi-bin/webscr';
