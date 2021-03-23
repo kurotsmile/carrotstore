@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('warning',	'警告'),
 ('account_view_yes',	'我想继续查看此帐户'),
 ('account_view_no',	'我不想看到这个帐户'),
-('account_view_18',	'您要查看的帐户可能包含成人内容');
+('account_view_18',	'您要查看的帐户可能包含成人内容'),
+('download_app_piano_tip',	'始终使用下面的应用程序进行游戏和学习，以激发您的激情'),
+('hoc_dan_piano',	'钢琴'),
+('tac_gia',	'作者'),
+('cap_do',	'等级'),
+('toc_do_nhip',	'节拍速度'),
+('so_not_nhac',	'音符数'),
+('ten_bai_hat',	'曲目名称'),
+('level_de',	'简单'),
+('level_trung_binh',	'普通的'),
+('level_kho',	'难的'),
+('level_sieu_kho',	'超级难'),
+('midi_info',	'信息Midi钢琴作品'),
+('setting_piano',	'钢琴设定'),
+('setting_piano_key_pc',	'显示电脑键盘标签'),
+('setting_piano_key_name',	'显示音符名称'),
+('midi_show_pc_key',	'将Midi音乐频谱编码为计算机键盘'),
+('tao_moi_midi',	'在线创建Midi'),
+('midi_add_line',	'新增行'),
+('midi_add_column',	'添加栏'),
+('midi_del_row',	'删除一行'),
+('midi_del_col',	'删除栏'),
+('midi_empty',	'清空MIDI'),
+('midi_form_pc',	'从PC文本创建midi'),
+('midi_add_line_tip',	'添加新行以创建不同的演奏流，例如指板和弦，同时演奏时最多只能创建10条对应于10个手指的行。'),
+('midi_add_column_tip',	'添加一个空列以在给定的时间相对于演奏者的节拍速度在和弦之间创建一个时间间隔，或者创建一个草稿栏，以便您以后可以插入品格。'),
+('midi_del_row_tip',	'删除一行，同时删除所选行中的所有midi音符'),
+('midi_del_col_tip',	'删除一列意味着删除所选列中的Midi音符'),
+('midi_empty_tip',	'清空便笺，当尚未记录便会将其恢复为原始状态'),
+('midi_form_pc_tip',	'输入计算机文本以创建相应的Midi'),
+('midi_help',	'MIDI编辑器手册'),
+('midi_help_tip',	'借助钢琴仿真器和Midi编辑器，您可以轻松创建自己的音乐或为您的系统贡献您现有的作品，如果您是初学者我们的Midi创作者，请花几分钟阅读以下手册，以轻松使用此功能的全部功能 工具。'),
+('midi_use',	'基本用途'),
+('midi_use1',	'按下计算机键盘上与每个钢琴键上的符号标记相对应的键，以记录在midi编辑器中添加音符的动作。'),
+('midi_use2',	'要编辑一个Midi音符，只需单击Midi音符，然后按另一个键来替换选定的Midi。'),
+('midi_use3',	'通过单击Midi工具栏中的添加线按钮为轨道创建和弦。 然后，您将创建一个附加线程来记录新笔记'),
+('midi_use4',	'Midi编辑器工具栏包括：'),
+('midi_publish_success',	'成功发布您的钢琴Midi初稿后，我们将尽快批准并发布此初稿。 谢谢您的创造性贡献'),
+('midi_publish',	'发布'),
+('midi_erro_no_name',	'该杰作无法出版！ 因为您尚未命名您的Midi产品'),
+('midi_erro_no_data',	'尚无MIDI数据，请在发布前创建内容'),
+('midi_export',	'导出Midi文件（.mid）'),
+('midi_export_success',	'成功导出Midi（.mid）文件！'),
+('midi_export_tip',	'从Midi创建中间文件以在计算机或移动设备上欣赏或收听'),
+('midi_publish_tip',	'将您的作品发布给全世界，让每个人都可以欣赏，或者为中曲创作。 我们将审核您的Midi组成并对其进行编辑以匹配系统的存档'),
+('midi_download',	'MIDI音乐下载');
 
--- 2021-03-10 07:38:58
+-- 2021-03-23 08:01:07

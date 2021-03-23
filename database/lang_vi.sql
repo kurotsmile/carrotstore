@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -274,6 +274,39 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('level_trung_binh',	'bình thường'),
 ('level_kho',	'Khó'),
 ('level_sieu_kho',	'Siêu khó'),
-('midi_info',	'Thông tin của bản saọn thảo Midi đàn  dương cầm');
+('midi_info',	'Thông tin của bản saọn thảo Midi đàn  dương cầm'),
+('setting_piano',	'Cài đặt trình đánh piano'),
+('setting_piano_key_pc',	'Hiển thị nhãn bàn phím máy tính '),
+('setting_piano_key_name',	'Hiển thị tên nốt nhạc'),
+('midi_show_pc_key',	'Mã hóa phổ nhạc midi dưới dạng bàn phím máy tính'),
+('tao_moi_midi',	'Tạo mới midi'),
+('midi_add_line',	'Thêm dòng'),
+('midi_add_column',	'Thêm cột'),
+('midi_del_row',	'Xóa một hàng'),
+('midi_del_col',	'Xóa một cột'),
+('midi_empty',	'Làm trống một midi'),
+('midi_form_pc',	'Tạo midi từ văn bản PC'),
+('midi_add_line_tip',	'Thêm một dòng mới để tạo các luồng chơi đàn khác nhau, như là một hợp âm trên phím đàn, bạn có chỉ có thể tạo tối đa 10 dòng tương ứng với 10 ngón tay của bạn khi chơi đàn trong cùng một thời điểm'),
+('midi_add_column_tip',	'Thêm một cột trống để tạo khoảng thời gian nghĩ giữa các cung đàn ở một thời điểm nhất định tương ứng với tốc độ đánh của trình chơi đàn, hoặt tạo ra một cột dự thảo để bạn có thể chèn các phím đàn vào sau này'),
+('midi_del_row_tip',	'Xóa một hàng đồng thời xóa tất cả các nốt nhạc midi có trong hàng được chọn'),
+('midi_del_col_tip',	'Xóa một cột đồng nghĩa với việc xóa các nốt nhạc midi trong cột được chọn'),
+('midi_empty_tip',	'Làm trống nốt nhạc , thao tác này đưa nốt nhạc về trạng thái ban đầu khi chưa được ghi '),
+('midi_form_pc_tip',	'Nhập vào đoạn mã văn bản máy tính để tạo ra bản midi tương ứng'),
+('midi_help',	'Hướng dẫn biên tập MIDI'),
+('midi_help_tip',	'Với trình giả lập đàn piano và trình soạn thảo midi giúp bạn dễ dàng tạo ra những bản nhạc của riên mình hoặc đóng góp cho hệ thống của chúng tôi những bài soạn đã có sẵn của bạn, Nếu bạn là người mới bắt đầu sử dụng công cụ tạo midi của chúng tôi thì hãy dành vài phút đọc những mẹo nhỏ hướng dẫn sử dụng dưới đây để dễ dàng sử dụng đầy đủ các tính năng mà công cụ này đem lại'),
+('midi_use',	'Sử dụng cơ bản'),
+('midi_use1',	'Bấm các phím ở bàn phím máy tính của bạn tương ứng với các nhãn ký hiệu trên mỗi phím đàn piano để ghi lại thao tác thêm một nốt nhạc trong trình soạn thảo midi'),
+('midi_use2',	'Để chỉnh sửa một nốt nhạc midi bạn chỉ việc bấm vào nốt midi và bấm một phím đàn khác để thay thế midi đã được chọn'),
+('midi_use3',	'Tạo hợp âm cho bản nhạc bằng cách bấm vào nút thêm dòng ở thanh công cụ midi. Khi đó bạn sẽ tạo ra thêm một luồn thao tác để ghi thêm các nốt nhạc mới'),
+('midi_use4',	'Thanh công cụ soạn thảo Midi gồm:'),
+('midi_publish_success',	'Xuất bản thành công bản soạn thảo midi đàn piano của bạn, chúng tôi sẽ phê duyệt và công bố bài soạn này ra với công chúng sớm nhất có thể. Cảm ơn sự đóng góp sán tạo của bạn '),
+('midi_publish',	'Xuất bản'),
+('midi_erro_no_name',	'Không thể xuất bản kiệt tác này! vì bạn chưa đặt tên chon sản phẩm midi của bạn'),
+('midi_erro_no_data',	'Chưa có dữ liệu midi, vui lòng sáng tạo nội dung trước khi xuất bản'),
+('midi_export',	'Xuất tệp midi (.mid)'),
+('midi_export_success',	'Xuất tệp Midi (.mid) thành công!'),
+('midi_export_tip',	'Tạo tệp mid từ midi để thưởng thức hoặt nghe trên máy tính hoặt các thiết bị di động'),
+('midi_publish_tip',	'Xuất bản sản phầm của bạn ra thế giới để mọi người cùng thưởng thức , hoặt đóng góp một bài nhạc midi nào đó . Chúng tôi sẽ kiểm duyệt bài soạn midi của bạn và chỉnh sửa để phù hợp với kho lưu trữ của hệ thống'),
+('midi_download',	'Tải nhạc MIDI');
 
--- 2021-03-17 17:53:30
+-- 2021-03-23 07:58:58

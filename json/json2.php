@@ -55,3 +55,54 @@ if(isset($_POST['function'])&&$_POST['function']=='speed_quote'){
     echo $url_mp3;
     exit;
 }
+
+if(isset($_POST['function'])&&$_POST['function']=='save_setting_piano_key'){
+    $name_func=$_POST['name_func'];
+    $val=$_POST['val'];
+    $_SESSION[$name_func]=$val;
+    exit;
+}
+
+if(isset($_POST['function'])&&$_POST['function']=='sub_mid_midi'){
+    $id_midi=uniqid().uniqid();
+    $id_device="";
+    $midi_name=$_POST['name_midi'];
+    $midi_level=$_POST['midi_level'];
+    $midi_category=$_POST['midi_category'];
+    $midi_speed='0,2';
+
+    $data_midi_index=$_POST['data_midi_index'];
+    $data_midi_type=$_POST['data_midi_type'];
+
+    $data_index=json_decode($data_midi_index);
+    $data_type=json_decode($data_midi_type);
+
+    $midi_length=count($data_index[0]);
+    $midi_length_line=count($data_index);
+
+    $data_0=''; if(isset($data_index[0])){ $data_0=json_encode($data_index[0]);}
+    $data_1=''; if(isset($data_index[1])){ $data_1=json_encode($data_index[1]);}
+    $data_2=''; if(isset($data_index[2])){ $data_2=json_encode($data_index[2]);}
+    $data_3=''; if(isset($data_index[3])){ $data_3=json_encode($data_index[3]);}
+    $data_4=''; if(isset($data_index[4])){ $data_4=json_encode($data_index[4]);}
+    $data_5=''; if(isset($data_index[5])){ $data_5=json_encode($data_index[5]);}
+    $data_6=''; if(isset($data_index[6])){ $data_6=json_encode($data_index[6]);}
+    $data_7=''; if(isset($data_index[7])){ $data_7=json_encode($data_index[7]);}
+    $data_8=''; if(isset($data_index[8])){ $data_8=json_encode($data_index[8]);}
+    $data_9=''; if(isset($data_index[9])){ $data_9=json_encode($data_index[9]);}
+    
+    $type0=''; if(isset($data_type[0])){ $type0=json_encode($data_type[0]);}
+    $type1=''; if(isset($data_type[1])){ $type1=json_encode($data_type[1]);}
+    $type2=''; if(isset($data_type[2])){ $type2=json_encode($data_type[2]);}
+    $type3=''; if(isset($data_type[3])){ $type3=json_encode($data_type[3]);}
+    $type4=''; if(isset($data_type[4])){ $type4=json_encode($data_type[4]);}
+    $type5=''; if(isset($data_type[5])){ $type5=json_encode($data_type[5]);}
+    $type6=''; if(isset($data_type[6])){ $type6=json_encode($data_type[6]);}
+    $type7=''; if(isset($data_type[7])){ $type7=json_encode($data_type[7]);}
+    $type8=''; if(isset($data_type[8])){ $type8=json_encode($data_type[8]);}
+    $type9=''; if(isset($data_type[9])){ $type9=json_encode($data_type[9]);}
+
+    $query_add_midi=mysqli_query($link,"INSERT INTO carrotsy_piano.`midi`(`id_midi`,`id_device`,`name`,`data0`,`data1`,`data2`,`data3`,`data4`,`data5`,`data6`,`data7`,`data8`,`data9`,`type0`,`type1`,`type2`,`type3`,`type4`,`type5`,`type6`,`type7`,`type8`,`type9`,`speed`,`sell`,`author`,`level`,`length`,`length_line`, `category`) VALUES ('$id_midi', '$id_device', '$midi_name', '$data_0', '$data_1','$data_2','$data_3','$data_4','$data_5','$data_6','$data_7','$data_8','$data_9', '$type0','$type1','$type2','$type3','$type4','$type5','$type6','$type7','$type8','$type9', '$midi_speed', '0', '', '$midi_level', '$midi_length','$midi_length_line', '$midi_category');");
+    echo lang($link,"midi_publish_success");
+    exit;
+}

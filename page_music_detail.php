@@ -30,8 +30,7 @@ if($data_music['file_url']!=''){
 }else {
     $url_mp3 = $url . '/app_mygirl/app_my_girl_' . $lang_sel . '/' . $id_music . '.mp3';
 }
-    
-$url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
+
 $url_video='';
 $url_img_thumb_ytb='';
 
@@ -40,14 +39,24 @@ if($data_video['link']!=''){
     $url_video=$my_array_of_vars['v'];
     $url_img_thumb_ytb='https://img.youtube.com/vi/'.$my_array_of_vars['v'].'/hqdefault.jpg'; 
 }
-        
+
+$url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
+$url_img_thumb_96=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=96x96&trim=1';
+$url_img_thumb_128=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=128x128&trim=1';
+$url_img_thumb_192=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=192x192&trim=1';
+$url_img_thumb_256=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=256x256&trim=1';
+$url_img_thumb_384=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=384x384&trim=1';
+$url_img_thumb_512=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=512x512&trim=1';
+  
 $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
 if(file_exists($filename_img_avatar)){
     $url_img_thumb=$url.'/'.$filename_img_avatar;
-}else{
-    if($url_img_thumb_ytb!=''){
-        $url_img_thumb=$url_img_thumb_ytb;
-    }
+    $url_img_thumb_96=$url.'/thumb.php?src='.$url_img_thumb.'&size=96x96&trim=1';
+    $url_img_thumb_128=$url.'/thumb.php?src='.$url_img_thumb.'&size=128x128&trim=1';
+    $url_img_thumb_192=$url.'/thumb.php?src='.$url_img_thumb.'&size=192x192&trim=1';
+    $url_img_thumb_256=$url.'/thumb.php?src='.$url_img_thumb.'&size=256x256&trim=1';
+    $url_img_thumb_384=$url.'/thumb.php?src='.$url_img_thumb.'&size=384x384&trim=1';
+    $url_img_thumb_512=$url.'/thumb.php?src='.$url_img_thumb.'&size=512x512&trim=1';
 }
 
 $txt_title=$data_music['chat'];  

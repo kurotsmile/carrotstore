@@ -460,12 +460,12 @@
 
     function style_dark_mode(){
         if(style_css_dark_mode=='0'){
-            $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style-dark-mode.min.css?v=<?php echo $ver;?>");
+            $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style-dark-mode.min.css?v=<?php echo get_setting($link,'ver');?>");
             style_css_dark_mode='1';
             style_css_qtip='';
             $("#btn_dark_mode").html('<i class="fa fa-sun-o" aria-hidden="true"></i>');
         }else{
-            $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style.min.css?v=<?php echo $ver;?>");
+            $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style.min.css?v=<?php echo get_setting($link,'ver');?>");
             style_css_dark_mode='0';
             style_css_qtip='qtip-green';
             $("#btn_dark_mode").html('<i class="fa fa-moon-o" aria-hidden="true"></i>');

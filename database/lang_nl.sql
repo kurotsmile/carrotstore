@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('warning',	'waarschuwing'),
 ('account_view_yes',	'Ik wil dit account blijven bekijken'),
 ('account_view_no',	'Ik wil dit account niet zien'),
-('account_view_18',	'Het account dat u wilt bekijken, bevat mogelijk alleen inhoud voor volwassenen');
+('account_view_18',	'Het account dat u wilt bekijken, bevat mogelijk alleen inhoud voor volwassenen'),
+('download_app_piano_tip',	'Speel en leer de hele tijd met de onderstaande applicatie om je passie te verrassen'),
+('hoc_dan_piano',	'Piano'),
+('tac_gia',	'Auteur'),
+('cap_do',	'Niveau'),
+('toc_do_nhip',	'Versla snelheid'),
+('so_not_nhac',	'Aantal muzieknoten'),
+('ten_bai_hat',	'Naam van de track'),
+('level_de',	'Gemakkelijk'),
+('level_trung_binh',	'normaal'),
+('level_kho',	'Moeilijk'),
+('level_sieu_kho',	'Super moeilijk'),
+('midi_info',	'Informatie Midi piano composities'),
+('setting_piano',	'Piano instellingen'),
+('setting_piano_key_pc',	'Toon de labels van het computertoetsenbord'),
+('setting_piano_key_name',	'Toon de naam van de muzieknoot'),
+('midi_show_pc_key',	'Codeer het midi-muziekspectrum als een computertoetsenbord'),
+('tao_moi_midi',	'Maak midi online'),
+('midi_add_line',	'Lijn toevoegen'),
+('midi_add_column',	'Kolom toevoegen'),
+('midi_del_row',	'Verwijder een rij'),
+('midi_del_col',	'Verwijder een kolom'),
+('midi_empty',	'Maak een midi leeg'),
+('midi_form_pc',	'Maak midi van pc-tekst'),
+('midi_add_line_tip',	'Voeg een nieuwe regel toe om verschillende speelstromen te creëren, zoals een fretboardakkoord, je kunt maximaal 10 regels maken die overeenkomen met je 10 vingers terwijl je tegelijkertijd speelt.'),
+('midi_add_column_tip',	'Voeg een lege kolom toe om een tijdsinterval tussen de akkoorden op een bepaald moment te creëren ten opzichte van de maatsnelheid van de speler, of maak een conceptkolom zodat je de frets later kunt invoegen.'),
+('midi_del_row_tip',	'Verwijdert een rij terwijl alle midi-noten in de geselecteerde rij worden verwijderd'),
+('midi_del_col_tip',	'Als u een kolom verwijdert, verwijdert u de midi-noten in de geselecteerde kolom'),
+('midi_empty_tip',	'Maak de notitie leeg, hierdoor keert de noot terug naar zijn oorspronkelijke staat als deze niet is opgenomen'),
+('midi_form_pc_tip',	'Voer de computertekst in om de bijbehorende midi te maken'),
+('midi_help',	'MIDI editor handleiding'),
+('midi_help_tip',	'Met piano-emulator en midi-editor die het gemakkelijk maken om uw eigen muziek te maken of uw bestaande composities aan ons systeem bij te dragen.Als u een beginner bent Onze midi-maker, neem een paar minuten de tijd om de onderstaande tips voor de handleiding te lezen om gemakkelijk de volledige functies hiervan te gebruiken gereedschap.'),
+('midi_use',	'Basisgebruik'),
+('midi_use1',	'Druk op de toetsen op je computertoetsenbord die overeenkomen met de notatietekens op elke pianotoets om de actie van het toevoegen van een noot in de midi-editor op te nemen.'),
+('midi_use2',	'Om een midi-noot te bewerken, klikt u op de midi-noot en drukt u op een andere toets om de geselecteerde midi te vervangen.'),
+('midi_use3',	'Maak een akkoord voor de track door op de knop regel toevoegen in de midi-werkbalk te klikken. Vervolgens maakt u een extra thread om nieuwe notities op te nemen'),
+('midi_use4',	'De werkbalk van de Midi-editor bevat:'),
+('midi_publish_success',	'Na het succesvol publiceren van uw piano midi-ontwerp, zullen we dit ontwerp zo snel mogelijk goedkeuren en publiceren voor het publiek. Bedankt voor je creatieve bijdrage'),
+('midi_publish',	'Publiceren'),
+('midi_erro_no_name',	'Dit meesterwerk kan niet worden gepubliceerd! omdat je je midi-product nog geen naam hebt gegeven'),
+('midi_erro_no_data',	'Nog geen midi-gegevens. Maak inhoud voordat u deze publiceert'),
+('midi_export',	'MIDI-bestand exporteren (.mid)'),
+('midi_export_success',	'Exporteer Midi (.mid) bestand succesvol!'),
+('midi_export_tip',	'Maak mid-bestanden van midi om van te genieten of te luisteren op computer of mobiele apparaten'),
+('midi_publish_tip',	'Publiceer je werk aan de wereld zodat iedereen ervan kan genieten, of draag bij aan een midi-nummer. We zullen uw midi-compositie modereren en deze aanpassen aan het archief van het systeem'),
+('midi_download',	'MIDI-muziekdownloads');
 
--- 2021-03-10 08:37:21
+-- 2021-03-23 08:39:32

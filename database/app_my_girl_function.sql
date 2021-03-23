@@ -50,6 +50,7 @@ INSERT INTO `app_my_girl_function` (`id`, `icon`, `name`, `describe`, `url`, `or
 (30,	'fa fa-shopping-bag',	'Đầu tóc',	'Quản lý các kiểu tóc cho các nhân vật Virtual lover Onichan (mini)',	'app_my_girl_head.php',	29),
 (31,	'fa fa-globe',	'Phiên bản và quốc gia',	'Kích hoặt các quốc gia triển khai các phiên bản',	'app_my_girl_manager_country.php',	1),
 (32,	'fa fa-delicious',	'Giám sát Cpu và Ram',	'Xem các thông số hiệu năng của Cpu , ram và các thông số khác của hệ thống đề phòng tình trạng quá tải',	'app_my_girl_handling.php?func=sys',	7),
-(33,	'fa fa-tree',	'Sơ đồ quan hệ',	'Xem dễ dàng hơn các mối quan hệ câu trò chuyện',	'app_my_girl_handling.php?func=tree_chat',	30);
+(33,	'fa fa-tree',	'Sơ đồ quan hệ',	'Xem dễ dàng hơn các mối quan hệ câu trò chuyện',	'app_my_girl_handling.php?func=tree_chat',	30),
+(34,	'fa fa-table',	'Cơ sở dữ liệu',	'Hệ quản trị cơ sỡ dữ liệu của hệ thống',	'adminer.php',	31);
 
--- 2021-03-10 07:30:15
+-- 2021-03-19 15:51:01

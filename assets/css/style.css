@@ -1585,7 +1585,7 @@ textarea:focus {
 .kr_help_item {
 	width: 100%;float: left;text-align: left;border-bottom: solid 2px #dedede;
 }
-.kr_help_item .key_code{
+.key_code{
 	background-color: gray;color: white;padding-left: 6px;padding-right: 6px;padding-top: 3px;padding-bottom: 3px;float: left;border-radius: 3px;margin: 5px;
 }
 .kr_help_item  .txt {
@@ -1766,7 +1766,7 @@ textarea:focus {
 #piano #note_white .note{ width: 2.5%;
     float: left;height:100px;background-color: white;
     text-align: center;
-    border: solid 1px green;    height: 150px;
+    border: solid 1px green; height: 150px;
 }
 #piano #note_black{
     float: left;
@@ -1800,10 +1800,10 @@ textarea:focus {
 #note_black .note span{margin-top: 17px;float: left;text-align: center;width: 100%;font-size: 10px;}
 #note_black .note.sel{background-color: orange;color: black;}
 #note_black .note.none{border: unset;background-color: unset;}
-
-#editor{
-    width:100%;
-    float:left;
+#editor{width:100%;float:left;min-height: 100px;}
+#editor.draft{
+    border-top: dotted 3px #36a234;
+    border-bottom: dotted 3px #36a234;
 }
 #editor_control{
     width: 5%;
@@ -1821,6 +1821,7 @@ textarea:focus {
 }
 #editor_all_line{width:100%;float:left;}
 #editor_all_line .line{width:100%;float:left;}
+#editor_all_line .line.sel{background-color: #98c389; border-radius: 3px;}
 #editor_all_line .line .midi{
     width: 33px;
     height: 30px;
@@ -1831,6 +1832,10 @@ textarea:focus {
     line-height: 33px;cursor: pointer;border-radius: 3px;
 }
 #editor_all_line .line .midi.sel{background-color: orange;}
+#editor_all_line .line .midi.sel_col{
+    background-color: #d68d05;
+    color: white;
+}
 #editor_all_line .line .midi.play{background-color: green;color:white;}
 #piano_lyrics{float:left;width:100%;background-color:white;word-wrap: break-word;}
 

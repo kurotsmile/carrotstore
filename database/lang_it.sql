@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_it` (`key`, `value`) VALUES
 ('warning',	'avvertimento'),
 ('account_view_yes',	'Voglio continuare a visualizzare questo account'),
 ('account_view_no',	'Non voglio vedere questo account'),
-('account_view_18',	'L\'account che stai per visualizzare potrebbe includere contenuti per soli adulti');
+('account_view_18',	'L\'account che stai per visualizzare potrebbe includere contenuti per soli adulti'),
+('download_app_piano_tip',	'Gioca e impara tutto il tempo con l\'applicazione qui sotto per deliziare la tua passione'),
+('hoc_dan_piano',	'Pianoforte'),
+('tac_gia',	'Autore'),
+('cap_do',	'Livello'),
+('toc_do_nhip',	'Batti la velocità'),
+('so_not_nhac',	'Numero di note musicali'),
+('ten_bai_hat',	'Nome della traccia'),
+('level_de',	'Facile'),
+('level_trung_binh',	'normale'),
+('level_kho',	'Difficile'),
+('level_sieu_kho',	'Super difficile'),
+('midi_info',	'Informazioni Composizioni per pianoforte midi'),
+('setting_piano',	'Impostazioni del pianoforte'),
+('setting_piano_key_pc',	'Mostra le etichette della tastiera del computer'),
+('setting_piano_key_name',	'Mostra il nome della nota musicale'),
+('midi_show_pc_key',	'Codifica lo spettro della musica midi come la tastiera di un computer'),
+('tao_moi_midi',	'Crea midi online'),
+('midi_add_line',	'Aggiungi linea'),
+('midi_add_column',	'Aggiungi colonna'),
+('midi_del_row',	'Elimina una riga'),
+('midi_del_col',	'Elimina una colonna'),
+('midi_empty',	'Svuota un midi'),
+('midi_form_pc',	'Crea midi dal testo del PC'),
+('midi_add_line_tip',	'Aggiungi una nuova linea per creare diversi flussi di esecuzione, come un accordo della tastiera, puoi creare solo fino a 10 linee corrispondenti alle tue 10 dita mentre suoni allo stesso tempo.'),
+('midi_add_column_tip',	'Aggiungi una colonna vuota per creare un intervallo di tempo tra gli accordi in un dato momento relativo alla velocità di battuta del musicista, oppure crea una colonna di bozza in modo da poter inserire i tasti in un secondo momento.'),
+('midi_del_row_tip',	'Elimina una riga eliminando tutte le note midi nella riga selezionata'),
+('midi_del_col_tip',	'Eliminare una colonna significa eliminare le note midi nella colonna selezionata'),
+('midi_empty_tip',	'Svuota la nota, questo riporta la nota al suo stato originale quando non è stata registrata'),
+('midi_form_pc_tip',	'Immettere il testo del computer per creare il midi corrispondente'),
+('midi_help',	'Manuale dell\'editor MIDI'),
+('midi_help_tip',	'Con l\'emulatore di piano e l\'editor midi che rendono facile creare la tua musica o contribuire al nostro sistema con le tue composizioni esistenti, Se sei un principiante Il nostro creatore midi, dedica qualche minuto alla lettura dei suggerimenti del manuale di seguito per utilizzare facilmente tutte le funzionalità di questo attrezzo.'),
+('midi_use',	'Utilizzo di base'),
+('midi_use1',	'Premi i tasti sulla tastiera del tuo computer che corrispondono ai segni di notazione su ogni tasto del piano per registrare l\'azione di aggiunta di una nota nell\'editor midi.'),
+('midi_use2',	'Per modificare una nota midi è sufficiente fare clic sulla nota midi e premere un altro tasto per sostituire il midi selezionato.'),
+('midi_use3',	'Crea un accordo per la traccia facendo clic sul pulsante aggiungi linea nella barra degli strumenti midi. Quindi creerai un thread aggiuntivo per registrare nuove note'),
+('midi_use4',	'La barra degli strumenti dell\'editor Midi include:'),
+('midi_publish_success',	'Dopo aver pubblicato con successo la tua bozza di piano midi, approveremo e pubblicheremo questa bozza al pubblico il prima possibile. Grazie per il tuo contributo creativo'),
+('midi_publish',	'Pubblicare'),
+('midi_erro_no_name',	'Questo capolavoro non può essere pubblicato! perché non hai ancora nominato il tuo prodotto midi'),
+('midi_erro_no_data',	'Nessun dato midi ancora, crea il contenuto prima della pubblicazione'),
+('midi_export',	'Esporta file midi (.mid)'),
+('midi_export_success',	'Esporta file Midi (.mid) con successo!'),
+('midi_export_tip',	'Crea file mid da midi per goderti o ascoltare su computer o dispositivi mobili'),
+('midi_publish_tip',	'Pubblica il tuo lavoro nel mondo affinché tutti possano apprezzarlo o contribuisci a una canzone midi. Modificheremo la tua composizione midi e la modificheremo per adattarla all\'archivio del sistema'),
+('midi_download',	'Download di musica MIDI');
 
--- 2021-03-10 08:34:58
+-- 2021-03-23 08:38:38

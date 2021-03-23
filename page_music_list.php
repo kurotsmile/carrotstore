@@ -1,4 +1,11 @@
 <script>
+var myJsonString='';
+var arr_id_music=[];
+let arr_meta_music=[];
+var sel_media_index=0;
+
+const audioElement = document.createElement('audio');
+
 function show_player_music(show){
     if(show){
          $("#player_music").show();
@@ -10,28 +17,16 @@ function show_player_music(show){
     $("#ads_video").hide().html('');
 }
     
-$(document).ready(function(){
-   show_player_music(false);
-});    
+audioElement.addEventListener("canplay",function(){
+    $("#length").text("Duration:" + audioElement.duration + " seconds");
+    $("#source").text("Source:" + audioElement.src);
+    $("#status").text("Status: Ready to play").css("color","green");
+});
     
-    var audioElement = document.createElement('audio');
-    
-    
-    audioElement.addEventListener('ended', function() {
-        this.play();
-    }, false);
-    
-    audioElement.addEventListener("canplay",function(){
-        $("#length").text("Duration:" + audioElement.duration + " seconds");
-        $("#source").text("Source:" + audioElement.src);
-        $("#status").text("Status: Ready to play").css("color","green");
-    });
-    
-    audioElement.addEventListener("timeupdate",function(){
-        $("#currentTime").text("Current second:" + audioElement.currentTime);
-        progressBar(Math.round((audioElement.currentTime/audioElement.duration)*100), $('#bar_music_val'));
-    });
-
+audioElement.addEventListener("timeupdate",function(){
+    $("#currentTime").text("Current second:" + audioElement.currentTime);
+    progressBar(Math.round((audioElement.currentTime/audioElement.duration)*100), $('#bar_music_val'));
+});
 
 function progressBar(timerbar,emp) {
     $(emp).css("width",timerbar);
@@ -44,10 +39,62 @@ function play_music(s_nam,url_m,url_icon,emp){
     show_menu_app(emp,0);
     $(".menu_app").addClass('music_color');
     show_player_music(true);
-    audioElement.setAttribute('src', url_m);
-    audioElement.play();
+    //audioElement.setAttribute('src', url_m);
+   // audioElement.play().then(_ => updateMetadata());
     $("#box_ads_app").show('100');
 }
+
+function play_music_box_mini(index_music){
+    sel_media_index=index_music;
+    var item_music_sel=arr_meta_music[index_music];
+    audioElement.setAttribute('src', item_music_sel.src);
+    audioElement.play().then(_ => updateMetadata());
+
+    $("#player_music_name").html(item_music_sel.title);
+    $("#player_music_img").attr('src',item_music_sel.artwork[0].src);
+
+    show_player_music(true);
+    $("#box_ads_app").show('100');
+
+    $('.app').removeClass('menu_app').removeClass("music_color");
+    $("#row"+item_music_sel.id).addClass('menu_app').addClass("music_color");
+}
+
+navigator.mediaSession.setActionHandler('play', function() {
+    play_music_box_mini(sel_media_index);
+});
+navigator.mediaSession.setActionHandler('pause', function() {pause_music();});
+navigator.mediaSession.setActionHandler('previoustrack', function() {
+    sel_media_index--;
+    if(sel_media_index<0){sel_media_index=arr_meta_music.length-1;}
+    play_music_box_mini(sel_media_index);
+});
+navigator.mediaSession.setActionHandler('nexttrack', function() {
+    sel_media_index++;
+    play_music_box_mini(sel_media_index);
+});
+
+function updateMetadata() {
+    let track =arr_meta_music[sel_media_index];
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: track.artist,
+        album: track.album,
+        artwork: track.artwork
+    });
+    updatePositionState();
+}
+
+function updatePositionState() {
+  if ('setPositionState' in navigator.mediaSession) {
+    navigator.mediaSession.setPositionState({
+      duration: audioElement.duration,
+      playbackRate: audioElement.playbackRate,
+      position: audioElement.currentTime
+    });
+  }
+}
+
 
 function pause_music(){
     show_player_music(false);
@@ -60,8 +107,10 @@ function restart_music(){
     audioElement.currentTime = 0;
 }
 
-var myJsonString='';
-var arr_id_music=[];
+$(document).ready(function(){
+   show_player_music(false);
+});
+
 <?php
     if($sub_view=='artist'){
         $query_count_music=mysqli_query($link,"SELECT COUNT(DISTINCT `artist`) as c FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
@@ -78,9 +127,7 @@ $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {
                 $('#loading').fadeIn(200);
                 $('#loading-page').html(arr_id_music.length+"/"+count_p);
-                //$("#box_ads_app").hide();
                 myJsonString = JSON.stringify(arr_id_music);
-
                 $.ajax({
                     url: "<?php echo $url; ?>/index.php",
                     type: "post",
@@ -153,8 +200,8 @@ if($sub_view=='artist'){
 
         $count_item_music=0;
         while ($row = mysqli_fetch_array($query_list_music)) {
-            $count_item_music++;
             include "page_music_git.php";
+            $count_item_music++;
         }
 
         if($count_item_music==0){

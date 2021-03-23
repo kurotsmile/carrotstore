@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('warning',	'Varoitus'),
 ('account_view_yes',	'Haluan jatkaa tämän tilin tarkastelua'),
 ('account_view_no',	'En halua nähdä tätä tiliä'),
-('account_view_18',	'Tarkastamasi tili voi sisältää vain aikuisille suunnattua sisältöä');
+('account_view_18',	'Tarkastamasi tili voi sisältää vain aikuisille suunnattua sisältöä'),
+('download_app_piano_tip',	'Pelaa ja opi koko ajan alla olevan sovelluksen avulla ilahduttamaan intohimosi'),
+('hoc_dan_piano',	'Piano'),
+('tac_gia',	'Kirjoittaja'),
+('cap_do',	'Taso'),
+('toc_do_nhip',	'Beat nopeus'),
+('so_not_nhac',	'Nuottien määrä'),
+('ten_bai_hat',	'Kappaleen nimi'),
+('level_de',	'Helppo'),
+('level_trung_binh',	'normaalia'),
+('level_kho',	'Vaikea'),
+('level_sieu_kho',	'Erittäin vaikeaa'),
+('midi_info',	'Tiedot Midi-pianosävellykset'),
+('setting_piano',	'Pianon asetukset'),
+('setting_piano_key_pc',	'Näytä tietokoneen näppäimistötarrat'),
+('setting_piano_key_name',	'Näytä nuotin nimi'),
+('midi_show_pc_key',	'Koodaa midimusiikkispektri tietokoneen näppäimistönä'),
+('tao_moi_midi',	'Luo midi verkossa'),
+('midi_add_line',	'Lisää rivi'),
+('midi_add_column',	'Lisää sarake'),
+('midi_del_row',	'Poista rivi'),
+('midi_del_col',	'Poista sarake'),
+('midi_empty',	'Tyhjennä midi'),
+('midi_form_pc',	'Luo midi PC-tekstistä'),
+('midi_add_line_tip',	'Lisää uusi rivi luoda erilaisia soittovirtoja, kuten otelauta sointu, voit luoda vain 10 riviä, jotka vastaavat 10 sormeasi samalla kun pelaat.'),
+('midi_add_column_tip',	'Lisää tyhjä sarake luoda aikaväli sointujen välillä tietyllä hetkellä suhteessa pelaajan lyöntinopeuteen, tai luo luonnos sarake, jotta voit lisätä nauhat myöhemmin.'),
+('midi_del_row_tip',	'Poista rivi samalla kun poistetaan kaikki valitun rivin midi-muistiinpanot'),
+('midi_del_col_tip',	'Sarakkeen poistaminen tarkoittaa midi-muistiinpanojen poistamista valitusta sarakkeesta'),
+('midi_empty_tip',	'Tyhjennä muistiinpano, tämä palauttaa muistiinpanon alkuperäiseen tilaansa, kun sitä ei ole vielä tallennettu'),
+('midi_form_pc_tip',	'Luo vastaava midi kirjoittamalla tietokoneen teksti'),
+('midi_help',	'MIDI-editorin käyttöopas'),
+('midi_help_tip',	'Pianoemulaattorin ja midi-editorin avulla on helppo luoda oma musiikkisi tai osallistua järjestelmäämme olemassa olevilla sävellyksilläsi. Jos olet aloittelija midi-luojamme, vie muutama minuutti alla olevien manuaalisten vinkkien lukemiseen, jotta voit käyttää tämän sisällön kaikkia ominaisuuksia työkalu.'),
+('midi_use',	'Peruskäyttö'),
+('midi_use1',	'Paina tietokoneen näppäimistön näppäimiä, jotka vastaavat kunkin pianonäppäimen merkintöjä, jotta voit tallentaa muistiinpanon lisäämisen toiminnan midi-editoriin.'),
+('midi_use2',	'Voit muokata midi-muistiinpanoa napsauttamalla midi-muistiinpanoa ja korvaamalla valitun midin painamalla toista näppäintä.'),
+('midi_use3',	'Luo raidan sointu napsauttamalla midi-työkalupalkin Lisää rivi -painiketta. Sitten luot uuden ketjun uusien muistiinpanojen tallentamiseen'),
+('midi_use4',	'Midi-editorin työkalurivi sisältää:'),
+('midi_publish_success',	'Julkaistessamme pianomidiluonnoksesi hyväksytään ja julkaistaan tämä luonnos yleisölle mahdollisimman pian. Kiitos luovasta panoksestasi'),
+('midi_publish',	'Julkaista'),
+('midi_erro_no_name',	'Tätä mestariteosta ei voi julkaista! koska et ole vielä nimittänyt midituotettasi'),
+('midi_erro_no_data',	'Ei vielä mididataa, luo sisältö ennen julkaisemista'),
+('midi_export',	'Vie miditiedosto (.mid)'),
+('midi_export_success',	'Vie Midi (.mid) -tiedosto onnistuneesti!'),
+('midi_export_tip',	'Luo miditiedostoja midistä, jotta voit nauttia niistä tai kuunnella niitä tietokoneella tai mobiililaitteilla'),
+('midi_publish_tip',	'Julkaise työsi maailmalle, jotta kaikki voivat nauttia siitä, tai edistä midi-laulua. Valvomme midi-kokoonpanosi ja muokkaamme sitä vastaamaan järjestelmän arkistoa'),
+('midi_download',	'MIDI-musiikkilataukset');
 
--- 2021-03-10 08:31:33
+-- 2021-03-23 08:38:10

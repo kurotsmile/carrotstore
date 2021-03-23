@@ -59,18 +59,10 @@ if(isset($_GET['page_view'])&&isset($_GET['view'])){
         $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
         $data_video=mysqli_fetch_array($query_link_video);
         $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang_sel.'/'.$id_music.'.mp3';
-            
         $seo_img=$url.'/images/music_default.png';
-
-        
         $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
         if(file_exists($filename_img_avatar)){
             $seo_img=$url.'/'.$filename_img_avatar;
-        }else{
-            if($data_video[0]!=''){
-                parse_str( parse_url( $data_video[0], PHP_URL_QUERY ), $my_array_of_vars );
-                $seo_img='https://img.youtube.com/vi/'.$my_array_of_vars['v'].'/hqdefault.jpg'; 
-            }
         }
 
     }
@@ -161,11 +153,15 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta property="og:image:height" content="600" />
     <meta property="og:image:alt" content="<?php echo $title_page;?>" />
     <link rel="apple-touch-icon" href="<?php echo $url;?>/images/80.png"/>
-    <link href="<?php echo $url; ?>/assets/css/buttonPro.min.css?v=<?php echo $ver;?>" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $url;?>/images/72.png"/>
+    <link rel="apple-touch-icon"  sizes="114x114" href="<?php echo $url;?>/images/114.png"/>
+    <link rel="apple-touch-icon"  sizes="144×144" href="<?php echo $url;?>/images/144.png"/>
+
+    <link href="<?php echo $url; ?>/assets/css/buttonPro.min.css?v=<?php echo get_setting($link,'ver');?>" rel="stylesheet" />
     <?php if($style_css_dark_mode=='0'){?>
-    <link href="<?php echo $url; ?>/assets/css/style.min.css?v=<?php echo $ver;?>" rel="stylesheet" id="style_site" />
+    <link href="<?php echo $url; ?>/assets/css/style.min.css?v=<?php echo get_setting($link,'ver');?>" rel="stylesheet" id="style_site" />
     <?php }else{?>
-    <link href="<?php echo $url; ?>/assets/css/style-dark-mode.min.css?v=<?php echo $ver;?>" rel="stylesheet" id="style_site" />
+    <link href="<?php echo $url; ?>/assets/css/style-dark-mode.min.css?v=<?php echo get_setting($link,'ver');?>" rel="stylesheet" id="style_site" />
     <?php } ?>
     <link hreflang="<?php echo $_SESSION['lang'];?>"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -174,11 +170,11 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta charset="utf-8"/>
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
-    <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico?v=<?php echo $ver;?>"/>
+    <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico?v=<?php echo get_setting($link,'ver');?>"/>
     <script src="<?php echo $url; ?>/js/jquery.min.js"></script>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js" async></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/responsive.min.css?v=<?php echo $ver;?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/responsive.min.css?v=<?php echo get_setting($link,'ver');?>"/>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link type="text/css" rel="stylesheet" href="<?php echo $url; ?>/libary/jquery.qtip.min.css" />
     <script type="text/javascript" src="<?php echo $url; ?>/libary/jquery.qtip.min.js"></script>
@@ -190,15 +186,17 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
     <link rel="manifest" href="<?php echo $url;?>/manifest.json" />
     <script>
+    <?php if(get_setting($link,"serviceWorker")=='1'){?>
     if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/installApp.js',{ scope: "/" }).then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function(err) {
-        console.log('ServiceWorker registration failed: ', err);
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/installApp.js',{ scope: "/" }).then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+            });
         });
-    });
     }
+    <?php }?>
 
     var shortcut_key_music=true;
     var style_css_dark_mode='<?php echo $style_css_dark_mode;?>';

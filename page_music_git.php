@@ -1,8 +1,10 @@
 <?php
     $url_song='';
-   $id_music=$row['id'];
-   $lang_sel=$row['author'];
-    $query_lyrics=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 110) as l FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
+    $id_music=$row['id'];
+    $lang_sel=$row['author'];
+    $music_title=addslashes(trim($row['chat']));
+
+    $query_lyrics=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 110) as l ,`artist`,`album` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id_music' LIMIT 1");
     $data_lyrics=mysqli_fetch_array($query_lyrics);
     mysqli_free_result($query_lyrics);
     $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
@@ -14,6 +16,7 @@
         $url_mp3 = $url . '/app_mygirl/app_my_girl_' . $lang_sel . '/' . $id_music . '.mp3';
     }
     
+    $url_media=$url.'/thumb.php?src='.$url.'/images/music_default.png';
     $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
     $url_video='';
     $url_img_thumb_ytb='';
@@ -27,6 +30,7 @@
     $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
     if(file_exists($filename_img_avatar)){
         $url_img_thumb=$url.'/'.$filename_img_avatar;
+        $url_media=$url.'/thumb.php?src='.$url.'/'.$filename_img_avatar;
     }else{
         if($url_img_thumb_ytb!=''){
             $url_img_thumb=$url_img_thumb_ytb;
@@ -67,8 +71,8 @@ mysqli_free_result($count_status_3);
     </div>
     
     <?php if($list_style=='list'){?>
-    <a href="#" >
-        <img  onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" alt="<?php echo $row['chat']; ?>" class="lazyload app_icon" data-src="<?php echo $url_img_thumb;?>"  style="height: 100px;float: left;width: 100px;" />
+    <a href="#" onclick="play_music_box_mini('<?php echo $count_item_music;?>');return false;">
+        <img   alt="<?php echo $row['chat']; ?>" class="lazyload app_icon" data-src="<?php echo $url_img_thumb;?>"  style="height: 100px;float: left;width: 100px;" />
     </a>
     <?php }else{?>
     <a href="<?php echo $url_song;?>" >
@@ -101,7 +105,7 @@ mysqli_free_result($count_status_3);
     <div class="app_action">
         <a href="<?php echo $url_song;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
         <?php if($list_style=='list'){?>
-            <a href="#" onclick="play_music('<?php echo trim($row['chat']);?>','<?php echo $url_mp3;?>','<?php echo $url_img_thumb;?>',this);return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
+            <a href="#" onclick="play_music_box_mini('<?php echo $count_item_music;?>');return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
             <?php if($url_video!=''){ ?><a href="#" onclick="stop_music_where_play_video();play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
         <?php }?>
 
@@ -122,6 +126,22 @@ mysqli_free_result($count_status_3);
     <?php if($list_style=='list'){?>
     <script>
         arr_id_music.push('<?php echo $row['id']; ?>');
+        var data_music = {
+            id:'<?php echo $row['id']; ?>',
+            src:'<?php echo $url_mp3;?>',
+            title:'<?php echo $music_title;?>', 
+            artist: '<?php if(isset($data_lyrics['artist'])) echo addslashes(trim($data_lyrics['artist']));?>',
+            album: '<?php if(isset($data_lyrics['album'])) echo addslashes(trim($data_lyrics['album']));?>',
+            artwork: [
+                { src: '<?php echo $url_media; ?>&size=96x96&trim=1',   sizes: '96x96',   type: 'image/png' },
+                { src: '<?php echo $url_media; ?>&size=128x128&trim=1', sizes: '128x128', type: 'image/png' },
+                { src: '<?php echo $url_media; ?>&size=192x192&trim=1', sizes: '192x192', type: 'image/png' },
+                { src: '<?php echo $url_media; ?>&size=256x256&trim=1', sizes: '256x256', type: 'image/png' },
+                { src: '<?php echo $url_media; ?>&size=384x384&trim=1', sizes: '384x384', type: 'image/png' },
+                { src: '<?php echo $url_media; ?>&size=512x512&trim=1', sizes: '512x512', type: 'image/png' },
+            ]
+        };
+        arr_meta_music.push(data_music);
     </script>
     <?php }?>
 </div>

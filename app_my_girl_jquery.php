@@ -1096,7 +1096,7 @@ if($func=='check_data_syn'){
         $item->key_table=$arr_table[$i];
         $k_table=$arr_table[$i];
         $query_count=mysqli_query($link,"SELECT COUNT(1) as c FROM `$k_table`");
-        $data_count=mysqli_fetch_assoc($query_count);
+        if($query_count) $data_count=mysqli_fetch_assoc($query_count);
         $item->count_table=$data_count['c'];
         array_push($arr_item,$item);
     }

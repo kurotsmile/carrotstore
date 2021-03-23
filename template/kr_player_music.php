@@ -1,6 +1,6 @@
 <div id="kr_player_music" oncontextmenu="kr_show_mini_player();return false">
     <div class="box_area left">
-        <div class="btn_play btn_control" id="kr_btn_play"><i class="fa fa-pause-circle" aria-hidden="true"></i></div>
+        <div class="btn_play btn_control" id="kr_btn_play" onclick="kr_play_or_pause();"><i class="fa fa-pause-circle" aria-hidden="true"></i></div>
     </div>
 
     <div class="box_area mid" id="kr_player_music_box_mid">
@@ -33,7 +33,31 @@
     var top_bar_player=false;
     var top_x_player=500;
     const kr_audio = document.createElement('audio');
-    kr_audio.autoplay=true;
+    kr_audio.setAttribute('src', '<?php echo $url_mp3; ?>');
+    kr_audio.addEventListener("canplay",function(){
+        $("#kr_timer_length").html(readableDuration(kr_audio.duration));
+        $("#bar_timer_val").attr("max",kr_audio.duration);
+    });
+    kr_audio.addEventListener("timeupdate",function(){
+        $("#kr_timer_currentTime").html(readableDuration(kr_audio.currentTime));
+        $('#bar_timer_val').val(kr_audio.currentTime);
+    });
+    kr_audio.addEventListener('error', function failed(e) {
+        switch (e.target.error.code) {
+            case e.target.error.MEDIA_ERR_ABORTED:
+                break;
+            case e.target.error.MEDIA_ERR_NETWORK:
+                break;
+            case e.target.error.MEDIA_ERR_DECODE:
+                break;
+            case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                $("#kr_player_music").addClass("error");
+                $("#kr_btn_play").html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+                break;
+            default:
+                break;
+        }
+    }, true);
 
     function readableDuration(seconds) {
         sec = Math.floor( seconds );
@@ -44,45 +68,27 @@
         return min + ':' + sec;
     }
 
-    $(document).ready(function() {
+    function kr_play_or_pause(){
+        if(kr_audio.paused) {
+            kr_play();
+        }else{
+            kr_pause();
+        }
+    }
+
+    function kr_play(){
+        kr_audio.play().then(_ =>updateMetadata());
+        $("#kr_btn_play").html('<i class="fa fa-pause-circle" aria-hidden="true"></i>');
+    }
+
+    function kr_pause(){
+        kr_audio.pause();
+        $("#kr_btn_play").html('<i class="fa fa-play-circle" aria-hidden="true"></i>');
+    }
+
+    $(document).ready(function(){
         top_x_player=$("#kr_player_music").offset().top;
-        kr_audio.setAttribute('src', '<?php echo $url_mp3; ?>');
-        kr_audio.addEventListener('ended', function() {
-            <?php if($is_playlist){?>
-            kr_next_song();
-            <?php }else{?>
-            this.play();
-            <?php }?>
-        }, false);
-        kr_audio.addEventListener("canplay",function(){
-            $("#kr_timer_length").html(readableDuration(kr_audio.duration));
-            $("#bar_timer_val").attr("max",kr_audio.duration);
-        });
-        kr_audio.addEventListener("timeupdate",function(){
-            $("#kr_timer_currentTime").html(readableDuration(kr_audio.currentTime));
-            $('#bar_timer_val').val(kr_audio.currentTime);
-        });
 
-        kr_audio.addEventListener('error', function failed(e) {
-            switch (e.target.error.code) {
-                case e.target.error.MEDIA_ERR_ABORTED:
-                    break;
-                case e.target.error.MEDIA_ERR_NETWORK:
-                    break;
-                case e.target.error.MEDIA_ERR_DECODE:
-                    break;
-                case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-                    $("#kr_player_music").addClass("error");
-                    $("#kr_btn_play").html('<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
-                    break;
-                default:
-                    break;
-            }
-        }, true);
-
-        $('#kr_btn_play').click(function() {
-            kr_play_or_pause();
-        });
 
         $('#kr_btn_mute').click(function() {
             kr_mute();
@@ -126,20 +132,13 @@
             shortcut_key_music=true;
         });
 
-        kr_audio.error = function() {
-            console.log("Error thanh s" + videoElement.error.code + "; details: " + videoElement.error.message);
-        }
+        <?php if($is_playlist){?>
+            setTimeout(function(){ kr_next_song(); }, 3000);
+        <?php }else{?>
+            setTimeout(function(){ kr_play(); }, 3000);
+        <?php }?>
     });
 
-    function kr_play_or_pause(){
-        if(kr_audio.paused) {
-            kr_audio.play();
-            $("#kr_btn_play").html('<i class="fa fa-pause-circle" aria-hidden="true"></i>');
-        }else{
-            kr_audio.pause();
-            $("#kr_btn_play").html('<i class="fa fa-play-circle" aria-hidden="true"></i>');
-        }
-    }
 
     function kr_mute(){
         if(kr_audio.muted) {
@@ -203,6 +202,50 @@
                 top_bar_player=false;
             }
         }
+    });
+
+    function updateMetadata() {
+        let track ={
+            src:'<?php echo $url_mp3; ?>',
+            title: '<?php if(isset($txt_title)) echo addslashes(trim($txt_title)); ?>',
+            artist: '<?php if(isset($data_lyrics['artist'])) echo addslashes(trim($data_lyrics['artist']));?>',
+            album: '<?php if(isset($data_lyrics['album'])) echo addslashes(trim($data_lyrics['album']));?>',
+            artwork: [
+                { src: '<?php echo $url_img_thumb_96;?>', sizes: '96x96',   type: 'image/png' },
+                { src: '<?php echo $url_img_thumb_128;?>', sizes: '128x128', type: 'image/png' },
+                { src: '<?php echo $url_img_thumb_192;?>', sizes: '192x192', type: 'image/png' },
+                { src: '<?php echo $url_img_thumb_256;?>', sizes: '256x256', type: 'image/png' },
+                { src: '<?php echo $url_img_thumb_384;?>', sizes: '384x384', type: 'image/png' },
+                { src: '<?php echo $url_img_thumb_512;?>', sizes: '512x512', type: 'image/png' },
+            ]};
+
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: track.title,
+            artist: track.artist,
+            album: track.album,
+            artwork: track.artwork
+        });
+        updatePositionState();
+    }
+
+    function updatePositionState() {
+    if ('setPositionState' in navigator.mediaSession) {
+        navigator.mediaSession.setPositionState({
+        duration: kr_audio.duration,
+        playbackRate: kr_audio.playbackRate,
+        position: kr_audio.currentTime
+        });
+    }
+    }
+
+    navigator.mediaSession.setActionHandler('play', async function() {
+        kr_play();
+        navigator.mediaSession.playbackState = "playing";
+    });
+
+    navigator.mediaSession.setActionHandler('pause', function() {
+        kr_pause();
+        navigator.mediaSession.playbackState = "paused";
     });
 
 </script>

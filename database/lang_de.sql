@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('warning',	'Warnung'),
 ('account_view_yes',	'Ich möchte dieses Konto weiterhin anzeigen'),
 ('account_view_no',	'Ich möchte diesen Account nicht sehen'),
-('account_view_18',	'Das Konto, das Sie anzeigen möchten, enthält möglicherweise Inhalte nur für Erwachsene');
+('account_view_18',	'Das Konto, das Sie anzeigen möchten, enthält möglicherweise Inhalte nur für Erwachsene'),
+('download_app_piano_tip',	'Spielen und lernen Sie die ganze Zeit mit der folgenden Anwendung, um Ihre Leidenschaft zu erfreuen'),
+('hoc_dan_piano',	'Klavier'),
+('tac_gia',	'Autor'),
+('cap_do',	'Niveau'),
+('toc_do_nhip',	'Geschwindigkeit schlagen'),
+('so_not_nhac',	'Anzahl der Noten'),
+('ten_bai_hat',	'Name der Strecke'),
+('level_de',	'Einfach'),
+('level_trung_binh',	'normal'),
+('level_kho',	'Schwer'),
+('level_sieu_kho',	'Super schwierig'),
+('midi_info',	'Information Midi-Klavierkompositionen'),
+('setting_piano',	'Klaviereinstellungen'),
+('setting_piano_key_pc',	'Beschriftungen der Computertastatur anzeigen'),
+('setting_piano_key_name',	'Namen der Musiknote anzeigen'),
+('midi_show_pc_key',	'Codieren Sie das MIDI-Musikspektrum als Computertastatur'),
+('tao_moi_midi',	'Erstellen Sie Midi online'),
+('midi_add_line',	'Zeile hinzufügen'),
+('midi_add_column',	'Spalte hinzufügen'),
+('midi_del_row',	'Löschen Sie eine Zeile'),
+('midi_del_col',	'Löschen Sie eine Spalte'),
+('midi_empty',	'Leere ein Midi'),
+('midi_form_pc',	'Erstellen Sie Midi aus PC-Text'),
+('midi_add_line_tip',	'Fügen Sie eine neue Zeile hinzu, um verschiedene Spielströme zu erstellen, z. B. einen Griffbrettakkord. Sie können nur bis zu 10 Zeilen erstellen, die Ihren 10 Fingern entsprechen, während Sie gleichzeitig spielen.'),
+('midi_add_column_tip',	'Fügen Sie eine leere Spalte hinzu, um ein Zeitintervall zwischen den Akkorden zu einem bestimmten Zeitpunkt relativ zur Schlaggeschwindigkeit des Spielers zu erstellen, oder erstellen Sie eine Entwurfsspalte, damit Sie die Bünde später einfügen können.'),
+('midi_del_row_tip',	'Löscht eine Zeile, während alle MIDI-Noten in der ausgewählten Zeile gelöscht werden'),
+('midi_del_col_tip',	'Das Löschen einer Spalte bedeutet das Löschen der MIDI-Noten in der ausgewählten Spalte'),
+('midi_empty_tip',	'Leere die Notiz, dies bringt die Notiz in ihren ursprünglichen Zustand zurück, wenn sie nicht aufgezeichnet wurde'),
+('midi_form_pc_tip',	'Geben Sie den Computertext ein, um das entsprechende Midi zu erstellen'),
+('midi_help',	'MIDI Editor Handbuch'),
+('midi_help_tip',	'Mit dem Piano-Emulator und dem Midi-Editor können Sie ganz einfach Ihre eigene Musik erstellen oder Ihre vorhandenen Kompositionen in unser System einbringen. Wenn Sie ein Anfänger sind, nehmen Sie sich ein paar Minuten Zeit, um die folgenden manuellen Tipps zu lesen und die vollständigen Funktionen dieser zu nutzen Werkzeug.'),
+('midi_use',	'Grundlegende Verwendung'),
+('midi_use1',	'Drücken Sie die Tasten auf Ihrer Computertastatur, die den Notationszeichen auf jeder Klaviertaste entsprechen, um die Aktion zum Hinzufügen einer Note im Midi-Editor aufzuzeichnen.'),
+('midi_use2',	'Um eine Midi-Note zu bearbeiten, klicken Sie einfach auf die Midi-Note und drücken Sie eine andere Taste, um das ausgewählte Midi zu ersetzen.'),
+('midi_use3',	'Erstellen Sie einen Akkord für die Spur, indem Sie auf die Schaltfläche Linie hinzufügen in der Midi-Symbolleiste klicken. Anschließend erstellen Sie einen zusätzlichen Thread, um neue Notizen aufzuzeichnen'),
+('midi_use4',	'Die Symbolleiste des Midi-Editors enthält:'),
+('midi_publish_success',	'Nachdem Sie Ihren Piano-Midi-Entwurf erfolgreich veröffentlicht haben, werden wir diesen Entwurf so bald wie möglich genehmigen und der Öffentlichkeit zugänglich machen. Vielen Dank für Ihren kreativen Beitrag'),
+('midi_publish',	'Veröffentlichen'),
+('midi_erro_no_name',	'Dieses Meisterwerk kann nicht veröffentlicht werden! weil Sie Ihr Midi-Produkt noch nicht benannt haben'),
+('midi_erro_no_data',	'Noch keine MIDI-Daten. Bitte erstellen Sie vor der Veröffentlichung Inhalte'),
+('midi_export',	'MIDI-Datei exportieren (.mid)'),
+('midi_export_success',	'Midi (.mid) Datei erfolgreich exportieren!'),
+('midi_export_tip',	'Erstellen Sie Mid-Dateien aus Midi, um sie auf Computern oder Mobilgeräten zu genießen oder anzuhören'),
+('midi_publish_tip',	'Veröffentlichen Sie Ihre Arbeit in der Welt, damit jeder sie genießen oder zu einem Midi-Song beitragen kann. Wir moderieren Ihre Midi-Komposition und bearbeiten sie so, dass sie mit dem Archiv des Systems übereinstimmt'),
+('midi_download',	'MIDI-Musikdownloads');
 
--- 2021-03-10 07:48:14
+-- 2021-03-23 08:01:43

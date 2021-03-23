@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('warning',	'peringatan'),
 ('account_view_yes',	'Saya ingin terus melihat akun ini'),
 ('account_view_no',	'Saya tidak ingin melihat akun ini'),
-('account_view_18',	'Akun yang akan Anda lihat mungkin berisi konten khusus dewasa');
+('account_view_18',	'Akun yang akan Anda lihat mungkin berisi konten khusus dewasa'),
+('download_app_piano_tip',	'Mainkan dan pelajari sepanjang waktu dengan aplikasi di bawah ini untuk memuaskan hasrat Anda'),
+('hoc_dan_piano',	'Piano'),
+('tac_gia',	'Penulis'),
+('cap_do',	'Tingkat'),
+('toc_do_nhip',	'Kecepatan hentakan'),
+('so_not_nhac',	'Jumlah not musik'),
+('ten_bai_hat',	'Nama trek'),
+('level_de',	'Mudah'),
+('level_trung_binh',	'normal'),
+('level_kho',	'Sulit'),
+('level_sieu_kho',	'Sangat sulit'),
+('midi_info',	'Informasi komposisi piano Midi'),
+('setting_piano',	'Pengaturan piano'),
+('setting_piano_key_pc',	'Tampilkan label keyboard komputer'),
+('setting_piano_key_name',	'Tampilkan nama not musik'),
+('midi_show_pc_key',	'Menyandikan spektrum musik midi sebagai keyboard komputer'),
+('tao_moi_midi',	'Buat midi online'),
+('midi_add_line',	'Tambahkan garis'),
+('midi_add_column',	'Tambahkan kolom'),
+('midi_del_row',	'Hapus satu baris'),
+('midi_del_col',	'Hapus satu kolom'),
+('midi_empty',	'Kosongkan midi'),
+('midi_form_pc',	'Buat midi dari teks PC'),
+('midi_add_line_tip',	'Tambahkan baris baru untuk membuat aliran permainan yang berbeda, seperti akor papan fret, Anda hanya dapat membuat hingga 10 baris yang sesuai dengan 10 jari Anda sambil bermain pada waktu yang sama.'),
+('midi_add_column_tip',	'Tambahkan kolom kosong untuk membuat interval waktu antara akor pada waktu tertentu relatif terhadap kecepatan ketukan pemain, atau buat kolom draf sehingga Anda dapat memasukkan fret nanti.'),
+('midi_del_row_tip',	'Menghapus baris saat menghapus semua catatan midi di baris yang dipilih'),
+('midi_del_col_tip',	'Menghapus kolom berarti menghapus catatan midi di kolom yang dipilih'),
+('midi_empty_tip',	'Kosongkan catatan, ini mengembalikan catatan ke keadaan semula ketika belum direkam'),
+('midi_form_pc_tip',	'Masukkan teks komputer untuk membuat midi yang sesuai'),
+('midi_help',	'Manual editor MIDI'),
+('midi_help_tip',	'Dengan piano emulator dan editor midi membuatnya mudah untuk membuat musik Anda sendiri atau berkontribusi ke sistem kami komposisi Anda yang ada, Jika Anda seorang pemula Pencipta midi kami, luangkan beberapa menit untuk membaca tip manual di bawah ini untuk dengan mudah menggunakan fitur lengkap ini alat.'),
+('midi_use',	'Penggunaan dasar'),
+('midi_use1',	'Tekan tombol pada keyboard komputer Anda yang sesuai dengan tanda notasi pada setiap tuts piano untuk merekam tindakan menambahkan nada di editor midi.'),
+('midi_use2',	'Untuk mengedit catatan midi cukup klik pada catatan midi dan tekan tombol lain untuk mengganti midi yang dipilih.'),
+('midi_use3',	'Buat akor untuk trek dengan mengklik tombol tambahkan baris di toolbar midi. Kemudian Anda akan membuat utas tambahan untuk merekam catatan baru'),
+('midi_use4',	'Bilah alat editor midi meliputi:'),
+('midi_publish_success',	'Setelah berhasil menerbitkan draf midi piano Anda, kami akan menyetujui dan menerbitkan draf ini kepada publik secepatnya. Terima kasih atas kontribusi kreatif Anda'),
+('midi_publish',	'Menerbitkan'),
+('midi_erro_no_name',	'Karya ini tidak dapat dipublikasikan! karena Anda belum menamai produk midi Anda'),
+('midi_erro_no_data',	'Belum ada data midi, harap buat konten sebelum dipublikasikan'),
+('midi_export',	'Ekspor file midi (.mid)'),
+('midi_export_success',	'Ekspor file Midi (.mid) berhasil!'),
+('midi_export_tip',	'Buat file mid dari midi untuk dinikmati atau didengarkan di komputer atau perangkat seluler'),
+('midi_publish_tip',	'Publikasikan karya Anda ke dunia untuk dinikmati semua orang, atau kontribusikan ke lagu midi. Kami akan memoderasi komposisi midi Anda dan mengeditnya agar cocok dengan arsip sistem'),
+('midi_download',	'Download musik MIDI');
 
--- 2021-03-10 08:35:50
+-- 2021-03-23 08:38:57

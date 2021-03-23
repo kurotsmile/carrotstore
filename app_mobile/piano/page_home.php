@@ -72,7 +72,7 @@ while($row_midi=mysqli_fetch_assoc($query_list_midi)){
     <tr>
         <td><i class="fa fa-dot-circle-o" aria-hidden="true"></i> <?php echo $row_midi['id_midi']; ?></td>
         <td><?php echo $row_midi['id_device']; ?></td>
-        <td><?php echo $row_midi['name']; ?></td>
+        <td><a href="<?php echo $url_carrot_store;?>/piano/<?php echo $row_midi['id_midi']; ?>"  target="_blank" ><?php echo $row_midi['name']; ?></a></td>
         <td><?php echo $row_midi['category']; ?></td>
         <td><?php echo $arr_type_sell[$sell_type]; ?></td>
         <td><?php echo $arr_level_midi[$midi_level];?></td>
@@ -89,6 +89,7 @@ while($row_midi=mysqli_fetch_assoc($query_list_midi)){
             <?php }?>
             <a href="<?php echo $cur_url;?>&delete=<?php echo $row_midi['id_midi']; ?>" class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
             <a href="<?php echo $url;?>?view=edit&id=<?php echo $row_midi['id_midi']; ?>" class="buttonPro small yellow"><i class="fa fa-edit" aria-hidden="true"></i> Sửa</a>
+            <a href="<?php echo $url_carrot_store;?>/piano/<?php echo $row_midi['id_midi']; ?>" class="buttonPro small blue" target="_blank" ><i class="fa fa-link" aria-hidden="true"></i></a>
         </td>
     </tr>
 <?php

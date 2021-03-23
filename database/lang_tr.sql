@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('warning',	'uyarı'),
 ('account_view_yes',	'Bu hesabı görüntülemeye devam etmek istiyorum'),
 ('account_view_no',	'Bu hesabı görmek istemiyorum'),
-('account_view_18',	'Görüntülemek üzere olduğunuz hesap yalnızca yetişkinlere yönelik içerik barındırıyor olabilir');
+('account_view_18',	'Görüntülemek üzere olduğunuz hesap yalnızca yetişkinlere yönelik içerik barındırıyor olabilir'),
+('download_app_piano_tip',	'Tutkunuzu tatmin etmek için aşağıdaki uygulamayla her zaman oynayın ve öğrenin'),
+('hoc_dan_piano',	'Piyano'),
+('tac_gia',	'Yazar'),
+('cap_do',	'Seviye'),
+('toc_do_nhip',	'Yendi hızı'),
+('so_not_nhac',	'Müzik notaları sayısı'),
+('ten_bai_hat',	'Parçanın adı'),
+('level_de',	'Kolay'),
+('level_trung_binh',	'normal'),
+('level_kho',	'Zor'),
+('level_sieu_kho',	'Çok zor'),
+('midi_info',	'Bilgi Midi piyano besteleri'),
+('setting_piano',	'Piyano ayarları'),
+('setting_piano_key_pc',	'Bilgisayar klavye etiketlerini göster'),
+('setting_piano_key_name',	'Müzik notasının adını göster'),
+('midi_show_pc_key',	'Midi müzik spektrumunu bir bilgisayar klavyesi olarak kodlayın'),
+('tao_moi_midi',	'Çevrimiçi midi oluşturun'),
+('midi_add_line',	'Satır ekle'),
+('midi_add_column',	'Sütun ekleyin'),
+('midi_del_row',	'Bir satırı sil'),
+('midi_del_col',	'Bir sütunu silin'),
+('midi_empty',	'Bir midi boşalt'),
+('midi_form_pc',	'PC metninden midi oluştur'),
+('midi_add_line_tip',	'Klavye akoru gibi farklı çalma akışları oluşturmak için yeni bir satır ekleyin, aynı anda çalarken 10 parmağınıza karşılık gelen en fazla 10 satır oluşturabilirsiniz.'),
+('midi_add_column_tip',	'Oyuncunun vuruş hızına göre belirli bir zamanda akorlar arasında bir zaman aralığı oluşturmak için boş bir sütun ekleyin veya perdeleri daha sonra ekleyebilmek için bir taslak sütun oluşturun.'),
+('midi_del_row_tip',	'Seçili satırdaki tüm midi notaları silerken bir satırı siler'),
+('midi_del_col_tip',	'Bir sütunun silinmesi, seçilen sütundaki midi notlarının silinmesi anlamına gelir.'),
+('midi_empty_tip',	'Notu boşaltın, bu, not kaydedilmediğinde orijinal durumuna döndürür'),
+('midi_form_pc_tip',	'İlgili midi\'yi oluşturmak için bilgisayar metnini girin'),
+('midi_help',	'MIDI editörü kılavuzu'),
+('midi_help_tip',	'Piyano emülatörü ve midi editörü ile kendi müziğinizi oluşturmanızı veya sistemimize mevcut bestelerinize katkıda bulunmanızı kolaylaştırır.Yeni biriyseniz, midi yaratıcımız, bunun tüm özelliklerini kolayca kullanmak için aşağıdaki kılavuz ipuçlarını okumak için birkaç dakikanızı ayırın aracı.'),
+('midi_use',	'Temel kullanım'),
+('midi_use1',	'Midi düzenleyiciye not ekleme işlemini kaydetmek için bilgisayar klavyenizdeki her piyano tuşundaki gösterim işaretlerine karşılık gelen tuşlara basın.'),
+('midi_use2',	'Bir midi notu düzenlemek için midi nota tıklamanız ve seçilen midi\'yi değiştirmek için başka bir tuşa basmanız yeterlidir.'),
+('midi_use3',	'Midi araç çubuğundaki satır ekle düğmesine tıklayarak parça için bir akor oluşturun. Ardından yeni notlar kaydetmek için ek bir iş parçacığı oluşturacaksınız'),
+('midi_use4',	'Midi düzenleyici araç çubuğu şunları içerir:'),
+('midi_publish_success',	'Piyano midi taslağınızı başarıyla yayınladıktan sonra, bu taslağı onaylayıp mümkün olan en kısa sürede kamuoyuna yayınlayacağız. Yaratıcı katkınız için teşekkür ederiz'),
+('midi_publish',	'Yayınla'),
+('midi_erro_no_name',	'Bu şaheser yayınlanamaz! midi ürününüze henüz isim vermediniz'),
+('midi_erro_no_data',	'Henüz midi verisi yok, lütfen yayınlamadan önce içerik oluşturun'),
+('midi_export',	'Midi dosyasını (.mid) dışa aktar'),
+('midi_export_success',	'Midi (.mid) dosyasını başarıyla dışa aktarın!'),
+('midi_export_tip',	'Bilgisayarda veya mobil cihazlarda keyfini çıkarmak veya dinlemek için midi\'den orta dosyalar oluşturun'),
+('midi_publish_tip',	'Çalışmanızı herkesin keyif alması veya bir midi şarkıya katkıda bulunması için dünyaya yayınlayın. Midi kompozisyonunuzu yöneteceğiz ve sistemin arşiviyle eşleşecek şekilde düzenleyeceğiz'),
+('midi_download',	'MIDI müzik indirmeleri');
 
--- 2021-03-10 08:26:34
+-- 2021-03-23 08:03:12

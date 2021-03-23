@@ -1,7 +1,8 @@
-<div id="containt" style="width: 100%;float: left;">
 <script>
 var arr_id_piano=[];
 </script>
+<div id="containt" style="width: 100%;float: left;">
+
 <?php
 $label_detail=lang($link,'chi_tiet');
 $label_loai=lang($link,'loai');

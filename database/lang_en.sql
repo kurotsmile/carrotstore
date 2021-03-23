@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -274,6 +274,39 @@ INSERT INTO `lang_en` (`key`, `value`) VALUES
 ('level_trung_binh',	'normal'),
 ('level_kho',	'Difficult'),
 ('level_sieu_kho',	'Super difficult'),
-('midi_info',	'Information of Midi piano compositions');
+('midi_info',	'Information of Midi piano compositions'),
+('setting_piano',	'Piano settings'),
+('setting_piano_key_pc',	'Show computer keyboard labels'),
+('setting_piano_key_name',	'Show musical note name'),
+('midi_show_pc_key',	'Encode the midi music spectrum as a computer keyboard'),
+('tao_moi_midi',	'Create midi online'),
+('midi_add_line',	'Add line'),
+('midi_add_column',	'Add column'),
+('midi_del_row',	'Delete a row'),
+('midi_del_col',	'Delete a column'),
+('midi_empty',	'Empty a midi'),
+('midi_form_pc',	'Create midi from PC text'),
+('midi_add_line_tip',	'Add a new line to create different playing streams, like a fretboard chord, you can only create up to 10 lines corresponding to your 10 fingers while playing at the same time.'),
+('midi_add_column_tip',	'Add an empty column to create a time interval between the chords at a given time relative to the player\'s beat speed, or create a draft column so you can insert the frets later.'),
+('midi_del_row_tip',	'Deletes a row while deleting all midi notes in the selected row'),
+('midi_del_col_tip',	'Deleting a column means deleting the midi notes in the selected column'),
+('midi_empty_tip',	'Empty the note, this returns the note to its original state when it has not been recorded'),
+('midi_form_pc_tip',	'Enter the computer text to create the corresponding midi'),
+('midi_help',	'MIDI editor manual'),
+('midi_help_tip',	'With piano emulator and midi editor making it easy to create your own music or contribute to our system your existing compositions, If you are a beginner Our midi creator, take a few minutes to read the manual tips below to easily use the full features of this tool.'),
+('midi_use',	'Basic use'),
+('midi_use1',	'Press the keys on your computer keyboard that correspond to the notation marks on each piano key to record the action of adding a note in the midi editor.'),
+('midi_use2',	'To edit a midi note simply click on the midi note and press another key to replace the selected midi.'),
+('midi_use3',	'Create a chord for the track by clicking on the add line button in the midi toolbar. Then you will create an additional thread to record new notes'),
+('midi_use4',	'Midi editor toolbar includes:'),
+('midi_publish_success',	'Having successfully published your piano midi draft, we will approve and publish this draft to the public as soon as possible. Thank you for your creative contribution'),
+('midi_publish',	'Publish'),
+('midi_erro_no_name',	'This masterpiece cannot be published! because you have not named your midi product yet'),
+('midi_erro_no_data',	'No midi data yet, please create content before publishing'),
+('midi_export',	'Export midi file (.mid)'),
+('midi_export_success',	'Export Midi (.mid) file successfully!'),
+('midi_export_tip',	'Create mid files from midi to enjoy or listen on computer or mobile devices'),
+('midi_publish_tip',	'Publish your work to the world for everyone to enjoy, or contribute to a midi song. We will moderate your midi composition and edit it to match the system\'s archive'),
+('midi_download',	'MIDI music downloads');
 
--- 2021-03-17 17:53:51
+-- 2021-03-23 07:59:17

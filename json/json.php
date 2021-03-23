@@ -156,6 +156,7 @@ if($_GET||$_POST){
         }
         if(count($arr_id)<intval($_POST['lenguser'])){
             if($type=='all'){
+                $count_item_music=count($arr_id);
                 $list_style='list';
                 $label_choi_nhac=lang($link,'choi_nhac');
                 $label_chi_tiet=lang($link,'chi_tiet');
@@ -167,6 +168,7 @@ if($_GET||$_POST){
                 if($result){
                     while ($row = mysqli_fetch_assoc($result)) {
                         include "page_music_git.php";
+                        $count_item_music++;
                     }
                 }
             }
@@ -193,6 +195,25 @@ if($_GET||$_POST){
             $result = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20");
             while ($row = mysqli_fetch_assoc($result)) {
                include "page_quote_git.php";
+            }
+        }
+        exit; 
+    }
+
+    if(isset($_POST['function'])&&$_POST['function']=='load_piano'){
+        $arr_id=json_decode($_POST['json']);
+        if(count($arr_id)<intval($_POST['lengmidi'])){
+            $arr_midi_level=array(lang($link,'level_de'),lang($link,'level_trung_binh'),lang($link,'level_kho'),lang($link,'level_sieu_kho'));
+            $label_detail=lang($link,'chi_tiet');
+            $label_loai=lang($link,'loai');
+            $label_ten_bai_hat=lang($link,'ten_bai_hat');
+            $label_cap_do=lang($link,'cap_do');
+            $label_toc_do_nhip=lang($link,'toc_do_nhip');
+            $label_so_not_nhac=lang($link,'so_not_nhac');
+            $label_tac_gia=lang($link,'tac_gia');
+            $result = mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE `id_midi` NOT IN (".implode(",",$arr_id).") AND `sell`!='0' ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_assoc($result)) {
+               include "page_piano_git.php";
             }
         }
         exit; 
@@ -352,28 +373,6 @@ if($_GET||$_POST){
         exit;
     }
     
-    if(isset($_POST['function'])&&$_POST['function']=='create_shorten_link'){
-        include "phpqrcode/qrlib.php";
-        $link_web=$_POST['link'];
-        $lang=$_SESSION['lang'];
-        $user_id='';
-        if(isset($user_login)){
-            $user_id=$user_login->id;
-        }
-        $new_id_link=uniqid();
-        $query_add_link_shorten=mysqli_query($link,"INSERT INTO carrotsy_shortenlinks.`link_$lang` (`id`,`link`, `id_user`, `password`, `status`,`date`) VALUES ('$new_id_link','$link_web', '$user_id', '', '0',NOW());");
-        $new_url_link=$url.'/link/'.$new_id_link;
-        QRcode::png($new_url_link, 'phpqrcode/img_link/'.$new_id_link.'.png', 'L', 4, 2);
-        echo '<strong style="color: slateblue;text-shadow: 1px 0px 11px #acff00;">'.$link_web.'</strong><br/>';
-        echo '<img src="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png"/><br/>';
-        echo '<input type="text" class="inp_link_show" value="'.$new_url_link.'" /><br/>';
-        echo '<a href="" class="buttonPro light_blue large" onClick="copyTextToClipboard(\''.$new_url_link.'\');return false;"><i class="fa fa-clipboard" aria-hidden="true" ></i> '.lang($link,'copy').'</a>';
-        echo '<a href="'.$url.'/phpqrcode/img_link/'.$new_id_link.'.png" target="_blank" class="buttonPro light_blue large"><i class="fa fa-floppy-o" aria-hidden="true"></i> '.lang($link,'save_img').' (QR)</a>';
-        echo '<a href="'.$url.'/l/'.$new_id_link.'" target="_blank" class="buttonPro light_blue large"><i class="fa fa-external-link-square" aria-hidden="true"></i> '.lang($link,'shorten_link_detail').'</a>';
-        echo show_share($link,$new_url_link.'/'.$lang);
-        exit;
-    }
-
     if(isset($_POST['function'])&&$_POST['function']=='show_box_select_lang'){
         $urls = $_POST['urls'];
         $query_country=mysqli_query($link,"SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active` = '1' AND `ver0`='1'");

@@ -15,6 +15,7 @@ TRUNCATE `setting`;
 INSERT INTO `setting` (`key`, `value`) VALUES
 ('show_ads',	'1'),
 ('show_adsupply',	'0'),
-('login_facebook',	'0');
+('login_facebook',	'0'),
+('ver',	'4.3');
 
--- 2021-03-10 06:43:53
+-- 2021-03-22 10:04:29

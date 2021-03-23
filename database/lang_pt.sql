@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('warning',	'Aviso'),
 ('account_view_yes',	'Eu quero continuar vendo esta conta'),
 ('account_view_no',	'Não quero ver esta conta'),
-('account_view_18',	'A conta que você está prestes a visualizar pode conter conteúdo somente para adultos');
+('account_view_18',	'A conta que você está prestes a visualizar pode conter conteúdo somente para adultos'),
+('download_app_piano_tip',	'Brinque e aprenda o tempo todo com o aplicativo abaixo para encantar sua paixão'),
+('hoc_dan_piano',	'Piano'),
+('tac_gia',	'Autor'),
+('cap_do',	'Nível'),
+('toc_do_nhip',	'Velocidade de batida'),
+('so_not_nhac',	'Número de notas musicais'),
+('ten_bai_hat',	'Nome da pista'),
+('level_de',	'Fácil'),
+('level_trung_binh',	'normal'),
+('level_kho',	'Trudny'),
+('level_sieu_kho',	'Super dificil'),
+('midi_info',	'Informações composições de piano Midi'),
+('setting_piano',	'Configurações de piano'),
+('setting_piano_key_pc',	'Mostrar rótulos de teclado de computador'),
+('setting_piano_key_name',	'Mostrar o nome da nota musical'),
+('midi_show_pc_key',	'Codifique o espectro musical midi como um teclado de computador'),
+('tao_moi_midi',	'Crie midi online'),
+('midi_add_line',	'Dodaj linię'),
+('midi_add_column',	'Adicionar coluna'),
+('midi_del_row',	'Apagar uma linha'),
+('midi_del_col',	'Apagar uma coluna'),
+('midi_empty',	'Esvaziar um midi'),
+('midi_form_pc',	'Crie midi a partir de texto de PC'),
+('midi_add_line_tip',	'Adicione uma nova linha para criar diferentes fluxos de execução, como um acorde de escala, você só pode criar até 10 linhas correspondentes aos seus 10 dedos enquanto toca ao mesmo tempo.'),
+('midi_add_column_tip',	'Adicione uma coluna vazia para criar um intervalo de tempo entre os acordes em um determinado momento em relação à velocidade da batida do jogador ou crie uma coluna de rascunho para que você possa inserir os trastes depois.'),
+('midi_del_row_tip',	'Apaga uma linha enquanto apaga todas as notas midi na linha selecionada'),
+('midi_del_col_tip',	'Apagar uma coluna significa apagar as notas midi na coluna selecionada'),
+('midi_empty_tip',	'Opróżnij notatkę, przywraca notatkę do jej pierwotnego stanu, gdy nie została nagrana'),
+('midi_form_pc_tip',	'Insira o texto do computador para criar o midi correspondente'),
+('midi_help',	'Manual do editor MIDI'),
+('midi_help_tip',	'Z emulatorem fortepianu i edytorem midi, które ułatwiają tworzenie własnej muzyki lub dodawanie do naszego systemu istniejących kompozycji. narzędzie.'),
+('midi_use',	'Uso básico'),
+('midi_use1',	'Pressione as teclas no teclado do computador que correspondem às marcas de notação em cada tecla do piano para gravar a ação de adicionar uma nota no editor de midi.'),
+('midi_use2',	'Para editar uma nota midi, simplesmente clique na nota midi e pressione outra tecla para substituir o midi selecionado.'),
+('midi_use3',	'Crie um acorde para a faixa clicando no botão adicionar linha na barra de ferramentas midi. Então você criará um tópico adicional para gravar novas notas'),
+('midi_use4',	'A barra de ferramentas do editor Midi inclui:'),
+('midi_publish_success',	'Po pomyślnym opublikowaniu wersji roboczej midi na fortepian zatwierdzimy ją i opublikujemy publicznie tak szybko, jak to możliwe. Dziękuję za twórczy wkład'),
+('midi_publish',	'Publicar'),
+('midi_erro_no_name',	'Esta obra-prima não pode ser publicada! porque você ainda não nomeou seu produto midi'),
+('midi_erro_no_data',	'Ainda não há dados midi, por favor, crie conteúdo antes de publicar'),
+('midi_export',	'Exportar arquivo midi (.mid)'),
+('midi_export_success',	'Exportar arquivo Midi (.mid) com sucesso!'),
+('midi_export_tip',	'Crie arquivos midi para curtir ou ouvir no computador ou dispositivos móveis'),
+('midi_publish_tip',	'Publique seu trabalho para o mundo para que todos possam desfrutar ou contribua com uma música midi. Vamos moderar sua composição midi e editá-la para corresponder ao arquivo do sistema'),
+('midi_download',	'Downloads de música MIDI');
 
--- 2021-03-10 07:21:51
+-- 2021-03-23 08:00:14

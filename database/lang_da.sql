@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('warning',	'advarsel'),
 ('account_view_yes',	'Jeg vil fortsætte med at se denne konto'),
 ('account_view_no',	'Jeg vil ikke se denne konto'),
-('account_view_18',	'Den konto, du er ved at se, kan indeholde kun seksuelt indhold');
+('account_view_18',	'Den konto, du er ved at se, kan indeholde kun seksuelt indhold'),
+('download_app_piano_tip',	'Spil og lær hele tiden med nedenstående applikation for at glæde din lidenskab'),
+('hoc_dan_piano',	'Klaver'),
+('tac_gia',	'Forfatter'),
+('cap_do',	'Niveau'),
+('toc_do_nhip',	'Beat hastighed'),
+('so_not_nhac',	'Antal musiknoter'),
+('ten_bai_hat',	'Navn på sporet'),
+('level_de',	'Let'),
+('level_trung_binh',	'normal'),
+('level_kho',	'Svært'),
+('level_sieu_kho',	'Super vanskeligt'),
+('midi_info',	'Information Midi klaverkompositioner'),
+('setting_piano',	'Klaverindstillinger'),
+('setting_piano_key_pc',	'Vis computerens tastaturetiketter'),
+('setting_piano_key_name',	'Vis navn på musiknote'),
+('midi_show_pc_key',	'Kod midi-musikspektret som et computertastatur'),
+('tao_moi_midi',	'Opret midi online'),
+('midi_add_line',	'Tilføj linje'),
+('midi_add_column',	'Tilføj kolonne'),
+('midi_del_row',	'Slet en række'),
+('midi_del_col',	'Slet en kolonne'),
+('midi_empty',	'Tøm en midi'),
+('midi_form_pc',	'Opret midi fra pc-tekst'),
+('midi_add_line_tip',	'Tilføj en ny linje for at oprette forskellige afspilningsstrømme, som et gribebræt, du kan kun oprette op til 10 linjer svarende til dine 10 fingre, mens du spiller på samme tid.'),
+('midi_add_column_tip',	'Tilføj en tom kolonne for at oprette et tidsinterval mellem akkorderne på et givet tidspunkt i forhold til spillerens beathastighed, eller opret en kladtekolonne, så du kan indsætte båndene senere.'),
+('midi_del_row_tip',	'Sletter en række, mens alle midnatter i den valgte række slettes'),
+('midi_del_col_tip',	'Sletning af en kolonne betyder sletning af midnoter i den valgte kolonne'),
+('midi_empty_tip',	'Tøm noten, dette returnerer noten til sin oprindelige tilstand, når den ikke er optaget'),
+('midi_form_pc_tip',	'Indtast computerteksten for at oprette den tilsvarende midi'),
+('midi_help',	'MIDI editor manual'),
+('midi_help_tip',	'Med klaveremulator og midi-editor, der gør det let at oprette din egen musik eller bidrage til vores system dine eksisterende kompositioner. Hvis du er nybegynder Vores midi-skaber, skal du tage et par minutter på at læse vejledningen nedenfor for nemt at bruge de fulde funktioner i dette værktøj.'),
+('midi_use',	'Grundlæggende brug'),
+('midi_use1',	'Tryk på tasterne på dit computertastatur, der svarer til notationsmærkerne på hver klavertast for at registrere handlingen ved at tilføje en note i midi-editoren.'),
+('midi_use2',	'For at redigere en midi-note skal du blot klikke på midi-noten og trykke på en anden tast for at erstatte den valgte midi.'),
+('midi_use3',	'Opret en akkord til sporet ved at klikke på knappen Tilføj linje i midi-værktøjslinjen. Derefter opretter du en ekstra tråd for at optage nye noter'),
+('midi_use4',	'Midi editor værktøjslinje inkluderer:'),
+('midi_publish_success',	'Når vi har offentliggjort dit piano midi-udkast, godkender vi og offentliggør dette udkast til offentligheden hurtigst muligt. Tak for dit kreative bidrag'),
+('midi_publish',	'Offentliggøre'),
+('midi_erro_no_name',	'Dette mesterværk kan ikke offentliggøres! fordi du endnu ikke har navngivet dit midi-produkt'),
+('midi_erro_no_data',	'Ingen midi-data endnu. Opret venligst indhold inden udgivelse'),
+('midi_export',	'Eksporter midi-fil (.mid)'),
+('midi_export_success',	'Eksport Midi (.mid) -fil med succes!'),
+('midi_export_tip',	'Opret mellemfiler fra midi for at nyde eller lytte på computer eller mobilenheder'),
+('midi_publish_tip',	'Udgiv dit arbejde til verden, så alle kan nyde det, eller bidrager til en midisang. Vi modererer din midi-komposition og redigerer den, så den svarer til systemets arkiv'),
+('midi_download',	'MIDI musik downloads');
 
--- 2021-03-10 08:41:05
+-- 2021-03-23 08:39:12

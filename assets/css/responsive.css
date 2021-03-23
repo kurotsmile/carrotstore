@@ -14,6 +14,8 @@
     #add_company strong{width: 100% !important;float: left;}
     #btn_login_acc,#show_history{display: none;}
     #go_top {bottom: 100px;right: 24px;}
+    #editor_data{width:80%;}
+    #editor_control{width: 20%;}
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
@@ -172,7 +174,8 @@
     .neon-text{font-size: 100%}
     #download_song.full{width: 100%;}
     #btn_dark_mode{ position: fixed;height: 20px; width: 20px !important;right: 10px;bottom: 100px; padding: 10px !important; text-align: center !important;display: block !important;    box-shadow: 0px 0px 2px 1px black;}
-
+    #editor_data{width:80%;}
+    #editor_control{width: 20%;}
 
 }
 

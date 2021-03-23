@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -262,6 +262,51 @@ INSERT INTO `lang_pl` (`key`, `value`) VALUES
 ('warning',	'ostrzeżenie'),
 ('account_view_yes',	'Chcę kontynuować przeglądanie tego konta'),
 ('account_view_no',	'Nie chcę widzieć tego konta'),
-('account_view_18',	'Konto, które zamierzasz wyświetlić, może zawierać treści tylko dla dorosłych');
+('account_view_18',	'Konto, które zamierzasz wyświetlić, może zawierać treści tylko dla dorosłych'),
+('download_app_piano_tip',	'Graj i ucz się przez cały czas dzięki poniższej aplikacji, aby rozkoszować się swoją pasją'),
+('hoc_dan_piano',	'Fortepian'),
+('tac_gia',	'Autor'),
+('cap_do',	'Poziom'),
+('toc_do_nhip',	'Pokonaj prędkość'),
+('so_not_nhac',	'Liczba nut'),
+('ten_bai_hat',	'Nazwa toru'),
+('level_de',	'Łatwo'),
+('level_trung_binh',	'normalna'),
+('level_kho',	'Trudny'),
+('level_sieu_kho',	'Super trudne'),
+('midi_info',	'Informacje Kompozycje Midi na fortepian'),
+('setting_piano',	'Ustawienia fortepianu'),
+('setting_piano_key_pc',	'Pokaż etykiety klawiatury komputera'),
+('setting_piano_key_name',	'Pokaż nazwę nuty'),
+('midi_show_pc_key',	'Zakoduj widmo muzyki midi jako klawiaturę komputerową'),
+('tao_moi_midi',	'Twórz midi online'),
+('midi_add_line',	'Dodaj linię'),
+('midi_add_column',	'Dodaj kolumnę'),
+('midi_del_row',	'Usuń wiersz'),
+('midi_del_col',	'Usuń kolumnę'),
+('midi_empty',	'Opróżnij midi'),
+('midi_form_pc',	'Twórz midi z tekstu na komputerze'),
+('midi_add_line_tip',	'Dodaj nową linię, aby stworzyć różne strumienie gry, takie jak akord na podstrunnicy, możesz utworzyć maksymalnie 10 linii odpowiadających twoim 10 palcom podczas gry w tym samym czasie.'),
+('midi_add_column_tip',	'Dodaj pustą kolumnę, aby utworzyć odstęp czasowy między akordami w danym czasie w stosunku do szybkości uderzeń gracza, lub utwórz kolumnę draftu, aby później wstawić progi.'),
+('midi_del_row_tip',	'Usuwa wiersz, jednocześnie usuwając wszystkie nuty midi w wybranym wierszu'),
+('midi_del_col_tip',	'Usunięcie kolumny oznacza usunięcie nut midi w wybranej kolumnie'),
+('midi_empty_tip',	'Opróżnij notatkę, przywraca notatkę do jej pierwotnego stanu, gdy nie została nagrana'),
+('midi_form_pc_tip',	'Wprowadź tekst komputera, aby utworzyć odpowiednie midi'),
+('midi_help',	'Podręcznik edytora MIDI'),
+('midi_help_tip',	'Z emulatorem fortepianu i edytorem midi, które ułatwiają tworzenie własnej muzyki lub dodawanie do naszego systemu istniejących kompozycji. narzędzie.'),
+('midi_use',	'Podstawowe zastosowanie'),
+('midi_use1',	'Naciśnij klawisze na klawiaturze komputera, które odpowiadają znakom notacji na każdym klawiszu fortepianu, aby zarejestrować czynność dodawania nuty w edytorze midi.'),
+('midi_use2',	'Aby edytować nutę midi, po prostu kliknij nutę midi i naciśnij inny klawisz, aby zastąpić wybrane midi.'),
+('midi_use3',	'Utwórz akord dla ścieżki, klikając przycisk dodawania linii na pasku narzędzi midi. Następnie utworzysz dodatkowy wątek do nagrywania nowych notatek'),
+('midi_use4',	'Pasek narzędzi edytora Midi zawiera:'),
+('midi_publish_success',	'Po pomyślnym opublikowaniu wersji roboczej midi na fortepian zatwierdzimy ją i opublikujemy publicznie tak szybko, jak to możliwe. Dziękuję za twórczy wkład'),
+('midi_publish',	'Publikować'),
+('midi_erro_no_name',	'Tego arcydzieła nie można opublikować! ponieważ jeszcze nie nadałeś nazwy swojemu produktowi midi'),
+('midi_erro_no_data',	'Nie ma jeszcze danych midi, prosimy o utworzenie treści przed publikacją'),
+('midi_export',	'Eksportuj plik midi (.mid)'),
+('midi_export_success',	'Eksportuj plik Midi (.mid) pomyślnie!'),
+('midi_export_tip',	'Twórz pliki midi z midi, aby cieszyć się lub słuchać na komputerze lub urządzeniach mobilnych'),
+('midi_publish_tip',	'Opublikuj swoją pracę światu, aby wszyscy mogli się nią cieszyć, lub wnieś swój wkład do piosenki midi. Będziemy moderować twoją kompozycję midi i edytować ją tak, aby pasowała do archiwum systemu'),
+('midi_download',	'Pobieranie muzyki w formacie MIDI');
 
--- 2021-03-10 08:35:19
+-- 2021-03-23 08:39:48

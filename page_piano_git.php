@@ -4,7 +4,7 @@ $img=$url.'/app_mygirl/obj_effect/1078.png';
 ?>
 <div id="row<?php echo $row['id_midi']; ?>" class="app" >
     <div class="app_title">
-        <a href="<?php echo $url;?>/piano/<?php echo $row['id'];?>/<?php echo $lang_sel;?>">
+        <a href="<?php echo $url;?>/piano/<?php echo $row['id_midi'];?>">
             <h1 style="font-size: -1vw;">
                 <i class="fa fa-paw" aria-hidden="true"></i>  &nbsp;&nbsp;
                 <?php echo limit_words($row['name'],7);?>
@@ -17,7 +17,7 @@ $img=$url.'/app_mygirl/obj_effect/1078.png';
         <?php echo $label_ten_bai_hat;?>: <?php echo $row['name'];?><br/>
         <?php echo $label_cap_do;?>: <?php echo $arr_midi_level[$midi_level];?><br/>
         <?php echo $label_toc_do_nhip;?>: <?php echo $row['speed'];?> giây<br/>
-        <?php echo $label_so_not_nhac;?>: <?php echo $row['length'];?>/3<br/>
+        <?php echo $label_so_not_nhac;?>: <?php echo $row['length'];?>/ <?php echo $row['length_line'];?><br/>
         <?php if($row['author']!=''){?><?php echo $label_tac_gia;?>: <?php echo $row['author'];}?>
     </div>
     
@@ -30,6 +30,6 @@ $img=$url.'/app_mygirl/obj_effect/1078.png';
     </div>
 
     <script>
-        arr_id_piano.push('<?php echo $row['id_midi']; ?>');
+        arr_id_piano.push("'<?php echo $row['id_midi']; ?>'");
     </script>
 </div>
