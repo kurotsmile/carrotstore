@@ -11,7 +11,7 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
 ?>
             <div id="row<?php echo $row['id']; ?>" class="app" oncontextmenu="show_menu_app(this,1);return false;">
                 <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>"><h1><span class="<?php echo $data_type['css_icon'];?>"></span> <?php echo $p_name_product; ?></h1></a></div>
-                <a href="<?php echo $link_app;?>"><img style="float: left;width: 100px;"  alt="<?php echo $p_name_product; ?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row['id'],'100x100'); ?>" class="app_icon" /></a>
+                <a href="<?php echo $link_app;?>"><img style="float: left;width: 100px;"  alt="<?php echo $p_name_product; ?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row['id'],'100x100'); ?>" class="app_icon" width="100" height="100" /></a>
                 <div class="app_txt">
                     <div class="desc">
                     <?php echo limit_words(get_desc_product_lang($link,$row['id'],$_SESSION['lang']),20); ?>
@@ -20,12 +20,12 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
 						$query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
 						while($row_l=mysqli_fetch_assoc($query_link_list)){
 						?>
-                        <a title="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" alt="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" class="buttonPro small green" href="<?php echo $row_l['link'];?>" target="_blank"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i></a>
+                        <a title="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" alt="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" class="buttonPro small green" href="<?php echo $row_l['link'];?>" target="_blank" rel="noopener"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i></a>
 						<?php }?>
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/manifest.plist')){
                         ?>
-                            <a class="buttonPro small green jailbreak" href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $row['id'];?>/ios/manifest.plist" target="_blank" id_product="<?php echo $row['id']; ?>"><i class="fa fa-apple" aria-hidden="true"></i></a>
+                            <a class="buttonPro small green jailbreak" href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $row['id'];?>/ios/manifest.plist" target="_blank" rel="noopener" id_product="<?php echo $row['id']; ?>"><i class="fa fa-apple" aria-hidden="true"></i></a>
                         <?php }?>
                 </div>
                 <div class="app_type">
@@ -40,12 +40,12 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
 						$query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
 						while($row_l=mysqli_fetch_assoc($query_link_list)){
 						?>
-						<a class="buttonPro orange small" href="<?php echo $row_l['link'];?>" target="_blank"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i> <?php echo $label_download_on.' ('.$row_l['name'].')';?></a>
+						<a class="buttonPro orange small" href="<?php echo $row_l['link'];?>" target="_blank" rel="noopener"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i> <?php echo $label_download_on.' ('.$row_l['name'].')';?></a>
 						<?php }?>
                         <?php
                             if(file_exists('product_data/'.$row['id'].'/ios/manifest.plist')){
                         ?>
-                            <a class="buttonPro orange small jailbreak" href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $row['id'];?>/ios/manifest.plist" target="_blank"  id_product="<?php echo $row['id']; ?>"><i class="fa fa-apple" aria-hidden="true"></i> <?php echo $label_download_on.' (Carrot Store)';?></a>
+                            <a class="buttonPro orange small jailbreak" href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $row['id'];?>/ios/manifest.plist" target="_blank"  rel="noopener" id_product="<?php echo $row['id']; ?>"><i class="fa fa-apple" aria-hidden="true"></i> <?php echo $label_download_on.' (Carrot Store)';?></a>
                         <?php }?>
                         <a href="#" style="width: auto" onclick="$(this).parent().parent().removeClass('menu_app');return false;" class="buttonPro small"><i class="fa fa-arrow-circle-o-left"></i></a>
                     </div>

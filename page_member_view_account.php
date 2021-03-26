@@ -139,6 +139,23 @@ if($list_contact_same_name){
             </div>
         <?php } ?>
 
+        <?php
+        if(get_setting($link,'show_ads')=='1') {
+        ?>
+        <div style="width:100%;float:left">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ck+8m-1w-30+cw"
+                data-ad-client="ca-pub-5388516931803092"
+                data-ad-slot="9207776534"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <?php }?>
+
         <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts" scrolling="no" frameborder="0" style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;"></iframe>
 
     </div>
@@ -181,17 +198,6 @@ if($list_contact_same_name){
         <?php
         echo show_box_ads_page($link,'contact_page');
         ?>
-
-        <?php
-        if(get_setting($link,'show_ads')=='1') {
-        ?>
-        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:300px" data-ad-client="ca-pub-5388516931803092" data-ad-slot="5771636042"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            var arr_id_user = [];
-        </script>
-        <?php }?>
-
     </div>
 
 <?php
@@ -199,6 +205,9 @@ include "page_member_footer_account.php";
 
 if (sizeof($array_contact_same_name)> 0) {
     ?>
+    <script>
+    var arr_id_user=[];
+    </script>
     <div style="float: left;width: 100%;">
         <h2 style="padding-left: 30px;"><?php echo lang($link,'lien_he_cung_ten'); ?></h2>
         <?php

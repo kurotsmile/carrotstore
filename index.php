@@ -4,8 +4,6 @@ ini_set('post_max_size', '90M');
 ini_set('max_input_time', 900);
 ini_set('max_execution_time', 900);
 
-header('Content-type: text/html; charset=utf-8');
-
 ob_start();
 session_start();
 
@@ -110,7 +108,7 @@ include "header.php";
 ?>
 
 <div id="header">
-    <a href="<?php echo $url; ?>"><img alt="Store Carrot" src="<?php echo $url; ?>/images/logo.png" id="logo" class="url_carrot"/></a>
+    <a href="<?php echo $url; ?>"><img alt="Store Carrot" src="<?php echo $url; ?>/images/logo.png" id="logo" width="120" height="56" class="url_carrot"/></a>
     <?php
     $type = 'products';
     if (isset($_GET['page_view']) && $_GET['page_view'] == "page_music.php") {$type='music';}
@@ -155,7 +153,7 @@ include "header.php";
         $query_name_country=mysqli_query($link,"SELECT `name` FROM `app_my_girl_country` WHERE `key`='$lang' LIMIT 1");
         $data_name_country=mysqli_fetch_assoc($query_name_country);
         ?>
-        <img style="width: 39px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"  src="<?php echo $url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$lang.'.png&size=39x39&trim=1'; ?>"/>
+        <img style="width: 39px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"  width="39" height="39" src="<?php echo $url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$lang.'.png&size=39x39&trim=1'; ?>"/>
         <strong style="font-size: 15px;width: 100px;"><?php echo $data_name_country['name']; ?></strong><br/>
         <span  style="font-size: 70%;"><?php echo lang($link,'ngon_ngu_hien_thi'); ?></span>
     </div>

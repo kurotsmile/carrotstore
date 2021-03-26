@@ -16,6 +16,7 @@
     #go_top {bottom: 100px;right: 24px;}
     #editor_data{width:80%;}
     #editor_control{width: 20%;}
+    #kr_player_music.top_bar {position: unset;top: unset;left: unset;}
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
@@ -176,6 +177,6 @@
     #btn_dark_mode{ position: fixed;height: 20px; width: 20px !important;right: 10px;bottom: 100px; padding: 10px !important; text-align: center !important;display: block !important;    box-shadow: 0px 0px 2px 1px black;}
     #editor_data{width:80%;}
     #editor_control{width: 20%;}
-
+    #kr_player_music.top_bar {position: unset;top: unset;left: unset;}
 }
 

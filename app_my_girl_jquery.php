@@ -1081,8 +1081,6 @@ if ($func == 'login_work') {
     exit;
 }
 
-
-
 if($func=='check_data_syn'){
     class item_table{
         public $key_table='';
@@ -1280,11 +1278,11 @@ if($func=='load_tree_chat'){
     if($type_chat=='chat'){
         $query_chat=mysqli_query($link,"SELECT `id`,`text`,`chat`,`sex`,`character_sex` FROM  `app_my_girl_$lang_view` WHERE `id` = '$id_view'");
         $data_chat=mysqli_fetch_assoc($query_chat);
-        $txt_json=$txt_json.'{"id":"'.$data_chat['id'].'","key":'.$data_chat['id'].', "name":"'.$data_chat['text'].'", "title":"'.$data_chat['chat'].'","type":"chat","sex":"'.$data_chat['sex'].'","character_sex":"'.$data_chat['character_sex'].'"'. $txt_count_history.'},';
+        $txt_json=$txt_json.'{"id":"'.$data_chat['id'].'","key":'.$data_chat['id'].', "name":"'.addslashes($data_chat['text']).'", "title":"'.addslashes($data_chat['chat']).'","type":"chat","sex":"'.$data_chat['sex'].'","character_sex":"'.$data_chat['character_sex'].'"'. $txt_count_history.'},';
     }else{
         $query_chat=mysqli_query($link,"SELECT `id`,`func`,`chat`,`sex`,`character_sex` FROM `app_my_girl_msg_$lang_view` WHERE `id` = '$id_view'");
         $data_chat=mysqli_fetch_assoc($query_chat);
-        $txt_json=$txt_json.'{"id":"'.$data_chat['id'].'","key":'.$data_chat['id'].', "name":"'.$data_chat['func'].'", "title":"'.$data_chat['chat'].'","type":"msg","sex":"'.$data_chat['sex'].'","character_sex":"'.$data_chat['character_sex'].'"'. $txt_count_history.'},'; 
+        $txt_json=$txt_json.'{"id":"'.$data_chat['id'].'","key":'.$data_chat['id'].', "name":"'.$data_chat['func'].'", "title":"'.addslashes($data_chat['chat']).'","type":"msg","sex":"'.$data_chat['sex'].'","character_sex":"'.$data_chat['character_sex'].'"'. $txt_count_history.'},'; 
     }
 
     function check_is_pater($link,$id_chat,$index_note,$type_chat){
@@ -1300,7 +1298,7 @@ if($func=='load_tree_chat'){
                 if($data_count_history['c']>0){
                     $txt_count_history=',"comments":"⌚ Lịch sử :'.$data_count_history['c'].'"';
                 }
-                $txt_json=$txt_json.'{"id":"'.$row_chat['id'].'","key":'.$row_chat['id'].', "name":"'.$row_chat['text'].'", "title":"'.$row_chat['chat'].'", "parent":'.$row_chat['pater'].',"type":"chat","sex":"'.$row_chat['sex'].'","character_sex":"'.$row_chat['character_sex'].''.$txt_count_history.'"},';
+                $txt_json=$txt_json.'{"id":"'.$row_chat['id'].'","key":'.$row_chat['id'].', "name":"'.addslashes($row_chat['text']).'", "title":"'.addslashes($row_chat['chat']).'", "parent":'.$row_chat['pater'].',"type":"chat","sex":"'.$row_chat['sex'].'","character_sex":"'.$row_chat['character_sex'].''.$txt_count_history.'"},';
                 check_is_pater($link,$row_chat['id'],$row_chat['pater'],'chat');
             }
         }

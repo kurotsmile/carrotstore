@@ -34,6 +34,7 @@ if(isset($_POST['type_product'])){
     $slug=$_POST['slug_product'];
     $price_product=$_POST['price_product'];
     $company=$_POST['company'];
+    $sel_tap_desc=$_POST['sel_tap_desc'];
     $link_download='';
     if(isset($_POST['link_download'])){
         $link_download=$_POST['link_download'];
@@ -416,7 +417,9 @@ if($msg_alert!=''){
         <td>&nbsp;</td>
         <td>
             <input type="hidden" name="id_product" value="<?php echo $id_product;?>" />
-            <input type="hidden" name="func" value="<?php echo $func;?>" />
+            <input type="hidden" name="id_product" value="<?php echo $id_product;?>" />
+            <input type="hidden" name="sel_tap_desc" id="sel_tap_desc" value="<?php echo $sel_tap_desc;?>" />
+            <input type="hidden" name="func"  value="<?php echo $func;?>" />
             <?php
             if($func=='edit'){
             ?>
@@ -438,6 +441,7 @@ if($msg_alert!=''){
 function show_tap_lang(key_lang){
     show_name(key_lang);
     show_desc(key_lang);
+    $("#sel_tap_desc").val(key_lang);
 }
 
 function show_name(key_lang){

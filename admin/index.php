@@ -223,6 +223,97 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     function close_loading(){
         swal.close();
     }
+
+    var next_act=0;
+    var total_page=0;
+
+    <?php if($name_host=='localhost'){?>
+    $(document).ready(function(){
+        $(".db").contextmenu(function() {
+            var s_table=$(this).attr('table');
+            var s_limit=$(this).attr('limit');
+            if(s_limit==undefined){s_limit="500";}
+            show_loading();
+            $.ajax({
+                url: "<?php echo $url_syn;?>/app_my_girl_jquery2.php",
+                type: "post",
+                data: "function=db_syn&table="+s_table+"&limit="+s_limit,
+                success: function(data, textStatus, jqXHR)
+                {
+                    next_act=1;
+                    var data_show=JSON.parse(data);
+                    total_page=data_show.total_page;
+                    var html_box_db='';
+                    html_box_db='<div>';
+                    html_box_db = html_box_db +data_show.html;
+                    html_box_db = html_box_db + '<div style="float: left;width: 100%;"><span id="bd_btn_act" class="buttonPro green" onclick="db_action(\''+s_table+'\')"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Thự hiện</span><span class="buttonPro" onclick="swal.close();"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang($link,"back");?></span></div>';
+                    html_box_db = html_box_db + '</div>';
+                    swal({html: true, title: s_table, text: html_box_db, showConfirmButton: false,});
+                }  
+            });
+            return false;
+        });
+    });
+
+    
+    function db_action(table_act){
+        $.ajax({
+            url: "<?php echo $url;?>/app_my_girl_jquery2.php",
+            type: "post",
+            data: "function=db_syn_ready&table="+table_act,
+            success: function(data, textStatus, jqXHR)
+            {
+                var data_show=JSON.parse(data);
+                if(data_show.status=='1'){
+                    db_syn_buy_index(next_act);
+                    $("#bd_btn_act").hide();
+                }else{
+                    alert(data_show.error);
+                }
+            }  
+        });
+    }
+
+    function db_syn_buy_index(index_act){
+        var current_page=$("#db_act_"+index_act).attr("current_page");
+        var table_act=$("#db_act_"+index_act).attr("table");
+        var total_page=$("#db_act_"+index_act).attr("total_page");
+        var total_records=$("#db_act_"+index_act).attr("total_records");
+        var limit=$("#db_act_"+index_act).attr("limit");
+        $.ajax({
+            url: "<?php echo $url_syn;?>/app_my_girl_jquery2.php",
+            type: "post",
+            data: "function=db_syn_act&table="+table_act+"&current_page="+current_page+"&total_records="+total_records+"&total_page="+total_page+"&limit="+limit,
+            success: function(data, textStatus, jqXHR)
+            {
+                $("#db_act_"+index_act).css("background-color","yellow");
+                $("#db_act_"+index_act).css("color","black");
+                $.ajax({
+                    url: "<?php echo $url;?>/app_my_girl_jquery2.php",
+                    type: "post",
+                    data: {function:'db_syn_act_query',data_query:data},
+                    success: function(data, textStatus, jqXHR)
+                    {
+                        var data_show=JSON.parse(data);
+                        if(data_show.status=='1'){
+                            $("#db_act_"+index_act).css("background-color","green");
+                            $("#db_act_"+index_act).css("color","white");
+                            $("#db_act_"+index_act).hide(5000);
+                            next_act++;
+                            if(next_act<=total_page){
+                                db_syn_buy_index(next_act);
+                            }
+                        }else{
+                            $("#db_act_"+index_act).css("background-color","red");
+                            $("#db_act_"+index_act).css("color","white");
+                            alert(data_show.error);
+                        }
+                    }  
+                });
+            }  
+        });
+    }
+    <?php }?>
 </script>
 </body>
 </html>

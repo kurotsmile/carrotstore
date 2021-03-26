@@ -37,12 +37,24 @@ if($data_quote['effect_customer']!=''){
     ?>
     </p>
     
-            <iframe
-                src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
-                scrolling="no" frameborder="0"
-                style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;">
-            </iframe>
-            
+    <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts" scrolling="no" frameborder="0" style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;"></iframe>
+
+        <?php
+        if(get_setting($link,'show_ads')=='1') {
+        ?>
+        <div style="width:100%;float:left">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ck+8m-1w-30+cw"
+                data-ad-client="ca-pub-5388516931803092"
+                data-ad-slot="9207776534"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <?php }?>
     </div>
     
     <div id="sidebar_product">

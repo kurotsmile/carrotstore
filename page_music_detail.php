@@ -47,6 +47,7 @@ $url_img_thumb_192=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=1
 $url_img_thumb_256=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=256x256&trim=1';
 $url_img_thumb_384=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=384x384&trim=1';
 $url_img_thumb_512=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=512x512&trim=1';
+$url_img_thumb_video=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=420x220&trim=1';
   
 $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
 if(file_exists($filename_img_avatar)){
@@ -57,6 +58,7 @@ if(file_exists($filename_img_avatar)){
     $url_img_thumb_256=$url.'/thumb.php?src='.$url_img_thumb.'&size=256x256&trim=1';
     $url_img_thumb_384=$url.'/thumb.php?src='.$url_img_thumb.'&size=384x384&trim=1';
     $url_img_thumb_512=$url.'/thumb.php?src='.$url_img_thumb.'&size=512x512&trim=1';
+    $url_img_thumb_video=$url.'/thumb.php?src='.$url_img_thumb.'&size=420x220&trim=1';
 }
 
 $txt_title=$data_music['chat'];  
@@ -276,10 +278,17 @@ $txt_title=$data_music['chat'];
     </div>
     
     <div id="sidebar_product">
+
         <?php if($url_video!=''){?>
-        <h3><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></h3>     
-        <iframe width="100%"  src="https://www.youtube.com/embed/<?php echo $url_video; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></h3>   
+        <div id="box_play_video">
+            <img class="lazyload" data-src="<?php echo $url_img_thumb_video;?>" alt="<?php echo $txt_title;?>">
+            <div class="overlay" onclick="kr_pause();play_video('<?php echo $url_video ?>');">
+                <div class="icon"><i class="icon_play fa fa-play-circle-o" aria-hidden="true"></i></div>
+            </div>
+        </div>
         <?php }?>
+
         <br />
         <a href="<?php echo $url; ?>/music/month"><h3><i class="fa fa-star-half-o" aria-hidden="true"></i> <?php echo lang($link,'music_top_month'); ?></h3></a>
         <?php
@@ -306,13 +315,16 @@ $txt_title=$data_music['chat'];
         <?php
         if(get_setting($link,'show_ads')=='1') {
         ?>
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:300px"
-             data-ad-client="ca-pub-5388516931803092"
-             data-ad-slot="5771636042"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="fluid"
+                data-ad-layout-key="-ck+8m-1w-30+cw"
+                data-ad-client="ca-pub-5388516931803092"
+                data-ad-slot="5861867394"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         <?php }?>
         
     </div>
@@ -338,4 +350,21 @@ if(mysqli_num_rows($list_music)>0){
 </div>
 <?php }?>
 </div>
+
+<?php
+    if(get_setting($link,'show_ads')=='1') {
+?>
+<div style="float:left:width:100%;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-5388516931803092"
+     data-ad-slot="8557873995"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<?php
+    }
+?>
 

@@ -287,7 +287,16 @@ if(isset($_SESSION['is_show_key_name'])){ $is_show_key_name=$_SESSION['is_show_k
     <div id="sidebar_product">
         <?php
             echo show_box_ads_page($link,'piano_page');
-        ?>         
+        ?>   
+
+        <?php
+        if(get_setting($link,'show_ads')=='1') {
+        ?>
+            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:300px" data-ad-client="ca-pub-5388516931803092" data-ad-slot="5771636042"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        <?php }?>      
     </div>
 </div>
 <?php }else{?>
@@ -849,12 +858,33 @@ function sub_mid_midi(){
     }
 }
 
-$(document).ready(function(){
-    $("#btn_delete_line_midi").hide();
-    $("#btn_delete_col_midi").hide();
-    $("#btn_empty_midi").hide();
-});
 <?php }?>
+
+$(document).ready(function(){
+    if(is_new){
+        $("#btn_delete_line_midi").hide();
+        $("#btn_delete_col_midi").hide();
+        $("#btn_empty_midi").hide();
+    }
+
+    <?php for($i=0;$i<count($arr_note_white);$i++){ ?>
+        var audio = new Audio('<?php echo $url;?>/app_mobile/piano/Sound/<?php echo $arr_note_white[$i];?>.mp3');
+        audio.volume = 0;
+        audio.addEventListener("canplay",function(){
+            $("#note_piano_w_<?php echo $i;?>").fadeIn(200).fadeOut(2333).fadeIn(200);
+         });
+    <?php }?>
+
+    <?php for($i=0;$i<count($arr_n_black);$i++){ ?>
+        s_name='<?php echo $arr_n_black[$i]?>';
+        s_name=s_name[0]+s_name[2]+"_1";
+        s_name=s_name.toLowerCase();
+        var audio = new Audio('<?php echo $url;?>/app_mobile/piano/Sound/'+s_name+'.mp3');
+        audio.addEventListener("canplay",function(){
+            $("#note_piano_b_<?php echo $i;?>").fadeIn(200).fadeOut(2333).fadeIn(200);
+         });
+    <?php }?>
+});
 
 function select_col_midi_cur(){
     $("#editor_all_line .line .midi").removeClass('sel_col');
@@ -953,3 +983,20 @@ $query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`
 ?>
 </div>
 <?php }?>
+
+<?php
+    if(get_setting($link,'show_ads')=='1') {
+?>
+<div style="float:left:width:100%;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-5388516931803092"
+     data-ad-slot="8557873995"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<?php
+    }
+?>

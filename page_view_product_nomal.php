@@ -66,7 +66,7 @@ $data_type=mysqli_fetch_array($query_type);
                     }
                     </script>
                     <br />
-                    <span class="buttonPro  blue" target="_blank" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa sản phẩm</span>
+                    <span class="buttonPro  blue" target="_blank" rel="noopener" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa sản phẩm</span>
                     <?php
             }
             ?>
@@ -78,10 +78,10 @@ $data_type=mysqli_fetch_array($query_type);
 			<?php
 			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
 			while($link_store=mysqli_fetch_assoc($query_link_store)){
-				echo '<li><a href="'.$link_store['link'].'" target="_blank"><img title="'.$link_store['name'].'" src="'.$url.'/assets/img_link/'.$link_store['icon'].'.jpg" /></a></li>';
+				echo '<li><a href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/assets/img_link/'.$link_store['icon'].'.jpg" /></a></li>';
 			}
 			?>
-            <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" class="jailbreak"  id_product="<?php echo $data['id']; ?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
+            <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" rel="noopener" class="jailbreak"  id_product="<?php echo $data['id']; ?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
 			
             </ul>
         </p>
@@ -123,7 +123,7 @@ $data_type=mysqli_fetch_array($query_type);
 					<div class="hover-content">
 						<div class="overlay"></div>
 						<div class="link-contianer">
-							<a href="<?php echo $url.'/'.$img ?>" target="_blank" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+							<a href="<?php echo $url.'/'.$img ?>" target="_blank" rel="noopener" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link" aria-hidden="true"></i></a>
                             <a href="<?php echo $url.'/'.$img ?>" class="img-link" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
 						</div>
 					</div>

@@ -229,7 +229,6 @@
         shortcut_key_music=false;
         var html_box_register = '<div style="width: 100%;">';
         html_box_register = html_box_register + '<form id="box_register">';
-
         html_box_register = html_box_register + '<i class="tip"><?php echo lang($link,'dang_ky_carrot_tip');?></i><br/>';
         html_box_register = html_box_register + '<strong id="box_register_error"></strong>';
         html_box_register = html_box_register + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang($link,'so_dien_thoai');?></label><br/>';
@@ -246,13 +245,23 @@
         html_box_register = html_box_register + '<div style="float: left;width: 100%;">';
         html_box_register = html_box_register + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span>  <span class="buttonPro light_blue" onclick="login_account();return false"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo lang($link,'dang_nhap');?></span>';
         html_box_register = html_box_register + '</div>';
-
         html_box_register = html_box_register + '</div>';
         swal({html: true, title: '<?php echo lang($link,"dang_ky"); ?>', text: html_box_register, showConfirmButton: false,});
 
         setTimeout(function () {
-            $("#user_address_register").geocomplete();
+            var js = document.createElement("script");
+            js.type = "text/javascript";
+            js.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true';
+            document.body.appendChild(js);
+            var js2 = document.createElement("script");
+            js2.type = "text/javascript";
+            js2.src = '<?php echo $url;?>/js/jquery.geocomplete.min.js';
+            document.body.appendChild(js2);
         }, 500);
+
+        setTimeout(function () {
+            $("#user_address_register").geocomplete();
+        }, 3000);
     }
 
 
@@ -293,9 +302,17 @@
 
         html_box_login = html_box_login + '</div>';
         swal({html: true, title: '<?php echo lang($link,"dang_nhap"); ?>', text: html_box_login, showConfirmButton: false,});
+
+        setTimeout(function () {
+            var js = document.createElement("script");
+            js.type = "text/javascript";
+            js.src = 'https://apis.google.com/js/platform.js';
+            document.body.appendChild(js);
+        }, 100);
+
         setTimeout(function () {
             renderButton();
-        }, 100);
+        }, 500);
     }
 
     function show_forgot_password(){
@@ -417,7 +434,7 @@
         if (adBlockEnabled) {
             swal({
                     title: "<?php echo lang($link,"adblock_title"); ?>",
-                    text: "<img alt='<?php echo lang($link,"adblock_title");?>' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang($link,"adblock_msg");?>",
+                    text: "<img alt='<?php echo lang($link,"adblock_title");?>' width='256' height='161' src='<?php echo $url;?>/images/remove_block_ads.jpg'/><br/><?php echo lang($link,"adblock_msg");?>",
                     html: true,
                     showCancelButton: true,
                     cancelButtonClass: "btn-info",

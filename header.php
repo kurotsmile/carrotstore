@@ -171,19 +171,15 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
     <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico?v=<?php echo get_setting($link,'ver');?>"/>
-    <script src="<?php echo $url; ?>/js/jquery.min.js"></script>
+    <script src="<?php echo $url; ?>/js/jquery3.3.min.js"></script>
     <script src="<?php echo $url; ?>/dist/sweetalert.min.js" async></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/responsive.min.css?v=<?php echo get_setting($link,'ver');?>"/>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link type="text/css" rel="stylesheet" href="<?php echo $url; ?>/libary/jquery.qtip.min.css" />
     <script type="text/javascript" src="<?php echo $url; ?>/libary/jquery.qtip.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="745653792874-8tn5rob2rdbkn6hkqhk6l10dv8t3etpu.apps.googleusercontent.com"/>
     <script src="<?php echo $url;?>/dist/lazysizes.min.js" async></script>
-    <script src="<?php echo $url; ?>/js/jquery.form.min.js" async defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true"></script>
-    <script src="<?php echo $url;?>/js/jquery.geocomplete.min.js"></script>
     <link rel="manifest" href="<?php echo $url;?>/manifest.json" />
     <script>
     <?php if(get_setting($link,"serviceWorker")=='1'){?>
@@ -229,6 +225,11 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
         <?php
     }
     ?>
+
+    <?php if(get_setting($link,'google_analytics')=='1') { ?>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162043060-1"></script>
+        <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-162043060-1');</script>
+    <?php } ?>   
 
     <?php
     if(get_setting($link,'show_ads')=='1') {
