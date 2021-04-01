@@ -48,6 +48,7 @@ if(isset($_POST['user_name'])){
         $user_login->avatar=$url_work.'/avatar_user/'.$data_login_user['user_id'].'.png';
         $user_login->email=$data_login_user['email'];
         $user_login->lang=$_SESSION['lang'];
+        $user_login->password=$data_login_user['user_pass'];
         $_SESSION['user_login']=json_encode($user_login);
     }else{
         $error_login=alert("Đăng nhập không thành công! Hãy kiểm tra lại mật khẩu và tên đăng nhập","error");
@@ -65,19 +66,19 @@ if($_GET&&isset($_GET['page_view'])){
 <html lang="en-US">
 <head>
 	<meta name="author" content="Trần Thiện Thanh" />
-    <link href="<?php echo $url_admin; ?>/style.min.css" rel="stylesheet" />
+    <link href="<?php echo $url_admin; ?>/style.min.css?v=<?php echo get_setting($link,'ver');?>" rel="stylesheet" />
 	<title>Carrot - Admin </title>
     <meta charset="utf-8"/>
     <meta name="title" content="Admin CarrotStore" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css"/>
     <link rel="canonical" href="<?php echo $url; ?>" />
     <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.png"/>
-    <link href="<?php echo $url_admin; ?>/style.min.css" rel="stylesheet" />
-    <link href="<?php echo $url_carrot_store; ?>/assets/css/buttonPro.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?php echo $url;?>/dist/sweetalert.min.css?v=1.1">
+    <link href="<?php echo $url_admin; ?>/style.min.css?v=<?php echo get_setting($link,'ver');?>" rel="stylesheet" />
+    <link href="<?php echo $url_carrot_store; ?>/assets/css/buttonPro.min.css?v=<?php echo get_setting($link,'ver');?>" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $url;?>/dist/sweetalert.min.css?v=<?php echo get_setting($link,'ver');?>">
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
-    <script src="<?php echo $url; ?>/js/jquery.js"></script>
-    <script src="<?php echo $url;?>/dist/sweetalert.min.js"></script>
+    <script src="<?php echo $url; ?>/js/jquery.js?v=<?php echo get_setting($link,'ver');?>"></script>
+    <script src="<?php echo $url;?>/dist/sweetalert.min.js?v=<?php echo get_setting($link,'ver');?>"></script>
 </head>
 <body>
 <?php
@@ -108,7 +109,7 @@ if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
 $query_list_app=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_app` ");
 while($item_app=mysqli_fetch_array($query_list_app)){
 ?>
-    <li><a href="<?php echo $url_carrot_store.'/'.$item_app['url'];?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app"  title="<?php echo $item_app['name']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
+    <li><a href="<?php echo $url_carrot_store.'/'.$item_app['url'];?>?userlogin=<?php echo $user_login->name;?>&password=<?php echo $user_login->password;?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app"  title="<?php echo $item_app['name']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
 <?php
 }
 ?>
@@ -142,7 +143,6 @@ while($item_app=mysqli_fetch_array($query_list_app)){
 
 <div style="float: left;width: 100%;">
 <?php
-
 if(isset($_SESSION['user_login'])&&$user_login->type=='admin') {
     include $page_file.'.php'; 
 }else{    

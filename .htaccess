@@ -44,6 +44,7 @@ RewriteRule    ^piano    index.php?page_view=page_piano.php   [NC,L]
 RewriteRule    ^oauth oauth.php
 RewriteRule    ^remove_block_ads index.php?page_view=page_remove_block_ads.php  [NC,L]
 RewriteRule    ^404 index.php?page_view=404.php
+RewriteRule    ^offline index.php?page_view=page_offline.php
 
 #Other CMS
 RewriteRule    ^shortenlinks   app_mobile/shortenlinks/index.php [NC,L]
@@ -63,7 +64,7 @@ RewriteRule    ^fish_of_prey   app_mobile/fish_of_prey/index.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-ErrorDocument 404 http://carrot.ddns.net/404
+ErrorDocument 404 http://localhost/404
 Options All -Indexes
 
 # BEGIN cPanel-generated php ini directives, do not edit

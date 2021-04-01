@@ -70,6 +70,13 @@ $item_setting->val=get_setting($link,$item_setting->key);
 $item_setting->type='select';
 $item_setting->label='Google analytics (Theo dõi lượng truy cập web)';
 array_push($array_setting,$item_setting);
+
+$item_setting=new Setting();
+$item_setting->key='fb_message';
+$item_setting->val=get_setting($link,$item_setting->key);
+$item_setting->type='select';
+$item_setting->label='Hộp thoại trò chuyện Fb Message';
+array_push($array_setting,$item_setting);
 ?>
 <form action="" method="post">
     <table>

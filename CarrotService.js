@@ -25,47 +25,54 @@ self.addEventListener("install", function(event) {
         "/js/jquery.min.js",
         "/assets/css/responsive.min.css",
         "/assets/css/font-awesome.min.css",
-        "/images/background.jpg",
-        "/images/search.png"
+        "/images/search.png",
+        "/offline.html"
       ]);
     });
   };
-  
+
   self.addEventListener("fetch", function(event) {
     event.respondWith(checkResponse(event.request).catch(function() {
       return returnFromCache(event.request);
     }));
     event.waitUntil(addToCache(event.request));
   });
-  
+
   var checkResponse = function(request){
     return new Promise(function(fulfill, reject) {
       fetch(request).then(function(response){
         if(response.status !== 404) {
           fulfill(response);
         } else {
+          console.log("o thoi!");
           reject();
         }
       }, reject);
     });
   };
+
   
   var addToCache = function(request){
     return caches.open("offline").then(function (cache) {
       return fetch(request).then(function (response) {
-        console.log(response.url + " was cached");
+        //console.log(response.url + " was cached");
         return cache.put(request, response);
+      }).catch(function(err) {       // fallback mechanism
+        return caches.open("offline")
+          .then(function(cache) {
+            return cache.match('/offline.html');
+          });
       });
     });
   };
   
   var returnFromCache = function(request){
-    return caches.open("offline").then(function (cache) {
+    return caches.open('offline').then(function (cache) {
       return cache.match(request).then(function (matching) {
        if(!matching || matching.status == 404) {
-         return cache.match("offline.html");
+         return cache.match('/offline.html')
        } else {
-         return matching;
+         return matching
        }
       });
     });

@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.33 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -27,6 +27,6 @@ INSERT INTO `app_my_girl_skin` (`id`, `name`, `price`, `id_store`, `type`) VALUE
 (8,	'Princess',	'0',	'com.product1.thanh',	'unitychan_girl'),
 (9,	'cuite',	'0',	'com.product1.thanh',	'unitychan_girl'),
 (10,	'summer',	'0',	'com.product1.bk1',	'unitychan_girl'),
-(11,	'Rainbow',	'0',	'com.product1.bk1',	'unitychan_girl');
+(11,	'Rainbow',	'1',	'com.product1.bk1',	'unitychan_girl');
 
--- 2020-11-16 15:27:07
+-- 2021-03-29 13:01:58

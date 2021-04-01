@@ -1,9 +1,11 @@
 <?php
-$cur_url=$url.'?view=home';
+$cur_url_page=$url.'?view=home';
+$cur_url=$cur_url_page;
 $view_type='';
 $txt_sql_type='';
 if(isset($_GET['type'])){
     $view_type=$_GET['type'];
+    $cur_url.='&type='.$view_type;
 }
 
 if($view_type!=''){
@@ -25,15 +27,15 @@ if(isset($_GET['delete'])){
 ?>
 
 <div class="menu_sub">
-    <a <?php if($view_type==''){?>class="active"<?php }?> href="<?php echo $cur_url;?>">Tất cả</a>
-    <a <?php if($view_type=='0'){?>class="active"<?php }?> href="<?php echo $cur_url;?>&type=0">Chờ duyệt</a>
-    <a <?php if($view_type=='1'){?>class="active"<?php }?> href="<?php echo $cur_url;?>&type=1">Xuất bản</a>
-    <a <?php if($view_type=='2'){?>class="active"<?php }?> href="<?php echo $cur_url;?>&type=2">Bán hàng</a>
+    <a <?php if($view_type==''){?>class="active"<?php }?> href="<?php echo $cur_url_page;?>">Tất cả</a>
+    <a <?php if($view_type=='0'){?>class="active"<?php }?> href="<?php echo $cur_url_page;?>&type=0">Chờ duyệt</a>
+    <a <?php if($view_type=='1'){?>class="active"<?php }?> href="<?php echo $cur_url_page;?>&type=1">Xuất bản</a>
+    <a <?php if($view_type=='2'){?>class="active"<?php }?> href="<?php echo $cur_url_page;?>&type=2">Bán hàng</a>
 </div>
 
 <?php
-$limit = '50';
-$query_count_all = mysqli_query($link,"SELECT COUNT(`id_midi`) as c FROM `midi` txt_sql_type");
+$limit = 50;
+$query_count_all = mysqli_query($link,"SELECT COUNT(`id_midi`) as c FROM `midi` $txt_sql_type");
 $data_count_all_acc = mysqli_fetch_assoc($query_count_all);
 $total_records =intval($data_count_all_acc['c']);
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;

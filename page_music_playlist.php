@@ -76,16 +76,37 @@ if(isset($user_login)){
                 }else {
                     $url_mp3 =$obj_music->file_url;
                 }
+
+                $url_img_thumb=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=170x170&trim=1';
+                $url_img_thumb_96=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=96x96&trim=1';
+                $url_img_thumb_128=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=128x128&trim=1';
+                $url_img_thumb_192=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=192x192&trim=1';
+                $url_img_thumb_256=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=256x256&trim=1';
+                $url_img_thumb_384=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=384x384&trim=1';
+                $url_img_thumb_512=$url.'/thumb.php?src='.$url.'/images/music_default.png&size=512x512&trim=1';
+                
+                $filename_img_avatar='app_mygirl/app_my_girl_'.$obj_music->author.'_img/'.$obj_music->id.'.png';
+                if(file_exists($filename_img_avatar)){
+                    $url_img_thumb=$url.'/'.$filename_img_avatar;
+                    $url_img_thumb_96=$url.'/thumb.php?src='.$url_img_thumb.'&size=96x96&trim=1';
+                    $url_img_thumb_128=$url.'/thumb.php?src='.$url_img_thumb.'&size=128x128&trim=1';
+                    $url_img_thumb_192=$url.'/thumb.php?src='.$url_img_thumb.'&size=192x192&trim=1';
+                    $url_img_thumb_256=$url.'/thumb.php?src='.$url_img_thumb.'&size=256x256&trim=1';
+                    $url_img_thumb_384=$url.'/thumb.php?src='.$url_img_thumb.'&size=384x384&trim=1';
+                    $url_img_thumb_512=$url.'/thumb.php?src='.$url_img_thumb.'&size=512x512&trim=1';
+                }
                 
                 $song=new Song();
                 $song->id=$obj_music->id;
                 $song->name=addslashes($obj_music->chat);
                 $song->mp3=$url_mp3;
+                $song->{"url_img_thumb_96"}=$url_img_thumb_96;
+                $song->{"url_img_thumb_128"}=$url_img_thumb_128;
+                $song->{"url_img_thumb_192"}=$url_img_thumb_192;
+                $song->{"url_img_thumb_256"}=$url_img_thumb_256;
+                $song->{"url_img_thumb_384"}=$url_img_thumb_384;
+                $song->{"url_img_thumb_512"}=$url_img_thumb_512;
                 array_push($list_song,$song);
-
-
-
-
         ?>
         <tr class="item_playlis item_play_<?php echo $i;?>"  index="<?php echo $i;?>">
             <td><i class="fa fa-music item_playlist_icon" aria-hidden="true"></i> <span class="item_playlist_name"><?php echo $obj_music->chat; ?></span></td>
@@ -158,13 +179,15 @@ if(isset($user_login)){
 
     function play_song_index(index){
         kr_audio.src=list_song[index].mp3;
+        $("#account_cover").css("background-image","url('"+list_song[index].url_img_thumb_384+"')");
         $("#kr_player_name_song").html(list_song[index].name);
         $(".item_playlis").removeClass("active");
         $(".item_play_"+index).addClass("active");
         index_song=index;
+        kr_audio.play().then(_ =>updateMetadata_playlist());
     }
     
-    function  kr_next_song() {
+    function  kr_next_song(){
         index_song++;
         if(index_song>=list_song.length){
             index_song=0;
@@ -172,7 +195,7 @@ if(isset($user_login)){
         play_song_index(index_song);
     }
     
-    function kr_back_song() {
+    function kr_back_song(){
         index_song--;
         if(index_song<0){
             index_song=list_song.length-1;
@@ -180,6 +203,35 @@ if(isset($user_login)){
         play_song_index(index_song);
     }
 
-    play_song_index(0);
-</script>
+    function updateMetadata_playlist() {
+        var song_sel=list_song[index_song];
+        let track ={
+            src:song_sel.mp3,
+            title: song_sel.name,
+            artist: '<?php if(isset($user_login)){ echo $user_login->name;} ?>',
+            album: '<?php echo $data_playlist_sel['name'];?>',
+            artwork: [
+                { src: song_sel.url_img_thumb_96, sizes: '96x96',   type: 'image/png' },
+                { src: song_sel.url_img_thumb_128, sizes: '128x128', type: 'image/png' },
+                { src: song_sel.url_img_thumb_192, sizes: '192x192', type: 'image/png' },
+                { src: song_sel.url_img_thumb_256, sizes: '256x256', type: 'image/png' },
+                { src: song_sel.url_img_thumb_384, sizes: '384x384', type: 'image/png' },
+                { src: song_sel.url_img_thumb_512, sizes: '512x512', type: 'image/png' },
+            ]};
 
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: track.title,
+            artist: track.artist,
+            album: track.album,
+            artwork: track.artwork
+        });
+        updatePositionState();
+    }
+
+    navigator.mediaSession.setActionHandler('previoustrack', function() {
+        kr_back_song();
+    });
+    navigator.mediaSession.setActionHandler('nexttrack', function() {
+        kr_next_song();
+    });
+</script>

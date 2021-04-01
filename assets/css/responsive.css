@@ -1,45 +1,54 @@
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px),screen and  (max-width: 900px) {
     #logo {margin-left: 41%;}
     #tool_search {width: 100%;text-align: center}
-    #tool_search .inp {width: 80%;margin-left: 10px;float: unset;}
-
+    #tool_search .tool_search_icon {float: unset;}
+    #tool_search .inp {
+        float: none;width:unset;margin-left:unset;
+    }
     #sell_product{display:none;}
     
-    .app {width: 372px;}
-    .app .app_txt {width: 232px;}
+    .app {width: 48%;}
+    .app_link_icon{width: 30%;}
+    .app .app_txt {width: 67%;}
+    .app .app_icon {width: 95%; height: 95%;max-width: 104px;max-height: 104px;}
+    .app .app_star1 {position: static; float: left;}
+    .app .app_star {position: relative;margin-top:unset;margin-left:unset;float: right;margin: 0px;top: -28px;right: 10px;}
     #add_company {
         float: left;width: 50%;padding: 0px;text-align: center;color: black;margin-bottom: 10px;margin-top: 10px;margin-left: 0px;margin-right: 0px;background-color: unset;
     }
-    #add_company img,#add_company i{float: unset !important;}
+    #add_company img,#add_company i{float: unset !important;height: auto;}
     #add_company strong{width: 100% !important;float: left;}
     #btn_login_acc,#show_history{display: none;}
     #go_top {bottom: 100px;right: 24px;}
     #editor_data{width:80%;}
     #editor_control{width: 20%;}
     #kr_player_music.top_bar {position: unset;top: unset;left: unset;}
+    #box_ads_app{bottom: 0px;left: 0px;right: 0px;width: 100%;height: 38px;background: green;}
+    #box_ads_app .title{float: right;width: auto;}
+    #box_ads_app .title i{margin-left: 10px;}
+    #ads_box_main_icon{width: 30px;height: 30px;}
+    .ads_box_img_link{display: none;}
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
+@media screen and (max-device-width: 480px),screen and  (max-width: 650px){
     body{
         overflow-x: hidden;
     }
     #header {
-        border-top-style: solid;
+        border-top-style: solid;border-top-color: green;
         border-top-width: 5px;
         text-align: center;padding-top: 10px;
     }
     #logo {
-        float: none;
+        float: none;margin-left:unset;
     }
     #tool_search {
-        float: none;
-        margin-top: 0px;
-        margin-bottom: 16px;
+        float: none;margin-top: 0px; margin-bottom: 16px;
     }
+    #tool_search .tool_search_icon {float: unset;}
     #tool_search .inp {
-        float: none;
+        float: none;width:unset;margin-left:unset;
     }
-
     #add_company {
         float: left;
         width: 50%;padding: 0px;margin: 0px;text-align: center;min-width: auto;
@@ -48,7 +57,7 @@
     }
 
     #add_company i,#add_company img{
-        float: none; float: none !important;width: 29px !important;font-size: 29px;
+        float: none; float: none !important;width: 29px !important;font-size: 29px;height: auto;
     }
 
     #add_company strong{
@@ -92,19 +101,20 @@
     .app {
     width: 96%;
     }
+    .app_link_icon {
+        width: 24%;
+    }
     .app.artist {
         width: 170px;
+    }
+    .app .app_txt {
+        width: 66%;
     }
     .row_b,.col2{
         width: 100%;
         padding: 3px !important;
         margin: 0px;
     }
-
-    .app .app_txt {
-     width: 215px;
-    }
-
     #show_history{
         display: none;
     }
@@ -178,5 +188,10 @@
     #editor_data{width:80%;}
     #editor_control{width: 20%;}
     #kr_player_music.top_bar {position: unset;top: unset;left: unset;}
+    #box_ads_app{bottom: 0px;left: 0px;right: 0px;width: 100%;height: 38px;background: green;}
+    #box_ads_app .title{float: right;width: auto;}
+    #box_ads_app .title i{margin-left: 10px;}
+    #ads_box_main_icon{width: 30px;height: 30px;}
+    .ads_box_img_link{display: none;}
 }
 

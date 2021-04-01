@@ -89,8 +89,8 @@ $data_type=mysqli_fetch_array($query_type);
     </div>
     
 
-    <script src="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.js"></script>
-    <script src="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.js?v=<?php echo get_setting($link,'ver');?>"></script>
+    <script src="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.js?v=<?php echo get_setting($link,'ver');?>"></script>
         <script>
 			$(function() {
 				$('#simpleImg').utilCarousel({

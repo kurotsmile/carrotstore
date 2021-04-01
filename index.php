@@ -116,7 +116,8 @@ include "header.php";
     if (isset($_GET['page_view']) && $_GET['page_view'] == "page_member.php") {$type='accounts';}
     if (isset($_GET['page_view']) && $_GET['page_view'] == "page_piano.php") {$type='piano';}
     ?>
-    <div class="" id="tool_search">
+    <div id="tool_search">
+        <i class="fa fa-search tool_search_icon" aria-hidden="true" id="tool_search_icon"></i>
         <input type="text" placeholder="<?php echo lang($link,'tip_search'); ?> " onchange="search_product(this.value)" name="search" class="inp" id="inp_search"/>
         <span id="proccess" style="display: none;float: left;"> <?php echo lang($link,'dang_xu_ly'); ?></span>
     </div>
@@ -125,6 +126,8 @@ include "header.php";
         function search_product(key_search) {
             $('#proccess').show();
             $("#inp_search").prop('disabled', true);
+            $("#inp_search").hide();
+            $("#tool_search_icon").removeClass("fa-search").addClass("fa-spinner");
             $.ajax({
                 url: "<?php echo $url; ?>/index.php",
                 type: "get",
@@ -134,6 +137,8 @@ include "header.php";
                     $('#containt').html(data);
                     $('#proccess').hide();
                     $('#proccess').css('display', 'none');
+                    $("#inp_search").show();
+                    $("#tool_search_icon").removeClass("fa-spinner").addClass("fa-search");
                 }
             });
         }
@@ -155,13 +160,13 @@ include "header.php";
         ?>
         <img style="width: 39px;float: left;" alt="<?php echo $_SESSION['lang']; ?>"  width="39" height="39" src="<?php echo $url.'/thumb.php?src='.$url.'/app_mygirl/img/'.$lang.'.png&size=39x39&trim=1'; ?>"/>
         <strong style="font-size: 15px;width: 100px;"><?php echo $data_name_country['name']; ?></strong><br/>
-        <span  style="font-size: 70%;"><?php echo lang($link,'ngon_ngu_hien_thi'); ?></span>
+        <span style="font-size: 70%;"><?php echo lang($link,'ngon_ngu_hien_thi'); ?></span>
     </div>
 
     <a id="add_company" href="https://www.paypal.me/kurotsmile" target="_blank" title="<?php echo lang($link,'chu_thich_ung_ho'); ?>">
         <i class="fa fa-heart-o fa-3x" style="float: left;margin-right: 10px;" aria-hidden="true"></i>
         <strong style="font-size: 15px;width: 100px;"><?php echo lang($link,'ung_ho'); ?></strong><br/>
-        <span><?php echo lang($link,'ung_ho_tip'); ?></span>
+        <span style="font-size: 70%;"><?php echo lang($link,'ung_ho_tip'); ?></span>
     </a>
     
 
@@ -223,6 +228,7 @@ include "header.php";
     <span id="loading-page"></span>
 </div>
 
+<?php if(get_setting($link,'fb_message')=='1') { ?>
 <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function () {FB.init({xfbml: true,version: 'v6.0'});};
@@ -235,9 +241,8 @@ include "header.php";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
-
 <div class="fb-customerchat" attribution=setup_tool page_id="232297850844551" theme_color="#67b868" logged_in_greeting="<?php echo lang($link,'message_tip'); ?>" logged_out_greeting="<?php echo lang($link,'message_tip'); ?>"></div>
-
+<?php }?>
 <script>
     var URL = '<?php echo $url;?>';
 </script>

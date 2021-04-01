@@ -32,7 +32,7 @@ if($row['effect_customer']!=''){
 ?>
 <div id="row<?php echo $row['id']; ?>" class="app" >
     <div class="app_title">
-        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>">
+        <a  class="app_link_icon" href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>">
             <h1 style="font-size: -1vw;">
                 <i class="fa fa-quote-left" aria-hidden="true"></i>  &nbsp;&nbsp;
                 <?php echo limit_words($row['chat'],7);?>

@@ -51,6 +51,10 @@ app_mygirl/app_my_girl_hi_user/
 app_mygirl/app_my_girl_temp_hi/
 
 app_mygirl/app_my_girl_zh/
+app_mygirl/app_my_girl_msg_zh/
+app_mygirl/app_my_girl_zh_img/
+app_mygirl/app_my_girl_zh_user/
+app_mygirl/app_my_girl_temp_zh/
 
 app_mygirl/app_my_girl_ru/
 app_mygirl/app_my_girl_msg_ru/
@@ -67,6 +71,10 @@ app_mygirl/app_my_girl_th_user/
 app_mygirl/app_my_girl_temp_th/
 
 app_mygirl/app_my_girl_ko/
+app_mygirl/app_my_girl_msg_ko/
+app_mygirl/app_my_girl_ko_img/
+app_mygirl/app_my_girl_ko_user/
+app_mygirl/app_my_girl_temp_ko/
 
 app_mygirl/app_my_girl_ja/
 app_mygirl/app_my_girl_msg_ja/

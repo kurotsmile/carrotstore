@@ -645,51 +645,26 @@ tr:nth-child(even) {background-color: rgb(0, 0, 0)}
 	padding: 5px;
     width: auto;
 }
-
-#tool_search{
-    float: left;
-    margin-top: 16px;
-}
-
-#tool_search .inp{
-    float: left;
-    width: 300px;
-    padding: 6px;
-    -webkit-transition: all 1s;
-    transition: all 1s;
-    background-image: url("../../images/search.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    border: solid 3px #444141;
-    background-color: #202325;
-    color: white;
-}
-#tool_search .inp::placeholder{
-    color: rgb(223, 223, 223);
-}
-#tool_search .inp:hover{
-    transition: padding 1s;
-    background-image: url("../../images/search.png");
-    background-repeat: no-repeat;
-    background-position: right top;
-}
-
-#tool_search .btn{
-    border: solid 3px #C7C7C7;
-    float: left;
-    margin-left: 5px;
-    -webkit-transition: padding 1s;
-    transition: padding 1s;
-    font-size: 21px;
-    color: gray;
-}
+#tool_search{ margin-top: 16px;float: left;
+    background-color: #0000006b;
+    border-radius: 5px;
+    padding: 3px;
+    padding-left: 10px;}
+#tool_search:hover{background-color: rgba(255, 255, 255, 0.918);} 
+#tool_search .tool_search_icon{float: left;margin-top: 4px;color: orange;font-size: 18px;}
+#tool_search .inp{float: left; width: auto;padding: 6px;background: unset;border: unset;margin-left: 5px;border-radius: 2px;}
+#tool_search .inp:focus {background-color: white;border: unset; outline: none;}
+#tool_search .inp::-webkit-input-placeholder {color: orange;}
 #tool_search #proccess
 {
     display: none;
     float: left;
-    margin: 8px;
     font-weight: bold;
-    color: rgb(5, 87, 110);
+    color:yellow;
+    margin-top: 4px;
+    margin-left: 8px;
+    padding-right: 20px;
+    margin-bottom: 4px;
 }
 
 #containt{
@@ -1816,6 +1791,14 @@ textarea:focus {
 
 #box_ads_app .title{
     background-color: #8a8a8a;padding: 5px;padding: 10px;color: white;float: left;text-decoration: none;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.58);font-size: 14px;padding-top: 8px;padding-bottom: 8px;width: 93%;
+}
+
+#ads_box_main_icon{
+    width: 104px;float: left;margin-right: 3px;margin-top: 6px;margin-left: 6px;
+}
+
+.ads_box_img_link{
+    width: 85px;float: left;margin-right: 3px;margin-top: 3px;
 }
 
 #box_ads_app_page{

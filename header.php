@@ -115,6 +115,27 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     }
 }
 
+if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
+    if(isset($_GET['id'])){
+        $id_midi=$_GET['id'];
+        if($id_midi=='new'){
+            $title_page=lang($link,"tao_moi_midi");
+            $seo_desc='Create online midi and export midi file from piano streets';
+        }
+        else{
+            $query_midi=mysqli_query($link,"SELECT `name` FROM carrotsy_piano.`midi` WHERE `id_midi` = '$id_midi' LIMIT 1");
+            $data_midi=mysqli_fetch_assoc($query_midi);
+        
+            $title_page='Midi Piano streets - '.$data_midi['name'];
+            $seo_img=$url.'/app_mygirl/obj_effect/1078.png';
+            $seo_desc=$data_midi['name'].' virtual piano streets midi player online';
+        }
+    }else{
+        $title_page='All Piano sheets MIDI';
+        $seo_desc='virtual piano streets midi player online';
+    }
+}
+
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo $_SESSION['lang']; ?>">
@@ -185,7 +206,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     <?php if(get_setting($link,"serviceWorker")=='1'){?>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/installApp.js',{ scope: "/" }).then(function(registration) {
+            navigator.serviceWorker.register('/CarrotService.js?v=<?php echo get_setting($link,'ver');?>',{ scope: "/" }).then(function(registration) {
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }, function(err) {
             console.log('ServiceWorker registration failed: ', err);
@@ -199,9 +220,7 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
     var style_css_qtip='<?php if($style_css_dark_mode=='0'){ echo 'qtip-green';} ?>';
     </script>
 
-    <?php
-    if(get_setting($link,'show_adsupply')=='1') {
-        ?>
+    <?php if(get_setting($link,'show_adsupply')=='1') { ?>
         <script data-cfasync="false" type="text/javascript">(function (s, o, l, v, e, d) {
                 if (s[o] == null && s[l + e]) {
                     s[o] = "loading";
@@ -222,21 +241,15 @@ if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_
                 var e = document.getElementsByTagName('script')[0];
                 e.parentNode.insertBefore(s, e)
             })();</script>
-        <?php
-    }
-    ?>
+    <?php } ?>
 
     <?php if(get_setting($link,'google_analytics')=='1') { ?>
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162043060-1"></script>
         <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-162043060-1');</script>
     <?php } ?>   
 
-    <?php
-    if(get_setting($link,'show_ads')=='1') {
-        ?>
+    <?php if(get_setting($link,'show_ads')=='1') { ?>
 		<script data-ad-client="ca-pub-5388516931803092" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <?php
-    }
-    ?>
+    <?php } ?>
 </head>
 <body>

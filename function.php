@@ -314,15 +314,15 @@ function show_ads_box_main($link,$id_place_ads){
     
 	$name_product=get_name_product_lang($link,$id_product_ads,$_SESSION["lang"]);
     $txt_html.='<div id="body_ads">';
-        $txt_html.='<a href="'.URL.'/product/'.$id_product_ads.'"><img alt="Download '.$name_product.'" style="width: 104px;float: left;margin-right: 3px;margin-top: 6px;margin-left: 6px;"  class="lazyload" data-src="'.get_url_icon_product($id_product_ads,'104x104').'" /></a>';
+        $txt_html.='<a href="'.URL.'/product/'.$id_product_ads.'"><img alt="Download '.$name_product.'" id="ads_box_main_icon"  class="lazyload" width="104" height="104" data-src="'.get_url_icon_product($id_product_ads,'104x104').'" /></a>';
         
         $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$id_product_ads."' LIMIT 4");
         while($link_store=mysqli_fetch_assoc($query_link_store)){
-            $txt_html.='<a href="'.$link_store['link'].'" target="_blank"><img alt="'.$link_store['name'].'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/assets/img_link/'.$link_store['icon'].'.jpg&size=85x28&trim=1" /></a>';
+            $txt_html.='<a href="'.$link_store['link'].'" target="_blank"><img alt="'.$link_store['name'].'" width="85" height="28" class="lazyload ads_box_img_link" data-src="'.URL.'/thumb.php?src='.URL.'/assets/img_link/'.$link_store['icon'].'.jpg&size=85x28&trim=1" /></a>';
         }
         
         if(file_exists('product_data/'.$id_product_ads.'/ios/app.plist')){
-            $txt_html.='<a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/'.$id_product_ads.'/ios/app.plist" target="_blank" ><img alt="Download '.get_name_product_lang($link,$id_product_ads,$_SESSION["lang"]).'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images/ipa_download.png&size=85x28&trim=1" /></a>';
+            $txt_html.='<a href="itms-services://?action=download-manifest&amp;url=https://carrotstore.com/product_data/'.$id_product_ads.'/ios/app.plist" target="_blank" ><img alt="Download '.get_name_product_lang($link,$id_product_ads,$_SESSION["lang"]).'" width="85" height="28" class="lazyload ads_box_img_link" data-src="'.URL.'/thumb.php?src='.URL.'/images/ipa_download.png&size=85x28&trim=1" /></a>';
         }
         
     $txt_html.='</div>';

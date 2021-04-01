@@ -292,6 +292,7 @@ if($_GET||$_POST){
             $user_login->avatar=$url_work.'/avatar_user/'.$data_login_user['user_id'].'.png';
             $user_login->email=$data_login_user['email'];
             $user_login->lang=$lang;
+            $user_login->{"password"}=$data_login_user["user_pass"];
             echo '1';
             $_SESSION['user_login']=json_encode($user_login);
         }else{

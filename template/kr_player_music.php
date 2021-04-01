@@ -133,7 +133,7 @@
         });
 
         <?php if($is_playlist){?>
-            setTimeout(function(){ kr_next_song(); }, 3000);
+            setTimeout(function(){ play_song_index(0); }, 3000);
         <?php }else{?>
             setTimeout(function(){ kr_play(); }, 3000);
         <?php }?>

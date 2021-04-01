@@ -31,10 +31,6 @@
     if(file_exists($filename_img_avatar)){
         $url_img_thumb=$url.'/'.$filename_img_avatar;
         $url_media=$url.'/thumb.php?src='.$url.'/'.$filename_img_avatar;
-    }else{
-        if($url_img_thumb_ytb!=''){
-            $url_img_thumb=$url_img_thumb_ytb;
-        }
     }
     
     if($row['slug']!=''){
@@ -71,12 +67,12 @@ mysqli_free_result($count_status_3);
     </div>
     
     <?php if($list_style=='list'){?>
-    <a href="#" onclick="play_music_box_mini('<?php echo $count_item_music;?>');return false;">
-        <img   alt="<?php echo $row['chat']; ?>" class="lazyload app_icon" data-src="<?php echo $url_img_thumb;?>"  style="height: 100px;float: left;width: 100px;" />
+    <a href="#" class="app_link_icon" onclick="play_music_box_mini('<?php echo $count_item_music;?>');return false;">
+        <img alt="<?php echo $row['chat']; ?>" class="lazyload app_icon" data-src="<?php echo $url_img_thumb;?>" heigth="100" width="100" />
     </a>
     <?php }else{?>
-    <a href="<?php echo $url_song;?>" >
-        <img alt="<?php echo $row['chat']; ?>"  src="<?php echo $url_img_thumb;?>" class="app_icon" style="height: 100px;" />
+    <a href="<?php echo $url_song;?>" class="app_link_icon">
+        <img alt="<?php echo $row['chat']; ?>"  src="<?php echo $url_img_thumb;?>" class="app_icon" heigth="100" width="100" />
     </a>
     <?php }?>
     

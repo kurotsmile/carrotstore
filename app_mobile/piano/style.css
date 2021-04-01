@@ -80,16 +80,15 @@ tr:nth-child(even) {background-color: white}
 #pc_edit .line .midi{float: left;width: 30px;background-color: rgb(248, 91, 0);margin: 3px;color: white;text-align: center;}
 input[type=text],textarea{border: solid 3px blueviolet;}
 .bar_page{width: 100%;float: left;background-color: rgb(25, 2, 48);color: wheat;padding-top: 5px;padding-bottom: 5px;}
-
+#area_body{position: relative;width: 100%;height: 100%;}
 #frm_login{
     background-color: purple;
     color: white;
     width: 250px;
     text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: auto;
-    margin-top: auto;
-    padding: 20px;border-radius: 8px;
+    top:50%;
+    left:50%;
+    padding: 20px;border-radius: 8px;position: absolute;
+    transform: translate(-50%,-50%);
 }
 #btn_logout{float: right;margin-top: 5px;}

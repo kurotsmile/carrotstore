@@ -16,25 +16,21 @@
             </h1>
         </a>
     </div>
-    <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang;?>">
+    <a href="<?php echo $url; ?>/user/<?php echo $row['id_device']; ?>/<?php echo $lang;?>"  class="app_link_icon">
         <?php
             $url_img='app_mygirl/app_my_girl_'.$lang_sel.'_user/'.$row['id_device'].'.png';
             if(file_exists($url_img)){
             ?>
-            <img  alt="<?php echo $row['name']; ?>" src="<?php echo $url;?>/thumb.php?src=<?php echo $url.'/'.$url_img;?>&size=170x170&trim=1" class="app_icon" style="height: 100px;" />
+            <img  alt="<?php echo $row['name']; ?>" src="<?php echo $url;?>/thumb.php?src=<?php echo $url.'/'.$url_img;?>&size=170x170&trim=1" width="100" height="100" class="app_icon"/>
             <?php
             }else{
             if($row['sex']=='0') {
                 ?>
-                <img alt="<?php echo $row['name']; ?>"
-                     src="<?php echo $url; ?>/thumb.php?src=<?php echo $url; ?>/images/avatar_boy.jpg"
-                     class="app_icon"/>
+                <img alt="<?php echo $row['name']; ?>" src="<?php echo $url; ?>/thumb.php?src=<?php echo $url; ?>/images/avatar_boy.jpg" width="100" height="100"  class="app_icon"/>
                 <?php
             }else{
                 ?>
-                <img alt="<?php echo $row['name']; ?>"
-                     src="<?php echo $url; ?>/thumb.php?src=<?php echo $url; ?>/images/avatar_girl.jpg"
-                     class="app_icon"/>
+                <img alt="<?php echo $row['name']; ?>"  src="<?php echo $url; ?>/thumb.php?src=<?php echo $url; ?>/images/avatar_girl.jpg" width="100" height="100"  class="app_icon"/>
                 <?php
             }
             }

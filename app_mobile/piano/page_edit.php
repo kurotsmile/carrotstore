@@ -71,6 +71,7 @@ if($id_midi!=''){
     $sell_midi=$data_midi['sell'];
     $level_midi=$data_midi['level'];
     $author_midi=$data_midi['author'];
+    $category_midi=$data_midi['category'];
 
     $data_line_0=json_decode($data_midi['data0']);
     $data_line_1=json_decode($data_midi['data1']);
