@@ -168,7 +168,6 @@
         window.open(link_shar, 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
     }
 
-
     <?php
     if(!isset($user_login)){
     ?>
@@ -366,6 +365,27 @@
             }
         });
     }
+
+    function onSuccess(googleUser) {
+        onSignIn(googleUser, false);
+        googleUser.disconnect();
+    }
+
+    function onFailure(error) {
+        console.log(error);
+    }
+
+    function renderButton() {
+        gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 200,
+            'height': 40,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+        });
+    }
     <?php
     }
     else{?>
@@ -449,32 +469,10 @@
                     }
                 });
         }
-    }, 100);
+    }, 200);
     <?php
     }
     ?>
-
-    function onSuccess(googleUser) {
-        onSignIn(googleUser, false);
-        googleUser.disconnect();
-    }
-
-    function onFailure(error) {
-        console.log(error);
-    }
-
-    function renderButton() {
-        gapi.signin2.render('my-signin2', {
-            'scope': 'profile email',
-            'width': 200,
-            'height': 40,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
-
     function style_dark_mode(){
         if(style_css_dark_mode=='0'){
             $("#style_site").attr("href", "<?php echo $url;?>/assets/css/style-dark-mode.min.css?v=<?php echo get_setting($link,'ver');?>");
@@ -596,6 +594,109 @@
             }); 
         });
     }
+
+    var search_type='<?php echo $search_type;?>';
+    var search_data='<?php echo $search_data;?>';
+    function show_setting_search(){
+        var html_setting_search = '<div style="width: 100%;">';
+        html_setting_search = html_setting_search + '<form id="box_setting_search">';
+        html_setting_search = html_setting_search + '<i class="tip"><?php echo lang($link,'search_setting_type');?></i><br/>';
+        html_setting_search = html_setting_search + '<div style="float: left;width: 100%;"><input type="radio"  style="display:block;display: block;float: left;width: 25px;margin: 0px;padding: 0px;margin-right: 6px;" name="search_type" id="search_type_0" value="0"><strong style="float: left;line-height: 44px;"><i class="fa fa-search" aria-hidden="true"></i> <?php echo lang($link,'search_setting_type_0'); ?></strong></div>';
+        html_setting_search = html_setting_search + '<div style="float: left;width: 100%;"><input type="radio"  style="display:block;display: block;float: left;width: 25px;margin: 0px;padding: 0px;margin-right: 6px;" name="search_type" id="search_type_1" value="1"><strong style="float: left;line-height: 44px;"><i class="fa fa-search-plus" aria-hidden="true"></i> <?php echo lang($link,'search_setting_type_1'); ?></strong></div>';
+        html_setting_search = html_setting_search + '<i class="tip"><?php echo lang($link,'search_setting_data');?></i><br/>';
+        html_setting_search = html_setting_search + '<div style="float: left;width: 100%;"><input type="radio"  style="display:block;display: block;float: left;width: 25px;margin: 0px;padding: 0px;margin-right: 6px;" name="search_data" id="search_data_0" value="0"><strong style="float: left;line-height: 44px;"><i class="fa fa-globe" aria-hidden="true"></i> <?php echo lang($link,'search_setting_data_0'); ?></strong></div>';
+        html_setting_search = html_setting_search + '<div style="float: left;width: 100%;"><input type="radio"  style="display:block;display: block;float: left;width: 25px;margin: 0px;padding: 0px;margin-right: 6px;" name="search_data" id="search_data_1" value="1"><strong style="float: left;line-height: 44px;"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo lang($link,'search_setting_data_1'); ?></strong></div>';
+        html_setting_search = html_setting_search + '</form>';
+        html_setting_search = html_setting_search + '<div style="float: left;width: 100%;">';
+        html_setting_search = html_setting_search + '<span class="buttonPro" onclick="swal.close();"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'back'); ?></span><span class="buttonPro blue" onclick="save_setting_search();"><i class="fa fa-check" aria-hidden="true"></i> <?php echo lang($link,'hoan_tat'); ?></span>';
+        html_setting_search = html_setting_search + '</div>';
+        html_setting_search = html_setting_search + '</div>';
+        swal({html: true, title: '<?php echo lang($link,"search_setting"); ?>', text: html_setting_search, showConfirmButton: false,});
+        $("#search_type_"+search_type).prop("checked", true);
+        $("#search_data_"+search_data).prop("checked", true);
+    }
+
+    function save_setting_search(){
+        var data_box_setting=$("#box_setting_search").serialize();
+        var obj_search = $("#box_setting_search").serializeArray();
+        search_type=obj_search[0].value;
+        search_data=obj_search[1].value;
+        swal_loading();
+        $.ajax({
+            url: "<?php echo $url;?>/index.php",
+            type: "post",
+            data: "function=save_setting_search&"+data_box_setting,
+            success: function (data, textStatus, jqXHR) {
+                swal.close();
+            }
+        });
+    }
+
+    if (!('webkitSpeechRecognition' in window)) {
+        $("#tool_search_mic_icon").hide();
+    } else {
+        var recognition = new webkitSpeechRecognition();
+        var recognizing = false;
+        var final_transcript = '';
+
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        
+        recognition.onstart = function(){
+            recognizing=true;
+            $("#tool_search_mic_icon").addClass("active");
+        };
+
+        recognition.onresult = function(event){
+            var interim_transcript='';
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    final_transcript += event.results[i][0].transcript;
+                } else {
+                    interim_transcript += event.results[i][0].transcript;
+                }
+            }
+            final_transcript=capitalize(final_transcript);
+            $("#interim_recognition").html(linebreak(interim_transcript));
+            if (final_transcript || interim_transcript) {
+                $("#tool_search_mic_icon").addClass("fa-chevron-circle-right");
+                $("#tool_search_mic_icon").removeClass("fa-microphone");
+            }
+            
+        };
+        recognition.onerror = function(event) {};
+        recognition.onend = function() {
+            $("#interim_recognition").hide();
+            $("#inp_search").show();
+            $("#tool_search_mic_icon").removeClass("active");
+            $("#tool_search_mic_icon").removeClass("fa-chevron-circle-right");
+            $("#tool_search_mic_icon").addClass("fa-microphone");
+            if(final_transcript!="")search_product(final_transcript);
+            recognizing = false;
+        };
+
+        function start_recognition(){
+            if(recognizing){recognition.stop();return;}
+            recognition.lang = 'vi-vn';
+            final_transcript = '';
+            $("#interim_recognition").show();
+            $("#inp_search").hide();
+            recognition.start();
+        }
+
+        var first_char = /\S/;
+        function capitalize(s) {
+        return s.replace(first_char, function(m) { return m.toUpperCase(); });
+        }
+
+        var two_line = /\n\n/g;
+        var one_line = /\n/g;
+        function linebreak(s) {
+            return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+        }
+    }
+
+
 </script>
 
 <?php

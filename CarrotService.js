@@ -60,7 +60,7 @@ self.addEventListener("install", function(event) {
       }).catch(function(err) {       // fallback mechanism
         return caches.open("offline")
           .then(function(cache) {
-            return cache.match('/offline.html');
+            return cache.match('offline');
           });
       });
     });
@@ -70,7 +70,7 @@ self.addEventListener("install", function(event) {
     return caches.open('offline').then(function (cache) {
       return cache.match(request).then(function (matching) {
        if(!matching || matching.status == 404) {
-         return cache.match('/offline.html')
+         return cache.match('offline')
        } else {
          return matching
        }

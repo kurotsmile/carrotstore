@@ -111,41 +111,6 @@ $(document).ready(function(){
    show_player_music(false);
 });
 
-<?php
-    if($sub_view=='artist'){
-        $query_count_music=mysqli_query($link,"SELECT COUNT(DISTINCT `artist`) as c FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
-    }else{
-        $query_count_music=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_vi` WHERE `effect` = '2'");
-    }
-    $data_count_music=mysqli_fetch_assoc($query_count_music);
-    $count_p=$data_count_music['c'];
-
-if($sub_view=='all'||$sub_view=='artist'||$sub_view=='0'||$sub_view=='1'||$sub_view=='2'||$sub_view=='3'){
-?>
-var count_p=<?php echo $count_p; ?>;
-$(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {
-                $('#loading').fadeIn(200);
-                $('#loading-page').html(arr_id_music.length+"/"+count_p);
-                myJsonString = JSON.stringify(arr_id_music);
-                $.ajax({
-                    url: "<?php echo $url; ?>/index.php",
-                    type: "post",
-                    data: "function=load_music&json="+myJsonString+"&lenguser="+count_p+"&type=<?php echo $sub_view;?>",
-                    success: function(data, textStatus, jqXHR)
-                    {
-                        myJsonString = JSON.stringify(arr_id_music);
-                        $('#containt').append(data);
-                        $('#loading').fadeOut(200);
-                        reset_tip();
-                    }
-                });
-   }
-});
-<?php
-}
-?>
-
 function stop_music_where_play_video(){
     $(".menu_app").removeClass('music_color');
     $(".app").removeClass('menu_app');
@@ -211,9 +176,20 @@ if($sub_view=='artist'){
 }
 
 ?>
-
 </div>
 
 <?php
-echo show_ads_box_main($link,'music_page');
+    echo show_ads_box_main($link,'music_page');
+
+    if($sub_view=='artist'){
+        $query_count_music=mysqli_query($link,"SELECT COUNT(DISTINCT `artist`) as c FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''");
+        $data_count_music=mysqli_fetch_assoc($query_count_music);
+        echo scroll_load_data('artist',$data_count_music['c']);
+    }else{
+        $query_count_music=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_vi` WHERE `effect` = '2'");
+        $data_count_music=mysqli_fetch_assoc($query_count_music);
+        if($sub_view=='all'||$sub_view=='artist'||$sub_view=='0'||$sub_view=='1'||$sub_view=='2'||$sub_view=='3'){
+            echo scroll_load_data('music',$data_count_music['c']);
+        }
+    }
 ?>

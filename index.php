@@ -7,46 +7,9 @@ ini_set('max_execution_time', 900);
 ob_start();
 session_start();
 
-function ip_visitor_country()
-{
-    $client = @$_SERVER['HTTP_CLIENT_IP'];
-    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-    $remote = $_SERVER['REMOTE_ADDR'];
-    $country = "us";
-
-    if (filter_var($client, FILTER_VALIDATE_IP)) {
-        $ip = $client;
-    } elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
-        $ip = $forward;
-    } else {
-        $ip = $remote;
-    }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://www.geoplugin.net/json.gp?ip=" . $ip);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    $ip_data_in = curl_exec($ch); // string
-    curl_close($ch);
-
-    $ip_data = json_decode($ip_data_in, true);
-    $ip_data = str_replace('&quot;', '"', $ip_data); // for PHP 5.2 see stackoverflow.com/questions/3110487/
-
-    if ($ip_data && $ip_data['geoplugin_countryCode'] != null) {
-        $country = strtoupper($ip_data['geoplugin_countryCode']);
-    } else {
-        $country = 'us';
-    }
-
-    return $country;
-}
-
-
 include "config.php";
 
-if (isset($_GET['view_product']) || isset($_GET['sub_view'])) {
-} else {
-    include 'bbit-compress.php';
-}
+include 'bbit-compress.php';
 
 if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
     if(isset($_POST['key_contry'])){ $_SESSION['lang'] = $_POST['key_contry'];}
@@ -61,12 +24,39 @@ if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
 include "database.php";
 
 $lang='en';
-$style_css_dark_mode='0';
+$style_css_dark_mode='0'; if(isset($_SESSION['style_css_dark_mode'])) $style_css_dark_mode=$_SESSION['style_css_dark_mode'];
+$search_type='1';if(isset($_SESSION['search_type'])) $search_type=$_SESSION['search_type'];
+$search_data='0';if(isset($_SESSION['search_data'])) $search_data=$_SESSION['search_data'];
+
+function ip_visitor_country()
+{
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){$ip=$_SERVER['HTTP_CLIENT_IP'];}
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];}
+    else{$ip=$_SERVER['REMOTE_ADDR'];}
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://www.geoplugin.net/json.gp?ip=$ip");
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    $ip_data_in = curl_exec($ch);
+    curl_close($ch);
+
+    $ip_data = json_decode($ip_data_in, true);
+    $ip_data = str_replace('&quot;', '"', $ip_data);
+
+    if ($ip_data && $ip_data['geoplugin_countryCode'] != null) {
+        $ip_data["lang"]=strtolower($ip_data['geoplugin_countryCode']);
+    } else {
+        $ip_data["lang"]='us';
+    }
+    return $ip_data;
+}
+$data_ip = ip_visitor_country();
 
 if (isset($_SESSION['lang'])) {
     $lang=$_SESSION['lang'];
 } else {
-    $k = ip_visitor_country();
+    $k=$data_ip['lang'];
     $query_key_country = mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
     if (mysqli_num_rows($query_key_country)) {
         $data_key_country = mysqli_fetch_array($query_key_country);
@@ -75,10 +65,6 @@ if (isset($_SESSION['lang'])) {
         $_SESSION['lang'] = 'en';
     }
     $lang=$_SESSION['lang'];
-}
-
-if(isset($_SESSION['style_css_dark_mode'])){
-    $style_css_dark_mode=$_SESSION['style_css_dark_mode'];
 }
 
 include "function.php";
@@ -110,15 +96,17 @@ include "header.php";
 <div id="header">
     <a href="<?php echo $url; ?>"><img alt="Store Carrot" src="<?php echo $url; ?>/images/logo.png" id="logo" width="120" height="56" class="url_carrot"/></a>
     <?php
-    $type = 'products';
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_music.php") {$type='music';}
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_quote.php") {$type='quote';}
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_member.php") {$type='accounts';}
-    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_piano.php") {$type='piano';}
+    $type_obj='products';
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_music.php") {$type_obj='music';}
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_quote.php") {$type_obj='quote';}
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_member.php") {$type_obj='accounts';}
+    if (isset($_GET['page_view']) && $_GET['page_view'] == "page_piano.php") {$type_obj='piano';}
     ?>
     <div id="tool_search">
-        <i class="fa fa-search tool_search_icon" aria-hidden="true" id="tool_search_icon"></i>
+        <i class="fa fa-search tool_search_icon" onclick="show_setting_search();" aria-hidden="true" id="tool_search_icon"></i>
+        <div id="interim_recognition"><?php echo lang($link,"recognition_inp");?></div>
         <input type="text" placeholder="<?php echo lang($link,'tip_search'); ?> " onchange="search_product(this.value)" name="search" class="inp" id="inp_search"/>
+        <i class="fa fa-microphone tool_search_mic_icon" aria-hidden="true" id="tool_search_mic_icon" onclick="start_recognition();"></i>
         <span id="proccess" style="display: none;float: left;"> <?php echo lang($link,'dang_xu_ly'); ?></span>
     </div>
 
@@ -127,17 +115,19 @@ include "header.php";
             $('#proccess').show();
             $("#inp_search").prop('disabled', true);
             $("#inp_search").hide();
+            $("#tool_search_mic_icon").hide();
             $("#tool_search_icon").removeClass("fa-search").addClass("fa-spinner");
             $.ajax({
                 url: "<?php echo $url; ?>/index.php",
-                type: "get",
-                data: "function=search_product&key=" + key_search + "&type=<?php echo $type ?>",
+                type: "post",
+                data: "function=search_product&key=" + key_search + "&type=<?php echo $type_obj;?>",
                 success: function (data, textStatus, jqXHR) {
                     $("#inp_search").prop('disabled', false);
                     $('#containt').html(data);
                     $('#proccess').hide();
                     $('#proccess').css('display', 'none');
                     $("#inp_search").show();
+                    $("#tool_search_mic_icon").show();
                     $("#tool_search_icon").removeClass("fa-spinner").addClass("fa-search");
                 }
             });
@@ -164,7 +154,7 @@ include "header.php";
     </div>
 
     <a id="add_company" href="https://www.paypal.me/kurotsmile" target="_blank" title="<?php echo lang($link,'chu_thich_ung_ho'); ?>">
-        <i class="fa fa-heart-o fa-3x" style="float: left;margin-right: 10px;" aria-hidden="true"></i>
+        <i class="fa fa-heart fa-3x" style="float: left;margin-right: 10px;" aria-hidden="true"></i>
         <strong style="font-size: 15px;width: 100px;"><?php echo lang($link,'ung_ho'); ?></strong><br/>
         <span style="font-size: 70%;"><?php echo lang($link,'ung_ho_tip'); ?></span>
     </a>
@@ -209,12 +199,7 @@ include "header.php";
 </div>
 
 <div style="float: left;width: 100%;">
-    <script>
-        var arr_id_product = [];
-    </script>
-    <?php
-    include $page_file;
-    ?>
+    <?php include $page_file; ?>
 </div>
 
 <div id="go_top" onclick="go_top()">

@@ -206,7 +206,7 @@ if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
     <?php if(get_setting($link,"serviceWorker")=='1'){?>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/CarrotService.js?v=<?php echo get_setting($link,'ver');?>',{ scope: "/" }).then(function(registration) {
+            navigator.serviceWorker.register('/CarrotService.js',{ scope: "/" }).then(function(registration) {
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }, function(err) {
             console.log('ServiceWorker registration failed: ', err);
@@ -215,6 +215,7 @@ if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
     }
     <?php }?>
 
+    var arr_id_obj = [];
     var shortcut_key_music=true;
     var style_css_dark_mode='<?php echo $style_css_dark_mode;?>';
     var style_css_qtip='<?php if($style_css_dark_mode=='0'){ echo 'qtip-green';} ?>';

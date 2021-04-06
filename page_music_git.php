@@ -29,8 +29,8 @@
 
     $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
     if(file_exists($filename_img_avatar)){
-        $url_img_thumb=$url.'/'.$filename_img_avatar;
-        $url_media=$url.'/thumb.php?src='.$url.'/'.$filename_img_avatar;
+        $url_img_thumb=$url.'/thumb.php?src='.$url.'/'.$filename_img_avatar.'&size=100x100&trim=1';
+        $url_media=$url.'/thumb.php?src='.$url.'/'.$filename_img_avatar.'&trim=1';
     }
     
     if($row['slug']!=''){
@@ -121,7 +121,7 @@ mysqli_free_result($count_status_3);
     
     <?php if($list_style=='list'){?>
     <script>
-        arr_id_music.push('<?php echo $row['id']; ?>');
+        arr_id_obj.push('<?php echo $row['id']; ?>');
         var data_music = {
             id:'<?php echo $row['id']; ?>',
             src:'<?php echo $url_mp3;?>',

@@ -3,104 +3,130 @@ $function='';
 if(isset($_POST['function'])) $function=$_POST['function'];
 if(isset($_GET['function'])) $function=$_GET['function'];
 
-if($function=='search_product'){
-    include_once("function_search.php");
-    $key=addslashes(trim($_POST['key']));
-    $type=$_POST['type'];
-    echo '<div id="filter"><a onclick="show_setting_search()"><i class="fa fa-search" aria-hidden="true"></i> '.lang($link,"search_return").' <i class="fa fa-quote-left" aria-hidden="true"></i> '.$key.' <i class="fa fa-quote-right" aria-hidden="true"></i></a></div>';
-    $data_return_search=array();
-    if($search_type=='0'){
-        if($type=='products'){$group_search=search_product($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);}
-        if($type=='accounts'){$group_search=search_user($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);}
-        if($type=='music'){
-            $group_search=search_music($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-            $group_search=search_artist($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-        }
-        if($type=='quote'){$group_search=search_quocte($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);}
-        if($type=='piano'){$group_search=search_piano($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);}
-    }else{
-        $group_search=search_product($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-        $group_search=search_user($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-        $group_search=search_music($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-        $group_search=search_quocte($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-        $group_search=search_piano($link,$key,$lang,$search_data);if($group_search!=null)array_push($data_return_search,$group_search);
-    }
+if($_GET||$_POST){
 
-    $txt_box_html_top='';
-    $txt_box_html='';
-    if(count($data_return_search)>0){
-        for($i=0;$i<count($data_return_search);$i++){
-            $data_obj_search=$data_return_search[$i];
-            $all_item=$data_obj_search->all_item;
-            if($data_obj_search->type==$type){
-                if($search_type!='0') $txt_box_html_top.='<div class="search_group"><div class="title"><i class="fa '.$data_obj_search->icon.'" aria-hidden="true"></i> '.$data_obj_search->name.'</div></div>';
-                for($i_item=0;$i_item<count($all_item);$i_item++){
-                    $item_search=$all_item[$i_item];
-                    $txt_box_html_top.='<a href="'.$item_search->link.'" class="box_return_search">';
-                    $txt_box_html_top.='<img src="'.$item_search->icon.'"/>';
-                    $txt_box_html_top.='<div class="title">'.$item_search->name.'</div>';
-                    $txt_box_html_top.='</a>';
-                }
+    if(isset($_GET['function'])&&$_GET['function']=='search_product'){
+        $key=$_GET['key'];
+        $type=$_GET['type'];
+        if($type=='products'){
+            $result = mysqli_query($link,"SELECT * FROM `products` as p INNER JOIN `product_name_$lang` as n ON p.`id` = n.`id_product` WHERE n.`data` LIKE '%$key%' AND p.`status`=1 Group by p.`id` LIMIT 50");
+            if(isset($_SESSION['view_type'])){
+                $view_type=$_SESSION['view_type'];
+                include "$view_type.php";
             }else{
-                if($search_type!='0') $txt_box_html.='<div class="search_group"><div class="title"><i class="fa '.$data_obj_search->icon.'" aria-hidden="true"></i> '.$data_obj_search->name.'</div></div>';
-                for($i_item=0;$i_item<count($all_item);$i_item++){
-                    $item_search=$all_item[$i_item];
-                    $txt_box_html.='<a href="'.$item_search->link.'" class="box_return_search">';
-                    $txt_box_html.='<img src="'.$item_search->icon.'"/>';
-                    $txt_box_html.='<div class="title">'.$item_search->name.'</div>';
-                    $txt_box_html.='</a>';
-                }
+                $label_click_de_xem=lang($link,'click_de_xem');
+                $label_download_on=lang($link,'download_on');
+                $label_loai=lang($link,'loai');
+                $label_chi_tiet=lang($link,'chi_tiet');
+                include "page_view_all_product_git.php";
             }
+
+            $query_add_log_search_product=mysqli_query($link,"INSERT INTO `product_log_key` (`key`, `lang`) VALUES ('$key', '$lang');");
         }
-        $txt_box_html.='<script>scroll_load_data=false;</script>';
-        echo $txt_box_html_top.$txt_box_html;
-    }else{
-        include_once("404_search.php");
-    }
-    exit;
-}
 
-if($function=='scroll_load_data'){
-    $type_obj=$_POST['type_obj'];
-    $data_json=(array)json_decode($_POST['data_json']);
-    $length_obj=$_POST['length_obj'];
 
-    if(count($data_json)<intval($length_obj)){
-
-        if($type_obj=='music'){
-            $count_item_music=count($data_json);
-            $list_style='list';
-            $label_choi_nhac=lang($link,'choi_nhac');
-            $label_chi_tiet=lang($link,'chi_tiet');
-            $label_loi_bai_hat=lang($link,'loi_bai_hat');
-            $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
-            $label_music_no_rank=lang($link,'music_no_rank');
+        if($type=='accounts'){
+            $lang_sel='vi';
+            if(isset($_SESSION['lang'])){
+                $lang_sel=$_SESSION['lang'];
+            }
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND (`status`='0' AND `sdt`!='' ) ORDER BY RAND() LIMIT 50");
+            include "page_member_template.php";
+        }
+        
+        if($type=='music'){
+            $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+            $query_add_log=mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music` (`key`, `lang`, `type`) VALUES ('$key', '$lang', '2');");
+            $txt_query='';
+            $txt_query_2='';
+            $count_l=mysqli_num_rows($list_country);
+            $count_index=0;
+            while($l=mysqli_fetch_array($list_country)){
+                    $key_lang=$l['key'];
+                    $txt_query.="(SELECT * FROM `app_my_girl_$key_lang` WHERE  `chat` LIKE '%$key%' AND  `effect`='2' AND `disable` = '0' limit 21)";
+                    $txt_query_2.=" (SELECT * FROM `app_my_girl_$key_lang` WHERE MATCH (`chat`) AGAINST ('$key' IN BOOLEAN MODE) AND  `effect`='2' AND `disable` = '0' limit 21)";
+                    $count_index++;
+                    if($count_index!=$count_l){
+                        $txt_query.=" UNION ALL ";
+                        $txt_query_2.=" UNION ALL ";
+                    }
+            }
             
-            $query_load_data = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$data_json).") ORDER BY RAND() LIMIT 20");
-            if($query_load_data){
-                while ($row = mysqli_fetch_assoc($query_load_data)) {
-                    include "page_music_git.php";
-                    $count_item_music++;
+            $query_list_music=mysqli_query($link,$txt_query);
+            if($query_list_music){
+                if(mysqli_num_rows($query_list_music)==0){
+                    $query_list_music=mysqli_query($link,$txt_query_2);
                 }
             }
+            $sub_view='all';
+            include "page_music_list.php";
+        }
+        
+        if($type=='quote'){
+            $lang_sel='vi';
+            if(isset($_SESSION['lang'])){
+                $lang_sel=$_SESSION['lang'];
+            }
+            $list_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `chat` LIKE '%$key%' ORDER BY RAND() LIMIT 30");
+            include "page_quote.php";
         }
 
-        if($type_obj=='products'){
-            $query_load_data = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$data_json).") AND `company` !='Carrot' ORDER BY RAND()  LIMIT 15");
+        if($type=='piano'){
+            $query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`author` FROM  carrotsy_piano.`midi` WHERE `name` LIKE '%$key%' ORDER BY RAND() LIMIT 50");
+            include "page_piano.php";
+        }
+        exit; 
+    }
+
+    if(isset($_GET['function'])&&$_GET['function']=='search_member'){
+        $key=$_GET['key'];
+        $lang_sel='vi';
+        if(isset($_SESSION['lang'])){
+            $lang_sel=$_SESSION['lang'];
+        }
+        $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE (`name` LIKE '%$key%' OR `sdt` LIKE '%$key%' OR `address` LIKE '%$key%') AND `status`='0' LIMIT 50",$link);
+        include 'page_member_template.php';
+        exit; 
+    }
+    
+    
+    if(isset($_GET['function'])&&$_GET['function']=='load_product'){
+        $arr_id=(array)json_decode($_GET['json']);
+        if(count($arr_id)<intval($_GET['lengProduct'])){
+            $type=$_GET['type'];
+            $category=$_GET['category'];
+            $tags=$_GET['tags'];
+            if($type!=''){
+               $result = mysqli_query($link,"SELECT * FROM `products` WHERE `type` = '".$type."' AND `id` NOT IN (".implode(",",$arr_id).") LIMIT 15");
+            }else if($tags!=''){
+               $result = mysqli_query($link,"SELECT p.* FROM product_tag tag,products p WHERE tag.product_id=p.id AND tag.tag LIKE '%$tags%' AND p.id NOT IN (".implode(",",$arr_id).") LIMIT 15");
+            }else{
+               $result = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$arr_id).") AND `company` !='Carrot' ORDER BY RAND()  LIMIT 15");
+            }
             $label_click_de_xem=lang($link,'click_de_xem');
             $label_download_on=lang($link,'download_on');
             $label_loai=lang($link,'loai');
             $label_chi_tiet=lang($link,'chi_tiet');
-            while ($row = mysqli_fetch_assoc($query_load_data)) {
-                include "page_view_all_product_git_template.php";
-             }
-        }
 
-        if($type_obj=='accounts'){
-            $arr_ext=array();
-            foreach($data_json as $id_n){
-                array_push($arr_ext,'"'.$id_n.'"');
+            while ($row = mysqli_fetch_assoc($result)) {
+               include "page_view_all_product_git_template.php";
             }
+            exit; 
+        }
+        exit; 
+    }
+    
+    if(isset($_GET['function'])&&$_GET['function']=='load_user'){
+        $arr_id=(array)json_decode($_GET['json']);
+        $arr_ext=array();
+        foreach($arr_id as $id_n){
+            array_push($arr_ext,'"'.$id_n.'"');
+        }
+        $lang_sel='vi';
+        if(isset($_SESSION['lang'])){
+            $lang_sel=$_SESSION['lang'];
+        }
+        if(count($arr_id)<intval($_GET['lenguser'])){
             $label_chi_tiet=lang($link,'chi_tiet');
             $label_goi_dien=lang($link,'goi_dien');
             $label_download_vcf=lang($link,'download_vcf');
@@ -108,22 +134,71 @@ if($function=='scroll_load_data'){
             $label_dia_chi=lang($link,"dia_chi");
             $label_quoc_gia=lang($link,"quoc_gia");
 
-            $query_load_data = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 20");
-            while ($row = mysqli_fetch_assoc($query_load_data)) {
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_sel` WHERE `id_device` NOT IN (".implode(",",$arr_ext).") AND `sdt`!='' AND `address`!='' AND `status`='0' ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_array($result)) {
                include "page_member_view_git.php";
             }
         }
+        exit; 
+    }
+    
+    if($function=='load_music'){
 
-        if($type_obj=='quote'){
-            $label_detail=lang($link,'chi_tiet');
-            $label_speed_quote=lang($link,'doc_cham_ngon');
-            $query_load_data = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$data_json).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20");
-            while ($row = mysqli_fetch_assoc($query_load_data)) {
-                include "page_quote_git.php";
+        $arr_id=json_decode($_POST['json']);
+        $lang_sel='vi';
+        $type=$_POST['type'];
+        if(isset($_SESSION['lang'])){
+            $lang_sel=$_SESSION['lang'];
+        }
+        if(count($arr_id)<intval($_POST['lenguser'])){
+            if($type=='all'){
+                $count_item_music=count($arr_id);
+                $list_style='list';
+                $label_choi_nhac=lang($link,'choi_nhac');
+                $label_chi_tiet=lang($link,'chi_tiet');
+                $label_loi_bai_hat=lang($link,'loi_bai_hat');
+                $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
+                $label_music_no_rank=lang($link,'music_no_rank');
+                
+                $result = mysqli_query($link,"SELECT `id`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id` NOT IN (".implode(",",$arr_id).") ORDER BY RAND() LIMIT 20");
+                if($result){
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        include "page_music_git.php";
+                        $count_item_music++;
+                    }
+                }
+            }
+
+            if($type=='artist'){
+                $query_artis=mysqli_query($link,"SELECT DISTINCT `artist` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `artist`!=''  ORDER BY RAND() LIMIT 60");
+                while ($row = mysqli_fetch_assoc($query_artis)) {
+                    include "page_music_artist_git.php";
+                }
             }
         }
+        exit; 
+    }
+    
+    if(isset($_GET['function'])&&$_GET['function']=='load_quote'){
+        $arr_id=json_decode($_GET['json']);
+        $lang_sel='vi';
+        if(isset($_SESSION['lang'])){
+            $lang_sel=$_SESSION['lang'];
+        }
+        $label_detail=lang($link,'chi_tiet');
+        $label_speed_quote=lang($link,'doc_cham_ngon');
+        if(count($arr_id)<intval($_GET['lenguser'])){
+            $result = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id` NOT IN (".implode(",",$arr_id).") AND `id_redirect` = '' ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_assoc($result)) {
+               include "page_quote_git.php";
+            }
+        }
+        exit; 
+    }
 
-        if($type_obj=='piano'){
+    if(isset($_POST['function'])&&$_POST['function']=='load_piano'){
+        $arr_id=json_decode($_POST['json']);
+        if(count($arr_id)<intval($_POST['lengmidi'])){
             $arr_midi_level=array(lang($link,'level_de'),lang($link,'level_trung_binh'),lang($link,'level_kho'),lang($link,'level_sieu_kho'));
             $label_detail=lang($link,'chi_tiet');
             $label_loai=lang($link,'loai');
@@ -132,24 +207,25 @@ if($function=='scroll_load_data'){
             $label_toc_do_nhip=lang($link,'toc_do_nhip');
             $label_so_not_nhac=lang($link,'so_not_nhac');
             $label_tac_gia=lang($link,'tac_gia');
-            $query_load_data = mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE `id_midi` NOT IN (".implode(",",$data_json).") AND `sell`!='0' ORDER BY RAND() LIMIT 20");
-            while ($row = mysqli_fetch_assoc($query_load_data)) {
+            $result = mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE `id_midi` NOT IN (".implode(",",$arr_id).") AND `sell`!='0' ORDER BY RAND() LIMIT 20");
+            while ($row = mysqli_fetch_assoc($result)) {
                include "page_piano_git.php";
             }
         }
-
-        if($type_obj=='artist'){
-            $query_load_data=mysqli_query($link,"SELECT DISTINCT `artist` FROM `app_my_girl_".$lang."_lyrics` WHERE `artist`!=''  ORDER BY RAND() LIMIT 60");
-            while ($row = mysqli_fetch_assoc($query_load_data)) {
-                include "page_music_artist_git.php";
-            }
-        }
-    }else{
-        echo '<script>scroll_load_data=false;</script>';
+        exit; 
     }
-    exit;
-}
 
+
+    if(isset($_GET['function'])&&$_GET['function']=='show_qr'){
+        $id=$_GET['id'];
+        $type=$_GET['type'];
+        $product=get_row('products',$id);
+        echo '<img style="width:100%" src="'.$url.'/phpqrcode/'.$type.''.$product[0].'.png"/>';
+        exit;
+    }
+
+
+    
     if(isset($_POST['function'])&&$_POST['function']=='comment'){
         $id=$_POST["id"];
         $created=$_POST["created"];
@@ -514,4 +590,5 @@ if($function=='scroll_load_data'){
         $_SESSION['search_data']=$search_data;
         exit;
     }
+}
 ?>

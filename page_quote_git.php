@@ -1,6 +1,6 @@
 <?php
 $id_quote=$row['id'];
-$query_count_like=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
+$query_count_like=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
 if($query_count_like){
 	$count_like=mysqli_fetch_array($query_count_like);
 	$count_like=$count_like[0];
@@ -8,7 +8,7 @@ if($query_count_like){
 	$count_like=0;
 }
 
-$query_count_distlike=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
+$query_count_distlike=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
 if($query_count_distlike){
 	$count_distlike=mysqli_fetch_array($query_count_distlike);
 	$count_distlike=$count_distlike[0];
@@ -16,7 +16,7 @@ if($query_count_distlike){
 	$count_distlike=0;
 }
 
-$query_count_comment=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang_sel` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
+$query_count_comment=mysqli_query($link,"SELECT COUNT(DISTINCT `id_device`) FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
 if($query_count_comment){
 	$count_comment=mysqli_fetch_array($query_count_comment);
 	$count_comment=$count_comment[0];
@@ -32,7 +32,7 @@ if($row['effect_customer']!=''){
 ?>
 <div id="row<?php echo $row['id']; ?>" class="app" >
     <div class="app_title">
-        <a  class="app_link_icon" href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>">
+        <a  class="app_link_icon" href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang;?>">
             <h1 style="font-size: -1vw;">
                 <i class="fa fa-quote-left" aria-hidden="true"></i>  &nbsp;&nbsp;
                 <?php echo limit_words($row['chat'],7);?>
@@ -41,7 +41,7 @@ if($row['effect_customer']!=''){
     </div>
     
     <div class="app_txt" style="float: left;width: 93%;height: 93px;padding: 10px;overflow-y: auto">
-        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>"><img  alt="<?php echo $row['chat'];?>" class="lazyload" data-src="<?php echo $img; ?>" style="float: left; margin-right: 3px;margin-bottom: 3px;" /></a>
+        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang;?>"><img  alt="<?php echo $row['chat'];?>" class="lazyload" data-src="<?php echo $img; ?>" style="float: left; margin-right: 3px;margin-bottom: 3px;" /></a>
         <i style="color: #c1c1c1;" class="fa fa-angle-double-left" aria-hidden="true"></i>
         <?php echo $row['chat'];?> 
         <i style="color: #c1c1c1;" class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -52,11 +52,11 @@ if($row['effect_customer']!=''){
     </div>
     
     <div class="app_action">
-        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang_sel;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_detail; ?></a>
+        <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_detail; ?></a>
         <a href="#"  class="btn_speed_quote_<?php echo $row['id'];?> buttonPro small grey btn_speed" onclick="speech_quote('<?php echo $row['id'];?>');return false;"><i class="fa fa-volume-up" aria-hidden="true"></i> <?php echo $label_speed_quote; ?></a>
     </div>
 
     <script>
-        arr_id_quote.push('<?php echo $row['id']; ?>');
+        arr_id_obj.push('<?php echo $row['id']; ?>');
     </script>
 </div>

@@ -2,7 +2,7 @@
 $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$data['type']."' LIMIT 1");
 $data_type=mysqli_fetch_array($query_type);
 ?>
-<div style="float: left;width:100%">
+<div style="float: left;width:100%" id="containt">
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
         <h2><?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?></h2>
         <p>

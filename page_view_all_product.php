@@ -44,55 +44,12 @@
             ?>
     </div>
 
-<script>
-var myJsonString;
-</script>
-
 <?php
         if($view_type!=''){
             include "$view_type.php";
         }
 ?>
 
-<script>
-var count_p=<?php echo $data_count['c'];?>;
-$(window).scroll(function() {
-
-   if($(window).scrollTop() + $(window).height() >= ($(document).height()-10)) {
-                $('#loading').fadeIn(200);
-                $('#loading-page').html(arr_id_product.length+"/"+count_p);
-                myJsonString = JSON.stringify(arr_id_product);
-                
-                var type='';
-                var category='';
-                var tags='';
-
-                $.ajax({
-                    url: "<?php echo $url; ?>/index.php",
-                    type: "get",
-                    data: "function=load_product&json="+myJsonString+"&lengProduct="+count_p+"&type="+type+"&category="+category+"&tags="+tags, //tham s�� truy��n va�o
-                    success: function(data, textStatus, jqXHR)
-                    {
-                        myJsonString = JSON.stringify(arr_id_product);
-                        $('#containt').append(data);
-                        $('#loading').fadeOut(200);
-                        reset_tip();
-                    }
-                });
-   }
-   
-});
-
-    $(document).ready(function(){
-        $('.menu_item_type').each(function(){
-            var menu_item_type=$(this);
-            $(this).mouseenter(function(){
-                $(menu_item_type).find('ul').fadeIn(200);
-            });
-
-            $(this).mouseleave(function(){
-                $(menu_item_type).find('ul').fadeOut(200);
-            });
-        });
-    });
-</script>
+<?php
+   echo scroll_load_data($type_obj,$data_count['c']);
+?>

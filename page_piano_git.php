@@ -30,6 +30,6 @@ $img=$url.'/app_mygirl/obj_effect/1078.png';
     </div>
 
     <script>
-        arr_id_piano.push("'<?php echo $row['id_midi']; ?>'");
+        arr_id_obj.push("'<?php echo $row['id_midi']; ?>'");
     </script>
 </div>

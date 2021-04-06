@@ -1,7 +1,6 @@
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px),screen and  (max-width: 900px) {
     #logo {margin-left: 41%;}
-    #tool_search {width: 100%;text-align: center}
-    #tool_search .tool_search_icon {float: unset;}
+    #tool_search {width: 100%;text-align: center;}
     #tool_search .inp {
         float: none;width:unset;margin-left:unset;
     }
@@ -43,9 +42,8 @@
         float: none;margin-left:unset;
     }
     #tool_search {
-        float: none;margin-top: 0px; margin-bottom: 16px;
+        float: none;margin-top: 0px; margin-bottom: 16px;padding: 0px;height: 30px;
     }
-    #tool_search .tool_search_icon {float: unset;}
     #tool_search .inp {
         float: none;width:unset;margin-left:unset;
     }
@@ -193,5 +191,7 @@
     #box_ads_app .title i{margin-left: 10px;}
     #ads_box_main_icon{width: 30px;height: 30px;}
     .ads_box_img_link{display: none;}
+    #comments{margin-left: 50%;margin-right: 50%;transform: translate(-50%, 0%);-ms-transform: translate(-50%, 0%);padding: unset;}
+    .box_return_search {width: 95%;}
 }
 
