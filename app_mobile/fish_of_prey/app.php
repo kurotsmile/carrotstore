@@ -290,18 +290,40 @@ if($function=='register'){
         $error=1;
     }
 
+    if(($password!=$re_password)&&$error==0){
+        $user->{"error"}="1";
+        $user->{"msg"}="Re-enter the password does not match. Please enter your correct password";
+        $error=1;
+    }
+
     if($error==0){
         $check_user=mysqli_query($link,"SELECT `id_device` FROM carrotsy_virtuallover.`app_my_girl_user_$key_lang` WHERE `id_device` = '$id_device' LIMIT 1");
         $data_user=mysqli_fetch_assoc($check_user);
 
         if($data_user==null){
-            $query_add_user =mysqli_query($link,"INSERT INTO carrotsy_virtuallover.app_my_girl_user_$key_lang (`id_device`, `name`,`sdt`,`email`,`status`,`sex`,`date_start`,`date_cur`,`password`) VALUES ('".$id_device."', '$name', '$sdt','$email', '0','$sex',NOW(),NOW(),'$password');");
-            if($query_add_user){
-                $user->{"error"}="0";
-                $user->{"msg"}="Account registration is successful!\n Please login to your account you just created";
-            }else{
-                $user->{"error"}="1";
-                $user->{"msg"}="Account registration is not successful!\n try again";
+            $check_user_by_email_and_sdt=mysqli_query($link,"SELECT `id_device` FROM carrotsy_virtuallover.`app_my_girl_user_$key_lang` WHERE (`email` = '$email' AND `password` = '$password') OR (`sdt` = '$sdt' AND `password` = '$password') LIMIT 1");
+            $data_user=mysqli_fetch_assoc($check_user_by_email_and_sdt);
+            if($data_user!=null){
+                $id_device=$data_user['id_device'];
+                $query_update_user=mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$key_lang` SET `name` = '$name',`sex` = '$sex',`sdt` = '$sdt',`email` = '$email',`password`='$password' WHERE `id_device` = '$id_device' LIMIT 1;");
+                if($query_update_user){
+                    $user->{"error"}="0";
+                    $user->{"msg"}="Account registration is successful!\n Please login to your account you just created";
+                }else{
+                    $user->{"error"}="1";
+                    $user->{"msg"}="Account registration is not successful!\n try again";
+                }
+            }
+
+            if($data_user==null){
+                $query_add_user =mysqli_query($link,"INSERT INTO carrotsy_virtuallover.app_my_girl_user_$key_lang (`id_device`, `name`,`sdt`,`email`,`status`,`sex`,`date_start`,`date_cur`,`password`) VALUES ('".$id_device."', '$name', '$sdt','$email', '0','$sex',NOW(),NOW(),'$password');");
+                if($query_add_user){
+                    $user->{"error"}="0";
+                    $user->{"msg"}="Account registration is successful!\n Please login to your account you just created";
+                }else{
+                    $user->{"error"}="1";
+                    $user->{"msg"}="Account registration is not successful!\n try again";
+                }
             }
         }else{
             $query_update_user=mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$key_lang` SET `name` = '$name',`sex` = '$sex',`sdt` = '$sdt',`email` = '$email',`password`='$password' WHERE `id_device` = '$id_device' LIMIT 1;");

@@ -16,26 +16,26 @@ function show_info_user($link,$lang_sel, $id_device, $show_phone)
         if (mysqli_num_rows($list_effect) > 0) {
             $arr_data = mysqli_fetch_array($list_effect);
 
-            $filename_avatar = 'app_mygirl/app_my_girl_' . $lang_sel . '_user/' . $id_device . '.png';
-            $txt_img_url = URL . '/images/avatar_default.png';
+            $filename_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_user/'.$id_device.'.png';
+            $txt_img_url = URL.'/images/avatar_default.png';
             if (file_exists($filename_avatar)) {
                 $txt_img_url = thumb($filename_avatar, '60x60');
             }
 
-            if ($show_phone == '') {
-                $name_user = "<a href='" . $url . "/app_my_girl_user_detail.php?id=" . $arr_data[0] . "&lang=" . $lang_sel . "'  target='_blank' class='box_user'> <img src='" . $txt_img_url . "' style='width:30px'>";
+            if ($show_phone=='') {
+                $name_user = "<a href='".$url."/app_my_girl_user_detail.php?id=".$arr_data[0]."&lang=".$lang_sel."'  target='_blank' class='box_user'> <img src='".$txt_img_url."' style='width:30px'>";
             } else {
-                $name_user = "<a href='" . $url . "/app_my_girl_user_detail.php?id=" . $arr_data[0] . "&lang=" . $lang_sel . "' class='box_user' style='width:100%;'> <img src='" . $txt_img_url . "' style='width:60px'>";
+                $name_user = "<a href='".$url."/app_my_girl_user_detail.php?id=".$arr_data[0]."&lang=".$lang_sel."' class='box_user' style='width:100%;'> <img src='".$txt_img_url."' style='width:60px'>";
             }
-            $name_user .= '<span class="name">' . $arr_data[1] . '</span><br/>';
-            if ($arr_data[5] != '') {
-                $name_user .= '<span class="address"> Địa chỉ:' . $arr_data[5] . '</span><br/>';
+            $name_user.='<span class="name">'.$arr_data[1].'</span><br/>';
+            if ($arr_data[5]!='') {
+                $name_user.='<span class="address"> Địa chỉ:'.$arr_data[5].'</span><br/>';
             }
 
-            if ($arr_data[6] != '' && $show_phone != '') {
-                $name_user .= '<span class="phone"> Số điện thoại:' . $arr_data[6] . '</span>';
+            if ($arr_data[6]!='' && $show_phone != '') {
+                $name_user.='<span class="phone"> Số điện thoại:'.$arr_data[6].'</span>';
             }
-            $name_user .= '</a>';
+            $name_user.='</a>';
         }
     }
     mysqli_free_result($list_effect);
@@ -49,9 +49,9 @@ function show_info_user_name($link,$lang_sel, $id_device)
     if ($list_effect != false) {
         if (mysqli_num_rows($list_effect) > 0) {
             $arr_data = mysqli_fetch_array($list_effect);
-            $name_user = $arr_data[0];
+            $name_user=$arr_data[0];
         } else {
-            $name_user = $id_device;
+            $name_user=$id_device;
         }
     }
     return $name_user;
@@ -61,264 +61,267 @@ function show_info_user_name($link,$lang_sel, $id_device)
 function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
 {
     global $url;
-    $txt_link = '';
-    $id_row = $data['id'];
+    global $name_host;
+    $txt_link='';
+    $id_row=$data['id'];
     if (isset($data['func'])) {
-        $txt_text = $data['func'];
+        $txt_text=$data['func'];
     } else {
-        $txt_text = $data['text'];
+        $txt_text=$data['text'];
     }
-    $txt_style = '';
-    $txt_tip = '';
-    $txt_type = '<i class="fa fa-circle" aria-hidden="true"></i>';
-    $txt_type_func = '';
-    $type_chat = '';
-    $txt_audio = '';
-    $txt_audio_tip = '';
-    $txt_update = '';
-    $txt_limit = '';
-    $txt_effect_new = '';
-    $txt_color = '';
-    $txt_sex = '';
+    $txt_style='';
+    $txt_tip='';
+    $txt_type='<i class="fa fa-circle" aria-hidden="true"></i>';
+    $txt_type_func='';
+    $type_chat='';
+    $txt_audio='';
+    $txt_audio_tip='';
+    $txt_update='';
+    $txt_limit='';
+    $txt_effect_new='';
+    $txt_color='';
+    $txt_sex='';
 	$txt_fun_other=$txt_fun_other;
 
     if (isset($_GET['new_id'])) {
         if ($_GET['new_id'] == $id_row) {
-            $txt_effect_new = ' new';
+            $txt_effect_new=' new';
         }
     }
 
-    $txt_view_pather = '';
-    $txt_color_btn_update = 'orange';
+    $txt_view_pather='';
+    $txt_color_btn_update='orange';
     if (isset($_SESSION['off_color'])) {
-        $txt_color_btn_update = '';
+        $txt_color_btn_update='';
     }
 
     if (isset($data['func'])) {
         $type_chat = "msg";
-        $txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id_row . '&lang=' . $lang . '&msg=1" target="_blank" class="buttonPro small ' . $txt_color_btn_update . '"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa Msg</a>';
+        $txt_update='<a href="'.$url.'/app_my_girl_update.php?id='.$id_row.'&lang='.$lang.'&msg=1" target="_blank" class="buttonPro small '.$txt_color_btn_update.'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa Msg</a>';
+        $txt_fun_other.='<a href="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$lang.'%22%2C%22id%22%3A%22'.$id_row.'%22%2C%22type%22%3A%22msg%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
     } else {
         $type_chat = "chat";
-        $txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id_row . '&lang=' . $lang . '" target="_blank" class="buttonPro small ' . $txt_color_btn_update . '"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa chat</a>';
+        $txt_update='<a href="'.$url.'/app_my_girl_update.php?id='.$id_row.'&lang='.$lang.'" target="_blank" class="buttonPro small '.$txt_color_btn_update.'"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa chat</a>';
+        $txt_fun_other.='<a href="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$lang.'%22%2C%22id%22%3A%22'.$id_row.'%22%2C%22type%22%3A%22chat%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
 
     }
 
-    if (isset($data['pater'])&&$data['pater'] != '') {
-        $txt_style = ';background-color: #b3ffd5;';
-        $txt_type = '<i ' . $txt_view_pather . ' class="fa fa-circle-o" aria-hidden="true"></i>';
-        $txt_view_pather = ' onclick="view_pater(\'' . $lang . '\',\'' . $data['pater'] . '\',\'' . $data['pater_type'] . '\',\'' . $data['sex'] . '\',\'' . $data['character_sex'] . '\');return false;" ';
-        $txt_update = $txt_update . '<a href="" class="buttonPro small yellow" ' . $txt_view_pather . ' title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
+    if (isset($data['pater'])&&$data['pater']!='') {
+        $txt_style=';background-color: #b3ffd5;';
+        $txt_type='<i '.$txt_view_pather.' class="fa fa-circle-o" aria-hidden="true"></i>';
+        $txt_view_pather=' onclick="view_pater(\''.$lang.'\',\''.$data['pater'].'\',\''.$data['pater_type'].'\',\''.$data['sex'].'\',\''.$data['character_sex'].'\');return false;" ';
+        $txt_update=$txt_update.'<a href="" class="buttonPro small yellow" '.$txt_view_pather.' title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
     }
 
-    if (isset($data['id_redirect'])&&$data['id_redirect'] != '') {
-        $id_redirect = $data['id_redirect'];
-        $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `id` = '$id_redirect'");
+    if (isset($data['id_redirect'])&&$data['id_redirect']!='') {
+        $id_redirect=$data['id_redirect'];
+        $result_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `id`='$id_redirect'");
         $arr_chat = mysqli_fetch_assoc($result_chat);
-        if ($data['pater'] != '') {
-            $txt_type = '<i class="fa fa-dot-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i>';
+        if ($data['pater']!='') {
+            $txt_type='<i class="fa fa-dot-circle-o" aria-hidden="true"></i> <i class="fa fa-circle-o" aria-hidden="true"></i>';
         } else {
-            $txt_type = '<i  class="fa fa-dot-circle-o" aria-hidden="true"></i>';
+            $txt_type='<i  class="fa fa-dot-circle-o" aria-hidden="true"></i>';
         }
-        $txt_style = ';background-color: #C0F17E;';
-        $data = $arr_chat;
+        $txt_style=';background-color: #C0F17E;';
+        $data=$arr_chat;
         mysqli_free_result($result_chat);
     }
 
-    if ($data['disable'] != '0') {
-        $txt_style = ';background-color: #ff6f6f;';
+    if ($data['disable']!='0') {
+        $txt_style=';background-color: #ff6f6f;';
     }
 
-    if ($type_chat == 'msg') {
-        if (file_exists('app_mygirl/app_my_girl_msg_' . $lang . '/' . $data['id'] . '.mp3')) {
-            $txt_audio = '<a href="' . $url . '/app_mygirl/app_my_girl_msg_' . $lang . '/' . $data['id'] . '.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
+    if ($type_chat=='msg') {
+        if (file_exists('app_mygirl/app_my_girl_msg_'.$lang.'/'.$data['id'].'.mp3')) {
+            $txt_audio='<a href="'.$url.'/app_mygirl/app_my_girl_msg_'.$lang.'/'.$data['id'].'.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
         } else {
-            $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $data['character_sex'], $lang);
-            if ($url_voice_audio == '') {
-                $txt_audio = '<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
+            $url_voice_audio = get_key_lang($link,'voice_character_sex_'.$data['character_sex'], $lang);
+            if ($url_voice_audio=='') {
+                $txt_audio='<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
             } else {
-                if ($url_voice_audio == 'google') {
-                    $url_voice_audio = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=' . strlen($data['chat']) . '&client=tw-ob&q=' . $data['chat'] . '&tl=' . $lang;
-                    $txt_audio_tip = ' Google voice';
+                if ($url_voice_audio=='google') {
+                    $url_voice_audio='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($data['chat']).'&client=tw-ob&q='.$data['chat'].'&tl='.$lang;
+                    $txt_audio_tip=' Google voice';
                 } else {
                     $url_voice_audio = str_replace('{txt}', $data['chat'], $url_voice_audio);
-                    $txt_audio_tip = ' Api voice';
+                    $txt_audio_tip=' Api voice';
                 }
-                $txt_audio = '<a href="' . $url_voice_audio . '" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> ' . $txt_audio_tip . '</a> ';
+                $txt_audio='<a href="'.$url_voice_audio.'" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> '.$txt_audio_tip.'</a> ';
             }
         }
     } else {
-        if ($data['file_url'] != '') {
-            $txt_audio = '<a title="Âm thanh được lưu ở máy chủ khác" href="' . $data['file_url'] . '" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i> File sever</a>';
-            if (file_exists('app_mygirl/app_my_girl_' . $lang . '/' . $data['id'] . '.mp3')) {
-                $txt_audio.=' <a href="' . $url . '/app_mygirl/app_my_girl_' . $lang . '/' . $data['id'] . '.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
+        if ($data['file_url']!='') {
+            $txt_audio='<a title="Âm thanh được lưu ở máy chủ khác" href="'.$data['file_url'].'" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i> File sever</a>';
+            if (file_exists('app_mygirl/app_my_girl_'.$lang.'/'.$data['id'].'.mp3')) {
+                $txt_audio.=' <a href="'.$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$data['id'].'.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
             }
         } else {
-            if (file_exists('app_mygirl/app_my_girl_' . $lang . '/' . $data['id'] . '.mp3')) {
-                $txt_audio = '<a href="' . $url . '/app_mygirl/app_my_girl_' . $lang . '/' . $data['id'] . '.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
+            if (file_exists('app_mygirl/app_my_girl_'.$lang.'/'.$data['id'].'.mp3')) {
+                $txt_audio='<a href="'.$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$data['id'].'.mp3" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> File sever</a>';
             } else {
-                if ($data['effect'] == '2') {
-                    $txt_audio = '<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
+                if ($data['effect']=='2') {
+                    $txt_audio='<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
                 } else {
-                    $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $data['character_sex'], $lang);
-                    if ($url_voice_audio == '') {
-                        $txt_audio = '<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
+                    $url_voice_audio = get_key_lang($link,'voice_character_sex_'.$data['character_sex'], $lang);
+                    if ($url_voice_audio=='') {
+                        $txt_audio='<span style="color:red;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có</span>';
                     } else {
-                        if ($url_voice_audio == 'google') {
-                            $url_voice_audio = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=' . strlen($data['chat']) . '&client=tw-ob&q=' . $data['chat'] . '&tl=' . $lang;
-                            $txt_audio_tip = ' Google voice';
+                        if ($url_voice_audio=='google') {
+                            $url_voice_audio='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($data['chat']).'&client=tw-ob&q='.$data['chat'].'&tl='.$lang;
+                            $txt_audio_tip=' Google voice';
                         } else {
                             $url_voice_audio = str_replace('{txt}', $data['chat'], $url_voice_audio);
-                            $txt_audio_tip = ' Api voice';
+                            $txt_audio_tip=' Api voice';
                         }
-                        $txt_audio = '<a href="' . $url_voice_audio . '" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> ' . $txt_audio_tip . '</a>';
+                        $txt_audio='<a href="'.$url_voice_audio.'" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> '.$txt_audio_tip.'</a>';
                     }
                 }
             }
         }
 
-        if ($data['tip'] == '1') {
-            $txt_type_func .= ' <i class="fa fa-lightbulb-o" aria-hidden="true" title="Trò chuyện này được gợi ý cho người dùng"></i> ';
+        if ($data['tip']=='1') {
+            $txt_type_func.=' <i class="fa fa-lightbulb-o" aria-hidden="true" title="Trò chuyện này được gợi ý cho người dùng"></i> ';
         }
 
-        if ($data['link'] != '') {
-            $txt_type_func .= ' <a href="' . $data['link'] . '" target="_blank"><i  class="fa fa-link" aria-hidden="true" title="' . $data['link'] . '"></i></a> ';
+        if ($data['link']!='') {
+            $txt_type_func.=' <a href="'.$data['link'].'" target="_blank"><i  class="fa fa-link" aria-hidden="true" title="'.$data['link'].'"></i></a> ';
         }
 
     }
 
-    if ($data['sex'] == '0') {
-        $txt_sex .= '<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
+    if ($data['sex']=='0') {
+        $txt_sex.='<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
     } else {
-        $txt_sex .= '<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+        $txt_sex.='<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
     }
-    $txt_sex .= ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ';
-    if ($data['character_sex'] == '0') {
-        $txt_sex .= '<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
+    $txt_sex.=' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ';
+    if ($data['character_sex']=='0') {
+        $txt_sex.='<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
     } else {
-        $txt_sex .= '<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+        $txt_sex.='<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
     }
 
-    $txt_limit = '';
-    if ($data['ver'] != '0') {
-        $txt_limit = ' <i class="fa fa-adjust" aria-hidden="true" tyle="Phiên bản triển khai"></i> ' . $data['ver'] . ' ';
+    $txt_limit='';
+    if ($data['ver']!='0') {
+        $txt_limit=' <i class="fa fa-adjust" aria-hidden="true" tyle="Phiên bản triển khai"></i> '.$data['ver'].' ';
     }
-    $txt_limit = $txt_limit . ' <i class="fa fa-shield" aria-hidden="true" title="Xếp hạng thô tục và tình dục"></i> ' . $data['limit_chat'] . ' ';
+    $txt_limit=$txt_limit.' <i class="fa fa-shield" aria-hidden="true" title="Xếp hạng thô tục và tình dục"></i> '.$data['limit_chat'].' ';
 
-    if ($data['os_android'] == '0') {
-        $txt_limit = $txt_limit . ' <i class="fa fa-android" aria-hidden="true" title="Hiển thị trên nền tản Android"></i> ';
-    }
-
-    if ($data['os_window'] == '0') {
-        $txt_limit = $txt_limit . ' <i class="fa fa-windows" aria-hidden="true" title="Hiển thị trên nền tản Window"></i> ';
+    if ($data['os_android']=='0') {
+        $txt_limit=$txt_limit.' <i class="fa fa-android" aria-hidden="true" title="Hiển thị trên nền tản Android"></i> ';
     }
 
-    if ($data['os_ios'] == '0') {
-        $txt_limit = $txt_limit . ' <i class="fa fa-apple" aria-hidden="true" title="Hiển thị trên nền tản Ios"></i> ';
+    if ($data['os_window']=='0') {
+        $txt_limit=$txt_limit.' <i class="fa fa-windows" aria-hidden="true" title="Hiển thị trên nền tản Window"></i> ';
     }
 
-    if ($data['effect'] == '1') $txt_type_func .= '<i class="fa fa-heart" aria-hidden="true" title="Thả tim"></i>';
-    if ($data['effect'] == '2') $txt_type_func .= '<i class="fa fa-music" aria-hidden="true" title="Âm nhạc"></i>';
-    if ($data['effect'] == '3') $txt_type_func .= '<i class="fa fa-asterisk" aria-hidden="true" title="Vinh danh"></i>';
-    if ($data['effect'] == '4') $txt_type_func .= '<i class="fa fa-power-off" aria-hidden="true" title="Thoát ứng dụng"></i>';
-    if ($data['effect'] == '5') $txt_type_func .= '<i class="fa fa-tint" aria-hidden="true" title="Mưa rơi"></i>';
-    if ($data['effect'] == '6') $txt_type_func .= '<i class="fa fa-camera" aria-hidden="true" title="Chụp ảnh"></i>';
-    if ($data['effect'] == '7') $txt_type_func .= '<i class="fa fa-snowflake-o" aria-hidden="true" title="Tuyết rơi"></i>';
-    if ($data['effect'] == '45') $txt_type_func .= '<i class="fa fa-star" aria-hidden="true" title="Đánh giá ứng dụng"></i>';
-    if ($data['effect'] == '48') $txt_type_func .= '<i class="fa fa-history" aria-hidden="true" title="Lịch sử trò chuyện"></i>';
-    if ($data['effect'] == '29') $txt_type_func .= '<img src="' . $url . '/app_mygirl/img/statu29.png"/>';
-    if ($data['effect'] == '36') $txt_type_func .= '<i class="fa fa-quote-left" aria-hidden="true" title="Châm ngôn" ></i>';
-    if ($data['effect'] == '49') $txt_type_func .= '<i class="fa fa-book" aria-hidden="true" title="Kể chuyện"></i>';
+    if ($data['os_ios']=='0') {
+        $txt_limit=$txt_limit.' <i class="fa fa-apple" aria-hidden="true" title="Hiển thị trên nền tản Ios"></i> ';
+    }
+
+    if ($data['effect']=='1') $txt_type_func.='<i class="fa fa-heart" aria-hidden="true" title="Thả tim"></i>';
+    if ($data['effect']=='2') $txt_type_func.='<i class="fa fa-music" aria-hidden="true" title="Âm nhạc"></i>';
+    if ($data['effect']=='3') $txt_type_func.='<i class="fa fa-asterisk" aria-hidden="true" title="Vinh danh"></i>';
+    if ($data['effect']=='4') $txt_type_func.='<i class="fa fa-power-off" aria-hidden="true" title="Thoát ứng dụng"></i>';
+    if ($data['effect']=='5') $txt_type_func.='<i class="fa fa-tint" aria-hidden="true" title="Mưa rơi"></i>';
+    if ($data['effect']=='6') $txt_type_func.='<i class="fa fa-camera" aria-hidden="true" title="Chụp ảnh"></i>';
+    if ($data['effect']=='7') $txt_type_func.='<i class="fa fa-snowflake-o" aria-hidden="true" title="Tuyết rơi"></i>';
+    if ($data['effect']=='45') $txt_type_func.='<i class="fa fa-star" aria-hidden="true" title="Đánh giá ứng dụng"></i>';
+    if ($data['effect']=='48') $txt_type_func.='<i class="fa fa-history" aria-hidden="true" title="Lịch sử trò chuyện"></i>';
+    if ($data['effect']=='29') $txt_type_func.='<img src="'.$url.'/app_mygirl/img/statu29.png"/>';
+    if ($data['effect']=='36') $txt_type_func.='<i class="fa fa-quote-left" aria-hidden="true" title="Châm ngôn" ></i>';
+    if ($data['effect']=='49') $txt_type_func.='<i class="fa fa-book" aria-hidden="true" title="Kể chuyện"></i>';
 
     if (isset($_SESSION['off_color'])) {
-        $txt_color = '';
+        $txt_color='';
     } else {
-        $txt_color = 'background-color:' . $data['color'] . ';border-radius:8px;';
+        $txt_color='background-color:'.$data['color'].';border-radius:8px;';
     }
-
-    return '<tr style="' . $txt_style . '" class="chat_row_' . $id_row . ' ' . $txt_effect_new . '"><td>' . $id_row . '</td><td>' . $txt_type . '</td><td>' . $txt_text . '</td><td style="' . $txt_color . '" >' . limit_words($data['chat'], 10) . '</td><td>' . $txt_sex . '</td><td>' . $txt_type_func . '</td><td>' . $txt_limit . '</td><td>' . $txt_audio . '</td><td>' . $txt_update . '</td><td>' . $txt_fun_other . '</td></tr>';
+    return '<tr style="'.$txt_style.'" class="chat_row_'.$id_row.' '.$txt_effect_new.'"><td>'.$id_row.'</td><td>'.$txt_type.'</td><td>'.$txt_text.'</td><td style="'.$txt_color.'" >'.limit_words($data['chat'], 10).'</td><td>'.$txt_sex.'</td><td>'.$txt_type_func.'</td><td>'.$txt_limit.'</td><td>'.$txt_audio.'</td><td>'.$txt_update.'</td><td>'.$txt_fun_other.'</td></tr>';
 }
 
 
 function show_row_history_prefab($link,$row)
 {
     global $url;
-    $txt_map = '';
-    $txt_rate = '';
+    $txt_map='';
+    $txt_rate='';
 
     if ($row['location_lon'] != "" && $row['location_lon'] != "0") {
-        $txt_map = "<a href='https://www.google.com/maps/?q=" . $row['location_lat'] . "," . $row['location_lon'] . "' class='buttonPro small googleButton pink'  target='_blank' ><i class='fa fa-map-marker' aria-hidden='true'></i> view map</a>";
+        $txt_map = "<a href='https://www.google.com/maps/?q=".$row['location_lat'].",".$row['location_lon']."' class='buttonPro small googleButton pink'  target='_blank' ><i class='fa fa-map-marker' aria-hidden='true'></i> view map</a>";
     }
 
-    $txt_nifo_other = '<a href="#" class="buttonPro small light_blue" onclick="view_pater(\'' . $row['lang'] . '\',\'' . $row['id_question'] . '\',\'' . $row['type_question'] . '\');return false;">' . $row['id_question'] . ' ' . $row['type_question'] . '</a> ';
+    $txt_nifo_other='<a href="#" class="buttonPro small light_blue" onclick="view_pater(\''.$row['lang'].'\',\''.$row['id_question'].'\',\''.$row['type_question'].'\');return false;">'.$row['id_question'].' '.$row['type_question'].'</a> ';
 
     if (isset($row['COUNT(*)'])) {
         if ($row['0'] != "1") {
-            $txt_rate = "<a href='#' class='buttonPro small yellow' onclick='view_more(\"" . $row['key'] . "\");return false;'>" . $row['0'] . "</a>";
+            $txt_rate = "<a href='#' class='buttonPro small yellow' onclick='view_more(\"".$row['key']."\");return false;'>".$row['0']."</a>";
         } else {
-            $txt_rate = "<a href='#' class='buttonPro small' onclick='view_chat_see(\"" . $row['id_question'] . "\",\"" . $row['type_question'] . "\");return false;'>1</a>";
+            $txt_rate = "<a href='#' class='buttonPro small' onclick='view_chat_see(\"".$row['id_question']."\",\"".$row['type_question']."\");return false;'>1</a>";
         }
     }
 
-    if ($row['sex'] == '0') {
-        $sex = 'Nam';
+    if ($row['sex']=='0') {
+        $sex='Nam';
     } else {
-        $sex = 'Nữ';
+        $sex='Nữ';
     }
 
-    $txt_os = '<i class="fa fa-ban" aria-hidden="true"></i>';
+    $txt_os='<i class="fa fa-ban" aria-hidden="true"></i>';
     if ($row['os'] == "android") {
-        $txt_os = '<i class="fa fa-android" aria-hidden="true"></i> Android';
+        $txt_os='<i class="fa fa-android" aria-hidden="true"></i> Android';
     } else if ($row['os'] == "ios") {
-        $txt_os = '<i class="fa fa-apple" aria-hidden="true"></i> Ios';
+        $txt_os='<i class="fa fa-apple" aria-hidden="true"></i> Ios';
     } else {
-        $txt_os = '<i class="fa fa-ban" aria-hidden="true"></i>';
+        $txt_os='<i class="fa fa-ban" aria-hidden="true"></i>';
     }
-    $txt_btn_view_cur_chat1 = '<button class="buttonPro small blue" onclick="show_join(\'' . $row['key'] . '\',\'' . $row['lang'] . '\',\'' . $row['sex'] . '\',\'' . $row['character_sex'] . '\',\'=\')">Trả lời giống</button>';
-    $txt_btn_view_cur_chat2 = '<button class="buttonPro small light_blue" onclick="show_join(\'' . $row['key'] . '\',\'' . $row['lang'] . '\',\'' . $row['sex'] . '\',\'' . $row['character_sex'] . '\',\'like\')">Trả lời Gần giống</button>';
-    $txt_btn_view_cur_chat3 = '<button class="buttonPro small light_blue" onclick="show_join(\'' . $row['key'] . '\',\'' . $row['lang'] . '\',\'' . $row['sex'] . '\',\'' . $row['character_sex'] . '\',\'search\')">Trả lời xàm</button>';
-    $txt_btn_add = '<a href="' . $url . '/app_my_girl_add.php?key=' . $row['key'] . '&lang=' . $row['lang'] . '&sex=' . $row['sex'] . '&character_sex=' . $row['character_sex'] . '" target="_blank" class="buttonPro green small">Thêm (toàn cục)</a> ';
+    $txt_btn_view_cur_chat1='<button class="buttonPro small blue" onclick="show_join(\''.$row['key'].'\',\''.$row['lang'].'\',\''.$row['sex'].'\',\''.$row['character_sex'].'\',\'=\')">Trả lời giống</button>';
+    $txt_btn_view_cur_chat2='<button class="buttonPro small light_blue" onclick="show_join(\''.$row['key'].'\',\''.$row['lang'].'\',\''.$row['sex'].'\',\''.$row['character_sex'].'\',\'like\')">Trả lời Gần giống</button>';
+    $txt_btn_view_cur_chat3='<button class="buttonPro small light_blue" onclick="show_join(\''.$row['key'].'\',\''.$row['lang'].'\',\''.$row['sex'].'\',\''.$row['character_sex'].'\',\'search\')">Trả lời xàm</button>';
+    $txt_btn_add='<a href="'.$url.'/app_my_girl_add.php?key='.$row['key'].'&lang='.$row['lang'].'&sex='.$row['sex'].'&character_sex='.$row['character_sex'].'" target="_blank" class="buttonPro green small">Thêm (toàn cục)</a> ';
 
-    $txt_btn_add_sub = '<a href="' . $url . '/app_my_girl_add.php?key=' . $row['key'] . '&lang=' . $row['lang'] . '&sex=' . $row['sex'] . '&character_sex=' . $row['character_sex'] . '&type_question=' . $row['type_question'] . '&id_question=' . $row['id_question'] . '" target="_blank" class="buttonPro green small">Thêm (cục bộ)</a> ';
+    $txt_btn_add_sub='<a href="'.$url.'/app_my_girl_add.php?key='.$row['key'].'&lang='.$row['lang'].'&sex='.$row['sex'].'&character_sex='.$row['character_sex'].'&type_question='.$row['type_question'].'&id_question='.$row['id_question'].'" target="_blank" class="buttonPro green small">Thêm (cục bộ)</a> ';
 
 
-    if ($row['id_device'] != '') {
-        $txt_id_device = '<a class="buttonPro small purple" onclick="view_device(\'' . $row['id_device'] . '\',\'' . $row['dates'] . '\',\'' . $row['lang'] . '\');return false;">Xem lịch sử của :' . show_info_user_name($link,$row['lang'], $row['id_device']) . '</a>';
+    if ($row['id_device']!='') {
+        $txt_id_device='<a class="buttonPro small purple" onclick="view_device(\''.$row['id_device'].'\',\''.$row['dates'].'\',\''.$row['lang'].'\');return false;">Xem lịch sử của :'.show_info_user_name($link,$row['lang'], $row['id_device']).'</a>';
     } else {
-        $txt_id_device = '';
-    }
-
-    $txt_sex = '';
-    if ($row['sex'] == '0') {
-        $txt_sex .= '<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
-    } else {
-        $txt_sex .= '<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
-    }
-    $txt_sex .= ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ';
-    if ($row['character_sex'] == '0') {
-        $txt_sex .= '<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
-    } else {
-        $txt_sex .= '<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+        $txt_id_device='';
     }
 
-    echo '<tr style="border:solid 1px green"><td>' . $row['key'] . '</td><td>' . $txt_rate . '</td><td>' . $row['lang'] . '</td><td>' . $txt_os . '</i></td><td>' . $row['version'] . '</td><td>' . $row['character'] . '</td><td>' . $txt_sex . '</td><td>' . $txt_nifo_other . '</td><td>' . $txt_id_device . '</td><td>' . $txt_btn_view_cur_chat1 . ' ' . $txt_btn_view_cur_chat2 . ' ' . $txt_btn_view_cur_chat3 . ' ' . $txt_btn_add . ' ' . $txt_btn_add_sub . ' ' . $txt_map . '</td></tr>';
+    $txt_sex='';
+    if ($row['sex']=='0') {
+        $txt_sex.='<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
+    } else {
+        $txt_sex.='<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+    }
+    $txt_sex.=' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ';
+    if ($row['character_sex']=='0') {
+        $txt_sex.='<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
+    } else {
+        $txt_sex.='<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+    }
+
+    echo '<tr style="border:solid 1px green"><td>'.$row['key'].'</td><td>'.$txt_rate.'</td><td>'.$row['lang'].'</td><td>'.$txt_os.'</i></td><td>'.$row['version'].'</td><td>'.$row['character'].'</td><td>'.$txt_sex.'</td><td>'.$txt_nifo_other.'</td><td>'.$txt_id_device.'</td><td>'.$txt_btn_view_cur_chat1.' '.$txt_btn_view_cur_chat2.' '.$txt_btn_view_cur_chat3.' '.$txt_btn_add.' '.$txt_btn_add_sub.' '.$txt_map.'</td></tr>';
 }
 
 
 function show_row_msg_prefab($link,$row, $langsel, $btn_more = null)
 {
     global $url;
-    $txt_style = '';
-    $txt_limit = '';
-    $txt_audio_tip = '';
-    $bnt_history = '<a href="' . $url . '/app_my_girl_history.php?id_chat_see=' . $row['id'] . '&type_chat_see=msg&lang=' . $langsel . '&sex=' . $row['sex'] . '&character_sex=' . $row['character_sex'] . '" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lịch sử dùng</a>';
-    $bnt_history_func= ' onclick="view_pater(\'' . $langsel . '\',\'' . $row['id'] . '\',\'msg\',\'' . $row['sex'] . '\',\'' . $row['character_sex'] . '\');return false;" ';
-    $bnt_history .= '<a href="" ' . $bnt_history_func . ' class="buttonPro small yellow" title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
+    global $name_host;
+    $txt_style='';
+    $txt_limit='';
+    $txt_audio_tip='';
+    $bnt_history='<a href="'.$url.'/app_my_girl_history.php?id_chat_see='.$row['id'].'&type_chat_see=msg&lang='.$langsel.'&sex='.$row['sex'].'&character_sex='.$row['character_sex'].'" class="buttonPro small blue" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lịch sử dùng</a>';
+    $bnt_history_func= ' onclick="view_pater(\''.$langsel.'\',\''.$row['id'].'\',\'msg\',\''.$row['sex'].'\',\''.$row['character_sex'].'\');return false;" ';
+    $bnt_history.='<a href="" '.$bnt_history_func.' class="buttonPro small yellow" title="Xem mối quan hệ của đối tượng này"><i class="fa fa-anchor" aria-hidden="true"></i></a>';
 
-    if ($row['disable'] == '0') {
-        $txt_disable = '<i class="fa fa-toggle-on" emp_status="0" emp_id="'.$row['id'].'" emp_lang="'.$langsel.'" onclick="active_obj(this)" aria-hidden="true" style="color:green;cursor: pointer;"></i>';
+    if ($row['disable']=='0') {
+        $txt_disable='<i class="fa fa-toggle-on" emp_status="0" emp_id="'.$row['id'].'" emp_lang="'.$langsel.'" onclick="active_obj(this)" aria-hidden="true" style="color:green;cursor: pointer;"></i>';
     } else {
-        $txt_style = 'background:#ffcece';
-        $txt_disable = '<i class="fa fa-toggle-off" emp_status="1" emp_id="'.$row['id'].'" emp_lang="'.$langsel.'" onclick="active_obj(this)" aria-hidden="true" style="color:red;cursor: pointer;"></i>';
+        $txt_style='background:#ffcece';
+        $txt_disable='<i class="fa fa-toggle-off" emp_status="1" emp_id="'.$row['id'].'" emp_lang="'.$langsel.'" onclick="active_obj(this)" aria-hidden="true" style="color:red;cursor: pointer;"></i>';
     }
 
     $txt_limit='';
@@ -328,46 +331,46 @@ function show_row_msg_prefab($link,$row, $langsel, $btn_more = null)
     if ($row['limit_date']!='0') $txt_limit.='Ngày:'.$row['limit_date'].' ';
     if ($row['limit_month']!='') $txt_limit.='Tháng:'.$row['limit_month'];
 
-    if (file_exists('app_mygirl/app_my_girl_msg_' . $langsel . '/' . $row['id'] . '.mp3')) {
-        $txt_audio = '<a href="' . $url . '/app_mygirl/app_my_girl_msg_' . $langsel . '/' . $row['id'] . '.mp3" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> File sever</a>';
+    if (file_exists('app_mygirl/app_my_girl_msg_'.$langsel.'/'.$row['id'].'.mp3')) {
+        $txt_audio='<a href="'.$url.'/app_mygirl/app_my_girl_msg_'.$langsel.'/'.$row['id'].'.mp3" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i> File sever</a>';
     } else {
-        $url_voice_audio = get_key_lang($link,'voice_character_sex_' . $row['character_sex'], $langsel);
-        if ($url_voice_audio == '') {
-            $txt_audio = '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có';
+        $url_voice_audio = get_key_lang($link,'voice_character_sex_'.$row['character_sex'], $langsel);
+        if ($url_voice_audio=='') {
+            $txt_audio='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chưa có';
         } else {
-            if ($url_voice_audio == 'google') {
-                $url_voice_audio = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=' . strlen($row['chat']) . '&client=tw-ob&q=' . $row['chat'] . '&tl=' . $langsel;
-                $txt_audio_tip = ' Google voice';
+            if ($url_voice_audio=='google') {
+                $url_voice_audio='http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen='.strlen($row['chat']).'&client=tw-ob&q='.$row['chat'].'&tl='.$langsel;
+                $txt_audio_tip=' Google voice';
             } else {
                 $url_voice_audio = str_replace('{txt}', $row['chat'], $url_voice_audio);
-                $txt_audio_tip = ' Api voice';
+                $txt_audio_tip=' Api voice';
             }
-            $txt_audio = '<a href="' . $url_voice_audio . '" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i>' . $txt_audio_tip . '</a> ';
+            $txt_audio='<a href="'.$url_voice_audio.'" target="_blank"><i class="fa fa-volume-up" aria-hidden="true"></i>'.$txt_audio_tip.'</a> ';
         }
     }
 
-    $txt_sex = '';
-    if ($row['sex'] == '0') {
-        $txt_sex .= '<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
+    $txt_sex='';
+    if ($row['sex']=='0') {
+        $txt_sex.='<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
     } else {
-        $txt_sex .= '<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+        $txt_sex.='<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
     }
-    $txt_sex .= ' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ';
-    if ($row['character_sex'] == '0') {
-        $txt_sex .= '<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
+    $txt_sex.=' <i class="fa fa-angle-double-right" aria-hidden="true"></i> ';
+    if ($row['character_sex']=='0') {
+        $txt_sex.='<i style="font-size:14px;color:blue" class="fa fa-male" aria-hidden="true" title="Nam"></i>';
     } else {
-        $txt_sex .= '<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
+        $txt_sex.='<i style="font-size:14px;color:red" class="fa fa-female" aria-hidden="true" title="Nữ"></i>';
     }
-
-    echo '<tr style="border:solid 1px green;' . $txt_style . '"><td>' . $row['id'] . '</td><td>' . $row['func'] . '</td><td title="' . $row['chat'] . '">' . limit_words($row['chat'], 10) . '</td><td>' . $txt_sex . '</td><td>status(' . $row['status'] . ') - effect(' . $row['effect'] . ')</td><td>action(' . $row['action'] . ') - face(' . $row['face'] . ')</td><td>' . $txt_limit . '</td><td>' . $txt_audio . '</td><td>' . $txt_disable . '</td><td> <a href="' . $url . '/app_my_girl_update.php?id=' . $row['id'] . '&lang=' . $langsel . '&msg=1" target="_blank" class="buttonPro small orange"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a> ' . $bnt_history . ' ' . $btn_more . ' </td></tr>';
+    $btn_more.='<a href="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$langsel.'%22%2C%22id%22%3A%22'.$row['id'].'%22%2C%22type%22%3A%22msg%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
+    echo '<tr style="border:solid 1px green;'.$txt_style.'"><td>'.$row['id'].'</td><td>'.$row['func'].'</td><td title="'.$row['chat'].'">'.limit_words($row['chat'], 10).'</td><td>'.$txt_sex.'</td><td>status('.$row['status'].') - effect('.$row['effect'].')</td><td>action('.$row['action'].') - face('.$row['face'].')</td><td>'.$txt_limit.'</td><td>'.$txt_audio.'</td><td>'.$txt_disable.'</td><td> <a href="'.$url.'/app_my_girl_update.php?id='.$row['id'].'&lang='.$langsel.'&msg=1" target="_blank" class="buttonPro small orange"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a> '.$bnt_history.' '.$btn_more.' </td></tr>';
 }
 
 function show_alert($msg, $type)
 {
     echo '<div class="show_alert">';
-    if ($type == 'alert') echo '<div class="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . $msg . '</div>';
-    if ($type == 'info') echo '<div class="info"><i class="fa fa-info-circle" aria-hidden="true"></i> ' . $msg . '</div>';
-    if ($type == 'error') echo '<div class="error"><i class="fa fa-exclamation" aria-hidden="true"></i> ' . $msg . '</div>';
+    if ($type=='alert') echo '<div class="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.$msg.'</div>';
+    if ($type=='info') echo '<div class="info"><i class="fa fa-info-circle" aria-hidden="true"></i> '.$msg.'</div>';
+    if ($type=='error') echo '<div class="error"><i class="fa fa-exclamation" aria-hidden="true"></i> '.$msg.'</div>';
     echo '</div>';
 }
 
@@ -377,13 +380,13 @@ function msg($msg,$type='success'){
 
 function get_key_lang($link,$key, $lang)
 {
-    $val = '';
-    $query_get_value = mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key` = '$key' AND `lang` = '$lang' LIMIT 1");
+    $val='';
+    $query_get_value = mysqli_query($link,"SELECT `value` FROM `app_my_girl_key_lang` WHERE `key`='$key' AND `lang`='$lang' LIMIT 1");
     if (mysqli_num_rows($query_get_value) > 0) {
         $data_val = mysqli_fetch_array($query_get_value);
-        $val = $data_val[0];
+        $val=$data_val[0];
     } else {
-        $val = $key;
+        $val=$key;
     }
 
     mysqli_free_result($query_get_value);
@@ -409,7 +412,7 @@ function shuffle_assoc($list)
     shuffle($keys);
     $random = array();
     foreach ($keys as $key) {
-        $random[$key] = $list[$key];
+        $random[$key]=$list[$key];
     }
     return $random;
 }
@@ -429,12 +432,12 @@ function object_to_array($data)
 
 function delete_chat_by_lang($id, $lang_sel)
 {
-    $check_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id` = '$id' LIMIT 1");
+    $check_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id`='$id' LIMIT 1");
     $data_chat = mysqli_fetch_array($check_chat);
-    $result_chat = mysqli_query($link,"DELETE FROM `app_my_girl_$lang_sel` WHERE `id` = '$id'");
+    $result_chat = mysqli_query($link,"DELETE FROM `app_my_girl_$lang_sel` WHERE `id`='$id'");
 
-    $filename = 'app_mygirl/app_my_girl_' . $lang_sel . '/' . $id . '.mp3';
-    echo 'Xóa câu trò chuyện #' . $id . ' thành công !!!<br/>';
+    $filename='app_mygirl/app_my_girl_'.$lang_sel.'/'.$id.'.mp3';
+    echo 'Xóa câu trò chuyện #'.$id.' thành công !!!<br/>';
     if (file_exists($filename)) {
         unlink($filename);
         echo "Đã xóa file âm thanh $filename <br/>";
@@ -444,28 +447,28 @@ function delete_chat_by_lang($id, $lang_sel)
 
     mysqli_free_result($result_chat);
 
-    $check_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1");
+    $check_field_chat = mysqli_query($link,"SELECT * FROM `app_my_girl_field_$lang_sel` WHERE `id_chat`='$id' AND `type_chat`='chat' LIMIT 1");
     if (mysqli_num_rows($check_field_chat) > 0) {
-        $query_delete_field = mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat` = '$id' AND `type_chat` = 'chat' LIMIT 1;");
+        $query_delete_field = mysqli_query($link,"DELETE FROM `app_my_girl_field_$lang_sel` WHERE `id_chat`='$id' AND `type_chat`='chat' LIMIT 1;");
         mysqli_free_result($query_delete_field);
         echo "Xóa trường dữ liệu (Field chat) thành công!";
     } else {
         echo "Không có trường dữ liệu (Field chat)";
     }
 
-    if ($data_chat['effect'] == '2') {
+    if ($data_chat['effect']=='2') {
         echo "<br/>Xóa các chức năng liên quan tới nhạc";
-        $check_video = mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat` = '$id' LIMIT 1");
+        $check_video = mysqli_query($link,"SELECT * FROM `app_my_girl_video_$lang_sel` WHERE  `id_chat`='$id' LIMIT 1");
         if (mysqli_num_rows($check_video) > 0) {
-            mysqli_query($link,"DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id'");
+            mysqli_query($link,"DELETE FROM `app_my_girl_video_$lang_sel` WHERE `id_chat`='$id'");
             echo mysql_error();
             echo "<br/>Xóa liên kết video thành công!";
         }
         mysqli_free_result($check_video);
 
-        $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        $show_lyrics = mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music`='$id' LIMIT 1");
         if (mysqli_num_rows($show_lyrics) > 0) {
-            mysqli_query($link,"DELETE FROM `app_my_girl_music_" . $lang_sel . "_lyrics` WHERE `id_music` = '$id' LIMIT 1;");
+            mysqli_query($link,"DELETE FROM `app_my_girl_music_".$lang_sel."_lyrics` WHERE `id_music`='$id' LIMIT 1;");
             echo mysql_error();
             echo "<br/>Xóa lời bài hát!";
         }
@@ -473,7 +476,7 @@ function delete_chat_by_lang($id, $lang_sel)
 
         $check_rank_music = mysqli_query($link,"SELECT * FROM `app_my_girl_music_data_$lang_sel` WHERE `id_chat`='$id' LIMIT 1");
         if (mysqli_num_rows($check_rank_music) > 0) {
-            mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music` = '$id' LIMIT 1;");
+            mysqli_query($link,"DELETE FROM `app_my_girl_music_data_$lang_sel` WHERE `id_music`='$id' LIMIT 1;");
             echo mysql_error();
             echo "<br/>Xóa bản xếp hạng liên quan đến bài hát!";
         }
@@ -489,43 +492,43 @@ function delete_chat_by_lang($id, $lang_sel)
 function show_row_map($link,$chat_item)
 {
     global  $url;
-    $lang_sel = $chat_item['lang'];
-    $id = $chat_item['id_question'];
+    $lang_sel=$chat_item['lang'];
+    $id=$chat_item['id_question'];
 
 	$table_show='';
-    if ($chat_item['type_question'] == 'chat') {
+    if ($chat_item['type_question']=='chat') {
         $table_show="app_my_girl_$lang_sel";
     } else {
         $table_show="app_my_girl_msg_$lang_sel";
     }
 	
-	$result_chat1 = mysqli_query($link,"SELECT * FROM `$table_show` WHERE `id` = $id ");
+	$result_chat1 = mysqli_query($link,"SELECT * FROM `$table_show` WHERE `id`=$id ");
 	if($result_chat1){
 		if (mysqli_num_rows($result_chat1) > 0) {
 			$arr_item = mysqli_fetch_array($result_chat1);
 
-			echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['character_sex'] . '.png" style="width:13px">';
-			if ($chat_item['type_question'] == 'chat') {
-				$txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id . '&lang=' . $chat_item['lang'] . '" target="_blank" >' . $arr_item['text'] . '</a>';
+			echo '<img src="'.$url.'/app_mygirl/img/'.$chat_item['character_sex'].'.png" style="width:13px">';
+			if ($chat_item['type_question']=='chat') {
+				$txt_update='<a href="'.$url.'/app_my_girl_update.php?id='.$id.'&lang='.$chat_item['lang'].'" target="_blank" >'.$arr_item['text'].'</a>';
 			} else {
-				$txt_update = '<a href="' . $url . '/app_my_girl_update.php?id=' . $id . '&lang=' . $chat_item['lang'] . '&msg=1" target="_blank" >' . $arr_item['func'] . '</a>';
+				$txt_update='<a href="'.$url.'/app_my_girl_update.php?id='.$id.'&lang='.$chat_item['lang'].'&msg=1" target="_blank" >'.$arr_item['func'].'</a>';
 			}
 
-			if ($chat_item['type_question'] == 'msg') {
-				echo '<span style="color:yellow">' . $chat_item['type_question'] . ' > ' . $arr_item['chat'] . '</span> (' . $txt_update . ')<br/>';
+			if ($chat_item['type_question']=='msg') {
+				echo '<span style="color:yellow">'.$chat_item['type_question'].' > '.$arr_item['chat'].'</span> ('.$txt_update.')<br/>';
 			} else {
-				echo '<span style="color:#77ff8e">' . $chat_item['type_question'] . ' > ' . $arr_item['chat'] . '</span> (' . $txt_update . ')<br/>';
+				echo '<span style="color:#77ff8e">'.$chat_item['type_question'].' > '.$arr_item['chat'].'</span> ('.$txt_update.')<br/>';
 			}
-			echo '<img src="' . $url . '/app_mygirl/img/' . $chat_item['sex'] . '.png" style="width:13px"> <b>' . $chat_item['key'] . '</b><br/>';
+			echo '<img src="'.$url.'/app_mygirl/img/'.$chat_item['sex'].'.png" style="width:13px"> <b>'.$chat_item['key'].'</b><br/>';
 
-			$txt_btn_add = '<a href="' . $url . '/app_my_girl_add.php?key=' . $chat_item['key'] . '&lang=' . $chat_item['lang'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '" target="_blank" >Thêm</a>';
-			$txt_btn_add = $txt_btn_add . '<a href="' . $url . '/app_my_girl_add.php?key=' . $chat_item['key'] . '&lang=' . $chat_item['lang'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '&type_question=' . $chat_item['type_question'] . '&id_question=' . $chat_item['id_question'] . '" target="_blank" >- Thêm đầy đủ (gồ trò chuyện cha)</a>';
-			$txt_btn_return1 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'=\')" >trả lời giống</a>';
-			$txt_btn_return2 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'like\')" >trả lời gần giống</a>';
-			$txt_btn_return3 = '<a onclick="show_join(\'' . $chat_item['key'] . '\',\'' . $chat_item['lang'] . '\',\'' . $chat_item['sex'] . '\',\'' . $chat_item['character_sex'] . '\',\'search\')" >trả lời xàm</a>';
-			$txt_btn_history = ' <a href="' . $url . '/app_my_girl_history.php?lang=' . $chat_item['lang'] . '&id_chat_see=' . $id . '&type_chat_see=' . $chat_item['type_question'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi</a>';
-			$txt_btn_history .= ' <a href="' . $url . '/app_my_girl_handling.php?func=check_key&key=' . $chat_item['key'] . '&sex=' . $chat_item['sex'] . '&character_sex=' . $chat_item['character_sex'] . '&lang=' . $chat_item['lang'] . '" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Kiểm tra tồn tại</a> ';
-			echo '<span style="font-size:9px;cursor: pointer;">' . $txt_btn_add . ' - ' . $txt_btn_return1 . ' - ' . $txt_btn_return2 . '-' . $txt_btn_return3 . '-' . $txt_btn_history . '</span> ';
+			$txt_btn_add='<a href="'.$url.'/app_my_girl_add.php?key='.$chat_item['key'].'&lang='.$chat_item['lang'].'&sex='.$chat_item['sex'].'&character_sex='.$chat_item['character_sex'].'" target="_blank" >Thêm</a>';
+			$txt_btn_add=$txt_btn_add.'<a href="'.$url.'/app_my_girl_add.php?key='.$chat_item['key'].'&lang='.$chat_item['lang'].'&sex='.$chat_item['sex'].'&character_sex='.$chat_item['character_sex'].'&type_question='.$chat_item['type_question'].'&id_question='.$chat_item['id_question'].'" target="_blank" >- Thêm đầy đủ (gồ trò chuyện cha)</a>';
+			$txt_btn_return1='<a onclick="show_join(\''.$chat_item['key'].'\',\''.$chat_item['lang'].'\',\''.$chat_item['sex'].'\',\''.$chat_item['character_sex'].'\',\'=\')" >trả lời giống</a>';
+			$txt_btn_return2='<a onclick="show_join(\''.$chat_item['key'].'\',\''.$chat_item['lang'].'\',\''.$chat_item['sex'].'\',\''.$chat_item['character_sex'].'\',\'like\')" >trả lời gần giống</a>';
+			$txt_btn_return3='<a onclick="show_join(\''.$chat_item['key'].'\',\''.$chat_item['lang'].'\',\''.$chat_item['sex'].'\',\''.$chat_item['character_sex'].'\',\'search\')" >trả lời xàm</a>';
+			$txt_btn_history=' <a href="'.$url.'/app_my_girl_history.php?lang='.$chat_item['lang'].'&id_chat_see='.$id.'&type_chat_see='.$chat_item['type_question'].'&sex='.$chat_item['sex'].'&character_sex='.$chat_item['character_sex'].'" target="_blank"><i class="fa fa-user" aria-hidden="true"></i> Lọc theo dõi</a>';
+			$txt_btn_history.=' <a href="'.$url.'/app_my_girl_handling.php?func=check_key&key='.$chat_item['key'].'&sex='.$chat_item['sex'].'&character_sex='.$chat_item['character_sex'].'&lang='.$chat_item['lang'].'" target="_blank"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Kiểm tra tồn tại</a> ';
+			echo '<span style="font-size:9px;cursor: pointer;">'.$txt_btn_add.' - '.$txt_btn_return1.' - '.$txt_btn_return2.'-'.$txt_btn_return3.'-'.$txt_btn_history.'</span> ';
 			echo '<hr/>';
 		}
 	}
@@ -534,65 +537,65 @@ function show_row_map($link,$chat_item)
 
 function show_row_music($link,$row, $langsel)
 {
-    $msql_check_lyric = mysqli_query($link,"SELECT * FROM `app_my_girl_" . $langsel . "_lyrics` WHERE `id_music` = '" . $row['id'] . "'  LIMIT 1");
-    $bnt_view_lyric = '';
-    $btn_search_lyrict = '';
-    $count_rank = '';
+    $msql_check_lyric = mysqli_query($link,"SELECT * FROM `app_my_girl_".$langsel."_lyrics` WHERE `id_music`='".$row['id']."'  LIMIT 1");
+    $bnt_view_lyric='';
+    $btn_search_lyrict='';
+    $count_rank='';
     $view_top_music='';
 
-    $color_btn_ytb = 'blue';
-    $color_btn_lyrics = 'blue';
-    $color_btn_view_lyrics = 'yellow';
-    $color_btn_search_music = 'pink';
-    $color_btn_view_video = 'yellow';
-    $color_btn_view_store = 'blue';
+    $color_btn_ytb='blue';
+    $color_btn_lyrics='blue';
+    $color_btn_view_lyrics='yellow';
+    $color_btn_search_music='pink';
+    $color_btn_view_video='yellow';
+    $color_btn_view_store='blue';
     if (isset($_SESSION['off_color'])) {
-        $color_btn_ytb = 'black';
-        $color_btn_lyrics = 'black';
-        $color_btn_search_music = 'black';
-        $color_btn_view_video = '';
-        $color_btn_view_store = '';
+        $color_btn_ytb='black';
+        $color_btn_lyrics='black';
+        $color_btn_search_music='black';
+        $color_btn_view_video='';
+        $color_btn_view_store='';
     }
 
     if (mysqli_num_rows($msql_check_lyric)) {
         if (isset($_SESSION['off_color'])) {
-            $color_btn_lyrics = '';
-            $color_btn_view_lyrics = '';
+            $color_btn_lyrics='';
+            $color_btn_view_lyrics='';
 
         } else {
-            $color_btn_lyrics = 'orange';
+            $color_btn_lyrics='orange';
         }
-        $bnt_view_lyric = '<a href="#" class="buttonPro small ' . $color_btn_view_lyrics . ' " onclick="view_music_lyrics(' . $row['id'] . ');return false;"><i class="fa fa-book"></i> Xem lời bài hát</a>';
+        $bnt_view_lyric='<a href="#" class="buttonPro small '.$color_btn_view_lyrics.' " onclick="view_music_lyrics('.$row['id'].');return false;"><i class="fa fa-book"></i> Xem lời bài hát</a>';
     } else {
-        $btn_search_lyrict = '<a href="#" class="buttonPro small ' . $color_btn_search_music . '" onclick="search_music_lyrics(\'' . $row['chat'] . '\');return false;"><i class="fa fa-search-plus" aria-hidden="true"></i>  Tìm từ lyrics</a><a href="#" class="buttonPro small ' . $color_btn_search_music . '" title="' . $row['chat'] . '" onclick="search_gg(this);return false;"><i class="fa fa-search-plus" aria-hidden="true"></i> Tìm từ gg</a>';
+        $btn_search_lyrict='<a href="#" class="buttonPro small '.$color_btn_search_music.'" onclick="search_music_lyrics(\''.$row['chat'].'\');return false;"><i class="fa fa-search-plus" aria-hidden="true"></i>  Tìm từ lyrics</a><a href="#" class="buttonPro small '.$color_btn_search_music.'" title="'.$row['chat'].'" onclick="search_gg(this);return false;"><i class="fa fa-search-plus" aria-hidden="true"></i> Tìm từ gg</a>';
     }
 
     $col_rank="";
-    if ($view_top_music == '-1') {
-        $col_rank = "  Số lần tương tác:<strong>" . $row['c'] . "</strong>";
+    if ($view_top_music=='-1') {
+        $col_rank = "  Số lần tương tác:<strong>".$row['c']."</strong>";
     }
-    $check_video = mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$langsel` WHERE  `id_chat` = '" . $row['id'] . "' LIMIT 1");
-    $btn_view_video = '';
+    $check_video = mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$langsel` WHERE  `id_chat`='".$row['id']."' LIMIT 1");
+    $btn_view_video='';
     if (mysqli_num_rows($check_video) > 0) {
         $data_video = mysqli_fetch_array($check_video);
         if (isset($_SESSION['off_color'])) {
-            $color_btn_ytb = '';
+            $color_btn_ytb='';
         } else {
-            $color_btn_ytb = 'orange';
+            $color_btn_ytb='orange';
         }
-        $btn_view_video = ' <a href="' . $data_video[0] . '" class="buttonPro small ' . $color_btn_view_video . '" target="_blank"><i class="fa fa-video-camera" aria-hidden="true"></i> Xem video</a>';
+        $btn_view_video=' <a href="'.$data_video[0].'" class="buttonPro small '.$color_btn_view_video.'" target="_blank"><i class="fa fa-video-camera" aria-hidden="true"></i> Xem video</a>';
     } else {
-        $btn_view_video = ' <a href="https://www.youtube.com/results?search_query=' . $row['chat'] . '" target="_blank" class="buttonPro small pink" ><i class="fa fa-search-plus" aria-hidden="true"></i></a>';
+        $btn_view_video=' <a href="https://www.youtube.com/results?search_query='.$row['chat'].'" target="_blank" class="buttonPro small pink" ><i class="fa fa-search-plus" aria-hidden="true"></i></a>';
     }
-    $bnt_update_lyric = '<a href="#" class="buttonPro small ' . $color_btn_lyrics . ' btn_add_lyrics_' . $row['id'] . '" onclick="add_music_lyrics(' . $row['id'] . ');return false;"><i class="fa fa-book"></i></a> <a href="#" class="buttonPro small ' . $color_btn_ytb . ' btn_add_video_' . $row['id'] . '" onclick="add_video_music(' . $row['id'] . ');return false;"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>';
-    $bnt_del = '<a href="#" class="buttonPro small red " onclick="delete_table(' . $row['id'] . ');return false;"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>';
-    $bnt_view_store = '<a href="/music/'.$row['id'].'/'. $row['author'] . '" class="buttonPro small ' . $color_btn_view_store . ' " target="_blank"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>';
-    return show_row_chat_prefab($link,$row, $langsel, $bnt_update_lyric . ' ' . $bnt_del . ' ' . $bnt_view_lyric . ' ' . $btn_search_lyrict . ' ' . $col_rank . ' ' . $bnt_view_store . ' ' . $btn_view_video);
+    $bnt_update_lyric='<a href="#" class="buttonPro small '.$color_btn_lyrics.' btn_add_lyrics_'.$row['id'].'" onclick="add_music_lyrics('.$row['id'].');return false;"><i class="fa fa-book"></i></a> <a href="#" class="buttonPro small '.$color_btn_ytb.' btn_add_video_'.$row['id'].'" onclick="add_video_music('.$row['id'].');return false;"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>';
+    $bnt_del='<a href="#" class="buttonPro small red " onclick="delete_table('.$row['id'].');return false;"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>';
+    $bnt_view_store='<a href="/music/'.$row['id'].'/'. $row['author'].'" class="buttonPro small '.$color_btn_view_store.' " target="_blank"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>';
+    return show_row_chat_prefab($link,$row, $langsel, $bnt_update_lyric.' '.$bnt_del.' '.$bnt_view_lyric.' '.$btn_search_lyrict.' '.$col_rank.' '.$bnt_view_store.' '.$btn_view_video);
 }
 
 function show_name_country_by_key($link,$key_lang)
 {
-    $query_name = mysqli_query($link,"SELECT `name` FROM `app_my_girl_country` WHERE `key` = '$key_lang' LIMIT 1");
+    $query_name = mysqli_query($link,"SELECT `name` FROM `app_my_girl_country` WHERE `key`='$key_lang' LIMIT 1");
     $name_country = mysqli_fetch_array($query_name);
     return $name_country[0];
 }
@@ -637,7 +640,7 @@ function slug_url($txt)
 }
 
 
-function box_upload($file_ext, $arr_sever_upload, $value_default = '')
+function box_upload($file_ext, $arr_sever_upload, $value_default='')
 {
     ?>
     <input id="inp_link_file" type="text" value="<?php echo $value_default; ?>" name="file_url" style="display: none"/>
@@ -678,10 +681,10 @@ function box_upload($file_ext, $arr_sever_upload, $value_default = '')
         </table>
     </div>
     <script>
-        var sel_url_ajax_sever_upload = '';
+        var sel_url_ajax_sever_upload='';
         $(document).ready(function () {
             $('#file_upload_sever').ajaxfileupload({
-                action: '<?php echo URL . '/app_my_girl_upload_temp.php';?>',
+                action: '<?php echo URL.'/app_my_girl_upload_temp.php';?>',
                 params: {
                     extra: '<?php echo $file_ext;?>'
                 },

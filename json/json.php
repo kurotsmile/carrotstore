@@ -4,7 +4,7 @@ if(isset($_POST['function'])) $function=$_POST['function'];
 if(isset($_GET['function'])) $function=$_GET['function'];
 
 if($function=='search_product'){
-    include_once("function_search.php");
+    @include_once("function_search.php");
     $key=addslashes(trim($_POST['key']));
     $type=$_POST['type'];
     echo '<div id="filter"><a onclick="show_setting_search()"><i class="fa fa-search" aria-hidden="true"></i> '.lang($link,"search_return").' <i class="fa fa-quote-left" aria-hidden="true"></i> '.$key.' <i class="fa fa-quote-right" aria-hidden="true"></i></a></div>';
@@ -326,21 +326,23 @@ if($function=='scroll_load_data'){
 
         if($txt_error=='') {
             $check_login = mysqli_query($link,"SELECT `id_device`,`name`,`email`,`sdt` FROM `app_my_girl_user_$lang` WHERE (`sdt` = '$user_phone_login' AND `password`='$user_password_login') OR (`email` = '$user_phone_login' AND `password`='$user_password_login') ");
-            if (mysqli_num_rows($check_login) > 0) {
-                $data_login_user = mysqli_fetch_assoc($check_login);
-                $user_login = new User_login();
-                $user_login->id = $data_login_user['id_device'];
-                $user_login->name = $data_login_user['name'];
-                $user_login->type = 'carrot';
-                $user_login->link = $url . '/user/' . $data_login_user['id_device'] . '/' . $lang;
-                $user_login->avatar = get_url_avatar_user($link,$data_login_user['id_device'],$lang);
-                $user_login->email = $data_login_user['email'];
-                $user_login->lang = $lang;
-                $_SESSION['user_login'] = json_encode($user_login);
-                echo 'ready_account';
-            } else {
-                echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_dang_nhap');
-            }
+            if($check_login){
+                if (mysqli_num_rows($check_login) > 0) {
+                    $data_login_user = mysqli_fetch_assoc($check_login);
+                    $user_login = new User_login();
+                    $user_login->id = $data_login_user['id_device'];
+                    $user_login->name = $data_login_user['name'];
+                    $user_login->type = 'carrot';
+                    $user_login->link = $url . '/user/' . $data_login_user['id_device'] . '/' . $lang;
+                    $user_login->avatar = get_url_avatar_user($link,$data_login_user['id_device'],$lang);
+                    $user_login->email = $data_login_user['email'];
+                    $user_login->lang = $lang;
+                    $_SESSION['user_login'] = json_encode($user_login);
+                    echo 'ready_account';
+                } else {
+                    echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_dang_nhap');
+                }
+            }else{ echo '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_dang_nhap');}
         }else{
             echo $txt_error;
         }

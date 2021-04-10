@@ -1,9 +1,6 @@
 Options +FollowSymLinks
 
 RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
-
 RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
 RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
 RewriteRule    ^user/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_view_account.php&user=$1&lang=$2

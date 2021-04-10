@@ -677,7 +677,7 @@
 
         function start_recognition(){
             if(recognizing){recognition.stop();return;}
-            recognition.lang = 'vi-vn';
+            recognition.lang = '<?php echo $lang;?>-<?php echo strtoupper($country_code);?>';
             final_transcript = '';
             $("#interim_recognition").show();
             $("#inp_search").hide();

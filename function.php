@@ -33,9 +33,13 @@ function lang($link,$key,$lang_sel=null){
         $lang=$lang_sel;
     }
     $return=mysqli_query($link,"SELECT `value` FROM `lang_$lang` WHERE `key` = '$key' LIMIT 1");
-    $data=mysqli_fetch_array($return);
-    if($data){
-        return addslashes($data['value']);
+    if($return){
+        $data=mysqli_fetch_assoc($return);
+        if($data){
+            return addslashes($data['value']);
+        }else{
+            return $key;
+        }
     }else{
         return $key;
     }
@@ -177,17 +181,23 @@ function get_username_by_id($link,$id_user,$is_admin=false){
 
 function get_desc_product_lang($link,$id_product,$key_l,$is_adim_site=false){
     $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
-    $data_desc=mysqli_fetch_assoc($query_data);
-    if(isset($data_desc['data'])){
-        return $data_desc['data'];
-    }else{
-        if($is_adim_site==false){
-            $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
-            $data_desc=mysqli_fetch_assoc($query_data);
+    if($query_data){
+        $data_desc=mysqli_fetch_assoc($query_data);
+        if(isset($data_desc['data'])){
             return $data_desc['data'];
         }else{
-            return "";
+            if($is_adim_site==false){
+                $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
+                $data_desc=mysqli_fetch_assoc($query_data);
+                return $data_desc['data'];
+            }else{
+                return "";
+            }
         }
+    }else{
+        $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
+        $data_desc=mysqli_fetch_assoc($query_data);
+        return $data_desc['data'];
     }
     mysqli_free_result($query_data);
 }

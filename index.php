@@ -3,6 +3,7 @@ ini_set('upload_max_filesize', '90M');
 ini_set('post_max_size', '90M');
 ini_set('max_input_time', 900);
 ini_set('max_execution_time', 900);
+error_reporting(E_ERROR | E_PARSE);
 
 ob_start();
 session_start();
@@ -24,6 +25,7 @@ if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
 include "database.php";
 
 $lang='en';
+$country_code='us';
 $style_css_dark_mode='0'; if(isset($_SESSION['style_css_dark_mode'])) $style_css_dark_mode=$_SESSION['style_css_dark_mode'];
 $search_type='1';if(isset($_SESSION['search_type'])) $search_type=$_SESSION['search_type'];
 $search_data='0';if(isset($_SESSION['search_data'])) $search_data=$_SESSION['search_data'];
@@ -57,9 +59,10 @@ if (isset($_SESSION['lang'])) {
     $lang=$_SESSION['lang'];
 } else {
     $k=$data_ip['lang'];
-    $query_key_country = mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
+    $query_key_country = mysqli_query($link,"SELECT `key`,`country_code` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
     if (mysqli_num_rows($query_key_country)) {
         $data_key_country = mysqli_fetch_array($query_key_country);
+        $country_code=$data_key_country['country_code'];
         $_SESSION['lang'] = $data_key_country['key'];
     } else {
         $_SESSION['lang'] = 'en';

@@ -529,27 +529,14 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
 
 <ul id="menu" class="notranslate">
     <li <?php if ($cur_url == '/vl') {echo "class='active'"; } ?>><a href="<?php echo $url; ?>/vl" style="font-weight: bold;">Vitual Lover</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_history.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_history.php"><i class="fa fa-user" aria-hidden="true"></i> Theo dõi</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_msg.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_msg.php"><i class="fa fa-commenting-o" aria-hidden="true"></i> Câu Thoại</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_chat.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_chat.php"><i class="fa fa-comments" aria-hidden="true"></i> Trò chuyện</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_effect.php') {echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_effect.php"><i class="fa fa-gratipay" aria-hidden="true"></i> Hiệu ứng</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_background.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_background.php"><i class="fa fa-university" aria-hidden="true"></i>Khung cảnh</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_ads.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_ads.php"><i class="fa fa-bandcamp syn app_my_girl_ads" aria-hidden="true" syn="app_my_girl_ads"></i> Quảng cáo</a></li>
-    <li <?php if ($cur_url == '/app_my_girl_preson.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_preson.php"><i class="fa fa-heart"></i> Nhân vật</a>
-        <ul class="sub_menu">
-            <li><a href="<?php echo $url; ?>/app_my_girl_preson_category.php"><i class="fa fa-th-list" aria-hidden="true"></i> Quảng lý Chủ đề nhân vật</a></li>
-        </ul>
-    </li>
-
-    <li <?php if ($cur_url == '/app_my_girl_manager_country.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_manager_country.php"><i class="fa fa-globe" aria-hidden="true"></i> Quản lý quốc gia và phiên bản</a>
-        <ul class="sub_menu">
-            <li><a href="<?php echo $url; ?>/app_my_girl_create_country.php"><i class="fa fa-eercast" aria-hidden="true"></i> Tạo quốc gia mới</a></li>
-            <li><a href="<?php echo $url; ?>/app_my_girl_display_lang.php"><i class="fa fa-tag" aria-hidden="true"></i> Trường dữ liệu</a></li>
-            <li <?php if ($cur_url == '/app_my_girl_key_lang.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_key_lang.php"><i class="fa fa-eercast" aria-hidden="true"></i> Từ khóa ngôn ngữ hệ thống</a></li>
-            <li <?php if ($cur_url == '/app_my_girl_display_value.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_display_value.php"><i class="fa fa-gg" aria-hidden="true"></i> Giao diện ngôn ngữ</a></li>
-        </ul>
-    </li>
-    <li <?php if ($cur_url == '/app_my_girl_tool.php') { echo "class='active'";} ?>><a href="<?php echo $url; ?>/app_my_girl_tool.php"><i class="fa fa-gavel" aria-hidden="true"></i> Công cụ</a></li>
+    <?php
+        $query_menu_top=mysqli_query($link,"SELECT * FROM `app_my_girl_function` WHERE `menu_top`=1 LIMIT 10");
+        while ($menu_top=mysqli_fetch_assoc($query_menu_top)) {
+    ?>
+            <li <?php if ($cur_url == '/'.$menu_top['url']) { echo "class='active'";} ?>><a href="<?php echo $url.'/'.$menu_top['url'];?>" title="<?php echo $menu_top['describe'];?>"><i class="<?php echo $menu_top['icon'];?>"></i> <?php echo $menu_top['name'];?></a>
+    <?php
+        }
+    ?>
     <li style="float:right;cursor:pointer" onclick="check_data_syn();return false;"><a><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp</a></li>
 </ul>
 
