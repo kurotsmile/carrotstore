@@ -45,6 +45,7 @@ if(isset($_SESSION['login'])){
     <li <?php if($get_view=='good_night'){?>class="active"<?php }?>><a href="<?php echo $url;?>?view=good_night"><i class="fa fa-comment"></i> Chúc ngủ ngon</a></li>
     <li <?php if($get_view=='sound'){?>class="active"<?php }?>><a href="<?php echo $url;?>?view=sound"><i class="fa fa-music"></i> Âm thanh</a></li>
     <li <?php if($get_view=='scores'){?>class="active"<?php }?>><a href="<?php echo $url;?>?view=scores"><i class="fa fa-list-ol"></i> Điểm số</a></li>
+    <li <?php if($get_view=='lang'){?>class="active"<?php }?>><a href="<?php echo $url;?>?view=lang"><i class="fa fa-university"></i> Ngôn ngữ ứng dụng</a></li>
     <li <?php if($get_view=='key_lang'){?>class="active"<?php }?>><a href="<?php echo $url;?>?view=key_lang"><i class="fa fa-language"></i> Từ khóa ngôn ngữ</a></li>
     <li <?php if($get_view=='active_app'){?>class="active"<?php }?>><a href="<?php echo $url;?>?view=active_app"><i class="fa fa-globe"></i> Quốc gia triển khai</a></li>
     <li style="float: right;margin-right: 10px;"><a href="<?php echo $url;?>?log_out=1"><i class="fa fa-user" aria-hidden="true"></i> Đăng xuất</a></li>
@@ -52,9 +53,9 @@ if(isset($_SESSION['login'])){
 <ul id="menu_work">
 <?php
 $query_list_app=mysqli_query($link,"SELECT * FROM carrotsy_work.`work_app` WHERE `id` != '$app_id'");
-while($item_app=mysqli_fetch_array($query_list_app)){
+while($item_app=mysqli_fetch_assoc($query_list_app)){
 ?>
-    <li><a href="<?php echo $item_app['url'] ?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app" style="" title="<?php echo $item_app['name']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
+    <li><a href="<?php echo $url_carrot_store.'/'.$item_app['url'] ?>" target="_blank"><img src="<?php echo $url_work;?>/img.php?url=avatar_app/<?php echo $item_app['id'];?>.png&size=18&type=app" style="" title="<?php echo $item_app['name']; ?>" /> <span class="name"><?php echo $item_app['name']; ?></span></a></li>
 <?php
 }
 ?>

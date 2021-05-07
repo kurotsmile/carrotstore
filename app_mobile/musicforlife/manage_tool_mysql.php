@@ -8,18 +8,17 @@
 <?php
 if(isset($_POST['act'])){
     $txt_mysql_val=$_POST['val_txt'];
-    $list_country=mysql_query("SELECT * FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `active`='1'");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `active`='1'");
+    while($l=mysqli_fetch_array($list_country)){
         $langsel=$l['key'];
         $txt_mysql=str_replace('{lang}',$langsel,$txt_mysql_val);
-        $query_create=mysql_query($txt_mysql);
-        if(mysql_error()==""){
+        $query_create=mysqli_query($link,$txt_mysql);
+        if(mysqli_error($link)==""){
             echo "Thự hiện câu lệnh thành công nước (".$langsel.")<br/>";
         }else{
             echo "Thự hiện câu lệnh thành công nước (".$langsel.")<br/>";
-            echo mysql_error()."<br/>";
+            echo mysqli_error($link)."<br/>";
         }
-        mysql_freeresult($query_create);
     }
 }
 ?>

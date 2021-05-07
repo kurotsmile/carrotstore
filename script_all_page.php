@@ -256,11 +256,10 @@
             js2.type = "text/javascript";
             js2.src = '<?php echo $url;?>/js/jquery.geocomplete.min.js';
             document.body.appendChild(js2);
+            setTimeout(function () {$("#user_address_register").geocomplete();}, 500);
         }, 500);
 
-        setTimeout(function () {
-            $("#user_address_register").geocomplete();
-        }, 3000);
+
     }
 
 

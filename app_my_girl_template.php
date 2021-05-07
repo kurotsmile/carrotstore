@@ -545,12 +545,6 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
 </div>
 
 <script>
-    $(document).ready(function () {
-        $("#menu li").hover(function () {
-            $(this).find(".sub_menu").toggle();
-        });
-    });
-
     function show_box(datas) {
         $("#dialog").dialog({closeText: "", width: 800, position: ['center', 20]});
         $("#dialog_data").html(datas);

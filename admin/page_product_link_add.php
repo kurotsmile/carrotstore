@@ -21,7 +21,7 @@
 		}
 		
 		if(isset($_FILES['store_avatar'])){
-			$target_file ='../assets/img_link/'.$store_icon.'.jpg';
+			$target_file ='assets/img_link/'.$store_icon.'.jpg';
 
 			if(move_uploaded_file($_FILES["store_avatar"]["tmp_name"], $target_file)) {
 				echo "Ảnh đại diện ". basename( $_FILES["store_avatar"]["name"]). " đã được tải lên";

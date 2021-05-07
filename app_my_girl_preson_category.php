@@ -6,32 +6,26 @@ $sex_category_pr="0";
 $func="add";
 $id_edit="";
 
-
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $edit_category=mysql_query("SELECT * FROM `app_my_girl_preson_category` WHERE (`id` = '$id_edit') LIMIT 1;");
+    $edit_category=mysqli_query($link,"SELECT * FROM `app_my_girl_preson_category` WHERE (`id` = '$id_edit') LIMIT 1;");
     $arr_data_category=mysql_fetch_array($edit_category);
     $name_category_pr=$arr_data_category[1];
     $sex_category_pr=$arr_data_category[2];
     $func="edit";
-    mysql_free_result($edit_category);
 }
 
 if(isset($_POST['func'])){
     $name_category_pr=$_POST['name_category_pr'];
     $sex_category_pr=$_POST['sex_category_pr'];
     if($_POST['func']=="add"){
-
-        $add_effect=mysql_query("INSERT INTO `app_my_girl_preson_category` (`name`,`sex`) VALUES ('$name_category_pr','$sex_category_pr');");
-        echo mysql_error();
-        mysql_free_result($add_effect);
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_preson_category` (`name`,`sex`) VALUES ('$name_category_pr','$sex_category_pr');");
+        echo mysqli_error($link);
     }else{
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysql_query("UPDATE `app_my_girl_preson_category` SET `name` = '$name_category_pr',`sex`='$sex_category_pr' WHERE `id` = '$id_edit';");
-        mysql_free_result($update_effect);
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_preson_category` SET `name` = '$name_category_pr',`sex`='$sex_category_pr' WHERE `id` = '$id_edit';");
     }
 }
-
 ?>
 
 <form id="form_loc"  method="post" enctype="multipart/form-data">
@@ -62,12 +56,10 @@ if(isset($_POST['func'])){
 <?php
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $delete_effect=mysql_query("DELETE FROM `app_my_girl_preson_category` WHERE ((`id` = '$id_del'));");
-
+    $delete_effect=mysqli_query($link,"DELETE FROM `app_my_girl_preson_category` WHERE ((`id` = '$id_del'));");
 }
 
-
-    $list_category_pr=mysql_query("SELECT * FROM `app_my_girl_preson_category` ORDER BY `id`"); 
+$list_category_pr=mysqli_query($link,"SELECT * FROM `app_my_girl_preson_category` ORDER BY `id`"); 
 ?>
 <table>
 <tr>
@@ -77,18 +69,14 @@ if(isset($_GET['del'])){
     <th style="width: 100px;">Thao tác</th>
 </tr>
 <?php
-while($row=mysql_fetch_array($list_category_pr)){
+while($row=mysqli_fetch_assoc($list_category_pr)){
 ?>
     <tr>
-        <td><?php echo $row[0];?></td>
-        <td><?php echo $row[1];?></td>
+        <td><?php echo $row['id'];?></td>
+        <td><?php echo $row['name'];?></td>
         <td>
         <?php 
-            if($row[2]=="0"){
-                echo "Nam";
-            }else{
-                echo "Nữ";
-            }
+            if($row['sex']=="0") echo "Nam"; else echo "Nữ";
         ?>
         </td>
         <td>
@@ -99,6 +87,5 @@ while($row=mysql_fetch_array($list_category_pr)){
     </tr>
 <?php
 }
-mysql_free_result($list_category_pr);
 ?>
 </table>

@@ -11,7 +11,7 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
 ?>
             <div id="row<?php echo $row['id']; ?>" class="app" oncontextmenu="show_menu_app(this,1);return false;">
                 <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>"><h1><span class="<?php echo $data_type['css_icon'];?>"></span> <?php echo $p_name_product; ?></h1></a></div>
-                <a href="<?php echo $link_app;?>" class="app_link_icon"><img alt="<?php echo $p_name_product; ?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row['id'],'60x60'); ?>" class="app_icon" width="100" height="100" /></a>
+                <a href="<?php echo $link_app;?>" class="app_link_icon"><img alt="<?php echo $p_name_product; ?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row['id'],'100'); ?>" class="app_icon" width="100" height="100" /></a>
                 <div class="app_txt">
                     <div class="desc">
                     <?php echo limit_words(get_desc_product_lang($link,$row['id'],$_SESSION['lang']),20); ?>

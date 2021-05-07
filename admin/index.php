@@ -127,6 +127,7 @@ while($item_app=mysqli_fetch_array($query_list_app)){
     <a href="<?php echo $url_admin;?>/?page_view=page_order" <?php if($page_file=='page_order'){ echo 'class="active"';} ?>><span class="syn order" syn="order"></span> Đơn đặt hàng</a>
     <a href="<?php echo $url;?>/adminer.php?username=<?php echo $mysql_user;?>&db=<?php echo $mysql_database; ?>" target="_blank"><i class="fa fa-database" aria-hidden="true"></i></a>
     <a href="<?php echo $url;?>/vl" target="_blank"><i class="fa fa-heart" aria-hidden="true"></i></a>
+    <a href="<?php echo $url_admin;?>/?page_view=page_carrot_framework" <?php if($page_file=='page_carrot_framework'){ echo 'class="active"';} ?>><i class="fa fa-puzzle-piece" aria-hidden="true"></i></a>
 
         <div  method="post" id="info_account" action="<?php echo $url_admin;?>/index.php" >
             <img class="login_avatar"  src="<?php echo $user_login->avatar;?>" />

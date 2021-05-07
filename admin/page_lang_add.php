@@ -18,11 +18,8 @@ if(isset($_POST['key_lang'])){
                 echo alert("Thêm thanh công từ khóa '$key_lang' với giá trị <b>$val_lang</b> vào quốc gia <b>$key_country</b>");
             }
         }
-    }else{
-
     }
 }
-
 ?>
 
 <form style="width:100%;" method="post">
@@ -51,7 +48,13 @@ while($row_country=mysqli_fetch_assoc($query_list_country)){
 ?>
 <tr>
     <td>Thao tác</td>
-    <td><button class="green buttonPro large"><i class="fa fa-check-circle" aria-hidden="true"></i> Cập nhật</button></td>
+    <td>
+        <?php if($key_edit==''){?>
+            <button class="green buttonPro large"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</button>
+        <?php }else{?>
+            <button class="green buttonPro large"><i class="fa fa-check-circle" aria-hidden="true"></i> Cập nhật</button>
+        <?php }?>
+    </td>
 </tr>
 </table>
 </form>

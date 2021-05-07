@@ -49,6 +49,7 @@ if(isset($_SESSION['userlogin'])){
     <?php if(isset($userlogin)){?>
     <a href="<?php echo $url;?>?view=edit" class="item_menu" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm mới</a>
     <a href="<?php echo $url;?>?view=category" class="item_menu" ><i class="fa fa-list" aria-hidden="true"></i> Chủ đề</a>
+    <a href="<?php echo $url;?>?view=lang" class="item_menu" ><i class="fa fa-globe" aria-hidden="true"></i> Ngôn ngữ ứng dụng</a>
     <a id="btn_logout" class="buttonPro small yellow" href="<?php echo $url;?>?logout=1"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
     <?php }?>
 </div>

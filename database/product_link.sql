@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.0 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,7 +15,6 @@ CREATE TABLE `product_link` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `product_link`;
 INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (201,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/mutant-year-zero-road-to-eden/9nmp9b9kmklf'),
 (210,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/999660/SAMURAI_SHODOWN_NEOGEO_COLLECTION/'),
@@ -51,8 +50,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (133,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.quickeye'),
 (133,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.quickeye'),
 (133,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P2MFZJ17P7D'),
-(134,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.runwithme'),
-(134,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.runwithme'),
 (135,	'fa-chrome',	'Chrome Web Store',	'https://chrome.google.com/webstore/detail/save-web-offline/japgpebomnphkbhbkejjppjabckjajoi'),
 (135,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.SaveWeb'),
 (135,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.kurotsmile.SaveWeb'),
@@ -270,9 +267,13 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (228,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/253330/Neverending_Nightmares/'),
 (120,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9NSG2344SGX8'),
 (120,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl'),
-(282,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.appai'),
-(132,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.mylover'),
 (132,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.mylover'),
-(283,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano');
+(283,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano'),
+(283,	'fa-play',	'Carrot store',	'https://carrotstore.com/piano'),
+(282,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.appai'),
+(284,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.fishofprey'),
+(134,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.runwithme'),
+(134,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.runwithme')
+ON DUPLICATE KEY UPDATE `id_product` = VALUES(`id_product`), `icon` = VALUES(`icon`), `name` = VALUES(`name`), `link` = VALUES(`link`);
 
--- 2021-03-10 06:47:38
+-- 2021-04-22 17:55:58

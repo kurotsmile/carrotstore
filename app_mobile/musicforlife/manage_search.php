@@ -39,11 +39,14 @@ if(isset($_GET['delete'])){
 $query_key_search=mysqli_query($link,"SELECT * FROM carrotsy_music.`log_key` where `lang`='$lang'");
 while($row_log=mysqli_fetch_array($query_key_search)){
     ?>
-    <tr><td><?php echo $row_log[0];?></td>
-    <td>
-        <a href="<?php echo $url_carrot_store;?>/app_my_girl_handling.php?func=check_music&key_word=<?php echo $row_log[0];?>" class="buttonPro small yellow" target="_blank"><i class="fa fa-search" aria-hidden="true"></i> Kiểm tra tồn tại</a>
-        <a href="<?php echo $url;?>/index.php?view=search&delete=<?php echo $row_log[0];?>&lang=<?php echo $lang;?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa từ khóa</a>
-        <a href="<?php echo $url_carrot_store;?>/app_my_girl_add.php?lang=<?php echo $lang;?>&effect=2&actions=9&answer=<?php echo $row_log[0];?>" class="buttonPro small green"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm nhạc</a></td>
+    <tr>
+        <td><?php echo $row_log[0];?></td>
+        <td>
+            <a href="<?php echo $url_carrot_store;?>/app_my_girl_handling.php?func=check_music&key_word=<?php echo $row_log[0];?>" class="buttonPro small yellow" target="_blank"><i class="fa fa-search" aria-hidden="true"></i> Kiểm tra tồn tại</a>
+            <a href="<?php echo $url;?>/index.php?view=search&delete=<?php echo $row_log[0];?>&lang=<?php echo $lang;?>" class="buttonPro small red"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa từ khóa</a>
+            <a href="<?php echo $url_carrot_store;?>/app_my_girl_add.php?lang=<?php echo $lang;?>&effect=2&actions=9&answer=<?php echo $row_log[0];?>" class="buttonPro small green"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm nhạc</a>
+            <a href="<?php echo $url_carrot_store;?>/app_my_girl_handling.php?func=remove_key_music&key=<?php echo $row_log[0];?>" target="_blank" class="buttonPro small blue"><i class="fa fa-eraser" aria-hidden="true"></i> Chặn</a>
+        </td>
     </tr>
     <?php
 }

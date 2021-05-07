@@ -78,7 +78,6 @@ if(!$is_me){
 <script>
 
     $(document).ready(function(){
-        $("#user_address").geocomplete();
         $('#user_avatar').ajaxfileupload({
             action: '<?php echo URL . '/app_my_girl_upload_temp.php';?>',
             params: {
@@ -94,6 +93,18 @@ if(!$is_me){
                 $("#img_user_avatar").attr("src","<?php echo $url;?>/app_mygirl/app_my_girl_<?php echo $lang;?>_user/<?php echo $id_user;?>.png");
             }
         });
+
+        setTimeout(function () {
+            var js = document.createElement("script");
+            js.type = "text/javascript";
+            js.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=<?php echo $key_api_google; ?>&sensor=true';
+            document.body.appendChild(js);
+            var js2 = document.createElement("script");
+            js2.type = "text/javascript";
+            js2.src = '<?php echo $url;?>/js/jquery.geocomplete.min.js';
+            document.body.appendChild(js2);
+            setTimeout(function () {$("#user_address").geocomplete();}, 500);
+        }, 500);
     });
     
     function update_info_user(){
