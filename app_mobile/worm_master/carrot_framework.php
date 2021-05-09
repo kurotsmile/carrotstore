@@ -122,8 +122,6 @@ function get_url_avatar_user_thumb($id_user,$lang,$size){
     }
 }
 
-
-
 if($function=='list_app_carrot'){
     $arr_app=array();
     $os=$_POST['os'];
@@ -232,7 +230,7 @@ if($function=='login'){
             $login->{"user_id"}=$data_user['id_device'];
             $login->{"user_lang"}=$key_lang;
             $login->{"user_password"}=$data_user['password'];
-            $login->{"avatar"}=get_url_avatar_user($data_user['id_device'],$lang);
+            $login->{"avatar"}=get_url_avatar_user_thumb($data_user['id_device'],$lang,'50');
             mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `date_cur`=NOW() WHERE `id_device`='".$data_user['id_device']."' LIMIT 1");
         }else{
             $login->{"error"}="1";
@@ -251,7 +249,7 @@ if($function=='get_user_by_id'){
     $show_user=new stdClass();
     $show_user->{"list_info"}=get_data_user($data_user);
     $show_user->{"user_id"}=$data_user['id_device'];
-    $show_user->{"avatar"}=get_url_avatar_user($user_id,$user_lang);
+    $show_user->{"avatar"}=get_url_avatar_user_thumb($user_id,$user_lang,'50');
     echo json_encode($show_user);
 }
 
@@ -289,6 +287,7 @@ if($function=='get_password'){
 if($function=='update_account'){
     $error=0;
     $user_id=$_POST['user_id'];
+    $lang=$_POST['user_lang'];
     $name=$_POST['name'];
     $sdt=$_POST['sdt'];
     $address=$_POST['address'];
@@ -330,7 +329,7 @@ if($function=='update_account'){
             $user->{"user_lang"}=$lang;
             $user->{"user_name"}=$data_user['name'];
             $user->{"user_password"}=$data_user['password'];
-            $user->{"avatar"}=get_url_avatar_user($user_id,$lang);
+            $user->{"avatar"}=get_url_avatar_user_thumb($user_id,$lang,'50');
             mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `date_cur`=NOW() WHERE `id_device`='$user_id' LIMIT 1");
         }else{
             $user->{"error"}="1";
@@ -438,6 +437,7 @@ if($function=='change_password'){
     $password_new=$_POST['password_new'];
     $password_re_new=$_POST['password_re_new'];
     $user_id=$_POST['user_id'];
+    $lang=$_POST['user_lang'];
 
     if((strlen($password_new)<6)){
         $user->{"error"}="1";
@@ -501,22 +501,9 @@ if($function=='download_lang'){
     $query_data_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`cr_framework_lang_val` WHERE `lang` = '$key' LIMIT 1");
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
+
+    $data_lang->{"lang_app"}="";
     $data_lang->{"key"}=$key;
-
-    $query_data_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`cr_framework_lang_val` WHERE `lang` = '$key' LIMIT 1");
-    $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
-    $data_lang->{"lang_framework"}=$data_lang_framework["data"];
-
-    $query_get_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `version` = '3' AND `lang` = '$key' LIMIT 1");
-    $data_lang_app=mysqli_fetch_assoc($query_get_lang);
-    $data_lang_app=$data_lang_app['data'];
-
-    $data_display=mysqli_fetch_assoc(mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `lang` = '".$key."' AND `version` = '0' LIMIT 1"));
-    $arr_data=(Array)json_decode($data_display['data']);
-    $data_lang->{"setting_url_sound_test_sex0"}=$arr_data['setting_url_sound_test_sex0'];
-    $data_lang->{"setting_url_sound_test_sex1"}=$arr_data['setting_url_sound_test_sex1'];
-    $data_lang->{"lang_app"}=$data_lang_app;
-
     echo json_encode($data_lang);
 }
 
@@ -526,26 +513,16 @@ if($function=='dowwnload_lang_by_key'){
 
     $query_country=mysqli_query($link,"SELECT `name` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `key`='$key'");
     $data_country=mysqli_fetch_assoc($query_country);
-    $data_lang->{"lang_key"}=$key;
-    $data_lang->{"lang_icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$key.'.png&size=50&trim=1';;
-    $data_lang->{"lang_name"}=$data_country['name'];
 
     $query_data_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`cr_framework_lang_val` WHERE `lang` = '$key' LIMIT 1");
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
-    $query_get_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `version` = '3' AND `lang` = '$key' LIMIT 1");
-    $data_lang_app=mysqli_fetch_assoc($query_get_lang);
-    $data_lang_app=$data_lang_app['data'];
-
-    $data_display=mysqli_fetch_assoc(mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `lang` = '".$key."' AND `version` = '0' LIMIT 1"));
-    $arr_data=(Array)json_decode($data_display['data']);
-    $data_lang->{"setting_url_sound_test_sex0"}=$arr_data['setting_url_sound_test_sex0'];
-    $data_lang->{"setting_url_sound_test_sex1"}=$arr_data['setting_url_sound_test_sex1'];
-    $data_lang->{"lang_app"}=$data_lang_app;
-
+    $data_lang->{"lang_app"}="";
+    $data_lang->{"lang_key"}=$key;
+    $data_lang->{"lang_icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$key.'.png&size=50&trim=1';;
+    $data_lang->{"lang_name"}=$data_country['name'];
     echo json_encode($data_lang);
-    exit;
 }
 
 if($function=='list_music_game'){
