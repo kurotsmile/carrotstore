@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.0 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -89,4 +89,4 @@ INSERT INTO `cr_framework_lang_key` (`key`) VALUES
 ('delete_all_data'),
 ('delete_all_data_success');
 
--- 2021-04-14 12:54:26
+-- 2021-05-11 15:00:29

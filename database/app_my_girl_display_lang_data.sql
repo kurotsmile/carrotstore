@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -650,6 +650,13 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('voice_command_no_authorization',	'3'),
 ('brain_update',	'3'),
 ('contact',	'3'),
-('contact_tip',	'3');
+('contact_tip',	'3'),
+('background_list',	'3'),
+('bk_background',	'3'),
+('cm_pater',	'3'),
+('setting_bubble_icon',	'3'),
+('setting_bubble_icon_tip',	'3'),
+('setting_off',	'3'),
+('setting_on',	'3');
 
--- 2021-03-10 07:30:46
+-- 2021-05-19 07:16:48

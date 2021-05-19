@@ -243,13 +243,13 @@ if($function=='login'){
 
 if($function=='get_user_by_id'){
     $user_id=$_POST['user_id'];
-    $user_lang=$_POST['user_lang'];
-    $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$user_lang` WHERE `id_device`='$user_id' LIMIT 1");
+    $lang=$_POST['user_lang'];
+    $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device`='$user_id' LIMIT 1");
     $data_user=mysqli_fetch_assoc($query_user);
     $show_user=new stdClass();
     $show_user->{"list_info"}=get_data_user($data_user);
     $show_user->{"user_id"}=$data_user['id_device'];
-    $show_user->{"avatar"}=get_url_avatar_user_thumb($user_id,$user_lang,'50');
+    $show_user->{"avatar"}=get_url_avatar_user_thumb($user_id,$lang,'50');
     echo json_encode($show_user);
 }
 

@@ -1,6 +1,5 @@
 <?php
 include "config.php";
-include "database.php";
 
 $function='';
 $id_device='';
@@ -502,7 +501,9 @@ if($function=='download_lang'){
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
-    $data_lang->{"lang_app"}="";
+    $query_lang_app=mysqli_query($link,"SELECT `value` FROM carrotsy_flower.`lang_value` WHERE `id_country` = '$key' LIMIT 1");
+    $data_val=mysqli_fetch_array($query_lang_app);
+    $data_lang->{"lang_app"}=$data_val['value'];
     $data_lang->{"key"}=$key;
     echo json_encode($data_lang);
 }
@@ -518,7 +519,9 @@ if($function=='dowwnload_lang_by_key'){
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
-    $data_lang->{"lang_app"}="";
+    $query_lang_app=mysqli_query($link,"SELECT `value` FROM carrotsy_flower.`lang_value` WHERE `id_country` = '$key' LIMIT 1");
+    $data_val=mysqli_fetch_array($query_lang_app);
+    $data_lang->{"lang_app"}=$data_val['value'];
     $data_lang->{"lang_key"}=$key;
     $data_lang->{"lang_icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$key.'.png&size=50&trim=1';;
     $data_lang->{"lang_name"}=$data_country['name'];

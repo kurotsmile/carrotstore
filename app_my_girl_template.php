@@ -590,13 +590,8 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
 
     function paste_tag(name_tag) {
         navigator.clipboard.readText().then(text => {
-            document.querySelector('#out').value = text;
-            ChromeSamples.log('Text pasted.');
-            $('#' + name_tag).val(text);
-        })
-            .catch(() => {
-                alert("Lỗi dán!");
-            });
+            $("#"+name_tag).val(text.trim());
+        });
     }
 
     function  check_data_syn() {

@@ -11,8 +11,8 @@
     <input type="hidden" value="check_music" name="func" />
     <span id="show_return"></span>
     <span class="buttonPro small yellow" onclick="check_key();return false;" id="btn_check_key">Kiểm tra lại từ khóa</span><br /><br />
-    <span class="buttonPro small blue" onclick="search_gg();return false;" id="btn_check_key">Search google</span>
-    <span class="buttonPro small blue" onclick="search_yt();return false;" id="btn_check_key">Search Youtube</span>
+    <span class="buttonPro small blue" onclick="search_gg();return false;" id="btn_check_key"><i class="fa fa-google" aria-hidden="true"></i> Search google</span>
+    <span class="buttonPro small blue" onclick="search_yt();return false;" id="btn_check_key"><i class="fa fa-youtube-play" aria-hidden="true"></i> Search Youtube</span>
     <br />
     <?php
         $list_country=mysqli_query($link,"SELECT `key`,`name` FROM `app_my_girl_country` WHERE `active`='1'");
@@ -22,9 +22,7 @@
         mysqli_free_result($list_country);
     ?>
     </form>
-    
 
-    
     <script>
     var arr_key=[];
 

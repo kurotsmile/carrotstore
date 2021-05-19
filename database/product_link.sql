@@ -15,6 +15,7 @@ CREATE TABLE `product_link` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `product_link`;
 INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (201,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/mutant-year-zero-road-to-eden/9nmp9b9kmklf'),
 (210,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/999660/SAMURAI_SHODOWN_NEOGEO_COLLECTION/'),
@@ -47,9 +48,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (131,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.cutelover'),
 (131,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.cutelover'),
 (131,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9MSW2143779F'),
-(133,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.quickeye'),
-(133,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.quickeye'),
-(133,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P2MFZJ17P7D'),
 (135,	'fa-chrome',	'Chrome Web Store',	'https://chrome.google.com/webstore/detail/save-web-offline/japgpebomnphkbhbkejjppjabckjajoi'),
 (135,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.SaveWeb'),
 (135,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.kurotsmile.SaveWeb'),
@@ -66,9 +64,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (143,	'fa-codepen',	'PlayStation Store',	'https://store.steampowered.com/app/667600/Sky_Force_Reloaded/'),
 (142,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/sonic-all-stars-racing-transformed/c2s98g1zc8hs'),
 (142,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/212480/Sonic__AllStars_Racing_Transformed_Collection/'),
-(139,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.wormmaster'),
-(138,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.numbermagic'),
-(138,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.numbermagic'),
 (136,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.createpassword'),
 (136,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.kurotsmile.createpassword'),
 (136,	'fa-chrome',	'Chrome Web Store',	'https://chrome.google.com/webstore/detail/create-password/ndhnlbbbdmmepbechjapigogodaggbop'),
@@ -268,12 +263,23 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (120,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9NSG2344SGX8'),
 (120,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.mygirl'),
 (132,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.mylover'),
+(134,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.runwithme'),
+(134,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.runwithme'),
+(139,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.wormmaster'),
+(139,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.wormmaster'),
 (283,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano'),
 (283,	'fa-play',	'Carrot store',	'https://carrotstore.com/piano'),
-(282,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.appai'),
+(283,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.midipiano'),
+(283,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.midipiano'),
 (284,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.fishofprey'),
-(134,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.runwithme'),
-(134,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.runwithme')
-ON DUPLICATE KEY UPDATE `id_product` = VALUES(`id_product`), `icon` = VALUES(`icon`), `name` = VALUES(`name`), `link` = VALUES(`link`);
+(284,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.fishofprey'),
+(138,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.numbermagic'),
+(138,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.numbermagic'),
+(282,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.appai'),
+(282,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.appai'),
+(133,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.quickeye'),
+(133,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.quickeye'),
+(133,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P2MFZJ17P7D'),
+(133,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.quickeye');
 
--- 2021-04-22 17:55:58
+-- 2021-05-11 15:02:45

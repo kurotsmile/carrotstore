@@ -1,5 +1,6 @@
 <?php
 $type_delete='0';
+$langsel='';
 if(isset($_GET['lang'])){
     $type_delete='1';
     $langsel=$_GET['lang'];
@@ -18,9 +19,10 @@ if(isset($_GET['lang'])){
         <div style="display: inline-block;float: left;margin: 2px;">
             <label>Ngôn ngữ:</label> 
             <select name="lang">
+            <option value="<" <?php if($langsel==""){?> selected="true"<?php }?>>Tất cả</option>
             <?php     
-            $query_list_lang=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-            while($row_lang=mysql_fetch_array($query_list_lang)){?>
+            $query_list_lang=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+            while($row_lang=mysqli_fetch_array($query_list_lang)){?>
             <option value="<?php echo $row_lang['key'];?>" <?php if($langsel==$row_lang['key']){?> selected="true"<?php }?>><?php echo $row_lang['name'];?></option>
             <?php }?>
             </select>
@@ -37,24 +39,24 @@ if(isset($_GET['lang'])){
 <?php
 
 if($type_delete=='1'){
-    mysql_query("DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `tick` != '1'");
+    mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `tick` != '1'");
     $files = glob('app_mygirl/app_my_girl_'.$langsel.'_brain/*');
     foreach($files as $file){
         if(is_file($file))
         echo "Đã xóa file âm thanh ".$file." <br/>";
         unlink($file);
     }
-    $num_delete_brain=mysql_affected_rows();
+    $num_delete_brain=mysqli_affected_rows();
     echo "Xóa thành công (".$num_delete_brain.") dữ liệu dạy của người dùng ở nước ($langsel) !!!!";
 }
 
 if($type_delete=='0'){
     $langsel='';
-    $list_country=mysql_query("SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
-    while($l=mysql_fetch_array($list_country)){
+    $list_country=mysqli_query($link,"SELECT * FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1' AND `active` = '1' ORDER BY `id`");
+    while($l=mysqli_fetch_array($list_country)){
         $langsel=$l['key'];
         echo '<strong><img src="'.thumb('/app_mygirl/img/'.$langsel.'.png','14').'"/> Xóa dữ liệu của nước '.$l['name'].'</strong><br/>';
-        mysql_query("DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND (`criterion` = '0' OR `approved` = '1')");
+        mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND (`criterion` = '0' OR `approved` = '1')");
         $files = glob('app_mygirl/app_my_girl_'.$langsel.'_brain/*');
         foreach($files as $file){
             if(is_file($file))

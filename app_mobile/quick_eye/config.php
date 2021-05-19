@@ -2,9 +2,9 @@
 include "../../const.php";
 $url_home=$url;
 global $url;
-$url=$url_cms.'/number_magic';
+$url=$url_cms.'/quick_eye';
 define('URL',$url);
 
-$mysql_database='carrotsy_number_magic';
-$app_id=12;
+$mysql_database='carrotsy_quick_eye';
+$app_id=123;
 ?>

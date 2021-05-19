@@ -3,7 +3,7 @@ include_once "carrot_framework.php";
 
 if($function=="list_rank"){
     $arr_list_rank=array();
-    $query_list_scores=mysqli_query($link,"SELECT * FROM `scores` ORDER BY `rank_time` LIMIT 50");
+    $query_list_scores=mysqli_query($link,"SELECT * FROM `scores` ORDER BY `level` DESC LIMIT 30");
     while ($rank=mysqli_fetch_assoc($query_list_scores)) {
         $rank_lang=$rank['lang'];
         $user_id=$rank['id_device'];
@@ -22,17 +22,16 @@ if($function=="list_rank"){
 if($function=="upload_rank"){
     $user_id=$_POST['user_id'];
     $user_lang=$_POST['user_lang'];
-    $id_rank=$_POST['id_rank'];
-    $timer_rank=$_POST['timer_rank'];
+    $level=$_POST['level'];
+    $level_type=$_POST['level_type'];
     
-    $query_check_rank=mysqli_query($link,"SELECT `rank_time` FROM `scores` WHERE `rank_id`='$id_rank' AND `id_device`='$user_id' LIMIT 1");
+    $query_check_rank=mysqli_query($link,"SELECT `level` FROM `scores` WHERE  `id_device`='$user_id' AND `lang` = '$user_lang' LIMIT 1");
     if(mysqli_num_rows($query_check_rank)>0){
-        $data_score=mysqli_fetch_assoc($query_check_rank);
-        $timer_top=$data_score['rank_time'];
-        if(intval($timer_rank)<intval($timer_top))
-        $query_add_rank=mysqli_query($link,"UPDATE `scores` SET `rank_time`='$timer_rank'  WHERE `id_device` = '$user_id'  AND `rank_id` = '$id_rank' LIMIT 1;");
+        $data_rank=mysqli_fetch_assoc($query_check_rank);
+        $level_rank=$data_rank['level'];
+        if(intval($level)>intval($level_rank)) $query_update_rank=mysqli_query($link,"UPDATE `scores` SET `level` = '$level' , `type`='$level_type' WHERE `id_device` = '$user_id' AND `lang` = '$user_lang' LIMIT 1;");
     }else{
-        $query_add_rank=mysqli_query($link,"INSERT INTO `scores` (`id_device`, `rank_time`, `rank_id`,`lang`) VALUES ('$user_id', '$timer_rank', '$id_rank','$user_lang');");
+        $query_add_rank=mysqli_query($link,"INSERT INTO `scores` (`id_device`, `level`, `date`, `type`, `lang`) VALUES ('$user_id', '$level', NOW(), '$level_type', '$user_lang');");
     }
     echo mysqli_error($link);
     exit;
@@ -40,8 +39,11 @@ if($function=="upload_rank"){
 
 if($function=='get_list_image'){
     $length=$_POST['limit'];
+    $level_type=intval($_POST['level_type']);
+    $array_type=array('chat','love','animal','emoji','foods','music');
     $arr_icon=array();
-    $query_list_icon=mysqli_query($link,"SELECT `id` FROM carrotsy_virtuallover.`app_my_girl_effect` ORDER BY RAND() LIMIT $length");
+    $tag_icon=$array_type[$level_type];
+    $query_list_icon=mysqli_query($link,"SELECT `id` FROM carrotsy_virtuallover.`app_my_girl_effect` WHERE `tag`='$tag_icon' ORDER BY RAND() LIMIT $length");
     while($icon=mysqli_fetch_assoc($query_list_icon)){
         $url_icon=$url_carrot_store."/app_mygirl/obj_effect/".$icon["id"].".png";
         array_push($arr_icon,$url_icon);
@@ -49,6 +51,4 @@ if($function=='get_list_image'){
     echo json_encode($arr_icon);
     exit;
 }
-
-echo var_dump($_POST);
 ?>

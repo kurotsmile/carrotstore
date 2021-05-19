@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.0 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -25,6 +25,7 @@ INSERT INTO `product_link_struct` (`name`, `icon`) VALUES
 ('Chrome Web Store',	'fa-chrome'),
 ('Huawei AppGallery',	'fa-pagelines'),
 ('Apk link',	'fa-leaf'),
-('Nintendo Store',	'fa-codiepie');
+('Nintendo Store',	'fa-codiepie'),
+('Amazon app store',	'fa-amazon');
 
--- 2020-10-23 09:43:02
+-- 2021-05-11 15:02:25

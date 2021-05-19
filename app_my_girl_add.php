@@ -393,6 +393,7 @@ if (isset($_POST['chat'])) {
                         }
                         ?>
                         <span class="buttonPro small black" onclick="translation_tag('chat','<?php echo $lang_sel; ?>','<?php echo $lang_2; ?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch</span>
+                        <span class="buttonPro small black" onclick="copy_tag('chat');return false;"><i class="fa fa-files-o" aria-hidden="true"></i> Chép</span>
                         <span class="buttonPro small black" onclick="paste_tag('chat');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span>
                         <a href="#" class="buttonPro small light_blue" target="_blank" onclick="record('chat','<?php echo $lang_sel; ?>');return false;"><i class="fa fa-microphone" aria-hidden="true"></i></a>
                     </div>
@@ -772,6 +773,7 @@ if (isset($_POST['chat'])) {
                     <td>
                         <a href="#" class="buttonPro small purple" onclick="search_music_lyrics();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm lời bài hát (search.azlyrics.com)</a>
                         <a href="#" class="buttonPro small purple" onclick="search_gg();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm lời trên google</a>
+                        <span class="buttonPro small black" onclick="paste_tag('music_lyrics_contain');return false;"><i class="fa fa-clipboard"></i> Dán</span>
                         <textarea id="music_lyrics_contain" style="height: 240px;" name="music_lyrics"></textarea>
                     </td>
                 </tr>
@@ -781,6 +783,7 @@ if (isset($_POST['chat'])) {
                     <td>
                         <a href="#" class="buttonPro small purple" onclick="search_ytb();return false;"><i class="fa fa-search" aria-hidden="true"></i> Tìm video trên youtube</a>
                         <a href="#" class="buttonPro small purple" onclick="download_ytb(false);return false;"><i class="fa fa-download" aria-hidden="true"></i> Tải video từ youtube</a>
+                        <span class="buttonPro small black" onclick="paste_tag('link_ytb');return false;"><i class="fa fa-clipboard"></i> Dán</span>
                         <input type="text" id="link_ytb" value="" name="link_ytb"/>
                     </td>
                 </tr>
@@ -790,10 +793,10 @@ if (isset($_POST['chat'])) {
                     </td>
                     <td>
                         <ul style="padding: 0px;margin: 0px;margin-top: 3px;margin-bottom: 3px;">
-                            <li><b style="width: 200px;float: left;">Artist (Nghệ sĩ thể hiện)</b> <input style="float: none;width: 300px;" type="text" id="song_artist" name="song_artist"></li>
-                            <li><b style="width: 200px;float: left;">Album</b> <input style="float: none;width: 300px;" type="text"  id="song_album" name="song_album"></li>
-                            <li><b style="width: 200px;float: left;">Year (Năm xuất bản)</b> <input style="float: none;width: 300px;" type="text"  id="song_year" name="song_year"></li>
-                            <li><b style="width: 200px;float: left;">Genre (Thể loại)</b> <input style="float: none;width: 300px;" type="text"  id="song_genre" name="song_genre"></li>
+                            <li><b style="width: 200px;float: left;">Artist (Nghệ sĩ thể hiện)</b> <input style="float: none;width: 300px;" type="text" id="song_artist" name="song_artist"> <span class="buttonPro small black" onclick="paste_tag('song_artist');return false;"><i class="fa fa-clipboard"></i> Dán</span></li>
+                            <li><b style="width: 200px;float: left;">Album</b> <input style="float: none;width: 300px;" type="text"  id="song_album" name="song_album"> <span class="buttonPro small black" onclick="paste_tag('song_album');return false;"><i class="fa fa-clipboard"></i> Dán</span></li>
+                            <li><b style="width: 200px;float: left;">Year (Năm xuất bản)</b> <input style="float: none;width: 300px;" type="text"  id="song_year" name="song_year"> <span class="buttonPro small black" onclick="paste_tag('song_year');return false;"><i class="fa fa-clipboard"></i> Dán</span></li>
+                            <li><b style="width: 200px;float: left;">Genre (Thể loại)</b> <input style="float: none;width: 300px;" type="text"  id="song_genre" name="song_genre"> <span class="buttonPro small black" onclick="paste_tag('song_genre');return false;"><i class="fa fa-clipboard"></i> Dán</span></li>
                             <span class="buttonPro small purple" onclick="search_info_music()"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm thông tin (trên google)</span></li>
                         </ul>
                     </td>

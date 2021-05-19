@@ -123,7 +123,7 @@ $query_list_display_lang_data=mysqli_query($link,"SELECT * FROM `app_my_girl_dis
 while($row=mysqli_fetch_array($query_list_display_lang_data)){
 ?>
     <tr>
-        <td><i class="fa fa-tag" aria-hidden="true"></i> <?php echo $row['key'];?></td>
+        <td><i class="fa fa-tag" aria-hidden="true"></i> <a href="<?php echo $url;?>/app_my_girl_display_value_field.php?field=<?php echo $row['key'];?>&ver=<?php echo $row['version'];?>"><?php echo $row['key'];?></a></td>
         <td><?php echo $row['version'];?></td>
         <td>
             <a class="buttonPro small orange" href="<?php echo $url.'/app_my_girl_display_lang.php';?>?edit=<?php echo $row['key'];?>&ver=<?php echo $row['version'];?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa giá trị</a>

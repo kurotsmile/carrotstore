@@ -184,7 +184,7 @@ if($function=='get_info_music_by_type'){
 
 if($function=='get_chat_by_id'){
     $id=$_POST['id'];
-    $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever` FROM `app_my_girl_$lang` WHERE `id`='$id'  AND `disable`=0  LIMIT 1";
+    $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `id`='$id'  AND `disable`=0  LIMIT 1";
     echo json_encode(get_chat($link,$txt_query_chat,$lang));
 }
 
@@ -261,6 +261,17 @@ if($function=='add_command'){
         $query_add_command=mysqli_query($link,"INSERT INTO `app_my_girl_brain` (`question`, `answer`, `status`, `effect`, `sex`, `langs`, `face`, `action`, `author`, `character_sex`, `version`, `os`, `limit_chat`, `color_chat`, `id_question`, `type_question`, `md5`, `id_device`,`links`) VALUES ('$question', '$answer', '0', '0', '$sex', '$lang', '0', '0', '0', '$character_sex', '2', '$os', '$limit_chat','$color', '$pater', '$pater_type', '$md5', '$id_device','$link_chat');");
         echo "Add command success!!!";
     }
+    exit;
+}
+
+if($function=='list_radio'){
+    $arr_radio=array();
+    $query_list_radio=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` WHERE `lang`='$lang' ORDER BY RAND()  LIMIT 20");
+    while ($radio=mysqli_fetch_assoc($query_list_radio)) {
+        $radio["icon"]=$url."/thumb.php?src=".$url."/app_mygirl/obj_radio/icon_".$radio['id'].".png&size=50x50&trim=1";
+        array_push($arr_radio,$radio);
+    }
+    echo json_encode($arr_radio);
     exit;
 }
 ?>

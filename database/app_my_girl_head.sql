@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -23,6 +23,12 @@ INSERT INTO `app_my_girl_head` (`id`, `name`, `price`, `id_store`, `character`, 
 (3,	'Purple iridescent',	'0',	'com.product1.bk1',	'0',	'misaki'),
 (8,	'Violet',	'0',	'com.product1.thanh',	'1',	'yuko'),
 (9,	'Light Blue',	'0',	'com.product1.thanh',	'1',	'yuko'),
-(10,	'Flower',	'0',	'com.product1.thanh',	'1',	'yuko');
+(10,	'Flower',	'0',	'com.product1.thanh',	'1',	'yuko'),
+(11,	'Default',	'0',	'',	'',	'fumiko'),
+(12,	'Fumiko 2',	'0',	'',	'',	'fumiko'),
+(13,	'Toko',	'0',	'',	'',	'toko'),
+(14,	'Toko2',	'0',	'',	'',	'toko'),
+(15,	'Yuji',	'0',	'',	'',	'yuji'),
+(16,	'Yuji 2',	'0',	'',	'',	'yuji');
 
--- 2021-03-29 13:03:48
+-- 2021-05-18 16:10:31

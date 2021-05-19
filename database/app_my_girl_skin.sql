@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -27,6 +27,20 @@ INSERT INTO `app_my_girl_skin` (`id`, `name`, `price`, `id_store`, `type`) VALUE
 (8,	'Princess',	'0',	'com.product1.thanh',	'unitychan_girl'),
 (9,	'cuite',	'0',	'com.product1.thanh',	'unitychan_girl'),
 (10,	'summer',	'0',	'com.product1.bk1',	'unitychan_girl'),
-(11,	'Rainbow',	'1',	'com.product1.bk1',	'unitychan_girl');
+(11,	'Rainbow',	'1',	'com.product1.bk1',	'unitychan_girl'),
+(12,	'Fumiko dress',	'0',	'',	'fumiko_dress'),
+(13,	'Fumiko dress',	'0',	'',	'fumiko_dress'),
+(14,	'Fumiko dress',	'0',	'',	'fumiko_dress'),
+(15,	'Kero',	'0',	'',	'kero'),
+(16,	'Kero',	'0',	'',	'kero'),
+(17,	'Kero',	'0',	'',	'kero'),
+(18,	'Kero',	'0',	'',	'kero'),
+(19,	'Pajama 2',	'0',	'',	'pajama'),
+(20,	'Pajama',	'0',	'',	'pajama'),
+(21,	'Pajama 3',	'0',	'',	'pajama'),
+(22,	'School',	'0',	'',	'school'),
+(23,	'School',	'0',	'',	'school'),
+(24,	'Elderly suit',	'0',	'',	'yuji'),
+(25,	'Yuji 2',	'0',	'',	'yuji');
 
--- 2021-03-29 13:01:58
+-- 2021-05-18 16:10:13
