@@ -12,6 +12,7 @@ class Carrot_CMS{
     private $data_temp;
     private $path;
     private $cur_url;
+    private $css=array();
 
     function __construct($name_cms,$link_mysql,$path="")
     {
@@ -55,6 +56,10 @@ class Carrot_CMS{
 
     }
 
+    public function add_css($name_file){
+        array_push($this->css,$name_file);
+    }
+
     private function html_head(){
         $html='<html>';
         $html.='<head>';
@@ -63,11 +68,22 @@ class Carrot_CMS{
         $html.='<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
         $html.='<link rel="stylesheet" href="'.$this->url_carrot_store.'/assets/css/font-awesome.min.css"/>';
         $html.='<link rel="stylesheet" href="'.$this->url_carrot_store.'/app_mobile/carrot_framework/css.css"/>';
+        $html.='<link rel="stylesheet" type="text/css" href="'.$this->url_carrot_store.'/dist/sweetalert.min.css"/>';
+        $html.='<link href="'.$this->url_carrot_store.'/assets/css/buttonPro.min.css" rel="stylesheet" />';
+        for($i=0;$i<count($this->css);$i++)
+        $html.='<link rel="stylesheet" href="'.$this->url.'/'.$this->css[$i].'"/>';
         $html.='<script src="'.$this->url_carrot_store.'/js/jquery.js"></script>';
+        $html.='<script src="'.$this->url_carrot_store.'/dist/sweetalert.min.js"></script>';
         $html.='</head>';
         $html.='<body>';
         return $html;
     }
+
+    private function msg($msg,$type='alert'){
+        $html='<script>swal("'.$msg.'");</script>';
+        return $html;
+    }
+
 
     private function html_footer(){
         if($this->data_temp!=null) $_SESSION['data_temp']=$this->data_temp;
@@ -117,6 +133,8 @@ class Carrot_CMS{
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/number_magic"><i class="fa fa-empire" aria-hidden="true"></i> Number Magic</a>';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/flower"><i class="fa fa-empire" aria-hidden="true"></i> Love Or No Love</a>';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/appai"><i class="fa fa-empire" aria-hidden="true"></i> App Ai</a>';
+        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/jigsaw_wall"><i class="fa fa-empire" aria-hidden="true"></i> Jigsaw Wall</a>';
+        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/bible"><i class="fa fa-empire" aria-hidden="true"></i> bible</a>';
         $html_menu.='</ul>';
         return $html_menu;
     }
@@ -169,11 +187,12 @@ class Carrot_CMS{
         $table=$_GET['table'];
         $arr_field=$this->get_field_in_table($table);
 
-        if(isset($_GET['status_act'])){
+        if(isset($_POST['status_act'])){
+            $table=$_POST['table'];
             $arr_field=$this->get_field_in_table($table);
-            $data_new=$_GET;
+            $data_new=$_POST;
             $txt_add_key="";
-            $txt_add_val="";
+            $txt_add_val=""; 
             for($i=0;$i<count($arr_field);$i++){
                 $key_field=$arr_field[$i];
                 $val_field=$data_new[$key_field];
@@ -191,7 +210,7 @@ class Carrot_CMS{
             else $html.="Lỗi:".mysqli_error($this->link_mysql);
         }
 
-        $html.='<form id="add_obj"><table>';
+        $html.='<form id="add_obj" method="post"><table>';
         for($i=0;$i<count($arr_field);$i++){
             $html.='<tr>';
             $html.='<td>'.$arr_field[$i].'</td>';
@@ -202,7 +221,7 @@ class Carrot_CMS{
         $html.='<input type="hidden" name="table" value="'.$table.'"/>';
         $html.='<input type="hidden" name="function" value="add_obj"/>';
         $html.='<input type="hidden" name="status_act" value="0"/>';
-        $html.='<button class="btn"><i class="fa fa-plus-square" aria-hidden="true"></i> Hoàn tất</button></form>';
+        $html.='<button class="buttonPro"><i class="fa fa-plus-square" aria-hidden="true"></i> Hoàn tất</button></form>';
         return $html;
     }
 
@@ -273,6 +292,7 @@ class Carrot_CMS{
 
     public function html_show(){
 
+        $page_view='';if(isset($_GET['page'])) $page_view=$_GET['page'];if(isset($_POST['page'])) $page_view=$_POST['page'];
         $function='';if(isset($_GET['function'])) $function=$_GET['function'];if(isset($_POST['function'])) $function=$_POST['function'];
 
         echo $this->html_head();
@@ -288,18 +308,22 @@ class Carrot_CMS{
             $this->add_menu("Đăng xuất","fa-sign-out","",$this->url."?logout=1");
             echo $this->show_menu($show_menu);
 
-            if($function!=''){
-                echo $this->{$function}();
+            if($page_view!=''){
+                include_once('page_'.$page_view.'.php');
             }else{
-                $cms_menu=$this->menu[$show_menu];
-                if($cms_menu->tabel!="") echo $this->html_table($cms_menu->tabel);
-                if($cms_menu->function!=""){
-                    $data_function=json_decode($cms_menu->function);
-                    $call_func=$data_function->function;
-                    $this->{$call_func}($data_function);
+                if($function!=''){
+                    echo $this->{$function}();
+                }else{
+                    $cms_menu=$this->menu[$show_menu];
+                    if($cms_menu->tabel!="") echo $this->html_table($cms_menu->tabel);
+                    if($cms_menu->function!=""){
+                        $data_function=json_decode($cms_menu->function);
+                        $call_func=$data_function->function;
+                        $this->{$call_func}($data_function);
+                    }
+                    if($cms_menu->php!="") include_once($this->path.'/'.$cms_menu->php);
+                    if($cms_menu->php_cms!="") include_once($cms_menu->php_cms);
                 }
-                if($cms_menu->php!="") include_once($this->path.'/'.$cms_menu->php);
-                if($cms_menu->php_cms!="") include_once($cms_menu->php_cms);
             }
         } 
 

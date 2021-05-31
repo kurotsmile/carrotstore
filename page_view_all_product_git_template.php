@@ -16,24 +16,29 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
                     <div class="desc">
                     <?php echo limit_words(get_desc_product_lang($link,$row['id'],$_SESSION['lang']),20); ?>
                     </div>
-						<?php
-						$query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
-						while($row_l=mysqli_fetch_assoc($query_link_list)){
-						?>
-                        <a title="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" alt="<?php echo $label_download_on.' ('.$row_l['name'].')';?>" class="buttonPro small green" href="<?php echo $row_l['link'];?>" target="_blank" rel="noopener"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i></a>
-						<?php }?>
-                        <?php
-                            if(file_exists('product_data/'.$row['id'].'/ios/manifest.plist')){
-                        ?>
-                            <a class="buttonPro small green jailbreak" href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $row['id'];?>/ios/manifest.plist" target="_blank" rel="noopener" id_product="<?php echo $row['id']; ?>"><i class="fa fa-apple" aria-hidden="true"></i></a>
-                        <?php }?>
+                    <?php
+                    $width_rate=get_star_width($link,$row['id'],'product');
+                    ?>
+                    <div class="app_star">
+                        <div class="app_star1">&nbsp;</div>
+                        <div style="width: <?php echo $width_rate;?>px;" class="app_star2">&nbsp;</div>
+                    </div>
                 </div>
                 <div class="app_type">
                     <?php echo $label_loai.' : <a  href="'.URL.'/type/'.$row['type'].'"> '.lang($link,$row['type']).'</a>'; ?>
                 </div>
                 <div class="app_action">
-                <a href="<?php echo $link_app;?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="buttonPro small "><i class="fa fa-chevron-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
-                <button onclick="show_menu_app(this,0);return false;" class="buttonPro small btn_more"><i class="fa fa-ellipsis-h"></i></button>
+                <?php
+                        $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."'");
+                        while($link_store=mysqli_fetch_assoc($query_link_store)){
+                            $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
+                            $data_store_link=mysqli_fetch_assoc($query_store_link);
+                            if($data_store_link['id']!="1")
+                                echo '<a class="store_link buttonPro small green" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
+                            else
+                                echo '<a class="store_link buttonPro small green jailbreak"  id_product="'.$row['id'].'" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
+                        }
+                        ?>
                 </div>
                     <div class="menu_more">
 						<?php
@@ -49,14 +54,6 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
                         <?php }?>
                         <a href="#" style="width: auto" onclick="$(this).parent().parent().removeClass('menu_app');return false;" class="buttonPro small"><i class="fa fa-arrow-circle-o-left"></i></a>
                     </div>
-                <?php
-                $width_rate=get_star_width($link,$row['id'],'product');
-                ?>
-                <div class="app_star">
-                    <div class="app_star1">&nbsp;</div>
-                    <div style="width: <?php echo $width_rate;?>px;" class="app_star2">&nbsp;</div>
-                </div>
-
                 <script>
                 arr_id_obj.push(<?php echo $row['id']; ?>);
                 </script>

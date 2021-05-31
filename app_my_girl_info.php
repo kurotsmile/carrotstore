@@ -4,36 +4,7 @@ $arr_country_work = array();
 if (isset($data_user_carrot['country_work'])) {
     $arr_country_work = json_decode($data_user_carrot['country_work']);
 }
-$char_view_type = '0';
-
-if (isset($_GET['char_view_type'])) {
-    $char_view_type = $_GET['char_view_type'];
-}
-
-if (isset($_SESSION['char_view'])) {
-    $char_view = $_SESSION['char_view'];
-}
-
-Class Char
-{
-    public $date = array();
-    public $data = array();
-}
-
-$c = new Char();
-
-if ($char_view_type == '2') {
-    $log_month = mysqli_query($link,"SELECT `dates`,`key` FROM `app_my_girl_log_data`");
-    while ($row_log = mysqli_fetch_assoc($log_month)) {
-        array_push($c->date, $row_log['dates']);
-        array_push($c->data, $row_log['key']);
-    }
-    mysqli_free_result($log_month);
-}
 ?>
-    <script src="<?php echo $url; ?>/js/Chart.min.js"></script>
-
-
     <div style="width: 100%;float:left;background-color: none !important;" id="menu_child_home">
         <?php
 
@@ -55,167 +26,10 @@ if ($char_view_type == '2') {
         <?php } ?>
     </div>
 
-    <h2 style=" width: 95%;">
-        Dữ liệu người dùng đã trò chuyện <span  class="syn app_my_girl_key"  syn="app_my_girl_key"></span>
-    </h2>
-
-    <div style="display: inline-block;width: 95%;float: left;">
-        &nbsp;
-        <canvas id="myChart" style="position: relative;" width="100%" height="20px"></canvas>
- <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var chart = new Chart(ctx, {
-                type: <?php if ($char_view_type == '0') {
-                    echo '"bar"';
-                } else {
-                    echo '"line"';
-                } ?>,
-                data: {
-                    <?php  if($char_view_type == '0'){?>labels: ["hôm nay :<?php echo date('Y/m/d', time()); ?>"],<?php } ?>
-                    <?php  if($char_view_type == '2'){?>labels: <?php echo json_encode($c->date);?>,<?php } ?>
-                    datasets: [
-                        <?php
-                        if ($char_view_type == '0') {
-                            $txt_out_data_char = '';
-                            for ($i_c = 0; $i_c < count($arr_country_work); $i_c++) {
-                                $color = 'rgb(' . rand(0, 225) . ', ' . rand(0, 225) . ', ' . rand(0, 225) . ')';
-                                $s_lang = $arr_country_work[$i_c];
-                                $query_data = mysqli_query($link,"SELECT COUNT(*) FROM `app_my_girl_key` WHERE `lang`='$s_lang' ORDER BY `lang` DESC");
-                                $a = mysqli_fetch_array($query_data);
-                                $txt_out_data_char .= '{';
-                                $txt_out_data_char .= 'label:"' . $s_lang . '",';
-                                $txt_out_data_char .= 'fill: false,';
-                                $txt_out_data_char .= "backgroundColor: '$color',";
-                                $txt_out_data_char .= "borderColor: '$color',";
-                                $txt_out_data_char .= "data:[" . $a[0] . "]";
-                                $txt_out_data_char .= '},';
-                                mysqli_free_result($query_data);
-                            }
-                            $txt_out_data_char = substr($txt_out_data_char, 0, strlen($txt_out_data_char) - 1);
-                            echo $txt_out_data_char;
-                        }
-
-                        if ($char_view_type == '2') {
-                            echo '{';
-                            echo 'label: "Tổng dữ liệu đã trò chuyện từ đầu tháng đến giờ",';
-                            echo 'backgroundColor: "#208000",';
-                            echo 'borderColor: "#208000",';
-                            echo 'fill:true,';
-                            echo 'data:' . json_encode($c->data) . '';
-                            echo '},';
-                        }
-                        ?>
-                    ]
-                },
-                options: {}
-            });
-
-
-            function show_all_data_os() {
-                chart.destroy();
-                $.ajax({
-                    url: "app_my_girl_jquery.php",
-                    type: "get",
-                    data: "function=show_char_all_data_os",
-                    success: function (data, textStatus, jqXHR) {
-                        var result = $.parseJSON(data);
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        chart = new Chart(ctx, {
-                            type: 'line',
-                            data: {
-                                labels: result['arr_date'],
-                                datasets: [{
-                                    label: "Android",
-                                    backgroundColor: '#208000',
-                                    borderColor: '#208000',
-                                    fill: false,
-                                    data: result['arr_android'],
-                                }, {
-                                    label: "Ios",
-                                    backgroundColor: '#ff6633',
-                                    borderColor: '#ff6633',
-                                    fill: false,
-                                    data: result['arr_ios'],
-                                }]
-                            },
-                            options: {}
-                        });
-                    }
-                });
-            }
-
-            function show_all_data_ver() {
-                chart.destroy();
-                $.ajax({
-                    url: "app_my_girl_jquery.php",
-                    type: "get",
-                    data: "function=show_char_all_data_ver",
-                    success: function (data, textStatus, jqXHR) {
-                        var result = $.parseJSON(data);
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        chart = new Chart(ctx, {
-                            type: 'line',
-                            data: {
-                                labels: result['arr_date'],
-                                datasets: [{
-                                    label: "Ver 2D",
-                                    backgroundColor: '#3366ff',
-                                    borderColor: '#3366ff',
-                                    fill: false,
-                                    data: result['arr_ver1'],
-                                }, {
-                                    label: "Ver 3D",
-                                    backgroundColor: '#9900cc',
-                                    borderColor: '#9900cc',
-                                    fill: false,
-                                    data: result['arr_ver2'],
-                                }]
-                            },
-                            options: {}
-                        });
-                    }
-                });
-            }
-
-            function show_data_month() {
-                chart.destroy();
-                $.ajax({
-                    url: "app_my_girl_jquery.php",
-                    type: "get",
-                    data: "function=show_data_month",
-                    success: function (data, textStatus, jqXHR) {
-                        var result = $.parseJSON(data);
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        chart = new Chart(ctx, {
-                            type: 'line',
-                            data: {
-                                labels: result['arr_date'],
-                                datasets: [{
-                                    label: "Dữ liệu tháng",
-                                    backgroundColor: '#3366ff',
-                                    borderColor: '#3366ff',
-                                    fill: true,
-                                    data: result['arr_ver1'],
-                                }]
-                            },
-                            options: {}
-                        });
-                    }
-                });
-            }
-</script>
-
-
-    </div>
-
     <div id="frm_seach">
         <div class="col">
-
-            <?php if ($char_view_type == '1') { ?>
-                <a href="<?php echo $url; ?>/vl?char_view_type=0" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Hôm nay</a>
-            <?php } else { ?>
-                <a href="<?php echo $url; ?>/vl?char_view_type=2" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Tổng </a>
-            <?php } ?>
+            <a href="<?php echo $url; ?>/vl?char_view_type=0" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Hôm nay</a>
+            <a href="<?php echo $url; ?>/vl?char_view_type=2" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Tổng </a>
             <button onclick="show_all_data_os()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Nền tản</button>
             <button onclick="show_all_data_ver()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Phiên bản</button>
             <button onclick="show_data_month()" class="buttonPro small yellow"><i class="fa fa-bar-chart"></i> Tháng</button>
@@ -249,13 +63,17 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
         }else{
             $query_count_msg_sex_0=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_msg_$langsel` WHERE `sex`='0' and `character_sex` = '1' LIMIT 1");
             $query_count_msg_sex_1=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_msg_$langsel` WHERE `sex`='1' and `character_sex` = '0' LIMIT 1");
+            $query_count_msg_sex_0_0=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_msg_$langsel` WHERE `sex`='0' and `character_sex` = '0' LIMIT 1");
+            $query_count_msg_sex_1_1=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_msg_$langsel` WHERE `sex`='1' and `character_sex` = '1' LIMIT 1");
             $data_count_msg_sex_0=mysqli_fetch_assoc($query_count_msg_sex_0);
             $data_count_msg_sex_1=mysqli_fetch_assoc($query_count_msg_sex_1);
+            $data_count_msg_sex_0_0=mysqli_fetch_assoc($query_count_msg_sex_0_0);
+            $data_count_msg_sex_1_1=mysqli_fetch_assoc($query_count_msg_sex_1_1);
         }
     }else{
-        $data_count_msg['c']='0 (none)';
-        $data_count_msg_sex_0['c']='0 (none)';
-        $data_count_msg_sex_1['c']='0 (none)';
+        $data_count_msg['c']='0';
+        $data_count_msg_sex_0['c']='0';
+        $data_count_msg_sex_1['c']='0';
     }
 
     $query_count_chat=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$langsel` LIMIT 1");
@@ -266,13 +84,19 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
         }else{
             $query_count_chat_sex_0=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$langsel` WHERE `sex`='0' and `character_sex` = '1' LIMIT 1");
             $query_count_chat_sex_1=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$langsel` WHERE `sex`='1' and `character_sex` = '0' LIMIT 1");
+            $query_count_chat_sex_0_0=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$langsel` WHERE `sex`='0' and `character_sex` = '0' LIMIT 1");
+            $query_count_chat_sex_1_1=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `app_my_girl_$langsel` WHERE `sex`='1' and `character_sex` = '1' LIMIT 1");
             $data_count_chat_sex_0=mysqli_fetch_assoc($query_count_chat_sex_0);
             $data_count_chat_sex_1=mysqli_fetch_assoc($query_count_chat_sex_1);
+            $data_count_chat_sex_0_0=mysqli_fetch_assoc($query_count_chat_sex_0_0);
+            $data_count_chat_sex_1_1=mysqli_fetch_assoc($query_count_chat_sex_1_1);
         }
     }else{
         $data_count_chat['c']='0 (none)';
         $data_count_chat_sex_0['c']='0 (none)';
         $data_count_chat_sex_1['c']='0 (none)';
+        $data_count_chat_sex_0_0['c']='0 (none)';
+        $data_count_chat_sex_1_1['c']='0 (none)';
     }
 
     $query_count_brain=mysqli_query($link,"SELECT COUNT(`question`) as c FROM `app_my_girl_brain` WHERE `langs`='$langsel' and `tick`='0'");
@@ -334,12 +158,13 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                 <li>
                     <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>" target="_blank">Lịch sử trò chuyện</a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank"><i class="fa fa-mars" aria-hidden="true"></i></a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-venus" aria-hidden="true"></i></i></a>
                     <ul>
-                        <li><a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Nam - nữ</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0&view_group=1" target="_blank"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
                         <li>
-                            <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ - nam</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
-                            <?php if (($langsel == "vi")||($langsel=="en")) { ?>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ - nữ </a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
-                            <?php } ?>
+                            <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Nam - nữ</a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0&view_group=1" target="_blank"><i class="fa fa-caret-right" aria-hidden="true"></i></a>&nbsp;
+                            <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=0" target="_blank">Nam - Nam</a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=0&view_group=1" target="_blank"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ - nam</a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></a>&nbsp;
+                            <a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ - nữ </a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_history.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&view_group=1" target="_blank" title="Xem lịch sử theo người dùng"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </li>
@@ -347,8 +172,14 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                 <li>
                     <a class="syn app_my_girl_msg_<?php echo $langsel; ?>" syn="app_my_girl_msg_<?php echo $langsel; ?>" href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&character_sex=1" target="_blank">Câu thoại trò chuyện:<?php echo $data_count_msg['c']; ?></a>
                     <ul>
-                        <li><a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam:<?php echo $data_count_msg_sex_0['c']; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a></li>
-                        <li><a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ:<?php echo $data_count_msg_sex_1['c']; ?></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a></li>
+                        <li>
+                            <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam - nữ :<?php echo $data_count_msg_sex_0['c']; ?></a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a>&nbsp;&nbsp;
+                            <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ - nam:<?php echo $data_count_msg_sex_1['c']; ?></a>&nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=0" target="_blank">Nam - nam:<?php echo $data_count_msg_sex_0_0['c']; ?></a> &nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a>&nbsp;&nbsp;
+                            <a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ - Nữ:<?php echo $data_count_msg_sex_1_1['c']; ?></a>&nbsp;<a href="<?php echo $url; ?>/app_my_girl_msg.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a>
+                        </li>
                     </ul>
                 </li>
 
@@ -356,18 +187,29 @@ for ($i = 0; $i < count($arr_country_work); $i++) {
                     <a class="syn app_my_girl_<?php echo $langsel; ?>" syn="app_my_girl_<?php echo $langsel; ?>" href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0" target="_blank">Câu chat trò chuyện:<?php echo $data_count_chat['c']; ?></a>
                     <ul>
                         <li>
-                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam:<?php echo $data_count_chat_sex_0['c']; ?></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" target="_blank">Nam - Nữ:<?php echo $data_count_chat_sex_0['c']; ?></a>
                             <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></i></a>
-                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&tip=1" target="_blank" title="Xem các câu thoại gợi ý nam"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1&tip=1" target="_blank"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
                             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=1" title="Thêm trò chuyện nam" target="_blank"><i class="fa fa-plus"></i></a>
                         </li>
 
                         <li>
-                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ:<?php echo $data_count_chat_sex_1['c']; ?></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></a></i>
-                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&tip=1" target="_blank" title="Xem các câu thoại gợi ý nữ"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" target="_blank">Nữ - Nam:<?php echo $data_count_chat_sex_1['c']; ?></a>&nbsp;<a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></a></i>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&tip=1" target="_blank"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
                             <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0" title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
                         </li>
 
+                        <li>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=0" target="_blank">Nam - Nam:<?php echo $data_count_chat_sex_0_0['c']; ?></a>&nbsp;<a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></a></i>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=0&tip=1" target="_blank"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=0&character_sex=0" title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
+                        </li>
+
+                        <li>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" target="_blank">Nữ - Nữ:<?php echo $data_count_chat_sex_1_1['c']; ?></a>&nbsp;<a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=0&disable_chat=1" target="_blank"><i class="fa fa-eye-slash"></a></i>
+                            <a href="<?php echo $url; ?>/app_my_girl_chat.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1&tip=1" target="_blank"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a>
+                            <a href="<?php echo $url; ?>/app_my_girl_add.php?lang=<?php echo $langsel; ?>&sex=1&character_sex=1" title="Thêm trò chuyện nữ" target="_blank"><i class="fa fa-plus"></i></a>
+                        </li>
                     </ul>
                 </li>
 

@@ -197,16 +197,17 @@ function hide_row_true(){
             </td>
             <?php 
             if($lang_2!=''){
+                $s_style_row='';
                 $val_lang2='';
-                if(isset($lang_2_data_display[$row['key']])){ $val_lang2=$lang_2_data_display[$row['key']];}
+                if(isset($lang_2_data_display[$row['key']])){ $val_lang2=$lang_2_data_display[$row['key']];}else{ $s_style_row='style="background-color: #ffc1c1"';}
             ?>
             <td>
                 <span class="buttonPro small" onclick="$(this).css('color','red');translation_tag('inp_<?php echo $row['key'];?>','<?php echo $edit_lang;?>','<?php echo $lang_2;?>');return false;"><i class="fa fa-language" aria-hidden="true"></i> Dịch thuật (<?php echo $lang_2;?>)</span>
             </td>
             <td>
-                <input id="inp_<?php echo $row['key'];?>_2" name="lang_val2[]" value="<?php echo $val_lang2;?>" />
+                <input id="inp_<?php echo $row['key'];?>_2" <?php echo $s_style_row;?> name="lang_val2[]" value="<?php echo $val_lang2;?>" />
             </td>
-            <td><span class="buttonPro small" onclick="paste_tag('inp_<?php echo $row['key'];?>_2');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span></td>
+            <td><span class="buttonPro small" onclick="paste_tag('inp_<?php echo $row['key'];?>_2');$('#inp_<?php echo $row['key'];?>_2').css('background-color','white');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i> Dán</span></td>
             <?php }?>
             <td>
             <a class="buttonPro small" href="<?php echo $url;?>/app_my_girl_display_value_field.php?field=<?php echo $row['key'];?>&lang=<?php echo $edit_lang;?>&ver=<?php echo $ver;?>"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Sửa dữ liệu theo trường</a>

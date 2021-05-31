@@ -54,7 +54,18 @@ $data_type=mysqli_fetch_array($query_type);
                 mysqli_query($link,"UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data['id']."';");
                 ?></span><br/>
             <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
-            
+            <br/>
+			<?php
+			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
+			while($link_store=mysqli_fetch_assoc($query_link_store)){
+                $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
+                $data_store_link=mysqli_fetch_assoc($query_store_link);
+                if($data_store_link['id']!="1")
+				    echo '<a class="store_link" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
+                else
+                    echo '<a class="store_link jailbreak"  id_product="'.$data['id'].'" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
+			}
+			?>
             <?php if($data["link_youtube"]!=''){?><br /><a onclick="play_video('<?php echo $data["link_youtube"];?>');return false;" ><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
 			<?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
 			<?php
@@ -78,11 +89,14 @@ $data_type=mysqli_fetch_array($query_type);
 			<?php
 			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
 			while($link_store=mysqli_fetch_assoc($query_link_store)){
-				echo '<li><a href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/assets/img_link/'.$link_store['icon'].'.jpg" /></a></li>';
+                $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
+                $data_store_link=mysqli_fetch_assoc($query_store_link);
+                if($data_store_link['id']!="1")
+				    echo '<li><a href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$link_store['icon'].'.jpg" /></a></li>';
+                else
+                    echo '<li><a href="'.$link_store['link'].'" id_product="'.$data['id'].'" class="jailbreak" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$link_store['icon'].'.jpg" /></a></li>';
 			}
 			?>
-            <?php if(file_exists('product_data/'.$data['id'].'/ios/manifest.plist')){ ?><li><a href="itms-services://?action=download-manifest&amp;url=<?php echo 'https://'.$name_host;?>/product_data/<?php echo $data['id'];?>/ios/manifest.plist" target="_blank" rel="noopener" class="jailbreak"  id_product="<?php echo $data['id']; ?>"><img src="<?php echo $url.'/images/ipa_download.png';?>" /></a></li><?php }?>
-			
             </ul>
         </p>
 

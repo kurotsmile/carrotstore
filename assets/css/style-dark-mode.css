@@ -99,6 +99,8 @@ img.lazyload:not([src]) {
 #menu_download li a img{
     width: 144px;
 }
+.store_link{margin-right:5px;}
+.store_link img{width: 15px;height: 15px;margin-top: 5px;margin-bottom: 5px;filter: brightness(0) invert(1);}
 
 #account_login{
   position: absolute;
@@ -386,11 +388,7 @@ tr:nth-child(even) {background-color: rgb(0, 0, 0)}
     overflow-y: auto;
     float: left;
 }
-.app .app_star{
-	position: absolute;
-	margin-top: 153px;
-	margin-left: 248px;
-}
+.app .app_star{float: left;width: 100%;margin-top: 10px;}
 .app .app_star1{
 	position: absolute;
 	width: 70px;
@@ -430,7 +428,9 @@ tr:nth-child(even) {background-color: rgb(0, 0, 0)}
 .app .app_action a{
 	margin: 1px;
 }
-
+.app .app_action .store_link{margin:2px;}
+.app .app_action .store_link img{width: 12px;height: 12px;margin: 0px;filter: brightness(0) invert(1);padding: 0px;}
+.app .app_action .store_link:hover img{filter: brightness(0);}
 .app .app_action .count_comment{
 	float: right;
 	margin-right: 10px;

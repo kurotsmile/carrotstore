@@ -45,6 +45,9 @@ RewriteRule    ^oauth oauth.php
 RewriteRule    ^remove_block_ads index.php?page_view=page_remove_block_ads.php  [NC,L]
 RewriteRule    ^404 index.php?page_view=404.php
 
+#Other extension app_mobile
+RewriteRule    ^b/([^/]*)/([^/]*)/?$   index.php?page_view=page_bible.php&id=$1&lang=$2
+
 #Other CMS
 RewriteRule    ^shortenlinks   app_mobile/shortenlinks/index.php [NC,L]
 RewriteRule    ^contactstore   app_mobile/contactstore/index.php [NC,L]

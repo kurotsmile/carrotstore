@@ -188,27 +188,6 @@ if($function=='get_chat_by_id'){
     echo json_encode(get_chat($link,$txt_query_chat,$lang));
 }
 
-if($function=='get_gprs'){
-    $location_lat=$_POST['lat'];
-    $location_lon=$_POST['lng'];
-    $place="https://maps.googleapis.com/maps/api/geocode/json?latlng=$location_lat,$location_lon&key=$key_api_google";
-        
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $place);
-    curl_setopt($curl, CURLOPT_HEADER, false);
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_ENCODING, "");
-    $curlData = curl_exec($curl);
-    curl_close($curl);
-                
-    $place = json_decode($curlData);
-    $txt_dc=$place->results[0]->formatted_address;
-    $txt_address=str_replace('Unnamed Road,','',$txt_dc);
-    echo $txt_address;
-    exit;
-}
-
 if($function=='list_music_by_account'){
     $id_user=$_POST['id_user'];
     exit;

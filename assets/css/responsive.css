@@ -10,8 +10,6 @@
     .app_link_icon{width: 30%;}
     .app .app_txt {width: 67%;}
     .app .app_icon {width: 95%; height: 95%;max-width: 104px;max-height: 104px;}
-    .app .app_star1 {position: static; float: left;}
-    .app .app_star {position: relative;margin-top:unset;margin-left:unset;float: right;margin: 0px;top: -28px;right: 10px;}
     #add_company {
         float: left;width: 50%;padding: 0px;text-align: center;color: black;margin-bottom: 10px;margin-top: 10px;margin-left: 0px;margin-right: 0px;background-color: unset;
     }

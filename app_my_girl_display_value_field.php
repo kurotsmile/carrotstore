@@ -34,13 +34,18 @@ $query_data_lang=mysqli_query($link,"SELECT `data`,`lang` FROM `app_my_girl_disp
 while($row_data=mysqli_fetch_assoc($query_data_lang)){
     $data_obj=json_decode($row_data['data']);
     $s_style_row='';
+    $data_val='';
     if($lang_old==$row_data['lang']) $s_style_row='style="background-color: burlywood;"';
+    if(isset($data_obj->{$field}))$data_val=$data_obj->{$field};
 ?>
     <tr <?php echo $s_style_row;?>>
         <td><a class="buttonPro small" href="<?php echo $url;?>/app_my_girl_display_value.php?lang=<?php echo $row_data['lang'];?>&ver=<?php echo $ver;?>&key=<?php echo $field;?>"><?php echo $row_data['lang'];?></td>
         <td>
-            <input name="field_val[]" type="text" value="<?php echo $data_obj->{$field};?>"/>
+            <input id="inp_<?php echo $row_data['lang'];?>" name="field_val[]" type="text" value="<?php echo $data_val;?>"/>
             <input name="field_lang[]" type="hidden" value="<?php echo $row_data['lang'];?>"/>
+        </td>
+        <td>
+            <span class="buttonPro small" onclick="paste_tag('inp_<?php echo $row_data['lang'];?>');return false;"><i class="fa fa-clipboard" aria-hidden="true"></i></span>
         </td>
     </tr>
 <?php

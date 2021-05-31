@@ -13,7 +13,7 @@ if(isset($_GET['delete'])){
     $id_book=$_GET['delete'];
 }
 
-$query_book=mysqli_query($link,"SELECT * FROM `book` WHERE `id` = '$id_book' LIMIT 1");
+$query_book=mysqli_query($this->link_mysql,"SELECT * FROM `book` WHERE `id` = '$id_book' LIMIT 1");
 $data_book=mysqli_fetch_array($query_book);
     
 $id_chapter='';
@@ -31,16 +31,16 @@ if(isset($_POST['chapter_book'])){
 <h3>Chi tiết sách (<?php echo $data_book['name']; ?>)</h3>
 
 <ul>
-    <li><a class="buttonPro large blue" href="<?php echo $url;?>/?page=manager_book&lang=<?php echo $data_book['lang']; ?>&type=<?php echo $data_book['type']; ?>"><i class="fa fa-list-alt"></i> Quảng lý sách</a></li>
-    <li><a class="buttonPro large yellow" href="<?php echo $url;?>/?page=add_book&edit=<?php echo $id_book;?>"> <i class="fa fa-wrench"></i> Sửa sách này</a></li>
-    <li><a class="buttonPro large red" href="<?php echo $url;?>/?page=view_book&delete=<?php echo $id_book;?>"> <i class="fa fa-trash"></i> Xóa tất cả các chương</a></li>
+    <li><a class="buttonPro large blue" href="<?php echo $this->url;?>/?page=manager_book&lang=<?php echo $data_book['lang']; ?>&type=<?php echo $data_book['type']; ?>"><i class="fa fa-list-alt"></i> Quảng lý sách</a></li>
+    <li><a class="buttonPro large yellow" href="<?php echo $this->url;?>/?page=add_book&edit=<?php echo $id_book;?>"> <i class="fa fa-wrench"></i> Sửa sách này</a></li>
+    <li><a class="buttonPro large red" href="<?php echo $this->url;?>/?page=view_book&delete=<?php echo $id_book;?>"> <i class="fa fa-trash"></i> Xóa tất cả các chương</a></li>
 </ul>
 
 <?php
 
 if(isset($_GET['delete'])){
     $id_delete=$_GET['delete'];
-    $query_delete=mysqli_query($link,"DELETE FROM `paragraph_".$data_book['lang']."` WHERE ((`book_id` = '$id_book'));");
+    $query_delete=mysqli_query($this->link_mysql,"DELETE FROM `paragraph_".$data_book['lang']."` WHERE ((`book_id` = '$id_book'));");
     if($query_delete){
         echo alert("Xóa thành công các chương!","alert");
     }
@@ -75,7 +75,7 @@ if($id_chapter!=''){
                     if ($status == 200) {
 
                         file_put_contents(dirname(__FILE__) . '/data/chapter_'.$lang_book.'/'.$id_book.'_'.$i.'.mp3', $output);
-                        echo alert("save audio book:$id_book lang:$lang_book  chap:$i success! <a href='$url/data/chapter_$lang_book"."/".$id_book."_"."$i.mp3' target='_blank'>Play</a><br/>");
+                        echo alert("save audio book:$id_book lang:$lang_book  chap:$i success! <a href='$this->url/data/chapter_$lang_book"."/".$id_book."_"."$i.mp3' target='_blank'>Play</a><br/>");
                     }
                 }
         }else{
@@ -152,13 +152,13 @@ if(isset($_POST['web_link'])){
                     $string = htmlentities($contain_p, null, 'utf-8');
                     $content = str_replace("&nbsp;", "", $string);
                     $content = html_entity_decode($content);
-                    $query_add_paragraphp=mysqli_query($link,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', '".$content."','".$order_emp."');");
+                    $query_add_paragraphp=mysqli_query($this->link_mysql,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', '".$content."','".$order_emp."');");
                 }
                 
                 $html_base->clear(); 
                 unset($html_base);
-                mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&emsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
-                mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&nbsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
+                mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&emsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
+                mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&nbsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
             echo alert('Add book id:'.$id_book.' chap: '.$chapter_book_sel.' lang:'.$lang_book.' thành công','alert');    
                 
     }*/
@@ -189,15 +189,15 @@ if(isset($_POST['web_link'])){
                     $c=trim($c);
                     $c=str_replace('{~}','',$c);
                     $contain=addslashes($c);
-                    $query_add_paragraphp=mysqli_query($link,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', N'".$contain."','".$order_emp."');");
+                    $query_add_paragraphp=mysqli_query($this->link_mysql,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', N'".$contain."','".$order_emp."');");
                     echo mysql_error();
                     $order_emp++;
                 }
                 
                 $html_base->clear(); 
                 unset($html_base);
-                mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&emsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
-                mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&nbsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
+                mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&emsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
+                mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&nbsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
                 echo alert('Add book id:'.$id_book.' chap: '.$chapter_book_sel.' lang:'.$lang_book.' thành công','alert');    
                 
     }
@@ -208,22 +208,22 @@ if(isset($_POST['web_link'])){
 <ul style="float: left;width: 100%;">
     <?php
     for($i=1;$i<=intval($data_book['chapter']);$i++){
-        $url_audio_chapter="";
-        $url_audio_check="data/chapter_".$data_book['lang']."/".$id_book."_".$i.".mp3";
-        if(file_exists($url_audio_check)){
-            $url_audio_chapter=$url_audio_check;
+        $this->url_audio_chapter="";
+        $this->url_audio_check="data/chapter_".$data_book['lang']."/".$id_book."_".$i.".mp3";
+        if(file_exists($this->url_audio_check)){
+            $this->url_audio_chapter=$this->url_audio_check;
         }
-        $query_count_paragraph=mysqli_query($link,"SELECT COUNT(`id`) FROM `paragraph_".$data_book['lang']."` WHERE `book_id` = '".$id_book."' AND `chapter` = '$i'");
+        $query_count_paragraph=mysqli_query($this->link_mysql,"SELECT COUNT(`id`) FROM `paragraph_".$data_book['lang']."` WHERE `book_id` = '".$id_book."' AND `chapter` = '$i'");
         $count_p=mysqli_fetch_array($query_count_paragraph);
     ?>
     <li <?php if($i==$id_chapter){?>style="background-color: #ff9158;"<?php }?>>Chương <?php echo $i; ?> 
-        <a class="buttonPro small blue" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fa fa-play"></i> Xem các đoạn (<?php echo $count_p[0]; ?>)</a>
-        <a class="buttonPro small green" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fa fa-plus-square"></i> Thêm đoạn vào chương này</a>
-        <a class="buttonPro small yellow" href="<?php echo $url;?>/?page=view_book&id=<?php echo $id_book;?>&chapter=<?php echo $i;?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật tệp âm thanh</a>
-        <?php if($url_audio_chapter==""){?>
+        <a class="buttonPro small blue" href="<?php echo $this->url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fa fa-play"></i> Xem các đoạn (<?php echo $count_p[0]; ?>)</a>
+        <a class="buttonPro small green" href="<?php echo $this->url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $i;?>"><i class="fa fa-plus-square"></i> Thêm đoạn vào chương này</a>
+        <a class="buttonPro small yellow" href="<?php echo $this->url;?>/?page=view_book&id=<?php echo $id_book;?>&chapter=<?php echo $i;?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Cập nhật tệp âm thanh</a>
+        <?php if($this->url_audio_chapter==""){?>
             <i style="color: red;"><i class="fas fa-exclamation-circle"></i> Chưa có tệp âm thanh</i>
         <?php }else{?>
-            <a href="<?php echo $url_audio_chapter;?>" target="_blank"><i class="fa fa-volume-up"></i> Nghe chương này</a>
+            <a href="<?php echo $this->url_audio_chapter;?>" target="_blank"><i class="fa fa-volume-up"></i> Nghe chương này</a>
         <?php }?>
     </li>
     <?php }?>

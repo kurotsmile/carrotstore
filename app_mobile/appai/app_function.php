@@ -158,15 +158,13 @@ function get_lyrics_song($link,$text,$lang){
     return $data_song;
 }
 
-
-
 function get_users($link,$sdt_or_name_or_mail,$lang){
     $list_user=array();
     $query_list_user=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `name` LIKE '%$sdt_or_name_or_mail%' OR `sdt` LIKE '%$sdt_or_name_or_mail%' OR `email` LIKE '%$sdt_or_name_or_mail%' LIMIT 20");
     while($row_user=mysqli_fetch_assoc($query_list_user)){
         $id_user=$row_user['id_device'];
         if(file_exists("../../app_mygirl/app_my_girl_".$lang."_user/".$id_user.".png")){
-            $row_user["avatar"]=URL.'/thumb.php?src='.URL.'/app_mygirl/app_my_girl_'.$lang.'_user/'.$id_user.'.png&size=50&trim=1';
+            $row_user["avatar"]=get_url_avatar_user_thumb($id_user,$lang,'50x50');
         }
         array_push($list_user,$row_user);
     }

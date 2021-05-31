@@ -67,7 +67,6 @@ if($func=='list_category'){
     echo json_encode($app);
 }
 
-
 if($func=='get_background'){
     $cat_id=$_POST['id_cat'];
     $query_bk_in_cat=mysqli_query($link,"SELECT `id` FROM `app_my_girl_background` WHERE `category` = '".$cat_id."' AND `version` = '1' ORDER BY  RAND() LIMIT 1");
@@ -101,7 +100,6 @@ if($func=='search'){
         $item->url=thumb($url.'/app_mygirl/obj_background/icon_'.$row_bk['id'].'.png','60');
         array_push($app->list,$item);
     }
-    
     echo json_encode($app);
 }
 

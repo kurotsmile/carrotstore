@@ -45,11 +45,11 @@ function show_info_user($link,$lang_sel, $id_device, $show_phone)
 function show_info_user_name($link,$lang_sel, $id_device)
 {
     $name_user = "";
-    $list_effect = mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
-    if ($list_effect != false) {
-        if (mysqli_num_rows($list_effect) > 0) {
-            $arr_data = mysqli_fetch_array($list_effect);
-            $name_user=$arr_data[0];
+    $query_name = mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang_sel` WHERE `id_device`='$id_device' LIMIT 1");
+    if ($query_name != false) {
+        if (mysqli_num_rows($query_name) > 0) {
+            $arr_data=mysqli_fetch_assoc($query_name);
+            $name_user=$arr_data['name'];
         } else {
             $name_user=$id_device;
         }
@@ -253,9 +253,9 @@ function show_row_history_prefab($link,$row)
 
     $txt_nifo_other='<a href="#" class="buttonPro small light_blue" onclick="view_pater(\''.$row['lang'].'\',\''.$row['id_question'].'\',\''.$row['type_question'].'\');return false;">'.$row['id_question'].' '.$row['type_question'].'</a> ';
 
-    if (isset($row['COUNT(*)'])) {
-        if ($row['0'] != "1") {
-            $txt_rate = "<a href='#' class='buttonPro small yellow' onclick='view_more(\"".$row['key']."\");return false;'>".$row['0']."</a>";
+    if (isset($row['c'])) {
+        if ($row['c'] != "1") {
+            $txt_rate = "<a href='#' class='buttonPro small yellow' onclick='view_more(\"".$row['key']."\");return false;'>".$row['c']."</a>";
         } else {
             $txt_rate = "<a href='#' class='buttonPro small' onclick='view_chat_see(\"".$row['id_question']."\",\"".$row['type_question']."\");return false;'>1</a>";
         }

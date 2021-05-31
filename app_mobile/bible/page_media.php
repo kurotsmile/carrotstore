@@ -4,7 +4,7 @@ $order_book='';
 $type_book='';
 $id_edit='';
 $func='add';
-$url_image='';
+$this->url_image='';
 
 if(isset($_GET['order_book'])){
     $order_book=$_GET['order_book'];
@@ -20,16 +20,16 @@ if(isset($_GET['type_book'])){
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $query_edit=mysqli_query($link,"SELECT * FROM `media` WHERE `id` = '$id_edit' LIMIT 1");
+    $query_edit=mysqli_query($this->link_mysql,"SELECT * FROM `media` WHERE `id` = '$id_edit' LIMIT 1");
     $data_media=mysqli_fetch_array($query_edit);
     $order_book=$data_media['order_book'];
     $order_chap=$data_media['order_chap'];
     $type_book=$data_media['type'];
     $func='edit';
-    $url_image='';
+    $this->url_image='';
     $file_check_path='data/media/'.$id_edit.'.png';
     if(file_exists($file_check_path)){
-        $url_image=$file_check_path;
+        $this->url_image=$file_check_path;
     }
 }
 
@@ -41,7 +41,7 @@ if(isset($_POST['order_chap'])){
     $error='';
     
     if(isset($_POST['url_image'])){
-        $url_image=$_POST['url_image'];
+        $this->url_image=$_POST['url_image'];
     }
     if($order_chap==''){
         $error.=alert('Id chương không được bỏ trống và phải là kiểu số','error');
@@ -53,9 +53,9 @@ if(isset($_POST['order_chap'])){
     
     if($error==''){
         if($func=='add'){
-            $query_add_media=mysqli_query($link,"INSERT INTO `media` (`order_chap`, `order_book`,`type`) VALUES ('$order_chap', '$order_book','$type_book');");
+            $query_add_media=mysqli_query($this->link_mysql,"INSERT INTO `media` (`order_chap`, `order_book`,`type`) VALUES ('$order_chap', '$order_book','$type_book');");
         }else{
-            $query_add_media=mysqli_query($link,"UPDATE `media` SET `order_chap` = '$order_chap', `order_book` = '$order_book',`type`='$type_book' WHERE `id` = '$id_edit';");
+            $query_add_media=mysqli_query($this->link_mysql,"UPDATE `media` SET `order_chap` = '$order_chap', `order_book` = '$order_book',`type`='$type_book' WHERE `id` = '$id_edit';");
         }
         if($query_add_media){
             $error.=alert("Thêm ảnh hoặc cập nhật thành công!","alert");
@@ -99,10 +99,10 @@ if(isset($_POST['order_chap'])){
 <label>Tệp hình ảnh</label>
 <input type="file" class="buttonPro small blue" name="image" />
 <?php
-if($url_image!=''){
+if($this->url_image!=''){
 ?><br />
-<img src="<?php echo $url_image ?>" />
-<input type="hidden" name="url_image" value="<?php echo $url_image;?>" />
+<img src="<?php echo $this->url_image ?>" />
+<input type="hidden" name="url_image" value="<?php echo $this->url_image;?>" />
 <?php }?>
 </div>
 
@@ -120,7 +120,7 @@ if($url_image!=''){
 $id_delete='';
 if(isset($_GET['delete'])){
     $id_delete=$_GET['delete'];
-    $query_delete=mysqli_query($link,"DELETE FROM `media` WHERE ((`id` = '$id_delete'));");
+    $query_delete=mysqli_query($this->link_mysql,"DELETE FROM `media` WHERE ((`id` = '$id_delete'));");
     if($query_delete){
         echo alert("Xóa thành công ($id_delete)!","alert");
         $target_file='data/media/'.$id_delete.'.png';
@@ -141,32 +141,32 @@ if(isset($_GET['delete'])){
 </tr>
 <?php
 $arr_country=array();
-$query_country=mysqli_query($link,"SELECT * FROM `country`");
+$query_country=mysqli_query($this->link_mysql,"SELECT * FROM `country`");
 while($row_country=mysqli_fetch_array($query_country)){
     array_push($arr_country,$row_country['key']);    
 }
 
-$query_media=mysqli_query($link,"SELECT * FROM `media`");
+$query_media=mysqli_query($this->link_mysql,"SELECT * FROM `media`");
 while($row_media=mysqli_fetch_array($query_media)){
-    $url_image='';
+    $this->url_image='';
     $file_check_path='data/media/'.$row_media['id'].'.png';
     if(file_exists($file_check_path)){
-        $url_image=$file_check_path;
+        $this->url_image=$file_check_path;
     }
 ?>
     <tr>
-        <td><?php if($url!=''){ ?><img src="<?php echo thumb($url_image,'50');?>"/><?php }?></td>
+        <td><?php if($this->url!=''){ ?><img src="<?php echo $this->url_carrot_store;?>/thumb.php?src=<?php echo $this->url_carrot_store;?>/app_mobile/bible/<?php echo $this->url_image;?>&size=50&trim=1"/><?php }?></td>
         <td><i class="fa fa-book"></i> <?php echo $row_media['order_book']; ?></td>
         <td><i class="fa fa-quote-left"></i> <?php echo $row_media['order_chap']; ?></td>
         <td>
-            <a href="<?php echo $url;?>?page=media&edit=<?php echo $row_media['id'];?>" class="buttonPro small yellow"><i class="fa fa-edit"></i> Sửa</a>
-            <a href="<?php echo $url;?>?page=media&delete=<?php echo $row_media['id'];?>" class="buttonPro small red"><i class="fa fa-trash-alt"></i> Xóa</a>
+            <a href="<?php echo $this->cur_url;?>&edit=<?php echo $row_media['id'];?>" class="buttonPro small yellow"><i class="fa fa-edit"></i> Sửa</a>
+            <a href="<?php echo $this->cur_url;?>&delete=<?php echo $row_media['id'];?>" class="buttonPro small red"><i class="fa fa-trash-alt"></i> Xóa</a>
         </td>
         <td>
             <?php
             for($i=0;$i<sizeof($arr_country);$i++){
             ?>
-            <a class="buttonPro small" href="<?php echo $url;?>?page=paragraph&order_book=<?php echo $row_media['order_book']; ?>&id_chapter=<?php echo $row_media['order_chap'];?>&lang_book=<?php echo $arr_country[$i]; ?>&type_book=<?php echo $row_media['type']; ?>"><?php echo $arr_country[$i]; ?></a>
+            <a class="buttonPro small" href="<?php echo $this->url;?>?page=paragraph&order_book=<?php echo $row_media['order_book']; ?>&id_chapter=<?php echo $row_media['order_chap'];?>&lang_book=<?php echo $arr_country[$i]; ?>&type_book=<?php echo $row_media['type']; ?>"><?php echo $arr_country[$i]; ?></a>
             <?php
             }
             ?>

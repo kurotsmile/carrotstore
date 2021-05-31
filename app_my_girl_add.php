@@ -846,8 +846,7 @@ if ($key != '') {
 
 <?php if (isset($_GET['type_question'])) { ?>
     <div class="box_info" id="box_father">
-        <h3>Sắp thêm vào câu thoại cha này (Bản dự thảo sắp thêm vào Editor có thể xóa mục này nếu không muốn thêm câu
-            thoại con. câu thoại hiện tại sẽ trở thành câu thoại toàn cục): <a class="buttonPro red small" onclick="remove_father();return false;">Gỡ bỏ</a></h3>
+        <h3>Sắp thêm vào câu thoại cha này (Bản dự thảo sắp thêm vào Editor có thể xóa mục này nếu không muốn thêm câu thoại con. câu thoại hiện tại sẽ trở thành câu thoại toàn cục): <a class="buttonPro red small" onclick="remove_father();return false;">Gỡ bỏ</a></h3>
         <table>
             <?php
             $id_father = $_GET['id_question'];
@@ -855,16 +854,14 @@ if ($key != '') {
             if ($type_father == "msg") {
                 $result_msg_father = mysqli_query($link,"SELECT * FROM `app_my_girl_msg_$lang_sel` WHERE `id`='$id_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
                 $row_father = mysqli_fetch_array($result_msg_father);
-                echo show_row_chat_prefab($link,$row_father, $lang_sel, '');
-                mysqli_free_result($result_msg_father);
+                echo show_row_msg_prefab($link,$row_father, $lang_sel, '');
             } else {
                 $result_chat_father = mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `id`='$id_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
                 $row_chat = mysqli_fetch_array($result_chat_father);
                 echo show_row_chat_prefab($link,$row_chat, $lang_sel,'');
-                mysqli_free_result($result_chat_father);
             }
 
-            $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father'");
+            $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father' AND `sex`='$sex' AND `character_sex`='$character_sex'");
             if (mysqli_num_rows($get_child_chat) > 0) {
                 ?>
                 <tr>
@@ -879,7 +876,6 @@ if ($key != '') {
                                 $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\'' . $row_child['id'] . '\')">Gỡ bỏ</a><input type="hidden" value="' . $row_child['id'] . '" name="chat_child[]" />';
                                 echo show_row_chat_prefab($link,$row_child, $lang_sel, $btn_remove);
                             }
-                            mysqli_fetch_array($get_child_chat);
                             ?>
                         </table>
                     </td>

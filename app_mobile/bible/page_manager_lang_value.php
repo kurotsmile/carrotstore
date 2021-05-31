@@ -55,7 +55,7 @@ if(isset($_POST['lang_key'])){
 <table>
 <?php
 $query_list_key=mysqli_query($link,"SELECT * FROM `key_lang`");
-while($row_key=mysqli_fetch_array($query_list_key)){
+while($row_key=mysqli_fetch_assoc($query_list_key)){
 ?>
 <tr>
     <td><?php echo $row_key['name_key']; ?></td>

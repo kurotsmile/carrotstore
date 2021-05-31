@@ -291,7 +291,7 @@ function box_ads($link,$id_product,$lang){
 
     $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$id_product."' LIMIT 4");
     while($link_store=mysqli_fetch_assoc($query_link_store)){
-        $html_txt.='<a href="'.$link_store['link'].'" target="_blank"><img alt="'.$link_store['name'].'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/assets/img_link/'.$link_store['icon'].'.jpg&size=85x28&trim=1" /></a>';
+        $html_txt.='<a href="'.$link_store['link'].'" target="_blank"><img alt="'.$link_store['name'].'" style="width: 85px;float: left;margin-right: 3px;margin-top: 3px;"  class="lazyload" data-src="'.URL.'/thumb.php?src='.URL.'/images_link_store/'.$link_store['icon'].'.jpg&size=85x28&trim=1" /></a>';
     }
     
     if(file_exists('product_data/'.$id_product.'/ios/app.plist')){
@@ -328,7 +328,7 @@ function show_ads_box_main($link,$id_place_ads){
         
         $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$id_product_ads."' LIMIT 4");
         while($link_store=mysqli_fetch_assoc($query_link_store)){
-            $txt_html.='<a href="'.$link_store['link'].'" target="_blank"><img alt="'.$link_store['name'].'" width="85" height="28" class="lazyload ads_box_img_link" data-src="'.URL.'/thumb.php?src='.URL.'/assets/img_link/'.$link_store['icon'].'.jpg&size=85x28&trim=1" /></a>';
+            $txt_html.='<a href="'.$link_store['link'].'" target="_blank"><img alt="'.$link_store['name'].'" width="85" height="28" class="lazyload ads_box_img_link" data-src="'.URL.'/thumb.php?src='.URL.'/images_link_store/'.$link_store['icon'].'.jpg&size=85x28&trim=1" /></a>';
         }
         
         if(file_exists('product_data/'.$id_product_ads.'/ios/app.plist')){

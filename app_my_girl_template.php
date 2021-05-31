@@ -486,7 +486,7 @@ $category_item->value = "Ngày lễ";
 array_push($array_category_store, $category_item);
 
 $arr_tag_effect = array("chat", "music", "love", "noel", "sex boy", "sex girl", "emoji", "animal", "foods", "app");
-$arr_func = array('{gio}', '{phut}', '{ngay}', '{thang}', '{nam}', '{thu}', '{ngaycuanam}', '{ngaycuanam2}', '{ten_user}', '{devicename}', '{devicetype}', '{vi_tri}', '{giai_toan}', '{thong_tin}', '{dem_ngay_gap}', '{key_chat}');
+$arr_func = array('{gio}', '{phut}', '{ngay}', '{thang}', '{nam}', '{thu}', '{ngaycuanam}', '{ngaycuanam2}', '{ten_user}','{ten_nv}', '{devicename}', '{devicetype}', '{vi_tri}', '{giai_toan}', '{thong_tin}', '{dem_ngay_gap}', '{key_chat}');
 $arr_func_sever = array('doc_ten', 'sua_ten', 'vi_tri', 'dem_ngay_gap', 'vi_tri_map', 'tim_danh_ba', 'tim_nhac', 'tim_duong', 'tim_loi_nhac');
 $q1_tag = '["có","co","Co","Có","ok","uhm","uk","okay","muon","muốn","kể đi","nghe","phai","phải","đúng","dung" ]';
 $q2_tag = '["không","khong","k","thôi","bỏ","miễn","bo","no","thoi","khong nghe","sai","ko"]';
@@ -583,7 +583,9 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
     function copy_tag(name_tag) {
         var $temp = $("<input>");
         $("body").append($temp);
-        $temp.val($("#" + name_tag).val()).select();
+        var s_copy=$("#" + name_tag).val();
+        s_copy=s_copy.replace("{ten_user}", "");
+        $temp.val(s_copy).select();
         document.execCommand("copy");
         $temp.remove();
     }

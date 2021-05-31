@@ -41,6 +41,19 @@ INSERT INTO `app_my_girl_skin` (`id`, `name`, `price`, `id_store`, `type`) VALUE
 (22,	'School',	'0',	'',	'school'),
 (23,	'School',	'0',	'',	'school'),
 (24,	'Elderly suit',	'0',	'',	'yuji'),
-(25,	'Yuji 2',	'0',	'',	'yuji');
+(25,	'Yuji 2',	'0',	'',	'yuji'),
+(26,	'Rin 1',	'0',	'',	'rin'),
+(27,	'Rin 2',	'0',	'',	'rin'),
+(28,	'Rin 2',	'0',	'',	'rin'),
+(29,	'Bikini1',	'0',	'',	'bikini'),
+(30,	'Bikini2',	'0',	'',	'bikini'),
+(31,	'Bikini2',	'0',	'',	'bikini'),
+(34,	'Bikini boy',	'0',	'',	'bikini_boy'),
+(35,	'Bikini boy',	'0',	'',	'bikini_boy'),
+(36,	'Bikini boy',	'0',	'',	'bikini_boy'),
+(37,	'Boy school',	'0',	'',	'boy_school'),
+(38,	'Boy school',	'0',	'',	'boy_school'),
+(39,	'kaoru 1',	'0',	'',	'kaoru'),
+(40,	'kaoru 2',	'0',	'',	'kaoru');
 
--- 2021-05-18 16:10:13
+-- 2021-05-23 11:50:12

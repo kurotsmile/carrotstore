@@ -111,6 +111,16 @@ function get_url_avatar_user($id_user,$lang){
     }
 }
 
+function get_url_avatar_user_thumb($id_user,$lang,$size){
+    global $url_carrot_store;
+    $url_file="app_mygirl/app_my_girl_".$lang."_user/".$id_user.".png";
+    $path_file="../../app_mygirl/app_my_girl_".$lang."_user/".$id_user.".png";
+    if (file_exists($path_file)){
+        return $url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/'.$url_file.'&size='.$size;
+    } else {
+        return "";
+    }
+}
 
 if($function=='list_app_carrot'){
     $arr_app=array();
@@ -220,7 +230,7 @@ if($function=='login'){
             $login->{"user_id"}=$data_user['id_device'];
             $login->{"user_lang"}=$key_lang;
             $login->{"user_password"}=$data_user['password'];
-            $login->{"avatar"}=get_url_avatar_user($data_user['id_device'],$lang);
+            $login->{"avatar"}=get_url_avatar_user_thumb($data_user['id_device'],$lang,'50x50');
             mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `date_cur`=NOW() WHERE `id_device`='".$data_user['id_device']."' LIMIT 1");
         }else{
             $login->{"error"}="1";
@@ -239,7 +249,7 @@ if($function=='get_user_by_id'){
     $show_user=new stdClass();
     $show_user->{"list_info"}=get_data_user($data_user);
     $show_user->{"user_id"}=$data_user['id_device'];
-    $show_user->{"avatar"}=get_url_avatar_user($user_id,$user_lang);
+    $show_user->{"avatar"}=get_url_avatar_user_thumb($user_id,$lang,'50x50');
     echo json_encode($show_user);
 }
 
@@ -318,7 +328,7 @@ if($function=='update_account'){
             $user->{"user_lang"}=$lang;
             $user->{"user_name"}=$data_user['name'];
             $user->{"user_password"}=$data_user['password'];
-            $user->{"avatar"}=get_url_avatar_user($user_id,$lang);
+            $user->{"avatar"}=get_url_avatar_user_thumb($user_id,$lang,'50x50');
             mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `date_cur`=NOW() WHERE `id_device`='$user_id' LIMIT 1");
         }else{
             $user->{"error"}="1";
@@ -499,12 +509,10 @@ if($function=='download_lang'){
     $data_lang_app=mysqli_fetch_assoc($query_get_lang);
     $data_lang_app=$data_lang_app['data'];
 
-    $data_display=mysqli_fetch_assoc(mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `lang` = '".$key."' AND `version` = '0' LIMIT 1"));
-    $arr_data=(Array)json_decode($data_display['data']);
-    $data_lang->{"setting_url_sound_test_sex0"}=$arr_data['setting_url_sound_test_sex0'];
-    $data_lang->{"setting_url_sound_test_sex1"}=$arr_data['setting_url_sound_test_sex1'];
-    $data_lang->{"lang_app"}=$data_lang_app;
-
+    $data_lang_app=json_decode($data_lang_app);
+    $data_lang_app->{"setting_url_sound_test_sex0"}=$url_carrot_store."/app_mygirl/app_my_girl_".$key."/-2.mp3";
+    $data_lang_app->{"setting_url_sound_test_sex1"}=$url_carrot_store."/app_mygirl/app_my_girl_".$key."/-3.mp3";
+    $data_lang->{"lang_app"}=json_encode($data_lang_app,JSON_UNESCAPED_UNICODE);
     echo json_encode($data_lang);
 }
 
@@ -526,12 +534,10 @@ if($function=='dowwnload_lang_by_key'){
     $data_lang_app=mysqli_fetch_assoc($query_get_lang);
     $data_lang_app=$data_lang_app['data'];
 
-    $data_display=mysqli_fetch_assoc(mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `lang` = '".$key."' AND `version` = '0' LIMIT 1"));
-    $arr_data=(Array)json_decode($data_display['data']);
-    $data_lang->{"setting_url_sound_test_sex0"}=$arr_data['setting_url_sound_test_sex0'];
-    $data_lang->{"setting_url_sound_test_sex1"}=$arr_data['setting_url_sound_test_sex1'];
-    $data_lang->{"lang_app"}=$data_lang_app;
-
+    $data_lang_app=json_decode($data_lang_app);
+    $data_lang_app->{"setting_url_sound_test_sex0"}=$url_carrot_store."/app_mygirl/app_my_girl_".$key."/-2.mp3";
+    $data_lang_app->{"setting_url_sound_test_sex1"}=$url_carrot_store."/app_mygirl/app_my_girl_".$key."/-3.mp3";
+    $data_lang->{"lang_app"}=json_encode($data_lang_app,JSON_UNESCAPED_UNICODE);
     echo json_encode($data_lang);
     exit;
 }

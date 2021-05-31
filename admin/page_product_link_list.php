@@ -4,7 +4,7 @@ if(isset($_GET['delete'])){
 	$query_delete=mysqli_query($link,"DELETE FROM `product_link_struct` WHERE  `icon` = '$id_delete' ");
 	if($query_delete){
 		echo alert('Xóa thành công cấu trúc liên kết ('.$id_delete.')','alert');
-		unlink('../assets/img_link/'.$id_delete.'.jpg');
+		unlink('../images_link_store/'.$id_delete.'.jpg');
 	}
 }
 ?>
@@ -14,8 +14,8 @@ if(isset($_GET['delete'])){
 	$cur_url=$url.'/admin/?page_view=page_product&sub_view=page_product_link';
 	$query_list_link=mysqli_query($link,"SELECT * FROM `product_link_struct`");
 	while($row=mysqli_fetch_assoc($query_list_link)){
-		if(file_exists('../assets/img_link/'.$row['icon'].'.jpg')){
-			$url_img=$url.'/assets/img_link/'.$row['icon'].'.jpg';
+		if(file_exists('../images_link_store/'.$row['icon'].'.jpg')){
+			$url_img=$url.'/images_link_store/'.$row['icon'].'.jpg';
 		}else{
 			$url_img=$url.'/product_data/app_default.png';
 		}

@@ -26,9 +26,20 @@ INSERT INTO `app_my_girl_head` (`id`, `name`, `price`, `id_store`, `character`, 
 (10,	'Flower',	'0',	'com.product1.thanh',	'1',	'yuko'),
 (11,	'Default',	'0',	'',	'',	'fumiko'),
 (12,	'Fumiko 2',	'0',	'',	'',	'fumiko'),
-(13,	'Toko',	'0',	'',	'',	'toko'),
-(14,	'Toko2',	'0',	'',	'',	'toko'),
-(15,	'Yuji',	'0',	'',	'',	'yuji'),
-(16,	'Yuji 2',	'0',	'',	'',	'yuji');
+(13,	'Toko',	'0',	'',	'',	'toko_head'),
+(14,	'Toko2',	'0',	'',	'',	'toko_head'),
+(15,	'Yuji',	'0',	'',	'',	'yuji_head'),
+(16,	'Yuji 2',	'0',	'',	'',	'yuji_head'),
+(17,	'Rin 1',	'0',	'',	'',	'rin_head'),
+(18,	'Rin 2',	'0',	'',	'',	'rin_head'),
+(19,	'Rin 3',	'0',	'',	'',	'rin_head'),
+(20,	'ken 1',	'0',	'',	'',	'ken_head'),
+(21,	'ken 1',	'0',	'',	'',	'ken_head'),
+(22,	'ken 1',	'0',	'',	'',	'ken_head'),
+(23,	'ken 1',	'0',	'',	'',	'ken_head'),
+(24,	'kaoru 1',	'0',	'',	'',	'kaoru_head'),
+(25,	'kaoru 2',	'0',	'',	'',	'kaoru_head'),
+(26,	'kaoru 2',	'0',	'',	'',	'kaoru_head'),
+(27,	'kaoru 3',	'0',	'',	'',	'kaoru_head');
 
--- 2021-05-18 16:10:31
+-- 2021-05-23 11:49:38
