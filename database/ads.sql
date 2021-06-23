@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -18,6 +18,7 @@ INSERT INTO `ads` (`id_ads`, `id_product`, `id_product_main`, `tip_download`) VA
 ('music_page',	'[\"134\",\"120\",\"121\",\"130\",\"131\",\"132\"]',	123,	'download_app_music_tip'),
 ('quote_page',	'[\"120\",\"121\",\"130\",\"131\",\"132\"]',	105,	'download_app_quote_tip'),
 ('contact_page',	'[\"120\",\"121\",\"130\",\"131\",\"132\"]',	104,	'download_app_contact_tip'),
-('link_page',	'[\"137\"]',	137,	'download_app_link_tip');
+('link_page',	'[\"137\"]',	137,	'download_app_link_tip'),
+('piano_page',	'[\"120\",\"121\",\"123\",\"130\",\"282\"]',	283,	'download_app_piano_tip');
 
--- 2021-03-10 06:51:32
+-- 2021-06-12 15:32:13

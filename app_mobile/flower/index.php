@@ -6,6 +6,8 @@ $cms=new Carrot_CMS("Flower",$link,dirname(__FILE__));
 $cms->url_carrot_store=$url_carrot_store;
 $cms->url=$url_carrot_store."/app_mobile/flower";
 $cms->database_mysql=$mysql_database;
+$cms->add_css("style.css");
+$cms->add_menu_page("Tổng quang","fa-tachometer","page_home.php");
 $cms->add_menu_table("Nhật ký hoặt động","","log_day");
 $cms->add_menu_table("Nhật ký hoặt động","","log_month");
 $cms->add_menu_table("Dữ liệu","","flower");

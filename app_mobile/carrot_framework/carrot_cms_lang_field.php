@@ -22,7 +22,7 @@ if(isset($_POST['val'])){
         $data_obj=json_encode($data_lang,JSON_UNESCAPED_UNICODE);
         $data_obj=addslashes($data_obj);
         $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
-        if($query_update_obj) echo 'Cập nhật ngôn ngữ '.$lang.' thành công!!!<br/>'; else echo 'Cập nhật ngôn ngữ '.$lang.' Thất bại!!!<br/>';
+        if($query_update_obj) echo $this->msg('Cập nhật ngôn ngữ '.$lang.' thành công!!!'); else echo $this->msg('Cập nhật ngôn ngữ '.$lang.' Thất bại!!!');
     }
 }
 ?>
@@ -38,13 +38,18 @@ foreach ($list_country as $country){
     if(isset($data_lang->{$field_show})) $val_lang=$data_lang->{$field_show}; else $val_lang="";
 ?>
     <tr>
-        <td><?php echo $country['name'];?></td>
-        <td><input name="val[]" value="<?php echo $val_lang;?>"/></td>
+        <td><strong><?php echo $country['name'];?></strong></td>
+        <td><?php echo $field_show; ?></td>
+        <td><input type="text" name="val[]" id="<?php echo $field_show; ?>_<?php echo $lang;?>" value="<?php echo $val_lang;?>"/></td>
+        <td>
+            <?php echo $this->copy($field_show.'_'.$lang); ?>
+            <?php echo $this->paste($field_show.'_'.$lang); ?>
+        </td>
     </tr>
 <?php
 }
 ?>
 </table>
-<button class="btn green">Hoàn tất</button>
+<button class="buttonPro green"><i class="fa fa-check-circle" aria-hidden="true"></i> Hoàn tất</button>
 <input name="field_show" type="hidden" value="<?php echo $field_show;?>"/>
 </form>

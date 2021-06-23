@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,25 +15,27 @@ TRUNCATE `product_name_vi`;
 INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (95,	'Sổ tay tử thần - Ryuk và Rem'),
 (95,	'Sổ tay tử thần - Ryuk và Rem'),
-(104,	'Tìm kiếm danh bạ'),
-(105,	'Yêu hay không yêu'),
-(119,	'người yêu ảo 3D'),
-(121,	'Người yêu ảo 2'),
-(122,	'Đếm cừu - Đi ngủ'),
-(123,	'Âm nhạc cho cuộc sống'),
-(127,	'Ghép hình thần tượng'),
-(128,	'Kinh Thánh Thế Giới'),
-(130,	'Người yêu AI'),
-(131,	'Trợ lý ảo dễ thương'),
-(133,	'Nhanh mắt'),
-(134,	'Chạy cùng em'),
-(135,	'Lưu web ngoại tuyến'),
 (149,	'Tây Du kỳ hiệp'),
-(139,	'Con sâu háu ăn'),
 (138,	'Số ma thuật'),
-(136,	'Tạo mật khẩu'),
-(120,	'Người yêu ảo'),
 (282,	'Người yêu ảo Pro'),
-(132,	'Người yêu của tôi');
+(127,	'Ghép hình thần tượng'),
+(130,	'Người yêu AI'),
+(132,	'Người yêu của tôi'),
+(123,	'Âm nhạc cho cuộc sống'),
+(104,	'Tìm kiếm danh bạ'),
+(120,	'Người yêu ảo'),
+(119,	'người yêu ảo 3D'),
+(134,	'Chạy cùng em'),
+(122,	'Đếm cừu - Đi ngủ'),
+(133,	'Nhanh mắt'),
+(131,	'Trợ lý ảo dễ thương'),
+(139,	'Con sâu háu ăn'),
+(135,	'Lưu web ngoại tuyến'),
+(136,	'Tạo mật khẩu'),
+(128,	'Kinh Thánh Thế Giới'),
+(283,	'Trình soạn thảo piano Midi'),
+(284,	'Cá săn mồi'),
+(121,	'Người yêu ảo 2'),
+(105,	'Yêu hay không yêu');
 
--- 2021-03-10 06:59:17
+-- 2021-06-12 16:58:38

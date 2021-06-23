@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -9,23 +9,27 @@ SET NAMES utf8mb4;
 
 DROP TABLE IF EXISTS `product_link_struct`;
 CREATE TABLE `product_link_struct` (
+  `id` tinyint(2) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `icon` varchar(20) NOT NULL
+  `icon` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `product_link_struct`;
-INSERT INTO `product_link_struct` (`name`, `icon`) VALUES
-('Apple store',	'fa-apple'),
-('Google Play',	'fa-android'),
-('Steam',	'fa-steam'),
-('Samsung Galaxy Store',	'fa-scribd'),
-('Microsoft Store',	'fa-windows'),
-('Carrot store',	'fa-play'),
-('PlayStation Store',	'fa-codepen'),
-('Chrome Web Store',	'fa-chrome'),
-('Huawei AppGallery',	'fa-pagelines'),
-('Apk link',	'fa-leaf'),
-('Nintendo Store',	'fa-codiepie'),
-('Amazon app store',	'fa-amazon');
+INSERT INTO `product_link_struct` (`id`, `name`, `icon`) VALUES
+(1,	'Apple store',	'fa-apple'),
+(2,	'Google Play',	'fa-android'),
+(3,	'Steam',	'fa-steam'),
+(4,	'Samsung Galaxy Store',	'fa-scribd'),
+(5,	'Microsoft Store',	'fa-windows'),
+(6,	'Carrot store',	'fa-play'),
+(7,	'PlayStation Store',	'fa-codepen'),
+(8,	'Chrome Web Store',	'fa-chrome'),
+(9,	'Huawei AppGallery',	'fa-pagelines'),
+(10,	'Apk link',	'fa-leaf'),
+(11,	'Nintendo Store',	'fa-codiepie'),
+(12,	'Amazon app store',	'fa-amazon'),
+(13,	'QooApp',	'fa-github-alt'),
+(14,	'Uptodown',	'fa-arrow-circle-down');
 
--- 2021-05-11 15:02:25
+-- 2021-06-12 15:39:43

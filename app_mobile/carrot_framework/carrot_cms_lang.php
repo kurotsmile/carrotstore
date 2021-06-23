@@ -38,7 +38,7 @@ $list_country=$this->get_list_lang();
             $data_obj=json_encode($obj_data,JSON_UNESCAPED_UNICODE);
             $data_obj=addslashes($data_obj);
             $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
-            echo "Thành công!";
+            echo $this->msg("Cập nhật thành công!");
         }
 ?>
 
@@ -58,7 +58,8 @@ $list_country=$this->get_list_lang();
             <tr>
             <td><input name="key[]" type="hidden" value="<?php echo $key;?>"/><?php echo $key;?></td>
             <td>
-                <input name="val[]" type="text" style="width:80%" value="<?php echo $val;?>"/><a  class="btn"><i class="fa fa-clipboard" aria-hidden="true"></i></a>
+                <input name="val[]" type="text" id="inp_<?php echo $key;?>" style="width:80%" value="<?php echo $val;?>"/> 
+                <?php echo $this->copy('inp_'.$key); ?> <?php echo $this->paste('inp_'.$key); ?>
                 <?php        
                     if($lang_to!=''){
                         $link_lang='';

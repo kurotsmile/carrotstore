@@ -58,7 +58,6 @@ $orders=mysqli_num_rows($query_count_book);
             if($query_add){
                 $name_book='';
                 echo "Thêm sách thành công!";
-                echo btn_add_work(mysql_insert_id(),$lang_book,'bible_book','add');
             }elsE{
                 echo "Thêm sách thất bại";
             }
@@ -66,7 +65,6 @@ $orders=mysqli_num_rows($query_count_book);
             $query_add=mysqli_query($this->link_mysql,"UPDATE `book` SET `name` = '$name_book', `type` = '$type_book', `lang` = '$lang_book',`chapter`=$chapter_book WHERE `id` = '$id_edit';");
             if($query_add){
                 echo "Cập nhật sách thành công!";
-                echo btn_add_work($id_edit,$lang_book,'bible_book','edit');
             }elsE{
                 echo "Cập nhật sách thất bại";
             }

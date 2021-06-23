@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -307,6 +307,15 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('midi_export_success',	'Xuất tệp Midi (.mid) thành công!'),
 ('midi_export_tip',	'Tạo tệp mid từ midi để thưởng thức hoặt nghe trên máy tính hoặt các thiết bị di động'),
 ('midi_publish_tip',	'Xuất bản sản phầm của bạn ra thế giới để mọi người cùng thưởng thức , hoặt đóng góp một bài nhạc midi nào đó . Chúng tôi sẽ kiểm duyệt bài soạn midi của bạn và chỉnh sửa để phù hợp với kho lưu trữ của hệ thống'),
-('midi_download',	'Tải nhạc MIDI');
+('midi_download',	'Tải nhạc MIDI'),
+('search_setting',	'Cài đặt tìm kiếm'),
+('search_setting_type',	'Tùy chọn chức năng tìm kiếm'),
+('search_setting_data',	'Tùy chọn nguồn dữ liệu tìm kiếm'),
+('search_setting_type_0',	'Chỉ tìm kiếm theo danh mục truy cập'),
+('search_setting_type_1',	'Tìm kiếm toàn bộ danh mục'),
+('search_setting_data_0',	'Tất cả dữ liệu trên toàn thế giới'),
+('search_setting_data_1',	'Chỉ tìm dữ liệu ở quốc gia,khu vực của bạn'),
+('search_return',	'Kết quả tìm kiếm'),
+('recognition_inp',	'Nói đi');
 
--- 2021-03-23 07:58:58
+-- 2021-06-12 15:24:41

@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -140,4 +140,4 @@ INSERT INTO `app_my_girl_nl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (87,	'zing een liedje',	'Małe TGD - Siema',	1,	0,	'#9CB4D9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'145',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ma-e-tgd-siema-87',	''),
 (88,	'zing een liedje',	'SLM - Kifesh',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'slm-kifesh-88',	'');
 
--- 2021-03-10 08:39:10
+-- 2021-06-12 16:31:47

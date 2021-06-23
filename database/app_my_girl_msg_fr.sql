@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -176,21 +176,21 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (132,	'dam',	'Février signifie un nouveau départ De l\'amour et de toutes les roses Alors soyez prêt pour cela Bon mois',	1,	1,	'#F4FF96',	'',	'',	'',	'',	'',	0,	20,	17,	0,	'',	0,	1,	0,	'',	1,	0,	2,	'424',	'',	'3',	'',	'0',	'0',	'0',	''),
 (133,	'bat_chuyen',	'Notre amour est comme un film d\'amour, mais la meilleure partie est qu\'il ne finit jamais. Joyeuse saint Valentin!',	1,	1,	'#FF8A93',	'',	'',	'',	'',	'',	0,	31,	17,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'1151',	'',	'3',	'2',	'0',	'0',	'0',	''),
 (134,	'dam',	'En ce jour de la Saint-Valentin, je désire vos doux baisers, votre chaude étreinte et la magie qui unit nos cœurs.',	1,	2,	'#FFADC5',	'',	'',	'',	'',	'',	0,	5,	17,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'15',	'',	'3',	'2',	'0',	'0',	'0',	''),
-(135,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	7,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(136,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(137,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(138,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(139,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(135,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	7,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(136,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(137,	'bat_chuyen',	'C\'était un de ces jours de mars où le soleil brille et le vent souffle froid:\r\nquand c\'est l\'été à la lumière et l\'hiver à l\'ombre',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(138,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(139,	'dam',	'Mars, quand les jours deviennent longs, que tes heures soient de plus en plus fortes pour corriger une erreur hivernale.',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
 (140,	'bat_chuyen',	'Avril est une promesse que May est tenue de tenir.',	0,	2,	'#3EF032',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	1,	1,	0,	'',	1,	0,	4,	'876',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (141,	'bat_chuyen',	'Avril est une promesse que May est tenue de tenir.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (142,	'bat_chuyen',	'Le mois de mai était arrivé, quand chaque cœur vigoureux commençait à fleurir et à porter des fruits',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'fr',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (143,	'dam',	'La saison préférée du monde est le printemps. Tout semble possible en mai',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (144,	'bat_chuyen',	'Le mois de mai était arrivé, quand chaque cœur vigoureux commençait à fleurir et à porter des fruits',	1,	2,	'#F9FFC9',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'fr',	0,	1,	0,	'',	1,	0,	5,	'649',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (145,	'dam',	'La saison préférée du monde est le printemps. Tout semble possible en mai',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'fr',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(146,	'dam',	'Je sais bien que les pluies de juin viennent de tomber.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'fr',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(147,	'bat_chuyen',	'C\'est le mois de juin, le mois des feuilles et des roses, quand des vues agréables saluent les yeux et des odeurs agréables les nez.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(148,	'bat_chuyen',	'C\'est le mois de juin, le mois des feuilles et des roses, quand des vues agréables saluent les yeux et des odeurs agréables les nez.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(149,	'dam',	'Je sais bien que les pluies de juin viennent de tomber.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'fr',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(146,	'dam',	'Je sais bien que les pluies de juin viennent de tomber.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'fr',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(147,	'bat_chuyen',	'C\'est le mois de juin, le mois des feuilles et des roses, quand des vues agréables saluent les yeux et des odeurs agréables les nez.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(148,	'bat_chuyen',	'C\'est le mois de juin, le mois des feuilles et des roses, quand des vues agréables saluent les yeux et des odeurs agréables les nez.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fr',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(149,	'dam',	'Je sais bien que les pluies de juin viennent de tomber.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'fr',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (150,	'dam',	'Quoi que juillet apporte pour vous, que ce soit bon ou mauvais; toujours garder ce sourire sur votre visage, peu importe quoi.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'fr',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (151,	'dam',	'Quoi que juillet apporte pour vous, que ce soit bon ou mauvais. toujours garder ce sourire sur votre visage, peu importe quoi.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'fr',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (152,	'bat_chuyen',	'A quoi bon la chaleur de l\'été, sans le froid de l\'hiver pour lui donner de la douceur.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'fr',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -203,4 +203,4 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (159,	'bat_chuyen',	'Pendant la saison de Covid 19, vous devez faire attention à ne pas vous concentrer sur les endroits bondés et porter un masque partout où vous allez!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (160,	'bat_chuyen',	'Pendant la saison de Covid 19, vous devez faire attention à ne pas vous concentrer sur les endroits bondés et porter un masque partout où vous allez!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-03-10 07:28:45
+-- 2021-06-12 15:57:13

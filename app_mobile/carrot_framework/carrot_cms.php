@@ -13,6 +13,7 @@ class Carrot_CMS{
     private $path;
     private $cur_url;
     private $css=array();
+    private $icon;
 
     function __construct($name_cms,$link_mysql,$path="")
     {
@@ -60,12 +61,24 @@ class Carrot_CMS{
         array_push($this->css,$name_file);
     }
 
+    private function q($string_query){
+        return mysqli_query($this->link_mysql,$string_query);
+    }
+
+    private function q_data($string_query){
+        return mysqli_fetch_assoc($this->q($string_query));
+    }
+
     private function html_head(){
         $html='<html>';
         $html.='<head>';
         $html.='<title>'.$this->name.'</title>';
         $html.='<meta charset="utf-8"/>';
         $html.='<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+        if($this->icon=="")
+            $html.='<link rel="icon" href="'.$this->url_carrot_store.'/app_mobile/carrot_framework/icon.ico"/>';
+        else
+            $html.='<link rel="icon" href="'.$this->url.'/'.$this->icon.'"/>';
         $html.='<link rel="stylesheet" href="'.$this->url_carrot_store.'/assets/css/font-awesome.min.css"/>';
         $html.='<link rel="stylesheet" href="'.$this->url_carrot_store.'/app_mobile/carrot_framework/css.css"/>';
         $html.='<link rel="stylesheet" type="text/css" href="'.$this->url_carrot_store.'/dist/sweetalert.min.css"/>';
@@ -74,16 +87,83 @@ class Carrot_CMS{
         $html.='<link rel="stylesheet" href="'.$this->url.'/'.$this->css[$i].'"/>';
         $html.='<script src="'.$this->url_carrot_store.'/js/jquery.js"></script>';
         $html.='<script src="'.$this->url_carrot_store.'/dist/sweetalert.min.js"></script>';
+        $html.='<script>function copy_tag(name_tag) {var $temp = $("<input>");$("body").append($temp);var s_copy=$("#" + name_tag).val();s_copy=s_copy.replace("{ten_user}", "");$temp.val(s_copy).select();document.execCommand("copy");$temp.remove();}';
+        $html.='function paste_tag(name_tag) {navigator.clipboard.readText().then(text => {$("#"+name_tag).val(text.trim());});}';
+        $html.='</script>';
         $html.='</head>';
         $html.='<body>';
         return $html;
+    }
+
+    public function set_icon($name_file_icon){
+        $this->icon=$name_file_icon;
+    }
+
+    private function copy($emp){
+        return '<span class="buttonPro small" onclick="copy_tag(\''.$emp.'\');$(this).addClass(\'blue\')"><i class="fa fa-files-o" aria-hidden="true"></i></span>';
+    }
+
+    private function paste($emp){
+        return '<span class="buttonPro small" onclick="paste_tag(\''.$emp.'\');$(this).addClass(\'yellow\')"><i class="fa fa-paste" aria-hidden="true"></i></span>';
+    }
+
+    private function cp($emp){
+        return $this->copy($emp).''.$this->paste($emp);
+    }
+
+    private function user($user_id,$user_lang){
+        $user_name='<i class="fa fa-user" aria-hidden="true"></i>';
+        if($user_id!=""){
+            $data_user=$this->q_data("SELECT `name`,`sex` FROM carrotsy_virtuallover.`app_my_girl_user_$user_lang` WHERE `id_device` = '$user_id' LIMIT 1");
+            if($data_user!=null){
+                if($data_user['sex']=='0')
+                    $user_name='<i class="fa fa-male" aria-hidden="true"></i> '.$data_user['name'];
+                else
+                    $user_name='<i class="fa fa-female" aria-hidden="true"></i> '.$data_user['name'];
+            }
+        }
+        return '<a target="_blank" href="'.$this->url.'?function=show_user&user_id='.$user_id.'&user_lang='.$user_lang.'" class="buttonPro small">'.$user_name.'</a>';
+    }
+
+    private $p_total_page=0;
+    private $p_current_page=1;
+    private $p_start=0;
+    private $p_limit=0;
+
+    public function setup_page($name_table){
+        $this->p_limit=50;
+        $data_count=$this->q_data("SELECT COUNT(*) as c FROM `$name_table` LIMIT 1");
+        $total_records =intval($data_count['c']);
+        $this->p_current_page=isset($_GET['p']) ? $_GET['p'] : 1;
+        $this->p_total_page=ceil($total_records / $this->p_limit);
+        if ($this->p_current_page > $this->p_total_page) {$this->p_current_page=$this->p_total_page;}else if($this->p_current_page < 1){$this->p_current_page=1;}
+        $this->p_start=($this->p_current_page-1)*$this->p_limit;
+    }
+
+    public function show_page_nav($url_cur){
+        $html='';
+        if($this->p_total_page>1){
+            $html='<div class="cms_nav_page">';
+            $html.='<a href="#" class="btn">Trang : </a>';
+            for($i=1;$i<=$this->p_total_page;$i++){
+                if($i==$this->p_current_page)
+                    $html.='<a href="'.$url_cur.'&p='.$i.'" class="btn gray">'.$i.'</a>';
+                else
+                    $html.='<a href="'.$url_cur.'&p='.$i.'" class="btn">'.$i.'</a>';
+            }
+            $html.='</div>';
+        }
+        return $html;
+    }
+
+    public function show_user(){
+        include_once("carrot_cms_user.php");
     }
 
     private function msg($msg,$type='alert'){
         $html='<script>swal("'.$msg.'");</script>';
         return $html;
     }
-
 
     private function html_footer(){
         if($this->data_temp!=null) $_SESSION['data_temp']=$this->data_temp;
@@ -112,29 +192,34 @@ class Carrot_CMS{
     function add_menu_php_cms($name_menu,$menu_icon="",$php_file){$this->add_menu($name_menu,$menu_icon,"","","","",$php_file);}
 
     private function show_menu($sel_menu){
-        $html_menu='<ul id="menu_cms">';
+        $html_menu='<ul id="menu_cms" class="menu">';
         for($i=0;$i<count($this->menu);$i++){
             $cms_menu=$this->menu[$i];
             $style_active="";
             if($sel_menu==$i) $style_active='class="active"';
             if($cms_menu->url=="")
                 $html_menu.='<a href="'.$this->url.'/index.php?menu='.$i.'" '.$style_active.'><i class="fa '.$cms_menu->icon.'" aria-hidden="true"></i> '.$cms_menu->name.'</a>';
-            else
-                $html_menu.='<a href="'.$cms_menu->url.'" '.$style_active.'><i class="fa '.$cms_menu->icon.'" aria-hidden="true"></i> '.$cms_menu->name.'</a>';
+            else{
+                if($cms_menu->icon=="fa-sign-out")
+                    $html_menu.='<a href="'.$cms_menu->url.'" '.$style_active.' class="logout"><i class="fa '.$cms_menu->icon.'" aria-hidden="true"></i> '.$cms_menu->name.'</a>';
+                else
+                    $html_menu.='<a href="'.$cms_menu->url.'" '.$style_active.'><i class="fa '.$cms_menu->icon.'" aria-hidden="true"></i> '.$cms_menu->name.'</a>';
+            }
         }
         $html_menu.='</ul>';
         return $html_menu;
     }
 
     private function show_menu_cms_other(){
-        $html_menu='<ul id="menu_cms" style="background-color: antiquewhite;">';
-        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/quick_eye"><i class="fa fa-empire" aria-hidden="true"></i> Quick Eye</a>';
+        $html_menu='<ul id="menu_cms" class="top" style="background-color: antiquewhite;">';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/carrot_framework"><i class="fa fa-empire" aria-hidden="true"></i> Carrot Framework</a>';
+        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/bible"><i class="fa fa-empire" aria-hidden="true"></i> bible</a>';
+        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/contactstore"><i class="fa fa-empire" aria-hidden="true"></i> Contact Store</a>';
+        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/quick_eye"><i class="fa fa-empire" aria-hidden="true"></i> Quick Eye</a>';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/number_magic"><i class="fa fa-empire" aria-hidden="true"></i> Number Magic</a>';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/flower"><i class="fa fa-empire" aria-hidden="true"></i> Love Or No Love</a>';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/appai"><i class="fa fa-empire" aria-hidden="true"></i> App Ai</a>';
         $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/jigsaw_wall"><i class="fa fa-empire" aria-hidden="true"></i> Jigsaw Wall</a>';
-        $html_menu.='<a href="'.$this->url_carrot_store.'/app_mobile/bible"><i class="fa fa-empire" aria-hidden="true"></i> bible</a>';
         $html_menu.='</ul>';
         return $html_menu;
     }
@@ -152,6 +237,7 @@ class Carrot_CMS{
         $list_lang=array();
         $query_country=mysqli_query($this->link_mysql,"SELECT `id`,`name`,`key` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `ver0`=1");
         while($country=mysqli_fetch_assoc($query_country)){
+            $country["icon"]=$this->url_carrot_store.'/thumb.php?src='.$this->url_carrot_store.'/app_mygirl/img/'.$country['key'].'.png&size=30&trim=1';
             array_push($list_lang,$country);
         }
         return $list_lang;
@@ -168,15 +254,15 @@ class Carrot_CMS{
     public function html_table($name_table){
         include_once("carrot_cms_table.php");
     }
-
+    
     public function show_login(){
         $html="<div id='cms_frm_login_area'>";
         $html.="<form id='cms_frm_login'>";
         $html.='<div class="frm_login_row" style="margin-top:20px;margin-bottom:20px;"><strong>'.$this->name.'</strong></div>';
-        $html.='<div class="frm_login_row"><input name="cms_username" type="text"></div>';
-        $html.='<div class="frm_login_row"><input name="cms_password" type="password"></div>';
-        $html.='<div class="frm_login_row" style="margin-top:20px;margin-bottom:20px;"><input name="cms_login" class="btn" type="submit" value="Đăng nhập"></div>';
-        if($this->msg_login_error!=null){ $html.=$this->msg_login_error;}
+        $html.='<div class="frm_login_row"><i class="fa fa-user" aria-hidden="true"></i> <label>Tên đăng nhập</label><br/><input name="cms_username" type="text"></div>';
+        $html.='<div class="frm_login_row" style="margin-top:15px;"><i class="fa fa-key" aria-hidden="true"></i> <label>Mật khẩu</label><br/><input name="cms_password" type="password"></div>';
+        $html.='<div class="frm_login_row" style="margin-top:10px;margin-bottom:20px;"><input name="cms_login" class="buttonPro blue" type="submit" value="Đăng nhập"></div>';
+        if($this->msg_login_error!=null){ $html.=$this->msg($this->msg_login_error);}
         $html.="</form>";
         $html.="</div>";
         return $html;
@@ -282,10 +368,6 @@ class Carrot_CMS{
             echo "Delete Obj fail!";
     }
 
-    private function show_setting(){
-        include_once("a.php");
-    }
-
     private function btn_function($name_function,$object_table,$id="",$filed_main=""){
         return $this->url."?function=$name_function&table=$object_table&id=$id&filed_main=$filed_main";
     }
@@ -304,11 +386,12 @@ class Carrot_CMS{
             
             $show_menu=0; if(isset($_GET['menu'])) $show_menu=$_GET['menu'];
             if($function!=''){$show_menu=-1;}else{ $this->cur_url=$this->url.'?menu='.$show_menu;}
-            $this->add_menu_php_cms("Cài đặt","fa-sliders","a.php");
+            $this->add_menu_php_cms("Công cụ","fa-sliders","carrot_cms_tool.php");
             $this->add_menu("Đăng xuất","fa-sign-out","",$this->url."?logout=1");
             echo $this->show_menu($show_menu);
 
             if($page_view!=''){
+                $this->cur_url=$this->url.'?page='.$page_view;
                 include_once('page_'.$page_view.'.php');
             }else{
                 if($function!=''){

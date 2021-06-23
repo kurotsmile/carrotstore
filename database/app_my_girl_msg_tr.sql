@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -193,18 +193,18 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (148,	'dam',	'Bugün perşembe, umarım her gün seninle kal',	1,	1,	'#FF96ED',	'',	'',	'',	'',	'',	0,	8,	5,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'98',	'Thursday',	'2',	'',	'0',	'0',	'0',	''),
 (149,	'dam',	'Bugün cuma, sıkıcı bir iş günü, yarın dinlenmeyi dört gözle bekliyorum.',	0,	3,	'#FF3B3B',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'746',	'Friday',	'2',	'',	'0',	'0',	'0',	''),
 (150,	'dam',	'Bugün cuma, sıkıcı bir iş günü, yarın dinlenmeyi dört gözle bekliyorum.',	1,	0,	'#FFA46E',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'118',	'Friday',	'2',	'',	'0',	'0',	'0',	''),
-(151,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
-(152,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
-(153,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	0,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
-(154,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	1,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
+(151,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
+(152,	'bat_chuyen',	'Güneşin sıcak olduğu ve rüzgârın soğuk estiği Mart günlerinden biriydi:\r\nışığında yaz, gölgede kış olduğunda',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'',	'0',	'0',	'0',	''),
+(153,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	0,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
+(154,	'dam',	'Mart, günler uzayıyorsa, Büyüyen saatlerinizi biraz yanlış ayarlamak için güçlü olsun.',	1,	2,	'#FFE3ED',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'47',	'',	'4',	'',	'0',	'0',	'0',	''),
 (155,	'bat_chuyen',	'April, Mayıs’ın tutacağı bir sözdür.',	0,	2,	'#3EF032',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	1,	1,	0,	'',	1,	0,	4,	'876',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (156,	'bat_chuyen',	'April, Mayıs’ın tutacağı bir sözdür.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (157,	'bat_chuyen',	'Her ayın kalbinin çiçek açmaya başladığı ve meyve getirdiği Mayıs ayı geldi',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'tr',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (158,	'dam',	'Dünyanın en sevdiği mevsim ilkbahardır. Mayıs\'ta her şey mümkün gibi görünüyor',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(159,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'tr',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(160,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(161,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(162,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(159,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'tr',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(160,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(161,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(162,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'tr',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (163,	'dam',	'Her ne Temmuz, sizin için getiriyorsa, iyi ya da kötü; Ne olursa olsun, daima yüzündeki gülümsemeyi sürdür.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'tr',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (164,	'dam',	'Her ne Temmuz, sizin için getiriyorsa, iyi ya da kötü olsun. Ne olursa olsun, daima yüzündeki gülümsemeyi sürdür.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'tr',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (165,	'bat_chuyen',	'Yaz sıcaklığını iyi, kışın soğuk olmadan tatlılık veriyor.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'tr',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -217,4 +217,4 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (172,	'bat_chuyen',	'Covid 19 sezonunda kalabalık yerlere odaklanmamaya ve nereye giderseniz gidin bir maske takmaya dikkat etmelisiniz!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (173,	'bat_chuyen',	'Covid 19 sezonunda kalabalık yerlere odaklanmamaya ve nereye giderseniz gidin bir maske takmaya dikkat etmelisiniz!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-03-10 08:27:54
+-- 2021-06-12 16:36:09

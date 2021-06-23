@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -691,7 +691,7 @@ INSERT INTO `app_my_girl_key_lang` (`key`, `value`, `lang`) VALUES
 ('voice_character_sex_1',	'google',	'ja'),
 ('voice_character_sex_1',	'google',	'ar'),
 ('voice_character_sex_1',	'google',	'tr'),
-('voice_character_sex_1',	'google',	'fi'),
+('voice_character_sex_1',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=fi&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=YThdrLCC&gender=male',	'fi'),
 ('voice_character_sex_1',	'https://ttsmp3.com/text-to-speech/Italian/',	'it'),
 ('voice_character_sex_1',	'google',	'id'),
 ('voice_character_sex_1',	'google',	'da'),
@@ -703,15 +703,15 @@ INSERT INTO `app_my_girl_key_lang` (`key`, `value`, `lang`) VALUES
 ('voice_character_sex_0 ',	'https://ttsmp3.com/text-to-speech/Portuguese/',	'pt'),
 ('voice_character_sex_0 ',	'https://ttsmp3.com/text-to-speech/French/',	'fr'),
 ('voice_character_sex_0 ',	'',	'hi'),
-('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=zh-CN&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=PL3QYYuV&gender=male',	'zh'),
+('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=zh-CN&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=YThdrLCC&gender=male',	'zh'),
 ('voice_character_sex_0 ',	'https://ttsmp3.com/text-to-speech/Russian/',	'ru'),
 ('voice_character_sex_0 ',	'https://ttsmp3.com/text-to-speech/German/',	'de'),
-('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=th&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=PL3QYYuV&gender=male',	'th'),
+('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=th&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=YThdrLCC&gender=male',	'th'),
 ('voice_character_sex_0 ',	'google',	'ko'),
 ('voice_character_sex_0 ',	'https://ttsmp3.com/text-to-speech/Japanese/',	'ja'),
-('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=ar&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=PL3QYYuV&gender=male',	'ar'),
-('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=tr&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=PL3QYYuV&gender=male',	'tr'),
-('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=fi&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=PL3QYYuV&gender=male',	'fi'),
+('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=ar&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=YThdrLCC&gender=male',	'ar'),
+('voice_character_sex_0 ',	'https://texttospeech.responsivevoice.org/v1/text:synthesize?text={txt}&lang=tr&engine=g3&name=&pitch=0.5&rate=0.5&volume=1&key=YThdrLCC&gender=male',	'tr'),
+('voice_character_sex_0 ',	'google',	'fi'),
 ('voice_character_sex_0 ',	'google',	'it'),
 ('voice_character_sex_0 ',	'',	'id'),
 ('voice_character_sex_0 ',	'https://ttsmp3.com/text-to-speech/Danish/',	'da'),
@@ -778,4 +778,4 @@ INSERT INTO `app_my_girl_key_lang` (`key`, `value`, `lang`) VALUES
 ('key_error_name',	'',	'nl'),
 ('key_error_name',	'',	'pl');
 
--- 2021-03-10 07:30:32
+-- 2021-06-12 15:31:21

@@ -12,7 +12,6 @@ if(isset($_GET['lang'])){
     $txt_query_lang=" AND `lang` = '$sel_lang'";
 }
 
-
 if(isset($_GET['key'])){
     $key=$_GET['key'];
     $sel_lang=$_GET['lang_sel'];
@@ -145,6 +144,7 @@ while($row_key=mysqli_fetch_array($list_key)){
             <a href="<?php echo $url;?>/app_my_girl_handling.php?func=keyword_warning&active_os=<?php echo $row_key['key'];?>&lang=<?php echo $row_key['lang']; ?>&os=os_window&val=0" class="buttonPro small yellow"><i class="fa fa-windows" aria-hidden="true"></i> Hiện Window</a>
             <a href="<?php echo $url;?>/app_my_girl_handling.php?func=keyword_warning&active_os=<?php echo $row_key['key'];?>&lang=<?php echo $row_key['lang']; ?>&os=os_window&val=1" class="buttonPro small blue"><i class="fa fa-windows" aria-hidden="true"></i> Ẩn Window</a>
             <a href="<?php echo $url;?>/app_my_girl_handling.php?func=keyword_warning&delete=<?php echo $row_key['key'];?>&lang=<?php echo $row_key['lang']; ?>" class="buttonPro small red"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
+            <a href="<?php echo $url;?>/app_my_girl_handling.php?key_word=<?php echo $row_key['key'];?>&func=sheep&sheep_enable=on" class="buttonPro small purple"><i class="fa fa-pagelines" aria-hidden="true"></i> đếm cừu</a>
         </td>
     </tr>
     <?php

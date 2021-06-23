@@ -51,6 +51,7 @@ RewriteRule    ^b/([^/]*)/([^/]*)/?$   index.php?page_view=page_bible.php&id=$1&
 #Other CMS
 RewriteRule    ^shortenlinks   app_mobile/shortenlinks/index.php [NC,L]
 RewriteRule    ^contactstore   app_mobile/contactstore/index.php [NC,L]
+RewriteRule    ^getcontact  app_mobile/contactstore/get_contact.php
 RewriteRule    ^work   app_mobile/work/index.php [NC,L]
 RewriteRule    ^bible   app_mobile/bible/index.php [NC,L]
 RewriteRule    ^appmusic   app_mobile/musicforlife/index.php [NC,L]

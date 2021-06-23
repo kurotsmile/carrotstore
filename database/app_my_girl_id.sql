@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -139,6 +139,9 @@ INSERT INTO `app_my_girl_id` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (86,	'riwayat obrolan',	'Saya telah membuka riwayat obrolan, Anda dapat meninjau percakapan saya dan Anda',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'id',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (87,	'apa bedanya kamu sama langit?',	'kalau langit diatas kalau kamu di hatiku',	2,	0,	'#66EAFF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	0,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'642',	'',	0,	'',	'4',	'4',	'0',	'0',	'0',	'',	''),
 (88,	'menyanyikan sebuah lagu',	'Glenn Fredly - Januari (Lirik)',	1,	1,	'#1DE300',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'502',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'glenn-fredly-januari-lirik--88',	''),
-(89,	'menyanyikan sebuah lagu',	'SISITIPSI - Alkohol',	1,	1,	'#00FFB7',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1139',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sisitipsi-alkohol-89',	'');
+(89,	'menyanyikan sebuah lagu',	'SISITIPSI - Alkohol',	1,	1,	'#00FFB7',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1139',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sisitipsi-alkohol-89',	''),
+(90,	'menyanyikan sebuah lagu',	'Cassandra - Cinta Terbaik',	1,	1,	'#0AFFF8',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'332',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'cassandra-cinta-terbaik-90',	''),
+(91,	'menyanyikan sebuah lagu',	'Repvblik - Selimut Tetangga',	1,	1,	'#3BFFF5',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1303',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'repvblik-selimut-tetangga-91',	''),
+(92,	'menyanyikan sebuah lagu',	'Gamma1 - Sayang',	1,	1,	'#D7C2FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'811',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gamma1-sayang-92',	'');
 
--- 2021-03-10 08:43:33
+-- 2021-06-12 16:53:57

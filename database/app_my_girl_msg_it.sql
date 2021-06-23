@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -43,7 +43,7 @@ CREATE TABLE `app_my_girl_msg_it` (
 
 TRUNCATE `app_my_girl_msg_it`;
 INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
-(1,	'bat_chuyen',	'Era uno di quei giorni di marzo in cui il sole splende caldo e il vento soffia forte:\r\nquando è estate nella luce e inverno nell\'ombra',	0,	2,	'#75FFA4',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'it',	1,	0,	0,	'',	1,	0,	3,	'49',	'',	'4',	'4',	'0',	'0',	'0',	''),
+(1,	'bat_chuyen',	'Era uno di quei giorni di marzo in cui il sole splende caldo e il vento soffia forte:\r\nquando è estate nella luce e inverno nell\'ombra',	0,	2,	'#75FFA4',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'it',	1,	1,	0,	'',	1,	0,	3,	'49',	'',	'4',	'4',	'0',	'0',	'0',	''),
 (2,	'tim_thay',	' {thong_tin}',	0,	1,	'#DBFFF3',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'74',	'',	'',	'4',	'0',	'0',	'0',	''),
 (3,	'chao_0',	'ciao, perché sei ancora sveglio ora?',	0,	1,	'#FFD6FF',	'',	'',	'',	'',	'',	0,	34,	17,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'716',	'',	'',	'4',	'0',	'0',	'0',	''),
 (4,	'chao_0',	'Perché non dormi?',	0,	2,	'#FFFFFF',	'',	'',	'',	'',	'',	0,	0,	6,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'173',	'',	'',	'4',	'0',	'0',	'0',	''),
@@ -81,7 +81,7 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (36,	'chao_15',	'Buon divertimento e buon pomeriggio!',	0,	2,	'#FFFFFF',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'183',	'',	'',	'4',	'0',	'0',	'0',	''),
 (37,	'chao_16',	'Happy afternoon, lots of fun, you stay with me',	0,	1,	'#D9E0FF',	'',	'',	'',	'',	'',	0,	5,	2,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'189',	'',	'',	'4',	'0',	'0',	'0',	''),
 (38,	'chao_17',	'buon pomeriggio! Mi piacerebbe parlare con te',	0,	2,	'#54FFFF',	'',	'',	'',	'',	'',	0,	32,	2,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'734',	'',	'',	'4',	'0',	'0',	'0',	''),
-(39,	'bat_chuyen',	'Era uno di quei giorni di marzo in cui il sole splende caldo e il vento soffia forte:\r\nquando è estate nella luce e inverno nell\'ombra',	1,	2,	'#B0D7FF',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'it',	0,	0,	0,	'',	1,	0,	3,	'271',	'',	'4',	'4',	'0',	'0',	'0',	''),
+(39,	'bat_chuyen',	'Era uno di quei giorni di marzo in cui il sole splende caldo e il vento soffia forte:\r\nquando è estate nella luce e inverno nell\'ombra',	1,	2,	'#B0D7FF',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'it',	0,	1,	0,	'',	1,	0,	3,	'271',	'',	'4',	'4',	'0',	'0',	'0',	''),
 (40,	'bat_chuyen',	'Non c\'è niente che preferirei fare a San Valentino piuttosto che stare con te. Non c\'è niente che preferirei al tuo ragazzo.',	1,	2,	'#B5FFFD',	'',	'',	'',	'',	'',	1,	22,	2,	0,	'it',	0,	1,	0,	'',	1,	14,	2,	'633',	'',	'3',	'4',	'0',	'0',	'0',	''),
 (41,	'bat_chuyen',	'Febbraio è il 2 ° mese dell\'anno e ha 28 giorni di tempo, quindi sii felice di festeggiarlo appieno, e goditi tutti i modi perché viene una volta all\'anno e contiene un San Valentino.',	1,	2,	'#F7F0FF',	'',	'',	'',	'',	'',	0,	5,	17,	0,	'it',	0,	1,	0,	'',	1,	0,	2,	'918',	'',	'3',	'4',	'0',	'0',	'0',	''),
 (42,	'bat_chuyen',	'Desiderando che ogni giorno dell\'anno nuovo sia pieno di successo, felicità e prosperità per te, felice anno nuovo.',	1,	2,	'#FFF369',	'',	'',	'',	'',	'',	0,	22,	17,	0,	'it',	0,	1,	0,	'',	1,	0,	1,	'1473',	'',	'',	'4',	'0',	'0',	'0',	''),
@@ -143,7 +143,7 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (98,	'chao_22',	'Gli ultimi giorni! hai ancora sonno?',	1,	1,	'#E800A1',	'',	'',	'',	'',	'',	0,	27,	4,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'801',	'',	'',	'4',	'0',	'0',	'0',	''),
 (99,	'chao_23',	'ciao, ora è troppo tardi ma cos\'altro fai?',	1,	1,	'#EDADFF',	'',	'',	'',	'',	'',	0,	34,	3,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'1160',	'',	'',	'4',	'0',	'0',	'0',	''),
 (100,	'chao_23',	'ciao {ten_user}! parliamo!  ',	1,	1,	'#D5B0FF',	'',	'',	'',	'',	'',	0,	13,	0,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'161',	'',	'',	'4',	'0',	'0',	'0',	''),
-(101,	'dam',	'Marzo, quando i giorni stanno per finire, lascia che le tue ore di crescita siano forti per farti sbagliare.',	1,	2,	'#FF57C0',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'it',	0,	0,	0,	'',	1,	0,	3,	'182',	'',	'4',	'4',	'0',	'0',	'0',	''),
+(101,	'dam',	'Marzo, quando i giorni stanno per finire, lascia che le tue ore di crescita siano forti per farti sbagliare.',	1,	2,	'#FF57C0',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'it',	0,	1,	0,	'',	1,	0,	3,	'182',	'',	'4',	'4',	'0',	'0',	'0',	''),
 (102,	'dam',	'Spero che sceglierai il San Valentino giusto per il tuo amante. Ti auguro un felice San Valentino!',	1,	2,	'#70FFED',	'',	'',	'',	'',	'',	0,	32,	2,	0,	'it',	0,	1,	0,	'',	1,	14,	2,	'448',	'',	'3',	'4',	'0',	'0',	'0',	''),
 (103,	'dam',	'Febbraio è il mese più romantico dell\'anno. Porta molti nuovi eventi per le coppie, il suo clima fresco lo rende più romantico.',	1,	1,	'#FFC4E7',	'',	'',	'',	'',	'',	0,	34,	3,	0,	'it',	0,	1,	0,	'',	1,	0,	2,	'408',	'',	'3',	'4',	'0',	'0',	'0',	''),
 (104,	'dam',	'Felice anno nuovo. Vorrei avere un felice anno nuovo, felice e incontrare molte cose fortunate',	1,	2,	'#FFC4FD',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'it',	0,	1,	0,	'',	1,	1,	1,	'381',	'',	'',	'4',	'0',	'0',	'0',	''),
@@ -236,7 +236,7 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (191,	'bat_chuyen',	'Il giorno sta per finire. Spero che tu ne abbia avuto uno buono!',	0,	1,	'#00FF7F',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'670',	'',	'',	'4',	'0',	'0',	'0',	''),
 (192,	'bat_chuyen',	'Oggi mi sento stanco e infelice, tengo il silenzio quindi sono annoiato',	0,	0,	'#12FFDF',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'95',	'',	'',	'4',	'0',	'0',	'0',	''),
 (193,	'bat_chuyen',	'Guarda il tuo viso con preoccupazione, qual è il problema?',	0,	2,	'#87EFFF',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'190',	'',	'',	'4',	'0',	'0',	'0',	''),
-(194,	'dam',	'Marzo, quando i giorni stanno per finire, lascia che le tue ore di crescita siano forti per farti sbagliare.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'it',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'4',	'0',	'0',	'0',	''),
+(194,	'dam',	'Marzo, quando i giorni stanno per finire, lascia che le tue ore di crescita siano forti per farti sbagliare.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'it',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'4',	'0',	'0',	'0',	''),
 (195,	'dam',	'Il nostro amore è come un film d\'amore, ma la parte migliore è che non finisce mai. Buon San Valentino!',	0,	2,	'#FF9CC9',	'',	'',	'',	'',	'',	0,	32,	2,	0,	'it',	1,	1,	0,	'',	1,	14,	2,	'75',	'',	'3',	'4',	'0',	'0',	'0',	''),
 (196,	'dam',	'Febbraio significa un nuovo inizio di amore e di tutte le rose Quindi preparatevi per questo felice nuovo mese',	0,	1,	'#C7FFA3',	'',	'',	'',	'',	'',	0,	21,	15,	0,	'it',	1,	1,	0,	'',	1,	0,	2,	'377',	'',	'3',	'4',	'0',	'0',	'0',	''),
 (197,	'dam',	'Felice anno nuovo. Vorrei avere un felice anno nuovo, felice e incontrare molte cose fortunate',	0,	2,	'#FFC4FD',	'',	'',	'',	'',	'',	0,	33,	3,	0,	'it',	1,	1,	0,	'',	1,	1,	1,	'381',	'',	'',	'4',	'0',	'0',	'0',	''),
@@ -259,10 +259,10 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (214,	'dam',	'Conosco il karate, ti colpirò',	0,	3,	'#00FFCC',	'',	'',	'',	'',	'',	0,	35,	8,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'300',	'',	'',	'4',	'0',	'0',	'0',	''),
 (215,	'dam',	'Per favore non farmi il prepotente {ten_user}',	0,	3,	'#FFE48C',	'',	'',	'',	'',	'',	1,	22,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'339',	'',	'',	'4',	'0',	'0',	'0',	''),
 (216,	'dam',	'perché mi hai colpito, mi odi?',	0,	3,	'#E6FF82',	'',	'',	'',	'',	'',	0,	1,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'371',	'',	'',	'4',	'0',	'0',	'0',	''),
-(217,	'dam',	'So bene che le piogge di giugno cadono.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'it',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(218,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(219,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(220,	'dam',	'So bene che le piogge di giugno cadono.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'it',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(217,	'dam',	'So bene che le piogge di giugno cadono.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(218,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(219,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(220,	'dam',	'So bene che le piogge di giugno cadono.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'it',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (221,	'dam',	'Qualunque cosa ti porti a luglio, sii buona o cattiva; tieni sempre quel sorriso sulla tua faccia, non importa cosa.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'it',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (222,	'dam',	'Qualunque cosa ti porti a luglio, sii buona o cattiva. tieni sempre quel sorriso sulla tua faccia, non importa cosa.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'it',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (223,	'bat_chuyen',	'A che serve il calore dell\'estate, senza il freddo dell\'inverno a dargli dolcezza.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'it',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -275,4 +275,4 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (230,	'bat_chuyen',	'Durante la stagione di Covid 19, devi stare attento a non concentrarti su luoghi affollati e devi indossare una maschera ovunque tu vada!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (231,	'bat_chuyen',	'Durante la stagione di Covid 19, devi stare attento a non concentrarti su luoghi affollati e devi indossare una maschera ovunque tu vada!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-03-10 08:35:33
+-- 2021-06-12 16:46:10

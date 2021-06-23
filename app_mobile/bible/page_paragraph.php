@@ -21,21 +21,21 @@ if(isset($_GET['order_book'])){
     $order_book=$_GET['order_book'];
     $lang_book=$_GET['lang_book'];
     $type_book=$_GET['type_book'];
-    $query_id_book=mysqli_query($link,"SELECT `id` FROM `book` WHERE `orders` = '$order_book' AND `type`='$type_book'  AND `lang` = '$lang_book' LIMIT 1");
+    $query_id_book=mysqli_query($this->link_mysql,"SELECT `id` FROM `book` WHERE `orders` = '$order_book' AND `type`='$type_book'  AND `lang` = '$lang_book' LIMIT 1");
     $id_book=mysqli_fetch_array($query_id_book);
     $id_book=$id_book['id'];
 }
 
 
 
-$query_book=mysqli_query($link,"SELECT * FROM `book` WHERE `id` = '$id_book' LIMIT 1");
+$query_book=mysqli_query($this->link_mysql,"SELECT * FROM `book` WHERE `id` = '$id_book' LIMIT 1");
 $data_book=mysqli_fetch_array($query_book);
 $lang_book=$data_book['lang'];
 $chapter_book=$data_book['chapter'];
 
 if(isset($_GET['p_id'])){
     $id_edit_id=$_GET['p_id'];
-    $query_p=mysqli_query($link,"SELECT * FROM `paragraph_".$lang_book."` WHERE `id`='$id_edit_id' ");
+    $query_p=mysqli_query($this->link_mysql,"SELECT * FROM `paragraph_".$lang_book."` WHERE `id`='$id_edit_id' ");
     $data_p=mysqli_fetch_array($query_p);
     $contain_book=$data_p['contain'];
 }
@@ -88,14 +88,14 @@ if(isset($_POST['contain_book'])){
                     
                     
                     
-                    $query_add_paragraphp=mysqli_query($link,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', '".$content."','".$order_emp."');");
+                    $query_add_paragraphp=mysqli_query($this->link_mysql,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', '".$content."','".$order_emp."');");
                     $order_emp++;
                 }
                 
                 $html_base->clear(); 
                 unset($html_base);
-                mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&emsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
-                mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&nbsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
+                mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&emsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
+                mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain`= REPLACE(`contain`, '&nbsp;', '') WHERE `book_id` = '$id_book' AND `chapter`='$chapter_book_sel'");
                 echo alert('Add book id:'.$id_book.' chap: '.$chapter_book_sel.' lang:'.$lang_book.' thành công','alert');  
                 echo btn_add_work($id_book,$lang_book,'bible_p','add');
         }
@@ -106,23 +106,23 @@ if(isset($_POST['contain_book'])){
             echo alert("Nội dung không được để trống!","error");
         }else{
             if($id_edit_id==''){
-                $query_add_paragraphp=mysqli_query($link,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', '$contain_book','$orders');");
+                $query_add_paragraphp=mysqli_query($this->link_mysql,"INSERT INTO `paragraph_$lang_book` (`book_id`, `chapter`, `contain`,`orders`) VALUES ('$id_book', '$chapter_book_sel', '$contain_book','$orders');");
                 
                 if($query_add_paragraphp){
                     $contain_book='';
-                    echo alert("Thêm thành công đoạn Kinh Thánh",'alert');
+                    echo $this->msg("Thêm thành công đoạn Kinh Thánh",'alert');
                 }else{
-                    echo alert("Thêm không thành công đoạn Kinh Thánh".mysql_error(),'error');
+                    echo $this->msg("Thêm không thành công đoạn Kinh Thánh".mysql_error(),'error');
                 }
             }else{
-                $query_update_p=mysqli_query($link,"UPDATE `paragraph_$lang_book` SET `contain` = '$contain_book' WHERE `id` = '$id_edit_id';");
-                echo alert("Cập nhật thành công!!!","alert");
+                $query_update_p=mysqli_query($this->link_mysql,"UPDATE `paragraph_$lang_book` SET `contain` = '$contain_book' WHERE `id` = '$id_edit_id';");
+                echo $this->msg("Cập nhật thành công!!!","alert");
             }
         }
     }
 }
 
-$query_paragraph_count=mysqli_query($link,"SELECT * FROM `paragraph_".$lang_book."` WHERE `book_id` = '".$id_book."' AND `chapter` = '$id_chapter' ORDER BY `orders`");
+$query_paragraph_count=mysqli_query($this->link_mysql,"SELECT * FROM `paragraph_".$lang_book."` WHERE `book_id` = '".$id_book."' AND `chapter` = '$id_chapter' ORDER BY `orders`");
 ?>
 <form class="box_form" action="" method="post">
     <div class="row">
@@ -167,18 +167,18 @@ $query_paragraph_count=mysqli_query($link,"SELECT * FROM `paragraph_".$lang_book
 </form>
 
 <ul style="float: left;width: 100%;list-style: none;">
-    <li><a class="buttonPro small blue" href="<?php echo $url;?>/?page=view_book&id=<?php echo $id_book;?>"><i class="fas fa-caret-square-left"></i> Trở về trang sách</a></li>
-    <li><a class="buttonPro small green" href="<?php echo $url;?>?page=media&order_book=<?php echo $data_book['orders']; ?>&order_chap=<?php echo $id_chapter;?>&type_book=<?php echo $data_book['type']; ?>"><i class="fas fa-image"></i> Thêm ảnh cho chương</a></li>
+    <li><a class="buttonPro small blue" href="<?php echo $this->url;?>/?page=view_book&id=<?php echo $id_book;?>"><i class="fas fa-caret-square-left"></i> Trở về trang sách</a></li>
+    <li><a class="buttonPro small green" href="<?php echo $this->url;?>?page=media&order_book=<?php echo $data_book['orders']; ?>&order_chap=<?php echo $id_chapter;?>&type_book=<?php echo $data_book['type']; ?>"><i class="fas fa-image"></i> Thêm ảnh cho chương</a></li>
 </ul>
 
 <div style="float: left;width: 100%;">
 <?php
-$query_media=mysqli_query($link,"SELECT `id` FROM `media` WHERE `order_chap` = '$id_chapter' AND `order_book` = '".$data_book['orders']."' AND `type`='".$data_book['type']."' LIMIT 1");
+$query_media=mysqli_query($this->link_mysql,"SELECT `id` FROM `media` WHERE `order_chap` = '$id_chapter' AND `order_book` = '".$data_book['orders']."' AND `type`='".$data_book['type']."' LIMIT 1");
 if(mysqli_num_rows($query_media)>0){
     $id_media=mysqli_fetch_array($query_media);
     $id_media=$id_media['id'];
-    $url_image=$url.'/data/media/'.$id_media.'.png';
-    echo '<a href="'.$url.'?page=media&edit='.$id_media.'"><img src="'.$url_image.'"/></a>';
+    $this->url_image=$this->url.'/data/media/'.$id_media.'.png';
+    echo '<a href="'.$this->url.'?page=media&edit='.$id_media.'"><img src="'.$this->url_image.'"/></a>';
 }
 ?>
 </div>
@@ -187,14 +187,14 @@ if(mysqli_num_rows($query_media)>0){
 
 if(isset($_GET['delete_id'])){
     $id_delete=$_GET['delete_id'];
-    $query_delete=mysqli_query($link,"DELETE FROM `paragraph_$lang_book` WHERE ((`id` = '$id_delete'));");
+    $query_delete=mysqli_query($this->link_mysql,"DELETE FROM `paragraph_$lang_book` WHERE ((`id` = '$id_delete'));");
     if($query_delete){
         echo alert("Xóa thành công đoạn!","alert");
     }else{
         echo alert("Xóa không thành công đoạn! ".mysql_error(),"alert");
     }
 }
-$query_paragraph=mysqli_query($link,"SELECT * FROM `paragraph_".$lang_book."` WHERE `book_id` = '".$id_book."' AND `chapter` = '$id_chapter' ORDER BY `orders`");
+$query_paragraph=mysqli_query($this->link_mysql,"SELECT * FROM `paragraph_".$lang_book."` WHERE `book_id` = '".$id_book."' AND `chapter` = '$id_chapter' ORDER BY `orders`");
 ?>
 <ul id="list_p" style="float: left;width: 100%;">
     <?php
@@ -206,8 +206,8 @@ $query_paragraph=mysqli_query($link,"SELECT * FROM `paragraph_".$lang_book."` WH
         </span> 
         <span><?php echo $row_p['contain'];?></span>
         <span>
-            <a class="buttonPro small yellow" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $id_chapter ?>&p_id=<?php echo $row_p['id'];?>"><i class="fa fa-wrench"></i> Sửa</a>
-            <a class="buttonPro small red" href="<?php echo $url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $id_chapter ?>&delete_id=<?php echo $row_p['id'];?>"><i class="fa fa-trash"></i> Xóa</a>
+            <a class="buttonPro small yellow" href="<?php echo $this->url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $id_chapter ?>&p_id=<?php echo $row_p['id'];?>"><i class="fa fa-wrench"></i> Sửa</a>
+            <a class="buttonPro small red" href="<?php echo $this->url;?>/?page=paragraph&id_book=<?php echo $id_book;?>&id_chapter=<?php echo $id_chapter ?>&delete_id=<?php echo $row_p['id'];?>"><i class="fa fa-trash"></i> Xóa</a>
         </span>
 
     </li>

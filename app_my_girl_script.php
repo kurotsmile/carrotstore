@@ -7,7 +7,6 @@ function check_sex(){
     var api_voice_female="<?php echo get_key_lang($link,'voice_character_sex_1',$lang_sel);?>";
     var api_voice_male="<?php echo get_key_lang($link,'voice_character_sex_0',$lang_sel);?>";
     $('#btn_add_audio').hide();
-    $('#file_audio').show();
     $('#btn_tool_cms_audio').hide();
     $("#show_audio_test").html("");
     $("#msg_audio").html("");
@@ -44,11 +43,9 @@ function check_url_voice(url_voice){
       if(url_voice=="google"){
         $("#show_audio_test").html("<i style='font-size:40px;' onclick=\"get_audio_file('<?php echo $lang_sel;?>');return false;\" class='fa fa-volume-up' aria-hidden='true'></i>");
         $("#msg_audio").html("<span style='padding:3px;color:green;'><i class='fa fa-exclamation' aria-hidden='true'></i> Không cần tạo file âm thanh đọc</span>");
-        $("#file_audio").hide();
     }else{
         $("#msg_audio").html("<span style='padding:3px;color:red;'><i class='fa fa-exclamation' aria-hidden='true'></i> Bắt buột phải tạo file âm thanh đọc</span>");
         $("#show_audio_test").html("");
-        $("#file_audio").show();
     }  
     
 }
@@ -192,14 +189,11 @@ function check_chat_txt_length(){
         var txt_leng=$('#chat').val().length;
         if(txt_leng>195){
             $('#btn_tool_cms_audio').show();
-            $('#file_audio').show();
         }else{
             $('#btn_tool_cms_audio').hide();
-            $('#file_audio').hide();
         }
     }else{
         $('#btn_tool_cms_audio').hide();
-        $('#file_audio').show();
     }
 }
 
@@ -222,7 +216,6 @@ function show_effect_chat(str_tag,str_page) {
                 text: data
             });
         }
-
     });
 }
 
@@ -243,7 +236,6 @@ function sel_effect_random(tag) {
             }
             $('#edit_effect').attr('href', '<?php echo $url;?>/app_my_girl_effect.php?edit=' + data["id"] + '').show();
         }
-
     });
 }
 

@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -10,35 +10,37 @@ CREATE TABLE `app_my_girl_bk_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `app` varchar(1) NOT NULL,
+  `no_os` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 TRUNCATE `app_my_girl_bk_category`;
-INSERT INTO `app_my_girl_bk_category` (`id`, `name`, `app`) VALUES
-(1,	'category_bk_nature',	'0'),
-(2,	'category_bk_holiday',	'0'),
-(3,	'category_bk_merry_christmas',	'0'),
-(4,	'category_bk_city',	'0'),
-(5,	'category_bk_flower',	'0'),
-(6,	'category_bk_color',	'0'),
-(7,	'category_bk_space',	'0'),
-(8,	'category_bk_love',	'0'),
-(9,	'category_bk_art',	'0'),
-(10,	'category_bk_fruits',	'0'),
-(11,	'category_bk_animale',	'0'),
-(12,	'category_bk_sport',	'0'),
-(14,	'category_bk_anime',	'0'),
-(15,	'Red Velvet',	'1'),
-(16,	'Blackpink',	'1'),
-(17,	'Momoland',	'1'),
-(18,	'BTS',	'1'),
-(19,	'EXID',	'1'),
-(20,	'TWICE',	'1'),
-(21,	'EXO',	'1'),
-(22,	'GOT7',	'1'),
-(23,	'GFriend',	'1'),
-(24,	'Girls Generation',	'1'),
-(25,	'Wanna One',	'1'),
-(26,	'SHINee',	'1');
+INSERT INTO `app_my_girl_bk_category` (`id`, `name`, `app`, `no_os`) VALUES
+(1,	'category_bk_nature',	'0',	''),
+(2,	'category_bk_holiday',	'0',	''),
+(3,	'category_bk_merry_christmas',	'0',	''),
+(4,	'category_bk_city',	'0',	''),
+(5,	'category_bk_flower',	'0',	''),
+(6,	'category_bk_color',	'0',	''),
+(7,	'category_bk_space',	'0',	''),
+(8,	'category_bk_love',	'0',	''),
+(9,	'category_bk_art',	'0',	''),
+(10,	'category_bk_fruits',	'0',	''),
+(11,	'category_bk_animale',	'0',	''),
+(12,	'category_bk_sport',	'0',	''),
+(14,	'category_bk_anime',	'0',	''),
+(15,	'Red Velvet',	'0',	'samsung'),
+(16,	'Blackpink',	'0',	'samsung'),
+(17,	'Momoland',	'0',	'samsung'),
+(18,	'BTS',	'0',	'samsung'),
+(19,	'EXID',	'0',	'samsung'),
+(20,	'TWICE',	'0',	'samsung'),
+(21,	'EXO',	'0',	'samsung'),
+(22,	'GOT7',	'0',	'samsung'),
+(23,	'GFriend',	'0',	'samsung'),
+(24,	'Girls Generation',	'0',	'samsung'),
+(25,	'Wanna One',	'0',	'samsung'),
+(26,	'SHINee',	'0',	'samsung'),
+(27,	'Oh My Girl ',	'1',	'');
 
--- 2021-03-10 07:33:14
+-- 2021-06-12 15:27:53

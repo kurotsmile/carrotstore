@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -178,20 +178,20 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (133,	'dam',	'O mês do amor está aqui Para espalhar o amor ao redor Então torne isso adorável Feliz novo mês',	1,	2,	'#4A97FF',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	1,	0,	'',	1,	0,	2,	'459',	'',	'3',	'',	'0',	'0',	'0',	''),
 (134,	'bat_chuyen',	'Espero que você tenha um feliz e feliz dia dos namorados com seu amor. Desejo-lhe Dia dos Namorados!',	1,	1,	'#FF033C',	'',	'',	'',	'',	'',	1,	20,	3,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'419',	'',	'3',	'2',	'0',	'0',	'0',	''),
 (135,	'dam',	'Desejo-lhe um feliz e feliz Dia dos Namorados com quem você ama',	1,	2,	'#FF0000',	'',	'',	'',	'',	'',	0,	31,	15,	0,	'',	0,	1,	0,	'',	1,	14,	2,	'267',	'',	'3',	'2',	'0',	'0',	'0',	''),
-(136,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(137,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(138,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(139,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	1,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(136,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	0,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(137,	'bat_chuyen',	'Foi um daqueles dias de março, quando o sol brilha e o vento sopra frio:\r\nquando é verão na luz e inverno na sombra',	1,	2,	'#ADFFCC',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'48',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(138,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(139,	'dam',	'Março, quando os dias estão ficando longos, Deixe que suas horas de crescimento sejam fortes para acertar algum erro invernal.',	1,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
 (140,	'bat_chuyen',	'Abril é uma promessa que May deve manter.',	0,	2,	'#3EF032',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	1,	1,	0,	'',	1,	0,	4,	'876',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (141,	'bat_chuyen',	'Abril é uma promessa que May deve manter.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (142,	'bat_chuyen',	'O mês de maio chegou, quando todo coração vigoroso começa a desabrochar e a frutificar.',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'pt',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (143,	'dam',	'A estação favorita do mundo é a primavera. Tudo parece possível em maio',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	2,	0,	'pt',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (144,	'bat_chuyen',	'O mês de maio chegou, quando todo coração vigoroso começa a desabrochar e a frutificar.',	1,	2,	'#F9FFC9',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'pt',	0,	1,	0,	'',	1,	0,	5,	'649',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (145,	'dam',	'A estação favorita do mundo é a primavera. Tudo parece possível em maio',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'pt',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(146,	'dam',	'Eu sei bem que as chuvas de junho caem.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'pt',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(147,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(148,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(149,	'dam',	'Eu sei bem que as chuvas de junho caem.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'pt',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(146,	'dam',	'Eu sei bem que as chuvas de junho caem.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'pt',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(147,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(148,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(149,	'dam',	'Eu sei bem que as chuvas de junho caem.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'pt',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (150,	'dam',	'O que quer que julho esteja trazendo para você, seja bom ou ruim; mantenha sempre esse sorriso em seu rosto, não importa o quê.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'pt',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (151,	'dam',	'O que quer que julho esteja trazendo para você, seja bom ou ruim. mantenha sempre esse sorriso em seu rosto, não importa o quê.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'pt',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (152,	'bat_chuyen',	'Que bom é o calor do verão, sem o frio do inverno para dar-lhe doçura.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'pt',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -204,4 +204,4 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (159,	'bat_chuyen',	'Durante a temporada de Covid 19, você deve ter cuidado para não se concentrar em lugares lotados e usar uma máscara onde quer que vá!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pt',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (160,	'bat_chuyen',	'Durante a temporada de Covid 19, você deve ter cuidado para não se concentrar em lugares lotados e usar uma máscara onde quer que vá!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pt',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-03-10 07:23:59
+-- 2021-06-12 15:48:04

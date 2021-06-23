@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -135,4 +135,4 @@ INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (85,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (86,	'Zaśpiewaj piosenkę',	'Zeamsone - San Andreas',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'zeamsone-san-andreas-86',	'');
 
--- 2021-03-10 08:37:06
+-- 2021-06-12 16:33:37

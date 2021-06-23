@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -76,4 +76,4 @@ INSERT INTO `product_rate` (`product`, `user`, `rate`, `lang`) VALUES
 (123,	'289212078726592',	2,	'vi'),
 (166,	'203.128.242.122',	5,	'vi');
 
--- 2021-03-10 07:29:21
+-- 2021-06-12 15:25:25

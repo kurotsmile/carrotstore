@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -13,11 +13,5 @@ CREATE TABLE `app_my_girl_music_data_de` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 TRUNCATE `app_my_girl_music_data_de`;
-INSERT INTO `app_my_girl_music_data_de` (`device_id`, `value`, `id_chat`) VALUES
-('66.249.73.23',	'2',	'69'),
-('66.249.73.23',	'2',	'85'),
-('66.249.64.13',	'0',	'862'),
-('66.249.64.13',	'1',	'837'),
-('66.249.64.143',	'2',	'860');
 
--- 2021-03-10 08:00:26
+-- 2021-06-12 16:15:39

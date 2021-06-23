@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -307,6 +307,15 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('midi_export_success',	'成功导出Midi（.mid）文件！'),
 ('midi_export_tip',	'从Midi创建中间文件以在计算机或移动设备上欣赏或收听'),
 ('midi_publish_tip',	'将您的作品发布给全世界，让每个人都可以欣赏，或者为中曲创作。 我们将审核您的Midi组成并对其进行编辑以匹配系统的存档'),
-('midi_download',	'MIDI音乐下载');
+('midi_download',	'MIDI音乐下载'),
+('search_setting',	'搜索设置'),
+('search_setting_type',	'搜索功能选项'),
+('search_setting_data',	'搜索数据源选项'),
+('search_setting_type_0',	'仅按访问类别搜索'),
+('search_setting_type_1',	'搜索整个类别'),
+('search_setting_data_0',	'全球所有数据'),
+('search_setting_data_1',	'仅查找您所在国家或地区的数据'),
+('search_return',	'搜索结果'),
+('recognition_inp',	'现在请说话');
 
--- 2021-03-23 08:01:07
+-- 2021-06-12 16:08:22

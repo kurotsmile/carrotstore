@@ -6,7 +6,7 @@ if($function=="send_good_night"){
     $lang=$_POST['lang'];
     $msg=$_POST['msg'];
     $user_type=$_POST['user_type'];
-    $add_good_night=mysqli_query($link,"INSERT INTO `good_night` (`msg`, `lang`, `user_type`, `user_name`, `date`,`active`) VALUES ('$msg', '$lang', '$user_type', '$user_name',NOW(),'0');");
+    $add_good_night=mysqli_query($link,"INSERT INTO `good_night` (`msg`, `lang`, `user_type`, `user_name`, `date`,`active`) VALUES ('$msg', '$lang', '$user_type', '$user_name',NOW(),'1');");
     echo "Send success!";
     exit;
 }
@@ -14,7 +14,7 @@ if($function=="send_good_night"){
 if($function=='get_good_night'){
     $good_night=new stdClass();
     
-    $query_good_night=mysqli_query($link,"SELECT * FROM `good_night` WHERE `lang`='$lang' order by Rand() LIMIT 1");
+    $query_good_night=mysqli_query($link,"SELECT * FROM `good_night` WHERE `lang`='$lang' AND `active`='0' order by Rand() LIMIT 1");
     $data_good_night=mysqli_fetch_assoc($query_good_night);
 
     $good_night->{"msg"}=$data_good_night["msg"];

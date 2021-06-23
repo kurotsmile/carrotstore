@@ -1,0 +1,18 @@
+#list_help{
+    list-style-type: none;
+}
+#list_help li{
+    background-color: rgb(249 249 249);
+    margin: 3px;padding: 5px;
+    border-radius: 5px;float: left;
+    width: 300px;height: 75px;
+}
+#list_help li i{
+    float: left;
+    font-size: 30px;
+    margin-right: 5px;
+}
+#list_help li span{
+    color: #da3c00;font-weight: bold;margin: 3px;margin-bottom: 10px;float: left;
+    width: 250px;
+}

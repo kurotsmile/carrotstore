@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -30,4 +30,4 @@ INSERT INTO `app_my_girl_user_id` (`id_device`, `name`, `sex`, `date_start`, `da
 ('e862cbe2b22ad86d80048231b044a7ed',	'Someone',	'0',	'2020-10-02',	'2020-10-02',	'',	'081218526662',	0,	'',	'',	''),
 ('8cd7c95a4117f28fc34f619477383c19',	'micuny',	'0',	'2020-10-12',	'2020-10-12',	'',	'081774155835',	0,	'',	'',	'');
 
--- 2021-03-10 08:37:56
+-- 2021-06-12 16:51:08

@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,23 +15,26 @@ TRUNCATE `product_name_tr`;
 INSERT INTO `product_name_tr` (`id_product`, `data`) VALUES
 (95,	'Ölüm Notu - Ryuk ve Rem'),
 (95,	'Ölüm Notu - Ryuk ve Rem'),
-(104,	'Kişileri ara'),
-(105,	'Aşk ya da aşk yok'),
-(119,	'sanal sevgilisi 3D'),
-(121,	'Sanal sevgili 2'),
-(122,	'Koyun sayımı - yatağa git'),
-(123,	'Hayat için müzik'),
-(127,	'Yapboz duvar'),
-(128,	'İncil dünyası'),
-(130,	'AI Lover'),
-(131,	'Sevimli sanal asistan'),
-(133,	'Hızlı göz'),
-(134,	'Benimle koş'),
-(135,	'Web\'i çevrimdışı kaydet'),
-(139,	'Solucan Ustası'),
 (138,	'Magic Sayısı'),
-(136,	'Şifre oluştur'),
+(282,	'Benim sanal sevgilim'),
+(127,	'Yapboz duvar'),
+(130,	'AI Lover'),
+(132,	'Sevgilim'),
+(123,	'Hayat için müzik'),
+(104,	'Kişileri ara'),
 (120,	'Sanal sevgili'),
-(132,	'Sevgilim');
+(119,	'sanal sevgilisi 3D'),
+(134,	'Benimle koş'),
+(122,	'Koyun sayımı - yatağa git'),
+(133,	'Hızlı göz'),
+(131,	'Sevimli sanal asistan'),
+(139,	'Solucan Ustası'),
+(135,	'Web\'i çevrimdışı kaydet'),
+(136,	'Şifre oluştur'),
+(128,	'İncil dünyası'),
+(283,	'Midi Piyano Editörü'),
+(284,	'yırtıcı balık'),
+(121,	'Sanal sevgili 2'),
+(105,	'Aşk ya da aşk yok');
 
--- 2021-03-10 08:27:22
+-- 2021-06-12 17:31:21

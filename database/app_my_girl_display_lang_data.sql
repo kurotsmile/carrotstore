@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -626,6 +626,8 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('setting_char_sex',	'3'),
 ('setting_char_sex_tip',	'3'),
 ('add_music_list_success',	'3'),
-('key_voice',	'3');
+('key_voice',	'3'),
+('name_char_boy',	'3'),
+('name_char_girl',	'3');
 
--- 2021-05-20 11:57:05
+-- 2021-06-12 15:30:51

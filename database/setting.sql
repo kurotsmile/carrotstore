@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -16,6 +16,9 @@ INSERT INTO `setting` (`key`, `value`) VALUES
 ('show_ads',	'1'),
 ('show_adsupply',	'0'),
 ('login_facebook',	'0'),
-('ver',	'4.3');
+('ver',	'6.0'),
+('serviceWorker',	'1'),
+('google_analytics',	'1'),
+('fb_message',	'0');
 
--- 2021-03-22 10:04:29
+-- 2021-06-12 15:25:05

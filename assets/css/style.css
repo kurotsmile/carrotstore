@@ -15,8 +15,6 @@ img.lazyload:not([src]){visibility:hidden}
 .app.artist{width:190px;height:190px;text-align:center}
 .app:hover{box-shadow:0 7px 36px -10px rgba(0,0,0,.3);background-color:#fff}
 .app:hover .app_title{background:linear-gradient(-120deg,#fff,#fffbd4,#ffcc6c,#ffb224,#ff941c)}
-.app:hover .app_icon{transform:scale(1.02,1.02)}
-.app:hover .app_title a span{transform:rotateZ(10deg);transform:scale(1.3,1.3)}
 .app_link_icon{width:auto;float:left}
 #player_music{display:none}
 #menu_download{float:left;list-style:none;width:100%;padding:0}
@@ -66,7 +64,7 @@ tr:nth-child(even){background-color:#fff}
 .app .app_title{width:100%;-webkit-transition:background 2s;transition:background 2s;float:left;border-bottom:solid 2px orange;background:linear-gradient(-120deg,#fff,#fff,#e9ffd4,#d7ffa6,#9cf769);border-top-right-radius:10px;border-top-left-radius:10px}
 .app .app_title a{font-size:15px;font-weight:700;color:#141414;padding:6px;float:left;text-decoration:none}
 .app .app_title a span{margin-right:15px;text-shadow:2px 2px 2px #525252;color:#fff;-webkit-transition:all 1s;transition:all 1s}
-.app .app_icon{width:100px;height:100px;float:left;margin:2px;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;transition:all .2s ease-in-out}
+.app .app_icon{width:100px;height:100px;float:left;margin:2px;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;}
 .app .app_txt{width:206px;float:left;padding:3px;-webkit-transition:all .8s;transition:all .8s}
 .app .app_txt .desc{width:100%;height:70px;max-height:70px;overflow-y:auto;float:left}
 .app .app_star{float: left;width: 100%;margin-top: 10px;}
@@ -172,6 +170,7 @@ tr:nth-child(even){background-color:#fff}
 #box-account-info.run_page #account_avatar_page{margin-top:20px;width:170px;height:170px;-webkit-transition:all 1s;-moz-transition:all 1s;-o-transition:all 1s;transition:all 1s}
 .track-details{clear:both;height:auto;width:auto;max-width:400px;padding:1px 6px;background:#eee;color:#222;font-family:monospace;font-size:11px;line-height:20px;-webkit-box-shadow:inset 1px 1px 5px rgba(0,0,0,.15);-moz-box-shadow:inset 1px 1px 5px rgba(0,0,0,.15)}
 .track-details:before{content:'♬ '}
+.track-details.contacts:before{content:''}
 .track-details em{font-style:normal;color:#999}
 #place_box_info_right .slide_img{background-color:#fff;border:solid 2px #f2f2da}
 #place_avata{border:solid 4px #fff}

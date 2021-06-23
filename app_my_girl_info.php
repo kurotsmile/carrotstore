@@ -28,12 +28,6 @@ if (isset($data_user_carrot['country_work'])) {
 
     <div id="frm_seach">
         <div class="col">
-            <a href="<?php echo $url; ?>/vl?char_view_type=0" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Hôm nay</a>
-            <a href="<?php echo $url; ?>/vl?char_view_type=2" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Tổng </a>
-            <button onclick="show_all_data_os()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Nền tản</button>
-            <button onclick="show_all_data_ver()" class="buttonPro small yellow"><i class="fa fa-line-chart"></i> Phiên bản</button>
-            <button onclick="show_data_month()" class="buttonPro small yellow"><i class="fa fa-bar-chart"></i> Tháng</button>
-
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_brain" class="buttonPro small red"><i class="fa fa-trash"></i> dạy</a>
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_report" class="buttonPro small red"><i class="fa fa-trash"></i> báo lỗi</a>
             <a href="<?php echo $url; ?>/app_my_girl_handling.php?func=delete_all_key_music" class="buttonPro small red"><i class="fa fa-trash"></i> Tìm nhạc</a>

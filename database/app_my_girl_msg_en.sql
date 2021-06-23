@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -296,10 +296,10 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (253,	'bat_chuyen',	'I wish you a happy and happy Valentine\'s Day with the one you love',	1,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	32,	3,	0,	'',	1,	1,	0,	'',	1,	14,	2,	'339',	'',	'3',	'2',	'0',	'0',	'0',	''),
 (254,	'dam',	'I hope you have a happy, happy Valentine\'s Day with your love. Wish you Valentine\'s Day!',	1,	1,	'#FF2489',	'',	'',	'',	'',	'',	0,	21,	2,	0,	'',	1,	1,	0,	'',	1,	14,	2,	'441',	'',	'3',	'2',	'0',	'0',	'0',	''),
 (255,	'bat_chuyen',	'Today is Friday, a day of boring work, I look forward to rest tomorrow.',	1,	2,	'#85FFB6',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'19',	'Friday',	'4',	'2',	'0',	'0',	'0',	''),
-(256,	'bat_chuyen',	'It was one of those March days when the sun shines hot and the wind blows cold: \r\nwhen it is summer in the light, and winter in the shade',	0,	2,	'#75FFA4',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'49',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(257,	'bat_chuyen',	'It was one of those March days when the sun shines hot and the wind blows cold: \r\nwhen it is summer in the light, and winter in the shade',	1,	2,	'#B0D7FF',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'271',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(258,	'dam',	'March, when days are getting long, Let thy growing hours be strong to set right some wintry wrong.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	0,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
-(259,	'dam',	'March, when days are getting long, Let thy growing hours be strong to set right some wintry wrong.',	1,	2,	'#FF57C0',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	0,	0,	'',	1,	0,	3,	'182',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(256,	'bat_chuyen',	'It was one of those March days when the sun shines hot and the wind blows cold: \r\nwhen it is summer in the light, and winter in the shade',	0,	2,	'#75FFA4',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'49',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(257,	'bat_chuyen',	'It was one of those March days when the sun shines hot and the wind blows cold: \r\nwhen it is summer in the light, and winter in the shade',	1,	2,	'#B0D7FF',	'',	'',	'',	'',	'',	0,	0,	7,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'271',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(258,	'dam',	'March, when days are getting long, Let thy growing hours be strong to set right some wintry wrong.',	0,	2,	'#05FF28',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	1,	1,	0,	'',	1,	0,	3,	'272',	'',	'4',	'2',	'0',	'0',	'0',	''),
+(259,	'dam',	'March, when days are getting long, Let thy growing hours be strong to set right some wintry wrong.',	1,	2,	'#FF57C0',	'',	'',	'',	'',	'',	0,	0,	2,	0,	'',	0,	1,	0,	'',	1,	0,	3,	'182',	'',	'4',	'2',	'0',	'0',	'0',	''),
 (260,	'bat_chuyen',	'Fact 1: You cannot touch your lower lip with your tongue.\r\nFact 2: After reading this, 99/100 fools would try it.',	0,	2,	'#FFCA8A',	'',	'',	'',	'',	'',	0,	7,	1,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1523',	'',	'2',	'',	'0',	'0',	'0',	''),
 (261,	'dam',	'Hey, you! Yes, you! It’s your day today. You can be yourself and I know you will do a good job. Happy April Fool’s Day',	0,	3,	'#E4B3FF',	'',	'',	'',	'',	'',	0,	1,	0,	0,	'',	1,	1,	0,	'',	1,	1,	4,	'1495',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (262,	'dam',	'If anyone calls you beautiful... If anyone appreciates you for no reason... If anyone thinks you are intelligent… Just smile and wish the person Happy April Fool’s Day',	1,	2,	'#FFDE80',	'',	'',	'',	'',	'',	0,	1,	0,	0,	'',	0,	1,	0,	'',	1,	1,	4,	'150',	'',	'2',	'2',	'0',	'0',	'0',	''),
@@ -311,10 +311,10 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (268,	'dam',	'The world\'s favorite season is the spring. All things seem possible in May',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'',	'0',	'0',	'0',	''),
 (269,	'bat_chuyen',	'The month of May was come, when every lusty heart beginneth to blossom, and to bring forth fruit',	1,	1,	'#4DFF2B',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	1,	1,	0,	'',	1,	0,	5,	'826',	'',	'2',	'',	'0',	'0',	'0',	''),
 (270,	'dam',	'The world\'s favorite season is the spring. All things seem possible in May',	1,	3,	'#FF406B',	'',	'',	'',	'',	'',	0,	1,	4,	0,	'',	1,	1,	0,	'',	1,	0,	5,	'206',	'',	'2',	'',	'0',	'0',	'0',	''),
-(271,	'dam',	'I know well that the June rains just fall.   ',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(272,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(273,	'dam',	'I know well that the June rains just fall.   ',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(274,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(271,	'dam',	'I know well that the June rains just fall.   ',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(272,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(273,	'dam',	'I know well that the June rains just fall.   ',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(274,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (275,	'dam',	'Whatever july is bringing for you, be it good or bad; always keep that smile on your face no matter what.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'',	'0',	'0',	'0',	''),
 (276,	'dam',	'Whatever july is bringing for you, be it good or bad. always keep that smile on your face no matter what.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (277,	'bat_chuyen',	'What good is the warmth of summer, without the cold of winter to give it sweetness. ',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'2',	'0',	'0',	'0',	''),
@@ -328,4 +328,4 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (285,	'bat_chuyen',	'During the season of Covid 19, you have to be careful not to focus on crowded places and have to wear a mask wherever you go!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (286,	'bat_chuyen',	'During the season of Covid 19, you have to be careful not to focus on crowded places and have to wear a mask wherever you go!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'2',	'0',	'0',	'0',	'');
 
--- 2021-03-10 07:08:57
+-- 2021-06-12 15:37:58

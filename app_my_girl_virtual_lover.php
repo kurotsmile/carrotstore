@@ -386,21 +386,7 @@ function Chat_report($data_row, $type_chat, $lang_sel, $link)
                 if (file_exists($table_app . '/' . $data_row['id'] . '.mp3')) {
                     $chat->mp3 = URL.'/' . $table_app . '/' . $data_row['id'] . '.mp3';
                 } else {
-                    $txt_chat = $chat->chat;
-                    $link_audio = 'http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=' . strlen($chat->chat) . '&client=tw-ob&q=' . urlencode($chat->chat) . '&tl=' . $lang_sel;
-                    $ch = curl_init($link_audio);
-                    curl_setopt($ch, CURLOPT_HEADER, 0);
-                    curl_setopt($ch, CURLOPT_NOBODY, 0);
-                    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-                    $output = curl_exec($ch);
-                    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                    curl_close($ch);
-                    if ($status == 200) {
-                        file_put_contents(dirname(__FILE__) . '/' . $table_app_temp . '/' . $id_device . '.mp3', $output);
-                    }
-                    $chat->mp3 = URL.'/' . $table_app_temp . '/' . $id_device . '.mp3';
+                    $chat->mp3 = URL.'/facebook_chat.mp3';
                 }
             } else {
                 if (file_exists($table_app . '/' . $data_row['id'] . '.mp3')) {

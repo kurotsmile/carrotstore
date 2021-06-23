@@ -10,8 +10,22 @@
 
 #menu_cms{
     width: 100%;
-    background-color: #dadada;
     float: left;
+}
+
+#menu_cms.top{
+    background-color: black !important;
+}
+#menu_cms.top a{
+    color: white;
+}
+
+#menu_cms.menu{
+    background-color: rgb(190, 190, 190) !important;
+}
+
+#menu_cms.menu .logout{
+    float: right;
 }
 .cms_menu_lang{
     width: 100%;
@@ -46,17 +60,13 @@
     width:100%;
 }
 a {
-    text-decoration: none;
+    text-decoration: none;color:rgb(31, 31, 31);
 }
-table {
-    border-collapse: collapse;
-    width: 100%;float: left;
-}
-th, td {
-    text-align: left;
-    padding: 8px;
-}
-tr:nth-child(even) {background-color: #f2f2f2;}
+table{background-color: #EBEBEB;width: 100%;border-collapse: collapse;}
+table tr td{padding: 5px;padding-top: 2px;padding-bottom: 2px;margin: 0px;font-size: 11px;}
+table tr th {background-color: #b1b1b1;color: white;padding: 5px;}
+table tr:nth-child(even) {background-color: #f2f2f2}
+table tr:hover td{background-color: #FFFF9B;}
 .btn{
     border: none;
     padding: 5px;
@@ -90,3 +100,41 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 .cms_nav_page a,.cms_tool_page a{
     float: left;
 }
+.cms_tool{
+    float: left;
+    width: 300px;
+    margin: 8px;
+    height: 34px;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.cms_tool .icon{
+    font-size: 25px;float: left;margin-right: 6px;
+}
+
+.cms_tool:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+input[type=text],input[type=password], select {
+    width:auto;
+    padding: 5px 5px;
+    margin: 0px 0px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.db_table{
+    width: 200px;float: left;margin: 3px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.db_table:hover{
+    background-color: black;color: white;
+}
+  

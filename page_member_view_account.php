@@ -69,10 +69,10 @@ if($list_contact_same_name){
                 <li><strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID
                         carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
                     <?php
-                    QRcode::png($url_cur_page, 'phpqrcode/img_account/' . $id_user . '_' . $lang_sel . '.png', 'M', 4, 2);
+                    QRcode::png($url_cur_page, 'phpqrcode/img_account/' . $id_user . '_'.$lang.'.png', 'M', 4, 2);
                     ?>
-                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_sel; ?>.png" class="box_get_info_contact"/>
-                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang_sel;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'download_vcf');?></span></a>
+                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang; ?>.png" class="box_get_info_contact"/>
+                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'download_vcf');?></span></a>
                     <span style="cursor: pointer;" onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,"account_report"); ?></span></span>
                 </li>
                 <?php
@@ -168,7 +168,7 @@ if($list_contact_same_name){
             ?>
             <a style="width: 100%;display: block;"
                href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang; ?>"
-               class="track-details">
+               class="track-details contacts">
                 <i class="fa fa-user" aria-hidden="true"></i> <?php echo $row_contact['name']; ?>
                 <em><?php echo $row_contact['sdt']; ?></em>
             </a>
@@ -185,7 +185,7 @@ if($list_contact_same_name){
                 ?>
                 <a style="width: 100%;display: block;"
                    href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang; ?>"
-                   class="track-details">
+                   class="track-details contacts">
                     <i class="fa fa-user" aria-hidden="true"></i> <?php echo $row_contact['name']; ?>
                     <em><?php echo $row_contact['sdt']; ?></em>
                 </a>
