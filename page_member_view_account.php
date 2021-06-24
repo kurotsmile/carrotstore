@@ -57,7 +57,7 @@ if($list_contact_same_name){
 
             <ul id="list_info_contact">
                 <li><strong><i class="fa fa-user"></i> <?php echo lang($link,'ten_day_du'); ?> :</strong> <?php echo $data_user['name']; ?></li>
-                <?php if ($sdt != '') { ?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang($link,'so_dien_thoai'); ?> :</strong> <?php echo $sdt; ?></li><?php } ?>
+                <?php if ($sdt != '') { ?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang($link,'so_dien_thoai'); ?> :</strong> <a href="tel://<?php echo $sdt; ?>"><?php echo $sdt; ?></a></li><?php } ?>
                 <li>
                     <strong><i class="fa fa-globe" aria-hidden="true"></i> <?php echo lang($link,'quoc_gia'); ?>:</strong>
                     <img style="height: 14px;"  src="<?php echo $url . '/app_mygirl/img/' . $lang . '.png'; ?>"/> <?php echo $lang; ?>
@@ -73,6 +73,7 @@ if($list_contact_same_name){
                     ?>
                     <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang; ?>.png" class="box_get_info_contact"/>
                     <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'download_vcf');?></span></a>
+                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'contact_open_app');?></span></a>
                     <span style="cursor: pointer;" onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,"account_report"); ?></span></span>
                 </li>
                 <?php

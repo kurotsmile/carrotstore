@@ -30,5 +30,11 @@
         <span>q_data(Chuỗi truy vấn mysql)</span>
         <div>Truy vấn nhanh cơ sỡ dữ liệu và trả về mảng dữ liệu , hàm này giúp rút gọn quá trình viết mã của lệnh mysqli_fetch_assoc</div>
     </li>
+
+    <li>
+        <i class="fa fa-microchip" aria-hidden="true"></i>
+        <span>setup_page(tên bảng)</span>
+        <div>Thiết lập phân trang cho bảng dữ liệu</div>
+    </li>
 </ul>
 </div>

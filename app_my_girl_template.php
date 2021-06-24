@@ -517,7 +517,7 @@ if (isset($_SESSION['is_login_user']) && $_SESSION['is_login_user'] != "") {
             <input type="text" value="" name="user_name"/><br/>
             <label>Mật khẩu</label>
             <input type="password" name="passw"/><br/>
-            <input type="submit" value="Login" name="login_act" class="buttonPro small green"/><br/><br/>
+            <input type="submit" value="Login" name="login_act" class="buttonPro large green"/><br/><br/>
             <?php if ($error_login_user != "") { ?><p style="color:red;font-weight: bold;"><?php echo $error_login_user; ?></p><?php } ?>
             <input type="hidden" value="<?php echo $url_cur; ?>" name="url_cur"/><br/>
         </form>
