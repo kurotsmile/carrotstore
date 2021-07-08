@@ -6,18 +6,9 @@ $pay_id_music='';
 $pay_lang='';
 $lang_sel='';
 
-if(isset($_GET['item'])){
-    $pay_item=$_GET['item'];
-}
-
-if(isset($_GET['status'])){
-    $pay_status=$_GET['status'];
-}
-
-
-if(isset($_GET['device'])){
-    $pay_id_music=$_GET['device'];
-}
+if(isset($_GET['item'])) $pay_item=$_GET['item'];
+if(isset($_GET['status']))$pay_status=$_GET['status'];
+if(isset($_GET['device']))$pay_id_music=$_GET['device'];
 
 if(isset($_GET['lang'])){
     $pay_lang=$_GET['lang'];
@@ -26,16 +17,12 @@ if(isset($_GET['lang'])){
     $lang_sel=$_SESSION['lang'];
 }
 
-
-
 if($pay_device!=''&&$pay_item!=''){
     if($pay_item!='music'){
         $query_check_pay=mysqli_query($link,"SELECT * FROM `pay` WHERE `id_user` = '$pay_device' AND `id_item` = '$pay_item' LIMIT 1");
         if(mysqli_num_rows($query_check_pay)>0){
             $data_pay=mysqli_fetch_array($query_check_pay);
-            if($data_pay['status']=='0'&&$pay_status=='1'){
-                $query_update_pay=mysqli_query($link,"UPDATE `pay` SET `status` = '1' WHERE `id_user` = '$pay_device' AND `id_item` = '$pay_item' LIMIT 1;");
-            }
+            if($data_pay['status']=='0'&&$pay_status=='1') $query_update_pay=mysqli_query($link,"UPDATE `pay` SET `status` = '1' WHERE `id_user` = '$pay_device' AND `id_item` = '$pay_item' LIMIT 1;");
         }else{
             $query_add_order=mysqli_query($link,"INSERT INTO `pay` (`id_user`, `id_item`, `status`) VALUES ('$pay_device', '$pay_item', '0');");
         }
@@ -48,8 +35,7 @@ if($pay_device!=''&&$pay_item!=''){
     <div style="width: 100%;float: left;padding-top: 20px;padding-bottom: 10px;">
         <strong style="font-size: 20px;"><?php echo lang($link,'pay_title'); ?></strong>
     </div>
-    
-    
+
 	<?php if($pay_item=='music'){?>
 	<div style="float: left;width: 100%;">
 		<div id="box_pay">
@@ -78,18 +64,9 @@ if($pay_device!=''&&$pay_item!=''){
             <div id="pay_container">
                 <?php
                 if($pay_status!=''){
-                    if($pay_status=='0'){
-                    echo lang($link,'pay_method').'<br/>';
-                    }
-                    
-                    if($pay_status=='1'){
-                        echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
-                    }
-                    
-                    if($pay_status=='2'){
-                        echo '<strong style="color:#de0a0a"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'pay_fail').'</strong>';
-                    }
-                    
+                    if($pay_status=='0') echo lang($link,'pay_method').'<br/>';
+                    if($pay_status=='1') echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
+                    if($pay_status=='2') echo '<strong style="color:#de0a0a"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'pay_fail').'</strong>';
                 }
                 ?>
                 <br />

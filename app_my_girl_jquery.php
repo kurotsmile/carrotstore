@@ -263,9 +263,14 @@ if($func=='os_active'){
     $os=$_GET['os'];
     echo "cập nhật danh sách ngôn ngữ (".$lang_sel.")\n";
     foreach($arr_id as $id_row){
-        $result_chat_update=mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `$os` = '$value' WHERE `id` = '$id_row';");
+        if($value=='3'){
+            $result_chat_update=mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `disable` = '1' WHERE `id` = '$id_row';");
+        }else if($value=='4'){
+            $result_chat_update=mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `disable` = '0' WHERE `id` = '$id_row';");
+        }else{
+            $result_chat_update=mysqli_query($link,"UPDATE `app_my_girl_$lang_sel` SET `$os` = '$value' WHERE `id` = '$id_row';");
+        }
         echo "update  $id_row  set $os = $value \n";
-        mysqli_free_result($result_chat_update);
     }
     exit;
 }

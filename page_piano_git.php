@@ -27,6 +27,7 @@ $img=$url.'/app_mygirl/obj_effect/1078.png';
     
     <div class="app_action">
         <a href="<?php echo $url;?>/piano/<?php echo $row['id_midi'];?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_detail; ?></a>
+        <?php if($row['sell']=='2'){?><a href="<?php echo $url;?>/pay_piano/<?php echo $row['id_midi'];?>" class="buttonPro small"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a><?php }?>
     </div>
 
     <script>

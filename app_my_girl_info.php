@@ -8,7 +8,7 @@ if (isset($data_user_carrot['country_work'])) {
     <div style="width: 100%;float:left;background-color: none !important;" id="menu_child_home">
         <?php
 
-        $query_app_work = mysqli_query($link,"SELECT `id`,`name`,`url` FROM carrotsy_work.`work_app`");
+        $query_app_work = mysqli_query($link,"SELECT `id`,`name`,`url` FROM carrotsy_work.`work_app` WHERE `url`!=''");
         while ($row_app_work = mysqli_fetch_assoc($query_app_work)) {
             echo '<a target="_blank"  href="'.$url_carrot_store.'/'.$row_app_work['url'] . '">';
             echo '<img src="'.$url_work.'/thumb.php?src='.$url_work.'/avatar_app/' . $row_app_work['id'] . '.png&size=18&trim=1"/> ';

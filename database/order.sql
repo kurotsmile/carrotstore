@@ -86,6 +86,12 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('60ae7294e42de60ae7294e42ee',	'23726',	'en',	'tjeffries78@gmail.com',	'Troy',	'music',	0),
 ('60b540bce06f460b540bce0730',	'9386',	'pt',	'alanmenossi@yahoo.com.br',	'Alan',	'music',	0),
 ('60b95e5949ba360b95e5949be0',	'29067',	'en',	'aaronbrame@gmail.com',	'Rocco',	'music',	0),
-('60c30170be94860c30170be984',	'29820',	'en',	'umff90@gmail.com',	'Jeff',	'music',	0);
+('60c30170be94860c30170be984',	'29820',	'en',	'umff90@gmail.com',	'Jeff',	'music',	0),
+('60c8f372ddd7560c8f372dddb7',	'21410',	'en',	'JonathanCrawley1988@outlook.com',	'Jonathan',	'music',	0),
+('60ce7ac63d69b60ce7ac63d6d9',	'33621',	'en',	'kirstenlriiber@gmail.com',	'Kirsten ',	'music',	0),
+('60ced143b2d4060ced143b2d82',	'27744',	'en',	'dacheesypoof@sbcglobal.net',	'Henry',	'music',	0),
+('60cf9c442483060cf9c4424872',	'9386',	'pt',	'bielmullin@gmail.com',	'Gabriel',	'music',	0),
+('60d982070cfbd60d982070cff9',	'28601',	'en',	'info@polethreads.com.au',	'Fiona',	'music',	0),
+('60da346ac71b860da346ac71f5',	'26115',	'en',	'mullendave@icloud.com',	'David',	'music',	0);
 
--- 2021-06-12 05:22:34
+-- 2021-07-01 04:15:59

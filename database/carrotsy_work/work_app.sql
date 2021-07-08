@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.34 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -10,22 +10,26 @@ CREATE TABLE `work_app` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `url` text NOT NULL,
+  `folder` varchar(50) NOT NULL,
+  `order` int(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 TRUNCATE `work_app`;
-INSERT INTO `work_app` (`id`, `name`, `url`) VALUES
-(1,	'lover',	'vl'),
-(2,	'Flower',	'flower'),
-(3,	'Sheep',	'sheep'),
-(4,	'Music',	'appmusic'),
-(5,	'Contact',	'contactstore'),
-(8,	'Work',	'work'),
-(19,	'Fish',	'fish_of_prey'),
-(9,	'Carrotstore',	'admin'),
-(10,	'Bibles',	'bibles'),
-(15,	'Password',	'createpassword'),
-(16,	'Web Offline',	'saveweboffline'),
-(18,	'Piano Midi',	'midi');
+INSERT INTO `work_app` (`id`, `name`, `url`, `folder`, `order`) VALUES
+(1,	'lover',	'vl',	'',	4),
+(2,	'Flower',	'flower',	'flower',	3),
+(3,	'Sheep',	'sheep',	'sheep',	6),
+(4,	'Music',	'appmusic',	'musicforlife',	7),
+(5,	'Contacts Store',	'',	'contactstore',	1),
+(8,	'Work',	'work',	'work',	8),
+(19,	'Fish',	'',	'fish_of_prey',	9),
+(9,	'Carrotstore',	'admin',	'',	10),
+(10,	'Bible',	'',	'bible',	2),
+(15,	'Password',	'createpassword',	'createpassword',	11),
+(16,	'Web Offline',	'saveweboffline',	'saveweboffline',	12),
+(18,	'Piano Midi',	'midi',	'piano',	5),
+(20,	'Carrot Framework',	'',	'carrot_framework',	0),
+(21,	'Quick Eye',	'',	'quick_eye',	13);
 
--- 2021-03-26 22:10:35
+-- 2021-06-27 04:34:46

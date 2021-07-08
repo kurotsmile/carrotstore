@@ -1,10 +1,10 @@
 <?php
 if(isset($_GET['delete'])){
     $id_delete=$_GET['delete'];
-    $query_delete_cat=mysqli_query($link,"DELETE FROM `category` WHERE  `name` = '$id_delete' LIMIT 1;");
+    $query_delete_cat=$this->q("DELETE FROM `category` WHERE  `name` = '$id_delete' LIMIT 1;");
     if($query_delete_cat){
-        $query_midi_update=mysqli_query($link,"UPDATE `midi` SET `category`='' WHERE `category`='$id_delete'");
-        echo msg('Xóa chủ đề '.$id_delete.' thành công! ');
+        $query_midi_update=$this->q("UPDATE `midi` SET `category`='' WHERE `category`='$id_delete'");
+        echo $this->msg('Xóa chủ đề '.$id_delete.' thành công! ');
     }
 }
 ?>
@@ -14,7 +14,7 @@ if(isset($_GET['delete'])){
     <th>Thao tác</th>
 </tr>
 <?php
-$query_list_category=mysqli_query($link,"SELECT * FROM `category`");
+$query_list_category=$this->q("SELECT * FROM `category`");
 while($row_category=mysqli_fetch_assoc($query_list_category)){
 ?>
     <tr>

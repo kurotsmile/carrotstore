@@ -504,17 +504,12 @@ if($function=='download_lang'){
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
-    $query_get_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `version` = '3' AND `lang` = '$key' LIMIT 1");
-    $data_lang_app=mysqli_fetch_assoc($query_get_lang);
-    $data_lang_app=$data_lang_app['data'];
-
-    $data_display=mysqli_fetch_assoc(mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `lang` = '".$key."' AND `version` = '0' LIMIT 1"));
-    $arr_data=(Array)json_decode($data_display['data']);
-    $data_lang->{"setting_url_sound_test_sex0"}=$arr_data['setting_url_sound_test_sex0'];
-    $data_lang->{"setting_url_sound_test_sex1"}=$arr_data['setting_url_sound_test_sex1'];
-    $data_lang->{"lang_app"}=$data_lang_app;
+    $query_data_lang_piano=mysqli_query($link,"SELECT `data` FROM  carrotsy_piano.`lang_val` WHERE `lang` = '$key' LIMIT 1");
+    $data_lang_piano=mysqli_fetch_assoc($query_data_lang_piano);
+    $data_lang->{"lang_app"}=$data_lang_piano['data'];
 
     echo json_encode($data_lang);
+    exit;
 }
 
 if($function=='dowwnload_lang_by_key'){
@@ -523,24 +518,18 @@ if($function=='dowwnload_lang_by_key'){
 
     $query_country=mysqli_query($link,"SELECT `name` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `key`='$key'");
     $data_country=mysqli_fetch_assoc($query_country);
-    $data_lang->{"lang_key"}=$key;
-    $data_lang->{"lang_icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$key.'.png&size=50&trim=1';;
-    $data_lang->{"lang_name"}=$data_country['name'];
 
     $query_data_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`cr_framework_lang_val` WHERE `lang` = '$key' LIMIT 1");
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
-    $query_get_lang=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `version` = '3' AND `lang` = '$key' LIMIT 1");
-    $data_lang_app=mysqli_fetch_assoc($query_get_lang);
-    $data_lang_app=$data_lang_app['data'];
+    $query_data_lang_piano=mysqli_query($link,"SELECT `data` FROM  carrotsy_piano.`lang_val` WHERE `lang` = '$key' LIMIT 1");
+    $data_lang_piano=mysqli_fetch_assoc($query_data_lang_piano);
 
-    $data_display=mysqli_fetch_assoc(mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`app_my_girl_display_lang` WHERE `lang` = '".$key."' AND `version` = '0' LIMIT 1"));
-    $arr_data=(Array)json_decode($data_display['data']);
-    $data_lang->{"setting_url_sound_test_sex0"}=$arr_data['setting_url_sound_test_sex0'];
-    $data_lang->{"setting_url_sound_test_sex1"}=$arr_data['setting_url_sound_test_sex1'];
-    $data_lang->{"lang_app"}=$data_lang_app;
-
+    $data_lang->{"lang_app"}=$data_lang_piano["data"];
+    $data_lang->{"lang_key"}=$key;
+    $data_lang->{"lang_icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$key.'.png&size=50&trim=1';;
+    $data_lang->{"lang_name"}=$data_country['name'];
     echo json_encode($data_lang);
     exit;
 }

@@ -8,7 +8,7 @@ if(!$is_me){
     exit;
 }
 
-$query_backup=mysqli_query($link,"SELECT * FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id_user` = '$id_user'");
+$query_backup=mysqli_query($link,"SELECT * FROM carrotsy_contacts.`backup_$lang` WHERE `user_id` = '$id_user'");
 ?>
 
 

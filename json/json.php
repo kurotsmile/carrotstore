@@ -494,6 +494,21 @@ if($function=='scroll_load_data'){
         exit;
     }
 
+    if($function=='order_midi'){
+        $id_midi=$_POST['id_midi'];
+        $lang_midi=$_POST['lang_midi'];
+        $pay_name=$_POST['pay_name'];
+        $pay_mail=$_POST['pay_mail'];
+        $id_order=uniqid().''.uniqid();
+        $query_add=mysqli_query($link,"INSERT INTO `order` (`id_order`,`id`, `lang`, `pay_mail`, `pay_name`, `type`) VALUES ('$id_order','$id_midi', '$lang_midi', '$pay_mail', '$pay_name', 'piano');");
+        echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
+        echo '<a style="width: 100%;" onclick="export_midi_file();return false;" id="download_song" >';
+        echo '<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
+        echo '<span>'.lang($link,'midi_download').'</span>';
+        echo '</a>';
+        exit;
+    }
+
     if($function=='order_product'){
         $id_music=$_POST['id_music'];
         $lang_music=$_POST['lang_music'];

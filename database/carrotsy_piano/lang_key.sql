@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -35,6 +35,15 @@ INSERT INTO `lang_key` (`key`) VALUES
 ('in_app_midi_success'),
 ('midi_public'),
 ('midi_public_success'),
-('list_midi_your');
+('list_midi_your'),
+('list_midi_your_tip'),
+('list_midi_your_public'),
+('share_your_midi_tip'),
+('delete_success'),
+('none_midi_save'),
+('none_midi_public'),
+('none_midi_search'),
+('export_file_midi_success'),
+('midi_category');
 
--- 2021-04-14 12:41:01
+-- 2021-07-08 07:41:37

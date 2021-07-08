@@ -2,18 +2,6 @@
 $list_tool=array();
 
 $item_tool=new stdClass();
-$item_tool->{"id"}="backup_database";
-$item_tool->{"icon"}="fa-database";
-$item_tool->{"name"}="Sao lưu dữ liệu";
-array_push($list_tool,$item_tool);
-
-$item_tool=new stdClass();
-$item_tool->{"id"}="bug";
-$item_tool->{"icon"}="fa-bug";
-$item_tool->{"name"}="Xem lỗi máy chủ ứng dụng";
-array_push($list_tool,$item_tool);
-
-$item_tool=new stdClass();
 $item_tool->{"id"}="database";
 $item_tool->{"icon"}="fa-table";
 $item_tool->{"name"}="Cơ sở dũ liệu";

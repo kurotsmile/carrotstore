@@ -38,7 +38,7 @@ include "function.php";
         $color_count_mont="red";  
     }
     
-    $query_app_work=mysqli_query($link,"SELECT * FROM `work_app` ORDER BY RAND() LIMIT 12");
+    $query_app_work=mysqli_query($link,"SELECT * FROM `work_app` WHERE `url`!='' ORDER BY RAND() LIMIT 12");
     $query_all_user=mysqli_query($link,"SELECT * FROM `work_user` ORDER BY RAND()");
     
     $url_avart_user=$url.'/image/avatar_default.png';

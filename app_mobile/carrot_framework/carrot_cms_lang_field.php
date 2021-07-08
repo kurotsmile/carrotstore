@@ -16,13 +16,15 @@ if(isset($_POST['val'])){
         $lang=$item_country['key'];
         $query_data=mysqli_query($this->link_mysql,"SELECT `$field_data` FROM `$table_data` WHERE `$field_data_lang_id`='$lang' LIMIT 1");
         $data_lang=mysqli_fetch_assoc($query_data);
-        $data_lang=json_decode($data_lang[$field_data]);
-        $data_lang->{$field_show}=$data_val[$i];
+        if($data_lang!=null){
+            $data_lang=json_decode($data_lang[$field_data]);
+            $data_lang->{$field_show}=$data_val[$i];
 
-        $data_obj=json_encode($data_lang,JSON_UNESCAPED_UNICODE);
-        $data_obj=addslashes($data_obj);
-        $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
-        if($query_update_obj) echo $this->msg('Cập nhật ngôn ngữ '.$lang.' thành công!!!'); else echo $this->msg('Cập nhật ngôn ngữ '.$lang.' Thất bại!!!');
+            $data_obj=json_encode($data_lang,JSON_UNESCAPED_UNICODE);
+            $data_obj=addslashes($data_obj);
+            $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
+            if($query_update_obj) echo $this->msg('Cập nhật ngôn ngữ '.$lang.' thành công!!!'); else echo $this->msg('Cập nhật ngôn ngữ '.$lang.' Thất bại!!!');
+        }
     }
 }
 ?>
@@ -40,7 +42,7 @@ foreach ($list_country as $country){
     <tr>
         <td><strong><?php echo $country['name'];?></strong></td>
         <td><?php echo $field_show; ?></td>
-        <td><input type="text" name="val[]" id="<?php echo $field_show; ?>_<?php echo $lang;?>" value="<?php echo $val_lang;?>"/></td>
+        <td><input type="text" style="width:100%;" name="val[]" id="<?php echo $field_show; ?>_<?php echo $lang;?>" value="<?php echo $val_lang;?>"/></td>
         <td>
             <?php echo $this->copy($field_show.'_'.$lang); ?>
             <?php echo $this->paste($field_show.'_'.$lang); ?>

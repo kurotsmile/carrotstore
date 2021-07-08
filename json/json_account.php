@@ -18,11 +18,9 @@ $function=$_POST['function'];
 if($function=='view_contatc_backup'){
     $lang=$_POST['lang'];
     $id=$_POST['id'];
-    $query_data_backup=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id` = '$id' LIMIT 1");
+    $query_data_backup=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`backup_$lang` WHERE `id` = '$id' LIMIT 1");
     $data_backup=mysqli_fetch_array($query_data_backup);
     $data_backup_json=$data_backup['data'];
-    $data_backup_json=str_replace(",}","}",$data_backup_json);
-    $data_backup_json=str_replace(",]","]",$data_backup_json);
     $data_bk=json_decode($data_backup_json,true);
 
     echo '<div style="width: 100%;overflow-y: auto;max-height: 300px;"><table class="table_msg_box">';
@@ -50,7 +48,7 @@ if($function=='view_contatc_backup'){
 if($function=='delete_backup_contact'){
     $lang=$_POST['lang'];
     $id=$_POST['id'];
-    $query_backup_contact=mysqli_query($link,"DELETE FROM carrotsy_contacts.`backup_contact_$lang` WHERE `id` = '$id'");
+    $query_backup_contact=mysqli_query($link,"DELETE FROM carrotsy_contacts.`backup_$lang` WHERE `id` = '$id'");
     exit;
 }
 

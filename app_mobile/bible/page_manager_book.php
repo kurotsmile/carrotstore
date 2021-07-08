@@ -35,7 +35,7 @@ if(mysqli_num_rows($query_book)>0){
     ?>
 </ul>
 <a id="btn_save" class="buttonPro small yellow" onclick="save_all_item();return false;"><i class="fa fa-save"></i> Lưu thay đổi thứ tự</a>
-<script src="http://carrotstore.com/js/jquery-ui.js"></script>
+<script src="<?php echo $this->url_carrot_store;?>/js/jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
     $("#btn_save").hide();

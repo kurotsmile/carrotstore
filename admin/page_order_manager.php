@@ -54,7 +54,10 @@ if($lang_order==''){
 }
 if($list_order){
 while($row=mysqli_fetch_assoc($list_order)){
-    $url_product=$url.'/music/'.$row['id'].'/'.$row['lang'];
+    $txt_col_type='';
+    if($row['type']=='music') $txt_col_type='<a href="'.$url_carrot_store.'/music/'.$row['id'].'" target="_blank"><i class="fa fa-music" aria-hidden="true"></i> '.$row['id'].'</a>';
+    if($row['type']=='piano') $txt_col_type='<a href="'.$url_carrot_store.'/piano/'.$row['id'].'" target="_blank"><i class="fa fa-file-audio-o" aria-hidden="true"></i> '.$row['id'].'</a>';
+
 ?>
     <tr>
         <td>
@@ -66,9 +69,7 @@ while($row=mysqli_fetch_assoc($list_order)){
         <td>
             <i class="fa fa-user"></i> <?php echo $row['pay_name'];?>
         </td>
-        <td>
-            <a href="<?php echo $url_product;?>" target="_blank"><i class="fa fa-music" aria-hidden="true"></i> <?php echo $row['id'];?></a>
-        </td>
+        <td><?php echo $txt_col_type;?></td>
         <td>
             <?php echo $row['lang'];?>
         </td>

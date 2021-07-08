@@ -1,95 +1,37 @@
-
-*,html,body{
-    margin: 0px;
-    padding: 0px;
-    font-family: Roboto,arial,sans-serif;
-    font-size: 12px;
-    overflow-x:no-display;
-    overflow-y: no-display;
-}
-
-#menu_head{
-    width: 100%;float: left;
-    background-color: blueviolet;
-}
-
-.menu_sub{
-    width: 100%;float: left;
-    background-color: rgb(77, 13, 138);
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.menu_sub a{
-    color: yellow;
-    text-decoration: unset;
-    margin:5px;
-}
-
-.menu_sub a.active{
-    color: violet;
-}
-
-#menu_head .title{
-    color: white;font-size: 20px;
-    margin: 5px;font-weight: bold;float: left;
-    text-decoration: none;
-}
-
-#menu_head .item_menu{
-    color: #6affba; font-size: 14px;
-    margin: 5px;float: left;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-
-}
-
-th, td {
-    padding: 5px;
-    text-align: left;
-}
-
-th {
-    background-color: #AD6FD5;
-    color: white;
-}
-tr:nth-child(even) {background-color: white}
-#piano{width: 95%;float: left;border: solid 3px rgb(108, 0, 129);margin: 5px;}
-#piano #note_white{width: 100%;float: left;}
-#piano #note_black{float: left; position: absolute;left: 29px;}
-#note_white .note{width: 30px;float: left;height: 80px;border: solid 1px grey;margin: 1px;text-align: center;cursor: pointer;}
-#note_white .note.sel{background-color: yellow;}
-#note_white .note span{margin-top: 50px;float: left;text-align: center;width: 100%;}
-#note_black .note{width: 20px;float: left;height: 30px;border: solid 1px grey;margin: 1px;text-align: center;background-color: black;color: white; margin-right: 11px;cursor: pointer;}
-#note_black .note span{margin-top: 10px;float: left;text-align: center;width: 100%;font-size: 10px;}
-#note_black .note.sel{background-color: yellow;color: black;}
-#note_black .note.none{border-color: unset;background-color: unset;}
-#midi_edit{width: 95%;float: left;border: solid 3px rgb(108, 0, 129);margin: 5px; overflow-x: scroll;}
-#midi_edit .line{width: 100%;float: left;    width: 9100%;}
-#midi_edit .line .midi{float: left;width: 30px;background-color: rgb(95, 0, 87);margin: 3px;color: white;text-align: center;cursor: pointer;height: 20px;}
-#midi_edit .line .midi.sel{color: yellow;background-color: red;}
-#midi_edit .line .midi.play{color: rgb(0, 0, 0);background-color: rgb(0, 140, 255);}
-
-#pc_edit{width: 95%;float: left;border: solid 3px rgb(108, 0, 129);margin: 5px;overflow-x: scroll;}
-#pc_edit .line{width: 100%;float: left; width: 9100%;}
-#pc_edit .line .midi{float: left;width: 30px;background-color: rgb(248, 91, 0);margin: 3px;color: white;text-align: center;}
-input[type=text],textarea{border: solid 3px blueviolet;padding: 3px;}
-.bar_page{width: 100%;float: left;background-color: rgb(25, 2, 48);color: wheat;padding-top: 5px;padding-bottom: 5px;}
-#area_body{position: relative;width: 100%;height: 100%;}
-#frm_login{
-    background-color: purple;
-    color: white;
-    width: 250px;
-    text-align: center;
-    top:50%;
-    left:50%;
-    padding: 20px;border-radius: 8px;position: absolute;
-    transform: translate(-50%,-50%);
-}
-#btn_logout{float: right;margin-top: 5px;}
-#filter a{float: left;color: white;text-decoration: none;margin-right: 5px;}
+*,body,html{margin:0;padding:0;font-family:Roboto,arial,sans-serif;font-size:12px;overflow-x:no-display;overflow-y:no-display}
+#menu_head{width:100%;float:left;background-color:#8a2be2}
+.menu_sub{width:100%;float:left;background-color:#4d0d8a;padding-top:5px;padding-bottom:5px}
+.menu_sub a{color:#ff0;text-decoration:unset;margin:5px}
+.menu_sub a.active{color:violet}
+#menu_head .title{color:#fff;font-size:20px;margin:5px;font-weight:700;float:left;text-decoration:none}
+#menu_head .item_menu{color:#6affba;font-size:14px;margin:5px;float:left;text-decoration:none;margin-top:10px}
+table{border-collapse:collapse;width:100%}
+table.edit tr td input,table.edit tr td select{width: 100% !important;}
+td,th{padding:5px;text-align:left}
+th{background-color:#ad6fd5;color:#fff}
+tr:nth-child(even){background-color:#fff}
+#piano{width:95%;float:left;border:solid 3px #6c0081;margin:5px}
+#piano #note_white{width:100%;float:left}
+#piano #note_black{float:left;position:absolute;left:29px}
+#note_white .note{width:30px;float:left;height:80px;border:solid 1px grey;margin:1px;text-align:center;cursor:pointer}
+#note_white .note.sel{background-color:#ff0}
+#note_white .note span{margin-top:50px;float:left;text-align:center;width:100%}
+#note_black .note{width:20px;float:left;height:30px;border:solid 1px grey;margin:1px;text-align:center;background-color:#000;color:#fff;margin-right:11px;cursor:pointer}
+#note_black .note span{margin-top:10px;float:left;text-align:center;width:100%;font-size:10px}
+#note_black .note.sel{background-color:#ff0;color:#000}
+#note_black .note.none{border-color:unset;background-color:unset}
+#midi_edit{width:95%;float:left;border:solid 3px #6c0081;margin:5px;overflow-x:scroll}
+#midi_edit .line{width:100%;float:left;width:9100%}
+#midi_edit .line .midi{float:left;width:30px;background-color:#5f0057;margin:3px;color:#fff;text-align:center;cursor:pointer;height:20px}
+#midi_edit .line .midi.sel{color:#ff0;background-color:red}
+#midi_edit .line .midi.play{color:#000;background-color:#008cff}
+#pc_edit{width:95%;float:left;border:solid 3px #6c0081;margin:5px;overflow-x:scroll}
+#pc_edit .line{width:100%;float:left;width:9100%}
+#pc_edit .line .midi{float:left;width:30px;background-color:#f85b00;margin:3px;color:#fff;text-align:center}
+input[type=text],textarea{border:solid 2px #8a2be2;}
+.bar_page{width:100%;float:left;background-color:#190230;color:wheat;padding-top:5px;padding-bottom:5px}
+#area_body{position:relative;width:100%;height:100%}
+#frm_login{background-color:purple;color:#fff;width:250px;text-align:center;top:50%;left:50%;padding:20px;border-radius:8px;position:absolute;transform:translate(-50%,-50%)}
+#btn_logout{float:right;margin-top:5px}
+#filter a{float:left;color:#fff;text-decoration:none;margin-right:5px}
+#menu_cms.menu{background-color:violet!important}

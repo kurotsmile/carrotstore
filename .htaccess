@@ -6,9 +6,9 @@ RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
 RewriteRule    ^user/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_view_account.php&user=$1&lang=$2
 RewriteRule    ^user_edit/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_edit_account.php&user=$1&lang=$2
 RewriteRule    ^user_playlist/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_playlist.php&user=$1&lang=$2
-RewriteRule    ^type/([^/]*)/([^/]*)/?$    index.php?page_view=page_view.php&type=$1&view_type=$2    [NC,L]    
-RewriteRule    ^type/([^/]*)/?$    index.php?page_view=page_view.php&type=$1    [NC,L]           
-RewriteRule    ^member  index.php?page_view=page_member.php   [NC,L]    
+RewriteRule    ^type/([^/]*)/([^/]*)/?$    index.php?page_view=page_view.php&type=$1&view_type=$2    [NC,L]
+RewriteRule    ^type/([^/]*)/?$    index.php?page_view=page_view.php&type=$1    [NC,L] 
+RewriteRule    ^member  index.php?page_view=page_member.php   [NC,L]
 RewriteRule    ^music/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&id=$1&lang=$2
 RewriteRule    ^music/([^/]*)/?$   index.php?page_view=page_music.php&sub_view=$1
 RewriteRule    ^music  index.php?page_view=page_music.php   [NC,L]   
@@ -19,21 +19,22 @@ RewriteRule    ^artist/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&v
 RewriteRule    ^year/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=year&lang=$1&year=$2
 RewriteRule    ^album/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=album&lang=$1&album=$2
 RewriteRule    ^playlist/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=playlist&id=$1&lang=$2
-RewriteRule    ^products   index.php?page_view=page_view.php   [NC,L]     
-RewriteRule    ^product/([^/]*)/([^/]*)/?$   index.php?page_view=page_view.php&view_product=$1&invite=$2    [NC,L]    
+RewriteRule    ^products   index.php?page_view=page_view.php   [NC,L] 
+RewriteRule    ^product/([^/]*)/([^/]*)/?$   index.php?page_view=page_view.php&view_product=$1&invite=$2    [NC,L]
 RewriteRule    ^product/([0-9]+)/?$    index.php?page_view=page_view.php&view_product=$1    [NC,L]
 RewriteRule    ^company/([^/]*)/?$    index.php?page_view=page_view_product_company.php&name_company=$1    [NC,L]
 RewriteRule    ^p/([^/]*)/?$    index.php?page_view=page_view.php&view_product=$1&slug=$1    [NC,L]
 RewriteRule    ^product_app_info/([0-9]+)/?$    index.php?page_view=page_view.php&view_product=$1&viewss=info    [NC,L]
-RewriteRule    ^product_tags/([^/]*)/?$   index.php?page_view=page_view.php&tags=$1    [NC,L]     
+RewriteRule    ^product_tags/([^/]*)/?$   index.php?page_view=page_view.php&tags=$1    [NC,L] 
 RewriteRule    ^pay/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2&device=$3&lang=$4  [NC,L]
 RewriteRule    ^pay/([^/]*)/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2&device=$3  [NC,L]
 RewriteRule    ^pay/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2  [NC,L]
-RewriteRule    ^pay/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1  [NC,L]     
+RewriteRule    ^pay/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1  [NC,L] 
+RewriteRule    ^pay_piano/([^/]*)/?$    index.php?page_view=page_pay_piano.php&id_midi=$1  [NC,L] 
 RewriteRule    ^pay    index.php?page_view=page_pay.php  [NC,L]
 RewriteRule    ^order    index.php?page_view=page_order.php  [NC,L]   
-RewriteRule    ^paysuccess    index.php?page_view=page_pay_success.php [NC,L]    
-RewriteRule    ^paycancel   index.php?page_view=page_pay_cancel.php  [NC,L]      
+RewriteRule    ^paysuccess    index.php?page_view=page_pay_success.php [NC,L]
+RewriteRule    ^paycancel   index.php?page_view=page_pay_cancel.php  [NC,L]
 RewriteRule    ^vl   app_my_girl_info.php [NC,L]
 RewriteRule    ^privacy_policy    index.php?page_view=page_privacy_policy.php   [NC,L]
 RewriteRule    ^copyright    index.php?page_view=page_privacy_policy.php   [NC,L]

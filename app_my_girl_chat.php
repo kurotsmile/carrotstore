@@ -263,6 +263,7 @@ if(isset($_POST['loc'])){
     <span class="buttonPro blue small" onclick="os_active('os_window','0')"><i class="fa fa-windows" aria-hidden="true"></i> Hiện window</span>
     <span class="buttonPro red small" onclick="os_active('os_ios','1')"><i class="fa fa-apple" aria-hidden="true"></i> Ẩn Ios</span>
     <span class="buttonPro blue small" onclick="os_active('os_ios','0')"><i class="fa fa-apple" aria-hidden="true"></i> Hiện Ios</span>
+    <span class="buttonPro red small" onclick="os_active('os_android','3')"><i class="fa fa-check" aria-hidden="true"></i> Không kích hoạt</span>
 </div>
 
 <script>

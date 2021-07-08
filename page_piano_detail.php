@@ -154,8 +154,8 @@ if(isset($_SESSION['is_show_key_name'])){ $is_show_key_name=$_SESSION['is_show_k
 <div id="editor" <?php if($id_midi=='new'){ echo 'class="draft"';}?>>
     <div id="editor_control">
     <i onclick="play_midi();" id="btn_play_midi" class="fa fa-play-circle-o fa-4x btn"  aria-hidden="true"></i>
-    <i onclick="pause_midi();" id="btn_pause_midi" class="fa fa-pause-circle-o fa-4x btn"  aria-hidden="true"></i><br/>
-    <i onclick="stop_midi();" id="btn_stop_midi" class="fa fa-stop-circle-o fa-2x btn"  aria-hidden="true"></i>
+    <i onclick="pause_midi();" style="display:none" id="btn_pause_midi" class="fa fa-pause-circle-o fa-4x btn"  aria-hidden="true"></i><br/>
+    <i onclick="stop_midi();" style="display:none" id="btn_stop_midi" class="fa fa-stop-circle-o fa-2x btn"  aria-hidden="true"></i>
     <?php
         $length_data_line_0=count($data_midi_index[0]);
         if($id_midi=='new'){
@@ -198,7 +198,12 @@ if(isset($_SESSION['is_show_key_name'])){ $is_show_key_name=$_SESSION['is_show_k
                 QRcode::png($url.'/piano/'.$id_midi, 'phpqrcode/img_piano/'.$id_midi.'.png', 'M', 4, 2);
             ?>
             <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img_piano/<?php echo $id_midi;?>.png" style="float: left;margin: 2px;" />
-            <span onclick="export_midi_file();" id="download_song" class="full" style="cursor: pointer;"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br> <span style="word-wrap: break-word;width: 99%;float: left;"><?php echo lang($link,"midi_download");?></span><span style="font-size: 12px;text-align: center;width: 100%;float: left;">(.Mid)</span> </span>
+            <?php if($data_midi['sell']!='2'){?>
+                <span onclick="export_midi_file();" id="download_song" class="full" style="cursor: pointer;"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br> <span style="word-wrap: break-word;width: 99%;float: left;"><?php echo lang($link,"midi_download");?></span><span style="font-size: 12px;text-align: center;width: 100%;float: left;">(.Mid)</span> </span>
+                <a style="width:132px;height:132px;border:none;" href="midi://show/<?php echo $id_midi;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'link_open_app');?></span></div></a>
+            <?php }else{?>
+                <a href="<?php echo $url_carrot_store;?>/pay_piano/<?php echo $id_midi;?>" id="download_song" class="full"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br> <span style="word-wrap: break-word;width: 99%;float: left;"><?php echo lang($link,"midi_download");?></span> <br> <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$1.30</span> </a>
+            <?php }?>
         </div>
         <?php echo $label_ten_bai_hat;?>: <?php echo $data_midi['name'];?><br/>
         <?php echo $label_cap_do;?>: <?php echo $arr_midi_level[intval($data_midi['level'])];?><br/>

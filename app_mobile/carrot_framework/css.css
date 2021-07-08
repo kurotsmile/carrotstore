@@ -1,140 +1,38 @@
-*,html,body{
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-    line-height: 1.15;
-    font-size: 12px;
-    overflow-x:no-display;
-    overflow-y: no-display;
-}
-
-#menu_cms{
-    width: 100%;
-    float: left;
-}
-
-#menu_cms.top{
-    background-color: black !important;
-}
-#menu_cms.top a{
-    color: white;
-}
-
-#menu_cms.menu{
-    background-color: rgb(190, 190, 190) !important;
-}
-
-#menu_cms.menu .logout{
-    float: right;
-}
-.cms_menu_lang{
-    width: 100%;
-    background-color: #ccdcff;
-    float: left;
-}
-.cms_menu_lang a{
-    padding: 5px;float: left;
-}
-.cms_menu_lang .active{color: #bb5600;}
-#menu_cms a{
-    padding: 5px;float: left;
-}
-#menu_cms .active{background-color:white;}
-#cms_frm_login_area{
-    float: left;
-    width: 100%;
-    height: 100%;
-}
-#cms_frm_login{
-    position: absolute;
-    width: 200px;
-    background-color: #e6e6e6;
-    border-radius: 5px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    height: 200px;
-    text-align: center;
-}
-.frm_login_row{
-    width:100%;
-}
-a {
-    text-decoration: none;color:rgb(31, 31, 31);
-}
-table{background-color: #EBEBEB;width: 100%;border-collapse: collapse;}
-table tr td{padding: 5px;padding-top: 2px;padding-bottom: 2px;margin: 0px;font-size: 11px;}
-table tr th {background-color: #b1b1b1;color: white;padding: 5px;}
-table tr:nth-child(even) {background-color: #f2f2f2}
-table tr:hover td{background-color: #FFFF9B;}
-.btn{
-    border: none;
-    padding: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-style: oblique;
-    background-color: #ececec;
-    margin-left: 3px;margin-right: 3px;
-}
-.btn.blue{
-    background-color: rgb(161, 217, 255);
-    color: black;
-}
-.btn.green{
-    background-color: rgb(177, 255, 161);
-    color: black;
-}
-.btn.gray{
-    background-color: rgb(90, 90, 90);
-    color: white;
-}
-.btn:hover{
-    background-color: black;color: white;
-}
-.cms_nav_page,.cms_tool_page{
-    float: left;
-    width: 100%;margin-top: 3px;margin-bottom: 3px;
-}
-.cms_nav_page a,.cms_tool_page a{
-    float: left;
-}
-.cms_tool{
-    float: left;
-    width: 300px;
-    margin: 8px;
-    height: 34px;
-    padding: 6px;
-    border-radius: 8px;
-}
-
-.cms_tool .icon{
-    font-size: 25px;float: left;margin-right: 6px;
-}
-
-.cms_tool:hover{
-    background-color: rgb(241, 241, 241);
-}
-
-input[type=text],input[type=password], select {
-    width:auto;
-    padding: 5px 5px;
-    margin: 0px 0px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.db_table{
-    width: 200px;float: left;margin: 3px;
-    background-color: rgb(243, 243, 243);
-    border-radius: 3px;
-    padding: 5px;
-}
-
-.db_table:hover{
-    background-color: black;color: white;
-}
-  
+*,body,html{margin:0;padding:0;font-family:sans-serif;line-height:1.15;font-size:12px;overflow-x:no-display;overflow-y:no-display}
+#bk_blur{filter:blur(250px);width:100%;height:100%;position:absolute;top:0;left:0;right:0;background-color:#00000073;z-index:2}
+#menu_cms{width:100%;float:left}
+#menu_cms.top{background-color:#000!important}
+#menu_cms.top a{color:#fff}
+#menu_cms.top .active{color:black}
+#menu_cms.menu{background-color:#bebebe!important;border-top: solid 5px white;}
+#menu_cms.menu .logout{float:right}
+.cms_menu_lang{width:100%;background-color:#ccdcff;float:left}
+.cms_menu_lang a{padding:5px;float:left}
+.cms_menu_lang .active{color:#bb5600}
+#menu_cms a{padding:5px;float:left}
+#menu_cms .active{background-color:#fff}
+#logo_carrot{width:100px;margin-top:29px}
+#cms_frm_login_area{float:left;width:100%;height:100%;background-size:auto 100%}
+#cms_frm_login{position:absolute;width:300px;background-color:#e6e6e6;border-radius:5px;top:50%;left:50%;transform:translate(-50%,-50%);height:300px;text-align:center;z-index:2;box-shadow:1px -2px 13px 8px #00000070}
+#cms_frm_login input{width:80%}
+#lg_password,#lg_user{padding-left:25px}
+.frm_login_row{width:100%}
+.frm_login_row .fa{position:absolute;margin-top:6px;margin-left:8px}
+a{text-decoration:none;color:#1f1f1f}
+table{background-color:#ebebeb;width:100%;border-collapse:collapse}
+table tr td{padding:5px;padding-top:2px;padding-bottom:2px;margin:0;font-size:11px}
+table tr th{background-color:#b1b1b1;color:#fff;padding:5px}
+table tr:nth-child(even){background-color:#f2f2f2}
+table tr:hover td{background-color:#ffff9b}
+.btn{border:none;padding:5px;padding-left:8px;padding-right:8px;border-radius:3px;cursor:pointer;font-style:oblique;background-color:#ececec;margin-left:3px;margin-right:3px}
+.btn.blue{background-color:#a1d9ff;color:#000}
+.btn.green{background-color:#b1ffa1;color:#000}
+.btn.gray{background-color:#5a5a5a;color:#fff}
+.btn:hover{background-color:#000;color:#fff}
+.cms_nav_page,.cms_tool_page{float:left;width:100%;margin-top:3px;margin-bottom:3px}
+.cms_nav_page a,.cms_tool_page a{float:left}
+.cms_tool{float:left;width:300px;margin:8px;height:34px;padding:6px;border-radius:8px}
+.cms_tool .icon{font-size:25px;float:left;margin-right:6px}
+.cms_tool:hover{background-color:#f1f1f1}
+input[type=password],input[type=text],select,textarea{width:auto;padding:5px 5px;margin:0 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
+#btn_edit_bk{color:#fff;font-size:35px;text-shadow:1px 1px 8px #000;position:absolute;right:20px;bottom:20px;z-index: 300;}

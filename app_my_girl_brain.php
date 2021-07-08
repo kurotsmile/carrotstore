@@ -56,7 +56,7 @@ if(isset($_POST['filter'])){
 }
 
 if(isset($_POST)&&isset($_POST['clear'])){
-    mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' ");
+    mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `langs`='$langsel' AND `character_sex`='$character_sex' AND `sex`='$sex' ");
     $files = glob('app_mygirl/app_my_girl_'.$langsel.'_brain/*');
     foreach($files as $file){ 
       if(is_file($file))
@@ -116,8 +116,7 @@ function delete_select(){
                 $('.chat_row_'+id_del).remove();
             }
         });
-    
-        
+
         $.ajax({
                 url: "app_my_girl_jquery.php",
                 type: "post",
@@ -161,8 +160,6 @@ function draft_select(){
     }
 }
 
-
-
 function show_edit_brain(id_brain,lang_brain){
     var brain_question=$(".brain_"+id_brain+"_question").attr("title");
     var brain_links=$(".brain_"+id_brain+"_question").attr("links");
@@ -195,6 +192,7 @@ function show_edit_brain(id_brain,lang_brain){
     html_show=html_show+'<tr><td>Từ khòa chức năng</td><td>'+txt_add_key_func+'</td></tr>';
     html_show=html_show+'<tr><td>Chức năng</td><td>'+txt_effect+'</td></tr>';
     html_show=html_show+'<tr><td>Liên kết</td><td><input id="c_brain_links" style="display: block;" value="'+brain_links+'"/></td></tr>';
+    html_show=html_show+'<tr><td>Thao tác khác</td><td><span class="buttonPro green" onclick="add_vi_chat();return false;"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm vào việt nam</span></td></tr>';
     html_show=html_show+'</table>';
     swal({
         title:"Thay đổi nội dung nhanh của bản nháp",
@@ -227,7 +225,7 @@ function show_edit_brain(id_brain,lang_brain){
                 }
             });
        } else {
-            swal("Hủy bỏ", "Đã hủy thay đổi", "error");
+            swal.close();
        }
      });
     return false;
@@ -237,6 +235,13 @@ function select_all_check(){
     $(".sel_row").each(function() {
        $(this).attr('checked','checked');
     });
+}
+
+function add_vi_chat(){
+    var c_brain_question=$("#c_brain_question").val();
+    var c_brain_answer=$("#c_brain_answer").val();
+    var url = "<?php echo $url;?>/app_my_girl_add.php?key="+c_brain_question+"&lang=vi&answer="+c_brain_answer+"&sex=<?php echo $sex;?>&effect=0&action=2&character_sex=<?php echo $character_sex;?>&color=FFFFFF";
+    window.open(url, '_blank');
 }
 
 </script>

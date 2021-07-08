@@ -47,6 +47,7 @@ $list_country=$this->get_list_lang();
     <?php
         $query_key_lang=mysqli_query($this->link_mysql,"SELECT `$field_key` FROM `$table_key` ");
         $query_data_lang=mysqli_query($this->link_mysql,"SELECT `$field_data` FROM `$table_data` WHERE `$field_data_lang_id`='$lang' LIMIT 1");
+        echo mysqli_error($this->link_mysql);
         $data_lang=mysqli_fetch_assoc($query_data_lang);
         $data_lang=$data_lang[$field_data];
         $data_lang=json_decode($data_lang);

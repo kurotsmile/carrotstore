@@ -19,7 +19,7 @@ if(isset($_GET['category'])){
 
 <?php
 if(!isset($query_list_piano)){
-    $query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE sell!=0 $sql_query ORDER BY RAND() LIMIT 50");
+    $query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE (`sell`='1' OR `sell`='2') $sql_query ORDER BY RAND() LIMIT 50");
 }
 while($row=mysqli_fetch_assoc($query_list_piano)){
     include "page_piano_git.php";
@@ -29,7 +29,7 @@ echo show_ads_box_main($link,'piano_page');
 
 
 <?php
-    $query_count_midi=mysqli_query($link,"SELECT COUNT(`id_midi`) as c FROM carrotsy_piano.`midi` WHERE `sell` > '0'");
+    $query_count_midi=mysqli_query($link,"SELECT COUNT(`id_midi`) as c FROM carrotsy_piano.`midi` WHERE (`sell`='1' OR `sell`='2')");
     $data_count_midi=mysqli_fetch_array($query_count_midi);
     echo scroll_load_data('piano',$data_count_midi['c']);
 ?>

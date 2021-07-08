@@ -2,7 +2,6 @@
 $id_user = $_GET['user'];
 $sex_content=0;
 if(isset($_GET['sex_content'])){ $sex_content=$_GET['sex_content'];}
-
 if (!isset($data_user)){
     ?>
     <div id="containt" style="width: 100%;float: left;text-align: center;">
@@ -39,7 +38,7 @@ include "phpqrcode/qrlib.php";
 $sdt = $data_user['sdt'];
 $name_account = $data_user['name'];
 $address_account = $data_user['address'];
-$url_cur_page = $url . '/user/' . $id_user . '/' . $lang;
+$url_cur_page = $url.'/user/'.$id_user.'/'.$lang;
 
 include_once "page_member_header_account.php";
 
@@ -60,50 +59,54 @@ if($list_contact_same_name){
                 <?php if ($sdt != '') { ?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang($link,'so_dien_thoai'); ?> :</strong> <a href="tel://<?php echo $sdt; ?>"><?php echo $sdt; ?></a></li><?php } ?>
                 <li>
                     <strong><i class="fa fa-globe" aria-hidden="true"></i> <?php echo lang($link,'quoc_gia'); ?>:</strong>
-                    <img style="height: 14px;"  src="<?php echo $url . '/app_mygirl/img/' . $lang . '.png'; ?>"/> <?php echo $lang; ?>
+                    <img style="height: 14px;"  src="<?php echo $url.'/app_mygirl/img/'.$lang.'.png'; ?>"/> <?php echo $lang; ?>
                 </li>
                 <li><strong><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo lang($link,'date_start'); ?> :</strong></strong> <?php echo $data_user['date_start']; ?></li>
                 <li><strong><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang($link,'date_cur'); ?> :</strong> <?php echo $data_user['date_cur']; ?></li>
-                <li><strong><i class="fa fa-venus-mars" aria-hidden="true"></i> <?php echo lang($link,'gioi_tinh'); ?> :</strong> <?php echo lang($link,"sex_" . $data_user['sex']); ?></li>
+                <li><strong><i class="fa fa-venus-mars" aria-hidden="true"></i> <?php echo lang($link,'gioi_tinh'); ?> :</strong> <?php echo lang($link,"sex_".$data_user['sex']); ?></li>
                 <?php if($data_user['email']!=''){?><li><strong><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo 'Email'; ?> :</strong> <?php echo  $data_user['email']; ?></li><?php }?>
                 <li><strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID
                         carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
                     <?php
-                    QRcode::png($url_cur_page, 'phpqrcode/img_account/' . $id_user . '_'.$lang.'.png', 'M', 4, 2);
+                    QRcode::png($url_cur_page, 'phpqrcode/img_account/'.$id_user.'_'.$lang.'.png', 'M', 4, 2);
                     ?>
                     <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang; ?>.png" class="box_get_info_contact"/>
-                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'download_vcf');?></span></a>
-                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,'contact_open_app');?></span></a>
-                    <span style="cursor: pointer;" onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true" style="margin-top: 50px;"></i><br> <span><?php echo lang($link,"account_report"); ?></span></span>
+                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'download_vcf');?></span></div></a>
+                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'contact_open_app');?></span></div></a>
+                    <div onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"account_report"); ?></span></div></div>
                 </li>
                 <?php
                 if($is_me){
                     echo '<li><a class="buttonPro small yellow" href="'.$url.'/user_edit/'.$id_user.'/'.$lang.'"><i class="fa fa-wrench" aria-hidden="true"></i> '.lang($link,'chinh_sua_thong_tin').'</a></li>';
                 }
                 ?>
-                <?php if ($address_account != '') { ?>
-                    <li><strong><i class="fa fa-map-marker"></i> <?php echo lang($link,'dia_chi'); ?>
-                        :</strong> <?php echo $address_account; ?></li><?php } ?>
                 <?php
-                $contact_query = mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`user_field_data` WHERE `id_device` = '" . $id_user . "' LIMIT 1");
-                if($contact_query){if (mysqli_num_rows($contact_query)) {
+                $contact_query=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`info_$lang` WHERE `user_id` = '$id_user' LIMIT 1");
+                if($contact_query){
                     $data_contact = mysqli_fetch_assoc($contact_query);
-                    $data_contact = $data_contact['data'];
-                    $data_contact = json_decode($data_contact);
-                    unset($data_contact->func);
-                    unset($data_contact->user_phone);
-                    unset($data_contact->id_device);
-                    unset($data_contact->lang);
-                    unset($data_contact->account_name);
-                    unset($data_contact->style_view);
-                    unset($data_contact->sex);
-                    unset($data_contact->user_password);
-                    unset($data_contact->id_lang);
-                    foreach ($data_contact as $k => $v) {
-                        echo '<li><b>' . $k . ':</b> ' . $v . '</li>';
+                    if($data_contact!=null){
+                        $data_contact = json_decode($data_contact['data']);
+                        for($i=0;$i<count($data_contact);$i++){
+                            $item_info=$data_contact[$i];
+                            $key_info=$item_info->{"key"};
+                            $val_info=$item_info->{"val"};
+                            $query_info_field=mysqli_query($link,"SELECT `icon_web` FROM carrotsy_contacts.`field` WHERE `name_id` = '$key_info' LIMIT 1");
+                            $data_info_field=mysqli_fetch_assoc($query_info_field);
+                            if($data_info_field==null)
+                                $field_icon_web='fa-asterisk';
+                            else
+                                $field_icon_web=$data_info_field['icon_web'];
+
+                            $query_field_key_lang=mysqli_query($link,"SELECT `name`, `tip` FROM carrotsy_contacts.`field_lang` WHERE `name_id` = '$key_info' AND `lang` = '$lang_sel' LIMIT 1");
+                            $data_field_key_lang=mysqli_fetch_assoc($query_field_key_lang);
+                            if($data_field_key_lang!=null)$key_info=$data_field_key_lang['name'];
+
+                            echo '<li><strong><i class="fa '.$field_icon_web.'" aria-hidden="true"></i> '.$key_info.' :</strong> '.$val_info.'</li>';
+                        }
                     }
-                }}
+                }
                 ?>
+                <?php if ($address_account != '') { ?> <li><strong><i class="fa fa-map-marker"></i> <?php echo lang($link,'dia_chi'); ?> :</strong> <?php echo $address_account; ?></li><?php } ?>
             </ul>
             <?php if ($address_account != '') { ?>
                 <iframe width="100%" height="310" id="gmap_canvas" src="https://maps.google.com/maps?q=<?php echo $address_account; ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
