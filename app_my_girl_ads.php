@@ -9,6 +9,7 @@ $samsung="";
 $func="add";
 $img_edit_icon="";
 $id_edit="";
+$app_id="";
 
 
 if(isset($_GET['edit'])){
@@ -20,6 +21,7 @@ if(isset($_GET['edit'])){
     $android=$arr_data_effect['android'];
     $window=$arr_data_effect['window'];
     $samsung=$arr_data_effect['samsung'];
+    $app_id=$arr_data_effect['app_id'];
     $filename = 'app_mygirl/obj_ads/icon_'.$id_edit.'.png';
     if (file_exists($filename)) {
         $img_edit_icon=$filename;
@@ -33,14 +35,15 @@ if(isset($_POST['func'])){
     $android=$_POST['android'];
     $window=$_POST['window'];
     $samsung=$_POST['samsung'];
+    $app_id=$_POST['app_id'];
     if($_POST['func']=="add"){
-        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_ads` (`name`,`android`,`ios`,`window`,`samsung`) VALUES ('$name_bk','$android','$ios','$window','$samsung');");
+        $add_effect=mysqli_query($link,"INSERT INTO `app_my_girl_ads` (`name`,`android`,`ios`,`window`,`samsung`,`app_id`) VALUES ('$name_bk','$android','$ios','$window','$samsung','$app_id');");
         $id_new=mysqli_insert_id($link);
         $target_dir = "app_mygirl/obj_ads/icon_".$id_new.".png";
         move_uploaded_file($_FILES["file_bk_icon"]["tmp_name"], $target_dir);
     }else{
         $id_edit=$_POST['id_edit'];
-        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_ads` SET `name` = '$name_bk',`android`='$android',`ios`='$ios',`window`='$window',`samsung`='$samsung' WHERE `id` = '$id_edit';");
+        $update_effect=mysqli_query($link,"UPDATE `app_my_girl_ads` SET `name` = '$name_bk',`android`='$android',`ios`='$ios',`window`='$window',`samsung`='$samsung',`app_id`='$app_id' WHERE `id` = '$id_edit';");
         if(isset_file($_FILES["file_bk_icon"])){
             $filename = 'app_mygirl/obj_ads/icon_'.$id_edit.'.png';
             if (file_exists($filename)) {unlink($filename);} 
@@ -91,6 +94,11 @@ if(isset($_POST['func'])){
     <label>Samsung:</label> 
     <input type="text" id="samsung" name="samsung" value="<?php echo $samsung;?>" />
     </div>
+
+    <div style="display: inline-block;float: left;margin: 2px;width: 180px;">
+    <label>App id:</label> 
+    <input type="text" id="app_id" name="app_id" value="<?php echo $app_id;?>" />
+    </div>
     
     <div style="display: inline-block;float: left;margin: 2px;">
         <?php if($func=="add"){?>
@@ -119,6 +127,7 @@ if(isset($_GET['del'])){
 <table>
 <tr>
     <th style="width: 18px;">Id</th>
+    <th style="width: 18px;">App Id</th>
     <th>Tên</th>
     <th>biểu tượng</th>
     <th>android</th>
@@ -129,12 +138,13 @@ if(isset($_GET['del'])){
 </tr>
 <?php
 $list_effect=mysqli_query($link,"SELECT * FROM `app_my_girl_ads`");
-while($row=mysqli_fetch_array($list_effect)){
+while($row=mysqli_fetch_assoc($list_effect)){
 ?>
     <tr>
-        <td><?php echo $row[0];?></td>
-        <td><?php echo $row[1];?></td>
-        <td><img src="<?php echo thumb('/app_mygirl/obj_ads/icon_'.$row[0].'.png','50') ?>" style="width: 50px;height: 50px;" /></td>
+        <td><?php echo $row['id'];?></td>
+        <td><a target="_blank" href="<?php echo $url_carrot_store;?>/product/<?php echo $row['app_id'];?>"><?php echo $row['app_id'];?></a></td>
+        <td><?php echo $row['name'];?></td>
+        <td><img src="<?php echo thumb('/app_mygirl/obj_ads/icon_'.$row['id'].'.png','50') ?>" style="width: 50px;height: 50px;" /></td>
         <td><a target="_blank" href="<?php echo $row['android'];?>"><?php echo $row['android'];?></a></td>
         <td><a target="_blank" href="<?php echo $row['ios'];?>"><?php echo $row['ios'];?></a></td>
         <td><a target="_blank" href="<?php echo $row['window'];?>"><?php echo $row['window'];?></a></td>

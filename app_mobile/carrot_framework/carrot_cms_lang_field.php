@@ -22,10 +22,19 @@ if(isset($_POST['val'])){
 
             $data_obj=json_encode($data_lang,JSON_UNESCAPED_UNICODE);
             $data_obj=addslashes($data_obj);
+        }else{
+            $data_lang=new stdClass();
+            $data_obj=json_encode($data_lang);
+        }
+
+        $query_check_exit=$this->q("SELECT `$field_data` FROM `$table_data` WHERE `$field_data_lang_id` = '$lang' LIMIT 1");
+        if(mysqli_num_rows($query_check_exit)>0){
             $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
-            if($query_update_obj) echo $this->msg('Cập nhật ngôn ngữ '.$lang.' thành công!!!'); else echo $this->msg('Cập nhật ngôn ngữ '.$lang.' Thất bại!!!');
+        }else{
+            $query_update_obj=mysqli_query($this->link_mysql,"INSERT INTO `$table_data` (`$field_data_lang_id`, `$field_data`) VALUES ('$lang', '$data_obj');");
         }
     }
+    echo $this->msg('Cập nhật ngôn ngữ thành công!!!');
 }
 ?>
 

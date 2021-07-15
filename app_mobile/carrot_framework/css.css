@@ -19,6 +19,7 @@
 .frm_login_row{width:100%}
 .frm_login_row .fa{position:absolute;margin-top:6px;margin-left:8px}
 a{text-decoration:none;color:#1f1f1f}
+a:hover{color:red}
 table{background-color:#ebebeb;width:100%;border-collapse:collapse}
 table tr td{padding:5px;padding-top:2px;padding-bottom:2px;margin:0;font-size:11px}
 table tr th{background-color:#b1b1b1;color:#fff;padding:5px}
@@ -30,7 +31,7 @@ table tr:hover td{background-color:#ffff9b}
 .btn.gray{background-color:#5a5a5a;color:#fff}
 .btn:hover{background-color:#000;color:#fff}
 .cms_nav_page,.cms_tool_page{float:left;width:100%;margin-top:3px;margin-bottom:3px}
-.cms_nav_page a,.cms_tool_page a{float:left}
+.cms_nav_page a,.cms_tool_page a{float:left;margin: 2px;}
 .cms_tool{float:left;width:300px;margin:8px;height:34px;padding:6px;border-radius:8px}
 .cms_tool .icon{font-size:25px;float:left;margin-right:6px}
 .cms_tool:hover{background-color:#f1f1f1}

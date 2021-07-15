@@ -4,7 +4,7 @@ if(isset($_GET['id'])) $id_midi=$_GET['id'];
 
 $user_id_midi='b8aab5bff0258b764ea64e5a8cc1dfb2aad4a9c6';
 $user_lang_midi='vi';
-$speed_midi='0,2';
+$speed_midi='0.2';
 $name_midi='';
 $sell_midi=0;
 $category_midi="";

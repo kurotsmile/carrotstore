@@ -356,7 +356,7 @@ to{-webkit-transform:scale3d(.6,.6,.6) rotate(28deg);transform:scale3d(.6,.6,.6)
 #box_ads_app_page{background-color:#3fc73d;width:100%;height:auto;float:left;margin-bottom:20px;padding-bottom:5px}
 #box_ads_app_page .title{background-color:green;color:#fff;float:left;text-decoration:none;font-weight:700;text-shadow:1px 1px 1px rgba(0,0,0,.58);font-size:14px;padding-top:8px;padding-bottom:8px;width:100%;float:left}
 .music_no_rank{font-style:italic}
-#box_pay{margin:5px;border-radius:2px;background-color:#fff;padding:10px;max-width:400px;margin-left:auto;margin-right:auto;min-height:400px}
+#box_pay{margin:5px;border-radius:2px;background-color:#fff;padding:10px;max-width:400px;margin-left:auto;margin-right:auto;min-height:400px;}
 #piano_title{width:100%;float:left;background-color:green;text-align:center;color:#fff;font-size:20px;padding-top:10px;padding-bottom:20px}
 #piano_title .btn{color:#fff}
 #piano_title .btn:hover{color:orange}

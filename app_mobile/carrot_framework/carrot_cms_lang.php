@@ -37,7 +37,12 @@ $list_country=$this->get_list_lang();
             }
             $data_obj=json_encode($obj_data,JSON_UNESCAPED_UNICODE);
             $data_obj=addslashes($data_obj);
-            $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
+            $query_check_exit=$this->q("SELECT `$field_data` FROM `$table_data` WHERE `$field_data_lang_id` = '$lang' LIMIT 1");
+            if(mysqli_num_rows($query_check_exit)>0){
+                $query_update_obj=mysqli_query($this->link_mysql,"UPDATE `$table_data` SET `$field_data` = '$data_obj' WHERE `$field_data_lang_id`='$lang' LIMIT 1;");
+            }else{
+                $query_update_obj=mysqli_query($this->link_mysql,"INSERT INTO `$table_data` (`$field_data_lang_id`, `$field_data`) VALUES ('$lang', '$data_obj');");
+            }
             echo $this->msg("Cập nhật thành công!");
         }
 ?>
@@ -59,7 +64,7 @@ $list_country=$this->get_list_lang();
             <tr>
             <td><input name="key[]" type="hidden" value="<?php echo $key;?>"/><?php echo $key;?></td>
             <td>
-                <input name="val[]" type="text" id="inp_<?php echo $key;?>" style="width:80%" value="<?php echo $val;?>"/> 
+                <input name="val[]" type="text" id="inp_<?php echo $key;?>" style="width:60%" value="<?php echo $val;?>"/> 
                 <?php echo $this->copy('inp_'.$key); ?> <?php echo $this->paste('inp_'.$key); ?>
                 <?php        
                     if($lang_to!=''){
@@ -70,9 +75,9 @@ $list_country=$this->get_list_lang();
                         $link_lang="https://translate.google.com/?sl=$lang&tl=".$lang_to."&text=".urldecode($val);
                     }
                 ?>
-                    <a href="<?php echo $link_lang;?>" onclick="$(this).removeClass('blue');" target="_blank" class="btn blue"><i class="fa fa-language" aria-hidden="true"></i> Dịch (<?php echo $lang_to;?>)</a>
+                    <a href="<?php echo $link_lang;?>" onclick="$(this).removeClass('blue');" target="_blank" class="buttonPro small"><i class="fa fa-language" aria-hidden="true"></i> Dịch (<?php echo $lang_to;?>)</a>
                 <?php }?>
-                <a class="btn" href="<?php echo $this->url."?function=show_setting_lang_by_field&field_show=".$key;?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                <a class="buttonPro small" href="<?php echo $this->url."?function=show_setting_lang_by_field&field_show=".$key;?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
             </td>
             </tr>
             <?php

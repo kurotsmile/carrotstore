@@ -82,4 +82,24 @@ if($function=='midi_act'){
     echo json_encode($obj);
     exit;
 }
+
+if($function=='acc_act'){
+     $id=$_POST['id'];
+     $lang=$_POST['lang'];
+     $fn=$_POST['fn'];
+     $obj=new stdClass();
+     $obj->{"id"}=$id;
+     if($fn=='del'){
+        $sheep_del=$this->q("DELETE FROM `carrotsy_virtuallover`.acc_report WHERE `id_device` = '$id' AND `lang`='$lang' ");
+        if($sheep_del){
+             $obj->{"error"}=0;
+             $obj->{"msg"}="Xóa thành công báo cáo $id";
+        }else{
+             $obj->{"error"}=1;
+             $obj->{"msg"}="Xóa không thành báo cáo $id";
+        }
+     }
+     echo json_encode($obj);
+     exit;
+ }
 ?>

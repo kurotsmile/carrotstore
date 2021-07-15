@@ -1,0 +1,101 @@
+-- Adminer 4.8.1 MySQL 5.7.34 dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+SET NAMES utf8mb4;
+
+DROP TABLE IF EXISTS `inapp_lang`;
+CREATE TABLE `inapp_lang` (
+  `key` varchar(60) NOT NULL,
+  `title` text NOT NULL,
+  `tip` text NOT NULL,
+  `lang` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+TRUNCATE `inapp_lang`;
+INSERT INTO `inapp_lang` (`key`, `title`, `tip`, `lang`) VALUES
+('remove_ads',	'Gỡ quảng cáo',	'Không hiện quảng cáo trong ứng dụng',	'vi'),
+('remove_ads',	'Remove ads',	'No ads in the app, block all ads',	'en'),
+('remove_ads',	'Quitar anuncios',	'No hay anuncios en la aplicación, bloquea todos los anuncios.',	'es'),
+('remove_ads',	'Remover propagandas',	'Nenhum anúncio no aplicativo, bloquear todos os anúncios',	'pt'),
+('remove_ads',	'Supprimez la pub',	'Aucune publicité dans l\'application, bloquez toutes les publicités',	'fr'),
+('remove_ads',	'विज्ञापन हटाएँ',	'ऐप में कोई विज्ञापन नहीं, सभी विज्ञापनों को ब्लॉक करें',	'hi'),
+('remove_ads',	'移除广告',	'应用内无广告，屏蔽所有广告',	'zh'),
+('remove_ads',	'Удалить объявления',	'В приложении нет рекламы, заблокируйте всю рекламу',	'ru'),
+('remove_ads',	'Anzeigen entfernen',	'Keine Werbung in der App, alle Werbung blockieren',	'de'),
+('remove_ads',	'ลบโฆษณา',	'ไม่มีโฆษณาในแอป บล็อกโฆษณาทั้งหมด',	'th'),
+('remove_ads',	'광고를 제거하다',	'앱에 광고 없음, 모든 광고 차단',	'ko'),
+('remove_ads',	'広告を削除',	'アプリに広告がありません、すべての広告をブロックします',	'ja'),
+('remove_ads',	'ازالة الاعلانات',	'لا توجد إعلانات في التطبيق ، منع جميع الإعلانات',	'ar'),
+('remove_ads',	'Reklamları kaldırmak',	'Uygulamada reklam yok, tüm reklamları engelle',	'tr'),
+('remove_ads',	'Poista mainokset',	'Ei mainoksia sovelluksessa, estä kaikki mainokset',	'fi'),
+('remove_ads',	'Rimuovere gli annunci',	'Nessuna pubblicità nell\'app, blocca tutte le pubblicità',	'it'),
+('remove_ads',	'Hilangkan iklan',	'Tidak ada iklan di aplikasi, blokir semua iklan',	'id'),
+('remove_ads',	'Fjern annoncer',	'Ingen annoncer i appen, bloker alle annoncer',	'da'),
+('remove_ads',	'Verwijder advertenties',	'Geen advertenties in de app, blokkeer alle advertenties',	'nl'),
+('remove_ads',	'Usuń reklamy',	'Brak reklam w aplikacji, zablokuj wszystkie reklamy',	'pl'),
+('musicbk',	'Nhạc nền cho trò chơi và ứng dụng',	'Mua bài hát cho nhạc nền trò chơi',	'vi'),
+('musicbk',	'Background music for games and apps',	'Buy songs for the game soundtrack',	'en'),
+('musicbk',	'Música de fondo para juegos y aplicaciones',	'Compra canciones para la banda sonora del juego',	'es'),
+('musicbk',	'Música de fundo para jogos e aplicativos',	'Compre músicas para a trilha sonora do jogo',	'pt'),
+('musicbk',	'Musique de fond pour jeux et applications',	'Acheter des chansons pour la bande originale du jeu',	'fr'),
+('musicbk',	'गेम्स और ऐप्स के लिए बैकग्राउंड म्यूजिक',	'गेम साउंडट्रैक के लिए गाने खरीदें',	'hi'),
+('musicbk',	'游戏和应用的背景音乐',	'为游戏配乐购买歌曲',	'zh'),
+('musicbk',	'Фоновая музыка для игр и приложений',	'Купить песни для саундтрека к игре',	'ru'),
+('musicbk',	'Hintergrundmusik für Spiele und Apps',	'Kaufen Sie Songs für den Soundtrack des Spiels',	'de'),
+('musicbk',	'เพลงประกอบสำหรับเกมและแอพ',	'ซื้อเพลงประกอบเกม',	'th'),
+('musicbk',	'게임 및 앱의 배경 음악',	'게임 사운드트랙용 노래 구매',	'ko'),
+('musicbk',	'ゲームやアプリのBGM',	'ゲームのサウンドトラックの曲を購入する',	'ja'),
+('musicbk',	'موسيقى خلفية للألعاب والتطبيقات',	'شراء الأغاني للموسيقى التصويرية للعبة',	'ar'),
+('musicbk',	'Oyunlar ve uygulamalar için fon müziği',	'Oyun müziği için şarkı satın alın',	'tr'),
+('musicbk',	'Taustamusiikkia peleille ja sovelluksille',	'Osta kappaleita pelin ääniraidalle',	'fi'),
+('musicbk',	'Musica di sottofondo per giochi e app',	'Acquista brani per la colonna sonora del gioco',	'it'),
+('musicbk',	'Musik latar untuk game dan aplikasi',	'Beli lagu untuk soundtrack game',	'id'),
+('musicbk',	'Baggrundsmusik til spil og apps',	'Køb sange til spillydsporet',	'da'),
+('musicbk',	'Achtergrondmuziek voor games en apps',	'Koop nummers voor de soundtrack van de game',	'nl'),
+('musicbk',	'Música de fundo para jogos e aplicativos',	'Kupuj utwory do ścieżki dźwiękowej gry',	'pl'),
+('midi',	'Mua bài soạn nhạc midi',	'Mua bảng soạn nhạc midi để sáng tác',	'vi'),
+('midi',	'Buy midi songs',	'Buy a midi composer board to compose',	'en'),
+('midi',	'Comprar canciones midi',	'Compra una placa midi composer para componer',	'es'),
+('midi',	'Compre músicas midi',	'Compre uma placa de compositor midi para compor',	'pt'),
+('midi',	'Acheter des chansons midi',	'Acheter une planche de compositeur midi pour composer',	'fr'),
+('midi',	'मिडी गाने खरीदें',	'लिखने के लिए एक मिडी कंपोज़र बोर्ड खरीदें',	'hi'),
+('midi',	'购买midi歌曲',	'买一个midi作曲板来作曲',	'zh'),
+('midi',	'Купить миди песни',	'Купите миди-композиторскую доску для сочинения',	'ru'),
+('midi',	'Midi-Songs kaufen',	'Kaufen Sie ein Midi-Composer-Board zum Komponieren',	'de'),
+('midi',	'ซื้อเพลง midi',	'ซื้อกระดานแต่งเพลง midi เพื่อเขียน',	'th'),
+('midi',	'미디 노래 구입',	'작곡할 미디 작곡가 보드 구입',	'ko'),
+('midi',	'MIDI曲を購入する',	'MIDI作曲ボードを購入して作曲する',	'ja'),
+('midi',	'شراء أغاني ميدي',	'شراء لوحة ملحن ميدي لتأليف',	'ar'),
+('midi',	'Midi şarkılar satın al',	'Beste yapmak için bir midi besteci tahtası satın alın',	'tr'),
+('midi',	'Osta midikappaleita',	'Osta säveltämiseksi midikomponenttitaulu',	'fi'),
+('midi',	'Acquista brani midi',	'Acquista una tavola di compositore midi per comporre',	'it'),
+('midi',	'Beli lagu midi',	'Beli papan komposer midi untuk menulis',	'id'),
+('midi',	'Køb midi sange',	'Køb et midi-komponistbræt for at komponere',	'da'),
+('midi',	'Midi-nummers kopen',	'Koop een midi-componistbord om te componeren',	'nl'),
+('midi',	'Kup piosenki midi',	'Kup płytę kompozytora midi, aby skomponować',	'pl'),
+('buylistmidi',	'Sử dụng toàn bộ danh sách midi',	'Sử dụng toàn bộ danh sách midi để sáng tác, không cần mua từng midi khi đã thanh toán',	'vi'),
+('buylistmidi',	'Use all midi',	'Use the entire midi list to compose, no need to buy each midi after paying',	'en'),
+('buylistmidi',	'Usar todo midi',	'Utilice toda la lista midi para componer, no es necesario comprar cada midi después de pagar',	'es'),
+('buylistmidi',	'Use todo midi',	'Use toda a lista de midi para compor, não há necessidade de comprar cada midi após o pagamento',	'pt'),
+('buylistmidi',	'Utiliser tous les midi',	'Utilisez toute la liste midi pour composer, pas besoin d\'acheter chaque midi après avoir payé',	'fr'),
+('buylistmidi',	'सभी मिडी का प्रयोग करें',	'लिखने के लिए पूरी मिडी सूची का उपयोग करें, भुगतान करने के बाद प्रत्येक मिडी को खरीदने की आवश्यकता नहीं है',	'hi'),
+('buylistmidi',	'使用所有midi',	'使用整个midi列表作曲，支付后无需购买每个midi',	'zh'),
+('buylistmidi',	'Использовать все миди',	'Используйте весь список миди для создания, не нужно покупать каждую миди после оплаты',	'ru'),
+('buylistmidi',	'Verwenden Sie alle Midi',	'Verwenden Sie die gesamte Midi-Liste zum Komponieren, Sie müssen nicht jedes Midi nach dem Bezahlen kaufen',	'de'),
+('buylistmidi',	'ใช้ midi . ทั้งหมด',	'ใช้รายการ midi ทั้งหมดเพื่อเขียน ไม่จำเป็นต้องซื้อ midi แต่ละอันหลังจากชำระเงิน',	'th'),
+('buylistmidi',	'모든 미디 사용',	'전체 미디 목록을 사용하여 작성, 지불 후 각 미디를 구입할 필요 없음',	'ko'),
+('buylistmidi',	'すべてのMIDIを使用する',	'MIDIリスト全体を使用して作成します。支払い後に各MIDIを購入する必要はありません。',	'ja'),
+('buylistmidi',	'استخدم كل ميدي',	'استخدم قائمة ميدي بالكامل للتأليف ، ولا داعي لشراء كل ميدي بعد الدفع',	'ar'),
+('buylistmidi',	'Tüm midileri kullan',	'Beste yapmak için tüm midi listesini kullanın, ödedikten sonra her bir midi satın almanıza gerek yok',	'tr'),
+('buylistmidi',	'Käytä kaikkia midiä',	'Käytä koko midiluetteloa säveltämiseen, sinun ei tarvitse ostaa kutakin midiä maksamisen jälkeen',	'fi'),
+('buylistmidi',	'Usa tutto midi',	'Usa l\'intero elenco midi per comporre, non è necessario acquistare ogni midi dopo aver pagato',	'it'),
+('buylistmidi',	'Gunakan semua midi',	'Gunakan seluruh daftar midi untuk menulis, tidak perlu membeli setiap midi setelah membayar',	'id'),
+('buylistmidi',	'Brug alle midi',	'Brug hele midi-listen til at komponere, ikke nødvendigt at købe hver midi efter betaling',	'da'),
+('buylistmidi',	'Gebruik alle midi',	'Gebruik de hele midi-lijst om samen te stellen, je hoeft niet elke midi te kopen na betaling after',	'nl'),
+('buylistmidi',	'Użyj wszystkich midi',	'Użyj całej listy midi do komponowania, nie musisz kupować każdego midi po zapłaceniu',	'pl');
+
+-- 2021-07-11 15:54:44

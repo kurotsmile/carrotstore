@@ -11,6 +11,8 @@ $cms->add_css("style.css");
 $cms->add_menu_page("Khiểm duyệt","fa-umbrella","page_inspection.php");
 $cms->add_menu_page("Hàm và phương thức","fa-code","page_help.php");
 $cms->add_menu_page("Ứng dụng","fa-rocket","page_app.php");
+$cms->add_menu_page("Avatar người dùng","fa-picture-o","page_user_avatar.php");
+$cms->add_menu_page("Mua hàng (in-app)","fa-buysellads","page_inapp.php");
 $cms->add_menu_page("Quản trị viên","fa-user","page_user.php");
 $cms->html_show();
 ?>

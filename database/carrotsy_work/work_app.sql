@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -19,7 +19,7 @@ TRUNCATE `work_app`;
 INSERT INTO `work_app` (`id`, `name`, `url`, `folder`, `order`) VALUES
 (1,	'lover',	'vl',	'',	4),
 (2,	'Flower',	'flower',	'flower',	3),
-(3,	'Sheep',	'sheep',	'sheep',	6),
+(3,	'Counting sheep',	'sheep',	'sheep',	6),
 (4,	'Music',	'appmusic',	'musicforlife',	7),
 (5,	'Contacts Store',	'',	'contactstore',	1),
 (8,	'Work',	'work',	'work',	8),
@@ -30,6 +30,7 @@ INSERT INTO `work_app` (`id`, `name`, `url`, `folder`, `order`) VALUES
 (16,	'Web Offline',	'saveweboffline',	'saveweboffline',	12),
 (18,	'Piano Midi',	'midi',	'piano',	5),
 (20,	'Carrot Framework',	'',	'carrot_framework',	0),
-(21,	'Quick Eye',	'',	'quick_eye',	13);
+(21,	'Quick Eye',	'',	'quick_eye',	13),
+(22,	'Worm Master',	'',	'worm_master',	14);
 
--- 2021-06-27 04:34:46
+-- 2021-07-11 07:35:33

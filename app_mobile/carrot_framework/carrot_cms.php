@@ -115,6 +115,10 @@ class Carrot_CMS{
         return $this->copy($emp).''.$this->paste($emp);
     }
 
+    private function thumb($url,$size){
+        return $this->url_carrot_store.'/thumb.php?src='.$this->url_carrot_store.'/'.$url.'&size='.$size;
+    }
+
     private function user($user_id,$user_lang){
         $user_name='<i class="fa fa-user" aria-hidden="true"></i>';
         if($user_id!=""){
@@ -126,7 +130,7 @@ class Carrot_CMS{
                     $user_name='<i class="fa fa-female" aria-hidden="true"></i> '.$data_user['name'];
             }
         }
-        return '<a target="_blank" href="'.$this->url.'?function=show_user&user_id='.$user_id.'&user_lang='.$user_lang.'" class="buttonPro small">'.$user_name.'</a>';
+        return '<a onclick="$(this).addClass(\'blue\');" target="_blank" href="'.$this->url.'?function=show_user&user_id='.$user_id.'&user_lang='.$user_lang.'" class="buttonPro small">'.$user_name.'</a>';
     }
 
     private $p_total_page=0;

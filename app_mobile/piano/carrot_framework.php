@@ -533,4 +533,59 @@ if($function=='dowwnload_lang_by_key'){
     echo json_encode($data_lang);
     exit;
 }
+
+if($function=='check_inapp'){
+    $inapp_id=$_POST['inapp_id'];
+    $user_id=$_POST['user_id'];
+    $user_lang=$_POST['user_lang'];
+    $inapp=new stdClass();
+    $query_check_inapp=mysqli_query($link,"SELECT `is_get`,`id` FROM carrotsy_virtuallover.`inapp_order` WHERE `inapp_id` = '$inapp_id' AND `user_id` = '$user_id' AND `is_get`='0' LIMIT 1");
+    $data_check_inapp=mysqli_fetch_assoc($query_check_inapp);
+    if($data_check_inapp!=null){
+        $id_order=$data_check_inapp['id'];
+        $query_update_inapp=mysqli_query($link,"UPDATE carrotsy_virtuallover.`inapp_order` SET `is_get` = '1' WHERE `id` = '$id_order' LIMIT 1;");
+        $inapp->{"error"}=0;
+        $inapp->{"msg"}="shop_buy_success";
+        $inapp->{"msg_en"}="Payment success! Thank you for your purchase";
+    }else{
+        $inapp->{"error"}=1;
+        $inapp->{"msg"}="shop_buy_fail";
+        $inapp->{"msg_en"}="Purchase failed, Please check your account balance or try again at another time";
+    }
+    echo json_encode($inapp);
+    exit;
+}
+
+if($function=='restore_inapp'){
+    $user_id=$_POST['user_id'];
+    $user_lang=$_POST['user_lang'];
+    $inapp_id=$_POST['inapp_id'];
+    $inapp=new stdClass();
+
+    $array_inapp_success=array();
+    for($i=0;$i<count($inapp_id);$i++){
+        $id_inapp_check=$inapp_id[$i];
+        $query_check_restore=mysqli_query($link,"SELECT `inapp_id` FROM carrotsy_virtuallover.`inapp_order` WHERE `inapp_id`='$id_inapp_check' AND `user_id`='$user_id' LIMIT 1");
+        if($query_check_restore){
+            $data_check_restore=mysqli_fetch_assoc($query_check_restore);
+            if($data_check_restore!=null){
+                array_push($array_inapp_success,$id_inapp_check);
+            }
+        }
+    }
+    
+    if(count($array_inapp_success)>0){
+        $inapp->{"error"}=0;
+        $inapp->{"inapp_success"}=$array_inapp_success;
+        $inapp->{"msg"}="shop_restore_success";
+        $inapp->{"msg_en"}="Successful recovery!";
+    }else{
+        $inapp->{"error"}=1;
+        $inapp->{"msg"}="shop_restore_fail";
+        $inapp->{"msg_en"}="Restore failed!";
+    }
+    
+    echo json_encode($inapp);
+    exit;
+}
 ?>

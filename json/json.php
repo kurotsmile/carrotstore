@@ -132,7 +132,7 @@ if($function=='scroll_load_data'){
             $label_toc_do_nhip=lang($link,'toc_do_nhip');
             $label_so_not_nhac=lang($link,'so_not_nhac');
             $label_tac_gia=lang($link,'tac_gia');
-            $query_load_data = mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE `id_midi` NOT IN (".implode(",",$data_json).") AND `sell`!='0' ORDER BY RAND() LIMIT 20");
+            $query_load_data = mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE `id_midi` NOT IN (".implode(",",$data_json).") AND (`sell`='1' OR `sell`='2') ORDER BY RAND() LIMIT 20");
             while ($row = mysqli_fetch_assoc($query_load_data)) {
                include "page_piano_git.php";
             }
@@ -487,7 +487,7 @@ if($function=='scroll_load_data'){
         $id_order=uniqid().''.uniqid();
         $query_add=mysqli_query($link,"INSERT INTO `order` (`id_order`,`id`, `lang`, `pay_mail`, `pay_name`, `type`) VALUES ('$id_order','$id_music', '$lang_music', '$pay_mail', '$pay_name', 'music');");
         echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
-        echo '<a style="width: 100%;" href="'.$url.'/download.php?id='.$id_music.'&lang='.$lang_music.'" id="download_song" >';
+        echo '<a style="width: 100%;float: none;display: block;" href="'.$url.'/download.php?id='.$id_music.'&lang='.$lang_music.'" id="download_song" >';
         echo '<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
         echo '<span>'.lang($link,'download_song').'</span>';
         echo '</a>';
@@ -502,10 +502,30 @@ if($function=='scroll_load_data'){
         $id_order=uniqid().''.uniqid();
         $query_add=mysqli_query($link,"INSERT INTO `order` (`id_order`,`id`, `lang`, `pay_mail`, `pay_name`, `type`) VALUES ('$id_order','$id_midi', '$lang_midi', '$pay_mail', '$pay_name', 'piano');");
         echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
-        echo '<a style="width: 100%;" onclick="export_midi_file();return false;" id="download_song" >';
+        echo '<a style="width: 100%;float: none;display: block;" onclick="export_midi_file();return false;" id="download_song" >';
         echo '<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
         echo '<span>'.lang($link,'midi_download').'</span>';
         echo '</a>';
+        exit;
+    }
+
+    if($function=='order_inapp'){
+        $id_order=uniqid().''.uniqid();
+        $id_inapp=$_POST['id_inapp'];
+        $pay_name=addslashes($_POST['pay_name']);
+        $pay_mail=$_POST['pay_mail'];
+        $user_id=$_POST['user_id'];
+        $lang=$_POST['lang'];
+        $is_login=$_POST['is_login'];
+        $protocol=$_POST['protocol'];
+        $query_add=mysqli_query($link,"INSERT INTO `inapp_order` (`id`, `inapp_id`, `user_id`, `lang`, `pay_name`, `pay_mail`,`is_login`,`is_get`,`date`) VALUES ('$id_order', '$id_inapp', '$user_id', '$lang', '$pay_name', '$pay_mail','$is_login','0',NOW());");
+        echo '<strong style="color:green;"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
+        if($protocol!=''){
+            echo '<a style="width: 100%;float: none;display: block;" href="'.$protocol.'://" id="download_song" >';
+            echo '<i class="fa fa-chevron-circle-left fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
+            echo '<span>'.lang($link,'back_app').'</span>';
+            echo '</a>';
+        }
         exit;
     }
 
@@ -517,7 +537,7 @@ if($function=='scroll_load_data'){
         $id_order=uniqid().''.uniqid();
         $query_add=mysqli_query($link,"INSERT INTO `order` (`id_order`,`id`, `lang`, `pay_mail`, `pay_name`, `type`) VALUES ('$id_order','$id_music', '$lang_music', '$pay_mail', '$pay_name', 'product');");
         echo '<strong style="color:green"><i class="fa fa-check-circle" aria-hidden="true"></i> '.lang($link,'pay_success').'</strong>';
-        echo '<a style="width: 100%;" href="#" onclick="show_box_download_link();return false;" id="download_song" >';
+        echo '<a style="width: 100%;float: none;display: block;" href="#" onclick="show_box_download_link();return false;" id="download_song" >';
         echo '<i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />';
         echo '<span>'.lang($link,'download_game').'</span>';
         echo '</a>';

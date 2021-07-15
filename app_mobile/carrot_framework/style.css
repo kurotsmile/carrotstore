@@ -2,6 +2,9 @@
 #list_help li{background-color:rgb(249 249 249);margin:3px;padding:5px;border-radius:5px;float:left;width:300px;height:75px}
 #list_help li .icon{float:left;font-size:30px;margin-right:5px}
 #list_help li span{color:#da3c00;font-weight:700;margin:3px;margin-bottom:10px;float:left;width:250px}
-.app_ins{width:330px;float:left;margin:3px;border-radius:5px;background-color:#f1f1f1;height: 650px;}
+.app_ins{width:330px;float:left;margin:3px;border-radius:5px;background-color:#f1f1f1;height: 650px;padding: 5px;}
 .app_ins .title{width:auto;float:left;padding-top:5px;padding-bottom:5px;font-weight: bold;}
 .app_ins .body{width: 100%;height: 600px;overflow-x: hidden;overflow-y: auto;}
+.app_ins .body .box_user{float: left;}
+.app_ins .body .box_user img{float: left;width: 50px;margin: 3px;}
+.img_chek_user{border: solid 3px yellow;width: 74px;height: 74px;}
