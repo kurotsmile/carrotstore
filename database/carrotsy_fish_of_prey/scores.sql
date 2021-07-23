@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -25,4 +25,4 @@ INSERT INTO `scores` (`id_device`, `score`, `name_play`, `lang_key`, `lang_name`
 ('4b23a964ac9e18c8189e2b9f34ee5fa5',	6,	'quý ròm',	'vi',	'Vietnamese'),
 ('289212078726592',	5,	'Rot Tran',	'vi',	'Vietnamese');
 
--- 2021-03-19 21:29:02
+-- 2021-07-21 11:53:15

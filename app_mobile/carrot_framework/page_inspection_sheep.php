@@ -15,7 +15,7 @@ if($num_sheep>0){
         ?>
             <tr id="sheep_<?php echo $sheep_id;?>">
                 <td><?php echo $sheep_lang;?></td>
-                <td><?php echo $sheep_msg;?></td>
+                <td><a target="_blank" href="<?php echo $this->url_carrot_store;?>/app_mobile/sheep/?page=good_night&active=0&page=good_night_add&edit=<?php echo $sheep_id;?>"><?php echo $sheep_msg;?></a></td>
                 <td>
                     <a href="#" class="buttonPro small green" onclick="sheep_act('act','<?php echo $sheep_id;?>')"><i class="fa fa-check-circle" aria-hidden="true"></i></a>
                     <a href="#" class="buttonPro small red" onclick="sheep_act('del','<?php echo $sheep_id;?>')"><i class="fa fa-trash" aria-hidden="true"></i></a>

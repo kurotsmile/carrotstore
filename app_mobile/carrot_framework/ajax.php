@@ -10,6 +10,16 @@ if($function=='save_order_app'){
     exit;
 }
 
+if($function=='save_order_share'){
+     $arr_id_share=json_decode($_POST['arr_id_share']);
+     for($i=0;$i<count($arr_id_share);$i++){
+         $id_share=$arr_id_share[$i];
+         $this->q("UPDATE `carrotsy_virtuallover`.`share` SET `order` = '$i' WHERE `id` = '$id_share';");
+     }
+     echo 'Cập nhật thứ tự công cụ chia sẻ thành công!';
+     exit;
+ }
+
 if($function=='sheep_act'){
     $id=$_POST['id'];
     $fn=$_POST['fn'];

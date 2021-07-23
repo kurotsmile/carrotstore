@@ -1,8 +1,18 @@
 <?php
+$type_view='view';
 $lang='';
-$limit_show=200;
+$limit_show=300;
 $cur_url=$this->cur_url;
 if(isset($_GET['lang'])) $lang=$_GET['lang'];
+if(isset($_GET['type'])) $type_view=$_GET['type'];
+?>
+
+<div class="cms_menu_lang" style="background-color:#a8b6d2">
+    <a href="<?php echo $cur_url;?>&type=view&lang=<?php echo $lang;?>" class="buttonPro small <?php if($type_view=='view'){ echo 'black'; }?>"><i class="fa fa-file-image-o" aria-hidden="true"></i> Chỉ xem ảnh</a>
+    <a href="<?php echo $cur_url;?>&type=del&lang=<?php echo $lang;?>" class="buttonPro small <?php if($type_view=='del'){ echo 'black'; }?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa những ảnh không có dữ liệu</a>
+</div>
+
+<?php
 $list_lang=$this->get_list_lang();
 echo '<div class="cms_menu_lang">';
 for($i=0;$i<count($list_lang);$i++){
@@ -10,7 +20,7 @@ for($i=0;$i<count($list_lang);$i++){
     $key_lang=$item_lang['key'];
     $css_btn='';
     if($key_lang==$lang)$css_btn="blue";
-    echo '<a href="'.$cur_url.'&lang='.$key_lang.'" class="buttonPro small '.$css_btn.'">('.$key_lang.') '.$item_lang['name'].'</a>';
+    echo '<a href="'.$cur_url.'&lang='.$key_lang.'&type='.$type_view.'" class="buttonPro small '.$css_btn.'">('.$key_lang.') '.$item_lang['name'].'</a>';
 }
 echo '</div>';
 echo '<div style="width:100%;float:left;">';
@@ -31,13 +41,23 @@ if($lang!=''){
     echo '</div>';
 
     for($i=$p_start;$i<$p_end;$i++) {
+        if(!isset($files[$i])){break;}
         $file=$files[$i];
         if (is_file($file)) {
             $url_img=str_replace('../../','',$file);
             $url_img=$this->url_carrot_store.'/'.$url_img;
             $url_img=$this->url_carrot_store.'/thumb.php?src='.$url_img.'&size=80';
             $id_user_file=str_replace(".png","",basename($file));
-            echo '<a onclick="$(this).hide();" target="_blank" href="'.$this->url_carrot_store.'/app_mobile/carrot_framework/?function=show_user&user_id='.$id_user_file.'&user_lang='.$lang.'"><img  style="float:left;margin:5px;" src="'.$url_img.'"/></a>';
+            if($type_view=='del'){
+                $query_check_user=$this->q_data("SELECT COUNT(`id_device`) as c FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device` = '$id_user_file' LIMIT 1");
+                $data_count=$query_check_user['c'];
+                if(intval($data_count)==0){
+                    echo '<a onclick="$(this).hide();" target="_blank" href="'.$this->url_carrot_store.'/app_mobile/carrot_framework/?function=show_user&user_id='.$id_user_file.'&user_lang='.$lang.'"><img  style="float:left;margin:5px;" src="'.$url_img.'"/></a>';
+                    unlink($file);
+                }
+            }else{
+                echo '<a onclick="$(this).hide();" target="_blank" href="'.$this->url_carrot_store.'/app_mobile/carrot_framework/?function=show_user&user_id='.$id_user_file.'&user_lang='.$lang.'"><img  style="float:left;margin:5px;" src="'.$url_img.'"/></a>';
+            }
         }
     }
 

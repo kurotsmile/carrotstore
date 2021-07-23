@@ -39,6 +39,7 @@ if(isset($_POST['func_sub']))$func_sub=$_POST['func_sub'];
             $inapp_app_id=$data_inapp['id_app'];
             $inapp_price=$data_inapp['price'];
             $inapp_app_lang=$data_inapp['data_lang'];
+            $inapp_protocol=$data_inapp['protocol'];
             $func_sub='edit';
         }
     }

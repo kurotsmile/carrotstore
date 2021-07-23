@@ -6,7 +6,7 @@
     for($i=0;$i<count($list_lang);$i++){
     $item_lang=$list_lang[$i];
     $user_lang=$item_lang['key'];
-    $list_user=$this->q("SELECT `id_device`,`name`,`sex` FROM carrotsy_virtuallover.`app_my_girl_user_$user_lang` where `date_cur` between date_sub(now(),INTERVAL 1 DAY) and now() ORDER BY RAND() LIMIT 30;");
+    $list_user=$this->q("SELECT `id_device`,`name`,`sex` FROM carrotsy_virtuallover.`app_my_girl_user_$user_lang` where `date_cur` between date_sub(now(),INTERVAL 1 DAY) and now()");
     if($list_user){
     $count_user=mysqli_num_rows($list_user);
     if($count_user>0){

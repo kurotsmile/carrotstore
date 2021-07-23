@@ -18,6 +18,7 @@ if($func=='view'){
     <th>Tên đăng nhập</th>
     <th>Mật khẩu</th>
     <th>Vai trò</th>
+    <th>Timer</th>
     <th>Thao tác</th>
 </tr>
 <?php
@@ -28,6 +29,7 @@ while($user=mysqli_fetch_assoc($query_list_user)){
     <td><i class="fa fa-user-o" aria-hidden="true"></i> <?php echo $user['user_name'];?></td>
     <td><i class="fa fa-key" aria-hidden="true"></i> <?php echo $user['user_pass'];?></td>
     <td><?php echo $user['user_role'];?></td>
+    <td><?php echo $user['time_login'];?></td>
     <td>
         <a class="buttonPro small yellow" href="<?php echo $cur_url.'&func=edit&id='.$user['user_id'];?>"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
         <a class="buttonPro small red" href=""><i class="fa fa-trash" aria-hidden="true"></i></a>

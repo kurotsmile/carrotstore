@@ -32,6 +32,13 @@ class Carrot_CMS{
             if($data_user_login!=null){
                 $this->user_login=$data_user_login;
                 $_SESSION['user_login']=$this->user_login;
+                $id_user_login=$data_user_login['user_id'];
+                $this->q("UPDATE carrotsy_work.`work_user` SET `time_login` = NOW() WHERE `user_id` = '$id_user_login';");
+                if(isset($_SESSION['cur_url'])){
+                    $this->cur_url=$_SESSION['cur_url'];
+                    header("Location:".$this->cur_url);
+                }
+                
             }else{
                 $this->msg_login_error="Đăng nhập thất bại!";
             }
@@ -42,7 +49,12 @@ class Carrot_CMS{
            $this->data_temp=null;
            if(isset($_SESSION['user_login']))session_destroy();
        }else{
-            if(isset($_SESSION['user_login']))$this->user_login=$_SESSION['user_login'];
+            if(isset($_SESSION['user_login'])){
+                $this->user_login=$_SESSION['user_login'];
+            }
+            else{
+                $_SESSION['cur_url']=(isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']==='on'?"https":"http")."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            }
        }
 
     }

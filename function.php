@@ -132,12 +132,12 @@ function get_star_width($link,$id,$object){
 function show_share($link,$url){
     $txt_share='<ul id="share_link" title="'.lang($link,"share_tip").'">';
     $txt_share.='<li><strong>'.lang($link,'chia_se').'</strong></li>';
-    $txt_share.='<li><a onclick="box_share(this);return false;" href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>';
-    $txt_share.='<li><a onclick="box_share(this);return false;"  href="https://twitter.com/intent/tweet?url='.$url.'&text=Carrot store &via=carrotstore1&original_referer='.$url.'" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>';
-    $txt_share.='<li><a onclick="box_share(this);return false;"  href="http://www.linkedin.com/shareArticle?mini=true&url='.$url.'&title=Share" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>';
-    $txt_share.='<li><a onclick="box_share(this);return false;"  href="http://pinterest.com/pin/create/button/?url='.$url.'&description=Share" target="_blank"><i class="fa fa-pinterest-square" aria-hidden="true"></i> Pinterest</a></li>';
-    $txt_share.='<li><a onclick="box_share(this);return false;"  href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site '.$url.'" target="_blank"><i class="fa fa-envelope-square" aria-hidden="true"></i> Email</a></li>';
-    $txt_share.='<li><a onclick="box_share(this);return false;"  href="https://mail.google.com/mail/u/2/?hl=vi&view=cm&fs=1&tf=1&su=I wanted you to see this site&amp;body=Check out this site '.$url.'" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i> Gmail</a></li>';
+    $query_share=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`share` ORDER BY `order` ");
+    while($s=mysqli_fetch_assoc($query_share)){
+        $share_url=str_replace('{url}',$url,$s['url']);
+        $share_name=$s['name'];
+        $txt_share.='<li><a onclick="box_share(this);return false;" href="'.$share_url.'" target="_blank"><i class="fa '.$s['icon_css'].'" aria-hidden="true"></i> '.$share_name.'</a></li>';
+    }
     $txt_share.='</ul>';
     return $txt_share;
 }
