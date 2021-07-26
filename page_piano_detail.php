@@ -197,12 +197,12 @@ if(isset($_SESSION['is_show_key_name'])){ $is_show_key_name=$_SESSION['is_show_k
                 include_once "phpqrcode/qrlib.php";
                 QRcode::png($url.'/piano/'.$id_midi, 'phpqrcode/img_piano/'.$id_midi.'.png', 'M', 4, 2);
             ?>
-            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img_piano/<?php echo $id_midi;?>.png" style="float: left;margin: 2px;" />
+            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img_piano/<?php echo $id_midi;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact"/>
             <?php if($data_midi['sell']!='2'){?>
-                <span onclick="export_midi_file();" id="download_song" class="full" style="cursor: pointer;"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br> <span style="word-wrap: break-word;width: 99%;float: left;"><?php echo lang($link,"midi_download");?></span><span style="font-size: 12px;text-align: center;width: 100%;float: left;">(.Mid)</span> </span>
-                <a style="width:132px;height:132px;border:none;" href="midi://show/<?php echo $id_midi;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'link_open_app');?></span></div></a>
+                <span onclick="export_midi_file();"  class="box_get_info_contact" style="cursor: pointer;"> <i class="fa fa-download fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"midi_download");?></span> <b>(.Mid)</b></div></span>
+                <a href="midi://show/<?php echo $id_midi;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
             <?php }else{?>
-                <a href="<?php echo $url_carrot_store;?>/pay_piano/<?php echo $id_midi;?>" id="download_song" class="full"> <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br> <span style="word-wrap: break-word;width: 99%;float: left;"><?php echo lang($link,"midi_download");?></span> <br> <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$1.30</span> </a>
+                <a href="<?php echo $url_carrot_store;?>/pay_piano/<?php echo $id_midi;?>"  class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"midi_download");?> <b>$1.30</b></span> </div></a>
             <?php }?>
         </div>
         <?php echo $label_ten_bai_hat;?>: <?php echo $data_midi['name'];?><br/>

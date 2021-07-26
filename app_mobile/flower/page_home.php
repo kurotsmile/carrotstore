@@ -32,12 +32,11 @@ for($i=0;$i<count($list_country);$i++){
         <b>Key:</b><?php echo $key_country; ?><br />
         <b>Name</b><?php echo $item_country["name"]; ?><br />
 
-        <a href="<?php echo $this->url; ?>?view=msg_add&lang=<?php echo $key_country; ?>"><i class="fa fa-plus"></i> Thêm châm ngôn</a><br /><br />
-        <a href="<?php echo $this->url; ?>?menu=6&lang=<?php echo $key_country; ?>"><i class="fa fa-language"></i> Ngôn ngữ ứng dụng (<b><?php echo $count_lang_val; ?></b>)</a><br />
-        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.kurotsmile.LoveorNoLove&hl=<?php echo $key_country;?>"><i class="fa fa-android"></i> Xem ứng dụng trên chplay</a><br />
-  
-       <a href="<?php echo $this->url; ?>?view=msg_active&lang=<?php echo $key_country; ?>"><i class="fa fa-comments"></i> châm ngôn sử dụng <?php echo $arr_active[0]; ?></a><br />
-       <a href="<?php echo $this->url; ?>?view=msg&lang=<?php echo $key_country; ?>"><i class="fa fa-comment"></i> châm ngôn chưa duyệt <?php echo mysqli_num_rows($msg_no_active); ?></a><br />
+        <a href="<?php echo $this->url; ?>?page=msg_add&lang=<?php echo $key_country; ?>"><i class="fa fa-plus"></i> Thêm châm ngôn</a><br /><br />
+        <a href="<?php echo $this->url; ?>?menu=5&lang=<?php echo $key_country; ?>"><i class="fa fa-language"></i> Ngôn ngữ ứng dụng (<b><?php echo $count_lang_val; ?></b>)</a><br />
+
+       <a href="<?php echo $this->url; ?>?page=msg_active&lang=<?php echo $key_country; ?>"><i class="fa fa-comments"></i> châm ngôn sử dụng <?php echo $arr_active[0]; ?></a><br />
+       <a href="<?php echo $this->url; ?>?page=msg&lang=<?php echo $key_country; ?>"><i class="fa fa-comment"></i> châm ngôn chưa duyệt <?php echo mysqli_num_rows($msg_no_active); ?></a><br />
         <?php
             $check_error_table=$this->q("select 1 from `flower_action_$key_country` LIMIT 1");
             if($check_error_table !== FALSE){

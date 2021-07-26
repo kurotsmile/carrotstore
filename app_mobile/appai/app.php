@@ -161,9 +161,9 @@ if($function=='get_list_music'){
     $arr_music=array();
 
     if($info_type!='')
-    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_vi as m INNER JOIN app_my_girl_vi_lyrics as l ON m.id= l.id_music WHERE l.$info_type='$info_val' ORDER BY RAND() LIMIT 20");
+    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_".$lang." as m INNER JOIN app_my_girl_".$lang."_lyrics as l ON m.id= l.id_music WHERE l.$info_type='$info_val' ORDER BY RAND() LIMIT 20");
     else
-    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_vi as m INNER JOIN app_my_girl_vi_lyrics as l ON m.id= l.id_music WHERE l.year='2020' ORDER BY RAND() LIMIT 20");
+    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_".$lang." as m INNER JOIN app_my_girl_".$lang."_lyrics as l ON m.id= l.id_music WHERE l.year='2020' ORDER BY RAND() LIMIT 20");
 
     while($music=mysqli_fetch_assoc($query_list_music)){
         array_push($arr_music,$music);

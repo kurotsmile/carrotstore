@@ -9,6 +9,32 @@ if(isset($_POST['function']))$function=$_POST['function'];
 if(isset($_POST['id_device']))$id_device=$_POST['id_device'];
 if(isset($_POST['lang']))$lang=$_POST['lang'];
 
+function get_field_contacts($id_name_field,$lang){
+    global $link;
+    $query_field_type=mysqli_query($link,"SELECT `type` FROM carrotsy_contacts.`field` WHERE `name_id` = '$id_name_field' LIMIT 1");
+    $data_field_type=mysqli_fetch_assoc($query_field_type);
+
+    $query_field_title=mysqli_query($link,"SELECT `name` FROM carrotsy_contacts.`field_lang` WHERE `name_id` = '$id_name_field' AND `lang` = '$lang'");
+    $data_field_title=mysqli_fetch_assoc($query_field_title);
+
+    $data_field=new stdClass();
+    $data_field->{"title"}=$data_field_title["name"];
+    $data_field->{"title_en"}=$data_field_title["name"];
+    if($data_field_type["type"]=="2"){
+        $query_field_select=mysqli_query($link,"SELECT `name_key`,`val` FROM carrotsy_contacts.`field_data_lang` WHERE `name_id` = '$id_name_field' AND `lang` = '$lang' ORDER BY `order`");
+        $arr_val=array();
+        $arr_key=array();
+        while($field_val=mysqli_fetch_assoc($query_field_select)){
+            array_push($arr_key,$field_val["name_key"]);
+            array_push($arr_val,$field_val["val"]);
+        }
+        $data_field->{"val_update"}=$arr_key;
+        $data_field->{"val_update_en"}=$arr_val;
+    }
+    $data_field->{"type"}=$data_field_type["type"];
+    return $data_field;
+}
+
 function get_data_user($data_user){
     global $url_carrot_store;
     global $link;
@@ -22,6 +48,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Full name";
     $item_data->{"val"}=$data_user['name'];
     $item_data->{"type_update"}="1";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/name.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -29,7 +56,8 @@ function get_data_user($data_user){
     $item_data->{"title"}="user_phone";
     $item_data->{"title_en"}="Phone number";
     $item_data->{"val"}=$data_user['sdt'];
-    $item_data->{"type_update"}="4";
+    $item_data->{"type_update"}="8";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/phone.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -37,7 +65,8 @@ function get_data_user($data_user){
     $item_data->{"title"}="user_address";
     $item_data->{"title_en"}="Address";
     $item_data->{"val"}=$data_user['address'];
-    $item_data->{"type_update"}="1";
+    $item_data->{"type_update"}="9";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/address.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -46,6 +75,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Email (Email)";
     $item_data->{"val"}=$data_user['email'];
     $item_data->{"type_update"}="5";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/email.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -56,6 +86,7 @@ function get_data_user($data_user){
     $item_data->{"type_update"}="2";
     $item_data->{"val_update"}=array("user_sex_boy","user_sex_girl");
     $item_data->{"val_update_en"}=array("Male","Female");
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/sex.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -88,17 +119,41 @@ function get_data_user($data_user){
 
     if($data_user['status']=="0"){
         $item_data=new stdClass();
+        $item_data->{"id_name"}="user_link";
         $item_data->{"title"}="user_link";
         $item_data->{"title_en"}="Contact link";
         $item_data->{"val"}=$url_carrot_store.'/user/'.$data_user['id_device'].'/'.$lang;
-        $item_data->{"type_update"}="0";
-        $item_data->{"act"}="2";
+        $item_data->{"type_update"}="7";
+        $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/web.png';
         array_push($arr_data,$item_data);
     }
 
+    $list_info_contact=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`info_$lang` WHERE `user_id` = '".$data_user['id_device']."' LIMIT 1");
+    $list_data_contact=mysqli_fetch_assoc($list_info_contact);
+    if($list_data_contact!=null){
+        $list_data_contact=json_decode($list_data_contact['data']);
+        for($i=0;$i<count($list_data_contact);$i++){
+            $item_info=$list_data_contact[$i];
+
+            $key_field=$item_info->{"key"};
+            $data_field=get_field_contacts($key_field,$lang);
+
+            $item_data=new stdClass();
+            $item_data->{"id_name"}=$item_info->{"key"};
+            $item_data->{"title"}=$data_field->{"title"};
+            $item_data->{"title_en"}=$data_field->{"title_en"};
+            $item_data->{"val"}=$item_info->{"val"};
+            $item_data->{"type_update"}=$data_field->{"type"};
+            if(isset($data_field->{"val_update"})){
+                $item_data->{"val_update"}=$data_field->{"val_update"};
+                $item_data->{"val_update_en"}=$data_field->{"val_update_en"};
+            }
+            $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/'.$key_field.'.png';
+            array_push($arr_data,$item_data);
+        }
+    }
     return $arr_data;
 }
-
 function get_url_avatar_user($id_user,$lang){
     global $url_carrot_store;
     $url_file="app_mygirl/app_my_girl_".$lang."_user/".$id_user.".png";
@@ -124,10 +179,11 @@ function get_url_avatar_user_thumb($id_user,$lang,$size){
 if($function=='list_app_carrot'){
     $arr_app=array();
     $os=$_POST['os'];
-    $query_list_ads=mysqli_query($link,"SELECT `id`,`name`,`$os` FROM carrotsy_virtuallover.`app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
+    $query_list_ads=mysqli_query($link,"SELECT `id`,`name`,`$os`,`app_id` FROM carrotsy_virtuallover.`app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
     while($row_ads=mysqli_fetch_array($query_list_ads)){
         $row_ads["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=80';
         $row_ads["url"]=$row_ads[$os];
+        $row_ads['link_carrot_app']=$url_carrot_store.'/product/'.$row_ads['app_id'];
         array_push($arr_app,$row_ads);
     }
     echo json_encode($arr_app);
@@ -536,6 +592,61 @@ if($function=='list_music_game'){
         array_push($arr_list_music,$row);
     }
     echo json_encode($arr_list_music);
+    exit;
+}
+
+if($function=='check_inapp'){
+    $inapp_id=$_POST['inapp_id'];
+    $user_id=$_POST['user_id'];
+    $user_lang=$_POST['user_lang'];
+    $inapp=new stdClass();
+    $query_check_inapp=mysqli_query($link,"SELECT `is_get`,`id` FROM carrotsy_virtuallover.`inapp_order` WHERE `inapp_id` = '$inapp_id' AND `user_id` = '$user_id' AND `is_get`='0' LIMIT 1");
+    $data_check_inapp=mysqli_fetch_assoc($query_check_inapp);
+    if($data_check_inapp!=null){
+        $id_order=$data_check_inapp['id'];
+        $query_update_inapp=mysqli_query($link,"UPDATE carrotsy_virtuallover.`inapp_order` SET `is_get` = '1' WHERE `id` = '$id_order' LIMIT 1;");
+        $inapp->{"error"}=0;
+        $inapp->{"msg"}="shop_buy_success";
+        $inapp->{"msg_en"}="Payment success! Thank you for your purchase";
+    }else{
+        $inapp->{"error"}=1;
+        $inapp->{"msg"}="shop_buy_fail";
+        $inapp->{"msg_en"}="Purchase failed, Please check your account balance or try again at another time";
+    }
+    echo json_encode($inapp);
+    exit;
+}
+
+if($function=='restore_inapp'){
+    $user_id=$_POST['user_id'];
+    $user_lang=$_POST['user_lang'];
+    $inapp_id=$_POST['inapp_id'];
+    $inapp=new stdClass();
+
+    $array_inapp_success=array();
+    for($i=0;$i<count($inapp_id);$i++){
+        $id_inapp_check=$inapp_id[$i];
+        $query_check_restore=mysqli_query($link,"SELECT `inapp_id` FROM carrotsy_virtuallover.`inapp_order` WHERE `inapp_id`='$id_inapp_check' AND `user_id`='$user_id' LIMIT 1");
+        if($query_check_restore){
+            $data_check_restore=mysqli_fetch_assoc($query_check_restore);
+            if($data_check_restore!=null){
+                array_push($array_inapp_success,$id_inapp_check);
+            }
+        }
+    }
+    
+    if(count($array_inapp_success)>0){
+        $inapp->{"error"}=0;
+        $inapp->{"inapp_success"}=$array_inapp_success;
+        $inapp->{"msg"}="shop_restore_success";
+        $inapp->{"msg_en"}="Successful recovery!";
+    }else{
+        $inapp->{"error"}=1;
+        $inapp->{"msg"}="shop_restore_fail";
+        $inapp->{"msg_en"}="Restore failed!";
+    }
+    
+    echo json_encode($inapp);
     exit;
 }
 ?>

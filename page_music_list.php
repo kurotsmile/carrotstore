@@ -162,6 +162,7 @@ if($sub_view=='artist'){
         $label_loi_bai_hat=lang($link,'loi_bai_hat');
         $label_chua_co_loi_bai_hat=lang($link,'chua_co_loi_bai_hat');
         $label_music_no_rank=lang($link,'music_no_rank');
+        $_SESSION['count_item_music']=0;
 
         $count_item_music=0;
         while ($row = mysqli_fetch_array($query_list_music)) {

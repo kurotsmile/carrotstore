@@ -111,5 +111,24 @@ if($function=='acc_act'){
      }
      echo json_encode($obj);
      exit;
- }
+}
+
+if($function=='flower_act'){
+     $id=$_POST['id'];
+     $fn=$_POST['fn'];
+     $obj=new stdClass();
+     $obj->{"id"}=$id;
+     if($fn=='del'){
+        $sheep_del=$this->q("DELETE FROM `carrotsy_flower`.flower WHERE `id` = '$id'");
+        if($sheep_del){
+             $obj->{"error"}=0;
+             $obj->{"msg"}="Xóa thành công châm ngôn $id";
+        }else{
+             $obj->{"error"}=1;
+             $obj->{"msg"}="Xóa không thành châm ngôn $id";
+        }
+     }
+     echo json_encode($obj);
+     exit;
+}
 ?>

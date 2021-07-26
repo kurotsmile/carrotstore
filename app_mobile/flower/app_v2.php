@@ -2,7 +2,7 @@
 include_once("carrot_framework.php");
 
 if($function=='get_quote'){
-    $id_show='';if(isset($_POST['id_show'])) $id_show=$_POST['id_show'];
+    $id_show='';if(isset($_POST['quote_id'])) $id_show=$_POST['quote_id'];
     if($id_show==''){
         $query_get_flower=mysqli_query($link,"SELECT `id`,`chat`,`effect_customer` FROM carrotsy_virtuallover.app_my_girl_$lang WHERE `effect`='36' AND `disable`='0' AND `id_redirect`='' ORDER BY RAND() LIMIT 1");
     }else{

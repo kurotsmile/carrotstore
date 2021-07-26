@@ -68,7 +68,13 @@ if($function=='scroll_load_data'){
     if(count($data_json)<intval($length_obj)){
 
         if($type_obj=='music'){
-            $count_item_music=count($data_json);
+            if($_SESSION['count_item_music']=='0'){
+                $count_item_music=count($data_json);
+                $_SESSION['count_item_music']=$count_item_music;
+            }else{
+                $count_item_music=$_SESSION['count_item_music'];
+            }
+
             $list_style='list';
             $label_choi_nhac=lang($link,'choi_nhac');
             $label_chi_tiet=lang($link,'chi_tiet');
@@ -83,6 +89,7 @@ if($function=='scroll_load_data'){
                     $count_item_music++;
                 }
             }
+            $_SESSION['count_item_music']=$count_item_music;
         }
 
         if($type_obj=='products'){

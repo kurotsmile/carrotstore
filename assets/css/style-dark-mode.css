@@ -63,7 +63,7 @@ tr:nth-child(even){background-color:#000}
 .app .app_title a span{margin-right:15px;text-shadow:2px 2px 2px #525252;color:#ffc978;-webkit-transition:all 1s;transition:all 1s}
 .app .app_icon{width:100px;height:100px;float:left;margin:2px;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px}
 .app .app_txt{width:206px;float:left;padding:3px;-webkit-transition:all .8s;transition:all .8s}
-.app .app_txt .desc{width:100%;height:70px;max-height:70px;overflow-y:auto;float:left}
+.app .app_txt .desc{width:100%;height:70px;max-height:70px;overflow-y:hidden;float:left}
 .app .app_star{float:left;width:100%;margin-top:10px}
 .app .app_star1{position:absolute;width:70px;height:13px;background-image:url(../../images/star1.png);background-size:70px 13px}
 .app .app_star2{position:absolute;width:70px;height:13px;background-image:url(../../images/star.png);background-size:70px 13px;z-index:100}
@@ -318,7 +318,7 @@ textarea:focus{border:1px solid #9ae66a;box-shadow:0 0 0 .2rem #9ae66a}
 .btn_backward,.btn_control,.btn_next{margin-left:3px;margin-right:3px}
 .item_playlist_name{float:left;margin-left:5px}
 .item_playlist_icon{float:left;margin-top:9px;margin-left:7px;margin-right:10px}
-.icon_green{color:#00c500}
+.icon_green{color:orange}
 .kr_help_item{width:100%;float:left;text-align:left;border-bottom:solid 2px #dedede}
 .key_code{background-color:gray;color:#fff;padding-left:6px;padding-right:6px;padding-top:3px;padding-bottom:3px;float:left;border-radius:3px;margin:5px}
 .kr_help_item .txt{float:left;margin-left:20px;margin-top:7px}

@@ -11,12 +11,10 @@ if(isset($_GET['lang'])){
 
 if(isset($_GET['edit'])){
     $id_edit=$_GET['edit'];
-    $get_msg=mysql_query("SELECT * FROM `flower` WHERE `id` = '$id_edit' LIMIT 1");
-    $arr_data=mysql_fetch_array($get_msg);
+    $arr_data=$this->q_data("SELECT * FROM `flower` WHERE `id` = '$id_edit' LIMIT 1");
     $author=$arr_data['author'];
     $msg=$arr_data['msg'];
     $func='edit';
-    mysql_free_result($get_msg);
 }
 
 if(isset($_POST['submit_add'])){
@@ -26,18 +24,16 @@ if(isset($_POST['submit_add'])){
     $lang=$_POST['lang'];
     
     if($func=='add'){
-        echo "Thêm châm ngôn thành công !!!";
-        $msql_add_msg=mysql_query("INSERT INTO `flower` (`msg`, `author`,`lang`) VALUES ('$msg', '$author','$lang');");
+        $add_msg=$this->q("INSERT INTO `flower` (`msg`, `author`,`lang`) VALUES ('$msg', '$author','$lang');");
+        if($add_msg) echo $this->msg("Thêm châm ngôn thành công !!!");
         $msg='';
         $author='';
-        mysql_free_result($msql_add_msg);
     }
     
     if($func=='edit'){
-        echo "Cập nhật châm ngôn thành công !!!";
         $id_edit=$_POST['id_edit'];
-        $msql_update_msg=mysql_query("UPDATE `flower` SET `msg` = '$msg', `author` = '$author', `active` = '0', `lang` = '$lang' WHERE `id` = '$id_edit';");
-        mysql_free_result($msql_update_msg);
+        $update_msg=$this->q("UPDATE `flower` SET `msg` = '$msg', `author` = '$author', `lang` = '$lang' WHERE `id` = '$id_edit';");
+        if($update_msg) echo $this->msg("Cập nhật châm ngôn thành công !!!");
     }
 }
 ?>
@@ -56,11 +52,10 @@ if(isset($_POST['submit_add'])){
         <label>Ngôn ngữ</label><br />
         <select name="lang">
         <?php
-        for($i=0;$i<count($app_flower->list_lang);$i++)
-        {
-        ?>
-            <option value="<?php echo $app_flower->list_lang[$i]->key; ?>" <?php if($app_flower->list_lang[$i]->key==$lang){?> selected="true" <?php } ?>><?php echo $app_flower->list_lang[$i]->name; ?></option>
-        <?php
+        $list_lang=$this->get_list_lang();
+        for($i=0;$i<count($list_lang);$i++){
+            $item_lang=$list_lang[$i];
+            echo '<option value="'.$item_lang['key'].'">'.$item_lang['name'].'</option>';
         }
         ?>
         </select>
@@ -69,9 +64,9 @@ if(isset($_POST['submit_add'])){
     <p>
         <input type="hidden" name="func" value="<?php echo $func; ?>" />
         <?php  if($func=='add'){?>
-            <input type="submit" value="Thêm mới" name="submit_add" />
+            <input type="submit" value="Thêm mới" name="submit_add" class="buttonPro red" />
         <?php }else{?>
-            <input type="submit" value="Cập nhật" name="submit_add" />
+            <input type="submit" value="Cập nhật" name="submit_add" class="buttonPro red"/>
             <input type="hidden" value="<?php echo $id_edit;?>" name="id_edit" />
         <?php }?>
     </p>

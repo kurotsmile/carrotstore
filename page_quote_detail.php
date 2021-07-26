@@ -16,12 +16,22 @@ if($data_quote['effect_customer']!=''){
 <div id="containt" style="width: 100%;float: left;">
     <div id="post_product">
     <p style="font-size:15px;">
-    <img src="<?php echo  $img;?>" style="margin: 5px;" />
+    <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang;?>"><img src="<?php echo  $img;?>" style="margin: 5px;" /></a>
     <i class="fa fa-quote-left" aria-hidden="true"></i>
     <?php
         echo $data_quote['chat'];
     ?>
     <i class="fa fa-quote-right" aria-hidden="true"></i>
+
+    <div  style="width: 100%;float: left;"> 
+            <?php 
+                include_once "phpqrcode/qrlib.php";
+                QRcode::png($url.'/quote/'.$id_quote.'/'.$lang, 'phpqrcode/img_quote/'.$id_quote.'.png', 'M', 4, 2);
+            ?>
+            <img alt="Get quote" src="<?php echo $url;?>/phpqrcode/img_quote/<?php echo $id_quote;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact"/>
+            <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
+    </div>
+
     <?php
     echo show_share($link,$url.'/quote/'.$id_quote.'/'.$lang);
     ?>
