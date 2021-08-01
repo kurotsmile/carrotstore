@@ -28,8 +28,8 @@ if($data_quote['effect_customer']!=''){
                 include_once "phpqrcode/qrlib.php";
                 QRcode::png($url.'/quote/'.$id_quote.'/'.$lang, 'phpqrcode/img_quote/'.$id_quote.'.png', 'M', 4, 2);
             ?>
-            <img alt="Get quote" src="<?php echo $url;?>/phpqrcode/img_quote/<?php echo $id_quote;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact"/>
-            <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
+            <img alt="Get quote" src="<?php echo $url;?>/phpqrcode/img_quote/<?php echo $id_quote;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact" title="<?php echo lang($link,"qr_tip");?>" />
+            <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
     </div>
 
     <?php

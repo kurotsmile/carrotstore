@@ -1,10 +1,15 @@
 <?php
 $lang='vi';
-$sql_active='';
-$url_active='';
+$keyword='';
+$sql_keyword='';
 
-if(isset($_GET['lang'])){
-    $lang=$_GET['lang'];
+$url_active='';
+$sql_active='';
+
+if(isset($_GET['lang']))$lang=$_GET['lang'];
+if(isset($_GET['keyword'])){
+    $keyword=$_GET['keyword'];
+    if($keyword!='') $sql_keyword=" AND `msg` LIKE '%$keyword%' ";
 }
 
 if(isset($_GET['active'])){
@@ -18,10 +23,10 @@ if(isset($_GET['delete'])){
     if($query_delete) echo $this->msg('Delete Success !!!');
 }
 
-$url_cur=$this->cur_url.'&'.$url_active;
-$this->setup_page('good_night',"WHERE `lang`='$lang' $sql_active ");
+$url_cur=$this->cur_url.'&keyword='.$keyword.'&'.$url_active;
+$this->setup_page('good_night',"WHERE `lang`='$lang' $sql_active $sql_keyword ");
 echo $this->show_page_nav($url_cur.'&page=good_night');
-$list_msg_goodnight=$this->q("SELECT * FROM `good_night` WHERE `lang`='$lang' $sql_active ORDER BY `id` DESC LIMIT ".$this->p_start.",".$this->p_limit." ");
+$list_msg_goodnight=$this->q("SELECT * FROM `good_night` WHERE `lang`='$lang' $sql_active $sql_keyword ORDER BY `id` DESC LIMIT ".$this->p_start.",".$this->p_limit." ");
 ?>
 <table>
 <tr>

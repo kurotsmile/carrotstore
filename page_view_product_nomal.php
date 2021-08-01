@@ -11,7 +11,7 @@ $data_type=mysqli_fetch_array($query_type);
                 QRcode::png($url.'/product/'.$data['id'], 'phpqrcode/img_product/'.$data['id'].'.png', 'L', 4, 2);
             ?>
             <span style="width: 130px;float: left;margin: 3px;margin-right: 10px;">
-            <img style="float: left;width: 100%;" src="<?php echo $url;?>/phpqrcode/img_product/<?php echo $data['id'];?>.png" />
+            <img style="float: left;width: 100%;" src="<?php echo $url;?>/phpqrcode/img_product/<?php echo $data['id'];?>.png" title="<?php echo lang($link,"qr_tip");?>" />
             <span class="tag_download">QR Code</span>
             </span>
 

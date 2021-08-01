@@ -1,0 +1,22 @@
+*{padding:0;margin:0;font:12px Verdana,Arial,Helvetica,sans-serif}
+a{color:#000;text-decoration:none}
+a:visited{color:#000}
+a:hover{color:red}
+#head{width:100%;float:left;background-color:#d0fd9f}
+#head #menu{float:left;list-style:none}
+#menu li{padding:5px;float:left}
+#menu li.active a{font-weight:700}
+#menu_sub{float:left;width:100%;list-style:none;background-color:#a5e88e}
+.app_lang{float:left;margin:3px;background-color:#e9ffea;padding:3px;width:460px}
+table{background-color:#ebebeb;width:100%;border-collapse:collapse}
+table tr td{padding:5px;padding-top:2px;padding-bottom:2px;margin:0;font-size:11px}
+table tr th{background-color:#4caf50;color:#fff}
+table tr:nth-child(even){background-color:#f2f2f2}
+table tr:hover td{background-color:#ffff9b}
+.tabe_value{width:100%;float:left;overflow-x:hidden;overflow-y:scroll;height:auto}
+.app_lang img{float:left}
+.app_lang .name_lang{float:left;font-size:12px;font-weight:700}
+.app_lang.active{background-color:#c4ffc7}
+.app_lang .data_other{width:auto;float:left;padding:4px}
+#frm_loc{width:100%;float:left;background-color:#663399}
+#frm_loc .frm_line{width:210px;float:left;padding:5px}

@@ -197,10 +197,10 @@ if(isset($_SESSION['is_show_key_name'])){ $is_show_key_name=$_SESSION['is_show_k
                 include_once "phpqrcode/qrlib.php";
                 QRcode::png($url.'/piano/'.$id_midi, 'phpqrcode/img_piano/'.$id_midi.'.png', 'M', 4, 2);
             ?>
-            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img_piano/<?php echo $id_midi;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact"/>
+            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img_piano/<?php echo $id_midi;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact" title="<?php echo lang($link,"qr_tip");?>"/>
             <?php if($data_midi['sell']!='2'){?>
                 <span onclick="export_midi_file();"  class="box_get_info_contact" style="cursor: pointer;"> <i class="fa fa-download fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"midi_download");?></span> <b>(.Mid)</b></div></span>
-                <a href="midi://show/<?php echo $id_midi;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
+                <a href="midi://show/<?php echo $id_midi;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
             <?php }else{?>
                 <a href="<?php echo $url_carrot_store;?>/pay_piano/<?php echo $id_midi;?>"  class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"midi_download");?> <b>$1.30</b></span> </div></a>
             <?php }?>
@@ -972,7 +972,7 @@ function export_midi_file(){
 <?php
 if($id_midi!='new'){
 $list_style='same';
-$query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE sell!=0 ORDER BY RAND() LIMIT 10");
+$query_list_piano=mysqli_query($link,"SELECT `id_midi`,`name`,`speed`,`category`,`sell`,`level`,`length`,`length_line`,`author` FROM  carrotsy_piano.`midi` WHERE (`sell`='1' OR `sell`='2') ORDER BY RAND() LIMIT 10");
 ?>
 <div style="float: left;width: 100%;">
 <h2 style="padding-left: 30px;"><?php echo lang($link,'music_same'); ?></h2>

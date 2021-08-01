@@ -98,11 +98,11 @@ function show_row_chat_prefab($link,$data, $lang, $txt_fun_other)
     if (isset($data['func'])) {
         $type_chat = "msg";
         $txt_update='<a href="'.$url.'/app_my_girl_update.php?id='.$id_row.'&lang='.$lang.'&msg=1" target="_blank" class="buttonPro small '.$txt_color_btn_update.'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa Msg</a>';
-        $txt_fun_other.='<a href="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$lang.'%22%2C%22id%22%3A%22'.$id_row.'%22%2C%22type%22%3A%22msg%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
+        $txt_fun_other.='<a href="ailover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$lang.'%22%2C%22id%22%3A%22'.$id_row.'%22%2C%22type%22%3A%22msg%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
     } else {
         $type_chat = "chat";
         $txt_update='<a href="'.$url.'/app_my_girl_update.php?id='.$id_row.'&lang='.$lang.'" target="_blank" class="buttonPro small '.$txt_color_btn_update.'"><i class="fa fa-pencil-square" aria-hidden="true"></i> Sửa chat</a>';
-        $txt_fun_other.='<a href="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$lang.'%22%2C%22id%22%3A%22'.$id_row.'%22%2C%22type%22%3A%22chat%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
+        $txt_fun_other.='<a href="ailover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22'.$lang.'%22%2C%22id%22%3A%22'.$id_row.'%22%2C%22type%22%3A%22chat%22%2C%22host%22%3A%22'.$name_host.'%22%7D" class="buttonPro small blue"><i class="fa fa-play-circle" aria-hidden="true"></i></a>';
 
     }
 

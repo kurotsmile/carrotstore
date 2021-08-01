@@ -4,4 +4,6 @@ include_once("page_inspection_piano.php");
 include_once("page_inspection_acc.php");
 include_once("page_inspection_user.php");
 include_once("page_inspection_flower.php");
+include_once("page_inspection_music.php");
+include_once("page_inspection_chat.php");
 ?>

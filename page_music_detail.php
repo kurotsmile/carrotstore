@@ -105,7 +105,7 @@ $txt_title=$data_music['chat'];
             <?php 
                 QRcode::png($url.'/music/'.$id_music.'/'.$lang_sel, 'phpqrcode/img/music'.$id_music.'_'.$lang_sel.'.png', 'M', 4, 2);
             ?>
-            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" />
+            <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" title="<?php echo lang($link,"qr_tip");?>"/>
 
             <?php
                 $txt_function='onclick="login_account();"';
@@ -115,9 +115,14 @@ $txt_title=$data_music['chat'];
             ?>
 
             <a  <?php echo $txt_function;?>  id="download_song" style="background-color: #67c7ca;" >
-                    <i class="fa fa-plus-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
-                    <span><?php echo lang($link,'song_add_playlist');?></span>
+                <i class="fa fa-plus-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
+                <span><?php echo lang($link,'song_add_playlist');?></span>
              </a>
+
+             <a href="music://show/<?php echo $id_music;?>/<?php echo $lang_sel;?>" id="download_song" title="<?php echo lang($link,"link_open_app_tip");?>">
+                <i class="fa fa-external-link-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
+                <span><?php echo lang($link,'link_open_app');?></span>
+            </a>
 
              <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song" class="full" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />

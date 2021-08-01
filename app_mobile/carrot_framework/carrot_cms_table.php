@@ -1,6 +1,6 @@
 <?php
 $menu=0;if(isset($_GET['menu']))$menu=$_GET['menu'];
-$url_cur=$this->url.'?menu='.$menu;
+if(!isset($url_cur))$url_cur=$this->url.'?menu='.$menu;
 $limit=50;
 $query_count=mysqli_query($this->link_mysql,"SELECT COUNT(*) as c FROM `$name_table` LIMIT 1");
 $data_count_all_acc = mysqli_fetch_assoc($query_count);

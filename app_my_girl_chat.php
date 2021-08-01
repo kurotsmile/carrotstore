@@ -1,130 +1,101 @@
 <?php
 include "app_my_girl_template.php";
+$limit='500';
+
 $langsel='vi';
+$disable_chat='';
 $sexsel="0";
-$os="";
 $sex_char="1";
 $key_search='';
-$limit='500';
-$limit_txt_query=' LIMIT '.$limit;
 $limit_chat='';
-$limit_chat_query='';
-$effect_search='';
-$disable_chat='';
-$disable_chat_sql="";
-$os_sql="";
+$effect='0';
 $tip="";
+$os="";
 $os_ios='';
-$os_ios_query='';
 $os_window='';
-$os_window_query='';
 $user_work='';
-$user_work_query='';
 
+$q_key_word='';
+$q_character_sex='';
+$q_sex='';
+$q_tip='';
+$q_disable='';
+$q_os='';
+$q_os_ios='';
+$q_os_window='';
+$q_effect='';
+$q_user_work='';
+$q_limit_chat='';
 
-$txt_key_search='';
-
-if(isset($_GET['lang'])){
-    $langsel=$_GET['lang'];
+if(isset($_REQUEST['lang']))$langsel=$_REQUEST['lang'];
+if(isset($_REQUEST['sex'])){
+    $sexsel=$_REQUEST['sex'];
+    if($sexsel!='') $q_sex=" AND `sex`='$sexsel' ";
 }
 
-if(isset($_GET['sex'])){
-    $sexsel=$_GET['sex'];
+if(isset($_REQUEST['character_sex'])){
+    $sex_char=$_REQUEST['character_sex'];
+    if($sex_char!='')$q_character_sex=" AND `character_sex`='$sex_char' ";
+}
+if(isset($_REQUEST['key_word'])) { 
+    $key_search=$_REQUEST['key_word'];
+    if(trim($key_search)!='') $q_key_word="AND  (`chat` LIKE '%$key_search%')";
 }
 
-if(isset($_GET['character_sex'])){
-    $sex_char=$_GET['character_sex']; 
+if(isset($_REQUEST['disable_chat'])){
+    $disable_chat=$_REQUEST['disable_chat']; 
+    if($disable_chat!='') $q_disable=" AND `disable` = '$disable_chat'";
 }
 
-if(isset($_GET['disable_chat'])){
-    $disable_chat=$_GET['disable_chat']; 
-    $disable_chat_sql=" AND `disable` = '$disable_chat'";
+if(isset($_REQUEST['tip'])){
+    $tip=$_REQUEST['tip'];
+    if($tip!='') $q_tip=" AND `tip` = '$tip' ";
 }
 
-if(isset($_GET['tip'])){
-    $tip=$_GET['tip'];
+if(isset($_REQUEST['os'])){
+    $os=$_REQUEST['os'];
+    if($os!='') $q_os=" AND `os`!='$os' ";
 }
 
-if(isset($_POST['loc'])){
-    $langsel=$_POST['lang'];
-    $sexsel=$_POST['sex'];
-    $tip=$_POST['tip'];
-    $sex_char=$_POST['sex_char'];
-    $key_search=$_POST['key_word'];
-    $os=$_POST['os'];
-    
-    $os_ios=$_POST['os_ios'];
-    $os_window=$_POST['os_window'];
-    
-    $effect_search=$_POST['effect'];
-    $txt_query_effect='';
-    
-    $user_work=$_POST['user_work'];
-    
-    $disable_chat=$_POST['disable_chat'];
-    if($disable_chat!=''){
-        $disable_chat_sql=" AND `disable` = '$disable_chat'";
-    }
-    
-    if($key_search!=''){
-        $txt_key_search="AND  (`text` LIKE '%$key_search%' OR `chat` LIKE '%$key_search%')";
-    }
-    
-    if($effect_search!=''){
-        $txt_query_effect="AND  `effect`='$effect_search'";
-    }
-    
-    if($os!=''){
-        $os_sql=" And `os`!='$os' ";
-    }
-    
-    if($os_ios!=''){
-        $os_ios_query=" And `os_ios`='$os_ios'";
-    }
-    
-    if($os_window!=''){
-        $os_window_query=" And `os_window`='$os_window'";
-    }
-    
-    if($user_work!=''){
-        $user_work_query=" And `user_create`='$user_work' ";
-    }
-    
-    
-    if(isset($_POST['limit'])){
-        if($_POST['limit']!=''){
-            $limit=$_POST['limit'];
-            $limit_txt_query=' LIMIT '.$limit;
-        }else{
-            $limit='';
-            $limit_txt_query='';
-        }
-    }
-    
-    if(isset($_POST['limit_chat'])){
-        if($_POST['limit_chat']!=''){
-            $limit_chat=$_POST['limit_chat'];
-            $limit_chat_query=" AND `limit_chat`=".$limit_chat."";
-        }
-    }
-    
-    if($tip!=''){
-        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `tip` = '$tip' AND `character_sex`='$sex_char' $txt_key_search $txt_query_effect $limit_chat_query $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC $limit_txt_query");
-    }else{
-        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `character_sex`='$sex_char' $txt_key_search $txt_query_effect $limit_chat_query $disable_chat_sql  $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC $limit_txt_query");
-    }
-}else{
-    if($tip!=''){
-        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel' AND `tip` = '$tip' AND `character_sex`='$sex_char' $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC  $limit_txt_query");
-    }else{
-        $result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE `sex` = '$sexsel'  AND `character_sex`='$sex_char' $disable_chat_sql $os_sql $os_ios_query $os_window_query $user_work_query ORDER BY `id` DESC  $limit_txt_query");
-    }
+if(isset($_REQUEST['os_ios'])){
+    $os_ios=$_REQUEST['os_ios'];
+    if($os_ios!='')$q_os_ios=" AND `os`!='$os_ios' ";
 }
+
+if(isset($_REQUEST['os_window'])){
+    $os_window=$_REQUEST['os_window'];
+    if($os_window!='') $q_os_window=" AND `os_window`!='$os_window' ";
+}
+
+if(isset($_REQUEST['effect'])){
+    $effect=$_REQUEST['effect'];
+}
+
+if(isset($_REQUEST['user_work'])){
+    $user_work=$_REQUEST['user_work'];
+    if($user_work!='') $q_user_work=" AND `user_create`='$user_work' ";
+}
+
+if(isset($_REQUEST['limit'])){
+    $limit=$_REQUEST['limit'];
+}
+
+if(isset($_REQUEST['limit_chat'])){
+    $limit_chat=$_REQUEST['limit_chat'];
+    if($limit_chat!='')$q_limit_chat=" AND `limit_chat`='$limit_chat' ";
+}
+
+if($limit!="")$q_limit=" LIMIT  ".$limit; else $q_limit="";
+
+$q_effect=" AND  `effect`='$effect' ";
+$result_tip=mysqli_query($link,"SELECT * FROM `app_my_girl_$langsel` WHERE 1=1 $q_tip $q_sex $q_character_sex $q_disable $q_key_word $q_os $q_os_ios $q_os_window $q_effect $q_user_work $q_limit_chat ORDER BY `id` DESC $q_limit");
+echo mysqli_error($link);
 ?>
 <form method="post" id="form_loc">
 <div style="display: inline-block;float: left;margin: 2px;width: 90px;">
     <label>Đối tượng:</label> 
     <select name="sex">
+        <option value="" <?php if($sexsel==''){?> selected="true"<?php }?>>Tất cả</option>
         <option value="0" <?php if($sexsel=='0'){?> selected="true"<?php }?>>Nam</option>
         <option value="1" <?php if($sexsel=='1'){?> selected="true"<?php }?>>Nữ</option>
     </select>
@@ -133,6 +104,7 @@ if(isset($_POST['loc'])){
 <div style="display: inline-block;float: left;margin: 2px;width: 120px;">
     <label>Giới tính nhân vật:</label> 
     <select name="sex_char">
+        <option value="" <?php if($sex_char==''){?> selected="true"<?php }?>>Tất cả</option>
         <option value="0" <?php if($sex_char=='0'){?> selected="true"<?php }?>>Nam</option>
         <option value="1" <?php if($sex_char=='1'){?> selected="true"<?php }?>>Nữ</option>
     </select>
@@ -157,21 +129,21 @@ if(isset($_POST['loc'])){
 <div style="display: inline-block;float: left;margin: 2px;">
     <label>Gợi ý:</label> 
     <select name="tip">
-        <option value="" <?php if(isset($_POST['tip'])&&$_POST['tip']==''){?> selected="true"<?php }?>>All</option>
-        <option value="1" <?php if(isset($_POST['tip'])&&$_POST['tip']=='1'){?> selected="true"<?php }?>>on</option>
-        <option value="0" <?php if(isset($_POST['tip'])&&$_POST['tip']=='0'){?> selected="true"<?php }?>>off</option>
+        <option value="" <?php if($tip==''){?> selected="true"<?php }?>>All</option>
+        <option value="1" <?php if($tip=='1'){?> selected="true"<?php }?>>on</option>
+        <option value="0" <?php if($tip=='0'){?> selected="true"<?php }?>>off</option>
     </select>
 </div>
 
 <div style="display: inline-block;float: left;margin: 2px;width: 90px;">
     <label>Chức năng:</label> 
         <select name="effect" >
-            <option value="" <?php if($effect_search==''){ echo 'selected="true"';} ?>>None</option>
+            <option value="" <?php if($effect==''){ echo 'selected="true"';} ?>>None</option>
             <?php
             for($i=0;$i<count($data_app->arr_function_app);$i++){
                 $data_i=$data_app->arr_function_app[$i];
                 ?>
-                <option value="<?php echo $data_i->key; ?>" <?php if($effect_search==$data_i->key){ echo 'selected="true"';} ?>><?php echo $data_i->name; ?></option>
+                <option value="<?php echo $data_i->key; ?>" <?php if($effect==$data_i->key){ echo 'selected="true"';} ?>><?php echo $data_i->name; ?></option>
                 <?php
             }
             ?>
@@ -192,9 +164,10 @@ if(isset($_POST['loc'])){
 <div style="display: inline-block;float: left;margin: 2px;width:90px;">
     <label>Giới hạng os</label> 
     <select name="os">
-        <option value="" <?php if(isset($_POST['os'])&&$_POST['os']==''){?> selected="true"<?php }?>>All</option>
-        <option value="android" <?php if(isset($_POST['os'])&&$_POST['os']=='android'){?> selected="true"<?php }?>>Android</option>
-        <option value="ios" <?php if(isset($_POST['os'])&&$_POST['os']=='ios'){?> selected="true"<?php }?>>Ios</option>
+        <option value="" <?php if($os==''){?> selected="true"<?php }?>>All</option>
+        <option value="android" <?php if($os=='android'){?> selected="true"<?php }?>>Android</option>
+        <option value="ios" <?php if($os=='ios'){?> selected="true"<?php }?>>Ios</option>
+        <option value="window" <?php if($os=='window'){?> selected="true"<?php }?>>Window</option>
     </select>
 </div>
 
@@ -376,6 +349,5 @@ echo '<tr style="border:solid 1px green"><th>id</th><th>Loại</th><th>Trả l�
             echo show_row_chat_prefab($link,$row,$langsel,$bnt_history.' '.$bnt_del.' '.$check_select);
         }
 echo '</table>';
-mysqli_free_result($result_tip);
 ?>
 

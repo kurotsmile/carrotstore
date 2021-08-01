@@ -132,9 +132,9 @@ function get_star_width($link,$id,$object){
 function show_share($link,$url){
     $txt_share='<ul id="share_link" title="'.lang($link,"share_tip").'">';
     $txt_share.='<li><strong>'.lang($link,'chia_se').'</strong></li>';
-    $query_share=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`share` ORDER BY `order` ");
+    $query_share=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`share` WHERE `web` != ''  ORDER BY `order` ");
     while($s=mysqli_fetch_assoc($query_share)){
-        $share_url=str_replace('{url}',$url,$s['url']);
+        $share_url=str_replace('{url}',$url,$s['web']);
         $share_name=$s['name'];
         $txt_share.='<li><a onclick="box_share(this);return false;" href="'.$share_url.'" target="_blank"><i class="fa '.$s['icon_css'].'" aria-hidden="true"></i> '.$share_name.'</a></li>';
     }
