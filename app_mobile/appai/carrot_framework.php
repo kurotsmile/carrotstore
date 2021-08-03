@@ -347,8 +347,8 @@ if($function=='register'){
     $sdt=$_POST['sdt'];
     $email=$_POST['email'];
     $sex=$_POST['sex'];
-    $password=$_POST['password'];
-    $re_password=$_POST['re_password'];
+    $password='';if(isset($_POST['password']))$password=$_POST['password'];
+    $re_password='';if(isset($_POST['re_password']))$re_password=$_POST['re_password'];
 
     if(strlen(trim($name))<6){
         $user->{"error"}="1";
@@ -364,18 +364,20 @@ if($function=='register'){
         $error=1;
     }
 
-    if(strlen(trim($password))<6&&$error==0){
-        $user->{"error"}="1";
-        $user->{"msg"}="error_password";
-        $user->{"msg_en"}="Password cannot be blank and be greater than 6 characters";
-        $error=1;
-    }
+    if(isset($_POST['password'])){
+        if(strlen(trim($password))<6&&$error==0){
+            $user->{"error"}="1";
+            $user->{"msg"}="error_password";
+            $user->{"msg_en"}="Password cannot be blank and be greater than 6 characters";
+            $error=1;
+        }
 
-    if(($password!=$re_password)&&$error==0){
-        $user->{"error"}="1";
-        $user->{"msg"}="error_rep_password";
-        $user->{"msg_en"}="Re-enter the password does not match.";
-        $error=1;
+        if(($password!=$re_password)&&$error==0){
+            $user->{"error"}="1";
+            $user->{"msg"}="error_rep_password";
+            $user->{"msg_en"}="Re-enter the password does not match.";
+            $error=1;
+        }
     }
 
     if($error==0){

@@ -1,5 +1,5 @@
 <?php
-$list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY RAND() LIMIT 50");
+$list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY `date_pub` DESC LIMIT 50");
 $num_chat=mysqli_num_rows($list_chat);
 if($num_chat>0){
     $cont_all_chat=$this->q_data("SELECT COUNT(`md5`) as c FROM carrotsy_virtuallover.`app_my_girl_brain` LIMIT 1");
@@ -23,10 +23,11 @@ if($num_chat>0){
             $c_character_sex=$chat['character_sex'];
 
             $url_chat_add=$this->url_carrot_store.'/app_my_girl_add.php?key='.$c_question.'&lang='.$c_langs.'&answer='.$c_answer.'&sex='.$c_sex.'&effect=0&action=2&character_sex='.$c_character_sex.'&color=FFFFFF';
+            if($c_langs=='zh')$c_langs="zh-CN";
             $url_chat_translate='https://translate.google.com/?sl='.$c_langs.'&tl=vi&text='.$c_question."%0A%0A".$c_answer.'&op=translate';
         ?>
         <tr class="cc_<?php echo $c_id;?> chat_emp">
-            <td>
+            <td style="width:275px;word-break: break-all;">
                 <?php if($c_id_question!=''){
                     $url_chat_add.="&type_question=$c_type_question&id_question=$c_id_question";
                     ?><i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -36,7 +37,7 @@ if($num_chat>0){
                 <a onclick="$(this).css('color', 'red');" target="_blank" href="<?php echo $url_chat_translate;?>"><?php echo $chat['question'];?></a><br/>
                 <a onclick="$(this).css('color', 'red');" target="_blank" href="<?php echo $url_chat_translate;?>"><i class="fa fa-arrow-right" aria-hidden="true"></i> <?php echo $chat['answer'];?></a>
             </td>
-            <td style="width:75px">
+            <td>
                 <a onclick="$(this).addClass('blue');" target="_blank" href="<?php echo $url_chat_add;?>" class="buttonPro small"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 <a href="#" class="buttonPro small red" onclick="chat_act('del','<?php echo $c_id;?>')"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>

@@ -237,7 +237,7 @@ if($function=='add_command'){
     $md5=md5(uniqid(rand(), true));
     $color='ffffff';
     if($answer!=''&&$question!=''){
-        $query_add_command=mysqli_query($link,"INSERT INTO `app_my_girl_brain` (`question`, `answer`, `status`, `effect`, `sex`, `langs`, `face`, `action`, `author`, `character_sex`, `version`, `os`, `limit_chat`, `color_chat`, `id_question`, `type_question`, `md5`, `id_device`,`links`) VALUES ('$question', '$answer', '0', '0', '$sex', '$lang', '0', '0', '0', '$character_sex', '2', '$os', '$limit_chat','$color', '$pater', '$pater_type', '$md5', '$id_device','$link_chat');");
+        $query_add_command=mysqli_query($link,"INSERT INTO `app_my_girl_brain` (`question`, `answer`, `status`, `effect`, `sex`, `langs`, `face`, `action`, `author`, `character_sex`, `version`, `os`, `limit_chat`, `color_chat`, `id_question`, `type_question`, `md5`, `id_device`,`links`,`date_pub`) VALUES ('$question', '$answer', '0', '0', '$sex', '$lang', '0', '0', '0', '$character_sex', '2', '$os', '$limit_chat','$color', '$pater', '$pater_type', '$md5', '$id_device','$link_chat',NOW());");
         echo "Add command success!!!";
     }
     exit;
