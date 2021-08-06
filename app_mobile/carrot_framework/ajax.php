@@ -200,4 +200,16 @@ if($function=='chat_act'){
      echo json_encode($obj);
      exit;
 }
+
+if($function=='report_act'){
+     $id_chat=$_POST['id'];
+     $type_chat=$_POST['type'];
+     $obj=new stdClass();
+     $q_del=$this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_report` WHERE `type_question` = '$type_chat' AND `id_question` = '$id_chat'  LIMIT 1");
+     $obj->{"error"}=0;
+     $obj->{"msg"}="Thiện thanh Pro $id_chat $type_chat";
+     $obj->{"id"}="".$id_chat."_".$type_chat;
+     echo json_encode($obj);
+     exit;
+}
 ?>

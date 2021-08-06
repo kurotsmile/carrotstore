@@ -90,7 +90,7 @@ if($function=='list_radio'){
     $sel_lang=$_POST['lang_radio'];
     $list_radio=new stdClass();
     $arr_radio=array();
-    $query_radio=mysqli_query($link,"SELECT `id`,`stream`,`name_radio` FROM carrotsy_virtuallover.`app_my_girl_radio` WHERE `lang` = '$sel_lang' LIMIT 20");
+    $query_radio=mysqli_query($link,"SELECT `id`,`stream`,`name_radio` FROM carrotsy_virtuallover.`app_my_girl_radio` WHERE `lang` = '$sel_lang' ORDER BY RAND() LIMIT 30");
     while($row_radio=mysqli_fetch_assoc($query_radio)){
         $item_radio=new stdClass();
         $item_radio->id=$row_radio['id'];

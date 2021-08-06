@@ -6,4 +6,5 @@ include_once("page_inspection_user.php");
 include_once("page_inspection_flower.php");
 include_once("page_inspection_music.php");
 include_once("page_inspection_chat.php");
+include_once("page_inspection_chat_report.php");
 ?>

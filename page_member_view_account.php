@@ -70,9 +70,9 @@ if($list_contact_same_name){
                     <?php
                     QRcode::png($url_cur_page, 'phpqrcode/img_account/'.$id_user.'_'.$lang.'.png', 'M', 4, 2);
                     ?>
-                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang; ?>.png" class="box_get_info_contact"/>
+                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang; ?>.png" class="box_get_info_contact" title="<?php echo lang($link,"qr_tip");?>"/>
                     <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'download_vcf');?></span></div></a>
-                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'contact_open_app');?></span></div></a>
+                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'contact_open_app');?></span></div></a>
                     <div onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"account_report"); ?></span></div></div>
                 </li>
                 <?php

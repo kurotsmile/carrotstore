@@ -119,7 +119,7 @@ $txt_title=$data_music['chat'];
                 <span><?php echo lang($link,'song_add_playlist');?></span>
              </a>
 
-             <a href="music://show/<?php echo $id_music;?>/<?php echo $lang_sel;?>" id="download_song" title="<?php echo lang($link,"link_open_app_tip");?>">
+             <a onclick="kr_pause();" href="music://show/<?php echo $id_music;?>/<?php echo $lang_sel;?>" id="download_song" title="<?php echo lang($link,"link_open_app_tip");?>">
                 <i class="fa fa-external-link-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                 <span><?php echo lang($link,'link_open_app');?></span>
             </a>

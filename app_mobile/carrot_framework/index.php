@@ -15,6 +15,7 @@ $cms->add_menu_page("Avatar người dùng","fa-picture-o","page_user_avatar.php
 $cms->add_menu_page("Mua hàng (in-app)","fa-buysellads","page_inapp.php");
 $cms->add_menu_page("Chia sẻ","fa-share-alt-square","page_share.php");
 $cms->add_menu_page("Quảng cáo","fa-modx","page_ads.php");
+$cms->add_menu_page("Đài phát thanh","fa-wifi","page_radio.php");
 $cms->add_menu_page("Quản trị viên","fa-user","page_user.php");
 $cms->html_show();
 ?>
