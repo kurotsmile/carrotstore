@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -628,6 +628,10 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('add_music_list_success',	'3'),
 ('key_voice',	'3'),
 ('name_char_boy',	'3'),
-('name_char_girl',	'3');
+('name_char_girl',	'3'),
+('buy_inapp_success',	'3'),
+('radio_error',	'0'),
+('name_char_boy',	'0'),
+('name_char_girl',	'0');
 
--- 2021-06-12 15:30:51
+-- 2021-08-07 09:13:27

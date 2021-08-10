@@ -124,7 +124,7 @@ $txt_title=$data_music['chat'];
                 <span><?php echo lang($link,'link_open_app');?></span>
             </a>
 
-             <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song" class="full" >
+             <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song"  >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                 <span><?php echo lang($link,'download_song');?></span>
                 <br />

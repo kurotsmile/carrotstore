@@ -4,6 +4,16 @@ include_once "carrot_framework_vl.php";
 
 $sex='';if(isset($_POST['sex'])) $sex=$_POST['sex'];
 $character_sex='';if(isset($_POST['character_sex'])) $character_sex=$_POST['character_sex'];
+$limit_chat=4;if(isset($_POST['limit_chat'])) $limit_chat=$_POST['limit_chat'];
+
+function get_lang_app($key,$lang){
+    global $link;
+    $val=$key;
+    $q_val_lang=mysqli_query($link,"SELECT `value` FROM carrotsy_virtuallover.`app_my_girl_key_lang` WHERE `key`='$key' AND `lang`='$lang' LIMIT 1");
+    $val_lang=mysqli_fetch_assoc($q_val_lang);
+    if($val_lang!=null) $val=$val_lang['value'];
+    return $val;
+}
 
 function get_data_chat($q_result,$type_chat,$lang_chat){
     global $url_carrot_store;
@@ -13,18 +23,18 @@ function get_data_chat($q_result,$type_chat,$lang_chat){
         if($type_chat=='chat'){
         if($data_chat['id_redirect']!=""){
             $id_chat=$data_chat['id_redirect'];
-            $q_chat=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang_chat` WHERE `id`='$id_chat' LIMIT 1");
+            $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang_chat` WHERE `id`='$id_chat' LIMIT 1");
             $data_chat=mysqli_fetch_assoc($q_chat);
             if($data_chat==null) return null;
         }}
+        $data_chat["lang"]=$lang_chat;
         $id_chat=$data_chat["id"];
         $txt_chat=$data_chat["chat"];
-        $sex_chat=$data_chat["sex"];
+        $character_sex_chat=$data_chat["character_sex"];
         $data_chat["id_chat"]=$id_chat;
         $data_chat["type_chat"]=$type_chat;
         if($data_chat['effect']=='2'){
-            $chat_lang=$data_chat['author'];
-            $q_data_music=mysqli_query($link,"SELECT `lyrics`, `artist`, `album`, `year`, `genre` FROM carrotsy_virtuallover.`app_my_girl_".$chat_lang."_lyrics` WHERE `id_music`='$id_chat' LIMIT 1");
+            $q_data_music=mysqli_query($link,"SELECT `lyrics`, `artist`, `album`, `year`, `genre` FROM carrotsy_virtuallover.`app_my_girl_".$lang_chat."_lyrics` WHERE `id_music`='$id_chat' LIMIT 1");
             $data_music=mysqli_fetch_assoc($q_data_music);
             if($data_music!=null){
                 $data_chat["data_text"]=$data_music['lyrics'];
@@ -32,8 +42,8 @@ function get_data_chat($q_result,$type_chat,$lang_chat){
                 $data_chat["year"]=$data_music['year'];
                 $data_chat["genre"]=$data_music['genre'];
                 $data_chat["album"]=$data_music['album'];
-                if(file_exists("../../app_mygirl/app_my_girl_'.$chat_lang.'_img/'.$id_chat.'.png"))
-                    $data_chat['avatar_music']=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/app_my_girl_'.$chat_lang.'_img/'.$id_chat.'.png&size=100x100&trim=1';
+                if(file_exists("../../app_mygirl/app_my_girl_'.$lang_chat.'_img/'.$id_chat.'.png"))
+                    $data_chat['avatar_music']=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/app_my_girl_'.$lang_chat.'_img/'.$id_chat.'.png&size=100x100&trim=1';
                 else
                     $data_chat['avatar_music']=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/product_data/123/icon.jpg&size=100x100&trim=1';
             }else{
@@ -44,7 +54,7 @@ function get_data_chat($q_result,$type_chat,$lang_chat){
                 $data_chat["album"]="";
                 $data_chat['avatar_music']="";
             }
-            $q_video_music=mysqli_query($link,"SELECT `link` FROM carrotsy_virtuallover.`app_my_girl_video_vi` WHERE `id_chat`='$id_chat' LIMIT 1");
+            $q_video_music=mysqli_query($link,"SELECT `link` FROM carrotsy_virtuallover.`app_my_girl_video_$lang_chat` WHERE `id_chat`='$id_chat' LIMIT 1");
             $data_video_music=mysqli_fetch_assoc($q_video_music);
             $data_chat['video']=$data_video_music['link'];
         }
@@ -58,12 +68,9 @@ function get_data_chat($q_result,$type_chat,$lang_chat){
         if(file_exists("../../$path_mp3_audio"))
             $data_chat["mp3"]=$url_carrot_store.'/'.$path_mp3_audio;
         else{
-            $type_voice=get_lang_app("voice_character_sex_".$sex_chat,$lang_chat);
-            if($type_voice=="google"){
-                $lang_voice=$lang_chat;
-                if($lang_voice=='zh') $lang_voice='zh-CN';
-                $data_chat["mp3"]="https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=".strlen($txt_chat)."&client=tw-ob&q=".$txt_chat."&tl=".$lang_voice;
-            }
+            $type_voice=get_lang_app("voice_character_sex_".$character_sex_chat,$lang_chat);
+            if($type_voice=="google")
+                $data_chat["mp3"]=$type_voice;
             else
                 $data_chat["mp3"]=$url_carrot_store.'/alert.mp3';
         }
@@ -85,13 +92,29 @@ function get_data_chat($q_result,$type_chat,$lang_chat){
     return $data_chat;
 }
 
-function get_lang_app($key,$lang){
-    global $link;
-    $val=$key;
-    $q_val_lang=mysqli_query($link,"SELECT `value` FROM carrotsy_virtuallover.`app_my_girl_key_lang` WHERE `key`='$key' AND `lang`='$lang' LIMIT 1");
-    $val_lang=mysqli_fetch_assoc($q_val_lang);
-    if($val_lang!=null) $val=$val_lang['value'];
-    return $val;
+function get_lyrics_song($link,$text,$lang){
+    $data_song=null;
+    $query_lyrics=mysqli_query($link,"SELECT `id_music` FROM `app_my_girl_".$lang."_lyrics` WHERE `lyrics` LIKE '%$text%' LIMIT 1");
+    $data_lyrics=mysqli_fetch_assoc($query_lyrics);
+    if($data_lyrics!=null){
+        $id_music=$data_lyrics['id_music'];
+        $txt_query_music=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM `app_my_girl_$lang` WHERE `id`='$id_music'  AND `disable`=0  LIMIT 1");
+        $data_song=get_data_chat($txt_query_music,'chat',$lang);
+    }else{
+        $query_list_lang=mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `key` != '$lang' AND `active` = '1'");
+        while($item_lang=mysqli_fetch_array($query_list_lang)){
+            $lang_key=$item_lang['key'];
+            $query_lyrics=mysqli_query($link,"SELECT `id_music` FROM `app_my_girl_".$lang_key."_lyrics` WHERE `lyrics` LIKE '%$text%' LIMIT 1");
+            $data_lyrics=mysqli_fetch_assoc($query_lyrics);
+            if($data_lyrics!=null){
+                $id_music=$data_lyrics['id_music'];
+                $txt_query_music=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM `app_my_girl_$lang_key` WHERE `id`='$id_music'  AND `disable`=0  LIMIT 1");
+                $data_song=get_data_chat($txt_query_music,'chat',$lang);
+                if($data_song!=null) break;
+            }
+        }
+    }
+    return $data_song;
 }
 
 function arithmetic($expression)
@@ -124,22 +147,27 @@ function arithmetic($expression)
 if($function=="chao"){
     $hour=$_POST['hour'];
     $obj_chat=new stdClass();
-    $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='chao_$hour' AND `sex`='$sex' AND `character_sex`='$character_sex' LIMIT 1");
+    $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='chao_$hour' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  LIMIT 1");
     $obj_chat->{"chat"}=get_data_chat($q_msg,"msg",$lang);
 
     $arr_tip=array();
-    $q_tip=mysqli_query($link,"SELECT `text` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `tip`='1' AND `sex`='$sex' AND `character_sex`='$character_sex' LIMIT 20");
+    $q_tip=mysqli_query($link,"SELECT `text` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `tip`='1' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  LIMIT 20");
     while($tip=mysqli_fetch_assoc($q_tip)){
         array_push($arr_tip,$tip['text']);
     }
     $obj_chat->{"tip_chat"}=$arr_tip;
     echo json_encode($obj_chat);
+    echo var_dump($_POST);
     exit;
 }
 
 if($function=='bat_chuyen'){
+    $day_week=$_POST['day_week'];
+    $months=$_POST['months'];
+    $dates=$_POST['dates'];
+
     $obj_chat=new stdClass();
-    $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='bat_chuyen' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+    $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE ((`limit_date`= '$dates' AND `limit_month` = '$months' AND `limit_day`='') OR (`limit_month`='$months' AND `limit_date`='0' AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='$day_week')) AND `func`='bat_chuyen' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
     $obj_chat->{"chat"}=get_data_chat($q_msg,"msg",$lang);
     echo json_encode($obj_chat);
     exit;
@@ -156,10 +184,10 @@ if($function=="chat"){
     $data_chat=null;
 
     if($func_server=='tim_nhac'){
-        $q_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE MATCH (chat)  AGAINST ('$text' IN BOOLEAN MODE)  AND `pater`='' AND `effect` = '2' AND `disable` = '0' LIMIT 1");
+        $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM `app_my_girl_$lang` WHERE MATCH (chat)  AGAINST ('$text' IN BOOLEAN MODE)  AND `pater`='' AND `effect` = '2' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  LIMIT 1");
         $data_chat=get_data_chat($q_chat,"chat",$lang);
     }
-
+    
     if($func_server=='tim_danh_ba'){
         $list_contact=array();
         $q_user=mysqli_query($link,"SELECT `name`, `sex`, `id_device`, `address`, `sdt` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE (`sdt` LIKE '%$text%' OR `name` LIKE '%$text%') AND `status`='0' ORDER BY RAND() LIMIT 50");
@@ -168,18 +196,30 @@ if($function=="chat"){
             array_push($list_contact,$u);
         }
         if(count($list_contact)>0){
-            $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='hien_ds_sdt' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+            $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='hien_ds_sdt' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
             $data_chat=get_data_chat($q_msg,"msg",$lang);
             $obj_chat->{"list_contact"}=$list_contact;
         }else{
-            $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='khong_tim_thay' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+            $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='khong_tim_thay' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
             $data_chat=get_data_chat($q_msg,"msg",$lang);
         }
     }
 
+    if($func_server=='tim_duong'){
+        $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='tra_loi_tim_duong' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
+        $data_chat=get_data_chat($q_msg,"msg",$lang);
+        $data_chat['link']="https://maps.google.com/maps?q=".urlencode($text);
+        $data_chat=$data_chat;
+    }
+
+    if($func_server=='tim_loi_nhac'){
+        $data_chat=get_lyrics_song($link,$text,$lang);
+        $data_chat=$data_chat;
+    }
+
     $math=arithmetic($text);
     if($math!=""&&$data_chat==null){
-        $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='giai_toan' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+        $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='giai_toan' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
         $data_chat=get_data_chat($q_msg,"msg",$lang);
         $msg_chat=str_replace('{giai_toan}',$math,$data_chat['chat']);
         $data_chat['chat']=$msg_chat;
@@ -187,27 +227,27 @@ if($function=="chat"){
     }
 
     if($id_question!=""&&$data_chat==null){
-        $q_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$id_question' AND `pater_type`='$type_question'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1");
+        $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$id_question' AND `pater_type`='$type_question'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1");
         $data_chat=get_data_chat($q_chat,"chat",$lang);
 
         if($data_chat==null){
-            $q_chat=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text') AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$id_question' AND `pater_type`='$type_question'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1");
+            $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$id_question' AND `pater_type`='$type_question'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1");
             $data_chat=get_data_chat($q_chat,"chat",$lang);
         }
     }
 
     if($data_chat==null){
-        $q_chat=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `text`='$text' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+        $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `text`='$text' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
         $data_chat=get_data_chat($q_chat,"chat",$lang);
     }
 
     if($data_chat==null){
-        $q_chat=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+        $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
         $data_chat=get_data_chat($q_chat,"chat",$lang);
     }
 
     if($data_chat==null){
-        $q_bambay=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func` = 'bam_bay' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+        $q_bambay=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func` = 'bam_bay' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
         $data_chat=get_data_chat($q_bambay,"msg",$lang);
     }
 
@@ -221,7 +261,7 @@ if($function=='show_chat'){
     $lang_chat=$lang;
     if(isset($_POST['lang_chat'])) $lang_chat=$_POST['lang_chat'];
     $obj_chat=new stdClass();
-    $q_chat=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang_chat` WHERE `id`='$id_chat' LIMIT 1");
+    $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang_chat` WHERE `id`='$id_chat' LIMIT 1");
     $obj_chat->{"chat"}=get_data_chat($q_chat,"chat",$lang_chat);
     echo json_encode($obj_chat);
     exit;
@@ -230,15 +270,19 @@ if($function=='show_chat'){
 if($function=='chat_tip'){
     $text=$_POST['text'];
     $obj_chat=new stdClass();
-    $q_chat=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `text`='$text' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+    $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `text`='$text' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
     $obj_chat->{"chat"}=get_data_chat($q_chat,"chat",$lang);
     echo json_encode($obj_chat);
     exit;
 }
 
 if($function=='hit'){
+    $day_week=$_POST['day_week'];
+    $months=$_POST['months'];
+    $dates=$_POST['dates'];
+
     $obj_chat=new stdClass();
-    $q_msg=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE `func`='bat_chuyen' AND `sex`='$sex' AND `character_sex`='$character_sex' ORDER BY RAND() LIMIT 1");
+    $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `status`, `character_sex`, `effect`, `effect_customer`, `color`, `vibrate` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE ((`limit_date`= '$dates' AND `limit_month` = '$months' AND `limit_day`='') OR (`limit_month`='$months' AND `limit_date`='0' AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='$day_week')) AND  `func`='dam' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
     $obj_chat->{"chat"}=get_data_chat($q_msg,"msg",$lang);
     echo json_encode($obj_chat);
     exit;
@@ -258,7 +302,7 @@ if($function=='list_background'){
     while($bk=mysqli_fetch_assoc($q_bk)){
         $bk_id=$bk['id'];
         $bk["url"]=$url_carrot_store."/app_mygirl/obj_background/icon_".$bk_id.".png";
-        $bk["url_thumb"]=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/app_mygirl/obj_background/icon_".$bk_id.".png&size=80x30&trim=1";
+        $bk["url_thumb"]=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/app_mygirl/obj_background/icon_".$bk_id.".png&size=80x39&trim=1";
         array_push($list_background,$bk);
     }
 
@@ -277,37 +321,46 @@ if($function=='list_background'){
     exit;
 }
 
+if ($function=='next_music') {
+    $obj_chat=new stdClass();
+    $q_chat=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `effect`='2' ORDER BY RAND() LIMIT 1");
+    $obj_chat->{"chat"}=get_data_chat($q_chat,"chat",$lang);
+    echo json_encode($obj_chat);
+    exit;
+}
+
 if($function=='list_music'){
     $key_seach=trim($_POST['key_seach']);
     $search_option="0";if(isset($_POST['search_option'])) $search_option=$_POST['search_option'];
     $list_music=array();
 
     if($key_seach==''){
-        $q_music=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `effect`='2' ORDER BY RAND() LIMIT 30");
+        $q_music=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `effect`='2' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 30");
         while($m=mysqli_fetch_assoc($q_music)){
             $m_id=$m['id'];
             $m['id_chat']=$m_id;
-            $m['lang_chat']=$m['author'];
+            $m['lang_chat']=$lang;
             array_push($list_music,$m);
         }
     }else{
+        $q_log_key=mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`app_my_girl_log_key_music` (`key`, `lang`, `type`) VALUES ('$key_seach','$lang','$search_option');");
         if($search_option=='0'){
-            $q_music=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `chat` LIKE '%$key_seach%' AND `effect`='2' ORDER BY RAND() LIMIT 30");
+            $q_music=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$lang` WHERE `chat` LIKE '%$key_seach%' AND `effect`='2' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 30");
             while($m=mysqli_fetch_assoc($q_music)){
                 $m_id=$m['id'];
                 $m['id_chat']=$m_id;
-                $m['lang_chat']=$m['author'];
+                $m['lang_chat']=$lang;
                 array_push($list_music,$m);
             }
         }else{
             $q_country=mysqli_query($link,"SELECT `id`,`name`,`key` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `ver0`=1");
             while($c=mysqli_fetch_assoc($q_country)){
                 $c_key=$c['key'];
-                $q_music=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_$c_key` WHERE `chat` LIKE '%$key_seach%' AND `effect`='2' ORDER BY RAND() LIMIT 3");
+                $q_music=mysqli_query($link,"SELECT `id`,`chat`,`character_sex`,`face`,`action`,`id_redirect`,`effect`,`file_url`,`func_sever`,`effect_customer`,`status`,`color`,`vibrate` FROM carrotsy_virtuallover.`app_my_girl_$c_key` WHERE `chat` LIKE '%$key_seach%' AND `effect`='2' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 3");
                 while($m=mysqli_fetch_assoc($q_music)){
                     $m_id=$m['id'];
                     $m['id_chat']=$m_id;
-                    $m['lang_chat']=$m['author'];
+                    $m['lang_chat']=$c_key;
                     array_push($list_music,$m);
                 }
             }

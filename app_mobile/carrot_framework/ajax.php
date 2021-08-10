@@ -133,21 +133,26 @@ if($function=='flower_act'){
 }
 
 if($function=='key_music_act'){
-     $id=$_POST['id'];
+     $id=urldecode($_POST['id']);
      $fn=$_POST['fn'];
      $obj=new stdClass();
      $obj->{"id"}=$id;
      if($fn=='del'){
         $sheep_del=$this->q("UPDATE carrotsy_music.`log_key` SET `is_see` = '1' WHERE `key` = '$id'");
+        $this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_log_key_music` WHERE `key` = '$id'");
         if($sheep_del){
              $obj->{"error"}=0;
              $obj->{"id"}=md5($id);
-             $obj->{"msg"}="Xóa thành từ khóa âm nhạc $id";
+             $obj->{"msg"}="Xóa thành công từ khóa âm nhạc $id";
         }else{
              $obj->{"error"}=1;
-             $obj->{"msg"}="Xóa thành từ khóa âm nhạc $id";
+             $obj->{"msg"}="Xóa không thành công từ khóa âm nhạc $id";
         }
      }
+     $q_count_m1=$this->q("SELECT * FROM carrotsy_music.`log_key` WHERE `is_see`=0 GROUP BY `key`");
+     $q_count_m2=$this->q("SELECT * FROM carrotsy_virtuallover.`app_my_girl_log_key_music` GROUP BY `key`");
+     $obj->{"count_m1"}=mysqli_num_rows($q_count_m1);
+     $obj->{"count_m2"}=mysqli_num_rows($q_count_m2);
      echo json_encode($obj);
      exit;
 }
@@ -156,10 +161,14 @@ if($function=='unactive_music_key_check'){
      $obj=new stdClass();
      $list_key_waring=$this->q("SELECT `key` FROM `carrotsy_virtuallover`.`app_my_girl_remove_key_music`");
      $count_k=0;
+     $count_m=0;
      while($k=mysqli_fetch_assoc($list_key_waring)){
           $k_key=$k['key'];
           $q_del=$this->q("UPDATE `carrotsy_music`.`log_key` SET `is_see` = '1' WHERE `key` = '$k_key' AND `is_see` = '0'");
           if($q_del) $count_k=$count_k+mysqli_affected_rows($this->link_mysql);
+
+          $q_del_m=$this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_log_key_music` WHERE `key` = '$k_key'");
+          if($q_del_m) $count_m=$count_m+mysqli_affected_rows($this->link_mysql);
      }
 
      $table='<table>';
@@ -180,9 +189,32 @@ if($function=='unactive_music_key_check'){
      }
      $table.='<table>';
 
-     $obj->{"msg"}="Đã loại bỏ $count_k từ khóa đã kiểm dyệt!";
-     $obj->{"table"}=$table;
-     $obj->{"count_k"}=$num_key_music;
+     $tb_m='<table>';
+     $list_m_key=$this->q("SELECT * FROM `carrotsy_virtuallover`.`app_my_girl_log_key_music`");
+     $m_num_key=mysqli_num_rows($list_m_key);
+     if($m_num_key>0){
+          while($m=mysqli_fetch_assoc($list_m_key)){
+               $m_k=$m['key'];
+               $m_l=$m['lang'];
+               $tb_m.='<tr class="k_m_'.md5($m_k).' m_emp">';
+               $tb_m.='<td style="width: 220px;"><a target="_blank" href="'.$this->url_carrot_store.'/app_my_girl_handling.php?func=check_music&key_word='.$m_k.'">'.$m_k.'</a></td>';
+               $tb_m.='<td>';
+               $tb_m.='<a target="_blank" onclick="$(this).addClass(\'blue\');" href="'.$this->url_carrot_store.'/app_my_girl_handling.php?func=remove_key_music&key='.$m_k.'" class="buttonPro small"><i class="fa fa-ban" aria-hidden="true"></i></a>';
+               $tb_m.='<a href="#" class="buttonPro small red" onclick="key_music_act(\'del\',\''.$m_k.'\')"><i class="fa fa-eraser" aria-hidden="true"></i></a>';
+               $tb_m.='</td>';
+               $tb_m.='</tr>';
+          }
+     }
+     $tb_m.='<table>';
+
+     $obj->{"msg"}="Đã loại bỏ $count_k từ khóa đã kiểm dyệt! \n  Đã xóa $count_m từ khóa âm nhạc đã duyệt từ ứng dụng Virtual Lover!";
+     $obj->{"table1"}=$table;
+     $obj->{"table2"}=$tb_m;
+
+     $q_count_m1=$this->q("SELECT * FROM carrotsy_music.`log_key` WHERE `is_see`=0 GROUP BY `key`");
+     $q_count_m2=$this->q("SELECT * FROM carrotsy_virtuallover.`app_my_girl_log_key_music` GROUP BY `key`");
+     $obj->{"count_m1"}=mysqli_num_rows($q_count_m1);
+     $obj->{"count_m2"}=mysqli_num_rows($q_count_m2);
      echo json_encode($obj);
      exit;
 }

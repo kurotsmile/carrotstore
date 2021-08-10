@@ -21,11 +21,10 @@ $data_type=mysqli_fetch_array($query_type);
             ?>
             <a href="<?php if($price_product!=''){ echo $url.'/pay/product/0/'.$data['id']; }else{ echo '#';} ?>" onclick="<?php if($price_product==''){ echo 'show_box_download_link();return false;'; }?>"  id="download_song" class="full" style="height: 154px;margin-left: -2px;margin-right:10px;" >
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br /><br />
-                <span><?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i></span>
-                <br />
-                <?php if($data['price']!=''){?>
-                    <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$<?php echo $data['price'] ?></span>
-                <?php }?>
+                <span>
+                    <?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i> 
+                    <?php if($data['price']!=''){?>$<?php echo $data['price'] ?> <?php }?>
+                </span>
             </a>
                 <?php if($data['price']==''){?>
                 <script>
@@ -68,9 +67,7 @@ $data_type=mysqli_fetch_array($query_type);
 			?>
             <?php if($data["link_youtube"]!=''){?><br /><a onclick="play_video('<?php echo $data["link_youtube"];?>');return false;" ><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
 			<?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
-			<?php
-            if(isset($user_login)&&$user_login->type=='admin'){
-                    ?>
+			<?php if(isset($user_login)&&$user_login->type=='admin'){ ?>
                     <script>
                     function open_edit(){
                         window.open("<?php echo $url.'/admin/?page_view=page_product&sub_view=page_product_update&id='.$data['id'];?>");
@@ -147,9 +144,15 @@ $data_type=mysqli_fetch_array($query_type);
     		</div>
 
 <div id="area_product_content">
+    <div style="padding: 20px;float: left;">
     <div id="post_product">
+    <div style="float: left;width: 100%;" id="contain_lyrics">
+        <div id="contain_lyrics_txt">
+            <?php echo get_desc_product_lang($link,$data['id'],$_SESSION['lang']); ?>
+        </div>
+    </div>
+
     <?php
-        echo get_desc_product_lang($link,$data['id'],$_SESSION['lang']);
         echo show_share($link,$seo_url); 
     ?>
         <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts" scrolling="no" frameborder="0" style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;"></iframe>
@@ -182,7 +185,7 @@ $data_type=mysqli_fetch_array($query_type);
         <?php }?>
 
     </div>
-
+    </div>
 </div>
 <link rel="stylesheet" href="<?php echo $url;?>/plugins/codesnippet/lib/highlight/styles/obsidian.css"/>
 <script src="<?php echo $url;?>/js/highlight.min.js"></script>
@@ -212,10 +215,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-            $types=$data['type'];
-            $id_product=$data['id'];
-            $result3 = mysqli_query($link,"SELECT * FROM `products` WHERE `type` ='$types' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
-            if(mysqli_num_rows($result3)>0){
+$id_product=$data['id'];
+$result3 = mysqli_query($link,"SELECT * FROM `products` WHERE `company` ='Carrot' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+if(mysqli_num_rows($result3)>0){
 ?>
 <div style="float: left;width: 100%;">
 <h2 style="padding-left: 30px;"><?php echo lang($link,'sp_tuong_tu'); ?></h2>
@@ -224,10 +226,10 @@ $(document).ready(function() {
     $label_download_on=lang($link,'download_on');
     $label_loai=lang($link,'loai');
     $label_chi_tiet=lang($link,'chi_tiet');
-                while ($row = mysqli_fetch_array($result3)) {
-                    include "page_view_all_product_git_template.php";
-                }
-                ?>
+    while ($row = mysqli_fetch_array($result3)) {
+        include "page_view_all_product_git_template.php";
+    }
+?>
 </div>
 <?php }?>
 

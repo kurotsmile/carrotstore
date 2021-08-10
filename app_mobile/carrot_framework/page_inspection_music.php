@@ -5,10 +5,10 @@ if($num_key_music>0){
 ?>
 <div class="app_ins">
     <div class="title" style="width: 96%;">
-        <i class="fa fa-music" aria-hidden="true"></i> Âm nhạc (<span id="count_key_music"><?php echo $num_key_music;?></span>)
+        <i class="fa fa-music" aria-hidden="true"></i> Âm nhạc (<span id="count_m1"><?php echo $num_key_music;?></span>)
         <a id="btn_unactive_music" class="buttonPro small" style="float:right" onclick="unactive_music_key_check();"><i id="icon_unactive_music" class="fa fa-delicious" aria-hidden="true"></i> Xóa từ khóa đã duyệt</a>
     </div>
-    <div class="body" id="table_m">
+    <div class="body" id="table_m1">
         <table>
         <?php 
             while($key_m=mysqli_fetch_assoc($list_key_music)){
@@ -29,12 +29,15 @@ if($num_key_music>0){
     </table>
     </div>
 </div>
+<?php }?>
 <script>
 function key_music_act(func,id_s){
     <?php 
         $out_func='var data_js=JSON.parse(data);';
         $out_func.='swal(data_js.msg);';
-        $out_func.='if(data_js.error==0){$(".k_m_"+data_js.id).remove();var count_key_music=$(".m_emp").length;$("#count_key_music").html(count_key_music);}';
+        $out_func.='if(data_js.error==0){$(".k_m_"+data_js.id).remove();}';
+        $out_func.='$("#count_m1").html(data_js.count_m1);';
+        $out_func.='$("#count_m2").html(data_js.count_m2);';
         echo $this->ajax("function:'key_music_act',fn:func,id:id_s",$out_func);
     ?>
 }
@@ -46,10 +49,11 @@ function unactive_music_key_check(){
     <?php 
         $out_func='var data_js=JSON.parse(data);';
         $out_func.='swal(data_js.msg);$("#btn_unactive_music").removeClass("black");$("#icon_unactive_music").removeClass("fa-spinner");$("#icon_unactive_music").addClass("fa-delicious");';
-        $out_func.='$("#table_m").html(data_js.table);';
-        $out_func.='$("#count_key_music").html(data_js.count_k);';
+        $out_func.='$("#table_m1").html(data_js.table1);';
+        $out_func.='$("#table_m2").html(data_js.table2);';
+        $out_func.='$("#count_m1").html(data_js.count_m1);';
+        $out_func.='$("#count_m2").html(data_js.count_m2);';
         echo $this->ajax("function:'unactive_music_key_check'",$out_func);
     ?>
 }
 </script>
-<?php }?>

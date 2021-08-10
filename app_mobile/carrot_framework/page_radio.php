@@ -8,8 +8,8 @@ $func='list';
 if(isset($_REQUEST['func'])) $func=$_REQUEST['func'];
 ?>
 <div class="cms_tool_page">
-    <a class="buttonPro small <?php if($func=='list'){?>yellow<?php }?>" href="<?php echo $cur_url;?>&func=list"><i class="fa fa-list" aria-hidden="true"></i> Danh sách</a>
-    <a class="buttonPro small <?php if($func=='add'){?>yellow<?php }?>" href="<?php echo $cur_url;?>&func=add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm đài phát thanh</a>
+    <a class="buttonPro small <?php if($func=='list'){?>yellow<?php }?>" href="<?php echo $cur_url;?>&func=list&lang=<?php echo $lang;?>"><i class="fa fa-list" aria-hidden="true"></i> Danh sách</a>
+    <a class="buttonPro small <?php if($func=='add'){?>yellow<?php }?>" href="<?php echo $cur_url;?>&func=add&lang=<?php echo $lang;?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm đài phát thanh</a>
 </div>
 <?php
 if($func=='list'){
@@ -135,5 +135,6 @@ if($func=='edit'){
 <button class="buttonPro green">Hoàn tất</button>
 <input type="hidden" value="<?php echo $func;?>" name="r_func"/>
 <input type="hidden" value="<?php echo $id_edit;?>" name="r_id"/>
+<a href="<?php echo $cur_url;?>&func=list&lang=<?php echo $lang;?>" class="buttonPro"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Trở về</a>
 </form>
 <?php }?>

@@ -125,12 +125,36 @@ function get_url_avatar_user_thumb($id_user,$lang,$size){
 if($function=='list_app_carrot'){
     $arr_app=array();
     $os=$_POST['os'];
-    $query_list_ads=mysqli_query($link,"SELECT `id`,`name`,`$os`,`app_id` FROM carrotsy_virtuallover.`app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
-    while($row_ads=mysqli_fetch_array($query_list_ads)){
-        $row_ads["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=80';
-        $row_ads["url"]=$row_ads[$os];
-        $row_ads['link_carrot_app']=$url_carrot_store.'/product/'.$row_ads['app_id'];
-        array_push($arr_app,$row_ads);
+    $store='';if(isset($_POST['store'])) $store=$_POST['store'];
+    if($store==''){
+        $query_list_ads=mysqli_query($link,"SELECT `id`,`name`,`$os`,`app_id` FROM carrotsy_virtuallover.`app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 12");
+        while($row_ads=mysqli_fetch_array($query_list_ads)){
+            $row_ads["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=80';
+            $row_ads["url"]=$row_ads[$os];
+            $row_ads['link_carrot_app']=$url_carrot_store.'/product/'.$row_ads['app_id'];
+            array_push($arr_app,$row_ads);
+        }
+    }else{
+        $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 12");
+        while($row_ads=mysqli_fetch_array($query_list_ads)){
+            $id_app=$row_ads['id_app'];
+            $name_app='';
+            $q_name_app=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+            $data_name_app=mysqli_fetch_assoc($q_name_app);
+            if($data_name_app!=null){
+                $name_app=$data_name_app['data'];
+            }else{
+                $q_name_app=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_app' LIMIT 1");
+                $data_name_app=mysqli_fetch_assoc($q_name_app);
+                if($data_name_app!=null)$name_app=$data_name_app['data'];
+            }
+
+            $row_ads["name"]=$name_app;
+            $row_ads["icon"]=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$id_app."/icon.jpg&size=60&trim=1";
+            $row_ads["url"]=$row_ads[$store];
+            $row_ads['link_carrot_app']=$url_carrot_store.'/product/'.$id_app;
+            array_push($arr_app,$row_ads);
+        }  
     }
     echo json_encode($arr_app);
 }
@@ -602,6 +626,47 @@ if($function=='restore_inapp'){
     }
     
     echo json_encode($inapp);
+    exit;
+}
+
+if($function=='list_share'){
+    $os=$_POST['os'];
+    $arr_share=array();
+    $query_share=mysqli_query($link,"SELECT `id`,`$os` FROM carrotsy_virtuallover.`share` WHERE `$os` != '' LIMIT 10");
+    while($share=mysqli_fetch_assoc($query_share)){
+        $item_share=new stdClass();
+        $item_share->url=$share[$os];
+        $item_share->icon=$url_carrot_store.'/app_mobile/carrot_framework/share_icon/'.$share['id'].'.png';
+        array_push($arr_share,$item_share);
+    }
+    echo json_encode($arr_share);
+    exit;
+}
+
+if($function=='load_ads'){
+    $store='google_Play';if(isset($_POST['store'])) $store=$_POST['store'];
+    $q_app=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 1");
+    $data_ads=mysqli_fetch_assoc($q_app);
+    $id_app=$data_ads["id_app"];
+
+    $q_app_name=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+    $data_app_name=mysqli_fetch_assoc($q_app_name);
+    if($data_app_name==null){
+        $q_app_name=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_app' LIMIT 1");
+        $data_app_name=mysqli_fetch_assoc($q_app_name);
+    }
+
+    $q_app_tip=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 160) as tip FROM carrotsy_virtuallover.`product_desc_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+    $data_app_tip=mysqli_fetch_assoc($q_app_tip);
+    if($data_app_tip==null){
+        $q_app_tip=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 160) as tip FROM carrotsy_virtuallover.`product_desc_en` WHERE `id_product` = '$id_app' LIMIT 50");
+        $data_app_tip=mysqli_fetch_assoc($q_app_tip);
+    }
+    $data_ads['name']=$data_app_name['data'];
+    $data_ads['tip']=preg_replace( "/\r|\n/", "",strip_tags($data_app_tip['tip']))."...";
+    $data_ads['icon']=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$id_app."/icon.jpg&size=200x200&trim=1";
+    $data_ads['url']=$data_ads[$store];
+    echo json_encode($data_ads);
     exit;
 }
 ?>
