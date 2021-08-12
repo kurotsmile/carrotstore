@@ -179,27 +179,30 @@ function get_username_by_id($link,$id_user,$is_admin=false){
     return $txt_name;
 }
 
-function get_desc_product_lang($link,$id_product,$key_l,$is_adim_site=false){
-    $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
-    if($query_data){
-        $data_desc=mysqli_fetch_assoc($query_data);
-        if(isset($data_desc['data'])){
-            return $data_desc['data'];
-        }else{
-            if($is_adim_site==false){
-                $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
-                $data_desc=mysqli_fetch_assoc($query_data);
-                return $data_desc['data'];
-            }else{
-                return "";
-            }
-        }
+function get_desc_product_lang($link,$id_product,$key_l,$limit_full=false){
+    $s_desc='';
+    $q_data='';
+    if($limit_full==true)
+    $q_data=mysqli_query($link,"SELECT `data` as `d` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
+    else
+    $q_data=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 100) as `d` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
+
+    $data_desc=mysqli_fetch_assoc($q_data);
+    if($data_desc!=null){
+        $s_desc=$data_desc['d'];
     }else{
-        $query_data=mysqli_query($link,"SELECT `data` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
-        $data_desc=mysqli_fetch_assoc($query_data);
-        return $data_desc['data'];
+        if($limit_full==true)
+        $q_data=mysqli_query($link,"SELECT `data` as `d` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
+        else
+        $q_data=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 100) as `d` FROM `product_desc_en` WHERE `id_product` = '$id_product'  LIMIT 1");
+
+        $data_desc=mysqli_fetch_assoc($q_data);
+        $s_desc=$data_desc['d'];
     }
-    mysqli_free_result($query_data);
+
+    if(!$limit_full) $s_desc=strip_tags($s_desc).'...';
+
+    return $s_desc;
 }
 
 function get_url_icon_product($id_product,$size_img,$is_addmin_site=false){
@@ -434,4 +437,13 @@ function scroll_load_data($type_obj,$length_obj){
         $txt_script.='});';
     $txt_script.='</script>';
     return $txt_script;
+}
+
+function view_num($num) 
+{
+    $units = ['', 'K', 'M', 'B', 'T'];
+    for ($i = 0; $num >= 1000; $i++) {
+        $num /= 1000;
+    }
+    return round($num, 1) . $units[$i];
 }

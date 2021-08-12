@@ -47,7 +47,7 @@ $data_type=mysqli_fetch_array($query_type);
             
             <br />
             <span class="product_view" > <i class="fa fa-eye"></i> <strong><?php echo lang($link,'luot_xem');?></strong>:<?php
-                echo intval($data["view"]);
+                echo view_num(intval($data["view"]));
                 $count_view=intval($data["view"]);
                 $count_view++;
                 mysqli_query($link,"UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data['id']."';");
@@ -148,7 +148,7 @@ $data_type=mysqli_fetch_array($query_type);
     <div id="post_product">
     <div style="float: left;width: 100%;" id="contain_lyrics">
         <div id="contain_lyrics_txt">
-            <?php echo get_desc_product_lang($link,$data['id'],$_SESSION['lang']); ?>
+            <?php echo get_desc_product_lang($link,$data['id'],$_SESSION['lang'],true); ?>
         </div>
     </div>
 
