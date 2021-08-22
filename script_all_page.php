@@ -258,32 +258,16 @@
             document.body.appendChild(js2);
             setTimeout(function () {$("#user_address_register").geocomplete();}, 500);
         }, 500);
-
-
     }
-
 
     function login_account() {
         shortcut_key_music=false;
         var html_box_login = '<div style="width: 100%;">';
-        html_box_login = html_box_login + '<div class="box_login">';
-        html_box_login = html_box_login + '<strong class="title"><?php echo lang($link,'dang_nhap_mxh');?></strong>';
-        html_box_login = html_box_login + '<div id="box_login_other">';
-        html_box_login = html_box_login + '<div id="my-signin2"></div>';
-        <?php
-        if(get_setting($link,'login_facebook')=='1') {
-        ?>
-        html_box_login = html_box_login + '<img onclick="login_facebook();" scope="public_profile,email" onclick="facebookLogin();" id="btn_fb_login" style="margin-top: 15px;width: 200px;height: 40px;cursor: pointer;" src="<?php echo $url;?>/images/btn_login_fb.jpg">';
-        <?php
-        }
-        ?>
-        html_box_login = html_box_login + '</div>';
-        html_box_login = html_box_login + '</div>';
 
         html_box_login = html_box_login + '<div class="box_login">';
         html_box_login = html_box_login + '<strong class="title"><?php echo lang($link,'dang_nhap_carrot');?></strong>';
         html_box_login = html_box_login + '<i class="tip"><?php echo lang($link,'dang_nhap_carrot_tip');?></i>';
-        html_box_login = html_box_login + '<div style="float: left;padding: 20px;" id="box_login_body">';
+        html_box_login = html_box_login + '<div style="padding: 20px;" id="box_login_body">';
         html_box_login = html_box_login + '<div><img src="<?php echo $url;?>/images/icon.png"/></div>';
         html_box_login = html_box_login + '<strong id="box_login_error"></strong>';
         html_box_login = html_box_login + '<label><i class="fa fa-phone-square" aria-hidden="true"></i> <?php echo lang($link,'field_login');?></label><br/>';
@@ -300,17 +284,6 @@
 
         html_box_login = html_box_login + '</div>';
         swal({html: true, title: '<?php echo lang($link,"dang_nhap"); ?>', text: html_box_login, showConfirmButton: false,});
-
-        setTimeout(function () {
-            var js = document.createElement("script");
-            js.type = "text/javascript";
-            js.src = 'https://apis.google.com/js/platform.js';
-            document.body.appendChild(js);
-        }, 100);
-
-        setTimeout(function () {
-            renderButton();
-        }, 500);
     }
 
     function show_forgot_password(){
@@ -347,44 +320,6 @@
         });
     }
 
-    function onSignIn(googleUser, goto_user = true) {
-        var profile = googleUser.getBasicProfile();
-        swal_loading();
-        $.ajax({
-            url: "<?php echo $url;?>/index.php",
-            type: "post",
-            data: "function=login_google&user_id=" + profile.getId() + "&user_name=" + profile.getName() + "&user_email=" + profile.getEmail() + "&user_avatar=" + profile.getImageUrl(),
-            success: function (data, textStatus, jqXHR) {
-                swal("<?php echo lang($link,'dang_nhap');?>", "<?php echo lang($link,'login_account_succes'); ?>", "success");
-                if (goto_user) {
-                    window.location = "<?php echo $url;?>/user/" + data + "/<?php echo $_SESSION['lang'];?>";
-                } else {
-                    reset_url();
-                }
-            }
-        });
-    }
-
-    function onSuccess(googleUser) {
-        onSignIn(googleUser, false);
-        googleUser.disconnect();
-    }
-
-    function onFailure(error) {
-        console.log(error);
-    }
-
-    function renderButton() {
-        gapi.signin2.render('my-signin2', {
-            'scope': 'profile email',
-            'width': 200,
-            'height': 40,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
     <?php
     }
     else{?>

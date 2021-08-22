@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -25,7 +25,9 @@ INSERT INTO `country` (`key`) VALUES
 ('ko'),
 ('ja'),
 ('ar'),
-('tr');
+('tr'),
+('fi'),
+('it');
 
 DROP TABLE IF EXISTS `key_lang`;
 CREATE TABLE `key_lang` (
@@ -87,6 +89,40 @@ INSERT INTO `key_lang` (`key`) VALUES
 ('password_old'),
 ('password_new');
 
+DROP TABLE IF EXISTS `key_lang_app`;
+CREATE TABLE `key_lang_app` (
+  `key` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+TRUNCATE `key_lang_app`;
+INSERT INTO `key_lang_app` (`key`) VALUES
+('create_password'),
+('remove_ads'),
+('no_item'),
+('encode_title'),
+('reset'),
+('create_password_title'),
+('length_password'),
+('save_tag'),
+('show_passwor_tip'),
+('option_advanced'),
+('option_1'),
+('option_2'),
+('option_3'),
+('option_4'),
+('create_md5_tip'),
+('data_result'),
+('copy_success'),
+('backup'),
+('backup_success'),
+('backup_fail'),
+('backup_existed'),
+('list_pass_online'),
+('del_success'),
+('download_success'),
+('encode_sel_tip'),
+('restore_inapp');
+
 SET NAMES utf8mb4;
 
 DROP TABLE IF EXISTS `password_ar`;
@@ -96,7 +132,8 @@ CREATE TABLE `password_ar` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_ar`;
@@ -108,7 +145,8 @@ CREATE TABLE `password_de` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_de`;
@@ -120,7 +158,8 @@ CREATE TABLE `password_en` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_en`;
@@ -132,7 +171,8 @@ CREATE TABLE `password_es` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_es`;
@@ -144,7 +184,8 @@ CREATE TABLE `password_fr` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_fr`;
@@ -156,7 +197,8 @@ CREATE TABLE `password_hi` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_hi`;
@@ -168,7 +210,8 @@ CREATE TABLE `password_ja` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_ja`;
@@ -180,7 +223,8 @@ CREATE TABLE `password_ko` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_ko`;
@@ -192,7 +236,8 @@ CREATE TABLE `password_pt` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_pt`;
@@ -204,7 +249,8 @@ CREATE TABLE `password_ru` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_ru`;
@@ -216,7 +262,8 @@ CREATE TABLE `password_th` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_th`;
@@ -228,7 +275,8 @@ CREATE TABLE `password_tr` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_tr`;
@@ -240,12 +288,15 @@ CREATE TABLE `password_vi` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_vi`;
-INSERT INTO `password_vi` (`id`, `password`, `tag`, `username`, `date`, `id_user`) VALUES
-('5ecbe904004175ecbe90400419',	'0waDfF9j',	'facebook',	'kurotsmile',	'2020-05-25 22:49:24',	'2d0cf55bdd8a4848131c04524cd7bb6e');
+INSERT INTO `password_vi` (`id`, `password`, `tag`, `username`, `date`, `id_user`, `type`) VALUES
+('5ecbe904004175ecbe90400419',	'0waDfF9j',	'facebook',	'kurotsmile',	'2020-05-25 22:49:24',	'2d0cf55bdd8a4848131c04524cd7bb6e',	0),
+('6120d495a83fa6120d495a83fc',	'K5%ORZiP',	'Password 5',	'Password 5',	'2021-08-21 17:25:25',	'b3ee82bafceb3b5fc20824146b44ff2a',	0),
+('6120d6cda1b546120d6cda1b56',	'34e0b554a1d347bd768ede7b3f7428ac',	'thanh haha',	'thanh haha',	'2021-08-21 17:34:53',	'b3ee82bafceb3b5fc20824146b44ff2a',	1);
 
 DROP TABLE IF EXISTS `password_zh`;
 CREATE TABLE `password_zh` (
@@ -254,7 +305,8 @@ CREATE TABLE `password_zh` (
   `tag` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `id_user` varchar(100) DEFAULT NULL
+  `id_user` varchar(100) DEFAULT NULL,
+  `type` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `password_zh`;
@@ -288,4 +340,33 @@ INSERT INTO `value_lang` (`value`, `id_country`) VALUES
 ('{\"app_title\":\"Een wachtwoord maken\",\"show_passwor_tip\":\"Wachtwoord dat automatisch voor u wordt gegenereerd\",\"copy\":\"Kopiëren\",\"create_new\":\"Nieuwe maken\",\"option_advanced\":\"Vooraf instellen\",\"option_1\":\"Bevat hoofdletters\",\"option_2\":\"Bevat kleine letters\",\"option_3\":\"Bevat getallen\",\"option_4\":\"Bevat speciale tekens\",\"save_tag\":\"Voer de naam van de opslagkaart in (help je bijvoorbeeld te onthouden: Facebook)\",\"inp_tip\":\"Voer hier gegevens in ...\",\"length_password\":\"Wachtwoordlengte\",\"save_and_copy_password\":\"Het wachtwoord opslaan en kopiëren\",\"copy_success\":\"Succesvolle !!! kopiëren\",\"list_password\":\"Lijst met uw wachtwoorden\",\"other_app\":\"Andere toepassingen van de ontwikkelaar\",\"login\":\"Aanmelden\",\"login_tip\":\"Log in op uw wortelaccount om uw wachtwoorden te beheren\",\"account_phone\":\"Uw telefoonnummer\",\"password\":\"Wachtwoord\",\"back\":\"Terug\",\"logout\":\"Uitloging\",\"account_login_fail\":\"Inloggen is mislukt, controleer uw wachtwoord\",\"save_username\":\"Gebruikersnaam opslaan\",\"donation_tip\":\"Doneer een klein deel van uw geld aan ons om onze diensten te onderhouden en meer geweldige toepassingen voor het leven te ontwikkelen!\",\"donation\":\"Doneren\",\"no_item_password\":\"Er zijn nog geen wachtwoorden opgeslagen\",\"sel_app_lang\":\"Kies uw taal en land\",\"register\":\"Registratie\",\"account_name\":\"Voor-en achternaam\",\"user_address\":\"Adres\",\"done\":\"Voltooid\",\"error_user_email\":\"E-mail is onjuist opgemaakt\",\"error_user_phone\":\"Telefoonnummer mag niet leeg zijn en mag niet langer zijn dan 9 cijfers\",\"sex_val_0\":\"mannetje\",\"sex_val_1\":\"Vrouw\",\"account_sex\":\"Seks\",\"error_user_name\":\"Naam mag niet leeg zijn en mag niet meer dan 5 tekens bevatten\",\"error_user_password\":\"Wachtwoord mag niet leeg zijn en mag niet langer zijn dan 6 tekens\",\"register_success\":\"Aanmelden Succes! Klik op inloggen om het geregistreerde account te gebruiken\",\"user_rep_password\":\"Voer het wachtwoord in\",\"error_user_already\":\"Dit account bestaat al, u kunt geen nieuwe aanmaken met deze informatie\",\"account_user\":\"Account\",\"account_update_info_success\":\"Accountgegevens succesvol bijwerken!\",\"status_share\":\"Status voor het delen van informatie\",\"status_share_0\":\"Deel informatie met iedereen\",\"status_share_1\":\"Deel geen informatie\",\"account_update_info\":\"Update informatie\",\"change_password\":\"Wachtwoord wijzigen\",\"error_password_old\":\"Het oude wachtwoord is onjuist\",\"password_old\":\"Oud Wachtwoord\",\"password_new\":\"Een nieuw wachtwoord\",\"lang_key\":\"nl\"}',	'nl'),
 ('{\"app_title\":\"Tworzenie hasła\",\"show_passwor_tip\":\"Hasło generowane automatycznie dla Ciebie\",\"copy\":\"Kopii\",\"create_new\":\"Tworzenie nowych\",\"option_advanced\":\"Ustawienie zaliczki\",\"option_1\":\"Zawiera wielkie litery\",\"option_2\":\"Zawiera małe litery\",\"option_3\":\"Zawiera liczby\",\"option_4\":\"Zawiera znaki specjalne\",\"save_tag\":\"Wprowadź nazwę karty pamięci (pamiętaj na przykład: Facebook)\",\"inp_tip\":\"Wprowadź dane tutaj ...\",\"length_password\":\"Długość hasła\",\"save_and_copy_password\":\"Przechowywanie i kopiowanie hasła\",\"copy_success\":\"Kopiowanie udanych !!!\",\"list_password\":\"Lista haseł\",\"other_app\":\"Inne aplikacje od dewelopera\",\"login\":\"Zaloguj się\",\"login_tip\":\"Zaloguj się na swoje konto marchewkowe, aby zarządzać hasłami\",\"account_phone\":\"Twój numer telefonu\",\"password\":\"Hasło\",\"back\":\"Wstecz\",\"logout\":\"Wyloguj się\",\"account_login_fail\":\"Logowanie nie powiodło się, sprawdź hasło\",\"save_username\":\"Zapisz nazwę użytkownika\",\"donation_tip\":\"Prosimy o przekazanie nam niewielkiej kwoty pieniędzy na utrzymanie naszych usług i opracowanie kolejnych wspaniałych aplikacji na całe życie!\",\"donation\":\"Oddania\",\"no_item_password\":\"Nie zapisy nie zostały jeszcze zapisane\",\"sel_app_lang\":\"Wybierz swój język i kraj\",\"register\":\"Rejestracja\",\"account_name\":\"Pełne imię i nazwisko\",\"user_address\":\"Adres\",\"done\":\"Zakończony\",\"error_user_email\":\"Adres e-mail jest zniekształcony\",\"error_user_phone\":\"Numer telefonu nie może być pusty i zawierać więcej niż 9 cyfr\",\"sex_val_0\":\"męski\",\"sex_val_1\":\"Płeć żeńska\",\"account_sex\":\"Seks\",\"error_user_name\":\"Nazwa nie może być pusta i dłuższa niż 5 znaków\",\"error_user_password\":\"Hasło nie może być puste i musi być dłuższe niż 6 znaków\",\"register_success\":\"Zarejestruj się Sukces! Kliknij zaloguj, aby użyć zarejestrowanego konta\",\"user_rep_password\":\"Podaj hasło\",\"error_user_already\":\"To konto już istnieje, nie możesz tworzyć nowych z tymi informacjami\",\"account_user\":\"Konto\",\"account_update_info_success\":\"Zaktualizuj informacje o koncie pomyślnie!\",\"status_share\":\"Status udostępniania informacji\",\"status_share_0\":\"Udostępniaj informacje wszystkim\",\"status_share_1\":\"Nie udostępniaj informacji\",\"account_update_info\":\"Uaktualnij informacje\",\"change_password\":\"Zmień hasło\",\"error_password_old\":\"Stare hasło jest nieprawidłowe\",\"password_old\":\"stare hasło\",\"password_new\":\"Nowe hasło\",\"lang_key\":\"pl\"}',	'pl');
 
--- 2021-06-03 00:40:47
+DROP TABLE IF EXISTS `value_lang_app`;
+CREATE TABLE `value_lang_app` (
+  `value` text NOT NULL,
+  `id_country` varchar(2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+TRUNCATE `value_lang_app`;
+INSERT INTO `value_lang_app` (`value`, `id_country`) VALUES
+('{\"create_password\":\"Tạo mới\",\"remove_ads\":\"Gỡ bỏ quảng cáo\",\"no_item\":\"Chưa có mục nào được lưu trữ\",\"encode_title\":\"Mã hóa\",\"reset\":\"cài lại\",\"create_password_title\":\"Tạo mới mật khẩu\",\"length_password\":\"Độ dài mật khẩu\",\"save_tag\":\"nhập tên thẻ lưu trữ (giúp bạn nhớ ví dụ: Facebook)\",\"show_passwor_tip\":\"Mật khẩu được tạo tự động cho bạn\",\"option_advanced\":\"Tùy chọn nâng cao\",\"option_1\":\"Chứa các ký tự viết hoa\",\"option_2\":\"Chứa các ký tự chữ thường\",\"option_3\":\"Chứa số\",\"option_4\":\"Chứa các ký tự đặc biệt\",\"create_md5_tip\":\"Nhập chuỗi ký tự bạn cần mã hóa:\",\"data_result\":\"Kết quả chuỗi dữ liệu được mã hóa:\",\"copy_success\":\"Đã được sao chép!\",\"backup\":\"Sao lưu bằng tài khoản\",\"backup_success\":\"Sao lưu mục dữ liệu này thành công!\",\"backup_fail\":\"Sao lưu thất bại\",\"backup_existed\":\"Mục dữ liệu này đã tồn tại trên kho lưu trữ trực tuyến!\",\"list_pass_online\":\"Dữ liệu đã sao lưu\",\"del_success\":\"Xóa dữ liệu đã chọn thành công!\",\"download_success\":\"Tải xuống dữ liệu thành công!\",\"encode_sel_tip\":\"Hãy chọn phương thức mã hóa\",\"restore_inapp\":\"Khôi phục mua hàng\"}',	'vi'),
+('{\"create_password\":\"Create new\",\"remove_ads\":\"Remove ads\",\"no_item\":\"No items have been archived yet\",\"encode_title\":\"Encode\",\"reset\":\"Reset\",\"create_password_title\":\"Create new password\",\"length_password\":\"Password length\",\"save_tag\":\"enter an archive tag name (helps you remember e.g. Facebook)\",\"show_passwor_tip\":\"Passwords are automatically generated for you\",\"option_advanced\":\"Advance setting\",\"option_1\":\"Contains uppercase characters\",\"option_2\":\"Contains lowercase characters\",\"option_3\":\"Contains numbers\",\"option_4\":\"Contains special characters\",\"create_md5_tip\":\"Enter the character string you need to encode:\",\"data_result\":\"Encrypted data string result:\",\"copy_success\":\"Has been copied!\",\"backup\":\"Backup by account\",\"backup_success\":\"Backup this data item successfully!\",\"backup_fail\":\"Backup failed\",\"backup_existed\":\"This data item already exists on the online archive!\",\"list_pass_online\":\"Backup data\",\"del_success\":\"Delete selected data successfully!\",\"download_success\":\"Data download successful!\",\"encode_sel_tip\":\"Please select encryption method\",\"restore_inapp\":\"Restore purchase\"}',	'en'),
+('{\"create_password\":\"Crear nueva\",\"remove_ads\":\"Quitar anuncios\",\"no_item\":\"Aún no se han archivado elementos.\",\"encode_title\":\"Codificar\",\"reset\":\"Reiniciar\",\"create_password_title\":\"Crear nueva contraseña\",\"length_password\":\"Longitud de la contraseña\",\"save_tag\":\"ingrese un nombre de etiqueta de archivo (lo ayuda a recordar, por ejemplo, Facebook)\",\"show_passwor_tip\":\"Las contraseñas se generan automáticamente para usted\",\"option_advanced\":\"Configuración avanzada\",\"option_1\":\"Contiene caracteres en mayúsculas\",\"option_2\":\"Contiene caracteres en minúscula\",\"option_3\":\"Contiene números\",\"option_4\":\"Contiene caracteres especiales\",\"create_md5_tip\":\"Ingrese la cadena de caracteres que necesita codificar:\",\"data_result\":\"Resultado de la cadena de datos cifrados:\",\"copy_success\":\"¡Ha sido copiado!\",\"backup\":\"Copia de seguridad por cuenta\",\"backup_success\":\"¡Realice una copia de seguridad de este elemento de datos correctamente!\",\"backup_fail\":\"Error de copia de seguridad\",\"backup_existed\":\"¡Este elemento de datos ya existe en el archivo en línea!\",\"list_pass_online\":\"Datos de respaldo\",\"del_success\":\"¡Elimina los datos seleccionados con éxito!\",\"download_success\":\"¡Descarga de datos exitosa!\",\"encode_sel_tip\":\"Seleccione el método de encriptación\",\"restore_inapp\":\"Restaurar compra\"}',	'es'),
+('{\"create_password\":\"Crie um novo\",\"remove_ads\":\"Remover propagandas\",\"no_item\":\"Nenhum item foi arquivado ainda\",\"encode_title\":\"Codificar\",\"reset\":\"Redefinir\",\"create_password_title\":\"Crie uma nova senha\",\"length_password\":\"Comprimento da senha\",\"save_tag\":\"insira um nome de tag de arquivo (ajuda a lembrar, por exemplo, Facebook)\",\"show_passwor_tip\":\"As senhas são geradas automaticamente para você\",\"option_advanced\":\"Configuração avançada\",\"option_1\":\"Contém caracteres maiúsculos\",\"option_2\":\"Contém caracteres minúsculos\",\"option_3\":\"Contém números\",\"option_4\":\"Contém caracteres especiais\",\"create_md5_tip\":\"Insira a sequência de caracteres que você precisa codificar:\",\"data_result\":\"Resultado da string de dados criptografados:\",\"copy_success\":\"Foi copiado!\",\"backup\":\"Backup por conta\",\"backup_success\":\"Backup deste item de dados com sucesso!\",\"backup_fail\":\"Backup falhou\",\"backup_existed\":\"Este item de dados já existe no arquivo online!\",\"list_pass_online\":\"Dados de backup\",\"del_success\":\"Exclua os dados selecionados com sucesso!\",\"download_success\":\"Download de dados bem-sucedido!\",\"encode_sel_tip\":\"Selecione o método de criptografia\",\"restore_inapp\":\"Restaurar compra\"}',	'pt'),
+('{\"create_password\":\"Créer un nouveau\",\"remove_ads\":\"Supprimez la pub\",\"no_item\":\"Aucun élément n\'a encore été archivé\",\"encode_title\":\"Encoder\",\"reset\":\"Réinitialiser\",\"create_password_title\":\"Créer un nouveau mot de passe\",\"length_password\":\"Longueur du mot de passe\",\"save_tag\":\"entrez un nom de balise d\'archive (vous aide à vous souvenir, par exemple Facebook)\",\"show_passwor_tip\":\"Les mots de passe sont générés automatiquement pour vous\",\"option_advanced\":\"Réglage avancé\",\"option_1\":\"Contient des caractères majuscules\",\"option_2\":\"Contient des caractères minuscules\",\"option_3\":\"Contient des chiffres\",\"option_4\":\"Contient des caractères spéciaux\",\"create_md5_tip\":\"Saisissez la chaîne de caractères que vous devez encoder :\",\"data_result\":\"Résultat de la chaîne de données cryptée :\",\"copy_success\":\"A été copié !\",\"backup\":\"Sauvegarde par compte\",\"backup_success\":\"Sauvegardez cet élément de données avec succès !\",\"backup_fail\":\"Échec de la sauvegarde\",\"backup_existed\":\"Cette donnée existe déjà dans l\'archive en ligne !\",\"list_pass_online\":\"Données de sauvegarde\",\"del_success\":\"Supprimez les données sélectionnées avec succès !\",\"download_success\":\"Téléchargement des données réussi !\",\"encode_sel_tip\":\"Veuillez sélectionner la méthode de cryptage\",\"restore_inapp\":\"Restaurer l\'achat\"}',	'fr'),
+('{\"create_password\":\"नया बनाओ\",\"remove_ads\":\"विज्ञापन हटाएँ\",\"no_item\":\"अभी तक कोई आइटम संग्रहीत नहीं किया गया है\",\"encode_title\":\"एन्कोड\",\"reset\":\"रीसेट\",\"create_password_title\":\"नया पासवर्ड बनाएं\",\"length_password\":\"पारण शब्द लम्बाई\",\"save_tag\":\"एक संग्रह टैग नाम दर्ज करें (आपको याद रखने में मदद करता है जैसे फेसबुक)\",\"show_passwor_tip\":\"आपके लिए पासवर्ड अपने आप जेनरेट हो जाते हैं\",\"option_advanced\":\"अग्रिम सेटिंग\",\"option_1\":\"अपरकेस वर्ण शामिल हैं\",\"option_2\":\"लोअरकेस वर्ण शामिल हैं\",\"option_3\":\"संख्याएं शामिल हैं\",\"option_4\":\"विशेष वर्ण शामिल हैं\",\"create_md5_tip\":\"वह वर्ण स्ट्रिंग दर्ज करें जिसे आपको एन्कोड करने की आवश्यकता है:\",\"data_result\":\"एन्क्रिप्टेड डेटा स्ट्रिंग परिणाम:\",\"copy_success\":\"कॉपी किया गया है!\",\"backup\":\"खाते से बैकअप\",\"backup_success\":\"इस डेटा आइटम का सफलतापूर्वक बैकअप लें!\",\"backup_fail\":\"बैकअप विफल\",\"backup_existed\":\"यह डेटा आइटम ऑनलाइन संग्रह पर पहले से मौजूद है!\",\"list_pass_online\":\"बैकअप डेटा\",\"del_success\":\"चयनित डेटा सफलतापूर्वक हटाएं!\",\"download_success\":\"डेटा डाउनलोड सफल!\",\"encode_sel_tip\":\"कृपया एन्क्रिप्शन विधि चुनें\",\"restore_inapp\":\"पुनःस्थापन क्रय\"}',	'hi'),
+('{\"create_password\":\"新建\",\"remove_ads\":\"移除广告\",\"no_item\":\"尚未归档任何项目\",\"encode_title\":\"编码\",\"reset\":\"重置\",\"create_password_title\":\"创建新密码\",\"length_password\":\"密码长度\",\"save_tag\":\"输入存档标签名称（帮助您记住，例如 Facebook）\",\"show_passwor_tip\":\"密码会自动为您生成\",\"option_advanced\":\"高级设置\",\"option_1\":\"包含大写字符\",\"option_2\":\"包含小写字符\",\"option_3\":\"包含数字\",\"option_4\":\"包含特殊字符\",\"create_md5_tip\":\"输入需要编码的字符串：\",\"data_result\":\"加密数据字符串结果：\",\"copy_success\":\"已复制！\",\"backup\":\"按帐户备份\",\"backup_success\":\"成功备份此数据项！\",\"backup_fail\":\"备份失败\",\"backup_existed\":\"该数据项已存在于在线存档中！\",\"list_pass_online\":\"备份数据\",\"del_success\":\"成功删除所选数据！\",\"download_success\":\"数据下载成功！\",\"encode_sel_tip\":\"请选择加密方式\",\"restore_inapp\":\"恢复购买\"}',	'zh'),
+('{\"create_password\":\"Создайте новый\",\"remove_ads\":\"Убрать рекламу\",\"no_item\":\"Еще ничего не было заархивировано\",\"encode_title\":\"Кодировать\",\"reset\":\"Сброс настроек\",\"create_password_title\":\"Создать новый пароль\",\"length_password\":\"Длина пароля\",\"save_tag\":\"введите имя тега архива (помогает запомнить, например, Facebook)\",\"show_passwor_tip\":\"Пароли генерируются автоматически для вас\",\"option_advanced\":\"Предварительная настройка\",\"option_1\":\"Содержит заглавные буквы\",\"option_2\":\"Содержит строчные буквы\",\"option_3\":\"Содержит числа\",\"option_4\":\"Содержит специальные символы\",\"create_md5_tip\":\"Введите строку символов, которую необходимо кодировать:\",\"data_result\":\"Результат строки зашифрованных данных:\",\"copy_success\":\"Был скопирован!\",\"backup\":\"Резервное копирование по аккаунту\",\"backup_success\":\"Резервное копирование этого элемента данных выполнено успешно!\",\"backup_fail\":\"Ошибка резервного копирования\",\"backup_existed\":\"Этот элемент данных уже существует в онлайн-архиве!\",\"list_pass_online\":\"Резервные данные\",\"del_success\":\"Удалите выбранные данные успешно!\",\"download_success\":\"Данные загружены успешно!\",\"encode_sel_tip\":\"Пожалуйста, выберите метод шифрования\",\"restore_inapp\":\"Восстановить покупку\"}',	'ru'),
+('{\"create_password\":\"Erstelle neu\",\"remove_ads\":\"Anzeigen entfernen\",\"no_item\":\"Es wurden noch keine Artikel archiviert\",\"encode_title\":\"Kodieren\",\"reset\":\"Zurücksetzen\",\"create_password_title\":\"Neues Passwort erstellen\",\"length_password\":\"Passwortlänge\",\"save_tag\":\"Geben Sie einen Archiv-Tag-Namen ein (hilft Ihnen, sich z. B. an Facebook zu erinnern)\",\"show_passwor_tip\":\"Passwörter werden automatisch für Sie generiert\",\"option_advanced\":\"Erweiterte Einstellung\",\"option_1\":\"Enthält Großbuchstaben\",\"option_2\":\"Enthält Kleinbuchstaben\",\"option_3\":\"Enthält Zahlen\",\"option_4\":\"Enthält Sonderzeichen\",\"create_md5_tip\":\"Geben Sie die zu codierende Zeichenfolge ein:\",\"data_result\":\"Ergebnis des verschlüsselten Datenstrings:\",\"copy_success\":\"Wurde kopiert!\",\"backup\":\"Sicherung nach Konto\",\"backup_success\":\"Sichern Sie dieses Datenelement erfolgreich!\",\"backup_fail\":\"Sicherung fehlgeschlagen\",\"backup_existed\":\"Dieses Datenelement existiert bereits im Online-Archiv!\",\"list_pass_online\":\"Backup-Daten\",\"del_success\":\"Ausgewählte Daten erfolgreich löschen!\",\"download_success\":\"Datendownload erfolgreich!\",\"encode_sel_tip\":\"Bitte Verschlüsselungsmethode auswählen\",\"restore_inapp\":\"Kauf wiederherstellen\"}',	'de'),
+('{\"create_password\":\"สร้างใหม่\",\"remove_ads\":\"ลบโฆษณา\",\"no_item\":\"ยังไม่มีรายการเก็บถาวร\",\"encode_title\":\"เข้ารหัส\",\"reset\":\"รีเซ็ต\",\"create_password_title\":\"สร้างรหัสผ่านใหม่\",\"length_password\":\"ความยาวรหัสผ่าน\",\"save_tag\":\"ป้อนชื่อแท็กที่เก็บถาวร (ช่วยให้คุณจำได้เช่น Facebook)\",\"show_passwor_tip\":\"รหัสผ่านจะถูกสร้างขึ้นโดยอัตโนมัติสำหรับคุณ\",\"option_advanced\":\"การตั้งค่าล่วงหน้า\",\"option_1\":\"ประกอบด้วยตัวพิมพ์ใหญ่\",\"option_2\":\"ประกอบด้วยตัวพิมพ์เล็ก\",\"option_3\":\"มีตัวเลข\",\"option_4\":\"ประกอบด้วยอักขระพิเศษ\",\"create_md5_tip\":\"ป้อนสตริงอักขระที่คุณต้องการเข้ารหัส:\",\"data_result\":\"ผลลัพธ์สตริงข้อมูลที่เข้ารหัส:\",\"copy_success\":\"คัดลอกแล้ว!\",\"backup\":\"สำรองข้อมูลตามบัญชี\",\"backup_success\":\"สำรองข้อมูลรายการข้อมูลนี้สำเร็จ!\",\"backup_fail\":\"การสำรองข้อมูลล้มเหลว\",\"backup_existed\":\"รายการข้อมูลนี้มีอยู่แล้วในไฟล์เก็บถาวรออนไลน์!\",\"list_pass_online\":\"สำรองข้อมูล\",\"del_success\":\"Seçilen verileri başarıyla silin!\",\"download_success\":\"ดาวน์โหลดข้อมูลสำเร็จ!\",\"encode_sel_tip\":\"โปรดเลือกวิธีการเข้ารหัส\",\"restore_inapp\":\"เรียกคืนการซื้อ\"}',	'th'),
+('{\"create_password\":\"새로 만들기\",\"remove_ads\":\"광고를 제거하다\",\"no_item\":\"아직 보관된 항목이 없습니다.\",\"encode_title\":\"인코딩\",\"reset\":\"초기화\",\"create_password_title\":\"새 비밀번호 만들기\",\"length_password\":\"비밀번호 길이\",\"save_tag\":\"아카이브 태그 이름 입력(예: Facebook을 기억하는 데 도움이 됨)\",\"show_passwor_tip\":\"비밀번호가 자동으로 생성됩니다.\",\"option_advanced\":\"고급 설정\",\"option_1\":\"대문자 포함\",\"option_2\":\"소문자 포함\",\"option_3\":\"숫자 포함\",\"option_4\":\"특수 문자 포함\",\"create_md5_tip\":\"인코딩에 필요한 문자열을 입력하십시오.\",\"data_result\":\"암호화된 데이터 문자열 결과:\",\"copy_success\":\"복사되었습니다!\",\"backup\":\"계정별 백업\",\"backup_success\":\"이 데이터 항목을 성공적으로 백업하십시오!\",\"backup_fail\":\"백업 실패\",\"backup_existed\":\"이 데이터 항목은 온라인 아카이브에 이미 존재합니다!\",\"list_pass_online\":\"백업 데이터\",\"del_success\":\"선택한 데이터를 성공적으로 삭제하십시오!\",\"download_success\":\"데이터 다운로드 성공!\",\"encode_sel_tip\":\"암호화 방법을 선택하세요\",\"restore_inapp\":\"구매 복원\"}',	'ko'),
+('{\"create_password\":\"新しく作る\",\"remove_ads\":\"広告を削除\",\"no_item\":\"アイテムはまだアーカイブされていません\",\"encode_title\":\"エンコード\",\"reset\":\"リセット\",\"create_password_title\":\"新しいパスワードを作成する\",\"length_password\":\"パスワードの長さ\",\"save_tag\":\"アーカイブタグ名を入力します（Facebookなどを覚えておくのに役立ちます）\",\"show_passwor_tip\":\"パスワードは自動的に生成されます\",\"option_advanced\":\"事前設定\",\"option_1\":\"大文字が含まれています\",\"option_2\":\"小文字が含まれています\",\"option_3\":\"数字が含まれています\",\"option_4\":\"特殊文字が含まれています\",\"create_md5_tip\":\"エンコードする必要のある文字列を入力します。\",\"data_result\":\"暗号化されたデータ文字列の結果：\",\"copy_success\":\"コピーされました！\",\"backup\":\"アカウントによるバックアップ\",\"backup_success\":\"このデータ項目を正常にバックアップしてください！\",\"backup_fail\":\"バックアップに失敗しました\",\"backup_existed\":\"このデータ項目はすでにオンラインアーカイブに存在しています！\",\"list_pass_online\":\"バックアップデータ\",\"del_success\":\"選択したデータを正常に削除します！\",\"download_success\":\"データのダウンロードに成功しました！\",\"encode_sel_tip\":\"暗号化方式を選択してください\",\"restore_inapp\":\"購入商品を復元する\"}',	'ja'),
+('{\"create_password\":\"خلق جديد إبداع جديد\",\"remove_ads\":\"ازالة الاعلانات\",\"no_item\":\"لم يتم أرشفة أي عناصر حتى الآن\",\"encode_title\":\"تشفير\",\"reset\":\"إعادة ضبط\",\"create_password_title\":\"أنشئ كلمة مرور جديدة\",\"length_password\":\"طول كلمة المرور\",\"save_tag\":\"أدخل اسم علامة أرشيف (يساعدك على تذكر Facebook على سبيل المثال)\",\"show_passwor_tip\":\"يتم إنشاء كلمات المرور تلقائيًا لك\",\"option_advanced\":\"إعداد مسبق\",\"option_1\":\"يحتوي على أحرف كبيرة\",\"option_2\":\"يحتوي على أحرف صغيرة\",\"option_3\":\"يحتوي على أرقام\",\"option_4\":\"يحتوي على أحرف خاصة\",\"create_md5_tip\":\"أدخل سلسلة الأحرف التي تريد تشفيرها:\",\"data_result\":\"نتيجة سلسلة البيانات المشفرة:\",\"copy_success\":\"تم نسخه!\",\"backup\":\"النسخ الاحتياطي عن طريق الحساب\",\"backup_success\":\"نسخ احتياطي لعنصر البيانات هذا بنجاح!\",\"backup_fail\":\"فشل النسخ الاحتياطي\",\"backup_existed\":\"عنصر البيانات هذا موجود بالفعل في الأرشيف عبر الإنترنت!\",\"list_pass_online\":\"نسخ إحتياطي للبيانات\",\"del_success\":\"حذف البيانات المختارة بنجاح!\",\"download_success\":\"تم تنزيل البيانات بنجاح!\",\"encode_sel_tip\":\"الرجاء تحديد طريقة التشفير\",\"restore_inapp\":\"استعادة شراء\"}',	'ar'),
+('{\"create_password\":\"Yeni oluşturmak\",\"remove_ads\":\"Reklamları kaldırmak\",\"no_item\":\"Henüz hiçbir öğe arşivlenmedi\",\"encode_title\":\"kodlamak\",\"reset\":\"Sıfırla\",\"create_password_title\":\"Yeni şifre oluştur\",\"length_password\":\"Şifre uzunluğu\",\"save_tag\":\"bir arşiv etiketi adı girin (örneğin, Facebook hatırlamanıza yardımcı olur)\",\"show_passwor_tip\":\"Şifreler sizin için otomatik olarak oluşturulur\",\"option_advanced\":\"Gelişmiş ayar\",\"option_1\":\"Büyük harf içerir\",\"option_2\":\"Küçük harf içerir\",\"option_3\":\"sayıları içerir\",\"option_4\":\"Özel karakterler içerir\",\"create_md5_tip\":\"Kodlamanız gereken karakter dizisini girin:\",\"data_result\":\"Şifrelenmiş veri dizisi sonucu:\",\"copy_success\":\"Kopyalandı!\",\"backup\":\"Hesaba göre yedekleme\",\"backup_success\":\"Bu veri öğesini başarıyla yedekleyin!\",\"backup_fail\":\"Yedekleme başarısız\",\"backup_existed\":\"Bu veri öğesi çevrimiçi arşivde zaten var!\",\"list_pass_online\":\"Yedekleme verileri\",\"del_success\":\"Seçilen verileri başarıyla silin!\",\"download_success\":\"Veri indirme başarılı!\",\"encode_sel_tip\":\"Lütfen şifreleme yöntemini seçin\",\"restore_inapp\":\"Satın almayı geri yükle\"}',	'tr'),
+('{\"create_password\":\"Luo uusi\",\"remove_ads\":\"Poista mainokset\",\"no_item\":\"Kohteita ei ole vielä arkistoitu\",\"encode_title\":\"Koodaa\",\"reset\":\"Nollaa\",\"create_password_title\":\"Luo uusi salasana\",\"length_password\":\"Salasanan pituus\",\"save_tag\":\"anna arkistotunnisteen nimi (auttaa sinua muistamaan esim. Facebookin)\",\"show_passwor_tip\":\"Salasanat luodaan automaattisesti puolestasi\",\"option_advanced\":\"Lisäasetukset\",\"option_1\":\"Sisältää isoja kirjaimia\",\"option_2\":\"Sisältää pieniä kirjaimia\",\"option_3\":\"Sisältää numeroita\",\"option_4\":\"Sisältää erikoismerkkejä\",\"create_md5_tip\":\"Kirjoita koodattava merkkijono:\",\"data_result\":\"Salatun datamerkkijonon tulos:\",\"copy_success\":\"On kopioitu!\",\"backup\":\"Varmuuskopiointi tilin mukaan\",\"backup_success\":\"Varmuuskopioi tämä tieto onnistuneesti!\",\"backup_fail\":\"Varmuuskopiointi epäonnistui\",\"backup_existed\":\"Tämä tieto on jo online -arkistossa!\",\"list_pass_online\":\"Varmuuskopiot\",\"del_success\":\"Valittujen tietojen poistaminen onnistui!\",\"download_success\":\"Tietojen lataus onnistui!\",\"encode_sel_tip\":\"Valitse salausmenetelmä\",\"restore_inapp\":\"Palauta osto\"}',	'fi'),
+('{\"create_password\":\"Creare nuovo\",\"remove_ads\":\"Rimuovere gli annunci\",\"no_item\":\"Nessun elemento è stato ancora archiviato\",\"encode_title\":\"Codificare\",\"reset\":\"Ripristina\",\"create_password_title\":\"Crea nuova password\",\"length_password\":\"Lunghezza della password\",\"save_tag\":\"inserisci un nome per il tag dell\'archivio (ti aiuta a ricordare, ad esempio Facebook)\",\"show_passwor_tip\":\"Le password vengono generate automaticamente per te\",\"option_advanced\":\"Impostazioni avanzate\",\"option_1\":\"Contiene caratteri maiuscoli\",\"option_2\":\"Contiene caratteri minuscoli\",\"option_3\":\"Contiene numeri\",\"option_4\":\"Contiene caratteri speciali\",\"create_md5_tip\":\"Inserisci la stringa di caratteri che devi codificare:\",\"data_result\":\"Risultato della stringa di dati crittografati:\",\"copy_success\":\"È stato copiato!\",\"backup\":\"Backup per account\",\"backup_success\":\"Esegui il backup di questo elemento di dati con successo!\",\"backup_fail\":\"Backup non riuscito\",\"backup_existed\":\"Questo dato è già presente nell\'archivio online!\",\"list_pass_online\":\"Dati di backup\",\"del_success\":\"Elimina i dati selezionati con successo!\",\"download_success\":\"Download dei dati riuscito!\",\"encode_sel_tip\":\"Si prega di selezionare il metodo di crittografia\",\"restore_inapp\":\"Ripristinare acquisto\"}',	'it'),
+('{\"create_password\":\"Membuat baru\",\"remove_ads\":\"Hilangkan iklan\",\"no_item\":\"Belum ada item yang diarsipkan\",\"encode_title\":\"Menyandi\",\"reset\":\"Mengatur ulang\",\"create_password_title\":\"Buat kata sandi baru\",\"length_password\":\"Panjang kata sandi\",\"save_tag\":\"masukkan nama tag arsip (membantu Anda mengingat, mis. Facebook)\",\"show_passwor_tip\":\"Kata sandi dibuat secara otomatis untuk Anda\",\"option_advanced\":\"Pengaturan lanjutan\",\"option_1\":\"Berisi karakter huruf besar\",\"option_2\":\"Berisi karakter huruf kecil\",\"option_3\":\"Berisi angka\",\"option_4\":\"Berisi karakter khusus\",\"create_md5_tip\":\"Masukkan string karakter yang perlu Anda enkode:\",\"data_result\":\"Hasil string data terenkripsi:\",\"copy_success\":\"Telah disalin!\",\"backup\":\"Cadangkan berdasarkan akun\",\"backup_success\":\"Cadangkan item data ini dengan sukses!\",\"backup_fail\":\"Pencadangan gagal\",\"backup_existed\":\"Item data ini sudah ada di arsip online!\",\"list_pass_online\":\"Cadangan data\",\"del_success\":\"Hapus data yang dipilih berhasil!\",\"download_success\":\"Unduhan data berhasil!\",\"encode_sel_tip\":\"Silakan pilih metode enkripsi\",\"restore_inapp\":\"Pulihkan pembelian\"}',	'id'),
+('{\"create_password\":\"Lav ny\",\"remove_ads\":\"Fjern annoncer\",\"no_item\":\"Ingen varer er blevet arkiveret endnu\",\"encode_title\":\"Kode\",\"reset\":\"Nulstil\",\"create_password_title\":\"Opret ny adgangskode\",\"length_password\":\"Adgangskode længde\",\"save_tag\":\"indtast et arkivtagnavn (hjælper dig med at huske f.eks. Facebook)\",\"show_passwor_tip\":\"Adgangskoder genereres automatisk for dig\",\"option_advanced\":\"Forhåndsindstilling\",\"option_1\":\"Indeholder store bogstaver\",\"option_2\":\"Indeholder små bogstaver\",\"option_3\":\"Indeholder tal\",\"option_4\":\"Indeholder specialtegn\",\"create_md5_tip\":\"Indtast den tegnstreng, du skal kode:\",\"data_result\":\"Resultat af krypteret datastreng:\",\"copy_success\":\"Er blevet kopieret!\",\"backup\":\"Sikkerhedskopiering efter konto\",\"backup_success\":\"Sikkerhedskopier dette dataelement med succes!\",\"backup_fail\":\"Backup mislykkedes\",\"backup_existed\":\"Denne dataelement findes allerede på onlinearkivet!\",\"list_pass_online\":\"Sikkerhedskopier data\",\"del_success\":\"Slet valgte data!\",\"download_success\":\"Dataoverførsel lykkedes!\",\"encode_sel_tip\":\"Vælg krypteringsmetode\",\"restore_inapp\":\"Gendan køb\"}',	'da'),
+('{\"create_password\":\"Maak nieuw\",\"remove_ads\":\"Verwijder advertenties\",\"no_item\":\"Er zijn nog geen items gearchiveerd\",\"encode_title\":\"Coderen\",\"reset\":\"Resetten\",\"create_password_title\":\"Nieuw wachtwoord aanmaken\",\"length_password\":\"Wachtwoord lengte\",\"save_tag\":\"voer een archieftagnaam in (helpt u bijvoorbeeld Facebook te onthouden)\",\"show_passwor_tip\":\"Wachtwoorden worden automatisch voor u gegenereerd\",\"option_advanced\":\"Geavanceerde instelling\",\"option_1\":\"Bevat hoofdletters\",\"option_2\":\"Bevat kleine letters\",\"option_3\":\"Bevat cijfers\",\"option_4\":\"Bevat speciale tekens\",\"create_md5_tip\":\"Voer de tekenreeks in die u moet coderen:\",\"data_result\":\"Resultaat versleutelde datastring:\",\"copy_success\":\"Is gekopieerd!\",\"backup\":\"Back-up per account\",\"backup_success\":\"Maak een back-up van dit gegevensitem!\",\"backup_fail\":\"Back-up mislukt\",\"backup_existed\":\"Dit gegevensitem bestaat al in het online archief!\",\"list_pass_online\":\"Back-upgegevens\",\"del_success\":\"Verwijder geselecteerde gegevens succesvol!\",\"download_success\":\"Gegevens downloaden succesvol!\",\"encode_sel_tip\":\"Selecteer coderingsmethode\",\"restore_inapp\":\"Herstel aankoop\"}',	'nl'),
+('{\"create_password\":\"Tworzyć nowe\",\"remove_ads\":\"Usuń reklamy\",\"no_item\":\"Żadne elementy nie zostały jeszcze zarchiwizowane\",\"encode_title\":\"Kodować\",\"reset\":\"Resetowanie\",\"create_password_title\":\"Utwórz nowe hasło\",\"length_password\":\"Długość hasła\",\"save_tag\":\"wprowadź nazwę tagu archiwum (pomaga zapamiętać np. Facebook)\",\"show_passwor_tip\":\"Hasła są dla Ciebie generowane automatycznie\",\"option_advanced\":\"Ustawienie zaawansowane\",\"option_1\":\"Zawiera wielkie litery\",\"option_2\":\"Zawiera małe litery\",\"option_3\":\"Zawiera liczby\",\"option_4\":\"Zawiera znaki specjalne\",\"create_md5_tip\":\"Wpisz ciąg znaków, który chcesz zakodować:\",\"data_result\":\"Wynik zaszyfrowanego ciągu danych:\",\"copy_success\":\"Został skopiowany!\",\"backup\":\"Kopia zapasowa według konta\",\"backup_success\":\"Pomyślnie wykonaj kopię zapasową tego elementu danych!\",\"backup_fail\":\"Kopia zapasowa nie powiodła się\",\"backup_existed\":\"Ta pozycja danych już istnieje w archiwum online!\",\"list_pass_online\":\"Kopia zapasowa danych\",\"del_success\":\"Pomyślnie usuń wybrane dane!\",\"download_success\":\"Pobieranie danych powiodło się!\",\"encode_sel_tip\":\"Wybierz metodę szyfrowania\",\"restore_inapp\":\"Przywróć zakup\"}',	'pl');
+
+-- 2021-08-21 19:03:26

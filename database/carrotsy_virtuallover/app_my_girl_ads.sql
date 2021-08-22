@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -33,9 +33,8 @@ INSERT INTO `app_my_girl_ads` (`id`, `name`, `android`, `ios`, `window`, `samsun
 (15,	'Quick eye',	'https://play.google.com/store/apps/details?id=com.carrotstore.quickeye',	'',	'https://www.microsoft.com/store/productId/9P2MFZJ17P7D',	'https://galaxystore.samsung.com/detail/com.carrotstore.quickeye',	'133'),
 (16,	'Run Whit Me',	'https://play.google.com/store/apps/details?id=com.carrot.runwithme',	'',	'',	'https://galaxystore.samsung.com/detail/com.carrot.runwithme',	'134'),
 (17,	'Create Password',	'',	'',	'',	'https://galaxystore.samsung.com/detail/com.kurotsmile.createpassword',	'136'),
-(18,	'Save Web offline',	'',	'',	'',	'https://galaxystore.samsung.com/detail/com.kurotsmile.SaveWeb',	'135'),
 (19,	'Number Magic',	'https://play.google.com/store/apps/details?id=com.carrotstore.numbermagic',	'',	'',	'https://galaxystore.samsung.com/detail/com.carrotstore.numbermagic',	'138'),
 (20,	'Midi Piano Editor',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano',	'',	'https://www.microsoft.com/store/productId/9PFQDFZ84JG0',	'https://galaxystore.samsung.com/detail/com.carrotstore.midipiano',	'283'),
 (21,	' Worm Master',	'https://play.google.com/store/apps/details?id=com.carrotstore.wormmaster',	'',	'https://www.microsoft.com/store/productId/9NQPS9L58KZQ',	'https://galaxystore.samsung.com/detail/com.carrotstore.wormmaster',	'139');
 
--- 2021-07-12 11:11:57
+-- 2021-08-15 05:46:31

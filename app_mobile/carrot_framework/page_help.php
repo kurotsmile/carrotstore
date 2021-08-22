@@ -13,13 +13,13 @@ $url_cur=$this->cur_url;
         $code_tip=$_POST['code_tip'];
         $code_id=$_POST['code_id'];
         if($func=='add'){
-            $q_add_code=$this->q("INSERT INTO `work_code` (`name`, `type`, `tip`, `return`) VALUES ('$code_name', '0', '$code_tip', '0');");
+            $q_add_code=$this->q("INSERT INTO carrotsy_work.`work_code` (`name`, `type`, `tip`, `return`) VALUES ('$code_name', '0', '$code_tip', '0');");
             if($q_add_code)
                 echo $this->msg("Thêm mới thành công!");
             else
                 echo $this->msg("Thêm mới thất bại!");
         }else{
-            $q_update_code=$this->q("UPDATE `work_code` SET `name` = '$code_name', `tip` = '$code_tip' WHERE `id` = '$code_id';");
+            $q_update_code=$this->q("UPDATE carrotsy_work.`work_code` SET `name` = '$code_name', `tip` = '$code_tip' WHERE `id` = '$code_id';");
             if($q_update_code)
                 echo $this->msg("Cập nhật thành công!");
             else
@@ -29,7 +29,7 @@ $url_cur=$this->cur_url;
 
     if($func=='edit'){
         $code_id=$_GET['id'];
-        $data_code=$this->q_data("SELECT * FROM `work_code` WHERE `id` = '$code_id' LIMIT 1");
+        $data_code=$this->q_data("SELECT * FROM carrotsy_work.`work_code` WHERE `id` = '$code_id' LIMIT 1");
         $code_name=$data_code['name'];
         $code_tip=$data_code['tip'];
     }
@@ -62,7 +62,7 @@ if($func=='view'||$func=='view_edit'){
     if($func=='view_edit'){
         if(isset($_GET['del'])){
             $id_del=$_GET['del'];
-            $q_del_code=$this->q("DELETE FROM `work_code` WHERE `id` = '$id_del';");
+            $q_del_code=$this->q("DELETE FROM carrotsy_work.`work_code` WHERE `id` = '$id_del';");
             if($q_del_code)
                 echo $this->msg("Xóa thành công $id_del !");
             else
@@ -79,7 +79,7 @@ if($func=='view'||$func=='view_edit'){
 <?php }?>
 <ul id="list_help">
     <?php
-    $list_code=$this->q("SELECT * FROM `work_code`");
+    $list_code=$this->q("SELECT * FROM carrotsy_work.`work_code`");
     while($code=mysqli_fetch_assoc($list_code)){
     ?>
     <li>

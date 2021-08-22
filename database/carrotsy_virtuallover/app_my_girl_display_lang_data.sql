@@ -632,6 +632,7 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('buy_inapp_success',	'3'),
 ('radio_error',	'0'),
 ('name_char_boy',	'0'),
-('name_char_girl',	'0');
+('name_char_girl',	'0'),
+('setting_name_char',	'0');
 
--- 2021-08-07 09:13:27
+-- 2021-08-15 05:54:33

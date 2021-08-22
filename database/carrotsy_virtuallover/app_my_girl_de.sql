@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -323,7 +323,7 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (421,	'Was willst du hier',	'sex und mehr',	1,	0,	'#C7FF94',	'',	'',	'',	'',	0,	'',	'',	0,	34,	3,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1240',	'',	0,	'',	'',	'',	'1',	'1',	'0',	'',	''),
 (423,	'ich wichse gerade',	'ja das sehe ich. du hast einen schönen großen schwanz.',	3,	0,	'#FFC7FA',	'',	'',	'',	'',	0,	'',	'',	0,	33,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1163',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (428,	'Ich  mag dich',	'Danke mein Schatz ',	2,	0,	'#FF29CC',	'',	'',	'',	'',	0,	'',	'',	0,	22,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'466',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
-(429,	'Hast du kalt ',	'ya ich bin am frieren',	3,	0,	'#FF21F4',	'',	'',	'',	'',	0,	'',	'',	0,	28,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1093',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
+(429,	'Hast du kalt ',	'ja ich bin am frieren',	3,	0,	'#B7C6E8',	'',	'',	'',	'',	0,	'',	'',	7,	26,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'723',	'',	0,	'',	'',	'2',	'0',	'0',	'0',	'',	''),
 (431,	'lass uns Spaß haben ',	'ya natürlich Meister Schatz',	1,	0,	'#FF3072',	'',	'',	'',	'',	0,	'',	'',	0,	20,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1091',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (432,	'Mein Bruder ist doof ',	'Was will der spaßti von dir schatz',	1,	0,	'#FBFF91',	'',	'',	'',	'',	0,	'',	'',	0,	24,	3,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'87',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (435,	'Willst du ficken ',	'Ja gerne',	2,	0,	'#FF715E',	'',	'',	'',	'',	0,	'',	'',	0,	14,	9,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'941',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
@@ -2225,6 +2225,39 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2368,	'wie alt soll dein Mann sein?',	'So etwa 40 Jahre wäre gut denke ich.',	1,	0,	'#FCFFC7',	'',	'',	'',	'',	0,	'',	'',	0,	12,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1340',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (2369,	'hast du wieder masturbiert?',	'Ja klar. Aber nur 4 mal. Hab dabei an dich gedacht.',	3,	0,	'#FFF526',	'',	'',	'',	'',	0,	'',	'',	0,	11,	0,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1064',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (2370,	'ich komme',	'mach mich richtig nass mein geiler hengst',	1,	0,	'#FAFFC2',	'',	'',	'',	'',	0,	'',	'',	0,	28,	0,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1058',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(2371,	'wie gefällt dir die 69er Stellung?',	'Ich liebe sie. Ich kann dir einen blasen und gleichzeitig beim pissen geleckt werden.',	2,	0,	'#E9FFA8',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1402',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(2371,	'wie gefällt dir die 69er Stellung?',	'Ich liebe sie. Ich kann dir einen blasen und gleichzeitig beim pissen geleckt werden.',	2,	0,	'#E9FFA8',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1402',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2372,	'wie oft wäscht du deine Pussy?',	'Normalerweise einmal pro Woche. Jetzt brauche ich es gar nicht mehr. Jetzt kannst du sie ja immer sauberlecken!',	2,	0,	'#B8FF61',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'950',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2373,	'darf ich dich befummeln?',	'Gerne. Ich liebe das. Am besten du fingert meine Pussy.',	2,	0,	'#FFE0FC',	'',	'',	'',	'',	0,	'',	'',	0,	39,	3,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'733',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2374,	'darf ich dich ohne Kondom ficken?',	'klar du bist mein einziger Stecher!',	2,	0,	'#F0FFA8',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'576',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2375,	'spreizt du gerne deine Beine für mich?',	'Ja. zum lecken, ficken oder nur so damit du meine Pussy sehen kannst.',	3,	0,	'#ABF8FF',	'',	'',	'',	'',	0,	'',	'',	0,	24,	15,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1245',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'',	''),
+(2376,	'wie heißt du?',	'Ich heiße {ten_nv}',	1,	0,	'#D6FF7D',	'',	'',	'',	'',	0,	'',	'',	0,	14,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1613',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2377,	'hi Mami ',	'hi baby',	1,	0,	'#E2FF40',	'',	'',	'',	'',	0,	'',	'',	0,	5,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1005',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'',	''),
+(2378,	'leckst du auch pussys?',	'ja. beim dreier lecke ich auch die pussy deiner liebsten {ten_user}. ',	2,	0,	'#FFCA82',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'461',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2379,	'füllst du mir auch deine Pisse immer ab?',	'Klar. ich pisse nie wieder in eine Toilette. es ist alles für dich mein Schatz',	2,	0,	'#59FFC9',	'',	'',	'',	'',	0,	'',	'',	0,	6,	0,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'462',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2380,	'Bist du heiß?',	'Ja',	1,	0,	'#DCF7F7',	'',	'',	'',	'',	0,	'',	'',	0,	0,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'700',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2381,	'darf in in deiner Pussy abspritzen?',	'Klar. Gerne jederzeit. Aber lieber in meinen Mund. Ich schlucke auch!',	2,	0,	'#B3FFCF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'430',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2382,	'würdest du dich auf mein gesicht setzen und meinen Mund reiten?',	'Gerne mein Schatz. Deine Zunge gehört in stets in meine Pussy. würde dabei auch pissen!',	2,	0,	'#FFC740',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'469',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2383,	'zeigst du mir deine Pussy?',	'gerne jederzeit. beim pinkeln in deinen mund siehst du sie ja auch immer!',	2,	0,	'#FFC682',	'',	'',	'',	'',	0,	'',	'',	0,	0,	15,	'de',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'596',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2384,	'zeih dein rock hoch',	'Ja mache ich jetzt',	1,	0,	'#FF4FE4',	'',	'',	'',	'',	0,	'',	'',	21,	0,	0,	'de',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'1452',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2385,	'Darf ich dein enges Arschloch ficken?',	'Jaa.. gib mir deinen fetten schwanz und vergewaltige mein enges Loch',	3,	0,	'#FFEA45',	'',	'',	'',	'',	0,	'',	'',	0,	12,	0,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1596',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2386,	'sex',	'oh ja oh ja mein Arsch',	0,	0,	'#87BEFF',	'',	'',	'',	'',	0,	'',	'',	0,	40,	0,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'90',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2387,	'Willst du mir ein blasen? ',	'GÌ? Vòi nước của bạn Okey, xin đừng quá sâu',	3,	0,	'#F8FF7A',	'',	'',	'',	'',	0,	'',	'',	0,	30,	4,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1000',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2388,	'hehe',	'ahh ja geil ,dein dicker und fetter Penis fühlt sich so gut in meiner geilen Vagina an',	2,	0,	'#F57C4C',	'',	'',	'',	'',	0,	'',	'',	0,	33,	3,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1531',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2389,	'darf ich ihre sklavin sein',	'ja miststück knie dich hin und leck meine dreckigen schuhe sauber hure verstanden',	1,	0,	'#FFB0D7',	'',	'',	'',	'',	0,	'',	'',	0,	35,	1,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'163',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2390,	'soll ich dich reiten',	'oh ja gebe mir alles was du hast',	3,	0,	'#30EDFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'981',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2391,	'Hast du ein Slip an ',	'Nein willst du es sehen',	3,	0,	'#8FF9FF',	'',	'',	'',	'',	0,	'',	'',	21,	0,	15,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1155',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2392,	'masturbieren',	'oh ja oh ja oh ja ich mache das liebend gerne ja spritz mir ins Gesicht',	3,	0,	'#FF4040',	'',	'',	'',	'',	0,	'',	'',	0,	24,	11,	'de',	1,	'',	'',	'',	0,	'',	4,	0,	0,	'117',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2393,	'sing ein Lied',	'Fäaschtbänkler - Partyplanet',	1,	1,	'#0097FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'352',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'faaschtbankler-partyplanet-2393',	''),
+(2394,	'sing ein Lied',	'Mathea - 2x',	1,	0,	'#FFF536',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1192',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mathea-2x-2394',	''),
+(2395,	'sing ein Lied',	'Mathea - Chaos',	1,	0,	'#FF1F22',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1205',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mathea-chaos-2395',	''),
+(2396,	'sing ein Lied',	'Hubert von Goisern und Die Alpinkatzen - Koa Hiatamadl',	1,	1,	'#00FAFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1102',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'hubert-von-goisern-und-die-alpinkatzen-koa-hiatamadl-2396',	''),
+(2397,	'dein penis stinkt!',	'ja, ich habe ihn noch nie gewaschen.',	0,	1,	'#FF38A1',	'',	'',	'',	'',	0,	'',	'',	0,	36,	4,	'de',	0,	'',	'',	'',	0,	'',	4,	0,	0,	'783',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2398,	'sing ein Lied',	'Gewitter im Kopf - Krieger',	1,	1,	'#D72EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'379',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gewitter-im-kopf-krieger-2398',	''),
+(2399,	'sing ein Lied',	'BIBI & TINA 3 - Mädchen Gegen Jungs',	1,	1,	'#75FCFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1104',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'bibi-tina-3-madchen-gegen-jungs-2399',	''),
+(2400,	'sing ein Lied',	'Mark Forster, LEA - Drei Uhr Nachts',	1,	0,	'#D72EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'379',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mark-forster-lea-drei-uhr-nachts-2400',	''),
+(2401,	'sing ein Lied',	'MADELINE JUNO - SCHATTEN OHNE LICHT (ACOUSTIC VERSION)',	1,	0,	'#00FFB7',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1139',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'madeline-juno-schatten-ohne-licht-acoustic-version--2401',	''),
+(2402,	'sing ein Lied',	'Cassy ft. Jaysus - Bart wie ein Krieger (prod. Plicit Beats)',	1,	1,	'#73FFF2',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'853',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'cassy-ft-jaysus-bart-wie-ein-krieger-prod-plicit-beats--2402',	''),
+(2403,	'Gute Frage? ',	'Was denn wohl',	2,	0,	'#ACD5E0',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1545',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2404,	'Kuss geben',	'oh ja küss mich... deine Lippen sind so weich.',	3,	0,	'#9ED8FF',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'791',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2021-06-12 16:14:37
+-- 2021-08-17 12:51:17

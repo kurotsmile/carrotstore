@@ -234,60 +234,6 @@ if($function=='scroll_load_data'){
         exit;
     }
     
-    if(isset($_POST['function'])&&$_POST['function']=='login_google'){
-        $user_id=$_POST['user_id'];
-        $user_name=$_POST['user_name'];
-        $user_email=$_POST['user_email'];
-        $user_avatar=$_POST['user_avatar'];
-
-        $lang=$_SESSION['lang'];
-        $check_login=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
-        if(mysqli_num_rows($check_login)>0){
-            $query_update_user=mysqli_query($link,"UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
-        }else{
-            $query_add_user=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
-        }
-        $user_login=new User_login();
-        $user_login->id=$user_id;
-        $user_login->name=$user_name;
-        $user_login->type='google';
-        $user_login->link=$url.'/user/'.$user_id.'/'.$lang;
-        $user_login->avatar=$user_avatar;
-        $user_login->email=$user_email;
-        $user_login->lang=$lang;
-        $_SESSION['user_login']=json_encode($user_login);
-        echo $user_id;
-        exit;
-    }
-
-    if(isset($_POST['function'])&&$_POST['function']=='login_facebook'){
-        $user_name=$_POST['user_name'];
-        $user_id=$_POST['user_id'];
-        $user_email=$_POST['user_email'];
-        $lang=$_SESSION['lang'];
-        $user_avatar='http://graph.facebook.com/'.$user_id.'/picture?type=normal';
-        if($user_email=='undefined'){
-            $user_email='';
-        }
-
-        $check_login=mysqli_query($link,"SELECT `id_device` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$user_id'");
-        if(mysqli_num_rows($check_login)>0){
-            $query_update_user=mysqli_query($link,"UPDATE `app_my_girl_user_$lang` SET `date_cur` =NOW() , `avatar_url` = '$user_avatar' WHERE `id_device` = '$user_id' LIMIT 1;");
-        }else{
-            $query_add_user=mysqli_query($link,"INSERT INTO `app_my_girl_user_$lang` (`id_device`, `name`, `sex`, `date_start`, `date_cur`, `status`, `email`, `avatar_url`) VALUES ('$user_id','$user_name','0',NOW(),NOW(),0,'$user_email','$user_avatar');");
-        }
-        $user_login=new User_login();
-        $user_login->id=$user_id;
-        $user_login->name=$user_name;
-        $user_login->type='facebook';
-        $user_login->link=$url.'/user/'.$user_id.'/'.$lang;
-        $user_login->avatar='http://graph.facebook.com/'.$user_id.'/picture?type=normal';
-        $user_login->email=$user_email;
-        $user_login->lang=$lang;
-        $_SESSION['user_login']=json_encode($user_login);
-        exit;
-    }
-
     if(isset($_POST['function'])&&$_POST['function']=='add_lyrics_music'){
         $contain=$_POST['contain'];
         $id_music=$_POST['id_music'];
@@ -325,10 +271,6 @@ if($function=='scroll_load_data'){
         $txt_error='';
         if($user_phone_login==''){
             $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'account_update_phone_error');
-        }
-
-        if($user_password_login==''&&$txt_error==''){
-            $txt_error.='<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '.lang($link,'loi_dang_nhap');
         }
 
         if($txt_error=='') {

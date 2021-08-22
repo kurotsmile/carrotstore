@@ -47,11 +47,16 @@ if(isset($_POST['func_user'])){
             }
             echo $this->msg("Đã xóa tài khoản!");
         }
+
+        $del_contact_backup=$this->q("DELETE FROM carrotsy_contacts.`backup_$user_lang` WHERE `id_user`='$user_id'");
+        $del_contact_info=$this->q("DELETE FROM carrotsy_contacts.`info_$user_lang` WHERE `user_id` = '$user_id'");
+        $del_playlist_music=$this->q("DELETE FROM carrotsy_music.`playlist_$user_lang` WHERE `user_id`='$user_id'");
+        $del_game_music=$this->q("DELETE FROM carrotsy_music.`game_scores_$user_lang` WHERE `user_id` = '$user_id'");
     }
 }
 ?>
 <h3>Thông tin người dùng</h3><br/>
-<strong>Cơ bảng</strong>
+<strong><i class="fa fa-info-circle" aria-hidden="true"></i> Cơ bảng</strong>
 <table>
 <?php
     if(file_exists("../../app_mygirl/app_my_girl_".$user_lang."_user/".$user_id.".png")){
@@ -71,7 +76,7 @@ foreach($data_user as $k=>$v){
 ?>
 </table>
 <br/>
-<strong>Thông tin bổ sung ở ứng dụng (Tìm kiếm - Danh bạ)</strong>
+<strong><i class="fa fa-address-book" aria-hidden="true"></i> Thông tin bổ sung ở ứng dụng (Tìm kiếm - Danh bạ)</strong>
 <table>
 <?php
     $data_app_contacts=$this->q_data("SELECT COUNT(`user_id`) as c FROM `info_$user_lang` WHERE `user_id`='$user_id' LIMIT 1");
@@ -93,6 +98,21 @@ foreach($data_user as $k=>$v){
     <tr><td>Số bảng sao lưu danh bạ</td><td><?php echo $count_backup_contact;?></td></tr>
 </table>
 <br/>
+<?php
+$count_playlist_music=0;
+$data_count_playlist=$this->q_data("SELECT COUNT(`id`) as c  FROM carrotsy_music.`playlist_$user_lang` WHERE `user_id` = '$user_id' LIMIT 1");
+if($data_count_playlist!=null) $count_playlist_music=$data_count_playlist['c'];
+
+$scores_game_music=0;
+$data_game_music=$this->q_data("SELECT `scores` FROM carrotsy_music.`game_scores_$user_lang` WHERE `user_id` = '$user_id' LIMIT 1");
+if($data_game_music!=null) $scores_game_music=$data_game_music['scores'];
+?>
+<strong><i class="fa fa-music" aria-hidden="true"></i> Dữ liệu liên quan tới ứng dụng âm nhạc</strong>
+<table>
+    <tr><td> Số danh sách âm nhạc đã tạo</td><td><?php echo $count_playlist_music;?></td></tr>
+    <tr><td> Điểm số trò chơi âm nhạc</td><td><?php echo $scores_game_music;?></td></tr>
+</table>
+
 <form id="frm_user" method="post" action="">
 <input value="" type="hidden" name="func_user" id="func_user">
 <input value="<?php echo $user_id;?>" type="hidden" name="user_id">

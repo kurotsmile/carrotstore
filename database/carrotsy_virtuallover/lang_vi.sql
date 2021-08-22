@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -316,6 +316,17 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Tất cả dữ liệu trên toàn thế giới'),
 ('search_setting_data_1',	'Chỉ tìm dữ liệu ở quốc gia,khu vực của bạn'),
 ('search_return',	'Kết quả tìm kiếm'),
-('recognition_inp',	'Nói đi');
+('recognition_inp',	'Nói đi'),
+('contact_open_app',	'Mở liên hệ này trong ứng dụng'),
+('link_open_app',	'Mở trong ứng dụng'),
+('back_app',	'Quay trở lại ứng dụng'),
+('link_open_app_tip',	'Nhấp vào đây để mở nhanh hoặc chuyển dữ liệu này sang ứng dụng di động, phần mềm (nếu đã cài đặt với ứng dụng tương ứng với dữ liệu)'),
+('qr_tip',	'Dùng điện thoại của bạn để quét nhận liên kết này!'),
+('music_report',	'Báo lỗi và bản quyền bài hát'),
+('music_report_1',	'Bài hát bị lỗi (không phát được)'),
+('music_report_2',	'Bài hát vi phạm bản quyền vui lòng gỡ bỏ nội dung này!'),
+('music_report_3',	'Vấn đề khác với bài hát này'),
+('music_report_3_tip',	'Hãy mô tả chi tiết cho chúng tôi những thiếu sót của bài hát này'),
+('music_report_success',	'Cảm ơn bạn đã báo cáo sự cố của bài hát này, chúng tôi sẽ cố gắng khắc phục sự cố sớm nhất có thể');
 
--- 2021-06-12 15:24:41
+-- 2021-08-17 18:08:11

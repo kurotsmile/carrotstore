@@ -2,7 +2,6 @@
     <div class="title"><i class="fa fa-user" aria-hidden="true"></i> Người dùng tương tác trong ngày</div>
     <div class="body">
     <?php
-    $list_lang=$this->get_list_lang();
     for($i=0;$i<count($list_lang);$i++){
     $item_lang=$list_lang[$i];
     $user_lang=$item_lang['key'];

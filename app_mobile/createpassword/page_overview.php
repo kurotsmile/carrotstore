@@ -1,21 +1,20 @@
 <?php
-$query_list_country=mysqli_query($link,"SELECT `key`,`name` FROM carrotsy_virtuallover.`app_my_girl_country`");
-?>
-<?php
-while($country=mysqli_fetch_assoc($query_list_country)){
+$list_lang=$this->get_list_lang();
+for($i=0;$i<count($list_lang);$i++){
+    $country=$list_lang[$i];
     $key_country=$country['key'];
     $is_sel='off';
     $count_data_key_lang=0;
-    $query_check_sel=mysqli_query($link,"SELECT `key` FROM `country` WHERE `key` = '$key_country' LIMIT 1");
+    $query_check_sel=$this->q("SELECT `key` FROM `country` WHERE `key` = '$key_country' LIMIT 1");
     if(mysqli_num_rows($query_check_sel)>0){
         $is_sel='on';
     }else{
         $is_sel='off';
     }
-    $query_count_data_key=mysqli_query($link,"SELECT `value` FROM `value_lang` WHERE `id_country` = '$key_country' LIMIT 1");
+    $query_count_data_key=$this->q("SELECT `value` FROM `value_lang` WHERE `id_country` = '$key_country' LIMIT 1");
 
     $count_password=0;
-    $query_count_password=mysqli_query($link,"SELECT COUNT(`id`) as p FROM `password_$key_country` LIMIT 50");
+    $query_count_password=$this->q("SELECT COUNT(`id`) as p FROM `password_$key_country` LIMIT 50");
     if($query_count_password){
         $data_count_password=mysqli_fetch_assoc($query_count_password);
         $count_password=$data_count_password['p'];
@@ -32,9 +31,8 @@ while($country=mysqli_fetch_assoc($query_list_country)){
     ?>
     <div class="box <?php if($is_sel=='on'){?>active<?php }?>">
         <div class="header">
-            <img style="float: left;margin-right: 5px;" src="<?php echo $url_carrot_store;?>/thumb.php?src=<?php echo $url_carrot_store;?>/app_mygirl/img/<?php echo $country['key'];?>.png&size=60&trim=1"/>
+            <img style="float: left;margin-right: 5px;" src="<?php echo $country['icon'];?>"/>
             <strong><?php echo $country['name']; ?></strong><br />
-            <a class="buttonPro small black" href="<?php echo $url;?>?view=page_key_value&lang=<?php echo $key_country;?>"><i class="fa fa-anchor" aria-hidden="true"></i> thay đổi ngôn ngữ ứng dụng</a>
         </div>
         <div class="body">
             <ul>

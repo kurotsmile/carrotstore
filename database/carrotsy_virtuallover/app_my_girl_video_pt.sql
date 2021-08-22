@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -1417,6 +1417,33 @@ INSERT INTO `app_my_girl_video_pt` (`id_chat`, `link`) VALUES
 ('16788',	'https://www.youtube.com/watch?v=J5WLiU1qnP0'),
 ('16789',	'https://www.youtube.com/watch?v=rbiJyqKClXI'),
 ('16845',	'https://www.youtube.com/watch?v=8toOJb8xhB8'),
-('16846',	'https://www.youtube.com/watch?v=J059mhTot2o');
+('16846',	'https://www.youtube.com/watch?v=J059mhTot2o'),
+('16847',	'https://www.youtube.com/watch?v=aNq-YIEv2Y8'),
+('16848',	'https://www.youtube.com/watch?v=d9LKkik-QNQ'),
+('16849',	'https://www.youtube.com/watch?v=73sbW7gjBeo'),
+('16850',	'https://www.youtube.com/watch?v=p2or8h5GY-0'),
+('16851',	'https://www.youtube.com/watch?v=sarlhUK7hnw'),
+('16852',	'https://www.youtube.com/watch?v=FnjexNf7Pdo'),
+('16853',	'https://www.youtube.com/watch?v=ky319S5WDTw'),
+('16854',	'https://www.youtube.com/watch?v=fjDmyNn1AXg'),
+('16855',	'https://www.youtube.com/watch?v=cMGPrYvewoI'),
+('16856',	'https://www.youtube.com/watch?v=qc3rKuLI_uM'),
+('16906',	'https://www.youtube.com/watch?v=4JNgH6LPIcc'),
+('16907',	'https://www.youtube.com/watch?v=FO-WKSdUHJw'),
+('16908',	'https://www.youtube.com/watch?v=1ee8YqBqh4k'),
+('16909',	'https://www.youtube.com/watch?v=UvYYABiJV2E'),
+('16910',	'https://www.youtube.com/watch?v=ZBwjT-3t2O8'),
+('16911',	'https://www.youtube.com/watch?v=CMot9oCm8rY'),
+('16912',	'https://www.youtube.com/watch?v=Y_QSapSLRjk'),
+('16913',	'https://www.youtube.com/watch?v=cIliVkpvVZw'),
+('16914',	'https://www.youtube.com/watch?v=hz8yfZz7ZZk'),
+('16915',	'https://www.youtube.com/watch?v=QlXOo5VX1Ck'),
+('16916',	'https://www.youtube.com/watch?v=dTFDRIaQ1ck'),
+('17025',	'https://www.youtube.com/watch?v=TZEJQO7T1Fc'),
+('17032',	'https://www.youtube.com/watch?v=3vYeQLJ2as4'),
+('17033',	'https://www.youtube.com/watch?v=EhjIxhpGxDc'),
+('17034',	'https://www.youtube.com/watch?v=jzIFP2tntcs'),
+('17035',	'https://www.youtube.com/watch?v=t-xOQZDg938'),
+('17036',	'https://www.youtube.com/watch?v=oOFRTjiT2q8');
 
--- 2021-06-12 15:50:33
+-- 2021-08-17 18:11:51

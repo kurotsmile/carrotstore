@@ -3,8 +3,8 @@
 #menu_cms{width:100%;float:left}
 #menu_cms.top{background-color:#000!important}
 #menu_cms.top a{color:#fff}
-#menu_cms.top .active{color:black}
-#menu_cms.menu{background-color:#bebebe!important;border-top: solid 5px white;}
+#menu_cms.top .active{color:#000}
+#menu_cms.menu{background-color:#bebebe!important;border-top:solid 5px #fff}
 #menu_cms.menu .logout{float:right}
 .cms_menu_lang{width:100%;background-color:#ccdcff;float:left}
 .cms_menu_lang a{padding:5px;float:left}
@@ -31,10 +31,12 @@ table tr:hover td{background-color:#ffff9b}
 .btn.gray{background-color:#5a5a5a;color:#fff}
 .btn:hover{background-color:#000;color:#fff}
 .cms_nav_page,.cms_tool_page{float:left;width:100%;margin-top:3px;margin-bottom:3px}
-.cms_nav_page a,.cms_tool_page a{float:left;margin: 2px;}
+.cms_nav_page a,.cms_tool_page a{float:left;margin:2px}
 .cms_tool{float:left;width:300px;margin:8px;height:34px;padding:6px;border-radius:8px}
 .cms_tool .icon{font-size:25px;float:left;margin-right:6px}
 .cms_tool:hover{background-color:#f1f1f1}
 input[type=password],input[type=text],select,textarea{width:auto;padding:5px 5px;margin:0 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
-#btn_edit_bk{color:#fff;font-size:35px;text-shadow:1px 1px 8px #000;position:absolute;right:20px;bottom:20px;z-index: 300;}
-.db_table{width: 50%;float: left;}
+#btn_edit_bk{color:#fff;font-size:35px;text-shadow:1px 1px 8px #000;position:absolute;right:20px;bottom:20px;z-index:300}
+.db_table{width:50%;float:left}
+.db_table .count{color:#e87e00;background:#faebd7;border-radius:10px;padding:3px}
+.db_table .count_syn{display: none;}

@@ -22,7 +22,7 @@ if($func=='view'){
     <th>Thao tác</th>
 </tr>
 <?php
-$query_list_user=$this->q("SELECT * FROM `work_user`");
+$query_list_user=$this->q("SELECT * FROM carrotsy_work.`work_user`");
 while($user=mysqli_fetch_assoc($query_list_user)){
 ?>
 <tr>
@@ -44,7 +44,7 @@ while($user=mysqli_fetch_assoc($query_list_user)){
 if($func=='edit'||$func=='add'){
     if(isset($_GET['id'])){
         $user_id=$_GET['id'];
-        $data_user=$this->q_data("SELECT * FROM `work_user` WHERE `user_id` = '$user_id' LIMIT 1");
+        $data_user=$this->q_data("SELECT * FROM carrotsy_work.`work_user` WHERE `user_id` = '$user_id' LIMIT 1");
         $user_id=$data_user['user_id'];
         $user_name=$data_user['user_name'];
         $user_full_name=$data_user['full_name'];

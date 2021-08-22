@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -83,6 +83,8 @@ INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('75338',	'chat',	'[[\"12\",\"https://play.google.com/store/apps/details?id=com.kurotsmile.demcuu3d\",\"link\",\"Counting sheep\",\"40FF36\"]]',	'field_chat',	'unclear',	'0'),
 ('76578',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
 ('76710',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
-('76759',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0');
+('76759',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
+('76890',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
+('77008',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0');
 
--- 2021-06-12 15:33:21
+-- 2021-08-17 16:08:20

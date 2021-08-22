@@ -23,7 +23,7 @@ INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotstore.midipiano.buymidi',	'283',	'1.8',	'midi',	'midi'),
 ('com.carrotstore.midipiano.removeads',	'283',	'3.0',	'remove_ads',	'midi'),
 ('com.carrotstore.midipiano.buylist',	'283',	'5.0',	'buylistmidi',	'midi'),
-('com.carrotstore.ailover.all',	'130',	'10.0',	'all_function',	''),
+('com.carrotstore.ailover.all',	'130',	'8.0',	'all_function',	'ailover'),
 ('com.kurotsmile.contactstore.removeads',	'104',	'2.0',	'remove_ads',	'contactstore'),
 ('com.carrotstore.numbermagic.removeads',	'138',	'2.0',	'remove_ads',	'numbermagic'),
 ('com.carrotstore.numbermagic.bkmusic',	'138',	'3.0',	'musicbk',	'numbermagic'),
@@ -47,6 +47,16 @@ INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotapp.musicforlife.removeads',	'123',	'3.0',	'remove_ads',	'music'),
 ('com.carrotapp.musicforlife.allfunc',	'123',	'12',	'all_function',	'music'),
 ('com.carrotapp.musicforlife.mp3',	'123',	'1.0',	'mp3',	'music'),
-('com.carrotapp.musicforlife.allmp3',	'123',	'5.99',	'all_mp3',	'music');
+('com.carrotapp.musicforlife.allmp3',	'123',	'5.99',	'all_mp3',	'music'),
+('com.carrotstore.ailover.ads',	'130',	'3.0',	'remove_ads',	'ailover'),
+('com.carrotstore.ailover.allmp3',	'130',	'4.6',	'all_mp3',	'ailover'),
+('com.carrotstore.ailover.fahsion',	'130',	'4.9',	'fahsion_character',	'ailover'),
+('com.carrotstore.ailover.data',	'130',	'2.0',	'data_offline',	'ailover'),
+('com.carrotstore.ailover.mp3',	'130',	'1.0',	'mp3',	'ailover'),
+('com.carrotstore.ailover.head',	'130',	'2.0',	'head_character',	'ailover'),
+('com.kurotsmile.mygirl.mp3',	'120',	'1.0',	'mp3',	''),
+('com.kurotsmile.mygirl.removeads',	'120',	'4.0',	'remove_ads',	''),
+('com.carrotstore.ailover.costumes',	'130',	'4.0',	'fahsion_character',	'ailover'),
+('com.carrotstore.ailover.costumes',	'130',	'3.0',	'fahsion_character',	'ailover');
 
--- 2021-07-30 11:02:17
+-- 2021-08-13 06:16:42

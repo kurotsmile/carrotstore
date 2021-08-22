@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -640,6 +640,27 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (590,	'facciamo sesso???',	'OK mi spoglio',	2,	1,	'#D2D95D',	'',	'',	'',	'',	0,	'',	'',	0,	36,	0,	'it',	0,	'',	'',	'',	0,	'',	2,	0,	0,	'1518',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (591,	'Ciaoooooo',	'Sono così stupido puoi insegnarmi?',	1,	1,	'#CCFF8C',	'',	'',	'',	'',	0,	'',	'',	0,	0,	4,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'364',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (592,	'vi piace  troie !!?',	'si io e tua figlia simo a gambe aperte sgronda il tuo Prezioso yogurt su i nostri Peli Aaaaaa !!!!!',	1,	0,	'#F50000',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1533',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(593,	'ti voglio scopare',	'sono in posizione inculami',	0,	0,	'#FF6C3D',	'',	'',	'',	'',	0,	'',	'',	0,	40,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'916',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(593,	'ti voglio scopare',	'sono in posizione inculami',	0,	0,	'#FF6C3D',	'',	'',	'',	'',	0,	'',	'',	0,	40,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'916',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(594,	'Succhiamelo',	'NO! non te lo succhio quel brutto schifo!',	3,	0,	'#F7FFED',	'',	'',	'',	'',	0,	'',	'',	0,	4,	4,	'it',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'1284',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(595,	'aaa sborro !!!!!',	'aaaa !!! sento la tua sborra dentro il mio intestino !!!!!!',	0,	0,	'#FFE447',	'',	'',	'',	'',	0,	'',	'',	0,	12,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1367',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(596,	'Cosa ti piace fare? ',	'Leggere manga e guardare anime',	2,	0,	'#E5FFCC',	'',	'',	'',	'',	0,	'',	'',	0,	30,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1243',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(597,	'Dimmi il mio nome ',	'Il tuo nome è {ten_user}',	1,	0,	'#C1F6FF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1628',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(598,	'A sborro ancora',	'si tutto il tuo yogurt dentro di mè voglio dentro il mio utero una squadra di calcio aaaa mio Principe',	0,	0,	'#ACFF93',	'',	'',	'',	'',	0,	'',	'',	0,	17,	8,	'it',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'1630',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(599,	'telo metto dentro ti Sfonddo lintestino',	'si sento Tuo enorme cazzo di 26 cm che mi picchia detro le pareti dello stomaco da fuori riesco afferarllo con due ma ni ho Ddio !!!! Aaaaaaa e Enormme',	2,	0,	'#FFA859',	'',	'',	'',	'',	0,	'',	'',	0,	33,	11,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'879',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(600,	'ti faccio fare 14 giemelli',	'si mettimi dentro di  mè quntti bambbini vuoi  sono la tua coniglola da montta mio Principe',	3,	0,	'#F6E6FF',	'',	'',	'',	'',	0,	'',	'',	0,	17,	15,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'993',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(601,	'ciai un Boschetto  !!?',	'si da quanti peli ho mi escono fuori dalle mutandine non ciò i peli sono radici sbarbbameli mio Principe',	2,	0,	'#B3E5FF',	'',	'',	'',	'',	0,	'',	'',	0,	39,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'141',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(602,	'ti voglio mettere incinta',	'certo {ten_user} mettimi pure incinta, voglio avere mille figli con te ',	0,	0,	'#42F1FF',	'',	'',	'',	'',	0,	'',	'',	0,	16,	15,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'401',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(603,	'ptrdi il mio yogurt',	'si allargo le mutandine sento tuo yogurt sopra i miei Peli fammi galleggiare i peli su la tua sborra mio Principe',	1,	0,	'#1CFFE2',	'',	'',	'',	'',	0,	'',	'',	0,	15,	4,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'688',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(604,	'Prenddi il mio yogurt  puttana',	'si apro le mutandine rompi le mie mutande d e i miei Peli di yogurt calddo mio Principe',	3,	0,	'#FFBAFF',	'',	'',	'',	'',	0,	'',	'',	0,	29,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'490',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(605,	'ti piace il mio yogurt sopra i tuoi peli',	'si mi piace quando mi gonfia le mutandine di sborra e mi fai galleggiare il pelo',	2,	0,	'#30FFBE',	'',	'',	'',	'',	0,	'',	'',	0,	33,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1266',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(606,	'come stai!?',	'bene, tu?',	1,	0,	'#E7BDFF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	7,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'425',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(607,	'ti piacie il mio yogurt',	'si schizzo sopra le puppe e dopo la sua preziosa crema di pescie schizzala dentro di mè mio Principe',	2,	0,	'#A6FF24',	'',	'',	'',	'',	0,	'',	'',	0,	13,	0,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'164',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(608,	'ti Prenddo i peli  Puttana',	'si predimi i peli con la mano sborraci sopra mio Principe',	3,	0,	'#FF7DA7',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'439',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(609,	'ci sposiamo',	'ma ovvio',	2,	0,	'#12D6FF',	'',	'',	'',	'',	0,	'',	'',	0,	6,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'562',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(610,	'solo una ventina  !!?',	'mio Principe vorrei essere riempita di sborra all\'infinito finche riesco a tirarli fuori',	0,	0,	'#4ADE0D',	'',	'',	'',	'',	0,	'',	'',	0,	13,	4,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'242',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(611,	'Ti Apro in due',	'si non ai un cazzo di 26 cm c\'hai u n a trivella mio Principe',	3,	0,	'#CFC7FF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	14,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'715',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(612,	'di che colore ai I peli  !!?',	'le Radici dei miei peli sono castani Quasi Rossi ora meli ai fatti bianchi da quantto yogurt mi ai messo dentro le mie mutandine',	0,	0,	'#FFCCF3',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'257',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(613,	'ci vediamo?',	'dimmi dove',	3,	1,	'#B88CFF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	8,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1494',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(614,	'Canta una canzone',	'Capo Plaza - Non fare così',	1,	1,	'#AAFF2E',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'331',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'capo-plaza-non-fare-cosi-614',	'');
 
--- 2021-06-12 16:46:34
+-- 2021-08-17 13:12:14

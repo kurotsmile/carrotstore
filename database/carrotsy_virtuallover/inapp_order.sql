@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,12 @@ CREATE TABLE `inapp_order` (
 
 TRUNCATE `inapp_order`;
 INSERT INTO `inapp_order` (`id`, `inapp_id`, `user_id`, `lang`, `pay_name`, `pay_mail`, `date`, `is_get`, `is_login`) VALUES
-('60ea8449d22cb60ea8449d22cd',	'com.carrotstore.wormmaster.removeads',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'en',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-07-11 12:40:25',	1,	0),
-('60ea847a64f0860ea847a64f0b',	'com.carrotstore.wormmaster.musicbk',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'en',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-07-11 12:41:14',	1,	0);
+('60fc24291151360fc24291154f',	'com.carrot.runwithme.removeads',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'vi',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-07-24 14:31:05',	1,	0),
+('60fdea1c9a26460fdea1c9a2a4',	'com.carrotstore.jigsawwall.removeads',	'3a07c3f746e05fa723942abf9c6fa941',	'en',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-07-25 22:47:56',	1,	0),
+('610bf14e92a9e610bf14e92ae3',	'com.carrotstore.ailover.ads',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'en',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-08-05 14:10:22',	1,	0),
+('610bf17104b7e610bf17104bba',	'com.carrotstore.ailover.all',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'en',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-08-05 14:10:57',	1,	0),
+('61139f4d1e86661139f4d1e8a4',	'com.carrotstore.ailover.costumes',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'vi',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-08-11 09:58:37',	1,	0),
+('61139f7b5dec661139f7b5df04',	'com.carrotstore.ailover.costumes',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'vi',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-08-11 09:59:23',	1,	0),
+('61142b815d4ba61142b815d4f7',	'com.carrotstore.ailover.costumes',	'e0262350a05e63cad39a4c8f08cde9dfb46adf00',	'vi',	'Thien thanh',	'kurotsmile@gmail.com',	'2021-08-11 19:56:49',	1,	0);
 
--- 2021-07-11 07:38:43
+-- 2021-08-13 06:17:33

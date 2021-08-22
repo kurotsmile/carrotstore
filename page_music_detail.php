@@ -6,9 +6,7 @@ if(!isset($data_music['id'])){
         <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i><br />
         <span style="margin-top: 10px;">
         <?php echo lang($link,'not_music'); ?>
-        </span>
-        <br />
-        <br />
+        </span><br /><br />
         <a class="buttonPro" href="<?php echo $url;?>/music"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang($link,'back_list_music'); ?></a>
     </p>
 </div>
@@ -70,51 +68,32 @@ $txt_title=$data_music['chat'];
         <?php echo $data_music['chat'];?>
     </div>
     <div id="account_menu">
-        <ul style="margin: 0px;">
-            <li class="active"><i class="fa fa-music" aria-hidden="true"></i></li>
-        </ul>
+        <ul style="margin: 0px;"><li class="active"><i class="fa fa-music" aria-hidden="true"></i></li></ul>
     </div>
     </div>
         
     <div id="post_product">
         <div style="padding: 20px;float: left;">
-            <?php
-            if(isset($user_login)&&$user_login->type=='admin'){
-                    ?>
-                    <script>
-                    function open_edit(){
-                        window.open("<?php echo 'http://'.$name_host;?>/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");
-                    }
-                    </script>
-                    <br />
+            <?php if(isset($user_login)&&$user_login->type=='admin'){ ?>
+                    <script>function open_edit(){window.open("<?php echo 'http://'.$name_host;?>/app_my_girl_update.php?id=<?php echo $id_music;?>&lang=<?php echo $lang_sel; ?>");}</script><br />
                     <span class="buttonPro  blue" target="_blank" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa bài hát</span>
-                    <?php
-            }
-            ?>
-
-        <h3>
-        <?php echo lang($link,'loi_bai_hat');?> "<?php echo $data_music['chat'];?>"
-        </h3>
-
+            <?php } ?>
+        <h3><?php echo lang($link,'loi_bai_hat');?> "<?php echo $data_music['chat'];?>"</h3>
             <?php
             $url_download=$url.'/pay/music/0/'.$id_music.'/'.$lang_sel;
             $is_playlist=false;
             include_once "template/kr_player_music.php";
             ?>
             <p style="float: left;width: 100%;display: block;">
-            <?php 
-                QRcode::png($url.'/music/'.$id_music.'/'.$lang_sel, 'phpqrcode/img/music'.$id_music.'_'.$lang_sel.'.png', 'M', 4, 2);
-            ?>
+            <?php   QRcode::png($url.'/music/'.$id_music.'/'.$lang_sel, 'phpqrcode/img/music'.$id_music.'_'.$lang_sel.'.png', 'M', 4, 2); ?>
             <img alt="Download song" src="<?php echo $url;?>/phpqrcode/img/music<?php echo $id_music;?>_<?php echo $lang_sel; ?>.png" style="float: left;margin: 2px;" title="<?php echo lang($link,"qr_tip");?>"/>
 
             <?php
                 $txt_function='onclick="login_account();"';
-                if(isset($user_login)){
-                    $txt_function='onclick="save_playlist_music(\''.$id_music.'\',\''.$lang_sel.'\',\''.$user_login->lang.'\',\''.$user_login->id.'\');"';
-                }
+                if(isset($user_login)) $txt_function='onclick="save_playlist_music(\''.$id_music.'\',\''.$lang_sel.'\',\''.$user_login->lang.'\',\''.$user_login->id.'\');"';
             ?>
 
-            <a  <?php echo $txt_function;?>  id="download_song" style="background-color: #67c7ca;" >
+            <a <?php echo $txt_function;?>  id="download_song" style="background-color: #67c7ca;" >
                 <i class="fa fa-plus-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                 <span><?php echo lang($link,'song_add_playlist');?></span>
              </a>
@@ -122,6 +101,11 @@ $txt_title=$data_music['chat'];
              <a onclick="kr_pause();" href="music://show/<?php echo $id_music;?>/<?php echo $lang_sel;?>" id="download_song" title="<?php echo lang($link,"link_open_app_tip");?>">
                 <i class="fa fa-external-link-square fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                 <span><?php echo lang($link,'link_open_app');?></span>
+            </a>
+
+            <a onclick="show_music_report();" id="download_song" title="<?php echo lang($link,"link_open_app_tip");?>">
+                <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
+                <span><?php echo lang($link,'music_report');?></span>
             </a>
 
              <a href="<?php echo $url;?>/pay/music/0/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"  id="download_song"  >
@@ -149,21 +133,20 @@ $txt_title=$data_music['chat'];
             <?php if(isset($data_lyrics)&&$data_lyrics['lyrics']!=''){?>
                 <div style="float: left;width: 100%;">
                     <span style="float: right;" >
-                        <span style="float: right;border-bottom: solid 2px;cursor: pointer;" onclick="change_font_size();">
-                            <i class="fa fa-font" id="text_size_small" style="font-size: 12px;" aria-hidden="true"></i>
-                            <i style="font-size: 20px;color: #888686;" id="text_size_lager"  class="fa fa-font" aria-hidden="true"></i>
-                        </span>
-                        
-                        <span style="float: right;margin-right: 10px;cursor: pointer;" onclick="change_font_color();">
-                            <i style="font-size: 20px;" class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                        </span>
-                        
-                        <span style="float: right;margin-right: 10px;cursor: pointer;" onclick="PrintLyrics();">
-                            <i style="font-size: 20px;" class="fa fa-print" aria-hidden="true"></i>
-                        </span>
-                        
+                    <span style="float: right;border-bottom: solid 2px;cursor: pointer;" onclick="change_font_size();">
+                        <i class="fa fa-font" id="text_size_small" style="font-size: 12px;" aria-hidden="true"></i>
+                        <i style="font-size: 20px;color: #888686;" id="text_size_lager"  class="fa fa-font" aria-hidden="true"></i>
                     </span>
-                    
+
+                    <span style="float: right;margin-right: 10px;cursor: pointer;" onclick="change_font_color();">
+                        <i style="font-size: 20px;" class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    </span>
+
+                    <span style="float: right;margin-right: 10px;cursor: pointer;" onclick="PrintLyrics();">
+                        <i style="font-size: 20px;" class="fa fa-print" aria-hidden="true"></i>
+                    </span>
+
+                    </span>
                     <div style="float: left;width: 100%;" id="contain_lyrics">
                     <div id="contain_lyrics_txt">
                     <?php echo nl2br($data_lyrics['lyrics']); ?>
@@ -203,14 +186,14 @@ $txt_title=$data_music['chat'];
                     
                     function PrintLyrics()
                     {
-                          var divToPrint = document.getElementById('contain_lyrics_txt');
-                          var newWin = window.open('', 'Print-Window');
-                          newWin.document.open();
-                          newWin.document.write('<html><body onload="window.print()"><h1>'+document.title+'</h1>' + divToPrint.innerHTML + '</body></html>');
-                          newWin.document.close();
-                          setTimeout(function() {
+                        var divToPrint = document.getElementById('contain_lyrics_txt');
+                        var newWin = window.open('', 'Print-Window');
+                        newWin.document.open();
+                        newWin.document.write('<html><body onload="window.print()"><h1>'+document.title+'</h1>' + divToPrint.innerHTML + '</body></html>');
+                        newWin.document.close();
+                        setTimeout(function() {
                             newWin.close();
-                          }, 10);
+                        }, 10);
                     }
                     </script>
                </div>
@@ -220,10 +203,10 @@ $txt_title=$data_music['chat'];
                     <br />
                     <span class="buttonPro black" id="btn_add_lyrics" onclick="show_add_lyrics();"><i class="fa fa-file-text-o" aria-hidden="true"></i> <?php echo lang($link,'dong_gop_loi_nhac'); ?></span>
                     <div id="box_lyrics">
-                        <div class="title" style="margin-bottom: 10px;float: left;">
-                            <i style="font-size: 60px;float: left;margin-right: 10px;" class="fa fa-file-text-o" aria-hidden="true"></i> <strong><?php echo lang($link,'dong_gop_loi_nhac'); ?></strong><br />
-                            <i><?php echo lang($link,'dong_gop_loi_nhac_tip'); ?></i>
-                        </div>
+                    <div class="title" style="margin-bottom: 10px;float: left;">
+                        <i style="font-size: 60px;float: left;margin-right: 10px;" class="fa fa-file-text-o" aria-hidden="true"></i> <strong><?php echo lang($link,'dong_gop_loi_nhac'); ?></strong><br />
+                        <i><?php echo lang($link,'dong_gop_loi_nhac_tip'); ?></i>
+                    </div>
                     <textarea id="lyric_contain" style="width: 98%;min-height: 250px;">
                     </textarea>
                     <br />
@@ -232,58 +215,50 @@ $txt_title=$data_music['chat'];
                     </div>
                 </div>
                 
-                <script>
-                    function add_lyrics_music(){
-                        shortcut_key_music=false;
-                        var contain_lyrics=$("#lyric_contain").val();
-                        if(contain_lyrics.trim()==""){
-                             swal("<?php echo lang($link,'loi'); ?>","<?php echo lang($link,'add_lyrics_error'); ?>", "error");
-                        }else{
-                            $.ajax({
-                                url: "<?php echo $url; ?>/index.php",
-                                type: "post",
-                                data: "function=add_lyrics_music&contain="+contain_lyrics+"&id_music=<?php echo $id_music;?>",
-                                success: function(data, textStatus, jqXHR)
-                                {
-                                    if(data=="1"){
-                                        swal("<?php echo lang($link,'thanh_cong'); ?>","<?php echo lang($link,'add_lyrics_success'); ?>", "success");
-                                        $('#box_lyrics').hide();
-                                        $('#btn_add_lyrics').hide();
-                                        shortcut_key_music=true;
-                                    }                                    
-                                }
-                            });
-                        }
+<script>
+function add_lyrics_music(){
+    shortcut_key_music=false;
+    var contain_lyrics=$("#lyric_contain").val();
+    if(contain_lyrics.trim()==""){
+        swal("<?php echo lang($link,'loi'); ?>","<?php echo lang($link,'add_lyrics_error'); ?>", "error");
+    }else{
+        $.ajax({
+            url: "<?php echo $url; ?>/index.php",
+            type: "post",
+            data: "function=add_lyrics_music&contain="+contain_lyrics+"&id_music=<?php echo $id_music;?>",
+            success: function(data, textStatus, jqXHR)
+            {
+                if(data=="1"){
+                    swal("<?php echo lang($link,'thanh_cong'); ?>","<?php echo lang($link,'add_lyrics_success'); ?>", "success");
+                    $('#box_lyrics').hide();
+                    $('#btn_add_lyrics').hide();
+                    shortcut_key_music=true;
+                }            
+            }
+        });
+    }
+}
 
-                    }
+function hide_add_lyrics(){
+    shortcut_key_music=true;
+    $('#box_lyrics').hide(300);
+    $('#btn_add_lyrics').show();
+}
 
-                    function hide_add_lyrics(){
-                        shortcut_key_music=true;
-                        $('#box_lyrics').hide(300);
-                        $('#btn_add_lyrics').show();
-                    }
+function show_add_lyrics(){
+    shortcut_key_music=false;
+    $('#box_lyrics').show(300);
+    $('#btn_add_lyrics').hide();
+}
+</script>
+<?php }?>
 
-                    function show_add_lyrics(){
-                        shortcut_key_music=false;
-                        $('#box_lyrics').show(300);
-                        $('#btn_add_lyrics').hide();
-                    }
-                </script>
-            <?php }?>
-            
-            <?php include "page_music_box_rate.php";?>
-            
-            <iframe
-                src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts"
-                scrolling="no" frameborder="0"
-                style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;">
-            </iframe>
+<?php include "page_music_box_rate.php";?>
+<iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/virtuallover?ref=ts&fref=ts" scrolling="no" frameborder="0" style="border:none;height: 50px;float: left; width: 100%;margin-top: 20px;"></iframe>
+</div>
+</div>
     
-        </div>
-    </div>
-    
-    <div id="sidebar_product">
-
+<div id="sidebar_product">
         <?php if($url_video!=''){?>
         <h3><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></h3>   
         <div id="box_play_video">
@@ -305,7 +280,7 @@ $txt_title=$data_music['chat'];
                 }else{
                     $url_song=$url.'/music/'.$row_top['id'].'/'.$row_top['author'];
                 }
-                ?>                                
+                ?>        
                 <a style="width: 100%;display: block;" href="<?php echo $url_song;?>" class="track-details">
                 <em><?php echo $row_top['c']; ?></em> <?php echo $row_top['chat']; ?>
                 </a>
@@ -332,8 +307,7 @@ $txt_title=$data_music['chat'];
             </script>
         <?php }?>
         
-    </div>
-
+</div>
 
 <?php
 $list_style='same';
@@ -356,20 +330,46 @@ if(mysqli_num_rows($list_music)>0){
 <?php }?>
 </div>
 
-<?php
-    if(get_setting($link,'show_ads')=='1') {
-?>
-<div style="float:left:width:100%;">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5388516931803092"
-     data-ad-slot="8557873995"></ins>
 <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<?php
-    }
-?>
+function show_music_report(){
+    var txt_html_report='<ul style="padding: 0px;margin: 0px;text-align: left;margin-left: 10%;">';
+    txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(3)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'music_report_1');?></li>';
+    txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(4)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'music_report_2');?></li>';
+    txt_html_report=txt_html_report+'<li style="width:80%" onclick="sel_user_report(5)" class="buttonPro green"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?php echo lang($link,'music_report_3');?></li>';
+    txt_html_report=txt_html_report+'</ul>';
+    swal({html: true, title: '<?php echo lang($link,"music_report"); ?>', text: txt_html_report, showConfirmButton: false, cancelButtonText: "<?php echo lang($link,'box_no');?>", closeOnConfirm: false,closeOnCancel: false,showCancelButton: true});
+}
 
+function sel_user_report(sel_val){
+    if(sel_val!='5') submit_acc_report(sel_val,'');
+
+    if(sel_val=='5'){
+        var txt_other_report='<p><?php echo lang($link,'music_report_3'); ?></p><br/><textarea id="acc_report_error" rows="9" cols="10" style="width:100%" placeholder="<?php echo lang($link,'music_report_3_tip');?>"></textarea>';
+        swal({html: true, title: '<?php echo lang($link,"music_report"); ?>',text:txt_other_report,
+                showConfirmButton: true,
+                showCancelButton: true,
+                cancelButtonClass: "btn-info",
+                confirmButtonText: "<?php echo lang($link,'box_yes');?>",
+                cancelButtonText: "<?php echo lang($link,'box_no');?>",
+                closeOnConfirm: true,
+                closeOnCancel: true},function(isConfirm){ 
+                if(isConfirm){
+                    var acc_report_error=$("#acc_report_error").val();
+                    submit_acc_report(sel_val,acc_report_error);
+                }
+        });
+    }
+}
+
+function submit_acc_report(sel_val,error_val){
+    swal_loading();
+    $.ajax({
+        url: "<?php echo $url;?>/json/json_account.php",
+        type: "post",
+        data: "function=report_account&lang=<?php echo $lang_sel;?>&type="+sel_val+"&id_device=<?php echo $id_music;?>&error_txt="+error_val,
+        success: function (data, textStatus, jqXHR) {
+            swal("<?php echo lang($link,"music_report"); ?>", "<?php echo lang($link,'music_report_success');?>", "success");
+        }
+    });
+}
+</script>

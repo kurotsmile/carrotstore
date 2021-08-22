@@ -18,5 +18,6 @@ $cms->add_menu_page("Quảng cáo","fa-modx","page_ads.php");
 $cms->add_menu_page("Đài phát thanh","fa-wifi","page_radio.php");
 $cms->add_menu_page("Từ khóa nhạy cảm","fa-exclamation-triangle","page_keyword_warning.php");
 $cms->add_menu_page("Quản trị viên","fa-user","page_user.php");
+$cms->add_menu_page("Ngôn ngữ ứng dụng","fa-language","page_lang.php");
 $cms->html_show();
 ?>

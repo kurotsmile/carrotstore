@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -33,4 +33,4 @@ INSERT INTO `work_app` (`id`, `name`, `url`, `folder`, `order`) VALUES
 (21,	'Quick Eye',	'',	'quick_eye',	13),
 (22,	'Worm Master',	'',	'worm_master',	14);
 
--- 2021-07-11 07:35:33
+-- 2021-08-13 12:31:49

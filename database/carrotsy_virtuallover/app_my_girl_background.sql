@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -2106,6 +2106,9 @@ INSERT INTO `app_my_girl_background` (`id`, `name`, `price`, `id_store`, `versio
 (2313,	'yooa',	'',	'',	'1',	'27'),
 (2314,	'yooa',	'',	'',	'1',	'27'),
 (2315,	'JUNSEOK',	'',	'',	'1',	'27'),
-(2316,	'JUNSEOK',	'',	'',	'1',	'27');
+(2316,	'JUNSEOK',	'',	'',	'1',	'27'),
+(2317,	'hoa ?ào',	'',	'',	'1',	'5'),
+(2318,	'hoa ?ào',	'',	'',	'1',	'5'),
+(2319,	'hoa ?ào',	'',	'',	'1',	'5');
 
--- 2021-06-12 15:27:37
+-- 2021-08-13 15:10:34

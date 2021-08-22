@@ -10,7 +10,7 @@ $app_id='';
 if(isset($_GET['func'])) $func=$_GET['func'];
 if(isset($_GET['del'])){
     $id_del=$_GET['del'];
-    $query_del_app=$this->q("DELETE FROM `work_app` WHERE (`id` = '$id_del');");
+    $query_del_app=$this->q("DELETE FROM carrotsy_work.`work_app` WHERE (`id` = '$id_del');");
     if($query_del_app)
         echo $this->msg("Xóa thành công ứng dụng $id_del !");
     else
@@ -24,17 +24,17 @@ if(isset($_POST['func'])){
     $app_id=$_POST['app_id'];
     $app_folder=$_POST['app_folder'];
     if($func=='add'){
-        $this->q("INSERT INTO `work_app` (`name`, `folder`,`url`) VALUES ('$app_name', '$app_folder','$app_url');");
+        $this->q("INSERT INTO carrotsy_work.`work_app` (`name`, `folder`,`url`) VALUES ('$app_name', '$app_folder','$app_url');");
         echo $this->msg("Thêm mới ứng dụng cms thành công!");
     }else{
-        $this->q("UPDATE `work_app` SET `name` = '$app_name',`folder` = '$app_folder',`url`='$app_url' WHERE `id` = '$app_id';");
+        $this->q("UPDATE carrotsy_work.`work_app` SET `name` = '$app_name',`folder` = '$app_folder',`url`='$app_url' WHERE `id` = '$app_id';");
         echo $this->msg("Cập nhật ứng dụng cms thành công!");
     }
 }
 
 if($func=='edit'){
     $app_id=$_GET['id'];
-    $data_app=$this->q_data("SELECT * FROM `work_app` WHERE `id` = '$app_id' LIMIT 1");
+    $data_app=$this->q_data("SELECT * FROM carrotsy_work.`work_app` WHERE `id` = '$app_id' LIMIT 1");
     $app_name=$data_app['name'];
     $app_url=$data_app['url'];
     $app_folder=$data_app['folder'];
@@ -113,7 +113,7 @@ function save_all_item(){
         <th>Thao tác</th>
     </tr>
     <?php
-    $query_app=$this->q("SELECT * FROM `work_app` ORDER BY `order`");
+    $query_app=$this->q("SELECT * FROM carrotsy_work.`work_app` ORDER BY `order`");
     while($app=mysqli_fetch_assoc($query_app)){
     ?>
     <tr id_app="<?php echo $app['id'];?>" >

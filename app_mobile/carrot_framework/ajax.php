@@ -221,11 +221,22 @@ if($function=='unactive_music_key_check'){
 
 if($function=='chat_act'){
      $id_chat=$_POST['id'];
+     $fn=$_POST['fn'];
      $obj=new stdClass();
      $obj->{"id"}=$id_chat;
-     $q_del=$this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_brain` WHERE `md5` = '$id_chat' LIMIT 1;");
-     $obj->{"error"}=0;
-     $obj->{"msg"}="Đã xóa câu dạy trò chuyện $id_chat !";
+     if($fn=='del'){
+          $q_del=$this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_brain` WHERE `md5` = '$id_chat' LIMIT 1;");
+          $obj->{"error"}=0;
+          $obj->{"msg"}="Đã xóa câu dạy trò chuyện $id_chat !";
+     }
+
+     if($fn=='reload'){
+          $list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY `date_pub` DESC LIMIT 50");
+          include_once("page_inspection_chat_table.php");
+          $obj->{"table"}=$s_table;
+          $obj->{"count_item"}=mysqli_num_rows($list_chat);
+     }
+     
      $cont_all_chat=$this->q_data("SELECT COUNT(`md5`) as c FROM carrotsy_virtuallover.`app_my_girl_brain` LIMIT 1");
      $count_total_chat=$cont_all_chat['c'];
      $obj->{"count_c"}=$count_total_chat;
@@ -239,8 +250,42 @@ if($function=='report_act'){
      $obj=new stdClass();
      $q_del=$this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_report` WHERE `type_question` = '$type_chat' AND `id_question` = '$id_chat'  LIMIT 1");
      $obj->{"error"}=0;
-     $obj->{"msg"}="Thiện thanh Pro $id_chat $type_chat";
+     $obj->{"msg"}="Đã xóa báo cáo $id_chat $type_chat";
      $obj->{"id"}="".$id_chat."_".$type_chat;
+     echo json_encode($obj);
+     exit;
+}
+
+if($function=='answer_act'){
+     $obj=new stdClass();
+     $key_lang=$_POST['lang'];
+
+     $ans=$this->q_data("SELECT `key`,`id_question`,`type_question`,`character_sex`,`sex` FROM carrotsy_virtuallover.`app_my_girl_key` WHERE `id_question` != '' AND `type_question` != '' AND `lang`='$key_lang'  ORDER BY RAND() LIMIT 1");
+     $key_ans=$ans['key'];
+     $id_question=$ans['id_question'];
+     $type_question=$ans['type_question'];
+     $character_sex=$ans['character_sex'];
+     $sex=$ans['sex'];
+
+     $data_father='';
+     $url_add_chat="";
+     $url_view_chat="";
+
+     if($type_question=='chat'){
+          $url_add_chat=$this->url_carrot_store."/app_my_girl_add.php?key=".urlencode($key_ans)."&lang=".$key_lang."&sex=$sex&effect=0&action=2&character_sex=$character_sex&color=FFFFFF&type_question=chat&id_question=$id_question";
+          $url_view_chat=$this->url_carrot_store."/app_my_girl_update.php?id=$id_question&lang=$key_lang";
+          $data_father=$this->q_data("SELECT `chat` FROM carrotsy_virtuallover.`app_my_girl_$key_lang` WHERE `id` = '$id_question' LIMIT 1");
+      }
+      else{
+          $url_add_chat=$this->url_carrot_store."/app_my_girl_add.php?key=".urlencode($key_ans)."&lang=".$key_lang."&sex=$sex&effect=0&action=2&character_sex=$character_sex&color=FFFFFF&type_question=msg&id_question=$id_question";
+          $url_view_chat=$this->url_carrot_store."/app_my_girl_update.php?id=$id_question&lang=$key_lang&msg=1";
+          $data_father=$this->q_data("SELECT `chat` FROM carrotsy_virtuallover.`app_my_girl_msg_$key_lang` WHERE `id` = '$id_question' LIMIT 1");
+      }
+
+     $url_chat_translate='https://translate.google.com/?sl='.$key_lang.'&tl=vi&text='.$data_father['chat']."%0A%0A".$key_ans.'&op=translate';
+
+     $html_show='<td><a target="_blank" href="'.$url_view_chat.'">'.$data_father['chat'].'</a><br/><a target="_blank" onclick="$(this).css(\'color\',\'red\');" href="'.$url_chat_translate.'"><i class="fa fa-arrow-right" aria-hidden="true"></i> '.$key_ans.'</a></td><td><a class="buttonPro small" target="_blank" href="'.$url_add_chat.'"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td>';
+     $obj->{"html"}=$html_show;
      echo json_encode($obj);
      exit;
 }

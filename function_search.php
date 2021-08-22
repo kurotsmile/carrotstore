@@ -35,6 +35,8 @@ function search_music($link,$key,$lang,$search_data){
     $search_group->{"type"}='music';
     $data_return_search=array();
 
+    $q_add_key_music=mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music` (`key`, `lang`, `type`) VALUES ('$key', '$lang', '2');");
+
     if($search_data=='1'){
         $query_search=mysqli_query($link,"SELECT `chat`,`slug`,`id`,`author` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `chat` LIKE '%$key%' AND `disable` = '0' LIMIT 50");
     }else{

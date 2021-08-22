@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -90,6 +90,8 @@ INSERT INTO `app_key_lang` (`key`) VALUES
 ('genre_tip'),
 ('year_tip'),
 ('album_tip'),
-('audio_mixer');
+('audio_mixer'),
+('playlist_share_tip'),
+('radio_error');
 
--- 2021-07-29 22:49:28
+-- 2021-08-13 12:34:33

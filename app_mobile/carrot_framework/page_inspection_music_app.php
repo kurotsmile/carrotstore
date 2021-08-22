@@ -3,10 +3,10 @@ $list_app_m_key=$this->q("SELECT * FROM carrotsy_virtuallover.`app_my_girl_log_k
 $num_app_m_key=mysqli_num_rows($list_app_m_key);
 if($num_app_m_key>0){
 ?>
-<div class="app_ins">
+<div class="app_ins" id="box_music_2">
     <div class="title" style="width: 96%;">
         <i class="fa fa-music" aria-hidden="true"></i> Duyệt nhạc (Lover) (<span id="count_m2"><?php echo $num_app_m_key;?></span>)
-        <a id="btn_unactive_music" class="buttonPro small" style="float:right" onclick="unactive_music_key_check();"><i id="icon_unactive_music" class="fa fa-delicious" aria-hidden="true"></i> Xóa từ khóa đã duyệt</a>
+        <a id="btn_unactive_music" class="buttonPro small" style="float:right" onclick="unactive_music_key_check();"><i id="icon_unactive_music" class="fa fa-trash-o" aria-hidden="true"></i></a>
     </div>
     <div class="body" id="table_m2">
         <table>

@@ -2,6 +2,7 @@
 class Carrot_CMS{
     public $url="";
     public $url_carrot_store="";
+    public $url_syn="https://carrotstore.com";
     public $name="Name App";
     public $link_mysql="";
     public $database_mysql="";

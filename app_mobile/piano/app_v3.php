@@ -2,6 +2,7 @@
 include "carrot_framework.php";
 
 if($function=='list_midi_online'){
+    $os='android';if(isset($_POST['os']))$os=$_POST['os'];
     $user_id='';
     $search='';
     $category='';
@@ -24,13 +25,22 @@ if($function=='list_midi_online'){
         }
     }
     while($row_data=mysqli_fetch_assoc($query_list)){
+        $s_speed=$row_data['speed'];
+        if($os=='window')
+            $s_speed=str_replace(',','.',$s_speed);
+        else
+            $s_speed=str_replace('.',',',$s_speed);
+
+        $row_data["speed"]=$s_speed;
         $row_data["link"]=$url_carrot_store.'/piano/'.$row_data['id_midi'];
         array_push($arr_data,$row_data);
     }
     echo json_encode($arr_data);
+    exit;
 }
 
 if($function=='get_midi'){
+    $os='android';if(isset($_POST['os']))$os=$_POST['os'];
     $id_midi=$_POST['id_midi'];
     $query_midi=mysqli_query($link,"SELECT * FROM `midi` WHERE `id_midi` = '$id_midi' LIMIT 1");
     $data_midi=mysqli_fetch_assoc($query_midi);
@@ -61,11 +71,20 @@ if($function=='get_midi'){
 
     $data_midi["data_index"]=json_encode($arr_index);
     $data_midi["data_type"]=json_encode($arr_type);
+
+    $s_speed=$data_midi['speed'];
+    if($os=='window')
+        $s_speed=str_replace(',','.',$s_speed);
+    else
+        $s_speed=str_replace('.',',',$s_speed);
+
+    $data_midi["speed"]=$s_speed;
     echo json_encode($data_midi);
+    exit;
 }
 
 if($function=='upload_midi'){
-    $user_id=$_POST['user_id'];
+    $user_id='';if(isset($_POST['user_id']))$user_id=$_POST['user_id'];
     $user_lang='en';if(isset($_POST['user_lang'])){$user_lang=$_POST['user_lang'];}
     if($user_id==''){$user_id=$id_device;}
     if($user_lang==''){$user_lang=$lang;}
@@ -106,6 +125,7 @@ if($function=='upload_midi'){
     $query_add=mysqli_query($link,"INSERT INTO `midi` (`id_midi`,`id_device`,`name`,`data0`,`data1`,`data2`,`data3`,`data4`,`data5`,`data6`,`data7`,`data8`,`data9`,`type0`,`type1`,`type2`,`type3`,`type4`,`type5`,`type6`,`type7`,`type8`,`type9`,`speed`,`sell`,`length`,`length_line`,`lang`) VALUES ('$id_midi','$user_id','$name_midi','$data_0','$data_1','$data_2','$data_3','$data_4','$data_5','$data_6','$data_7','$data_8','$data_9','$type_0','$type_1','$type_2','$type_3','$type_4','$type_5','$type_6','$type_7','$type_8','$type_9','$speed','0','$midi_length','$midi_length_line','$user_lang');");
     echo mysqli_error($link);
     echo "Thank you for contributing the draft midi piano, We will review and release to the world in the fastest time possible.";
+    exit;
 }
 
 if($function=='export_file_midi'){

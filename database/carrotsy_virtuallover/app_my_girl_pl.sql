@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -133,6 +133,7 @@ INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (83,	'Odtwarzaj muzykę z mojego telefonu',	'Włączyłem muzykę z twojego urządzenia, życzę szczęśliwego słuchania muzyki',	2,	1,	'#FF196C',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'pl',	0,	'',	'',	'',	1,	'',	1,	0,	0,	'851',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (84,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	0,	'#70EBFF',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	1,	'',	'',	'',	2,	'',	1,	0,	0,	'831',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (85,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
-(86,	'Zaśpiewaj piosenkę',	'Zeamsone - San Andreas',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'zeamsone-san-andreas-86',	'');
+(86,	'Zaśpiewaj piosenkę',	'Zeamsone - San Andreas',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'zeamsone-san-andreas-86',	''),
+(87,	'Zaśpiewaj piosenkę',	'Alan Aztec - Polska',	1,	1,	'#FF00B9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'334',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'alan-aztec-polska-87',	'');
 
--- 2021-06-12 16:33:37
+-- 2021-08-17 16:31:47

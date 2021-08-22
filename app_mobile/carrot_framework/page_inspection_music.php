@@ -3,10 +3,10 @@ $list_key_music=$this->q("SELECT * FROM carrotsy_music.`log_key` WHERE `is_see`=
 $num_key_music=mysqli_num_rows($list_key_music);
 if($num_key_music>0){
 ?>
-<div class="app_ins">
+<div class="app_ins" id="box_music_1">
     <div class="title" style="width: 96%;">
         <i class="fa fa-music" aria-hidden="true"></i> Âm nhạc (<span id="count_m1"><?php echo $num_key_music;?></span>)
-        <a id="btn_unactive_music" class="buttonPro small" style="float:right" onclick="unactive_music_key_check();"><i id="icon_unactive_music" class="fa fa-delicious" aria-hidden="true"></i> Xóa từ khóa đã duyệt</a>
+        <a id="btn_unactive_music" class="buttonPro small" style="float:right" onclick="unactive_music_key_check();"><i id="icon_unactive_music" class="fa fa-trash-o" aria-hidden="true"></i></a>
     </div>
     <div class="body" id="table_m1">
         <table>
@@ -38,6 +38,8 @@ function key_music_act(func,id_s){
         $out_func.='if(data_js.error==0){$(".k_m_"+data_js.id).remove();}';
         $out_func.='$("#count_m1").html(data_js.count_m1);';
         $out_func.='$("#count_m2").html(data_js.count_m2);';
+        $out_func.='if(data_js.count_m1==0) $("#box_music_1").remove();';
+        $out_func.='if(data_js.count_m2==0) $("#box_music_2").remove();';
         echo $this->ajax("function:'key_music_act',fn:func,id:id_s",$out_func);
     ?>
 }
@@ -53,6 +55,8 @@ function unactive_music_key_check(){
         $out_func.='$("#table_m2").html(data_js.table2);';
         $out_func.='$("#count_m1").html(data_js.count_m1);';
         $out_func.='$("#count_m2").html(data_js.count_m2);';
+        $out_func.='if(data_js.count_m1==0) $("#box_music_1").remove();';
+        $out_func.='if(data_js.count_m2==0) $("#box_music_2").remove();';
         echo $this->ajax("function:'unactive_music_key_check'",$out_func);
     ?>
 }

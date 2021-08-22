@@ -4,7 +4,7 @@ if(isset($_GET['id'])) $id_midi=$_GET['id'];
 
 $user_id_midi='b8aab5bff0258b764ea64e5a8cc1dfb2aad4a9c6';
 $user_lang_midi='vi';
-$speed_midi='0.2';
+$speed_midi='0,2';
 $name_midi='';
 $sell_midi=0;
 $category_midi="";
@@ -15,6 +15,7 @@ if(isset($_POST['name_midi'])){
     $id_midi=$_POST['id_midi'];
     $name_midi=addslashes($_POST['name_midi']);
     $speed_midi=$_POST['speed_midi'];
+    $speed_midi=str_replace('.',',',$speed_midi);
     $sell_midi=$_POST['sell_midi'];
     $level_midi=$_POST['level_midi'];
     $author_midi=addslashes($_POST['author_midi']);
@@ -32,6 +33,7 @@ if($id_midi!=''){
     $title_midi='Cập nhật Midi';
     $name_midi=$data_midi['name'];
     $speed_midi=$data_midi['speed'];
+    $speed_midi=str_replace('.',',',$speed_midi);
     $sell_midi=$data_midi['sell'];
     $level_midi=$data_midi['level'];
     $author_midi=$data_midi['author'];

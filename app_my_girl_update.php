@@ -34,11 +34,6 @@ if (mysqli_num_rows($check_storage) > 0) {
     $chat_storage = 'on';
 }
 
-mysqli_free_result($check_storage);
-$q1='';
-$q2='';
-$r1='';
-$r2='';
 $link_chat='';
 $vibrate='';
 $func_sever='';
@@ -59,10 +54,6 @@ if ($_POST) {
     $effect = $_POST['effect'];
     if(isset($_POST['vibrate'])) $vibrate = $_POST['vibrate'];
     $color = '#' . $_POST['color'];
-    if(isset($_POST['q1']))$q1 = $_POST['q1'];
-    if(isset($_POST['q2']))$q2 = $_POST['q2'];
-    if(isset($_POST['r1']))$r1 = $_POST['r1'];
-    if(isset($_POST['r2']))$r2 = $_POST['r2'];
     $tip = $_POST['tip'];
     if(isset($_POST['link'])) $link_chat = $_POST['link'];
     $face = $_POST['face'];
@@ -115,15 +106,14 @@ if ($_POST) {
         }
     }
 
-
     if (isset($_GET['msg'])) {
         $func = $_POST['func'];
         $type_chat = 'msg';
-        $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `func` = '$func',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex , `ver`=$limit_ver  , `limit_chat`='$limit_chat' ,`limit_day`='$limit_day',`limit_month`='$limit_month',`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`user_update`='$user_id',`file_url`='$file_url'  $txt_disable WHERE `id` = '$id';");
+        $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `func` = '$func',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color', `vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex , `ver`=$limit_ver  , `limit_chat`='$limit_chat' ,`limit_day`='$limit_day',`limit_month`='$limit_month',`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`user_update`='$user_id',`file_url`='$file_url'  $txt_disable WHERE `id` = '$id';");
     } else {
         $text = addslashes($_POST['text']);
         $type_chat = 'chat';
-        $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `text` = '$text',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color',`q1` = '$q1',`q2` = '$q2',`r1` = '$r1',`r2` = '$r2',`tip` = '$tip',`link` = '$link_chat',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex ,`id_redirect`='$id_redirect' , `ver`=$limit_ver , `limit_chat`='$limit_chat' ,`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`limit_day`='$limit_day',`limit_month`='$limit_month', `author`='$lang_sel' ,`func_sever`='$func_sever',`user_update`='$user_id',`file_url`='$file_url' $txt_disable  WHERE `id` = '$id';");
+        $result_update = mysqli_query($link,"UPDATE `$txt_table` SET `text` = '$text',`chat` = '$chat',`status` = '$status',`sex` = '$sex',`color` = '$color', `tip` = '$tip',`link` = '$link_chat',`vibrate` = '$vibrate',`effect` = '$effect',`face`='$face',`action`='$action',`character_sex`=$character_sex ,`id_redirect`='$id_redirect' , `ver`=$limit_ver , `limit_chat`='$limit_chat' ,`limit_date`='$limit_date' , `os_android`='$os_android' , `os_window`='$os_window' , `os_ios`='$os_ios' ,`effect_customer`='$effect_customer',`limit_day`='$limit_day',`limit_month`='$limit_month', `author`='$lang_sel' ,`func_sever`='$func_sever',`user_update`='$user_id',`file_url`='$file_url' $txt_disable  WHERE `id` = '$id';");
     }
 
     echo mysqli_error($link);
@@ -378,7 +368,7 @@ $arr = mysqli_fetch_array($result_chat);
             </td>
 
             <?php if ($arr['effect'] != '2') {?>
-                <td rowspan="15" style="width: 400px;">
+                <td rowspan="9" style="width: 400px;">
                     <div style="float: left;width: 100%; margin-bottom: 5px;">
                         Mô tả khuôn mặt <br/>
                         <img src="<?php echo $url; ?>/app_mygirl/img/face/<?php echo $arr['face']; ?>.png" id="id_img_face" style="width: 100px;cursor: pointer;" onclick="choice_face();"/>
@@ -465,57 +455,6 @@ $arr = mysqli_fetch_array($result_chat);
                         <option value="" <?php if ($arr['vibrate'] == '') { echo 'selected="true"';} ?>>off</option>
                         <option value="1" <?php if ($arr['vibrate'] == '1') { echo 'selected="true"';} ?>>on</option>
                     </select>
-                </td>
-            </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"'; }} ?> >
-                <td>q1</td>
-                <td>
-                    <input type="text" name="q1" id="q1" value='<?php echo $arr['q1']; ?>'/>
-                    <span class="key_func"  onclick="add_key_question(this,$('#q1'));return false;"><?php echo get_key_lang($link,'key_yes_question', $lang_sel); ?></span>
-                    <span onclick="add_key_customer('q1');return false;" class="buttonPro small yellow">Thêm thẻ</span>
-                </td>
-            </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
-                <td>q2</td>
-                <td>
-                    <input type="text" name="q2" id="q2" value='<?php echo $arr['q2']; ?>'/>
-                    <span class="key_func"
-                          onclick="add_key_question(this,$('#q2'));return false;"><?php echo get_key_lang($link,'key_no_question', $lang_sel); ?></span>
-                    <span onclick="add_key_customer('q2');return false;" class="buttonPro small yellow">Thêm thẻ</span>
-                </td>
-            </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') { echo 'style="display:none"';}} ?> >
-                <td>r1</td>
-                <td>
-                    <input type="text" name="r1" id="r1" value="<?php echo $arr['r1']; ?>"/>
-                    <button onclick="show_id_chat('<?php echo $lang_sel; ?>','r1',0);return false;" class="buttonPro small yellow">Get ID chat</button>
-                    <button onclick="add_new_chat();return false;" class="buttonPro small yellow">Add chat</button>
-                    <?php
-                    if ($arr['r1'] != '') {
-                        $txt_update = $url . '/app_my_girl_update.php?id=' . $arr['r1'] . '&lang=' . $lang_sel;
-                        ?>
-                        <a href="<?php echo $txt_update; ?>" class="buttonPro small blue" target="_blank">View chat</a>
-                        <?php
-                    }
-                    ?>
-                </td>
-            </tr>
-            <tr class="chat_1" <?php if (isset($arr['id_redirect'])) { if ($arr['id_redirect'] != '') {echo 'style="display:none"'; }} ?>>
-                <td>r2</td>
-                <td>
-                    <input type="text" name="r2" id="r2" value="<?php echo $arr['r2']; ?>"/>
-                    <button onclick="show_id_chat('<?php echo $lang_sel; ?>','r2',0);return false;"
-                            class="buttonPro small yellow">Get ID chat
-                    </button>
-                    <button onclick="add_new_chat();return false;" class="buttonPro small yellow">Add chat</button>
-                    <?php
-                    if ($arr['r2'] != '') {
-                        $txt_update = $url . '/app_my_girl_update.php?id=' . $arr['r2'] . '&lang=' . $lang_sel;
-                        ?>
-                        <a href="<?php echo $txt_update; ?>" class="buttonPro small blue" target="_blank">View chat</a>
-                        <?php
-                    }
-                    ?>
                 </td>
             </tr>
         <?php } ?>
@@ -664,7 +603,7 @@ $arr = mysqli_fetch_array($result_chat);
         <?php if ($arr['effect'] != '2') {?>
             <tr class="chat_1" <?php if (isset($arr['id_redirect'])) {if ($arr['id_redirect'] != '') {echo 'style="display:none"';}} ?> style="background-color: #FFBBBB;">
                 <td>Hiển thị</td>
-                <td>
+                <td colspan="2">
                     <div style="float: left; width: 23%;margin: 2px;">
                         <label><i class="fa fa-android" aria-hidden="true"></i> Android</label>
                         <select name="os_android">

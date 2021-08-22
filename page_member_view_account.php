@@ -65,8 +65,8 @@ if($list_contact_same_name){
                 <li><strong><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang($link,'date_cur'); ?> :</strong> <?php echo $data_user['date_cur']; ?></li>
                 <li><strong><i class="fa fa-venus-mars" aria-hidden="true"></i> <?php echo lang($link,'gioi_tinh'); ?> :</strong> <?php echo lang($link,"sex_".$data_user['sex']); ?></li>
                 <?php if($data_user['email']!=''){?><li><strong><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo 'Email'; ?> :</strong> <?php echo  $data_user['email']; ?></li><?php }?>
-                <li><strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID
-                        carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
+                <li>
+                    <strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
                     <?php
                     QRcode::png($url_cur_page, 'phpqrcode/img_account/'.$id_user.'_'.$lang.'.png', 'M', 4, 2);
                     ?>

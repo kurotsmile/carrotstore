@@ -259,11 +259,10 @@ iframe.fb_customer_chat_bounce_out_v2{right:0;margin-bottom:55px}
 .item_contry.active{background:linear-gradient(-120deg,#fff,#fff,#ffecc0,#7effe6,#ffcbf5)}
 .item_contry img{float:left;margin-left:6px;margin-right:6px}
 .item_contry:hover{background:linear-gradient(-120deg,#fff,#fffbd4,#ffcc6c,#ffb224,#ff941c)}
-.box_login{float:left;width:50%}
+.box_login{float:left;width:100%}
 .box_login .title{width:100%;float:left;text-align:center;font-size:13px;color:#000}
 #box_register .tip,.box_login .tip{font-size:11px;float:left;width:100%;margin-top:5px}
-.box_login #box_login_other{margin-top:20px;float:left;margin-top:55px;margin-left:20px}
-.box_login #box_login_body{float:left;padding:20px;border-left:solid 2px #a9a9a9;margin-top:20px;margin-bottom:20px}
+.box_login #box_login_body{padding:20px;margin-top:40px;margin-bottom:20px}
 #box_register label,.box_login #box_login_body label{font-size:13px;color:#000}
 .box_login #box_login_body input{height:35px;margin-top:3px;margin-bottom:10px;display:block}
 #box_register{padding-top:0;text-align:center;width:100%;float:left;margin-bottom:20px}
