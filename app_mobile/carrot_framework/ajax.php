@@ -4,7 +4,7 @@ if($function=='save_order_app'){
     $arr_id_app=json_decode($_POST['arr_id_app']);
     for($i=0;$i<count($arr_id_app);$i++){
         $id_app=$arr_id_app[$i];
-        $this->q("UPDATE `work_app` SET `order` = '$i' WHERE `id` = '$id_app';");
+        $this->q("UPDATE carrotsy_work.`work_app` SET `order` = '$i' WHERE `id` = '$id_app';");
     }
     echo 'Cập nhật thứ tự ứng dụng cms thành công!';
     exit;
