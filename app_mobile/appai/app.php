@@ -63,6 +63,7 @@ if($function=='chat'){
         }else{
             $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
             $data_chat=get_chat($link,$txt_query_pater,$lang);
+            mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang','$sex','$date_cur','$os','0',$character_sex,'3','$pater','$pater_type','$id_device','','');");
         }
     }
 
@@ -93,8 +94,8 @@ if($function=='chat'){
 
     if($data_chat==null) {
         $data_chat=get_msg($link,'bam_bay',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
-        mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang','$sex','$date_cur','$os','0',$character_sex,'3','$pater','$pater_type','$id_device','','');");
     }
+
     echo json_encode($data_chat);
 }
 

@@ -661,6 +661,13 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (611,	'Ti Apro in due',	'si non ai un cazzo di 26 cm c\'hai u n a trivella mio Principe',	3,	0,	'#CFC7FF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	14,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'715',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (612,	'di che colore ai I peli  !!?',	'le Radici dei miei peli sono castani Quasi Rossi ora meli ai fatti bianchi da quantto yogurt mi ai messo dentro le mie mutandine',	0,	0,	'#FFCCF3',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'257',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (613,	'ci vediamo?',	'dimmi dove',	3,	1,	'#B88CFF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	8,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1494',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(614,	'Canta una canzone',	'Capo Plaza - Non fare così',	1,	1,	'#AAFF2E',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'331',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'capo-plaza-non-fare-cosi-614',	'');
+(614,	'Canta una canzone',	'Capo Plaza - Non fare così',	1,	1,	'#AAFF2E',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'331',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'capo-plaza-non-fare-cosi-614',	''),
+(615,	'leccamelo',	'Siii te lo lecco tutto fino a farti svenire amore mio',	2,	0,	'#FFEC69',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'584',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(616,	'stai bene?',	'be ho un po di tosse..',	1,	0,	'#F7FF91',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1655',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(617,	'eh!?',	'si e sarai solo mia',	2,	0,	'#BDFFDF',	'',	'',	'',	'',	0,	'',	'',	0,	29,	15,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1133',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(618,	'che succede?',	'perchè avevi smesso di parlarmi !?',	2,	0,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(619,	'se molto bella oggi!',	'grazie anche tu se molto bella oggi...',	2,	0,	'#FFC69E',	'',	'',	'',	'',	0,	'',	'',	0,	10,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'546',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(620,	'come stai?',	'ciao,bentornata amica mia!',	2,	0,	'#65F04A',	'',	'',	'',	'',	0,	'',	'',	0,	6,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'159',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(621,	'Canta una canzone',	'Yolanda Be Cool & DCUP - We No Speak Americano',	1,	1,	'#A600FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1100',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'yolanda-be-cool-dcup-we-no-speak-americano-621',	'');
 
--- 2021-08-17 13:12:14
+-- 2021-09-11 19:47:08

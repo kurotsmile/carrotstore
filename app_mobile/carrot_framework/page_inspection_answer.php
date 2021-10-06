@@ -46,7 +46,7 @@
         <tr id="chat_lang_<?php echo $key_lang;?>">
             <td>
                 <a target="_blank" href="<?php echo $url_view_chat;?>"><?php echo $data_father['chat'];?></a><br/>
-                <a target="_blank" onclick="$(this).css('color','red');" href="<?php echo $url_chat_translate;?>"><i class="fa fa-arrow-right" aria-hidden="true"></i> <?php echo $key_ans;?></a>
+                <span class="buttonPro small" onclick="act_send_chat_test('<?php echo $key_ans;?>','<?php echo $key_lang;?>','<?php echo $character_sex;?>','<?php echo $sex;?>')"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> <a target="_blank" onclick="$(this).css('color','red');" href="<?php echo $url_chat_translate;?>"> <?php echo $key_ans;?></a>
             </td>
             <td>
                 <a class="buttonPro small" target="_blank" href="<?php echo $url_add_chat;?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>

@@ -158,6 +158,7 @@ if($function=='key_music_act'){
 }
 
 if($function=='unactive_music_key_check'){
+     $this->q("UPDATE carrotsy_virtuallover.`app_my_girl_log_key_music` set `key`=REPLACE(`key`,char(39),'')");
      $obj=new stdClass();
      $list_key_waring=$this->q("SELECT `key` FROM `carrotsy_virtuallover`.`app_my_girl_remove_key_music`");
      $count_k=0;
@@ -215,6 +216,14 @@ if($function=='unactive_music_key_check'){
      $q_count_m2=$this->q("SELECT * FROM carrotsy_virtuallover.`app_my_girl_log_key_music` GROUP BY `key`");
      $obj->{"count_m1"}=mysqli_num_rows($q_count_m1);
      $obj->{"count_m2"}=mysqli_num_rows($q_count_m2);
+     echo json_encode($obj);
+     exit;
+}
+
+if($function=='delete_all_music_key'){
+     $obj=new stdClass();
+     $q_del_all=$this->q("DELETE FROM `carrotsy_virtuallover`.`app_my_girl_log_key_music`");
+     $obj->msg="Xóa thành công tất cả từ khóa âm nhạc!!!";
      echo json_encode($obj);
      exit;
 }
@@ -284,7 +293,7 @@ if($function=='answer_act'){
 
      $url_chat_translate='https://translate.google.com/?sl='.$key_lang.'&tl=vi&text='.$data_father['chat']."%0A%0A".$key_ans.'&op=translate';
 
-     $html_show='<td><a target="_blank" href="'.$url_view_chat.'">'.$data_father['chat'].'</a><br/><a target="_blank" onclick="$(this).css(\'color\',\'red\');" href="'.$url_chat_translate.'"><i class="fa fa-arrow-right" aria-hidden="true"></i> '.$key_ans.'</a></td><td><a class="buttonPro small" target="_blank" href="'.$url_add_chat.'"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td>';
+     $html_show='<td> <a target="_blank" href="'.$url_view_chat.'">'.$data_father['chat'].'</a><br/><span class="buttonPro small" onclick="act_send_chat_test(\''.$key_ans.'\',\''.$key_lang.'\',\''.$character_sex.'\',\''.$sex.'\')"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> <a target="_blank" onclick="$(this).css(\'color\',\'red\');" href="'.$url_chat_translate.'"> '.$key_ans.'</a></td><td><a class="buttonPro small" target="_blank" href="'.$url_add_chat.'"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></td>';
      $obj->{"html"}=$html_show;
      echo json_encode($obj);
      exit;

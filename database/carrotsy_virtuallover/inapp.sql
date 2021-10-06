@@ -57,6 +57,9 @@ INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.kurotsmile.mygirl.mp3',	'120',	'1.0',	'mp3',	''),
 ('com.kurotsmile.mygirl.removeads',	'120',	'4.0',	'remove_ads',	''),
 ('com.carrotstore.ailover.costumes',	'130',	'4.0',	'fahsion_character',	'ailover'),
-('com.carrotstore.ailover.costumes',	'130',	'3.0',	'fahsion_character',	'ailover');
+('com.carrotstore.ailover.costumes',	'130',	'3.0',	'fahsion_character',	'ailover'),
+('com.carrotstore.tablesoccer.removeads',	'285',	'2.0',	'remove_ads',	'tablesoccer'),
+('com.carrotstore.tablesoccer.buyplayer',	'285',	'1.0',	'buyplayer_football',	'tablesoccer'),
+('com.carrotstore.tablesoccer.buyallplayer',	'285',	'4.0',	'buyallplayer_football',	'tablesoccer');
 
--- 2021-08-13 06:16:42
+-- 2021-09-11 19:58:57

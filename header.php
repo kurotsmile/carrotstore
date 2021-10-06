@@ -16,8 +16,8 @@ if(isset($_GET['view_product'])){
     }
     $data=mysqli_fetch_assoc($result);
     if(isset($data)){
-        $title_page=''.get_name_product_lang($link,$data['id'],$_SESSION['lang']);
-        $seo_desc=strip_tags (get_desc_product_lang($link,$data['id'],$_SESSION['lang']));
+        $title_page=''.get_name_product_lang($link,$data['id'],$lang);
+        $seo_desc=strip_tags (get_desc_product_lang($link,$data['id'],$lang));
         $seo_url=$url.'/product/'.$data['id'];
         $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';
     }

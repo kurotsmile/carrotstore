@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -17,6 +17,7 @@ CREATE TABLE `type` (
 TRUNCATE `type`;
 INSERT INTO `type` (`id`, `css_icon`, `id_order`, `position`) VALUES
 ('mobile_application',	'fa fa-cube',	1,	0),
+('book',	'fa fa-book',	10,	1),
 ('mobile_game',	'fa fa-gamepad',	9,	0);
 
--- 2021-06-12 15:25:46
+-- 2021-10-06 15:16:49

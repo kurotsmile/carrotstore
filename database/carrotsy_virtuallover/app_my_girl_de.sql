@@ -2258,6 +2258,9 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2401,	'sing ein Lied',	'MADELINE JUNO - SCHATTEN OHNE LICHT (ACOUSTIC VERSION)',	1,	0,	'#00FFB7',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1139',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'madeline-juno-schatten-ohne-licht-acoustic-version--2401',	''),
 (2402,	'sing ein Lied',	'Cassy ft. Jaysus - Bart wie ein Krieger (prod. Plicit Beats)',	1,	1,	'#73FFF2',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'853',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'cassy-ft-jaysus-bart-wie-ein-krieger-prod-plicit-beats--2402',	''),
 (2403,	'Gute Frage? ',	'Was denn wohl',	2,	0,	'#ACD5E0',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1545',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(2404,	'Kuss geben',	'oh ja küss mich... deine Lippen sind so weich.',	3,	0,	'#9ED8FF',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'791',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(2404,	'Kuss geben',	'oh ja küss mich... deine Lippen sind so weich.',	3,	0,	'#9ED8FF',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'791',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2405,	'sing ein Lied',	'SpongeBob - Polizeiboot',	1,	1,	'#00ECFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'862',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'spongebob-polizeiboot-2405',	''),
+(2406,	'sing ein Lied',	'Wincent Weiss - Wer wenn nicht wir',	1,	1,	'#00FFFB',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'902',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'wincent-weiss-wer-wenn-nicht-wir-2406',	''),
+(2407,	'Kleines',	'Sollst mich nicht so nennen.',	1,	0,	'#D9FF47',	'',	'',	'',	'',	0,	'',	'',	0,	0,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'890',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2021-08-17 12:51:17
+-- 2021-09-11 19:53:23

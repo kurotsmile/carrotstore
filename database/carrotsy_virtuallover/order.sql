@@ -102,6 +102,13 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('6110875e5d2686110875e5d2a5',	'25224',	'en',	'nvn.shaw@gmail.com',	'Natasha',	'music',	0),
 ('6114f7eec89386114f7eec8974',	'25224',	'en',	'yeltummorriss@yahoo.com',	'Nathalie',	'music',	0),
 ('611580e6125b7611580e6125f3',	'2396',	'de',	'plemenschits.sabine@gmx.at',	'Sabine',	'music',	0),
-('611765108f32a611765108f36f',	'9386',	'pt',	'Enzo.dunaiski@gmail.com',	'Jacqueline',	'music',	0);
+('611765108f32a611765108f36f',	'9386',	'pt',	'Enzo.dunaiski@gmail.com',	'Jacqueline',	'music',	0),
+('6121de6dddba76121de6dddbe4',	'157',	'it',	'themarco78208@gmail.com',	'MARCO',	'music',	0),
+('612699debd987612699debd9c4',	'63086',	'es',	'felicianojose999@gmail.com',	'Jose',	'music',	0),
+('613a85efec7e9613a85efec82e',	'25224',	'en',	'rosawinchester@hotmail.com',	'Rosa',	'music',	0),
+('6143ad89230c06143ad89230fd',	'33',	'it',	'cristinutza1809@yahoo.com',	'Cristina- Iuliana',	'music',	0),
+('615270cd60153615270cd60194',	'655',	'ko',	'keyway111@gmail.com',	'Christopher',	'music',	0),
+('61584b879cf1a61584b879cf56',	'49574',	'es',	'fabiogiannuzzi.arq@gmail.com',	'Fabio Hernan',	'music',	0),
+('61584cb490d7561584cb490db1',	'11352',	'pt',	'fabiogiannuzzi.arq@gmail.com',	'Fabio Hernan',	'music',	0);
 
--- 2021-08-17 18:12:43
+-- 2021-10-05 04:56:33

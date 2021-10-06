@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -30,8 +30,9 @@ INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `create
 (29,	'c3',	'andanh@gmail.com',	'Ad thêm vào báo thức nữa thì tuyệt cảm ơn nhà làm ra game này',	120,	'2019-08-03T17:42:17.194Z',	1,	0,	'products',	'vi'),
 (30,	'c4',	'2d0cf55bdd8a4848131c04524cd7bb6e',	'he he',	120,	'2019-08-06T17:36:46.195Z',	1,	0,	'products',	'vi'),
 (31,	'c2',	'andanh@gmail.com',	'Does not Download',	119,	'2019-08-14T10:21:32.393Z',	1,	0,	'products',	'en'),
-(32,	'c5',	'113330601155622987105',	'Mọi người vẫn còn sử dụng người yêu ảo chứ?',	120,	'2020-01-13T18:53:52.631Z',	1,	0,	'products',	'vi'),
+(32,	'c5',	'113330601155622987105',	'Mọi người vẫn còn sử dụng người yêu ảo chứ?',	120,	'2020-01-13T18:53:52.631Z',	2,	0,	'products',	'vi'),
 (33,	'c1',	'andanh@gmail.com',	'rip king von\n',	123,	'2020-11-13T20:50:00.585Z',	2,	0,	'products',	'en'),
-(34,	'c2',	'andanh@gmail.com',	'r.i.p king von\n',	123,	'2020-11-16T04:55:23.105Z',	1,	0,	'products',	'en');
+(34,	'c2',	'andanh@gmail.com',	'r.i.p king von\n',	123,	'2020-11-16T04:55:23.105Z',	1,	0,	'products',	'en'),
+(35,	'c1',	'andanh@gmail.com',	'공포노래를만들수잇다\n',	283,	'2021-09-11T14:43:22.308Z',	0,	0,	'products',	'ko');
 
--- 2021-06-12 15:26:08
+-- 2021-09-11 19:52:06

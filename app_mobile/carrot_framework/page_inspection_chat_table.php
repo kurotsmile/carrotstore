@@ -18,12 +18,12 @@ while($chat=mysqli_fetch_assoc($list_chat)){
     $s_table.='<td style="width:275px;word-break: break-all;">';
     if($c_id_question!=''){
         $url_chat_add.="&type_question=$c_type_question&id_question=$c_id_question";
-        $s_table.='<i class="fa fa-question-circle" aria-hidden="true"></i>';
+        $s_table.='<span class="buttonPro small" onclick="act_send_chat_test(\''.$chat['question'].'\',\''.$c_langs.'\',\''.$c_character_sex.'\',\''.$c_sex.'\')"><i class="fa fa-question-circle" aria-hidden="true"></i></span>';
     }else{
-        $s_table.='<i class="fa fa-question" aria-hidden="true"></i>';
+        $s_table.='<span class="buttonPro small" onclick="act_send_chat_test(\''.$chat['question'].'\',\''.$c_langs.'\',\''.$c_character_sex.'\',\''.$c_sex.'\')"><i class="fa fa-question" aria-hidden="true"></i></span>';
     }
     $s_table.=' <a onclick="$(this).css(\'color\', \'red\');" target="_blank" href="'.$url_chat_translate.'">'.$chat['question'].'</a><br/>';
-    $s_table.=' <a onclick="$(this).css(\'color\', \'red\');" target="_blank" href="'.$url_chat_translate.'"><i class="fa fa-arrow-right" aria-hidden="true"></i> '.$chat['answer'].'</a>';
+    $s_table.='<a class="buttonPro small black" onclick="$(this).removeClass(\'black\').addClass(\'yellow\');" target="_blank" href="'.$url_chat_translate.'" ><i class="fa fa-arrow-right" aria-hidden="true"></i></a> <a onclick="$(this).css(\'color\', \'red\');" target="_blank" href="'.$url_chat_translate.'">'.$chat['answer'].'</a>';
     $s_table.='</td>';
     $s_table.='<td>';
     $s_table.='<a onclick="$(this).addClass(\'blue\');" target="_blank" href="'.$url_chat_add.'" class="buttonPro small"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>';

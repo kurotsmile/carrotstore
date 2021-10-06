@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -25,19 +25,6 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (201,	'Mutant Year Zero: Road to Eden'),
 (203,	'Tales Of Berseria CPY'),
 (210,	'SAMURAI SHODOWN'),
-(104,	'Contact store'),
-(105,	'Love or No love'),
-(119,	'virtual lover 3D'),
-(121,	' Virtual lover 2 (Onichan)'),
-(122,	'Counting sheep - go to bed'),
-(123,	'Music for life'),
-(127,	'Jigsaw wall'),
-(128,	'Bible world'),
-(130,	'AI Lover'),
-(131,	'Cute virtual assistant'),
-(133,	'Quick eye'),
-(134,	'Run With Me'),
-(135,	'Save Web offline'),
 (208,	'DiRT Rally'),
 (150,	'Shift 2: Unleashed'),
 (149,	'Unruly Heroes'),
@@ -46,9 +33,6 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (145,	'Super Street Fighter IV'),
 (143,	'Sky Force Reloaded'),
 (142,	'Sonic and All Stars Racing Transformed'),
-(139,	'Worm Master'),
-(138,	'Number Magic'),
-(136,	'Create Password'),
 (165,	'Another Sight - Hodge\'s Journey'),
 (164,	'Alien Shooter TD'),
 (163,	'ABZÛ'),
@@ -176,10 +160,29 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (280,	'Verlet Swing'),
 (281,	'YIIK: A Postmodern RPG'),
 (228,	'Neverending Nightmares'),
-(120,	'Virtual lover'),
+(119,	'virtual lover 3D'),
+(135,	'Save Web offline'),
+(104,	'Contact store'),
+(128,	'Bible world'),
 (282,	'My virtual lover'),
+(121,	' Virtual lover 2 (Onichan)'),
+(122,	'Counting sheep - go to bed'),
 (132,	'My Lover'),
+(130,	'AI Lover'),
+(138,	'Number Magic'),
+(133,	'Quick eye'),
+(127,	'Jigsaw wall'),
+(284,	'Fish of prey'),
+(139,	'Worm Master'),
+(105,	'Love or No love'),
+(134,	'Run With Me'),
+(123,	'Music for life'),
+(120,	'Virtual lover'),
 (283,	'Midi Piano Editor'),
-(284,	'Fish of prey');
+(136,	'Create Password'),
+(131,	'Cute virtual assistant'),
+(285,	'Table Soccer'),
+(287,	'Church Warriors'),
+(286,	'Loneliness to grow up');
 
--- 2021-03-15 19:29:32
+-- 2021-10-05 04:58:17

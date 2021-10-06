@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -260,6 +260,36 @@ INSERT INTO `app_my_girl_video_fr` (`id_chat`, `link`) VALUES
 ('2982',	'https://www.youtube.com/watch?v=yiZeq3o-drA'),
 ('2983',	'https://www.youtube.com/watch?v=8AF-Sm8d8yk'),
 ('3009',	'https://www.youtube.com/watch?v=OqcdefWqykY'),
-('3010',	'https://www.youtube.com/watch?v=IcjFBDY4rWM');
+('3010',	'https://www.youtube.com/watch?v=IcjFBDY4rWM'),
+('3039',	'https://www.youtube.com/watch?v=pjJ2w1FX_Wg'),
+('3040',	'https://www.youtube.com/watch?v=0bmE9XY3sOc'),
+('3041',	'https://www.youtube.com/watch?v=Scjj9VZyhXU'),
+('3042',	'https://www.youtube.com/watch?v=A3V_jItGloo'),
+('3046',	'https://www.youtube.com/watch?v=QpbHdIrtpNo'),
+('3047',	'https://www.youtube.com/watch?v=21p19h5ZsiU'),
+('3052',	'https://www.youtube.com/watch?v=GIJ3bL5AtQw'),
+('3053',	'https://www.youtube.com/watch?v=wKrsyneDObs'),
+('3054',	'https://www.youtube.com/watch?v=xBaHNqidIU4'),
+('3056',	'https://www.youtube.com/watch?v=PvaKy1csfgE'),
+('3057',	'https://www.youtube.com/watch?v=qSEZUL85jvk'),
+('3058',	'https://www.youtube.com/watch?v=p_ZxDNZjzVk'),
+('3059',	'https://www.youtube.com/watch?v=O1upgsqm-Sc'),
+('3060',	'https://www.youtube.com/watch?v=KvtpxqbVKnA'),
+('3061',	'https://www.youtube.com/watch?v=u88wGwYXqRE'),
+('3062',	'https://www.youtube.com/watch?v=KGM_2z4GW-8'),
+('3063',	'https://www.youtube.com/watch?v=7OdDTZZoMC0'),
+('3064',	'https://www.youtube.com/watch?v=Yh1PYh9UYpM'),
+('3065',	'https://www.youtube.com/watch?v=3r9vJI5OiV8'),
+('3066',	'https://www.youtube.com/watch?v=larur6HCSko'),
+('3067',	'https://www.youtube.com/watch?v=bpEmjxobvbY'),
+('3068',	'https://www.youtube.com/watch?v=NiDkzQgrQIw'),
+('3069',	'https://www.youtube.com/watch?v=n3UBSa7-H0U'),
+('3070',	'https://www.youtube.com/watch?v=PrpDVBnZEwg'),
+('3072',	'https://www.youtube.com/watch?v=zuHMBze2B84'),
+('3073',	'https://www.youtube.com/watch?v=-CVn3-3g_BI'),
+('3074',	'https://www.youtube.com/watch?v=7pKOYuE0-tc'),
+('3076',	'https://www.youtube.com/watch?v=3zsPWw2H9PE'),
+('3077',	'https://www.youtube.com/watch?v=8cPB2XL_CpU'),
+('3078',	'https://www.youtube.com/watch?v=9ASkKTTTOXc');
 
--- 2021-06-12 15:59:59
+-- 2021-09-11 21:00:32

@@ -29,6 +29,8 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
                 </div>
                 <div class="app_action">
                 <?php
+                        if($row['type']=='book') echo '<a class="store_link buttonPro small green" href="'.$url.'/ebook/'.$row['id'].'" target="_blank" rel="noopener"><i class="fa fa-book" aria-hidden="true"></i></a>';
+
                         $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."'");
                         while($link_store=mysqli_fetch_assoc($query_link_store)){
                             $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
@@ -42,6 +44,8 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
                 </div>
 <div class="menu_more">
 <?php
+if($row['type']=='book') echo '<a class="buttonPro orange small" href="'.$url.'/ebook/'.$row['id'].'" target="_blank" rel="noopener"><i class="fa fa-book" aria-hidden="true"></i> Ebook</a>';
+
 $query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
 while($row_l=mysqli_fetch_assoc($query_link_list)){?><a class="buttonPro orange small" href="<?php echo $row_l['link'];?>" target="_blank" rel="noopener"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i> <?php echo $label_download_on.' ('.$row_l['name'].')';?></a><?php }?>
 <?php if(file_exists('product_data/'.$row['id'].'/ios/manifest.plist')){ ?>

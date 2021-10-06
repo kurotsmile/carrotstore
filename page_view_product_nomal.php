@@ -84,6 +84,8 @@ $data_type=mysqli_fetch_array($query_type);
             ?>
             <ul id="menu_download">
 			<?php
+            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook.php?id='.$data['id'].'" target="_blank" rel="noopener"><img title="Đọc" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
+
 			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
 			while($link_store=mysqli_fetch_assoc($query_link_store)){
                 $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
