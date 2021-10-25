@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('gioi_thieu',	'Introduzir'),
 ('tai_khoan',	'Conta'),
 ('chi_tiet',	'Veja detalhes'),
-('mobile_application',	'Aplicação móvel'),
 ('dia_chi',	'Endereço'),
 ('ds_thanh_vien',	'Lista de usuários'),
 ('goi_dien',	'Chamar'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_pt` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Todos os dados em todo o mundo'),
 ('search_setting_data_1',	'Encontre dados apenas em seu país ou região'),
 ('search_return',	'Procurar Resultados'),
-('recognition_inp',	'Fale agora');
+('recognition_inp',	'Fale agora'),
+('contact_open_app',	'Abra este contato no aplicativo'),
+('link_open_app',	'Abra no aplicativo'),
+('back_app',	'Voltar para o aplicativo'),
+('link_open_app_tip',	'Clique aqui para abrir ou transferir rapidamente esses dados para um aplicativo móvel, software (se instalado com o aplicativo correspondente com dados)'),
+('qr_tip',	'Use seu telefone para procurar este link!'),
+('music_report',	'Reportar bugs e direitos autorais'),
+('music_report_1',	'Música com defeito (impossível de tocar)'),
+('music_report_2',	'A música infringe direitos autorais, remova este conteúdo!'),
+('music_report_3',	'Outro problema com esta música'),
+('music_report_3_tip',	'Descreva em detalhes para nós as deficiências desta música'),
+('music_report_success',	'Obrigado por relatar o problema desta música, vamos tentar corrigir o problema o mais rápido possível'),
+('book',	'eBooks'),
+('seo_ebook',	'A biblioteca de livros online permite que os usuários baixem livros grátis, baixem bons livros, baixem livros grátis, baixem bons livros, leiam livros online. Temos uma grande variedade de livros de vários gêneros em formatos populares de e-books para telefones e computadores. Os leitores podem assisti-lo online ou baixá-lo em seus computadores para facilitar o monitoramento'),
+('read_now',	'Leia agora'),
+('mobile_application',	'Aplicativa');
 
--- 2021-06-12 15:47:09
+-- 2021-10-18 20:39:44

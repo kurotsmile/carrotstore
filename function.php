@@ -24,14 +24,8 @@ if(!class_exists('Address')){
 }
 
 function lang($link,$key,$lang_sel=null){
-    if($lang_sel==null) {
-        $lang = 'vi';
-        if (isset($_SESSION['lang'])) {
-            $lang = $_SESSION['lang'];
-        }
-    }else{
-        $lang=$lang_sel;
-    }
+    global $lang;
+    if($lang_sel!=null) $lang=$lang_sel;
     $return=mysqli_query($link,"SELECT `value` FROM `lang_$lang` WHERE `key` = '$key' LIMIT 1");
     if($return){
         $data=mysqli_fetch_assoc($return);
@@ -410,7 +404,7 @@ function is_mobile(){
         return false;
 }
 
-function scroll_load_data($type_obj,$length_obj){
+function scroll_load_data($type_obj,$length_obj,$sub_type=null){
     global $url;
     $txt_script='<script>';
         $txt_script.='var scroll_load_data=true;';
@@ -424,7 +418,7 @@ function scroll_load_data($type_obj,$length_obj){
                     $txt_script.='$.ajax({';
                         $txt_script.='url:"'.$url.'/index.php",';
                         $txt_script.='type:"post",';
-                        $txt_script.='data:"function=scroll_load_data&type_obj='.$type_obj.'&data_json="+s_data_json+"&length_obj="+count_p,';
+                        $txt_script.='data:"function=scroll_load_data&type_obj='.$type_obj.'&data_json="+s_data_json+"&sub_type='.$sub_type.'&length_obj="+count_p,';
                         $txt_script.='success:function(data,textStatus,jqXHR){';
                             $txt_script.='s_data_json=JSON.stringify(arr_id_obj);';
                             $txt_script.='$("#containt").append(data);';

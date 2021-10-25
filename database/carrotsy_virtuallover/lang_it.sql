@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -21,7 +21,6 @@ INSERT INTO `lang_it` (`key`, `value`) VALUES
 ('gioi_thieu',	'Introdurre'),
 ('tai_khoan',	'conto'),
 ('chi_tiet',	'Vedi i dettagli'),
-('mobile_application',	'Applicazione mobile'),
 ('dia_chi',	'indirizzo'),
 ('ds_thanh_vien',	'Lista degli utenti'),
 ('goi_dien',	'Telefono'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_it` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Tutti i dati in tutto il mondo'),
 ('search_setting_data_1',	'Trova i dati solo nel tuo paese o area geografica'),
 ('search_return',	'risultati di ricerca'),
-('recognition_inp',	'Parla adesso');
+('recognition_inp',	'Parla adesso'),
+('contact_open_app',	'Apri questo contatto nell\'app'),
+('link_open_app',	'Apri nell\'app'),
+('back_app',	'Torna all\'app'),
+('link_open_app_tip',	'Fare clic qui per aprire o trasferire rapidamente questi dati all\'applicazione mobile, software (se installato con l\'applicazione corrispondente con dati)'),
+('qr_tip',	'Usa il tuo telefono per cercare questo link!'),
+('music_report',	'Segnala bug e copyright'),
+('music_report_1',	'Canzone difettosa (non riproducibile)'),
+('music_report_2',	'La canzone viola il copyright per favore rimuovi questo contenuto!'),
+('music_report_3',	'Un altro problema con questa canzone'),
+('music_report_3_tip',	'Per favore descrivici in dettaglio le carenze di questa canzone'),
+('music_report_success',	'Grazie per aver segnalato il problema di questa canzone, cercheremo di risolvere il problema il prima possibile'),
+('book',	'eBook'),
+('seo_ebook',	'La libreria di libri online consente agli utenti di scaricare libri gratuiti, scaricare buoni libri, scaricare libri gratuiti, scaricare buoni libri, leggere libri online. Abbiamo una vasta gamma di libri di vario genere nei formati di ebook più diffusi per telefoni e computer. I lettori possono guardarlo online o scaricarlo sul proprio computer per un facile monitoraggio'),
+('read_now',	'Leggi ora'),
+('mobile_application',	'Applicazione');
 
--- 2021-06-12 16:42:54
+-- 2021-10-18 20:59:22

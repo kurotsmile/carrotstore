@@ -109,6 +109,8 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('6143ad89230c06143ad89230fd',	'33',	'it',	'cristinutza1809@yahoo.com',	'Cristina- Iuliana',	'music',	0),
 ('615270cd60153615270cd60194',	'655',	'ko',	'keyway111@gmail.com',	'Christopher',	'music',	0),
 ('61584b879cf1a61584b879cf56',	'49574',	'es',	'fabiogiannuzzi.arq@gmail.com',	'Fabio Hernan',	'music',	0),
-('61584cb490d7561584cb490db1',	'11352',	'pt',	'fabiogiannuzzi.arq@gmail.com',	'Fabio Hernan',	'music',	0);
+('61584cb490d7561584cb490db1',	'11352',	'pt',	'fabiogiannuzzi.arq@gmail.com',	'Fabio Hernan',	'music',	0),
+('61682b718232761682b7182363',	'912',	'ja',	'sian3083@icloud.com',	'仁美',	'music',	0),
+('6169ece7c67e06169ece7c6820',	'24483',	'en',	'salahzangna@hotmail.com',	'Salah',	'music',	0);
 
--- 2021-10-05 04:56:33
+-- 2021-10-18 20:16:00

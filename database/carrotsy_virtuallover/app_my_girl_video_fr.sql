@@ -290,6 +290,20 @@ INSERT INTO `app_my_girl_video_fr` (`id_chat`, `link`) VALUES
 ('3074',	'https://www.youtube.com/watch?v=7pKOYuE0-tc'),
 ('3076',	'https://www.youtube.com/watch?v=3zsPWw2H9PE'),
 ('3077',	'https://www.youtube.com/watch?v=8cPB2XL_CpU'),
-('3078',	'https://www.youtube.com/watch?v=9ASkKTTTOXc');
+('3078',	'https://www.youtube.com/watch?v=9ASkKTTTOXc'),
+('3081',	'https://www.youtube.com/watch?v=QQRoavS_KAk'),
+('3082',	'https://www.youtube.com/watch?v=mHKkztGXqRg'),
+('3083',	'https://www.youtube.com/watch?v=Xyy4rQ8RVAE'),
+('3084',	'https://www.youtube.com/watch?v=nQYvw9KI0XQ'),
+('3085',	'https://www.youtube.com/watch?v=YDrQMHYLtN0'),
+('3088',	'https://www.youtube.com/watch?v=bh-9MJqSFa4'),
+('3091',	'https://www.youtube.com/watch?v=j8jFU2jKWU4'),
+('3093',	'https://www.youtube.com/watch?v=ReK5Z0RCbSY'),
+('3095',	'https://www.youtube.com/watch?v=Q4_CemiCbTg'),
+('3096',	'https://www.youtube.com/watch?v=UX5Mc2yPSUo'),
+('3097',	'https://www.youtube.com/watch?v=rs40yxHjTxQ'),
+('3098',	'https://www.youtube.com/watch?v=SASWnVYToKE'),
+('3100',	'https://www.youtube.com/watch?v=Aq1PsFGssOg'),
+('3101',	'https://www.youtube.com/watch?v=hY4LO6b2RMA');
 
--- 2021-09-11 21:00:32
+-- 2021-10-18 20:45:16

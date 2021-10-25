@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -21,7 +21,6 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('gioi_thieu',	'Memperkenalkan'),
 ('tai_khoan',	'Akun'),
 ('chi_tiet',	'Lihat detail'),
-('mobile_application',	'Aplikasi seluler'),
 ('dia_chi',	'Alamat'),
 ('ds_thanh_vien',	'Daftar pengguna'),
 ('goi_dien',	'Panggil'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Semua data di seluruh dunia'),
 ('search_setting_data_1',	'Temukan data hanya di negara atau wilayah Anda'),
 ('search_return',	'Hasil Pencarian'),
-('recognition_inp',	'Bicara sekarang');
+('recognition_inp',	'Bicara sekarang'),
+('contact_open_app',	'Buka kontak ini di aplikasi'),
+('link_open_app',	'Buka di aplikasi'),
+('back_app',	'Kembali ke aplikasi'),
+('link_open_app_tip',	'Klik di sini untuk membuka atau mentransfer data ini dengan cepat ke aplikasi seluler, perangkat lunak (jika diinstal dengan aplikasi yang sesuai dengan data)'),
+('qr_tip',	'Gunakan ponsel Anda untuk memindai tautan ini!'),
+('music_report',	'Laporkan bug dan hak cipta'),
+('music_report_1',	'Lagu yang salah (tidak dapat diputar)'),
+('music_report_2',	'Lagu melanggar hak cipta, harap hapus konten ini!'),
+('music_report_3',	'Masalah lain dengan lagu ini'),
+('music_report_3_tip',	'Tolong jelaskan secara detail kepada kami kekurangan dari lagu ini'),
+('music_report_success',	'Terima kasih telah melaporkan masalah lagu ini, kami akan berusaha memperbaikinya sesegera mungkin'),
+('book',	'eBuku'),
+('seo_ebook',	'Perpustakaan buku online memungkinkan pengguna untuk mengunduh buku gratis, mengunduh buku bagus, mengunduh buku gratis, mengunduh buku bagus, membaca buku online. Kami memiliki berbagai macam buku dari berbagai genre dalam format Ebook populer untuk ponsel dan komputer. Pembaca dapat menontonnya secara online atau mengunduhnya ke komputer mereka untuk pemantauan yang mudah'),
+('read_now',	'Baca sekarang'),
+('mobile_application',	'Aplikasi');
 
--- 2021-06-12 16:43:29
+-- 2021-10-18 20:47:35

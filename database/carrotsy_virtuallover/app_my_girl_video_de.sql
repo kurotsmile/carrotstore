@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -189,6 +189,21 @@ INSERT INTO `app_my_girl_video_de` (`id_chat`, `link`) VALUES
 ('2286',	'https://www.youtube.com/watch?v=Np-3nZe12vw'),
 ('2299',	'https://www.youtube.com/watch?v=Z6nrq-4OVJE'),
 ('2350',	'https://www.youtube.com/watch?v=ODkERmUh0hQ'),
-('2351',	'https://www.youtube.com/watch?v=mFw8bA4umdM');
+('2351',	'https://www.youtube.com/watch?v=mFw8bA4umdM'),
+('2393',	'https://www.youtube.com/watch?v=-4nB-9dmHoc'),
+('2394',	'https://www.youtube.com/watch?v=RGRUzz_ieiE'),
+('2395',	'https://www.youtube.com/watch?v=fMlo3nxVEUM'),
+('2396',	'https://www.youtube.com/watch?v=SHwDkpewYpo'),
+('2398',	'https://www.youtube.com/watch?v=ZYd3EQtIE0c'),
+('2399',	'https://www.youtube.com/watch?v=2-DltGEXVjk'),
+('2400',	'https://www.youtube.com/watch?v=fDSOhYhORiw'),
+('2401',	'https://www.youtube.com/watch?v=9sIeyUVpnks'),
+('2402',	'https://www.youtube.com/watch?v=qcWyTMr8XMc'),
+('2405',	'https://www.youtube.com/watch?v=ZFEwlem_r2w'),
+('2406',	'https://www.youtube.com/watch?v=VbM7rnfmxic'),
+('2409',	'https://www.youtube.com/watch?v=6tcBgBRziXQ'),
+('2410',	'https://www.youtube.com/watch?v=VHOKc8ExG9A'),
+('2412',	'https://www.youtube.com/watch?v=9CEBWZc9hC0'),
+('2414',	'https://www.youtube.com/watch?v=Xhw5mJklry0');
 
--- 2021-06-12 16:15:23
+-- 2021-10-18 21:20:03

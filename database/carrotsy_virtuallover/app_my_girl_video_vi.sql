@@ -5374,6 +5374,11 @@ INSERT INTO `app_my_girl_video_vi` (`id_chat`, `link`) VALUES
 ('77447',	'https://www.youtube.com/watch?v=bbparYMZ1tg'),
 ('77450',	'https://www.youtube.com/watch?v=M59VEx31D20'),
 ('77451',	'https://www.youtube.com/watch?v=QbEmY0iyTI8'),
-('77519',	'https://www.youtube.com/watch?v=x0UbU9fcfBE');
+('77519',	'https://www.youtube.com/watch?v=x0UbU9fcfBE'),
+('77625',	'https://www.youtube.com/watch?v=cNMegMxju3w'),
+('77653',	'https://www.youtube.com/watch?v=vPDY4zw9oMQ'),
+('77664',	'https://www.youtube.com/watch?v=J9ChQu2zYEY'),
+('77693',	'https://www.youtube.com/watch?v=dAvHP3p_pNE'),
+('77701',	'https://www.youtube.com/watch?v=DsDEGuFwzq0');
 
--- 2021-09-11 19:53:00
+-- 2021-10-18 20:47:56

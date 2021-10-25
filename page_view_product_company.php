@@ -27,6 +27,7 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
         $label_download_on=lang($link,'download_on');
         $label_loai=lang($link,'loai');
         $label_chi_tiet=lang($link,'chi_tiet');
+        $label_read_now=lang($link,'read_now');
         ?>
         <div style="float: left;padding: 10px;">
             <?php

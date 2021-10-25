@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -21,7 +21,6 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('gioi_thieu',	'Indføre'),
 ('tai_khoan',	'konto'),
 ('chi_tiet',	'Se detaljer'),
-('mobile_application',	'Mobil applikation'),
 ('dia_chi',	'adresse'),
 ('ds_thanh_vien',	'Brugerliste'),
 ('goi_dien',	'Telefon'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Alle data over hele verden'),
 ('search_setting_data_1',	'Find kun data i dit land eller din region'),
 ('search_return',	'Søgeresultater'),
-('recognition_inp',	'Tal nu');
+('recognition_inp',	'Tal nu'),
+('contact_open_app',	'Åbn denne kontakt i appen'),
+('link_open_app',	'Åbn i appen'),
+('back_app',	'Tilbage til appen'),
+('link_open_app_tip',	'Klik her for hurtigt at åbne eller overføre disse data til mobilapplikation, software (hvis installeret med tilsvarende applikation med data)'),
+('qr_tip',	'Brug din telefon til at scanne efter dette link!'),
+('music_report',	'Rapporter fejl og ophavsrettigheder'),
+('music_report_1',	'Defekt sang (kan ikke afspilles)'),
+('music_report_2',	'Sangen krænker ophavsretten, fjern venligst dette indhold!'),
+('music_report_3',	'Endnu et problem med denne sang'),
+('music_report_3_tip',	'Beskriv venligst detaljeret for os manglerne ved denne sang'),
+('music_report_success',	'Vielen Dank, dass Sie das Problem mit diesem Song gemeldet haben. Wir werden versuchen, das Problem so schnell wie möglich zu beheben'),
+('book',	'e -bøger'),
+('seo_ebook',	'Online bogbibliotek giver brugerne mulighed for at downloade gratis bøger, downloade gode bøger, downloade gratis bøger, downloade gode bøger, læse bøger online. Vi har en bred vifte af bøger af forskellige genrer i populære e -bogformater til telefoner og computere. Læsere kan se det online eller downloade det til deres computer for let overvågning'),
+('read_now',	'Læs nu'),
+('mobile_application',	'Ansøgning');
 
--- 2021-06-12 16:52:00
+-- 2021-10-18 20:51:19

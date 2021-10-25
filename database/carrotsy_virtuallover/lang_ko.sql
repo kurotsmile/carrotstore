@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('gioi_thieu',	'끼워 넣다'),
 ('tai_khoan',	'계정'),
 ('chi_tiet',	'자세히보다'),
-('mobile_application',	'모바일 애플리케이션'),
 ('dia_chi',	'주소'),
 ('ds_thanh_vien',	'사용자 목록'),
 ('goi_dien',	'전화'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('search_setting_data_0',	'전 세계의 모든 데이터'),
 ('search_setting_data_1',	'해당 국가 또는 지역에서만 데이터 찾기'),
 ('search_return',	'검색 결과'),
-('recognition_inp',	'지금 말하세요');
+('recognition_inp',	'지금 말하세요'),
+('contact_open_app',	'앱에서이 연락처 열기'),
+('link_open_app',	'앱에서 열기'),
+('back_app',	'앱으로 돌아가기'),
+('link_open_app_tip',	'이 데이터를 빠르게 열거나 모바일 애플리케이션, 소프트웨어로 전송하려면 여기를 클릭하십시오(데이터가 있는 해당 애플리케이션과 함께 설치된 경우).'),
+('qr_tip',	'휴대전화를 사용하여 이 링크를 스캔하세요!'),
+('music_report',	'버그 및 저작권 신고'),
+('music_report_1',	'잘못된 노래(재생할 수 없음)'),
+('music_report_2',	'노래가 저작권을 침해합니다 이 콘텐츠를 제거하십시오!'),
+('music_report_3',	'이 노래의 또 다른 문제점'),
+('music_report_3_tip',	'이 노래의 단점을 자세히 설명해주세요'),
+('music_report_success',	'이 노래의 문제를 신고해 주셔서 감사합니다. 최대한 빨리 문제를 해결하도록 노력하겠습니다.'),
+('book',	'전자책'),
+('seo_ebook',	'온라인 도서 라이브러리를 통해 사용자는 무료 책 다운로드, 좋은 책 다운로드, 무료 책 다운로드, 좋은 책 다운로드, 온라인 책 읽기를 할 수 있습니다. 휴대폰과 컴퓨터에서 널리 사용되는 전자책 형식의 다양한 장르의 다양한 책을 보유하고 있습니다. 독자는 온라인으로 시청하거나 쉽게 모니터링할 수 있도록 컴퓨터에 다운로드할 수 있습니다.'),
+('read_now',	'지금 읽어라'),
+('mobile_application',	'애플리케이션');
 
--- 2021-06-12 16:19:43
+-- 2021-10-18 20:44:54

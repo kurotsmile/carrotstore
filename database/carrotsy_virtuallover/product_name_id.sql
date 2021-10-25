@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,26 +15,27 @@ TRUNCATE `product_name_id`;
 INSERT INTO `product_name_id` (`id_product`, `data`) VALUES
 (95,	'Death Note - Ryuk dan Rem'),
 (95,	'Death Note - Ryuk dan Rem'),
-(138,	'Angka Sihir'),
-(282,	'Kekasih virtual saya'),
-(127,	'Dinding gergaji ukir'),
-(130,	'AI Kekasih'),
-(132,	'Kekasihku'),
-(123,	'Musik seumur hidup'),
-(104,	'Cari kontak'),
-(120,	'Kekasih virtual'),
 (119,	'pencinta virtual 3D'),
-(134,	'Lari denganku'),
-(122,	'Menghitung domba - tidur'),
-(133,	'Mata cepat'),
-(131,	'Asisten virtual yang lucu'),
-(139,	'Master Cacing'),
 (135,	'Simpan Web offline'),
-(136,	'Buat Kata Sandi'),
+(104,	'Cari kontak'),
 (128,	'Dunia Alkitab'),
-(283,	'Editor Piano Midi'),
-(284,	'Ikan pemangsa'),
+(282,	'Kekasih virtual saya'),
 (121,	'Kekasih virtual 2'),
-(105,	'Cinta atau Tidak');
+(122,	'Menghitung domba - tidur'),
+(132,	'Kekasihku'),
+(138,	'Angka Sihir'),
+(133,	'Mata cepat'),
+(127,	'Dinding gergaji ukir'),
+(284,	'Ikan pemangsa'),
+(139,	'Master Cacing'),
+(105,	'Cinta atau Tidak'),
+(134,	'Lari denganku'),
+(120,	'Kekasih virtual'),
+(283,	'Editor Piano Midi'),
+(136,	'Buat Kata Sandi'),
+(131,	'Asisten virtual yang lucu'),
+(285,	'Meja sepak bola'),
+(123,	'Musik seumur hidup'),
+(130,	'AI Kekasih');
 
--- 2021-06-12 17:36:00
+-- 2021-10-18 22:06:28

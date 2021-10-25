@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -21,7 +21,6 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('gioi_thieu',	'Takdim etmek'),
 ('tai_khoan',	'hesap'),
 ('chi_tiet',	'Ayrıntılara bakınız'),
-('mobile_application',	'Mobil uygulama'),
 ('dia_chi',	'adres'),
 ('ds_thanh_vien',	'Kullanıcı listesi'),
 ('goi_dien',	'Telefon'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Dünya çapındaki tüm veriler'),
 ('search_setting_data_1',	'Yalnızca ülkenizdeki veya bölgenizdeki verileri bulun'),
 ('search_return',	'Arama Sonuçları'),
-('recognition_inp',	'Şimdi konuşun');
+('recognition_inp',	'Şimdi konuşun'),
+('contact_open_app',	'Bu kişiyi uygulamada aç'),
+('link_open_app',	'Uygulamada aç'),
+('back_app',	'Uygulamaya geri dön'),
+('link_open_app_tip',	'Bu verileri hızlı bir şekilde açmak veya mobil uygulamaya, yazılıma aktarmak için burayı tıklayın (veri ile ilgili uygulama ile birlikte yüklenmişse)'),
+('qr_tip',	'Bu bağlantıyı taramak için telefonunuzu kullanın!'),
+('music_report',	'Hataları ve telif haklarını bildirin'),
+('music_report_1',	'Hatalı şarkı (çalınamaz)'),
+('music_report_2',	'Şarkı telif hakkını ihlal ediyor lütfen bu içeriği kaldırın!'),
+('music_report_3',	'Bu şarkıyla ilgili başka bir sorun'),
+('music_report_3_tip',	'Lütfen bize bu şarkının eksikliklerini ayrıntılı olarak açıklayın'),
+('music_report_success',	'Bu şarkının sorununu bildirdiğiniz için teşekkür ederiz, sorunu en kısa sürede düzeltmeye çalışacağız.'),
+('book',	'e-Kitaplar'),
+('seo_ebook',	'Çevrimiçi kitap kütüphanesi, kullanıcıların ücretsiz kitaplar indirmesine, iyi kitaplar indirmesine, ücretsiz kitaplar indirmesine, iyi kitaplar indirmesine, çevrimiçi kitap okumasına olanak tanır. Telefonlar ve bilgisayarlar için popüler Ebook formatlarında çeşitli türlerde çok çeşitli kitaplarımız var. Okuyucular, çevrimiçi olarak izleyebilir veya kolay izleme için bilgisayarlarına indirebilir'),
+('read_now',	'Şimdi Oku'),
+('mobile_application',	'Başvuru');
 
--- 2021-06-12 16:35:13
+-- 2021-10-18 20:44:14

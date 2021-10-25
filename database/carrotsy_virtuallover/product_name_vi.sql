@@ -38,7 +38,11 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (136,	'Tạo mật khẩu'),
 (131,	'Trợ lý ảo dễ thương'),
 (285,	'Đá Ra Tông (Bi lắc)'),
+(288,	'Làm Ít Được Nhiều'),
 (287,	'Chiến Binh Đền Thờ'),
-(286,	'Cô đơn để trưởng thành');
+(289,	'Bố là bà giúp việc'),
+(290,	'Đánh Thức Con Người Phi Thường Trong Bạn'),
+(291,	'Lối Sống Tối Giản Của Người Nhật'),
+(292,	'Trở Về Từ Địa Ngục');
 
--- 2021-10-06 08:14:30
+-- 2021-10-15 11:46:18

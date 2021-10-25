@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,26 +15,27 @@ TRUNCATE `product_name_pl`;
 INSERT INTO `product_name_pl` (`id_product`, `data`) VALUES
 (95,	'Death Note - Ryuk and Rem'),
 (95,	'Death Note - Ryuk and Rem'),
-(138,	'Liczby magiczne'),
-(282,	'Mój wirtualny kochanek'),
-(127,	'Ściana układanki'),
-(130,	'Kochanek AI'),
-(132,	'Mój kochanek'),
-(123,	'Muzyka dla życia'),
-(104,	'Wyszukaj kontakty'),
-(120,	'Wirtualny kochanek'),
 (119,	'wirtualny kochanek 3D'),
-(134,	'Biegnij ze mną'),
-(122,	'Liczenie owiec - idź spać'),
-(133,	'Szybkie oko'),
-(131,	'Uroczy wirtualny asystent'),
-(139,	'Worm Master'),
 (135,	'Zapisz sieć offline'),
-(136,	'Stwórz hasło'),
+(104,	'Wyszukaj kontakty'),
 (128,	'Świat biblijny'),
-(283,	'Edytor fortepianu Midi'),
-(284,	'Ryby drapieżne'),
+(282,	'Mój wirtualny kochanek'),
 (121,	'Wirtualny kochanek 2'),
-(105,	'Love or No love');
+(122,	'Liczenie owiec - idź spać'),
+(132,	'Mój kochanek'),
+(138,	'Liczby magiczne'),
+(133,	'Szybkie oko'),
+(127,	'Ściana układanki'),
+(284,	'Ryby drapieżne'),
+(139,	'Worm Master'),
+(105,	'Love or No love'),
+(134,	'Biegnij ze mną'),
+(120,	'Wirtualny kochanek'),
+(283,	'Edytor fortepianu Midi'),
+(136,	'Stwórz hasło'),
+(131,	'Uroczy wirtualny asystent'),
+(285,	'Stół do piłki nożnej'),
+(123,	'Muzyka dla życia'),
+(130,	'Kochanek AI');
 
--- 2021-06-12 17:00:33
+-- 2021-10-18 22:05:00

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_fr` (`key`, `value`) VALUES
 ('gioi_thieu',	'Présenter'),
 ('tai_khoan',	'Compte'),
 ('chi_tiet',	'Voir les détails'),
-('mobile_application',	'Application mobile'),
 ('jailbreak_2',	'Ce fichier .ipa ne peut être installé que sur des appareils Apple jailbreakés, vous pouvez le télécharger directement en cliquant sur ce sous-lien (cliquez ici pour télécharger)'),
 ('dia_chi',	'Adresse'),
 ('ds_thanh_vien',	'Liste d\'utilisateur'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_fr` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Toutes les données dans le monde'),
 ('search_setting_data_1',	'Rechercher des données uniquement dans votre pays ou région'),
 ('search_return',	'Résultats de recherche'),
-('recognition_inp',	'Parlez maintenant');
+('recognition_inp',	'Parlez maintenant'),
+('contact_open_app',	'Ouvrez ce contact dans l\'application'),
+('link_open_app',	'Ouvrir dans l\'application'),
+('back_app',	'Retour à l\'application'),
+('link_open_app_tip',	'Cliquez ici pour ouvrir ou transférer rapidement ces données vers une application mobile, un logiciel (si installé avec l\'application correspondante avec des données)'),
+('qr_tip',	'Utilisez votre téléphone pour rechercher ce lien !'),
+('music_report',	'Signaler des bogues et des droits d\'auteur'),
+('music_report_1',	'Chanson défectueuse (injouable)'),
+('music_report_2',	'La chanson enfreint les droits d\'auteur, veuillez supprimer ce contenu !'),
+('music_report_3',	'Un autre problème avec cette chanson'),
+('music_report_3_tip',	'Veuillez nous décrire en détail les lacunes de cette chanson'),
+('music_report_success',	'Merci d\'avoir signalé le problème de cette chanson, nous allons essayer de résoudre le problème dès que possible'),
+('book',	'livres électroniques'),
+('seo_ebook',	'La bibliothèque de livres en ligne permet aux utilisateurs de télécharger des livres gratuits, de télécharger de bons livres, de télécharger des livres gratuits, de télécharger de bons livres, de lire des livres en ligne. Nous avons une large gamme de livres de divers genres dans des formats Ebook populaires pour téléphones et ordinateurs. Les lecteurs peuvent le regarder en ligne ou le télécharger sur leur ordinateur pour une surveillance facile'),
+('read_now',	'Lisez maintenant'),
+('mobile_application',	'Application');
 
--- 2021-06-12 15:52:09
+-- 2021-10-18 20:47:17

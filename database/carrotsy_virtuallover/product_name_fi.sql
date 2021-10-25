@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,26 +15,27 @@ TRUNCATE `product_name_fi`;
 INSERT INTO `product_name_fi` (`id_product`, `data`) VALUES
 (95,	'Kuoleman huomautus - Ryuk ja Rem'),
 (95,	'Kuoleman huomautus - Ryuk ja Rem'),
-(138,	'Numero Magic'),
-(282,	'Virtuaalinen rakastajani'),
-(127,	'Palapeliseinä'),
-(130,	'AI-rakastaja'),
-(132,	'Rakastajani'),
-(123,	'Musiikki elämää varten'),
-(104,	'Etsi yhteystietoja'),
-(120,	'Virtuaali rakastaja'),
 (119,	'virtuaalinen rakastaja 3D'),
-(134,	'Juokse minun kanssani'),
-(122,	'Laskevat lampaita - mene nukkumaan'),
-(133,	'Nopea silmä'),
-(131,	'Söpö virtuaaliassistentti'),
-(139,	'Mato mestari'),
 (135,	'Tallenna verkko offline-tilassa'),
-(136,	'Luo salasana'),
+(104,	'Etsi yhteystietoja'),
 (128,	'Raamatun maailma'),
-(283,	'Midi Piano Editor'),
-(284,	'Saaliskala'),
+(282,	'Virtuaalinen rakastajani'),
 (121,	'Virtuaalinen rakastaja 2'),
-(105,	'Rakkaus tai ei rakkautta');
+(122,	'Laskevat lampaita - mene nukkumaan'),
+(132,	'Rakastajani'),
+(138,	'Numero Magic'),
+(133,	'Nopea silmä'),
+(127,	'Palapeliseinä'),
+(284,	'Saaliskala'),
+(139,	'Mato mestari'),
+(105,	'Rakkaus tai ei rakkautta'),
+(134,	'Juokse minun kanssani'),
+(120,	'Virtuaali rakastaja'),
+(283,	'Midi Piano Editor'),
+(136,	'Luo salasana'),
+(131,	'Söpö virtuaaliassistentti'),
+(285,	'Jalkapallopöytä'),
+(123,	'Musiikki elämää varten'),
+(130,	'AI-rakastaja');
 
--- 2021-06-12 17:34:47
+-- 2021-10-18 22:08:03

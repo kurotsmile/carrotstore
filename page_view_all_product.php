@@ -51,5 +51,5 @@
 ?>
 
 <?php
-   echo scroll_load_data($type_obj,$data_count['c']);
+   echo scroll_load_data($type_obj,$data_count['c'],$type_menu);
 ?>

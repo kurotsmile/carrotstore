@@ -1444,6 +1444,19 @@ INSERT INTO `app_my_girl_video_pt` (`id_chat`, `link`) VALUES
 ('17033',	'https://www.youtube.com/watch?v=EhjIxhpGxDc'),
 ('17034',	'https://www.youtube.com/watch?v=jzIFP2tntcs'),
 ('17035',	'https://www.youtube.com/watch?v=t-xOQZDg938'),
-('17036',	'https://www.youtube.com/watch?v=oOFRTjiT2q8');
+('17036',	'https://www.youtube.com/watch?v=oOFRTjiT2q8'),
+('17073',	'https://www.youtube.com/watch?v=avEIJOYUMGc'),
+('17077',	'https://www.youtube.com/watch?v=qpneQTvKu60'),
+('17084',	'https://www.youtube.com/watch?v=lmQNab15t-E'),
+('17096',	'https://www.youtube.com/watch?v=FafvOIR-VKw'),
+('17097',	'https://www.youtube.com/watch?v=AUOJYsmTfH4'),
+('17101',	'https://www.youtube.com/watch?v=6wMfxNKswHI'),
+('17108',	'https://www.youtube.com/watch?v=6UQHIQpBw6w'),
+('17116',	'https://www.youtube.com/watch?v=byHasknwxu8'),
+('17119',	'https://www.youtube.com/watch?v=3dBCD1aq1Kk'),
+('17121',	'https://www.youtube.com/watch?v=1W1peekJ98s'),
+('17148',	'https://www.youtube.com/watch?v=hRH7gdhferQ'),
+('17153',	'https://www.youtube.com/watch?v=QJu5I8GlDuc'),
+('17180',	'https://www.youtube.com/watch?v=dYvi-KLogmE');
 
--- 2021-08-17 18:11:51
+-- 2021-10-18 20:49:33

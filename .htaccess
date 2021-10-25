@@ -6,7 +6,7 @@ RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
 RewriteRule    ^user/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_view_account.php&user=$1&lang=$2
 RewriteRule    ^user_edit/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_edit_account.php&user=$1&lang=$2
 RewriteRule    ^user_playlist/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_playlist.php&user=$1&lang=$2
-RewriteRule    ^type/([^/]*)/([^/]*)/?$    index.php?page_view=page_view.php&type=$1&view_type=$2    [NC,L]
+RewriteRule    ^type/([^/]*)/([^/]*)/?$    index.php?page_view=page_view.php&type=$1&lang=$2    [NC,L]
 RewriteRule    ^type/([^/]*)/?$    index.php?page_view=page_view.php&type=$1    [NC,L] 
 RewriteRule    ^member  index.php?page_view=page_member.php   [NC,L]
 RewriteRule    ^music/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&id=$1&lang=$2

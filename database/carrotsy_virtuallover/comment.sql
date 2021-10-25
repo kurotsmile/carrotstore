@@ -33,6 +33,7 @@ INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `create
 (32,	'c5',	'113330601155622987105',	'Mọi người vẫn còn sử dụng người yêu ảo chứ?',	120,	'2020-01-13T18:53:52.631Z',	2,	0,	'products',	'vi'),
 (33,	'c1',	'andanh@gmail.com',	'rip king von\n',	123,	'2020-11-13T20:50:00.585Z',	2,	0,	'products',	'en'),
 (34,	'c2',	'andanh@gmail.com',	'r.i.p king von\n',	123,	'2020-11-16T04:55:23.105Z',	1,	0,	'products',	'en'),
-(35,	'c1',	'andanh@gmail.com',	'공포노래를만들수잇다\n',	283,	'2021-09-11T14:43:22.308Z',	0,	0,	'products',	'ko');
+(35,	'c1',	'andanh@gmail.com',	'공포노래를만들수잇다\n',	283,	'2021-09-11T14:43:22.308Z',	0,	0,	'products',	'ko'),
+(36,	'c1',	'andanh@gmail.com',	'I have no idea what this app is trying to do.',	283,	'2021-10-02T13:16:27.223Z',	0,	0,	'products',	'en');
 
--- 2021-09-11 19:52:06
+-- 2021-10-12 18:15:17

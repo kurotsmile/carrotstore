@@ -1176,6 +1176,16 @@ INSERT INTO `app_my_girl_video_ko` (`id_chat`, `link`) VALUES
 ('2461',	'https://www.youtube.com/watch?v=mRi-Tlr_zeY'),
 ('2462',	'https://www.youtube.com/watch?v=rTvdvOHDxyM'),
 ('2463',	'https://www.youtube.com/watch?v=gDjZKHxXqoA'),
-('2465',	'https://www.youtube.com/watch?v=c9RzZpV460k');
+('2465',	'https://www.youtube.com/watch?v=c9RzZpV460k'),
+('2473',	'https://www.youtube.com/watch?v=5MAahYPYkCI'),
+('2479',	'https://www.youtube.com/watch?v=JZV-pBDlxEI'),
+('2480',	'https://www.youtube.com/watch?v=iZpq8FjJr2E'),
+('2481',	'https://www.youtube.com/watch?v=Q4kTwN_w4jk'),
+('2482',	'https://www.youtube.com/watch?v=Ehdso1NytoY'),
+('2484',	'https://www.youtube.com/watch?v=Y79ARO4zU_8'),
+('2487',	'https://www.youtube.com/watch?v=HQoNyZDXStA'),
+('2488',	'https://www.youtube.com/watch?v=gkkkGM3BMRY'),
+('2490',	'https://www.youtube.com/watch?v=znR7ntGGihU'),
+('2519',	'https://www.youtube.com/watch?v=pisbO7J_AYs');
 
--- 2021-08-17 18:13:28
+-- 2021-10-18 20:50:08

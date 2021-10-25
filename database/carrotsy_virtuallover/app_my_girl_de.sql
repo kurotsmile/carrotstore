@@ -2261,6 +2261,13 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2404,	'Kuss geben',	'oh ja küss mich... deine Lippen sind so weich.',	3,	0,	'#9ED8FF',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'791',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (2405,	'sing ein Lied',	'SpongeBob - Polizeiboot',	1,	1,	'#00ECFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'862',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'spongebob-polizeiboot-2405',	''),
 (2406,	'sing ein Lied',	'Wincent Weiss - Wer wenn nicht wir',	1,	1,	'#00FFFB',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'902',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'wincent-weiss-wer-wenn-nicht-wir-2406',	''),
-(2407,	'Kleines',	'Sollst mich nicht so nennen.',	1,	0,	'#D9FF47',	'',	'',	'',	'',	0,	'',	'',	0,	0,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'890',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(2407,	'Kleines',	'Sollst mich nicht so nennen.',	1,	0,	'#D9FF47',	'',	'',	'',	'',	0,	'',	'',	0,	0,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'890',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2408,	'wie groß sind deine brüste',	'die sind 909 cm groß und hab eine bh Größe von 100 fach ZZZ',	3,	0,	'#CDBAFF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'158',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2409,	'sing ein Lied',	'Peter Maffay - über sieben Brücken mußt du gehn',	1,	1,	'#B61FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'856',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'peter-maffay-uber-sieben-brucken-mu-t-du-gehn-2409',	''),
+(2410,	'sing ein Lied',	'DJ Herzbeat - Du bist schön ft. Nathalie BW',	1,	0,	'#C51FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'707',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'dj-herzbeat-du-bist-schon-ft-nathalie-bw-2410',	''),
+(2411,	'Dann lass uns Heiraten',	'ja ich will meine Schöne Rose',	2,	1,	'#DDFFDB',	'',	'',	'',	'',	0,	'',	'',	0,	15,	2,	'de',	0,	'',	'777',	'chat',	0,	'',	1,	0,	0,	'384',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2412,	'sing ein Lied',	'Adrian Tacchi - Gondeli',	1,	1,	'#00D3FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'812',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'adrian-tacchi-gondeli-2412',	''),
+(2413,	'wie schlau bist du',	'Ich bin schlau und du bist dumm!',	2,	0,	'#FFE978',	'',	'',	'',	'',	0,	'',	'',	0,	26,	3,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'510',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2414,	'sing ein Lied',	'Sag auch \"NEIN\" zu MOBBING!',	1,	1,	'#00ECFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'862',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sag-auch-nein-zu-mobbing--2414',	'');
 
--- 2021-09-11 19:53:23
+-- 2021-10-18 20:45:40

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -142,6 +142,7 @@ INSERT INTO `app_my_girl_da` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (89,	'Syng en sang',	'Marcus & Martinus - Slalom',	1,	1,	'#D10FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'705',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-slalom-89',	''),
 (90,	'Syng en sang',	'Marcus & Martinus- Elektrisk (Voldsløkka, Oslo)\r\n',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-elektrisk-voldslokka-oslo--90',	''),
 (91,	'Syng en sang',	'SEREGA - NEZAPOMÍNÁM',	1,	1,	'#FF1420',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1188',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'',	''),
-(92,	'Syng en sang',	'SEREGA - Temná noc feat. AVIO ',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'',	'');
+(92,	'Syng en sang',	'SEREGA - Temná noc feat. AVIO ',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'',	''),
+(93,	'Syng en sang',	'Jahy & Shine Buteo - Wo ist unsere Liebe hin',	1,	0,	'#00FFFB',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'902',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jahy-shine-buteo-wo-ist-unsere-liebe-hin-93',	'');
 
--- 2021-06-12 16:56:33
+-- 2021-10-18 20:33:56

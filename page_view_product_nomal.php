@@ -1,12 +1,13 @@
 <?php
 $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$data['type']."' LIMIT 1");
 $data_type=mysqli_fetch_array($query_type);
+$label_read_now=lang($link,'read_now');
 ?>
 <div style="float: left;width:100%" id="containt">
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
         <h2><?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?></h2>
         <p>
-            <img alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
+            <img <?php if($data["type"]=='book'){?>onclick="window.open('<?php echo $url;?>/ebook.php?id=<?php echo $data['id'];?>');"<?php }?> alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
             <?php 
                 QRcode::png($url.'/product/'.$data['id'], 'phpqrcode/img_product/'.$data['id'].'.png', 'L', 4, 2);
             ?>
@@ -14,77 +15,70 @@ $data_type=mysqli_fetch_array($query_type);
             <img style="float: left;width: 100%;" src="<?php echo $url;?>/phpqrcode/img_product/<?php echo $data['id'];?>.png" title="<?php echo lang($link,"qr_tip");?>" />
             <span class="tag_download">QR Code</span>
             </span>
-
-            <?php
-            if($data['link_download']){
-                $price_product=$data['price'];
-            ?>
-            <a href="<?php if($price_product!=''){ echo $url.'/pay/product/0/'.$data['id']; }else{ echo '#';} ?>" onclick="<?php if($price_product==''){ echo 'show_box_download_link();return false;'; }?>"  id="download_song" class="full" style="height: 154px;margin-left: -2px;margin-right:10px;" >
-                <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br /><br />
-                <span>
-                    <?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i> 
-                    <?php if($data['price']!=''){?>$<?php echo $data['price'] ?> <?php }?>
-                </span>
-            </a>
-                <?php if($data['price']==''){?>
-                <script>
-                function show_box_download_link(){
-                    var arr_link_download= JSON.parse('<?php echo $data['link_download'];?>');
-                    var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
-                    for(var i=0;i<arr_link_download.length;i++){
-                        html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
-                    }
-                    html_box_link=html_box_link+"</div>";
-                    swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
-                }
-                </script>
-                <?php }?>
-            <?php }?>
-   
-            
-            <strong><?php echo lang($link,'loai'); ?>:</strong>
-            <a style="color: orangered;font-weight: bold;" href="<?php echo $url; ?>/type/<?php echo $data["type"]; ?>"> <span class="<?php echo $data_type[0]; ?>"></span> <?php echo lang($link,$data["type"]);?></a>
-            
-            <br />
-            <span class="product_view" > <i class="fa fa-eye"></i> <strong><?php echo lang($link,'luot_xem');?></strong>:<?php
-                echo view_num(intval($data["view"]));
-                $count_view=intval($data["view"]);
-                $count_view++;
-                mysqli_query($link,"UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data['id']."';");
-                ?></span><br/>
-            <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
-            <br/>
-			<?php
-			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
-			while($link_store=mysqli_fetch_assoc($query_link_store)){
-                $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
-                $data_store_link=mysqli_fetch_assoc($query_store_link);
-                if($data_store_link['id']!="1")
-				    echo '<a class="store_link" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
-                else
-                    echo '<a class="store_link jailbreak"  id_product="'.$data['id'].'" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
-			}
-			?>
-            <?php if($data["link_youtube"]!=''){?><br /><a onclick="play_video('<?php echo $data["link_youtube"];?>');return false;" ><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
-			<?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
-			<?php if(isset($user_login)&&$user_login->type=='admin'){ ?>
+            <div>
+                <?php
+                if($data['link_download']){
+                    $price_product=$data['price'];
+                ?>
+                <a href="<?php if($price_product!=''){ echo $url.'/pay/product/0/'.$data['id']; }else{ echo '#';} ?>" onclick="<?php if($price_product==''){ echo 'show_box_download_link();return false;'; }?>"  id="download_song" class="full" style="height: 154px;margin-left: -2px;margin-right:10px;" >
+                    <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br /><br />
+                    <span>
+                        <?php echo lang($link,'download_game');?><br/><i class="fa fa-desktop" aria-hidden="true"></i> 
+                        <?php if($data['price']!=''){?>$<?php echo $data['price'] ?> <?php }?>
+                    </span>
+                </a>
+                    <?php if($data['price']==''){?>
                     <script>
-                    function open_edit(){
-                        window.open("<?php echo $url.'/admin/?page_view=page_product&sub_view=page_product_update&id='.$data['id'];?>");
+                    function show_box_download_link(){
+                        var arr_link_download= JSON.parse('<?php echo $data['link_download'];?>');
+                        var html_box_link="<div style='width:100%;text-align: left;font-size:12px;'>";
+                        for(var i=0;i<arr_link_download.length;i++){
+                            html_box_link=html_box_link+"<a target='_blank' href='"+arr_link_download[i]+"' style='width:100%;float:left;background-color:#e8e5e5;margin:3px;padding:3px;border-radius:3px;'><i class='fa fa-cloud-download' aria-hidden='true'></i> Path "+(i+1)+":"+arr_link_download[i]+"</a>";
+                        }
+                        html_box_link=html_box_link+"</div>";
+                        swal({html: true, title: '<?php echo lang($link,"download_link"); ?>', text: html_box_link, showConfirmButton: true,});
                     }
                     </script>
-                    <br />
-                    <span class="buttonPro  blue" target="_blank" rel="noopener" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa sản phẩm</span>
-                    <?php
-            }
-            ?>
+                    <?php }?>
+                <?php }?>
+    
+                
+                <strong><?php echo lang($link,'loai'); ?>:</strong>
+                <a style="color: orangered;font-weight: bold;" href="<?php echo $url; ?>/type/<?php echo $data["type"]; ?>"> <span class="<?php echo $data_type[0]; ?>"></span> <?php echo lang($link,$data["type"]);?></a>
+                
+                <br />
+                <span class="product_view" > <i class="fa fa-eye"></i> <strong><?php echo lang($link,'luot_xem');?></strong>:<?php
+                    echo view_num(intval($data["view"]));
+                    $count_view=intval($data["view"]);
+                    $count_view++;
+                    mysqli_query($link,"UPDATE `products` SET `view` = '$count_view' WHERE `id` = '".$data['id']."';");
+                    ?></span><br/>
+                <span class="date_create"><strong> <i class="fa fa-clock-o"></i> <?php echo lang($link,'ngay_dang'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date']));?> <?php if(trim($data['date_edit'])!=''){?> - <?php echo lang($link,'ngay_sua'); ?>:</strong><?php echo date( 'd/m/Y',strtotime($data['date_edit']));?><?php }?></span>
+                <br/>
+                <?php
+                $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
+                while($link_store=mysqli_fetch_assoc($query_link_store)){
+                    $query_store_link=mysqli_query($link,"SELECT `id` FROM `product_link_struct` WHERE `icon` = '".$link_store['icon']."' LIMIT 1");
+                    $data_store_link=mysqli_fetch_assoc($query_store_link);
+                    if($data_store_link['id']!="1")
+                        echo '<a class="store_link" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
+                    else
+                        echo '<a class="store_link jailbreak"  id_product="'.$data['id'].'" href="'.$link_store['link'].'" target="_blank" rel="noopener"><img title="'.$link_store['name'].'" src="'.$url.'/images_link_store/'.$data_store_link['id'].'.svg" /></a>';
+                }
+                ?>
+                <?php if($data["link_youtube"]!=''){?><br /><a onclick="play_video('<?php echo $data["link_youtube"];?>');return false;" ><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
+                <?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
+                <?php if(isset($user_login)&&$user_login->type=='admin'){ ?><script>function open_edit(){window.open("<?php echo $url.'/admin/?page_view=page_product&sub_view=page_product_update&id='.$data['id'];?>");}</script><br /><span class="buttonPro  blue" target="_blank" rel="noopener" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa sản phẩm</span><?php }?>
+            </div>
+            <div>
             <?php
-            $type_rate='product';
-            include "template/field_rate_show.php";
+                $type_rate='product';
+                include "template/field_rate_show.php";
             ?>
+            </div>
             <ul id="menu_download">
 			<?php
-            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook.php?id='.$data['id'].'" target="_blank" rel="noopener"><img title="Đọc" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
+            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook.php?id='.$data['id'].'" target="_blank" rel="noopener"><img title="'.$label_read_now.'" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
 
 			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
 			while($link_store=mysqli_fetch_assoc($query_link_store)){
@@ -98,53 +92,56 @@ $data_type=mysqli_fetch_array($query_type);
 			?>
             </ul>
         </p>
-
     </div>
     
-
-    <script src="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.js?v=<?php echo get_setting($link,'ver');?>"></script>
-    <script src="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.js?v=<?php echo get_setting($link,'ver');?>"></script>
-        <script>
-			$(function() {
-				$('#simpleImg').utilCarousel({
-					responsiveMode : 'itemWidthRange',
-                    <?php if($data['type_view_img']=='0'){ echo 'itemWidthRange : [200, 300]';}else{ echo 'itemWidthRange : [600, 200]'; } ?>
-				});
-			});
-    </script>
-    
-    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.min.css" />
-    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/util.carousel.skins.min.css" />
-    <link rel="stylesheet" href="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/magnific-popup.min.css" />
-    		<div class="container" style="float: left;width: 100%;">
-    			<div id="simpleImg" class="util-theme-default util-carousel sample-img">
-            <?php
+    <?php
             $id_product=$data['id'];
             $dirname = "product_data/".$id_product."/slide";
             $dir = opendir($dirname);
-            $label_click_de_xem=lang($link,'click_de_xem');
-            while(false != ($file = readdir($dir)))
-                {
-                  if(($file != ".") and ($file != "..") and ($file != "index.php"))
-                     {
-                        $img="product_data/$id_product/slide/$file";
-                    ?>
-                    <div class="item">
-					<div class="meida-holder">
-						<img src="<?php if($data['type_view_img']=='0'){ echo thumb($img,'200x300');}else{ echo thumb($img,'800x400'); } ?>" alt="">
-					</div>
-					<div class="hover-content">
-						<div class="overlay"></div>
-						<div class="link-contianer">
-							<a href="<?php echo $url.'/'.$img ?>" target="_blank" rel="noopener" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link" aria-hidden="true"></i></a>
-                            <a href="<?php echo $url.'/'.$img ?>" class="img-link" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
-						</div>
-					</div>
-				    </div>
-                <?php }}?>    
-    			</div>
-    		</div>
+            $arr_img=array();
 
+            while(false != ($file = readdir($dir))){if(($file != ".") and ($file != "..") and ($file != "index.php")){$img="product_data/$id_product/slide/$file";array_push($arr_img,$img);}}
+
+            $length_img=count($arr_img);
+            if($length_img>0){
+            ?>
+                <script src="<?php echo $url; ?>/libary/utilcarousel-files/utilcarousel/jquery.utilcarousel.min.js?v=<?php echo get_setting($link,'ver');?>"></script>
+                <script src="<?php echo $url; ?>/libary/utilcarousel-files/magnific-popup/jquery.magnific-popup.js?v=<?php echo get_setting($link,'ver');?>"></script>
+                    <script>
+                        $(function() {
+                            $('#simpleImg').utilCarousel({
+                                responsiveMode : 'itemWidthRange',
+                                <?php if($data['type_view_img']=='0'){ echo 'itemWidthRange : [200, 300]';}else{ echo 'itemWidthRange : [600, 200]'; } ?>
+                            });
+                        });
+                </script>
+            <?php
+                $label_click_de_xem=lang($link,'click_de_xem');
+                echo '<link rel="stylesheet" href="'.$url.'/libary/utilcarousel-files/utilcarousel/util.carousel.min.css" />';
+                echo '<link rel="stylesheet" href="'.$url.'/libary/utilcarousel-files/utilcarousel/util.carousel.skins.min.css" />';
+                echo '<link rel="stylesheet" href="'.$url.'/libary/utilcarousel-files/magnific-popup/magnific-popup.min.css" />';
+                echo '<div class="container" style="float: left;width: 100%;">';
+                echo '<div id="simpleImg" class="util-theme-default util-carousel sample-img">';
+                for($i=0;$i<$length_img;$i++)
+                {
+                    $img=$arr_img[$i];?>
+                    <div class="item">
+                        <div class="meida-holder">
+                            <img src="<?php if($data['type_view_img']=='0'){ echo thumb($img,'200x300');}else{ echo thumb($img,'800x400'); } ?>" alt="">
+                        </div>
+                        <div class="hover-content">
+                            <div class="overlay"></div>
+                            <div class="link-contianer">
+                                <a href="<?php echo $url.'/'.$img ?>" target="_blank" rel="noopener" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                <a href="<?php echo $url.'/'.$img ?>" class="img-link" title="<?php echo $label_click_de_xem;?>"><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        </div>
+                <?php }   
+                echo '</div>';
+                echo '</div>';
+    }?>
+    
 <div id="area_product_content">
     <div style="padding: 20px;float: left;">
     <div id="post_product">
@@ -189,17 +186,6 @@ $data_type=mysqli_fetch_array($query_type);
     </div>
     </div>
 </div>
-<link rel="stylesheet" href="<?php echo $url;?>/plugins/codesnippet/lib/highlight/styles/obsidian.css"/>
-<script src="<?php echo $url;?>/js/highlight.min.js"></script>
-<script src="<?php echo $url;?>/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script>
-$(document).ready(function() {
-  $('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-});
-</script>
 
 <div style="width: 100%;float: left">
     <div id="box_comments" style="width: 70%;float: left">
@@ -218,7 +204,11 @@ $(document).ready(function() {
 </div>
 <?php
 $id_product=$data['id'];
-$result3 = mysqli_query($link,"SELECT * FROM `products` WHERE `company` ='Carrot' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+if($data['type']=='book')
+$result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` WHERE `type` ='book' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+else
+$result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` WHERE `company` ='Carrot' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+
 if(mysqli_num_rows($result3)>0){
 ?>
 <div style="float: left;width: 100%;">

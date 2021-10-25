@@ -10,7 +10,7 @@ session_start();
 
 include "config.php";
 
-include 'bbit-compress.php';
+//include 'bbit-compress.php';
 
 if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
     if(isset($_POST['key_contry'])){ $_SESSION['lang'] = $_POST['key_contry'];}
@@ -54,8 +54,9 @@ function ip_visitor_country()
     return $ip_data;
 }
 $data_ip = ip_visitor_country();
-
-if (isset($_SESSION['lang'])) {
+if(isset($_GET['lang'])){
+    $lang=$_GET['lang'];
+}elseif(isset($_SESSION['lang'])) {
     $lang=$_SESSION['lang'];
 } else {
     $k=$data_ip['lang'];

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,26 +15,27 @@ TRUNCATE `product_name_pt`;
 INSERT INTO `product_name_pt` (`id_product`, `data`) VALUES
 (95,	'Nota de morte - Ryuk e Rem'),
 (95,	'Nota de morte - Ryuk e Rem'),
-(138,	'Number Magic'),
-(282,	'Meu amante virtual'),
-(127,	'Parede de quebra-cabeça'),
-(130,	'Amante do AI'),
-(132,	'Meu amante'),
-(123,	'Música para a vida'),
-(104,	'Pesquisar contatos'),
-(120,	'Amante virtual'),
 (119,	'amante virtual 3D'),
-(134,	'Corra comigo'),
-(122,	'Contando ovelhas - vá para a cama'),
-(133,	'Olho rápido'),
-(131,	'Assistente virtual bonito'),
-(139,	'Mestre Worm'),
 (135,	'Salvar a Web offline'),
-(136,	'Criar senha'),
+(104,	'Pesquisar contatos'),
 (128,	'Mundo bíblico'),
-(283,	'Editor de Piano Midi'),
-(284,	'Peixe de rapina'),
+(282,	'Meu amante virtual'),
 (121,	'Amante virtual 2'),
-(105,	'Amor ou nenhum amor');
+(122,	'Contando ovelhas - vá para a cama'),
+(132,	'Meu amante'),
+(138,	'Number Magic'),
+(133,	'Olho rápido'),
+(127,	'Parede de quebra-cabeça'),
+(284,	'Peixe de rapina'),
+(139,	'Mestre Worm'),
+(105,	'Amor ou nenhum amor'),
+(134,	'Corra comigo'),
+(120,	'Amante virtual'),
+(283,	'Editor de Piano Midi'),
+(136,	'Criar senha'),
+(131,	'Assistente virtual bonito'),
+(285,	'Matraquilhos'),
+(123,	'Música para a vida'),
+(130,	'Amante do AI');
 
--- 2021-06-12 17:00:53
+-- 2021-10-18 22:05:51

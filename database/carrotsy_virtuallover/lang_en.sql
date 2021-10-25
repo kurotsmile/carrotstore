@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_en` (`key`, `value`) VALUES
 ('gioi_thieu',	'Introduce'),
 ('tai_khoan',	'Account'),
 ('chi_tiet',	'See details'),
-('mobile_application',	'Mobile application'),
 ('dia_chi',	'Address'),
 ('ds_thanh_vien',	'User list'),
 ('goi_dien',	'Call'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_en` (`key`, `value`) VALUES
 ('search_setting_data_0',	'All data worldwide'),
 ('search_setting_data_1',	'Find data only in your country or region'),
 ('search_return',	'Search Results'),
-('recognition_inp',	'Speak now');
+('recognition_inp',	'Speak now'),
+('contact_open_app',	'Open this contact in the app'),
+('link_open_app',	'Open in the app'),
+('back_app',	'Back to the app'),
+('link_open_app_tip',	'Click here to quickly open or transfer this data to mobile application, software (if installed with corresponding application with data)'),
+('qr_tip',	'Use your phone to scan for this link!'),
+('music_report',	'Report bugs and song copyrights'),
+('music_report_1',	'Faulty song (unplayable)'),
+('music_report_2',	'Song infringes copyright please remove this content!'),
+('music_report_3',	'Another problem with this song'),
+('music_report_3_tip',	'Please describe in detail to us the shortcomings of this song'),
+('music_report_success',	'Thank you for reporting the problem of this song, we will try to fix the problem as soon as possible'),
+('book',	'eBooks'),
+('seo_ebook',	'Online book library allows users to download free books, download good books, download free books, download good books, read books online. We have a wide range of books of various genres in popular Ebook formats for phones and computers. Readers can watch it online or download it to their computer for easy monitoring'),
+('read_now',	'Read now'),
+('mobile_application',	'Application');
 
--- 2021-06-12 15:36:44
+-- 2021-10-18 20:52:00

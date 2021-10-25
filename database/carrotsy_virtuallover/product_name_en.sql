@@ -182,7 +182,11 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (136,	'Create Password'),
 (131,	'Cute virtual assistant'),
 (285,	'Table Soccer'),
+(288,	'Làm Ít Được Nhiều'),
 (287,	'Church Warriors'),
-(286,	'Loneliness to grow up');
+(289,	'Bố là bà giúp việc'),
+(290,	'Đánh Thức Con Người Phi Thường Trong Bạn'),
+(291,	'Lối Sống Tối Giản Của Người Nhật'),
+(292,	'Trở Về Từ Địa Ngục');
 
--- 2021-10-05 04:58:17
+-- 2021-10-15 11:46:40

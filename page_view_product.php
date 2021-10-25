@@ -10,7 +10,6 @@ if(isset($_GET['slug'])){
     
 if(mysqli_num_rows($result)){
     include "page_view_product_nomal.php";
-
 }else{
 ?>
 <div style="float: left;text-align: center;width: 100%;padding-top: 20px;">

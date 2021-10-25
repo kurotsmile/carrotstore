@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,26 +15,27 @@ TRUNCATE `product_name_da`;
 INSERT INTO `product_name_da` (`id_product`, `data`) VALUES
 (95,	'Death Note - Ryuk og Rem'),
 (95,	'Death Note - Ryuk og Rem'),
-(138,	'Antal magi'),
-(282,	'Min virtuelle elsker'),
-(127,	'Jigsaw væg'),
-(130,	'AI-elsker'),
-(132,	'Min elsker'),
-(123,	'Musik for livet'),
-(104,	'Søg efter kontakter'),
-(120,	'Virtuel elsker'),
 (119,	'virtuel elsker 3D'),
-(134,	'Kør med mig'),
-(122,	'Tæller får - gå i seng'),
-(133,	'Hurtigt øje'),
-(131,	'Sød virtuel assistent'),
-(139,	'Worm Master'),
 (135,	'Gem web offline'),
-(136,	'Opret adgangskode'),
+(104,	'Søg efter kontakter'),
 (128,	'Bibelens verden'),
-(283,	'Midi Piano Editor'),
-(284,	'Rovfisk'),
+(282,	'Min virtuelle elsker'),
 (121,	'Virtuel elsker 2'),
-(105,	'Kærlighed eller ingen kærlighed');
+(122,	'Tæller får - gå i seng'),
+(132,	'Min elsker'),
+(138,	'Antal magi'),
+(133,	'Hurtigt øje'),
+(127,	'Jigsaw væg'),
+(284,	'Rovfisk'),
+(139,	'Worm Master'),
+(105,	'Kærlighed eller ingen kærlighed'),
+(134,	'Kør med mig'),
+(120,	'Virtuel elsker'),
+(283,	'Midi Piano Editor'),
+(136,	'Opret adgangskode'),
+(131,	'Sød virtuel assistent'),
+(285,	'Fodboldbord'),
+(123,	'Musik for livet'),
+(130,	'AI-elsker');
 
--- 2021-06-12 17:10:18
+-- 2021-10-18 20:17:10

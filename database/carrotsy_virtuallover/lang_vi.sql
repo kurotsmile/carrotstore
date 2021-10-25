@@ -22,7 +22,6 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('gioi_thieu',	'Giới thiệu'),
 ('tai_khoan',	'Tài khoản'),
 ('chi_tiet',	'Xem chi tiết'),
-('mobile_application',	'Ứng dụng di động'),
 ('dia_chi',	'Địa chỉ'),
 ('ds_thanh_vien',	'Danh sách người dùng'),
 ('goi_dien',	'Gọi điện thoại'),
@@ -327,6 +326,10 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('music_report_2',	'Bài hát vi phạm bản quyền vui lòng gỡ bỏ nội dung này!'),
 ('music_report_3',	'Vấn đề khác với bài hát này'),
 ('music_report_3_tip',	'Hãy mô tả chi tiết cho chúng tôi những thiếu sót của bài hát này'),
-('music_report_success',	'Cảm ơn bạn đã báo cáo sự cố của bài hát này, chúng tôi sẽ cố gắng khắc phục sự cố sớm nhất có thể');
+('music_report_success',	'Cảm ơn bạn đã báo cáo sự cố của bài hát này, chúng tôi sẽ cố gắng khắc phục sự cố sớm nhất có thể'),
+('book',	'Sách điện tử'),
+('seo_ebook',	'Thư viện sách online cho phép người dùng tải sách miễn phí, tải sách hay, download sách miễn phí, download sách hay, đọc sách online. Chúng tôi có rất nhiều sách thuộc nhiều thể loại với những định dạng Ebook phổ biến cho điện thoại và máy tính. Bạn đọc có thể xem online hoặc download về máy để tiện theo dõi'),
+('read_now',	'Đọc ngay'),
+('mobile_application',	'Ứng dụng');
 
--- 2021-08-17 18:08:11
+-- 2021-10-18 20:16:19

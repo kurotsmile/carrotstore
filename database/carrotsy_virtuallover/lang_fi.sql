@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -21,7 +21,6 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('gioi_thieu',	'Esitellä'),
 ('tai_khoan',	'tili'),
 ('chi_tiet',	'Katso yksityiskohdat'),
-('mobile_application',	'Mobiilisovellus'),
 ('dia_chi',	'osoite'),
 ('ds_thanh_vien',	'Käyttäjän luettelo'),
 ('goi_dien',	'Puhelin'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Kaikki tiedot maailmanlaajuisesti'),
 ('search_setting_data_1',	'Etsi tietoja vain maastasi tai alueeltasi'),
 ('search_return',	'Hakutulokset'),
-('recognition_inp',	'Puhu nyt');
+('recognition_inp',	'Puhu nyt'),
+('contact_open_app',	'Avaa tämä kontakti sovelluksessa'),
+('link_open_app',	'Avaa sovelluksessa'),
+('back_app',	'Takaisin sovellukseen'),
+('link_open_app_tip',	'Napsauta tätä avataksesi tai siirtääksesi nämä tiedot nopeasti mobiilisovellukseen, ohjelmistoon (jos se on asennettu vastaavan sovelluksen kanssa)'),
+('qr_tip',	'Käytä tätä linkkiä puhelimellasi!'),
+('music_report',	'Ilmoita virheistä ja tekijänoikeuksista'),
+('music_report_1',	'Viallinen kappale (ei toistettavissa)'),
+('music_report_2',	'Kappale rikkoo tekijänoikeutta, poista tämä sisältö!'),
+('music_report_3',	'Toinen ongelma tämän kappaleen kanssa'),
+('music_report_3_tip',	'Kuvaile meille yksityiskohtaisesti tämän kappaleen puutteet'),
+('music_report_success',	'Kiitos, että ilmoitit tämän kappaleen ongelmasta, yritämme korjata ongelman mahdollisimman pian'),
+('book',	'e -kirjat'),
+('seo_ebook',	'Verkkokirjaston avulla käyttäjät voivat ladata ilmaisia kirjoja, ladata hyviä kirjoja, ladata ilmaisia kirjoja, ladata hyviä kirjoja ja lukea kirjoja verkossa. Meillä on laaja valikoima kirjoja eri genreistä suosituissa Ebook -muodoissa puhelimille ja tietokoneille. Lukijat voivat katsella sitä verkossa tai ladata sen tietokoneelleen helpon seurannan vuoksi'),
+('read_now',	'Lue nyt'),
+('mobile_application',	'Sovellus');
 
--- 2021-06-12 16:37:54
+-- 2021-10-18 20:52:22

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('gioi_thieu',	'介绍'),
 ('tai_khoan',	'帐户'),
 ('chi_tiet',	'查看详细信息'),
-('mobile_application',	'移动应用'),
 ('dia_chi',	'地址'),
 ('ds_thanh_vien',	'用户列表'),
 ('goi_dien',	'电话'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('search_setting_data_0',	'全球所有数据'),
 ('search_setting_data_1',	'仅查找您所在国家或地区的数据'),
 ('search_return',	'搜索结果'),
-('recognition_inp',	'现在请说话');
+('recognition_inp',	'现在请说话'),
+('contact_open_app',	'在应用程序中打开此联系人'),
+('link_open_app',	'在应用程序中打开'),
+('back_app',	'返回应用程序'),
+('link_open_app_tip',	'点击这里快速打开或传输此数据到移动应用程序、软件（如果安装了相应的带有数据的应用程序）'),
+('qr_tip',	'用你的手机扫描这个链接！'),
+('music_report',	'报告错误和版权'),
+('music_report_1',	'错误的歌曲（无法播放）'),
+('music_report_2',	'歌曲侵犯版权请删除此内容！'),
+('music_report_3',	'这首歌的另一个问题'),
+('music_report_3_tip',	'请向我们详细描述这首歌的不足之处'),
+('music_report_success',	'感谢您报告这首歌的问题，我们会尽快解决问题'),
+('book',	'电子书'),
+('seo_ebook',	'在线图书图书馆允许用户下载免费图书、下载好书、下载免费图书、下载好书、在线阅读图书。 我们拥有广泛的各种类型的书籍，采用适用于手机和计算机的流行电子书格式。 读者可在线观看或下载至电脑，方便监控'),
+('read_now',	'现在读'),
+('mobile_application',	'应用');
 
--- 2021-06-12 16:08:22
+-- 2021-10-18 20:20:55

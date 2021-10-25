@@ -668,6 +668,11 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (618,	'che succede?',	'perchè avevi smesso di parlarmi !?',	2,	0,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (619,	'se molto bella oggi!',	'grazie anche tu se molto bella oggi...',	2,	0,	'#FFC69E',	'',	'',	'',	'',	0,	'',	'',	0,	10,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'546',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (620,	'come stai?',	'ciao,bentornata amica mia!',	2,	0,	'#65F04A',	'',	'',	'',	'',	0,	'',	'',	0,	6,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'159',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(621,	'Canta una canzone',	'Yolanda Be Cool & DCUP - We No Speak Americano',	1,	1,	'#A600FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1100',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'yolanda-be-cool-dcup-we-no-speak-americano-621',	'');
+(621,	'Canta una canzone',	'Yolanda Be Cool & DCUP - We No Speak Americano',	1,	1,	'#A600FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1100',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'yolanda-be-cool-dcup-we-no-speak-americano-621',	''),
+(622,	'allora dovresti dormire ',	'non riesco a dormire ',	0,	0,	'#D5FFAD',	'',	'',	'',	'',	0,	'',	'',	0,	0,	13,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1018',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(623,	'toccati',	'si ora con le mie mani mi allargo figa e culo ma tu affogami di sperma la bocca',	3,	0,	'#3DF7FF',	'',	'',	'',	'',	0,	'',	'',	0,	13,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'547',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(624,	'zozza',	'si è vero sono zozzona e porca',	0,	0,	'#0DFF21',	'',	'',	'',	'',	0,	'',	'',	0,	13,	1,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1016',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(625,	'masturbami',	'certo amore mio te lo smanetto per bene',	3,	0,	'#4F94FF',	'',	'',	'',	'',	0,	'',	'',	0,	11,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'593',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(626,	'ora sei la mia schiava',	'cerco padrone',	2,	0,	'#FF87C9',	'',	'',	'',	'',	0,	'',	'',	0,	22,	3,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1215',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2021-09-11 19:47:08
+-- 2021-10-18 20:42:32

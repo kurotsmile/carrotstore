@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('gioi_thieu',	'Vorstellen'),
 ('tai_khoan',	'Konto'),
 ('chi_tiet',	'Siehe Einzelheiten'),
-('mobile_application',	'Mobile Applikation'),
 ('dia_chi',	'Adresse'),
 ('ds_thanh_vien',	'Benutzerliste'),
 ('goi_dien',	'Anrufen'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Alle Daten weltweit'),
 ('search_setting_data_1',	'Finden Sie Daten nur in Ihrem Land oder Ihrer Region'),
 ('search_return',	'Suchergebnisse'),
-('recognition_inp',	'Sprich jetzt');
+('recognition_inp',	'Sprich jetzt'),
+('contact_open_app',	'Öffne diesen Kontakt in der App'),
+('link_open_app',	'In der App öffnen'),
+('back_app',	'Zurück zur App'),
+('link_open_app_tip',	'Klicken Sie hier, um diese Daten schnell zu öffnen oder an die mobile Anwendung zu übertragen, Software (falls mit entsprechender Anwendung mit Daten installiert)'),
+('qr_tip',	'Verwenden Sie Ihr Telefon, um nach diesem Link zu suchen!'),
+('music_report',	'Fehler und Urheberrechte melden'),
+('music_report_1',	'Fehlerhaftes Lied (unspielbar)'),
+('music_report_2',	'Song verletzt das Urheberrecht bitte entfernen Sie diesen Inhalt!'),
+('music_report_3',	'Ein weiteres Problem mit diesem Lied'),
+('music_report_3_tip',	'Bitte beschreibe uns ausführlich die Mängel dieses Liedes'),
+('music_report_success',	'Vielen Dank, dass Sie das Problem mit diesem Song gemeldet haben. Wir werden versuchen, das Problem so schnell wie möglich zu beheben'),
+('book',	'eBooks'),
+('seo_ebook',	'Die Online-Buchbibliothek ermöglicht es Benutzern, kostenlose Bücher herunterzuladen, gute Bücher herunterzuladen, kostenlose Bücher herunterzuladen, gute Bücher herunterzuladen und Bücher online zu lesen. Wir haben eine große Auswahl an Büchern verschiedener Genres in beliebten E-Book-Formaten für Handys und Computer. Leser können es sich online ansehen oder zur einfachen Überwachung auf ihren Computer herunterladen'),
+('read_now',	'Lies jetzt'),
+('mobile_application',	'Anwendung');
 
--- 2021-06-12 16:13:39
+-- 2021-10-18 20:46:24

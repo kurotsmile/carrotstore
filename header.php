@@ -2,120 +2,70 @@
 $title_page='Carrot Store';
 $seo_desc=lang($link,'gioi_thieu_tip');
 $seo_url=$url;
-$seo_img=$url.'/images/logo.png';
+$seo_img=$url.'/images/seo.png';
 
 $date = date('m/d/Y h:i:s a', time());
+$page_view='';if(isset($_GET['page_view']))$page_view=$_GET['page_view'];
 
-if(isset($_GET['view_product'])){
-    if(isset($_GET['slug'])){
-        $slug=$_GET['view_product'];
-        $result=mysqli_query($link,"SELECT * FROM `products` WHERE `slug` = '$slug' LIMIT 1");
-    }else{
-        $id=$_GET['view_product'];
-        $result=mysqli_query($link,"SELECT * FROM `products` WHERE `id` = '$id' LIMIT 1");
+if($page_view=='page_view.php'){
+    $type_view='';if(isset($_GET['type']))$type_view=$_GET['type'];
+    if($type_view=='book'){
+        $title_page='Carrot Store - '.lang($link,'book',$lang);
+        $seo_desc=lang($link,'seo_ebook',$lang);
+        $seo_url=$url.'/type/book/'.$lang;
+        $seo_img=$url.'/images/seoebook.jpg';
     }
-    $data=mysqli_fetch_assoc($result);
-    if(isset($data)){
-        $title_page=''.get_name_product_lang($link,$data['id'],$lang);
-        $seo_desc=strip_tags (get_desc_product_lang($link,$data['id'],$lang));
-        $seo_url=$url.'/product/'.$data['id'];
-        $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';
-    }
-}
-
-if(isset($_GET['page_view'])&&isset($_GET['view'])){
-    if($_GET['view']=='info_music'){
-        $slug='';
-        $id='';
-        $lang_sel=$_GET['lang'];
+    
+    if(isset($_GET['view_product'])){
         if(isset($_GET['slug'])){
-            $slug=$_GET['slug'];
-            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `slug`='$slug'");
+            $slug=$_GET['view_product'];
+            $result=mysqli_query($link,"SELECT * FROM `products` WHERE `slug` = '$slug' LIMIT 1");
         }else{
-            $id=$_GET['id'];
-            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$id'");
+            $id=$_GET['view_product'];
+            $result=mysqli_query($link,"SELECT * FROM `products` WHERE `id` = '$id' LIMIT 1");
         }
-
-        $data_music=mysqli_fetch_assoc($query_music);
-        $id=$data_music['id'];
-        $id_music=$data_music['id'];
-        $title_page=$data_music['chat'];
-        
-        $query_lyrics_desc=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang_sel."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
-        if(mysqli_num_rows($query_lyrics_desc)){
-            $data_lyrics=mysqli_fetch_assoc($query_lyrics_desc);
-            $seo_desc='download ';
-            if ($data_lyrics['artist'] != '') $seo_desc.=lang($link,'song_artist').':'.$data_lyrics['artist'].' ';
-            if ($data_lyrics['album'] != '') $seo_desc.=lang($link,'song_album').':'. $data_lyrics['album'].' ';
-            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang($link,'loi_bai_hat').' '.$title_page.'  '. $data_lyrics['l'].'... ';
-        }
-
-        if($data_music['slug']!=''){
-            $seo_url = $url . '/song/'.$lang_sel.'/'.$data_music['slug'];
-        }else {
-            $seo_url = $url . '/music/' . $id_music . '/' . $lang_sel;
-        }
-        
-        $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_sel` WHERE `id_chat` = '$id_music' LIMIT 1");
-        $data_video=mysqli_fetch_array($query_link_video);
-        $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang_sel.'/'.$id_music.'.mp3';
-        $seo_img=$url.'/images/music_default.png';
-        $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_music.'.png';
-        if(file_exists($filename_img_avatar)){
-            $seo_img=$url.'/'.$filename_img_avatar;
-        }
-
-    }
-    
-    
-    if($_GET['view']=='info_quote'){
-        $id=$_GET['id'];
-        $lang_sel=$_GET['lang'];
-        $query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_sel` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
-        $data_quote=mysqli_fetch_assoc($query_quote);
-        $title_page=$data_quote['chat'];
-        $seo_desc=$title_page;
-        
-        $seo_img=$url.'/app_mygirl/obj_effect/927.png';
-        if($data_quote['effect_customer']!=''){
-            $seo_img=$url.'/app_mygirl/obj_effect/'.$data_quote['effect_customer'].'.png';
+        $data=mysqli_fetch_assoc($result);
+        if(isset($data)){
+            $title_page=''.get_name_product_lang($link,$data['id'],$lang);
+            $seo_desc=strip_tags(get_desc_product_lang($link,$data['id'],$lang));
+            $seo_url=$url.'/product/'.$data['id'];
+            $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';
         }
     }
-}
-
-if(isset($_GET['sub_view_member'])&&$_GET['sub_view_member']=='page_member_view_account.php'){
-    $lang='vi';
-    if(isset($_GET['lang'])) $lang=$_GET['lang'];
-    $id_user=$_GET['user'];
-    $query_account=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
-    if($query_account){
-        if(mysqli_num_rows($query_account)>0) {
-            $data_user = mysqli_fetch_assoc($query_account);
-            $title_page = $data_user['name'];
-            $seo_desc = '';
-            if ($data_user['sdt'] != '') {
-                $seo_desc .= ' Phone:' . $data_user['sdt'] . ' ';
-            }
-            if ($data_user['address'] != '') {
-                $seo_desc .= ' Address:' . $data_user['address'] . ' ';
-            }
-            $seo_desc .= ' Country:' . $lang . ' ';
-
-            $seo_img = $url . '/images/avatar_default.png';
-            $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $id_user . '.png';
-            if ($data_user['avatar_url'] != '') {
-                $seo_img = $data_user['avatar_url'];
-            } else {
-                if (file_exists($url_img)) {
-                    $seo_img = $url . '/' . $url_img;
+}elseif($page_view=='page_member.php'){
+    $sub_view_member='';if(isset($_GET['sub_view_member']))$sub_view_member=$_GET['sub_view_member'];
+    if($sub_view_member=='page_member_view_account.php'){
+        $lang='vi';
+        if(isset($_GET['lang'])) $lang=$_GET['lang'];
+        $id_user=$_GET['user'];
+        $query_account=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
+        if($query_account){
+            if(mysqli_num_rows($query_account)>0) {
+                $data_user = mysqli_fetch_assoc($query_account);
+                $title_page = $data_user['name'];
+                $seo_desc = '';
+                if ($data_user['sdt'] != '') {
+                    $seo_desc .= ' Phone:' . $data_user['sdt'] . ' ';
                 }
+                if ($data_user['address'] != '') {
+                    $seo_desc .= ' Address:' . $data_user['address'] . ' ';
+                }
+                $seo_desc .= ' Country:' . $lang . ' ';
+
+                $seo_img = $url . '/images/avatar_default.png';
+                $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $id_user . '.png';
+                if ($data_user['avatar_url'] != '') {
+                    $seo_img = $data_user['avatar_url'];
+                } else {
+                    if (file_exists($url_img)) {
+                        $seo_img = $url . '/' . $url_img;
+                    }
+                }
+                $seo_url = $url . '/user/' . $id_user . '/' . $lang;
             }
-            $seo_url = $url . '/user/' . $id_user . '/' . $lang;
         }
     }
-}
-
-if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
+}elseif($page_view=='page_piano.php'){
     if(isset($_GET['id'])){
         $id_midi=$_GET['id'];
         if($id_midi=='new'){
@@ -131,16 +81,71 @@ if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
             $seo_desc=$data_midi['name'].' virtual piano streets midi player online';
         }
     }else{
-        $title_page='All Piano sheets MIDI';
+        $title_page='Carrot Store - All Piano sheets MIDI';
         $seo_desc='virtual piano streets midi player online';
     }
-}
+}elseif($page_view=='page_music.php'){
+    if($_GET['view']=='info_music'){
+        $slug='';
+        $id='';
+        if(isset($_GET['slug'])){
+            $slug=$_GET['slug'];
+            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `slug`='$slug'");
+        }else{
+            $id=$_GET['id'];
+            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `id`='$id'");
+        }
 
+        $data_music=mysqli_fetch_assoc($query_music);
+        $id=$data_music['id'];
+        $id_music=$data_music['id'];
+        $title_page=$data_music['chat'];
+        
+        $query_lyrics_desc=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        if(mysqli_num_rows($query_lyrics_desc)){
+            $data_lyrics=mysqli_fetch_assoc($query_lyrics_desc);
+            $seo_desc='download ';
+            if ($data_lyrics['artist'] != '') $seo_desc.=lang($link,'song_artist').':'.$data_lyrics['artist'].' ';
+            if ($data_lyrics['album'] != '') $seo_desc.=lang($link,'song_album').':'. $data_lyrics['album'].' ';
+            if ($data_lyrics['lyrics'] != '') $seo_desc.=lang($link,'loi_bai_hat').' '.$title_page.'  '. $data_lyrics['l'].'... ';
+        }
+
+        if($data_music['slug']!=''){
+            $seo_url = $url.'/song/'.$lang.'/'.$data_music['slug'];
+        }else {
+            $seo_url = $url.'/music/'.$id_music.'/'.$lang;
+        }
+        
+        $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang` WHERE `id_chat` = '$id_music' LIMIT 1");
+        $data_video=mysqli_fetch_array($query_link_video);
+        $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$id_music.'.mp3';
+        $seo_img=$url.'/images/music_default.png';
+        $filename_img_avatar='app_mygirl/app_my_girl_'.$lang.'_img/'.$id_music.'.png';
+        if(file_exists($filename_img_avatar)){
+            $seo_img=$url.'/'.$filename_img_avatar;
+        }
+
+    }
+}elseif($page_view=='page_quote.php'){
+    if($_GET['view']=='info_quote'){
+        $id=$_GET['id'];
+        $query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
+        $data_quote=mysqli_fetch_assoc($query_quote);
+        $title_page=$data_quote['chat'];
+        $seo_desc=$data_quote['chat'];
+        $seo_img=$url.'/app_mygirl/obj_effect/927.png';
+        if($data_quote['effect_customer']!='')$seo_img=$url.'/app_mygirl/obj_effect/'.$data_quote['effect_customer'].'.png';
+        $seo_url=$url.'/quote/'.$id.'/'.$lang;
+    }
+}
 ?>
 <!DOCTYPE HTML>
-<html lang="<?php echo $_SESSION['lang']; ?>">
+<html lang="<?php echo $lang; ?>">
 <head>
+    <meta charset="utf-8"/>
+    <meta name="cl" content="0">
     <title><?php echo $title_page; ?></title>
+
     <meta name="robots" content="max-image-preview:standard">
     <meta name="robots" content="index, follow" />
     <meta http-equiv="content-language" content="<?php echo $lang;?>" />
@@ -164,7 +169,7 @@ if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
     
     <!-- Open Graph data -->
     <meta property="og:title" content="<?php echo $title_page;?>" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $seo_url; ?>" />
     <meta property="og:image" content="<?php echo $seo_img; ?>" />
     <meta property="og:description" content="<?php echo $seo_desc;?>" />
@@ -188,7 +193,7 @@ if(isset($_GET['page_view'])&&$_GET['page_view']=='page_piano.php'){
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="<?php echo $seo_desc; ?>"/>
     <meta name="keywords" content="<?php echo $title_page; ?>,carrot,carrot store,carrot app,carrot company,store carrot,carrot game,virtual lover"/>
-    <meta charset="utf-8"/>
+    
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
     <link rel="shortcut icon" href="<?php echo $url; ?>/images/icon.ico?v=<?php echo get_setting($link,'ver');?>"/>

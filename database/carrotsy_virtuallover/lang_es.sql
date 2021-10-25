@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,7 +22,6 @@ INSERT INTO `lang_es` (`key`, `value`) VALUES
 ('gioi_thieu',	'Introducir'),
 ('tai_khoan',	'Cuenta'),
 ('chi_tiet',	'Ver detalles'),
-('mobile_application',	'Aplicacion movil'),
 ('dia_chi',	'Dirección'),
 ('ds_thanh_vien',	'Lista de usuarios'),
 ('goi_dien',	'Llamar'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_es` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Todos los datos en todo el mundo'),
 ('search_setting_data_1',	'Encuentre datos solo en su país o región'),
 ('search_return',	'Resultados de la búsqueda'),
-('recognition_inp',	'Habla ahora');
+('recognition_inp',	'Habla ahora'),
+('contact_open_app',	'Abra este contacto en la aplicación'),
+('link_open_app',	'Abierta en la aplicación'),
+('back_app',	'Volver a la aplicación'),
+('link_open_app_tip',	'Haga clic aquí para abrir o transferir rápidamente estos datos a la aplicación móvil, software (si está instalado con la aplicación correspondiente con datos)'),
+('qr_tip',	'Utilice su teléfono para buscar este enlace'),
+('music_report',	'Informar errores y derechos de autor'),
+('music_report_1',	'Canción defectuosa (no reproducible)'),
+('music_report_2',	'La canción infringe los derechos de autor. ¡Elimine este contenido!'),
+('music_report_3',	'Otro problema con esta canción'),
+('music_report_3_tip',	'Por favor, descríbanos en detalle las deficiencias de esta canción.'),
+('music_report_success',	'Gracias por informar el problema de esta canción, intentaremos solucionar el problema lo antes posible.'),
+('book',	'eBooks'),
+('seo_ebook',	'La biblioteca de libros en línea permite a los usuarios descargar libros gratis, descargar buenos libros, descargar libros gratis, descargar buenos libros, leer libros en línea. Tenemos una amplia gama de libros de varios géneros en formatos populares de libros electrónicos para teléfonos y computadoras. Los lectores pueden verlo en línea o descargarlo en su computadora para monitorearlo fácilmente'),
+('read_now',	'Lee ahora'),
+('mobile_application',	'Solicitud');
 
--- 2021-06-12 15:41:42
+-- 2021-10-18 20:46:56

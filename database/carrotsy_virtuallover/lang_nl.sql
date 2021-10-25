@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.35 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -21,7 +21,6 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('gioi_thieu',	'Voorstellen'),
 ('tai_khoan',	'rekening'),
 ('chi_tiet',	'Zie de details'),
-('mobile_application',	'Mobiele applicatie'),
 ('dia_chi',	'adres'),
 ('ds_thanh_vien',	'Gebruikers lijst'),
 ('goi_dien',	'Telefoon'),
@@ -316,6 +315,21 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('search_setting_data_0',	'Alle gegevens wereldwijd'),
 ('search_setting_data_1',	'Vind alleen gegevens in uw land of regio'),
 ('search_return',	'Zoekresultaten'),
-('recognition_inp',	'Nu spreken');
+('recognition_inp',	'Nu spreken'),
+('contact_open_app',	'Open dit contact in de app'),
+('link_open_app',	'Openen in de app'),
+('back_app',	'Terug naar de app'),
+('link_open_app_tip',	'Klik hier om deze gegevens snel te openen of over te zetten naar mobiele applicatie, software (indien geïnstalleerd met bijbehorende applicatie met data)'),
+('qr_tip',	'Gebruik je telefoon om naar deze link te scannen!'),
+('music_report',	'Meld bugs en auteursrechten'),
+('music_report_1',	'Defect nummer (niet afspeelbaar)'),
+('music_report_2',	'Lied maakt inbreuk op copyright, verwijder deze inhoud!'),
+('music_report_3',	'Nog een probleem met dit nummer'),
+('music_report_3_tip',	'Beschrijf ons alstublieft in detail de tekortkomingen van dit nummer'),
+('music_report_success',	'Bedankt voor het melden van het probleem van dit nummer, we zullen proberen het probleem zo snel mogelijk op te lossen'),
+('book',	'eBooks'),
+('seo_ebook',	'Met de online boekenbibliotheek kunnen gebruikers gratis boeken downloaden, goede boeken downloaden, gratis boeken downloaden, goede boeken downloaden en online boeken lezen. We hebben een breed scala aan boeken van verschillende genres in populaire e-boekformaten voor telefoons en computers. Lezers kunnen het online bekijken of downloaden naar hun computer voor eenvoudige controle'),
+('read_now',	'Lees nu'),
+('mobile_application',	'Sollicitatie');
 
--- 2021-06-12 16:30:06
+-- 2021-10-18 20:41:39

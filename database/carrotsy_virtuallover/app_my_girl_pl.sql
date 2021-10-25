@@ -135,6 +135,8 @@ INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (85,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (86,	'Zaśpiewaj piosenkę',	'Zeamsone - San Andreas',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'zeamsone-san-andreas-86',	''),
 (87,	'Zaśpiewaj piosenkę',	'Alan Aztec - Polska',	1,	1,	'#FF00B9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'334',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'alan-aztec-polska-87',	''),
-(88,	'Zaśpiewaj piosenkę',	'sanah - Szampan',	1,	0,	'#FF6F0D',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'771',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sanah-szampan-88',	'');
+(88,	'Zaśpiewaj piosenkę',	'sanah - Szampan',	1,	0,	'#FF6F0D',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'771',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sanah-szampan-88',	''),
+(89,	'Zaśpiewaj piosenkę',	'Dawid Kwiatkowski - Proste',	1,	1,	'#FF21B4',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'411',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'dawid-kwiatkowski-proste-89',	''),
+(90,	'Zaśpiewaj piosenkę',	'Sobel & sanah \"Cześć, jak się masz?\"',	1,	1,	'#FF0303',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'887',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'sobel-sanah-cze-jak-si-masz--90',	'');
 
--- 2021-09-11 19:57:40
+-- 2021-10-18 20:23:04
