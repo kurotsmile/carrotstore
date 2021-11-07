@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('book',	'eBooks'),
 ('seo_ebook',	'Die Online-Buchbibliothek ermöglicht es Benutzern, kostenlose Bücher herunterzuladen, gute Bücher herunterzuladen, kostenlose Bücher herunterzuladen, gute Bücher herunterzuladen und Bücher online zu lesen. Wir haben eine große Auswahl an Büchern verschiedener Genres in beliebten E-Book-Formaten für Handys und Computer. Leser können es sich online ansehen oder zur einfachen Überwachung auf ihren Computer herunterladen'),
 ('read_now',	'Lies jetzt'),
-('mobile_application',	'Anwendung');
+('mobile_application',	'Anwendung'),
+('ebook_muc_luc',	'Inhaltsverzeichnis'),
+('ebook_display_options',	'Buchanzeigeoptionen'),
+('ebook_download',	'Bücher herunterladen (EBook.epub)'),
+('ebook_font_size',	'Schriftgröße'),
+('ebook_font_style',	'Schriftstil'),
+('dark_mode_sun',	'Tag-Modus'),
+('dark_mode_moon',	'Nacht-Modus'),
+('ebook_download_link',	'Klicken Sie hier, um das Buch herunterzuladen'),
+('seo_game',	'Genießen Sie die lustigen und trendigen Spiele im Carrotstore-Spielarchiv. Wir bieten vollständige Spielbeschreibungen sowie Download-Links, damit Sie sie auf Computern, Telefonen und anderen Geräten spielen können. Spiele wie Xbox, PS4, Playstation');
 
--- 2021-10-18 20:46:24
+-- 2021-10-31 09:34:04

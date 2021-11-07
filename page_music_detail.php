@@ -112,7 +112,7 @@ $txt_title=$data_music['chat'];
                 <i class="fa fa-download fa-3x" aria-hidden="true" style="margin-top: 20px;"></i><br />
                 <span><?php echo lang($link,'download_song');?></span>
                 <br />
-                <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$0.99</span>
+                <span style="font-size: 20px;text-shadow: 2px 2px 2px black;margin-top: 6px;text-align: center;width: 100%;float: left;">$1.99</span>
             </a>
 
 			<?php

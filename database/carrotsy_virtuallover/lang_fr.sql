@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_fr` (`key`, `value`) VALUES
 ('book',	'livres électroniques'),
 ('seo_ebook',	'La bibliothèque de livres en ligne permet aux utilisateurs de télécharger des livres gratuits, de télécharger de bons livres, de télécharger des livres gratuits, de télécharger de bons livres, de lire des livres en ligne. Nous avons une large gamme de livres de divers genres dans des formats Ebook populaires pour téléphones et ordinateurs. Les lecteurs peuvent le regarder en ligne ou le télécharger sur leur ordinateur pour une surveillance facile'),
 ('read_now',	'Lisez maintenant'),
-('mobile_application',	'Application');
+('mobile_application',	'Application'),
+('ebook_muc_luc',	'Table des matières'),
+('ebook_display_options',	'Options d\'affichage du livre'),
+('ebook_download',	'Télécharger des livres (EBook.epub)'),
+('ebook_font_size',	'Taille de police'),
+('ebook_font_style',	'Le style de police'),
+('dark_mode_sun',	'Mode jour'),
+('dark_mode_moon',	'Mode nuit'),
+('ebook_download_link',	'Cliquez ici pour télécharger le livre'),
+('seo_game',	'Profitez des jeux amusants et tendance dans les archives de jeux carottestore, nous fournissons des descriptions complètes des jeux ainsi que des liens de téléchargement afin que vous puissiez y jouer sur des ordinateurs, des téléphones et d\'autres appareils. jouer à des jeux comme xbox, ps4, playstation');
 
--- 2021-10-18 20:47:17
+-- 2021-10-31 09:33:28

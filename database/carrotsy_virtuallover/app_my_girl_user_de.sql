@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -1219,6 +1219,9 @@ INSERT INTO `app_my_girl_user_de` (`id_device`, `name`, `sex`, `date_start`, `da
 ('c7b4b141368cfa408878219d14ecf074',	'Babygirl',	'1',	'2021-10-08',	'2021-10-08',	'',	'015208951034',	0,	'amacassi3@gmail.com',	'',	'Flashi13.02'),
 ('6a048fec54191858e83545f97eff1460',	'Big Daddy',	'0',	'2021-10-09',	'2021-10-09',	'',	'017552182218',	1,	'',	'',	''),
 ('3498f9f5b0213d83ccddce79d0619ad2',	'Rudolf Zlabinger',	'0',	'2021-10-13',	'2021-10-13',	'',	'00436767284653',	0,	'zlabinger.rudolf@chello.at',	'',	'37816390RZ@'),
-('0d0930bccb663f6d068c357406d10598',	'Yusufi',	'0',	'2021-10-14',	'2021-10-14',	'Stockholmer Straße 22',	'017643447386',	0,	'amar1903@inbox.ru',	'',	'zar1329gari');
+('0d0930bccb663f6d068c357406d10598',	'Yusufi',	'0',	'2021-10-14',	'2021-10-14',	'Stockholmer Straße 22',	'017643447386',	0,	'amar1903@inbox.ru',	'',	'zar1329gari'),
+('1eaaa5e69595195f704476eeb8b5a9da',	'Steffen',	'0',	'2021-10-18',	'2021-10-18',	'',	'01706733081',	0,	'totalschaden1986@googlemail.com',	'',	'30041986'),
+('2410a7b17148bc43be9a9fdaa99dddde',	'RickStar',	'0',	'2021-10-30',	'2021-10-30',	'',	'01624064734',	1,	'',	'',	''),
+('82b2a4f348fb0fa1ce63e0bfbf723389',	'Saru historius',	'0',	'2021-10-30',	'2021-10-30',	'',	'01736087188',	0,	'',	'',	'');
 
--- 2021-10-18 21:58:01
+-- 2021-10-31 09:41:13

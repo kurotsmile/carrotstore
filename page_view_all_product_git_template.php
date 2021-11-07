@@ -7,14 +7,14 @@ if(trim($row['slug'])!=''){
 }
 $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
 $data_type=mysqli_fetch_assoc($query_type);
-$p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
+$p_name_product=get_name_product_lang($link,$row['id'],$lang);
 ?>
             <div id="row<?php echo $row['id']; ?>" class="app" oncontextmenu="show_menu_app(this,1);return false;">
                 <div class="app_title"><a href="<?php echo $link_app;?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>"><h1><span class="<?php echo $data_type['css_icon'];?>"></span> <?php echo $p_name_product; ?></h1></a></div>
                 <a href="<?php echo $link_app;?>" class="app_link_icon"><img alt="<?php echo $p_name_product; ?>" title="<?php echo $label_click_de_xem.' ('.$p_name_product.')';?>" class="lazyload app_icon" data-src="<?php echo get_url_icon_product($row['id'],'100'); ?>" class="app_icon" width="100" height="100" /></a>
                 <div class="app_txt">
                     <div class="desc">
-                    <?php echo get_desc_product_lang($link,$row['id'],$_SESSION['lang']); ?>
+                    <?php echo get_desc_product_lang($link,$row['id'],$lang); ?>
                     </div>
                     <?php
                     $width_rate=get_star_width($link,$row['id'],'product');
@@ -29,7 +29,7 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
                 </div>
                 <div class="app_action">
                 <?php
-                        if($row['type']=='book') echo '<a class="store_link buttonPro small green" href="'.$url.'/ebook/'.$row['id'].'" target="_blank" rel="noopener"><i class="fa fa-book" aria-hidden="true"></i> '.$label_read_now.'</a>';
+                        if($row['type']=='book') echo '<a class="store_link buttonPro small green" href="'.$url.'/ebook/'.$row['id'].'/'.$lang.'" target="_blank" rel="noopener"><i class="fa fa-book" aria-hidden="true"></i> '.$label_read_now.'</a>';
 
                         $query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."'");
                         while($link_store=mysqli_fetch_assoc($query_link_store)){
@@ -44,7 +44,7 @@ $p_name_product=get_name_product_lang($link,$row['id'],$_SESSION["lang"]);
                 </div>
 <div class="menu_more">
 <?php
-if($row['type']=='book') echo '<a class="buttonPro orange small" href="'.$url.'/ebook/'.$row['id'].'" target="_blank" rel="noopener"><i class="fa fa-book" aria-hidden="true"></i> '.$label_read_now.' (Ebook)</a>';
+if($row['type']=='book') echo '<a class="buttonPro orange small" href="'.$url.'/ebook/'.$row['id'].'/'.$lang.'" target="_blank" rel="noopener"><i class="fa fa-book" aria-hidden="true"></i> '.$label_read_now.' (Ebook)</a>';
 
 $query_link_list=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$row['id']."' LIMIT 4");
 while($row_l=mysqli_fetch_assoc($query_link_list)){?><a class="buttonPro orange small" href="<?php echo $row_l['link'];?>" target="_blank" rel="noopener"><i class="fa <?php echo $row_l['icon'];?>" aria-hidden="true"></i> <?php echo $label_download_on.' ('.$row_l['name'].')';?></a><?php }?>

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('book',	'e -kirjat'),
 ('seo_ebook',	'Verkkokirjaston avulla käyttäjät voivat ladata ilmaisia kirjoja, ladata hyviä kirjoja, ladata ilmaisia kirjoja, ladata hyviä kirjoja ja lukea kirjoja verkossa. Meillä on laaja valikoima kirjoja eri genreistä suosituissa Ebook -muodoissa puhelimille ja tietokoneille. Lukijat voivat katsella sitä verkossa tai ladata sen tietokoneelleen helpon seurannan vuoksi'),
 ('read_now',	'Lue nyt'),
-('mobile_application',	'Sovellus');
+('mobile_application',	'Sovellus'),
+('ebook_muc_luc',	'Sisällysluettelo'),
+('ebook_display_options',	'Kirjan näyttövaihtoehdot'),
+('ebook_download',	'Lataa kirjoja (eBook.epub)'),
+('ebook_font_size',	'Fonttikoko'),
+('ebook_font_style',	'Fonttityyli'),
+('dark_mode_sun',	'Päivätila'),
+('dark_mode_moon',	'Yötila'),
+('ebook_download_link',	'Lataa kirja napsauttamalla tätä'),
+('seo_game',	'Nauti hauskoista ja trendikkäistä peleistä porkkanakaupan peliarkistossa, tarjoamme täydelliset pelikuvaukset sekä latauslinkit, jotta voit pelata niitä tietokoneilla, puhelimilla ja muilla laitteilla. pelata pelejä, kuten xbox, ps4, playstation');
 
--- 2021-10-18 20:52:22
+-- 2021-10-31 09:35:20

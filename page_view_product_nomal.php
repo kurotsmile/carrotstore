@@ -5,9 +5,9 @@ $label_read_now=lang($link,'read_now');
 ?>
 <div style="float: left;width:100%" id="containt">
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
-        <h2><?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?></h2>
+        <h2><?php echo get_name_product_lang($link,$data['id'],$lang);?></h2>
         <p>
-            <img <?php if($data["type"]=='book'){?>onclick="window.open('<?php echo $url;?>/ebook.php?id=<?php echo $data['id'];?>');"<?php }?> alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
+            <img <?php if($data["type"]=='book'){?>onclick="window.open('<?php echo $url;?>/ebook.php?id=<?php echo $data['id'];?>&lang=<?php echo $lang;?>');"<?php }?> alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
             <?php 
                 QRcode::png($url.'/product/'.$data['id'], 'phpqrcode/img_product/'.$data['id'].'.png', 'L', 4, 2);
             ?>
@@ -78,7 +78,7 @@ $label_read_now=lang($link,'read_now');
             </div>
             <ul id="menu_download">
 			<?php
-            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook.php?id='.$data['id'].'" target="_blank" rel="noopener"><img title="'.$label_read_now.'" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
+            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook.php?id='.$data['id'].'&lang='.$lang.'" target="_blank" rel="noopener"><img title="'.$label_read_now.'" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
 
 			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
 			while($link_store=mysqli_fetch_assoc($query_link_store)){
@@ -147,7 +147,7 @@ $label_read_now=lang($link,'read_now');
     <div id="post_product">
     <div style="float: left;width: 100%;" id="contain_lyrics">
         <div id="contain_lyrics_txt">
-            <?php echo get_desc_product_lang($link,$data['id'],$_SESSION['lang'],true); ?>
+            <?php echo get_desc_product_lang($link,$data['id'],$lang,true); ?>
         </div>
     </div>
 
@@ -205,7 +205,7 @@ $label_read_now=lang($link,'read_now');
 <?php
 $id_product=$data['id'];
 if($data['type']=='book')
-$result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` WHERE `type` ='book' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+$result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE `type` ='book' AND `id` != '$id_product' AND `status`='1' AND `data`!='' ORDER BY RAND() LIMIT 8");
 else
 $result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` WHERE `company` ='Carrot' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
 

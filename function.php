@@ -176,8 +176,20 @@ function get_username_by_id($link,$id_user,$is_admin=false){
 function get_desc_product_lang($link,$id_product,$key_l,$limit_full=false){
     $s_desc='';
     $q_data='';
-    if($limit_full==true)
-    $q_data=mysqli_query($link,"SELECT `data` as `d` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
+    if($limit_full==true){
+        $q_data=mysqli_query($link,"SELECT `data` as `d` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
+        if(mysqli_num_rows($q_data)==0){
+            $q_country=mysqli_query($link,"SELECT `key` FROM `app_my_girl_country`");
+            while($c=mysqli_fetch_assoc($q_country)){
+                $c_ckey=$c['key'];
+                $q_data2=mysqli_query($link,"SELECT `data` as `d` FROM `product_desc_$c_ckey` WHERE `id_product` = '$id_product'  LIMIT 1");
+                if(mysqli_num_rows($q_data2)!=0){
+                    $q_data=$q_data2;
+                    break;
+                }
+            }
+        }
+    }
     else
     $q_data=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 100) as `d` FROM `product_desc_$key_l` WHERE `id_product` = '$id_product'  LIMIT 1");
 
@@ -406,6 +418,7 @@ function is_mobile(){
 
 function scroll_load_data($type_obj,$length_obj,$sub_type=null){
     global $url;
+    global $lang;
     $txt_script='<script>';
         $txt_script.='var scroll_load_data=true;';
         $txt_script.='var count_p='.$length_obj.';';
@@ -418,7 +431,7 @@ function scroll_load_data($type_obj,$length_obj,$sub_type=null){
                     $txt_script.='$.ajax({';
                         $txt_script.='url:"'.$url.'/index.php",';
                         $txt_script.='type:"post",';
-                        $txt_script.='data:"function=scroll_load_data&type_obj='.$type_obj.'&data_json="+s_data_json+"&sub_type='.$sub_type.'&length_obj="+count_p,';
+                        $txt_script.='data:"function=scroll_load_data&type_obj='.$type_obj.'&data_json="+s_data_json+"&lang='.$lang.'&sub_type='.$sub_type.'&length_obj="+count_p,';
                         $txt_script.='success:function(data,textStatus,jqXHR){';
                             $txt_script.='s_data_json=JSON.stringify(arr_id_obj);';
                             $txt_script.='$("#containt").append(data);';

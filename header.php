@@ -15,6 +15,13 @@ if($page_view=='page_view.php'){
         $seo_url=$url.'/type/book/'.$lang;
         $seo_img=$url.'/images/seoebook.jpg';
     }
+
+    if($type_view=='mobile_game'){
+        $title_page='Carrot Store - '.lang($link,'mobile_game',$lang);
+        $seo_desc=lang($link,'seo_game',$lang);
+        $seo_url=$url.'/type/game/'.$lang;
+        $seo_img=$url.'/images/seogame.jpg';
+    }
     
     if(isset($_GET['view_product'])){
         if(isset($_GET['slug'])){
@@ -28,7 +35,7 @@ if($page_view=='page_view.php'){
         if(isset($data)){
             $title_page=''.get_name_product_lang($link,$data['id'],$lang);
             $seo_desc=strip_tags(get_desc_product_lang($link,$data['id'],$lang));
-            $seo_url=$url.'/product/'.$data['id'];
+            $seo_url=$url.'/product/'.$data['id'].'/'.$lang;
             $seo_img=$url.'/product_data/'.$data['id'].'/icon.jpg';
         }
     }

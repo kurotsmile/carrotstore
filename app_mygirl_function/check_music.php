@@ -90,7 +90,7 @@
     if($key_search!=''){
     echo '<table>';
     $arr_key=array();
-    $list_country=mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `active`='1' AND `ver0` = '1'");
+    $list_country=mysqli_query($link,"SELECT `key` FROM `app_my_girl_country`");
     $txt_query='';
     $txt_query_2='';
     $count_l=mysqli_num_rows($list_country);

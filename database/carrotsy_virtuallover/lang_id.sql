@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('book',	'eBuku'),
 ('seo_ebook',	'Perpustakaan buku online memungkinkan pengguna untuk mengunduh buku gratis, mengunduh buku bagus, mengunduh buku gratis, mengunduh buku bagus, membaca buku online. Kami memiliki berbagai macam buku dari berbagai genre dalam format Ebook populer untuk ponsel dan komputer. Pembaca dapat menontonnya secara online atau mengunduhnya ke komputer mereka untuk pemantauan yang mudah'),
 ('read_now',	'Baca sekarang'),
-('mobile_application',	'Aplikasi');
+('mobile_application',	'Aplikasi'),
+('ebook_muc_luc',	'Daftar Isi'),
+('ebook_display_options',	'Opsi tampilan buku'),
+('ebook_download',	'Unduh buku (EBook.epub)'),
+('ebook_font_size',	'Ukuran huruf'),
+('ebook_font_style',	'Gaya tulisan'),
+('dark_mode_sun',	'Modus siang'),
+('dark_mode_moon',	'Mode malam'),
+('ebook_download_link',	'Klik di sini untuk mengunduh buku'),
+('seo_game',	'Nikmati game seru dan trending di arsip game wortelstore, kami menyediakan deskripsi game lengkap serta tautan unduhan sehingga Anda dapat memainkannya di komputer, ponsel, dan perangkat lainnya. mainkan game seperti xbox, ps4, playstation');
 
--- 2021-10-18 20:47:35
+-- 2021-10-31 09:33:10

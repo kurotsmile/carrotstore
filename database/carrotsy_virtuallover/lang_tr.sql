@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('book',	'e-Kitaplar'),
 ('seo_ebook',	'Çevrimiçi kitap kütüphanesi, kullanıcıların ücretsiz kitaplar indirmesine, iyi kitaplar indirmesine, ücretsiz kitaplar indirmesine, iyi kitaplar indirmesine, çevrimiçi kitap okumasına olanak tanır. Telefonlar ve bilgisayarlar için popüler Ebook formatlarında çeşitli türlerde çok çeşitli kitaplarımız var. Okuyucular, çevrimiçi olarak izleyebilir veya kolay izleme için bilgisayarlarına indirebilir'),
 ('read_now',	'Şimdi Oku'),
-('mobile_application',	'Başvuru');
+('mobile_application',	'Başvuru'),
+('ebook_muc_luc',	'İçindekiler'),
+('ebook_display_options',	'Kitap görüntüleme seçenekleri'),
+('ebook_download',	'Kitapları indirin (EBook.epub)'),
+('ebook_font_size',	'Yazı Boyutu'),
+('ebook_font_style',	'Yazı stili'),
+('dark_mode_sun',	'Gündüz modu'),
+('dark_mode_moon',	'Gece modu'),
+('ebook_download_link',	'Kitabı indirmek için buraya tıklayın'),
+('seo_game',	'Carrotstore oyun arşivindeki eğlenceli ve trend oyunların keyfini çıkarın, bilgisayarlarda, telefonlarda ve diğer cihazlarda oynayabilmeniz için tam oyun açıklamalarının yanı sıra indirme bağlantıları da sağlıyoruz. xbox,ps4,playstation gibi oyunlar oyna');
 
--- 2021-10-18 20:44:14
+-- 2021-10-31 09:16:19

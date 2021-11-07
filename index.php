@@ -1,4 +1,5 @@
 <?php
+//if (!$_SERVER['HTTPS']) header("Location: https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']); 
 ini_set('upload_max_filesize', '90M');
 ini_set('post_max_size', '90M');
 ini_set('max_input_time', 900);
@@ -9,7 +10,6 @@ ob_start();
 session_start();
 
 include "config.php";
-
 //include 'bbit-compress.php';
 
 if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
@@ -23,7 +23,7 @@ if (isset($_POST['key_contry'])||isset($_GET['key_contry'])) {
 }
 
 include "database.php";
-
+$show_sel_lang=0;
 $lang='en';
 $country_code='us';
 $style_css_dark_mode='0'; if(isset($_SESSION['style_css_dark_mode'])) $style_css_dark_mode=$_SESSION['style_css_dark_mode'];
@@ -67,6 +67,7 @@ if(isset($_GET['lang'])){
         $_SESSION['lang'] = $data_key_country['key'];
     } else {
         $_SESSION['lang'] = 'en';
+        $show_sel_lang=1;
     }
     $lang=$_SESSION['lang'];
 }
@@ -199,6 +200,7 @@ include "header.php";
         ?>
         <a id="btn_dark_mode" href="#" class="ajax_tip" ajax_data='{"function":"show_tip_dark_mode"}' onclick="style_dark_mode();return false;"><?php if($style_css_dark_mode=='0'){ echo '<i class="fa fa-moon-o" aria-hidden="true"></i>'; }else{ echo '<i class="fa fa-sun-o" aria-hidden="true"></i>'; } ?></a>
         <a onclick="show_menu_mobile();" id="btn_menu_mobile"><i class="fa fa-bars" aria-hidden="true"></i></a>
+    </div>
     </div>
 </div>
 

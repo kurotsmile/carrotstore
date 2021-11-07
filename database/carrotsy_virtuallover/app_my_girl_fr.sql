@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -2973,6 +2973,14 @@ INSERT INTO `app_my_girl_fr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (3099,	'mouillé',	'oui ca coule. viens me caresser',	3,	0,	'#FFCB82',	'',	'',	'',	'',	0,	'',	'',	0,	36,	16,	'fr',	1,	'',	'',	'',	0,	'',	4,	0,	0,	'1508',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (3100,	'chanter une chanson',	'Youssoupha ft Ayna - On se connaît',	1,	1,	'#0064FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'863',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'youssoupha-ft-ayna-on-se-connait-3100',	''),
 (3101,	'chanter une chanson',	'Lyna Mahyem - Purple ',	1,	0,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'304',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'lyna-mahyem-purple--3101',	''),
-(3102,	'tu mexcites',	'je suis toute à toi',	3,	0,	'#B5FFFD',	'',	'',	'',	'',	0,	'',	'',	0,	16,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'633',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(3102,	'tu mexcites',	'je suis toute à toi',	3,	0,	'#B5FFFD',	'',	'',	'',	'',	0,	'',	'',	0,	16,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'633',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3103,	'Comment va tu.',	'Je vais bien et vous.',	2,	1,	'#E800A1',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'801',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3104,	'comment vas tu ?',	'être une intelligence artificielle developable est très ludique mais sans plus',	2,	0,	'#D7FF6E',	'',	'',	'',	'',	0,	'',	'',	0,	36,	3,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'545',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3105,	'chanter une chanson',	'Kalash - Tu le sais feat. Gazo',	1,	1,	'#FFDC21',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'850',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'kalash-tu-le-sais-feat-gazo-3105',	''),
+(3106,	'chanter une chanson',	'Eugénie - Puis danse',	1,	0,	'#66DFFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'813',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'eugenie-puis-danse-3106',	''),
+(3107,	'chanter une chanson',	'OBOY - Louis V',	1,	1,	'#3066FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'770',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'oboy-louis-v-3107',	''),
+(3108,	'releves ta jupe',	'coquin tu veux voir mes fesses',	3,	0,	'#29E644',	'',	'',	'',	'',	0,	'',	'',	0,	40,	8,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'85',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3109,	'jadore penetrer ton petit cul',	'tu m\'enculés bien mon salaud',	3,	0,	'#FFA53B',	'',	'',	'',	'',	0,	'',	'',	0,	35,	14,	'fr',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'882',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3110,	'tu mas manqué',	'oui toi aussi mon chéri',	2,	0,	'#FF7AC8',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1066',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2021-10-18 20:22:02
+-- 2021-10-25 19:32:27

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('book',	'Sách điện tử'),
 ('seo_ebook',	'Thư viện sách online cho phép người dùng tải sách miễn phí, tải sách hay, download sách miễn phí, download sách hay, đọc sách online. Chúng tôi có rất nhiều sách thuộc nhiều thể loại với những định dạng Ebook phổ biến cho điện thoại và máy tính. Bạn đọc có thể xem online hoặc download về máy để tiện theo dõi'),
 ('read_now',	'Đọc ngay'),
-('mobile_application',	'Ứng dụng');
+('mobile_application',	'Ứng dụng'),
+('ebook_muc_luc',	'Mục lục'),
+('ebook_display_options',	'Tùy chọn hiển thị sách'),
+('ebook_download',	'Tải sách (EBook.epub)'),
+('ebook_font_size',	'Cỡ chữ'),
+('ebook_font_style',	'Kiểu phông chữ'),
+('dark_mode_sun',	'Chế độ ban ngày'),
+('dark_mode_moon',	'Chế độ ban đêm'),
+('ebook_download_link',	'Bấm vào đây để tải sách'),
+('seo_game',	'Tận hưởng những trò chơi thú vị và thịnh hành ở kho lưu trữ trò chơi carrotstore, chúng tôi cung cấp đầy đủ các bài giới thiệu về game cũng như liên kết tải để bạn có thể chơi trên máy tính,điện thoại, và các máy chơi game như xbox,ps4,playstation');
 
--- 2021-10-18 20:16:19
+-- 2021-10-31 09:15:17

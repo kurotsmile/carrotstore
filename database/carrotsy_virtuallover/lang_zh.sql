@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('book',	'电子书'),
 ('seo_ebook',	'在线图书图书馆允许用户下载免费图书、下载好书、下载免费图书、下载好书、在线阅读图书。 我们拥有广泛的各种类型的书籍，采用适用于手机和计算机的流行电子书格式。 读者可在线观看或下载至电脑，方便监控'),
 ('read_now',	'现在读'),
-('mobile_application',	'应用');
+('mobile_application',	'应用'),
+('ebook_muc_luc',	'目录'),
+('ebook_display_options',	'图书显示选项'),
+('ebook_download',	'下载书籍 (EBook.epub)'),
+('ebook_font_size',	'字体大小'),
+('ebook_font_style',	'字体样式'),
+('dark_mode_sun',	'日间模式'),
+('dark_mode_moon',	'夜间模式'),
+('ebook_download_link',	'点击这里下载本书'),
+('seo_game',	'享受胡萝卜商店游戏档案中有趣和流行的游戏，我们提供完整的游戏描述以及下载链接，以便您可以在计算机、手机和其他设备上玩它们。 玩游戏，如 xbox、ps4、playstation');
 
--- 2021-10-18 20:20:55
+-- 2021-10-31 09:15:57

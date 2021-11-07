@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('book',	'eBooks'),
 ('seo_ebook',	'Met de online boekenbibliotheek kunnen gebruikers gratis boeken downloaden, goede boeken downloaden, gratis boeken downloaden, goede boeken downloaden en online boeken lezen. We hebben een breed scala aan boeken van verschillende genres in populaire e-boekformaten voor telefoons en computers. Lezers kunnen het online bekijken of downloaden naar hun computer voor eenvoudige controle'),
 ('read_now',	'Lees nu'),
-('mobile_application',	'Sollicitatie');
+('mobile_application',	'Sollicitatie'),
+('ebook_muc_luc',	'Inhoudsopgave'),
+('ebook_display_options',	'Opties voor boekweergave'),
+('ebook_download',	'Boeken downloaden (EBook.epub)'),
+('ebook_font_size',	'Lettertypegrootte'),
+('ebook_font_style',	'Lettertype'),
+('dark_mode_sun',	'Dagmodus'),
+('dark_mode_moon',	'Nachtstand'),
+('ebook_download_link',	'Klik hier om het boek te downloaden'),
+('seo_game',	'Geniet van de leuke en populaire games in het carrotstore-gamearchief, we bieden volledige gamebeschrijvingen en downloadlinks zodat je ze op computers, telefoons en andere apparaten kunt spelen. speel games zoals xbox,ps4,playstation');
 
--- 2021-10-18 20:41:39
+-- 2021-10-31 09:31:59

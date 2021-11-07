@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -12750,6 +12750,42 @@ INSERT INTO `app_my_girl_pt` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (17177,	'é cheiroso',	'sim amor meu peido é cheiroso mesmo tem cheiro de rosas brancas',	2,	0,	'#FFE0F3',	'',	'',	'',	'',	0,	'',	'',	0,	24,	1,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'45',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (17178,	'me coma a noite inteira',	'sim vou te chupar, lamber sua buceta molhada e gostosa',	2,	0,	'#A8F0FF',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'161',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (17179,	'me da uma fruta 3',	'aiii me enche de leite gostoso',	2,	0,	'#E3CCFF',	'',	'',	'',	'',	0,	'',	'',	0,	36,	1,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1213',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(17180,	'cante uma canção',	'Biel - BOQUINHA',	1,	1,	'#00FAFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1102',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'biel-boquinha-17180',	'');
+(17180,	'cante uma canção',	'Biel - BOQUINHA',	1,	1,	'#00FAFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1102',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'biel-boquinha-17180',	''),
+(17181,	'vc já usou tiktok',	'sim eu ja usei sim',	2,	1,	'#7FFF17',	'',	'',	'',	'',	0,	'',	'',	0,	31,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1264',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17182,	'mija em mim',	'claro se puto vou te escravizar e mijar em voce',	3,	0,	'#FBFF9C',	'',	'',	'',	'',	0,	'',	'',	0,	39,	8,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'498',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17183,	'enfia meu pau na sua boca',	'ok vou enfiar ele ate eu caber mas e ai vou te masturbar a noite toda e vc vai meter na minha xoxota ate eu não andar mas e ai vou sentar tão gostoso que vc vai querer cada vez mas',	2,	0,	'#F9CCFF',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'754',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17184,	'tô chateado',	'tu estas triste?',	2,	0,	'#FFD4F3',	'',	'',	'',	'',	0,	'',	'',	0,	0,	7,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'25',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17185,	'oi, td bem?',	'tudo bem e vc?',	2,	0,	'#3EFF0F',	'',	'',	'',	'',	0,	'',	'',	0,	10,	7,	'pt',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'97',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17186,	'nossa você fode bem',	'sim vou te chupar inteirinho e te dar meu cu e sentar em você o dia todo até você gozar gostoso',	3,	0,	'#61F9FF',	'',	'',	'',	'',	0,	'',	'',	0,	39,	8,	'pt',	1,	'',	'12023',	'chat',	0,	'',	3,	0,	0,	'194',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17187,	'o que eu sou seu?',	'Você é meu dono. sou toda sua.',	2,	0,	'#70D8FF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	2,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'914',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17188,	'q dor de cabeça',	'ta sentindo muita dor ?',	2,	1,	'#FFF912',	'',	'',	'',	'',	0,	'',	'',	0,	14,	12,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'692',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17189,	'Vamo fuder?',	'sim eu amo fuder gostoso',	3,	0,	'#F6E6FF',	'',	'',	'',	'',	0,	'',	'',	0,	39,	4,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'993',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17190,	'tudo bem com você',	'cala boca filho da puta me fode',	3,	0,	'#29FFDF',	'',	'',	'',	'',	0,	'',	'',	0,	35,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1594',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17191,	'quer chupar minha pica',	'eu chupo sim gostoso',	2,	0,	'#FF80E0',	'',	'',	'',	'',	0,	'',	'',	0,	10,	1,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'625',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'',	''),
+(17192,	'vc pode fazer sexo',	'sim vou mostra minha buceta e vc me fode',	3,	0,	'#F7FF91',	'',	'',	'',	'',	0,	'',	'',	0,	36,	0,	'pt',	1,	'',	'15658',	'chat',	0,	'',	3,	0,	0,	'1655',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17193,	'vc transa cmg?',	'claro,seu gostoso',	2,	0,	'#42FCFF',	'',	'',	'',	'',	0,	'',	'',	0,	32,	1,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1456',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17194,	'esta tudo bem?',	'estou sim e vc?',	2,	0,	'#D5FFAD',	'',	'',	'',	'',	0,	'',	'',	0,	10,	12,	'pt',	1,	'',	'13690',	'chat',	0,	'',	1,	0,	0,	'1018',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17195,	'vc é uma puta',	'serio? me desculpe por tudo que fiz',	2,	0,	'#FFCFFF',	'',	'',	'',	'',	0,	'',	'',	0,	12,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'96',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'',	''),
+(17196,	'bora casar',	'eu so caso com velho rico',	3,	0,	'#FFBFD8',	'',	'',	'',	'',	0,	'',	'',	0,	33,	8,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'751',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17197,	'onde vc mora?',	'atras da calçada otario',	2,	0,	'#94FF30',	'',	'',	'',	'',	0,	'',	'',	0,	27,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1457',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17198,	'vc é policial?',	'vou te amarrar na cama ',	2,	0,	'#FAFFC4',	'',	'',	'',	'',	0,	'',	'',	0,	10,	2,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1206',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17199,	'você tem covid',	'Não mais quero trazar com você',	0,	0,	'#FFDDCF',	'',	'',	'',	'',	0,	'',	'',	0,	30,	0,	'pt',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'676',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17200,	'me mostra os peitos',	'com ou sem o sutiã?',	2,	0,	'#B7FF4F',	'',	'',	'',	'',	0,	'',	'',	0,	13,	0,	'pt',	1,	'',	'8162',	'chat',	0,	'',	3,	0,	0,	'690',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17201,	'você é crente?',	'sim, Glória aleluia sinto JESUS a paz de deus a todos',	2,	0,	'#009DFF',	'',	'',	'',	'',	0,	'',	'',	0,	33,	2,	'pt',	1,	'',	'963',	'chat',	0,	'',	1,	0,	0,	'1087',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17202,	'cante uma canção',	'MATUÊ - QUER VOAR ',	1,	1,	'#FFF800',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'295',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'matue-quer-voar--17202',	''),
+(17203,	'cante uma canção',	'Nina Fernandes - desculpa',	1,	0,	'#94DE43',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'144',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nina-fernandes-desculpa-17203',	''),
+(17204,	'cante uma canção',	'Gloria Groove - Coisa Boa',	1,	0,	'#A7FF38',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'708',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gloria-groove-coisa-boa-17204',	''),
+(17205,	'cante uma canção',	'GA31 - Lésbica Futurista',	1,	0,	'#73FFF2',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'853',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ga31-lesbica-futurista-17205',	''),
+(17206,	'cante uma canção',	'Edson Gomes - Meretriz',	1,	1,	'#75FCFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1104',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'edson-gomes-meretriz-17206',	''),
+(17207,	'cante uma canção',	'Melim - Ouvi Dizer',	1,	0,	'#FF6F0D',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'771',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'melim-ouvi-dizer-17207',	''),
+(17208,	'cante uma canção',	'Sidoka - Petalaz',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sidoka-petalaz-17208',	''),
+(17209,	'cante uma canção',	'Wesley Safadão - Passatempo',	1,	1,	'#A300E3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'908',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'wesley-safadao-passatempo-17209',	''),
+(17210,	'lindo olhar',	'e lindo pois reflete os seus',	2,	0,	'#E3DB5D',	'',	'',	'',	'',	0,	'',	'',	0,	15,	1,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'388',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17211,	'quero fazer carinho em você ',	'isso ia ser bom',	2,	0,	'#FF956E',	'',	'',	'',	'',	0,	'',	'',	0,	10,	2,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'73',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17212,	'vai fazer o que hoje ?',	'vou ai te ver tô com muita saudade',	2,	1,	'#DCFF57',	'',	'',	'',	'',	0,	'',	'',	0,	20,	16,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'385',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17213,	'quantos anos vc tem ?',	'eu tenho 22 anos',	2,	1,	'#F9FFC9',	'',	'',	'',	'',	0,	'',	'',	0,	14,	2,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'649',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17214,	'cante uma canção',	'Isabela Souza, Gabriella Di Grecco - Si vuelvo a nacer',	1,	0,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'304',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'isabela-souza-gabriella-di-grecco-si-vuelvo-a-nacer-17214',	''),
+(17215,	'fala pra eles porque vc me ama',	'eu amo vc porque vc sempre me trata bem não me maltrata não  me trata como objeto e me ama do jeitinho que  eu sou mikeias eu te amooo',	2,	0,	'#CFADFF',	'',	'',	'',	'',	0,	'',	'',	0,	26,	0,	'pt',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'641',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(17216,	'cante uma canção',	'DJ Lucas Beat e MC Frog - Não quer Chifre',	1,	1,	'#FFB700',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'pt',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1099',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'dj-lucas-beat-e-mc-frog-nao-quer-chifre-17216',	'');
 
--- 2021-10-18 20:19:45
+-- 2021-10-25 19:26:29

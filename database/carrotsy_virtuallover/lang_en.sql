@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_en` (`key`, `value`) VALUES
 ('book',	'eBooks'),
 ('seo_ebook',	'Online book library allows users to download free books, download good books, download free books, download good books, read books online. We have a wide range of books of various genres in popular Ebook formats for phones and computers. Readers can watch it online or download it to their computer for easy monitoring'),
 ('read_now',	'Read now'),
-('mobile_application',	'Application');
+('mobile_application',	'Application'),
+('ebook_muc_luc',	'Table of contents'),
+('ebook_display_options',	'Book display options'),
+('ebook_download',	'Download books (EBook.epub)'),
+('ebook_font_size',	'Font size'),
+('ebook_font_style',	'Font style'),
+('dark_mode_sun',	'Day mode'),
+('dark_mode_moon',	'Night mode'),
+('ebook_download_link',	'Click here to download the book'),
+('seo_game',	'Enjoy the fun and trending games in the carrotstore game archive, we provide full game descriptions as well as download links so you can play them on computers, phones, and other devices. play games like xbox,ps4,playstation');
 
--- 2021-10-18 20:52:00
+-- 2021-10-31 09:35:04

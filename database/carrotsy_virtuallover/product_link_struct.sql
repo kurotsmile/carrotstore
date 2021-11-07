@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -32,6 +32,7 @@ INSERT INTO `product_link_struct` (`id`, `name`, `icon`) VALUES
 (13,	'QooApp',	'fa-github-alt'),
 (14,	'Uptodown',	'fa-arrow-circle-down'),
 (15,	'Exe Pc',	'fa-desktop'),
-(16,	'itch.io',	'fa-shopping-bag');
+(16,	'itch.io',	'fa-shopping-bag'),
+(17,	'Wattpad',	'fa-google-wallet');
 
--- 2021-08-13 15:11:48
+-- 2021-10-26 12:04:37

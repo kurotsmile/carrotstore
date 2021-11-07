@@ -59,7 +59,7 @@ if($pay_device!=''&&$pay_item!=''){
 			<?php echo $title_page ?><br/><br/>
 			<img onclick="go_to_pay();" style="width: 200px;" src="<?php echo $url_img_thumb; ?>" /><br />
             <?php if($pay_status!='1'){?>
-            <b style="color: #e27f00;">$0.99</b><br/>
+            <b style="color: #e27f00;">$1.99</b><br/>
             <?php }?>
             <div id="pay_container">
                 <?php
@@ -93,9 +93,9 @@ if($pay_device!=''&&$pay_item!=''){
                         purchase_units: [{
                         amount: {
                             currency_code:'USD',
-                            value: '0.99',
+                            value: '1.99',
                             breakdown: {
-                                item_total: {value: '0.99', currency_code: 'USD'}
+                                item_total: {value: '1.99', currency_code: 'USD'}
                             }
                         }
                         }]

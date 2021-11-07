@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('book',	'e -bøger'),
 ('seo_ebook',	'Online bogbibliotek giver brugerne mulighed for at downloade gratis bøger, downloade gode bøger, downloade gratis bøger, downloade gode bøger, læse bøger online. Vi har en bred vifte af bøger af forskellige genrer i populære e -bogformater til telefoner og computere. Læsere kan se det online eller downloade det til deres computer for let overvågning'),
 ('read_now',	'Læs nu'),
-('mobile_application',	'Ansøgning');
+('mobile_application',	'Ansøgning'),
+('ebook_muc_luc',	'Indholdsfortegnelse'),
+('ebook_display_options',	'Visningsmuligheder for bog'),
+('ebook_download',	'Download bøger (EBook.epub)'),
+('ebook_font_size',	'Skriftstørrelse'),
+('ebook_font_style',	'Skrifttype'),
+('dark_mode_sun',	'Dagstilstand'),
+('dark_mode_moon',	'Nattilstand'),
+('ebook_download_link',	'Klik her for at downloade bogen'),
+('seo_game',	'Nyd de sjove og trending spil i gulerodsbutikkens spilarkiv, vi leverer komplette spilbeskrivelser samt downloadlinks, så du kan spille dem på computere, telefoner og andre enheder. spille spil som xbox, ps4, playstation');
 
--- 2021-10-18 20:51:19
+-- 2021-10-31 09:34:43

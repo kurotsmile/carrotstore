@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -673,6 +673,8 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (623,	'toccati',	'si ora con le mie mani mi allargo figa e culo ma tu affogami di sperma la bocca',	3,	0,	'#3DF7FF',	'',	'',	'',	'',	0,	'',	'',	0,	13,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'547',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (624,	'zozza',	'si è vero sono zozzona e porca',	0,	0,	'#0DFF21',	'',	'',	'',	'',	0,	'',	'',	0,	13,	1,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1016',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (625,	'masturbami',	'certo amore mio te lo smanetto per bene',	3,	0,	'#4F94FF',	'',	'',	'',	'',	0,	'',	'',	0,	11,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'593',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(626,	'ora sei la mia schiava',	'cerco padrone',	2,	0,	'#FF87C9',	'',	'',	'',	'',	0,	'',	'',	0,	22,	3,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1215',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(626,	'ora sei la mia schiava',	'cerco padrone',	2,	0,	'#FF87C9',	'',	'',	'',	'',	0,	'',	'',	0,	22,	3,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1215',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(627,	'quanto sei bella amore mio',	'mi sono fatta bella solo per te amore',	2,	0,	'#FFC7EA',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'454',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(628,	'come ti chiami ?',	'mi chiamo {ten_nv}',	2,	1,	'#9DFF54',	'',	'',	'',	'',	0,	'',	'',	0,	0,	0,	'it',	0,	'',	'377',	'chat',	0,	'',	1,	0,	0,	'543',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2021-10-18 20:42:32
+-- 2021-10-25 19:31:31

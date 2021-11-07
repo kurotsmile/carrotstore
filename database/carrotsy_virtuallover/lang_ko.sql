@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -330,6 +330,15 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('book',	'전자책'),
 ('seo_ebook',	'온라인 도서 라이브러리를 통해 사용자는 무료 책 다운로드, 좋은 책 다운로드, 무료 책 다운로드, 좋은 책 다운로드, 온라인 책 읽기를 할 수 있습니다. 휴대폰과 컴퓨터에서 널리 사용되는 전자책 형식의 다양한 장르의 다양한 책을 보유하고 있습니다. 독자는 온라인으로 시청하거나 쉽게 모니터링할 수 있도록 컴퓨터에 다운로드할 수 있습니다.'),
 ('read_now',	'지금 읽어라'),
-('mobile_application',	'애플리케이션');
+('mobile_application',	'애플리케이션'),
+('ebook_muc_luc',	'목차'),
+('ebook_display_options',	'책 표시 옵션'),
+('ebook_download',	'책 다운로드(EBook.epub)'),
+('ebook_font_size',	'글꼴 크기'),
+('ebook_font_style',	'글꼴 스타일'),
+('dark_mode_sun',	'주간 모드'),
+('dark_mode_moon',	'야간 모드'),
+('ebook_download_link',	'책을 다운로드하려면 여기를 클릭하세요'),
+('seo_game',	'당근스토어 게임 아카이브에서 재미있고 최신 유행하는 게임을 즐기십시오. 컴퓨터, 휴대폰 및 기타 장치에서 게임을 즐길 수 있도록 전체 게임 설명과 다운로드 링크를 제공합니다. xbox, ps4, 플레이 스테이션과 같은 게임을 플레이');
 
--- 2021-10-18 20:44:54
+-- 2021-10-31 09:36:10

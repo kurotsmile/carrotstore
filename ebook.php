@@ -2,40 +2,51 @@
 require_once('libary/Mobile_Detect.php');
 require_once('config.php');
 require_once('database.php');
+libxml_use_internal_errors(true);
 
 $id_ebook='287';
 $lang_ebook='vi';
-$ver_css='1.1';
+$ebook_price='1.99';
+$ebook_title='EBook';
+$seo_desc='';
+$ver_css='1.10';
 if(isset($_GET['id']))$id_ebook=$_GET['id'];
 if(isset($_GET['lang']))$lang_ebook=$_GET['lang'];
-
-$url_ebook_path="product_data/$id_ebook/ebook/OEBPS";
-$xml=simplexml_load_file($url_ebook_path."/content.opf");
-$ebook_toc=simplexml_load_file($url_ebook_path."/toc.ncx");
-$navMap=$ebook_toc->navMap->navPoint;
-$total_page=count($navMap);
-$total_page_view=round(($total_page-1)/2);
-
-$manifest=$xml->manifest;
-$detect = new Mobile_Detect;
-
-$q_book_title=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_$lang_ebook` WHERE `id_product` = '$id_ebook' LIMIT 1");
-$data_book_title=mysqli_fetch_assoc($q_book_title);
-$ebook_title=$data_book_title['data'];
-$seo_desc='';
-
 $arr_css=array();
 $arr_img=array();
-foreach($manifest->item as $obj_ebook){
-	if($obj_ebook['media-type']=='text/css')array_push($arr_css,$obj_ebook['href']);
-	if($obj_ebook['media-type']=='image/jpeg')array_push($arr_img,$obj_ebook['href']);
+
+$q_book=mysqli_query($link,"SELECT `price` FROM carrotsy_virtuallover.`products` WHERE `id` = '$id_ebook' LIMIT 1");
+$data_book=mysqli_fetch_assoc($q_book);
+if($data_book!=null){
+	if(trim($data_book['price'])!='') $ebook_price=$data_book['price'];
+	$url_ebook_path="product_data/$id_ebook/ebook/OEBPS";
+	$xml=simplexml_load_file($url_ebook_path."/content.opf");
+	$ebook_toc=simplexml_load_file($url_ebook_path."/toc.ncx");
+	$navMap=$ebook_toc->navMap->navPoint;
+	$total_page=count($navMap);
+	$total_page_view=round(($total_page-1)/2);
+
+	$manifest=$xml->manifest;
+
+	foreach($manifest->item as $obj_ebook){
+		if($obj_ebook['media-type']=='text/css')array_push($arr_css,$obj_ebook['href']);
+		if($obj_ebook['media-type']=='image/jpeg')array_push($arr_img,$obj_ebook['href']);
+	}
 }
+
+$detect = new Mobile_Detect;
+
+$q_book_title=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_ebook' LIMIT 1");
+$data_book_title=mysqli_fetch_assoc($q_book_title);
+$ebook_title=$data_book_title['data'];
 
 $url_img_cover='';
 if(count($arr_img)>0) $url_img_cover=$url.'/'.$url_ebook_path.'/'.$arr_img[0];
 
 function show_page_cover($type_page){
 	global $url_img_cover;
+	global $lang_ebook;
+	global $url;
 	$html_cover='';
 	if($type_page==1)
 		$html_cover='<div class="page_one page_book" style="display:block;text-align: center;" id="page_0"><div class="contain_page_one">';
@@ -43,6 +54,7 @@ function show_page_cover($type_page){
 		$html_cover='<div class="page_two left page_book" style="display:block;text-align: center;" id="page_0"><div class="contain_page_two">';
 
 	$html_cover.='<img alt="cover" onclick="btn_next()" style="width:90%" src="'.$url_img_cover.'">';
+	if($lang_ebook=='vi') $html_cover.='<br/><br/><br/><br/><br/><strong>Ủng hộ biên tập viên Ebook</strong><br>Xin hãy ủng hộ một số tiền nhỏ, dù chỉ là 1.000đ để tôi có động lực biên tập sách cho các bạn đọc <br/><img alt="cover" style="width:250px" src="'.$url.'/images/mono_donation.png"><br/><br/><a href="https://me.momo.vn/carrot/l9avQQ7ZB86geG1" target="_blank" style="text-decoration: none;">https://me.momo.vn/carrot/l9avQQ7ZB86geG1</a>';
 	$html_cover.='</div></div>';
 	return $html_cover;
 }
@@ -50,12 +62,29 @@ function show_page_cover($type_page){
 function show_body_html($id_book,$url_xml_page){
     $d = new DOMDocument;
     $mock = new DOMDocument;
-    $d->loadHTML(file_get_contents("product_data/$id_book/ebook/OEBPS/".$url_xml_page),LIBXML_NOERROR);
+	$arr_url=explode("#", $url_xml_page);
+    $d->loadHTML(file_get_contents("product_data/$id_book/ebook/OEBPS/".$arr_url[0]),LIBXML_NOERROR);
     $body = $d->getElementsByTagName('body')->item(0);
     foreach ($body->childNodes as $child){
         $mock->appendChild($mock->importNode($child, true));
     }
     return $mock->saveHTML();
+}
+
+function lang($key){
+	global $link;
+	global $lang_ebook;
+    $return=mysqli_query($link,"SELECT `value` FROM carrotsy_virtuallover.`lang_$lang_ebook` WHERE `key` = '$key' LIMIT 1");
+    if($return){
+        $data=mysqli_fetch_assoc($return);
+        if($data){
+            return addslashes($data['value']);
+        }else{
+            return $key;
+        }
+    }else{
+        return $key;
+    }
 }
 ?>
 <HTML>
@@ -78,13 +107,10 @@ function show_body_html($id_book,$url_xml_page){
 	<link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/dist/sweetalert.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>/assets/css/responsive.min.css"/>
 	<script src="<?php echo $url; ?>/dist/sweetalert.min.js" async></script>
-	<?php
-	foreach($arr_css as $css){
-		echo '<link rel="stylesheet" type="text/css" href="'.$url.'/'.$url_ebook_path.'/'.$css.'"/>';
-	}
-	?>
+	<?php foreach($arr_css as $css) echo '<link rel="stylesheet" type="text/css" href="'.$url.'/'.$url_ebook_path.'/'.$css.'"/>'; ?>
 </HEAD>
 <BODY>
+<?php if($data_book!=null){?>
     <div id="book_nav_header">
 		<img id="logo_carrot_book" onclick="click_logo_carrot_book();" src="<?php echo $url;?>/images/icon.png"/>
 		<?php if(!$detect->isMobile()){?>
@@ -112,7 +138,7 @@ function show_body_html($id_book,$url_xml_page){
 			<?php if($detect->isMobile()){ ?>
 				<div class="btn_pay_book" style="padding:6px;" onclick="book_buy();"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
 			<?php }else{?>
-				<div class="btn_pay_book" onclick="book_buy();">Tải eBook 2$ <i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+				<div class="btn_pay_book" onclick="book_buy();"><?php echo lang('ebook_download');?> <?php echo $ebook_price;?>$ <i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
 			<?php }?>
 			</div>
 		</div>
@@ -123,11 +149,15 @@ function show_body_html($id_book,$url_xml_page){
 	</div>
 
 	<div id="page_book_pay">
-		Mua Sách<br/>
-		<img id="img_avatar_book" src="<?php echo $url;?>/product_data/<?php echo $id_ebook;?>/icon.jpg"/>
-		<div id="container"></div>
-		<div id="paypal-button-container"></div>
-		<script>
+		<strong><?php echo lang('pay_title');?></strong><br/>
+		<img id="img_avatar_book" oncontextmenu="pay_success('s','2');" src="<?php echo $url;?>/product_data/<?php echo $id_ebook;?>/icon.jpg"/>
+		<div id="page_book_pay_contain">
+			<div id="txt_pay_success">
+				<?php echo $ebook_price;?> <i class="fa fa-usd" aria-hidden="true"></i><br/>
+				<?php echo lang('pay_method');?>
+			</div>
+			<div id="paypal-button-container"></div>
+			<script>
                 var PAYPAL_CLIENT = 'AYgLieFpLUDxi_LBdzDqT2ucT4MIa-O0vwX7w3CKGfQgMGROOHu-xz2y5Jes77owCYQ1eLmOII_ch2VZ';
                 var PAYPAL_SECRET = 'ELkToqss_tBZdsHFOHfMFiyu23mNr9HDu1X--jqaZWCbS3xr_xg4hlCBHvV8GcyD15HIPgcwFi9BgqMp';
                 var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
@@ -140,9 +170,9 @@ function show_body_html($id_book,$url_xml_page){
                         purchase_units: [{
                         amount: {
                             currency_code:'USD',
-                            value: '1.99',
+                            value: '<?php echo $ebook_price;?>',
                             breakdown: {
-                                item_total: {value: '1.99', currency_code: 'USD'}
+                                item_total: {value: '<?php echo $ebook_price;?>', currency_code: 'USD'}
                             }
                         }
                         }]
@@ -156,17 +186,18 @@ function show_body_html($id_book,$url_xml_page){
                 }).render('#paypal-button-container');
 
                 function pay_success(pay_name,pay_mail){
-                    $.ajax({
-                        url: "<?php echo $url;?>/index.php",
-                        type: "post",
-                        data: "function=order_music&id_music=0&lang_music=vi&pay_name="+pay_name+"&pay_mail="+pay_mail,
-                        success: function (data, textStatus, jqXHR) {
-                            $("#pay_container").html(data);
-                        }
-                    });
+					$("#book_pay_success").show();
+					$("#page_book_pay_contain").remove();
                 }
             </script>
-		<div onclick="back_book_page();return false;" class="btn_book"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Trở về</div>
+		</div>
+		<div id="book_pay_success">
+			<div id="txt_pay_success"><i class="fa fa-check-circle fa-3x" aria-hidden="true"></i><br/> <?php echo lang('pay_success');?></div>
+			<a href="<?php echo $url;?>/product_data/<?php echo $id_ebook;?>/ebook.epub" class="btn_book_download"><i class="fa fa-download" aria-hidden="true"></i> <?php echo lang('ebook_download_link');?></a>
+		</div>
+		<div>
+			<div onclick="back_book_page();return false;" class="btn_book"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> <?php echo lang('back');?></div>
+		</div>
 	</div>
 <?php
 
@@ -224,10 +255,15 @@ echo $content;
 		else
 			$("#btn_next").show();
 
-		if(var_nav>=total_page_view)
-			$("#btn_prev").hide();
-		else
-			$("#btn_prev").show();
+<?php
+if ($detect->isMobile()) {
+?>
+	if(var_nav>=total_page_view) $("#btn_prev").hide(); else $("#btn_prev").show();
+<?php
+}else{
+?>
+		if(var_nav>=total_page_view-1) $("#btn_prev").hide(); else $("#btn_prev").show();
+<?php }?>
 
 		$("html, body").animate({scrollTop:0}, "fast");
 	}
@@ -270,7 +306,7 @@ if ($detect->isMobile()) {
 		}
 		?>
 		html_book_share=html_book_share+'</div>';
-		swal({html: true, title: 'Chia sẻ', text: html_book_share, showConfirmButton: true});
+		swal({html: true, title: '<?php echo lang('chia_se');?>', text: html_book_share, showConfirmButton: true});
 	}
 
 	function book_info(){
@@ -312,7 +348,7 @@ if ($detect->isMobile()) {
 		}
 		?>
 		html_book_menu=html_book_menu+'</ul></div>';
-		swal({html: true, title: 'Mục lục', text: html_book_menu, showConfirmButton: true});
+		swal({html: true, title: '<?php echo lang('ebook_muc_luc');?>', text: html_book_menu, showConfirmButton: true});
 		<?php
 		if ($detect->isMobile()) {
 		?>
@@ -342,14 +378,14 @@ if ($detect->isMobile()) {
 		else
 			active_book_style2="active";
 
-		html_book_style=html_book_style+'<div class="row_box">Cỡ chữ</div>';
+		html_book_style=html_book_style+'<div class="row_box"><?php echo lang('ebook_font_size');?></div>';
 		html_book_style=html_book_style+'<div class="row_box">';
 		html_book_style=html_book_style+'<div class="col_33 book_style_btn" onClick="book_style_text_size(1)"><div class="btn_style"><i class="fa fa-minus-square" aria-hidden="true"></i></div></div>';
 		html_book_style=html_book_style+'<div class="col_33"><i class="fa fa-font size_text" aria-hidden="true"></i> <span id="style_text_size">'+p_font_size+'</span></div>';
 		html_book_style=html_book_style+'<div class="col_33 book_style_btn" onClick="book_style_text_size(2)"><div class="btn_style"><i class="fa fa-plus-square" aria-hidden="true"></i></div></div>';
 		html_book_style=html_book_style+'</div>';
 
-		html_book_style=html_book_style+'<div class="row_box">Kiểu chữ</div>';
+		html_book_style=html_book_style+'<div class="row_box"><?php echo lang('ebook_font_style');?></div>';
 		html_book_style=html_book_style+'<div class="row_box">';
 		html_book_style=html_book_style+'<div class="col_100"><select class="select_box" onChange="book_style_text_family()" id="style_text_family">';
 		html_book_style=html_book_style+'<option value="Georgia">Georgia</option>';
@@ -368,14 +404,14 @@ if ($detect->isMobile()) {
 		html_book_style=html_book_style+'</select></div>';
 		html_book_style=html_book_style+'</div>';
 
-		html_book_style=html_book_style+'<div class="row_box">Chế độ đọc</div>';
+		html_book_style=html_book_style+'<div class="row_box"><?php echo lang('dark_mode');?></div>';
 		html_book_style=html_book_style+'<div class="row_box">';
-		html_book_style=html_book_style+'<div class="col_50 book_style_btn" onClick="book_mode(1)"><div id="btn_style_mode_1" class="btn_style '+active_book_style1+'"><i class="fa fa-sun-o" aria-hidden="true"></i> Chế độ ban ngày</div></div>';
-		html_book_style=html_book_style+'<div class="col_50 book_style_btn" onClick="book_mode(2)"><div id="btn_style_mode_2" class="btn_style '+active_book_style2+'"><i class="fa fa-moon-o" aria-hidden="true"></i> Chế độ ban đêm</div></div>';
+		html_book_style=html_book_style+'<div class="col_50 book_style_btn" onClick="book_mode(1)"><div id="btn_style_mode_1" class="btn_style '+active_book_style1+'"><i class="fa fa-sun-o" aria-hidden="true"></i> <?php echo lang('dark_mode_sun');?></div></div>';
+		html_book_style=html_book_style+'<div class="col_50 book_style_btn" onClick="book_mode(2)"><div id="btn_style_mode_2" class="btn_style '+active_book_style2+'"><i class="fa fa-moon-o" aria-hidden="true"></i> <?php echo lang('dark_mode_moon');?></div></div>';
 		html_book_style=html_book_style+'</div>';
 
 		html_book_style=html_book_style+'</div>';
-		swal({html: true, title: 'Tùy Chỉnh Hiển Thị Sách', text: html_book_style, showConfirmButton: true});
+		swal({html: true, title: '<?php echo lang('ebook_display_options');?>', text: html_book_style, showConfirmButton: true});
 	}
 
 	function book_style_text_size(type){
@@ -423,10 +459,7 @@ if ($detect->isMobile()) {
 		$("#page_book_pay").show();
 		$("#btn_prev").hide();
 		$("#btn_next").hide();
-		if(load_googel_pay==0){
-			onGooglePayLoaded();
-			load_googel_pay=1;
-		}
+		if(load_googel_pay==0)load_googel_pay=1;
 	}
 
 	$("p a").click(function(){
@@ -452,75 +485,8 @@ if ($detect->isMobile()) {
 		window.open("<?php echo $url;?>/type/book",'_blank');
 	}
 </script>
-<script async src="https://pay.google.com/gp/p/js/pay.js"></script>
-<script>
-const baseRequest = {apiVersion: 2,apiVersionMinor: 0};
-const allowedCardNetworks = ["AMEX", "DISCOVER", "INTERAC", "JCB", "MASTERCARD", "VISA"];
-const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"];
-const tokenizationSpecification = {
-  type: 'PAYMENT_GATEWAY',
-  parameters: {'gateway': 'example','gatewayMerchantId': 'exampleGatewayMerchantId'}
-};
-const baseCardPaymentMethod = {
-  type: 'CARD',
-  parameters: {
-    allowedAuthMethods: allowedCardAuthMethods,
-    allowedCardNetworks: allowedCardNetworks
-  }
-};
-
-const cardPaymentMethod = Object.assign({},baseCardPaymentMethod,{tokenizationSpecification: tokenizationSpecification});
-let paymentsClient = null;
-function getGoogleIsReadyToPayRequest(){return Object.assign({},baseRequest,{allowedPaymentMethods: [baseCardPaymentMethod]});}
-function getGooglePaymentDataRequest() {
-  const paymentDataRequest = Object.assign({}, baseRequest);
-  paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
-  paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
-  paymentDataRequest.merchantInfo = {merchantName: 'Example Merchant'};
-  return paymentDataRequest;
-}
-
-function getGooglePaymentsClient() {
-  if ( paymentsClient === null ) paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
-  return paymentsClient;
-}
-
-function onGooglePayLoaded() {
-  const paymentsClient = getGooglePaymentsClient();
-  paymentsClient.isReadyToPay(getGoogleIsReadyToPayRequest()).then(function(response) {if (response.result){addGooglePayButton();}}).catch(function(err) {console.error(err);});
-}
-
-function addGooglePayButton() {
-  const paymentsClient = getGooglePaymentsClient();
-  const button=paymentsClient.createButton({onClick: onGooglePaymentButtonClicked});
-  document.getElementById('container').appendChild(button);
-}
-
-function getGoogleTransactionInfo() {
-  return {countryCode: 'US',currencyCode: 'USD',totalPriceStatus: 'FINAL',totalPrice: '1.00'};
-}
-
-function prefetchGooglePaymentData() {
-  const paymentDataRequest = getGooglePaymentDataRequest();
-  paymentDataRequest.transactionInfo = {
-    totalPriceStatus: 'NOT_CURRENTLY_KNOWN',
-    currencyCode: 'USD'
-  };
-  const paymentsClient = getGooglePaymentsClient();
-  paymentsClient.prefetchPaymentData(paymentDataRequest);
-}
-
-function onGooglePaymentButtonClicked() {
-  const paymentDataRequest = getGooglePaymentDataRequest();
-  paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
-  const paymentsClient = getGooglePaymentsClient();
-  paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData){processPayment(paymentData);}).catch(function(err){console.error(err);});
-}
-
-function processPayment(paymentData) {
-  console.log(paymentData);
-  paymentToken = paymentData.paymentMethodData.tokenizationData.token;
-}
-</script>
+<?php }else{?>
+	Sách này không còn tồn tại!
+<?php }?>
 </BODY>
 </HTML>

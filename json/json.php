@@ -95,10 +95,11 @@ if($function=='scroll_load_data'){
         if($type_obj=='products'){
             $sub_type='';
             if(isset($_POST['sub_type'])) $sub_type=$_POST['sub_type'];
+            if(isset($_POST['lang'])) $lang=$_POST['lang'];
             
             $txt_sql_sub_type='';
             if($sub_type!='') $txt_sql_sub_type=" AND `type`='$sub_type' ";
-            $query_load_data = mysqli_query($link,"SELECT * FROM `products` WHERE `id` NOT IN (".implode(",",$data_json).") $txt_sql_sub_type ORDER BY RAND()  LIMIT 15");
+            $query_load_data = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE `id` NOT IN (".implode(",",$data_json).") $txt_sql_sub_type AND `data`!='' ORDER BY RAND()  LIMIT 15");
             $label_click_de_xem=lang($link,'click_de_xem');
             $label_download_on=lang($link,'download_on');
             $label_loai=lang($link,'loai');
@@ -106,7 +107,7 @@ if($function=='scroll_load_data'){
             $label_read_now=lang($link,'read_now');
             while ($row = mysqli_fetch_assoc($query_load_data)) {
                 include "page_view_all_product_git_template.php";
-             }
+            }
         }
 
         if($type_obj=='accounts'){

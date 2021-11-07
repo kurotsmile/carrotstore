@@ -11,11 +11,11 @@
 
 
     if($type==''){
-        $result = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` WHERE  `status`='1' AND `company`='Carrot' ORDER BY RAND() LIMIT 20");
-        $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` WHERE  `status`='1' ORDER BY RAND()");
+        $result = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE  `status`='1' AND `company`='Carrot' AND `data`!='' ORDER BY RAND() LIMIT 20");
+        $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE  `status`='1' AND `data`!='' ORDER BY RAND()");
     }else{
-        $result = mysqli_query($link,"SELECT`id`,`type`,`slug` FROM `products` $type AND `status`='1' ORDER BY RAND() LIMIT 20");
-        $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` $type AND  `status`='1' ORDER BY RAND()");
+        $result = mysqli_query($link,"SELECT`id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` $type AND `status`='1' AND `data`!='' ORDER BY RAND() LIMIT 20");
+        $result_count=mysqli_query($link,"SELECT COUNT(`id`) as c FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` $type AND  `status`='1' AND `data`!='' ORDER BY RAND()");
     }
 
 

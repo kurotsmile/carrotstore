@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -5379,6 +5379,12 @@ INSERT INTO `app_my_girl_video_vi` (`id_chat`, `link`) VALUES
 ('77653',	'https://www.youtube.com/watch?v=vPDY4zw9oMQ'),
 ('77664',	'https://www.youtube.com/watch?v=J9ChQu2zYEY'),
 ('77693',	'https://www.youtube.com/watch?v=dAvHP3p_pNE'),
-('77701',	'https://www.youtube.com/watch?v=DsDEGuFwzq0');
+('77701',	'https://www.youtube.com/watch?v=DsDEGuFwzq0'),
+('77733',	'https://www.youtube.com/watch?v=QPkEUDNeqyk'),
+('77735',	'https://www.youtube.com/watch?v=wkquP3CDsjE'),
+('77736',	'https://www.youtube.com/watch?v=ial60W87iKg'),
+('77737',	'https://www.youtube.com/watch?v=Pq4zk6roGzA'),
+('77738',	'https://www.youtube.com/watch?v=bhlMOw-RGZo'),
+('77746',	'https://www.youtube.com/watch?v=vK54M5tZf4w');
 
--- 2021-10-18 20:47:56
+-- 2021-10-25 19:22:03
