@@ -1,9 +1,9 @@
 <?php
 include "../../const.php";
 
-$url=$url_cms.'/table_soccer';
+$url=$url_cms.'/eread_now';
 define('URL',$url);
-$mysql_database='carrotsy_virtuallover';
+$mysql_database='carrotsy_eread_now';
 
 
 $link = mysqli_connect($mysql_host, $mysql_user,$mysql_pass);

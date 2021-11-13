@@ -1,7 +1,7 @@
 <?php
 $url_page="?page_view=page_product";
 $result = mysqli_query($link,"SELECT * FROM `products`");
-$row_in_page=15;
+$row_in_page=30;
 $toal_row=mysqli_num_rows($result);
 $number_page=$toal_row/$row_in_page;
 $page=0;

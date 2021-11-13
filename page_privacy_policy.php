@@ -33,7 +33,7 @@
         <br/>
         <div id="momo_donation"></div>
         <br/>
-        <i class="fa fa-money" aria-hidden="true"></i> <b>Momo</b>:<a href="https://me.momo.vn/carrot/l9avQQ7ZB86geG1" target="_blank">https://me.momo.vn/carrot/l9avQQ7ZB86geG1</a>
+        <i class="fa fa-money" aria-hidden="true"></i> <b>Momo</b>:<a href="https://me.momo.vn/carrot" target="_blank">https://me.momo.vn/carrot</a>
     </p>
     <?php }?>
 

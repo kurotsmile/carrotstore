@@ -556,7 +556,7 @@ if($function=='change_password'){
 
 if($function=='list_country'){
     $lang_sys=$_POST['lang_sys'];
-    $query_country=mysqli_query($link,"SELECT vl.`id`,vl.`name`,vl.`key` FROM carrotsy_virtuallover.app_my_girl_country as vl , carrotsy_table_soccer.country as p WHERE p.`key`=vl.`key`");
+    $query_country=mysqli_query($link,"SELECT vl.`id`,vl.`name`,vl.`key` FROM carrotsy_virtuallover.app_my_girl_country as vl , carrotsy_eread_now.country as p WHERE p.`key`=vl.`key`");
     $arr_data=array();
     while($item_country=mysqli_fetch_assoc($query_country)){
         $item_country["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
@@ -578,7 +578,7 @@ if($function=='download_lang'){
     $data_lang_framework=mysqli_fetch_assoc($query_data_lang);
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
-    $query_data_lang_app=mysqli_query($link,"SELECT `data` FROM  carrotsy_table_soccer.`lang_val` WHERE `lang` = '$key' LIMIT 1");
+    $query_data_lang_app=mysqli_query($link,"SELECT `data` FROM  carrotsy_eread_now.`lang_val` WHERE `lang` = '$key' LIMIT 1");
     $data_lang_app=mysqli_fetch_assoc($query_data_lang_app);
     $data_lang->{"lang_app"}=$data_lang_app['data'];
 

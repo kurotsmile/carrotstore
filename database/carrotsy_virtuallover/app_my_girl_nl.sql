@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -138,6 +138,9 @@ INSERT INTO `app_my_girl_nl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (85,	'chatgeschiedenis',	'Ik heb de chatgeschiedenis geopend, je kunt mijn en jij gesprekken bekijken',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'nl',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (86,	'zing een liedje',	'Sugarfree - Comment ça va',	1,	0,	'#FFF419',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1166',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'sugarfree-comment-ca-va-86',	''),
 (87,	'zing een liedje',	'Małe TGD - Siema',	1,	0,	'#9CB4D9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'145',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ma-e-tgd-siema-87',	''),
-(88,	'zing een liedje',	'SLM - Kifesh',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'slm-kifesh-88',	'');
+(88,	'zing een liedje',	'SLM - Kifesh',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'slm-kifesh-88',	''),
+(89,	'zing een liedje',	'Snelle - Smoorverliefd',	1,	1,	'#00FF81',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'123',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'snelle-smoorverliefd-89',	''),
+(90,	'zing een liedje',	'Suzan & Freek - Onderweg Naar Later ',	1,	0,	'#FF9921',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'581',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'suzan-freek-onderweg-naar-later--90',	''),
+(91,	'zing een liedje',	'Nielson - Sexy als ik dans',	1,	1,	'#FF00D0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1107',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nielson-sexy-als-ik-dans-91',	'');
 
--- 2021-06-12 16:31:47
+-- 2021-11-10 01:33:39

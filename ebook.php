@@ -54,7 +54,7 @@ function show_page_cover($type_page){
 		$html_cover='<div class="page_two left page_book" style="display:block;text-align: center;" id="page_0"><div class="contain_page_two">';
 
 	$html_cover.='<img alt="cover" onclick="btn_next()" style="width:90%" src="'.$url_img_cover.'">';
-	if($lang_ebook=='vi') $html_cover.='<br/><br/><br/><br/><br/><strong>Ủng hộ biên tập viên Ebook</strong><br>Xin hãy ủng hộ một số tiền nhỏ, dù chỉ là 1.000đ để tôi có động lực biên tập sách cho các bạn đọc <br/><img alt="cover" style="width:250px" src="'.$url.'/images/mono_donation.png"><br/><br/><a href="https://me.momo.vn/carrot/l9avQQ7ZB86geG1" target="_blank" style="text-decoration: none;">https://me.momo.vn/carrot/l9avQQ7ZB86geG1</a>';
+	if($lang_ebook=='vi') $html_cover.='<br/><br/><br/><br/><br/><strong>Ủng hộ biên tập viên Ebook</strong><br>Xin hãy ủng hộ một số tiền nhỏ, dù chỉ là 1.000đ để tôi có động lực biên tập sách cho các bạn đọc <br/><img alt="cover" style="width:250px" src="'.$url.'/images/mono_donation.png"><br/><br/><a href="https://me.momo.vn/carrot" target="_blank" style="text-decoration: none;">https://me.momo.vn/carrot</a><br/><br/><br/><br/><br/>';
 	$html_cover.='</div></div>';
 	return $html_cover;
 }

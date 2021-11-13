@@ -7,7 +7,7 @@ $label_read_now=lang($link,'read_now');
     <div style="padding: 30px;padding-bottom: 0px;padding-top: 0px;">
         <h2><?php echo get_name_product_lang($link,$data['id'],$lang);?></h2>
         <p>
-            <img <?php if($data["type"]=='book'){?>onclick="window.open('<?php echo $url;?>/ebook.php?id=<?php echo $data['id'];?>&lang=<?php echo $lang;?>');"<?php }?> alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
+            <img <?php if($data["type"]=='book'){?>onclick="window.open('<?php echo $url;?>/ebook/<?php echo $data['id'];?>/<?php echo $lang;?>');"<?php }?> alt="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" style="float: left;margin: 4px;" title="<?php echo get_name_product_lang($link,$data['id'],$_SESSION['lang']);?>" src="<?php echo get_url_icon_product($data['id'],150);?>" />
             <?php 
                 QRcode::png($url.'/product/'.$data['id'], 'phpqrcode/img_product/'.$data['id'].'.png', 'L', 4, 2);
             ?>
@@ -67,7 +67,7 @@ $label_read_now=lang($link,'read_now');
                 }
                 ?>
                 <?php if($data["link_youtube"]!=''){?><br /><a onclick="play_video('<?php echo $data["link_youtube"];?>');return false;" ><i  class="fa fa-youtube-square" aria-hidden="true"></i> <?php echo lang($link,'xem_video'); ?></a><?php }?>
-                <?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"];?>"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
+                <?php if($data["company"]!=''){?><br/><a href="<?php echo $url.'/company/'.$data["company"].'/'.$lang;?>"><i  class="fa fa-building" aria-hidden="true"></i> <b><?php echo lang($link,'nha_phat_trien'); ?></b>:<?php echo $data['company']; ?></a><?php }?>
                 <?php if(isset($user_login)&&$user_login->type=='admin'){ ?><script>function open_edit(){window.open("<?php echo $url.'/admin/?page_view=page_product&sub_view=page_product_update&id='.$data['id'];?>");}</script><br /><span class="buttonPro  blue" target="_blank" rel="noopener" onclick="open_edit();" ><i class="fa fa-pencil-square" aria-hidden="true"></i> Chỉnh sửa sản phẩm</span><?php }?>
             </div>
             <div>
@@ -78,7 +78,7 @@ $label_read_now=lang($link,'read_now');
             </div>
             <ul id="menu_download">
 			<?php
-            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook.php?id='.$data['id'].'&lang='.$lang.'" target="_blank" rel="noopener"><img title="'.$label_read_now.'" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
+            if($data["type"]=='book') echo '<li><a href="'.$url.'/ebook/'.$data['id'].'/'.$lang.'" target="_blank" rel="noopener"><img title="'.$label_read_now.'" src="'.$url.'/images_link_store/fa-ebook.jpg" /></a></li>';
 
 			$query_link_store=mysqli_query($link,"SELECT * FROM `product_link` WHERE `id_product` = '".$data['id']."'");
 			while($link_store=mysqli_fetch_assoc($query_link_store)){

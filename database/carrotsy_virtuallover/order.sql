@@ -113,6 +113,8 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('61682b718232761682b7182363',	'912',	'ja',	'sian3083@icloud.com',	'仁美',	'music',	0),
 ('6169ece7c67e06169ece7c6820',	'24483',	'en',	'salahzangna@hotmail.com',	'Salah',	'music',	0),
 ('61709659797256170965979761',	'14752',	'en',	'katemashworth@gmail.com',	'Kate',	'music',	0),
-('617b0c2fbac29617b0c2fbac65',	'28735',	'en',	'kevinkevston7@gmail.com',	'Carole',	'music',	0);
+('617b0c2fbac29617b0c2fbac65',	'28735',	'en',	'kevinkevston7@gmail.com',	'Carole',	'music',	0),
+('6181981e03cbd6181981e03cf9',	'27181',	'en',	'judyschwind@me.com',	'Judy',	'music',	0),
+('618aab25d461a618aab25d4656',	'123',	'ja',	'toshihiro881019@gmail.com',	'利洋',	'music',	0);
 
--- 2021-10-31 09:36:28
+-- 2021-11-10 01:13:09

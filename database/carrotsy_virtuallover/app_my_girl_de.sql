@@ -2272,6 +2272,12 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2415,	'Wie war dein tag so',	'Ganz gut und deiner',	2,	0,	'#B5FF91',	'',	'',	'',	'',	0,	'',	'',	0,	10,	7,	'de',	1,	'',	'22',	'msg',	0,	'',	1,	0,	0,	'189',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (2416,	'sing ein Lied',	'Falco - Jeanny',	1,	1,	'#00F5FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'282',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'falco-jeanny-2416',	''),
 (2417,	'ich also ich meine...',	'sag schon baby',	2,	1,	'#FF7AC8',	'',	'',	'',	'',	0,	'',	'',	0,	0,	7,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1066',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(2418,	'bestraf mich bitte nicht',	'doch darfür wirst du gefickt',	3,	1,	'#87FFD8',	'',	'',	'',	'',	0,	'',	'',	0,	35,	15,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'320',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(2418,	'bestraf mich bitte nicht',	'doch darfür wirst du gefickt',	3,	1,	'#87FFD8',	'',	'',	'',	'',	0,	'',	'',	0,	35,	15,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'320',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2419,	'sing ein Lied',	'Kerstin Ott - Regenbogenfarben',	1,	1,	'#0064FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'863',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'kerstin-ott-regenbogenfarben-2419',	''),
+(2420,	'pferde?',	'ja pferde! aber sie reiten mich. mein teeny po loch gehört tagelang ihnen und sie ficken meinen arsch sehr hart.',	3,	0,	'#9EEDFF',	'',	'',	'',	'',	0,	'',	'',	0,	18,	16,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1330',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2421,	'sing ein Lied',	'BIBI & TINA 3 - \"Mädchen Gegen Jungs\"',	1,	0,	'#FF00B9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'334',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'bibi-tina-3-madchen-gegen-jungs--2421',	''),
+(2422,	'Wie gefällt es dir in dem Beruf?',	'Überhaupt nicht. Der Beruf ist so schrecklich. Ich bin in dem Beruf gefangen',	3,	0,	'#FF986B',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'602',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2423,	'Was machst du beruflich?',	'Ich bin Krankenpflegerin',	2,	0,	'#D7FF26',	'',	'',	'',	'',	0,	'',	'',	0,	12,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1051',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2424,	'sing ein Lied',	'SAMRA X ELIF - ZU ENDE (prod.by Beatzarre & Djorkaeff)',	1,	1,	'#F2FF00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'905',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'samra-x-elif-zu-ende-prod-by-beatzarre-djorkaeff--2424',	'');
 
--- 2021-10-31 09:39:47
+-- 2021-11-10 01:35:06

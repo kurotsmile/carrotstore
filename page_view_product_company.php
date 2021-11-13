@@ -19,7 +19,7 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
 
     <div style="margin-top: 20px;float: left;width: 100%;">
     <?php
-    $list_product_in_company=mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` WHERE  `status`='1' AND `company`='$name_company' ORDER BY RAND() LIMIT 50");
+    $list_product_in_company=mysqli_query($link,"SELECT `id`,`type`,`apk`,`slug`,`galaxy_store`,`app_store`,`chplay_store`,`window_store`,`huawei_store`,`chrome_store`,`carrot_store` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE  `status`='1' AND `company`='$name_company' AND `data`!='' ORDER BY RAND() LIMIT 50");
 
     if($list_product_in_company){
     if(mysqli_num_rows($list_product_in_company)>0){
