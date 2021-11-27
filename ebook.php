@@ -9,7 +9,7 @@ $lang_ebook='vi';
 $ebook_price='1.99';
 $ebook_title='EBook';
 $seo_desc='';
-$ver_css='1.10';
+$ver_css='1.11';
 if(isset($_GET['id']))$id_ebook=$_GET['id'];
 if(isset($_GET['lang']))$lang_ebook=$_GET['lang'];
 $arr_css=array();
@@ -54,7 +54,8 @@ function show_page_cover($type_page){
 		$html_cover='<div class="page_two left page_book" style="display:block;text-align: center;" id="page_0"><div class="contain_page_two">';
 
 	$html_cover.='<img alt="cover" onclick="btn_next()" style="width:90%" src="'.$url_img_cover.'">';
-	if($lang_ebook=='vi') $html_cover.='<br/><br/><br/><br/><br/><strong>Ủng hộ biên tập viên Ebook</strong><br>Xin hãy ủng hộ một số tiền nhỏ, dù chỉ là 1.000đ để tôi có động lực biên tập sách cho các bạn đọc <br/><img alt="cover" style="width:250px" src="'.$url.'/images/mono_donation.png"><br/><br/><a href="https://me.momo.vn/carrot" target="_blank" style="text-decoration: none;">https://me.momo.vn/carrot</a><br/><br/><br/><br/><br/>';
+	if($lang_ebook=='vi') $html_cover.='<br/><br/><br/><br/><br/><strong>Ủng hộ biên tập viên Ebook</strong><br>Xin hãy ủng hộ một số tiền nhỏ, dù chỉ là 1.000đ để tôi có động lực biên tập sách cho các bạn đọc <br/><img alt="cover" style="width:100%" src="'.$url.'/images/mono_donation.png"><br/><br/><a href="https://me.momo.vn/carrot" target="_blank" style="text-decoration: none;">https://me.momo.vn/carrot</a><br/><br/><br/><br/><br/>';
+	$html_cover.="<button class='btn_pay_book btn_page_next' onclick='btn_next()'><i class='fa fa-forward' aria-hidden='true'></i> ".lang('ebook_next_page')."</button><br/><br/><br/>";
 	$html_cover.='</div></div>';
 	return $html_cover;
 }
@@ -209,6 +210,7 @@ if ($detect->isMobile()) {
         $content.='<div class="page_one page_book" style="display: none;" num_page="'.$x.'" id="page_'.$x.'"><div class="contain_page_one">';
         $content.=show_body_html($id_ebook,$url_xml_page);
 		$content=str_replace('../Images/',$url.'/'.$url_ebook_path.'/Images/',$content);
+		if($x<$total_page) $content.="<button class='btn_pay_book btn_page_next' onclick='btn_next()'><i class='fa fa-forward' aria-hidden='true'></i> ".lang('ebook_next_page')."</button><br/><br/><br/>";
         $content.="</div></div>\n";
         $x++;
     }

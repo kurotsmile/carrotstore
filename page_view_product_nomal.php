@@ -207,7 +207,7 @@ $id_product=$data['id'];
 if($data['type']=='book')
 $result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE `type` ='book' AND `id` != '$id_product' AND `status`='1' AND `data`!='' ORDER BY RAND() LIMIT 8");
 else
-$result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` WHERE `company` ='Carrot' AND `id` != '$id_product' AND `status`='1' ORDER BY RAND() LIMIT 8");
+$result3 = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product`  WHERE `company` ='Carrot' AND `id` != '$id_product' AND `status`='1' AND `data`!='' ORDER BY RAND() LIMIT 8");
 
 if(mysqli_num_rows($result3)>0){
 ?>

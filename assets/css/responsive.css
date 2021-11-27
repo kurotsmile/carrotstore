@@ -23,7 +23,7 @@
 }
 @media screen and (max-device-width:480px),screen and (max-width:650px){
 body{overflow-x:hidden}
-#header{border-top-style:solid;border-top-color:green;border-top-width:5px;text-align:center;padding-top:10px}
+#header{text-align:center;padding-top:10px}
 #logo{float:none;margin-left:unset}
 #tool_search{float:none;margin-top:0;margin-bottom:16px;padding:0;height:30px}
 #tool_search .inp{float:none;width:unset;margin-left:unset}

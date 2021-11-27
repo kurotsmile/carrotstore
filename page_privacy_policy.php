@@ -25,18 +25,6 @@
         <i class="fa fa-twitter" aria-hidden="true"></i> <b>Twitter:</b> <a href="https://twitter.com/carrotstore1" target="_blank">https://twitter.com/carrotstore1</a><br />
         <i class="fa fa-skype" aria-hidden="true"></i> <b>Skype:</b> <a href="skype:kurotsmile2?call" >kurotsmile2</a>
     </p>
-
-    <?php if($lang=='vi'){?>
-    <p><h2><i class="fa fa-odnoklassniki icon_green" aria-hidden="true"></i> <?php echo lang($link,'ung_ho'); ?></h2></p>
-    <p>
-        <?php echo lang($link,'chu_thich_ung_ho');?>
-        <br/>
-        <div id="momo_donation"></div>
-        <br/>
-        <i class="fa fa-money" aria-hidden="true"></i> <b>Momo</b>:<a href="https://me.momo.vn/carrot" target="_blank">https://me.momo.vn/carrot</a>
-    </p>
-    <?php }?>
-
     <?php echo lang($link,'thanks');?><br/>
     <div id="site_author"><i class="fa fa-heart heart" aria-hidden="true"></i></div>
     

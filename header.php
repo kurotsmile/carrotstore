@@ -161,6 +161,7 @@ if($page_view=='page_view.php'){
 
     <meta property="og:title" content="<?php echo $title_page;?>" /> 
     <meta property="og:image" content="<?php echo $seo_img; ?>" />
+    <meta property="fb:pages" content="232297850844551" />
     
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="<?php echo $title_page;?>">
