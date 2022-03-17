@@ -42,10 +42,15 @@ if($page_view=='page_view.php'){
 }elseif($page_view=='page_member.php'){
     $sub_view_member='';if(isset($_GET['sub_view_member']))$sub_view_member=$_GET['sub_view_member'];
     if($sub_view_member=='page_member_view_account.php'){
-        $lang='vi';
-        if(isset($_GET['lang'])) $lang=$_GET['lang'];
+        $lang_contact='vi';
+        if(isset($_GET['lang_contact'])){
+            $lang_contact=$_GET['lang_contact'];
+        }else{
+            if(isset($_GET['lang'])) $lang_contact=$_GET['lang'];
+        }
+        
         $id_user=$_GET['user'];
-        $query_account=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user' LIMIT 1");
+        $query_account=mysqli_query($link,"SELECT * FROM `app_my_girl_user_$lang_contact` WHERE `id_device` = '$id_user' LIMIT 1");
         if($query_account){
             if(mysqli_num_rows($query_account)>0) {
                 $data_user = mysqli_fetch_assoc($query_account);
@@ -57,18 +62,18 @@ if($page_view=='page_view.php'){
                 if ($data_user['address'] != '') {
                     $seo_desc .= ' Address:' . $data_user['address'] . ' ';
                 }
-                $seo_desc .= ' Country:' . $lang . ' ';
+                $seo_desc .= ' Country:' . $lang_contact . ' ';
 
                 $seo_img = $url . '/images/avatar_default.png';
-                $url_img = 'app_mygirl/app_my_girl_' . $lang . '_user/' . $id_user . '.png';
+                $url_img = 'app_mygirl/app_my_girl_'.$lang_contact.'_user/' . $id_user . '.png';
                 if ($data_user['avatar_url'] != '') {
                     $seo_img = $data_user['avatar_url'];
                 } else {
                     if (file_exists($url_img)) {
-                        $seo_img = $url . '/' . $url_img;
+                        $seo_img = $url.'/'.$url_img;
                     }
                 }
-                $seo_url = $url . '/user/' . $id_user . '/' . $lang;
+                $seo_url = $url.'/user/'.$id_user.'/'.$lang_contact;
             }
         }
     }
@@ -93,14 +98,15 @@ if($page_view=='page_view.php'){
     }
 }elseif($page_view=='page_music.php'){
     if($_GET['view']=='info_music'){
+        $lang_music=$_GET['lang_music'];
         $slug='';
         $id='';
         if(isset($_GET['slug'])){
             $slug=$_GET['slug'];
-            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `slug`='$slug'");
+            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_music` WHERE `effect` = '2' AND `slug`='$slug'");
         }else{
             $id=$_GET['id'];
-            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `id`='$id'");
+            $query_music=mysqli_query($link,"SELECT `id`,`color`, `chat`, `file_url`, `slug`,`author` FROM `app_my_girl_$lang_music` WHERE `effect` = '2' AND `id`='$id'");
         }
 
         $data_music=mysqli_fetch_assoc($query_music);
@@ -108,7 +114,7 @@ if($page_view=='page_view.php'){
         $id_music=$data_music['id'];
         $title_page=$data_music['chat'];
         
-        $query_lyrics_desc=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
+        $query_lyrics_desc=mysqli_query($link,"SELECT SUBSTRING(`lyrics`, 1, 90) as l,`lyrics`,`artist`,`album`,`genre`,`year` FROM `app_my_girl_".$lang_music."_lyrics` WHERE `id_music` = '$id' LIMIT 1");
         if(mysqli_num_rows($query_lyrics_desc)){
             $data_lyrics=mysqli_fetch_assoc($query_lyrics_desc);
             $seo_desc='download ';
@@ -118,16 +124,16 @@ if($page_view=='page_view.php'){
         }
 
         if($data_music['slug']!=''){
-            $seo_url = $url.'/song/'.$lang.'/'.$data_music['slug'];
+            $seo_url = $url.'/song/'.$lang_music.'/'.$data_music['slug'];
         }else {
-            $seo_url = $url.'/music/'.$id_music.'/'.$lang;
+            $seo_url = $url.'/music/'.$id_music.'/'.$lang_music;
         }
         
-        $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang` WHERE `id_chat` = '$id_music' LIMIT 1");
+        $query_link_video=mysqli_query($link,"SELECT `link` FROM `app_my_girl_video_$lang_music` WHERE `id_chat` = '$id_music' LIMIT 1");
         $data_video=mysqli_fetch_array($query_link_video);
-        $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$id_music.'.mp3';
+        $url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang_music.'/'.$id_music.'.mp3';
         $seo_img=$url.'/images/music_default.png';
-        $filename_img_avatar='app_mygirl/app_my_girl_'.$lang.'_img/'.$id_music.'.png';
+        $filename_img_avatar='app_mygirl/app_my_girl_'.$lang_music.'_img/'.$id_music.'.png';
         if(file_exists($filename_img_avatar)){
             $seo_img=$url.'/'.$filename_img_avatar;
         }
@@ -135,14 +141,15 @@ if($page_view=='page_view.php'){
     }
 }elseif($page_view=='page_quote.php'){
     if($_GET['view']=='info_quote'){
+        $lang_quote=$_GET['lang_quote'];
         $id=$_GET['id'];
-        $query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
+        $query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_$lang_quote` WHERE `effect` = '36' AND `id`='$id' LIMIT 1");
         $data_quote=mysqli_fetch_assoc($query_quote);
         $title_page=$data_quote['chat'];
         $seo_desc=$data_quote['chat'];
         $seo_img=$url.'/app_mygirl/obj_effect/927.png';
         if($data_quote['effect_customer']!='')$seo_img=$url.'/app_mygirl/obj_effect/'.$data_quote['effect_customer'].'.png';
-        $seo_url=$url.'/quote/'.$id.'/'.$lang;
+        $seo_url=$url.'/quote/'.$id.'/'.$lang_quote;
     }
 }
 ?>

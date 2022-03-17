@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -17,4 +17,4 @@ CREATE TABLE `app_my_girl_field_fr` (
 
 TRUNCATE `app_my_girl_field_fr`;
 
--- 2021-08-07 07:58:42
+-- 2021-11-29 07:18:04

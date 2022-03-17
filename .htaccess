@@ -3,16 +3,16 @@ Options +FollowSymLinks
 RewriteEngine On
 RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
 RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
-RewriteRule    ^user/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_view_account.php&user=$1&lang=$2
+RewriteRule    ^user/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_view_account.php&user=$1&lang_contact=$2
 RewriteRule    ^user_edit/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_edit_account.php&user=$1&lang=$2
 RewriteRule    ^user_playlist/([^/]*)/([^/]*)/?$   index.php?page_view=page_member.php&sub_view_member=page_member_playlist.php&user=$1&lang=$2
 RewriteRule    ^type/([^/]*)/([^/]*)/?$    index.php?page_view=page_view.php&type=$1&lang=$2    [NC,L]
 RewriteRule    ^type/([^/]*)/?$    index.php?page_view=page_view.php&type=$1    [NC,L] 
 RewriteRule    ^member  index.php?page_view=page_member.php   [NC,L]
-RewriteRule    ^music/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&id=$1&lang=$2
+RewriteRule    ^music/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&id=$1&lang_music=$2
 RewriteRule    ^music/([^/]*)/?$   index.php?page_view=page_music.php&sub_view=$1
 RewriteRule    ^music  index.php?page_view=page_music.php   [NC,L]   
-RewriteRule    ^song/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&lang=$1&slug=$2
+RewriteRule    ^song/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=info_music&lang_music=$1&slug=$2
 RewriteRule    ^song/([^/]*)/?$   index.php?page_view=page_music.php&sub_view=$1
 RewriteRule    ^song  index.php?page_view=page_music.php   [NC,L]
 RewriteRule    ^artist/([^/]*)/([^/]*)/?$   index.php?page_view=page_music.php&view=artist&lang=$1&name_artist=$2
@@ -41,7 +41,7 @@ RewriteRule    ^paycancel   index.php?page_view=page_pay_cancel.php  [NC,L]
 RewriteRule    ^vl   app_my_girl_info.php [NC,L]
 RewriteRule    ^privacy_policy    index.php?page_view=page_privacy_policy.php   [NC,L]
 RewriteRule    ^copyright    index.php?page_view=page_privacy_policy.php   [NC,L]
-RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&view=info_quote&id=$1&lang=$2
+RewriteRule    ^quote/([^/]*)/([^/]*)/?$   index.php?page_view=page_quote.php&view=info_quote&id=$1&lang_quote=$2
 RewriteRule    ^quote    index.php?page_view=page_quote.php   [NC,L]
 RewriteRule    ^piano/([^/]*)?$   index.php?page_view=page_piano.php&view=detail&id=$1
 RewriteRule    ^piano    index.php?page_view=page_piano.php   [NC,L]
@@ -55,6 +55,7 @@ RewriteRule    ^ebook/([^/]*)?$   ebook.php?id=$1
 RewriteRule    ^b/([^/]*)/([^/]*)/?$   index.php?page_view=page_bible.php&id=$1&lang=$2
 
 #Other CMS
+RewriteRule    ^cms  app_mobile/carrot_framework/index.php [NC,L]
 RewriteRule    ^shortenlinks   app_mobile/shortenlinks/index.php [NC,L]
 RewriteRule    ^contactstore   app_mobile/contactstore/index.php [NC,L]
 RewriteRule    ^getcontact  app_mobile/contactstore/get_contact.php
@@ -70,6 +71,7 @@ RewriteRule    ^pc   app_mobile/remotepc/action.php
 RewriteRule    ^ajaxpc   app_mobile/remotepc/ajaxpc.php
 RewriteRule    ^midi   app_mobile/piano/index.php
 RewriteRule    ^fish_of_prey   app_mobile/fish_of_prey/index.php
+RewriteRule    ^json_editor/([^/]*)?$   app_mobile/json_editor/export_web.php?id=$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

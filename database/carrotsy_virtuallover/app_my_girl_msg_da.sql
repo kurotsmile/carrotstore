@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -45,10 +45,10 @@ TRUNCATE `app_my_girl_msg_da`;
 INSERT INTO `app_my_girl_msg_da` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
 (1,	'bat_chuyen',	'Maj måned var kommet, når hvert glædelig hjerte begynder at blomstre og frembringe frugt',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'da',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (2,	'dam',	'Verdens foretrukne sæson er foråret. Alle ting synes muligt i maj',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'da',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(3,	'dam',	'Jeg ved godt, at juniregnen bare falder.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'da',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(4,	'bat_chuyen',	'Det er juni måned, måneden med blade og roser, når hyggelige seværdigheder hylder øjnene og behagelige dufte næserne.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'da',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(5,	'bat_chuyen',	'Det er juni måned, måneden med blade og roser, når hyggelige seværdigheder hylder øjnene og behagelige dufte næserne.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'da',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(6,	'dam',	'Jeg ved godt, at juniregnen bare falder.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'da',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(3,	'dam',	'Jeg ved godt, at juniregnen bare falder.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'da',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(4,	'bat_chuyen',	'Det er juni måned, måneden med blade og roser, når hyggelige seværdigheder hylder øjnene og behagelige dufte næserne.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'da',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(5,	'bat_chuyen',	'Det er juni måned, måneden med blade og roser, når hyggelige seværdigheder hylder øjnene og behagelige dufte næserne.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'da',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(6,	'dam',	'Jeg ved godt, at juniregnen bare falder.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'da',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (7,	'dam',	'Uanset hvad julen bringer til dig, vær det godt eller dårligt; Hold altid det smil på dit ansigt, uanset hvad.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'da',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (8,	'dam',	'Uanset hvad julen bringer til dig, vær det godt eller dårligt. Hold altid det smil på dit ansigt, uanset hvad.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'da',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (9,	'bat_chuyen',	'Hvor god er sommervarmen, uden vinterens kulde for at give det sødme.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'da',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -61,4 +61,4 @@ INSERT INTO `app_my_girl_msg_da` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (16,	'bat_chuyen',	'I sæsonen af Covid 19 skal du være forsigtig med ikke at fokusere på overfyldte steder og skal bære en maske, uanset hvor du går!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'da',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (17,	'bat_chuyen',	'Selama musim Covid 19, Anda harus berhati-hati untuk tidak fokus pada tempat-tempat ramai dan harus mengenakan topeng ke mana pun Anda pergi!...',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'da',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 16:55:35
+-- 2021-11-29 09:27:46

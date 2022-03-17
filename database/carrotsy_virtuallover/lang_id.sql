@@ -339,6 +339,7 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Modus siang'),
 ('dark_mode_moon',	'Mode malam'),
 ('ebook_download_link',	'Klik di sini untuk mengunduh buku'),
-('seo_game',	'Nikmati game seru dan trending di arsip game wortelstore, kami menyediakan deskripsi game lengkap serta tautan unduhan sehingga Anda dapat memainkannya di komputer, ponsel, dan perangkat lainnya. mainkan game seperti xbox, ps4, playstation');
+('seo_game',	'Nikmati game seru dan trending di arsip game wortelstore, kami menyediakan deskripsi game lengkap serta tautan unduhan sehingga Anda dapat memainkannya di komputer, ponsel, dan perangkat lainnya. mainkan game seperti xbox, ps4, playstation'),
+('ebook_next_page',	'Lanjut membaca');
 
--- 2021-10-31 09:33:10
+-- 2021-11-29 09:37:58

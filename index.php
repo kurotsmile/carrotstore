@@ -54,11 +54,12 @@ function ip_visitor_country()
     return $ip_data;
 }
 $data_ip = ip_visitor_country();
-if(isset($_GET['lang'])){
-    $lang=$_GET['lang'];
-}elseif(isset($_SESSION['lang'])) {
+
+if(isset($_SESSION['lang'])){
     $lang=$_SESSION['lang'];
-} else {
+}else if(isset($_GET['lang'])){
+    $lang=$_GET['lang'];
+}else{
     $k=$data_ip['lang'];
     $query_key_country = mysqli_query($link,"SELECT `key`,`country_code` FROM `app_my_girl_country` WHERE `country_code` = '$k' LIMIT 1");
     if (mysqli_num_rows($query_key_country)) {

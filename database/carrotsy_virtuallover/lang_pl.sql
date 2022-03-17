@@ -339,6 +339,7 @@ INSERT INTO `lang_pl` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Tryb dzienny'),
 ('dark_mode_moon',	'Tryb nocny'),
 ('ebook_download_link',	'Kliknij tutaj, aby pobrać książkę'),
-('seo_game',	'Ciesz się zabawnymi i popularnymi grami w archiwum gier carrotstore, zapewniamy pełne opisy gier, a także linki do pobrania, dzięki czemu możesz grać w nie na komputerach, telefonach i innych urządzeniach. graj w gry takie jak xbox,ps4,playstation');
+('seo_game',	'Ciesz się zabawnymi i popularnymi grami w archiwum gier carrotstore, zapewniamy pełne opisy gier, a także linki do pobrania, dzięki czemu możesz grać w nie na komputerach, telefonach i innych urządzeniach. graj w gry takie jak xbox,ps4,playstation'),
+('ebook_next_page',	'Kontynuuj czytanie');
 
--- 2021-10-31 09:31:22
+-- 2021-11-29 09:47:57

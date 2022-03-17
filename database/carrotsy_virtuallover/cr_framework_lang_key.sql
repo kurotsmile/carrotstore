@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.37 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -92,4 +92,4 @@ INSERT INTO `cr_framework_lang_key` (`key`) VALUES
 ('lost_connect_msg'),
 ('lost_connect_try');
 
--- 2021-06-03 10:00:48
+-- 2022-01-26 02:24:38

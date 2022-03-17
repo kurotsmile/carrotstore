@@ -1,4 +1,4 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -42,4 +42,4 @@ INSERT INTO `app_my_girl_country` (`key`, `name`, `ver0`, `ver1`, `ver2`, `ver3`
 ('nl',	'Nederland',	'0',	'0',	'0',	'',	1,	18,	'nl'),
 ('pl',	'Poland',	'0',	'0',	'0',	'',	1,	19,	'pl');
 
--- 2020-11-30 09:54:18
+-- 2021-11-29 06:18:26

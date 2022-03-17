@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -161,8 +161,8 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (116,	'thong_bao',	'ne yapıyorsun gel lütfen konuş benimle',	1,	1,	'#FFEC30',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'339',	'',	'',	'',	'0',	'0',	'0',	''),
 (117,	'dam',	'Cadılar Bayramı gününde bol bol ürkütücü sürprizler ve korkunç eğlence diliyorum\r\n',	0,	1,	'#87FFD8',	'',	'',	'',	'',	'',	0,	20,	0,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'320',	'',	'',	'',	'0',	'0',	'0',	''),
 (118,	'bat_chuyen',	'Cadılar Bayramı gününde bol bol ürkütücü sürprizler ve korkunç eğlence diliyorum\r\n',	1,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	14,	3,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(119,	'bat_chuyen',	'Kasım ayı yolunuza geldi Muhteşem bir hava yaratın, havanın kötü olup olmaması fark etmez, ruh haliniz için hiç de iyi değil, sadece uzun durmanız ve mutlu olmanız gerekir.',	0,	1,	'#85FF7D',	'',	'',	'',	'',	'',	0,	31,	17,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
-(120,	'bat_chuyen',	'Kasım ayı yolunuza geldi Muhteşem bir hava yaratın, havanın kötü olup olmaması fark etmez, ruh haliniz için hiç de iyi değil, sadece uzun durmanız ve mutlu olmanız gerekir.',	1,	1,	'#47BEFF',	'',	'',	'',	'',	'',	0,	21,	16,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'1088',	'',	'',	'',	'0',	'0',	'0',	''),
+(119,	'bat_chuyen',	'Kasım ayı yolunuza geldi Muhteşem bir hava yaratın, havanın kötü olup olmaması fark etmez, ruh haliniz için hiç de iyi değil, sadece uzun durmanız ve mutlu olmanız gerekir.',	0,	1,	'#85FF7D',	'',	'',	'',	'',	'',	0,	31,	17,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
+(120,	'bat_chuyen',	'Kasım ayı yolunuza geldi Muhteşem bir hava yaratın, havanın kötü olup olmaması fark etmez, ruh haliniz için hiç de iyi değil, sadece uzun durmanız ve mutlu olmanız gerekir.',	1,	1,	'#47BEFF',	'',	'',	'',	'',	'',	0,	21,	16,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'1088',	'',	'',	'',	'0',	'0',	'0',	''),
 (121,	'hoi_tim_duong',	'Hangi adresi bulmak istiyorsun? Sana rehberlik edeceğim!',	0,	2,	'#FFB11F',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'',	'0',	'0',	'0',	''),
 (122,	'hoi_tim_duong',	'Hangi adresi bulmak istiyorsun? Sana rehberlik edeceğim!',	1,	2,	'#A1FFB4',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'263',	'',	'',	'',	'0',	'0',	'0',	''),
 (123,	'tra_loi_tim_duong',	'İlgili arama yerlerini listeledim!',	0,	1,	'#9CFFF2',	'',	'',	'',	'',	'',	43,	0,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'44',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -201,10 +201,10 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (156,	'bat_chuyen',	'April, Mayıs’ın tutacağı bir sözdür.',	1,	1,	'#42D6FF',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	4,	'1603',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (157,	'bat_chuyen',	'Her ayın kalbinin çiçek açmaya başladığı ve meyve getirdiği Mayıs ayı geldi',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'tr',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (158,	'dam',	'Dünyanın en sevdiği mevsim ilkbahardır. Mayıs\'ta her şey mümkün gibi görünüyor',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(159,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'tr',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(160,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(161,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(162,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'tr',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(159,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'tr',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(160,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(161,	'bat_chuyen',	'Haziran ay, Yaprak ve gül ayları, Ne zaman hoş manzaralar gözlerini selamlar ve hoş kokar burunlar.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(162,	'dam',	'Haziran yağmurlarının sadece düştüğünü biliyorum.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'tr',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (163,	'dam',	'Her ne Temmuz, sizin için getiriyorsa, iyi ya da kötü; Ne olursa olsun, daima yüzündeki gülümsemeyi sürdür.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'tr',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (164,	'dam',	'Her ne Temmuz, sizin için getiriyorsa, iyi ya da kötü olsun. Ne olursa olsun, daima yüzündeki gülümsemeyi sürdür.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'tr',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (165,	'bat_chuyen',	'Yaz sıcaklığını iyi, kışın soğuk olmadan tatlılık veriyor.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'tr',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -217,4 +217,4 @@ INSERT INTO `app_my_girl_msg_tr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (172,	'bat_chuyen',	'Covid 19 sezonunda kalabalık yerlere odaklanmamaya ve nereye giderseniz gidin bir maske takmaya dikkat etmelisiniz!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (173,	'bat_chuyen',	'Covid 19 sezonunda kalabalık yerlere odaklanmamaya ve nereye giderseniz gidin bir maske takmaya dikkat etmelisiniz!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'tr',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 16:36:09
+-- 2021-11-29 09:43:53

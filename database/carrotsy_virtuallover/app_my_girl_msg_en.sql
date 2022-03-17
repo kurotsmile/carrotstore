@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -187,7 +187,7 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (144,	'chao_18',	'Good evening. Hope you\'ve had a productive day so far!',	0,	1,	'#1FFFF8',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'279',	'',	'',	'',	'0',	'0',	'0',	''),
 (145,	'chao_19',	'Good evening. Hope you\'ve had a productive day so far!',	1,	1,	'#1CE8FF',	'',	'',	'',	'',	'',	0,	5,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'279',	'',	'',	'',	'0',	'0',	'0',	''),
 (146,	'chao_6',	'Good morning!  {ten_user}',	1,	1,	'#EEFF9C',	'',	'',	'',	'',	'',	0,	5,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'298',	'',	'',	'',	'0',	'0',	'0',	''),
-(147,	'bat_chuyen',	'Can you go to the bed with me?? I need to feel your warm!',	0,	2,	'#CCF3FF',	'',	'',	'',	'',	'',	0,	7,	16,	0,	'',	1,	0,	0,	'',	4,	0,	0,	'476',	'',	'',	'',	'0',	'0',	'0',	''),
+(147,	'bat_chuyen',	'Can you go to the bed with me?? I need to feel your warm!',	0,	2,	'#CCF3FF',	'',	'',	'',	'',	'',	0,	7,	16,	0,	'',	1,	1,	0,	'',	4,	0,	0,	'476',	'',	'',	'2',	'0',	'0',	'0',	''),
 (148,	'dam',	'How wonderful life is, now you are in the world.',	0,	1,	'#EBFFC9',	'',	'',	'',	'',	'',	0,	17,	3,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'385',	'',	'',	'',	'0',	'0',	'0',	''),
 (149,	'dam',	'How wonderful life is, now you are in the world.',	1,	1,	'#94FFAD',	'',	'',	'',	'',	'',	0,	17,	3,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'480',	'',	'',	'',	'0',	'0',	'0',	''),
 (150,	'bat_chuyen',	'I hope you are having a great day so far.',	0,	2,	'#FFFFD6',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'576',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -239,9 +239,9 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (196,	'bat_chuyen',	'Wish you lots of spooky surprises and frightful fun on halloween Day',	0,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	24,	3,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (197,	'bat_chuyen',	'Wish you lots of spooky surprises and frightfully fun on halloween Day',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	5,	15,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (198,	'bat_chuyen',	'Wish you lots of spooky surprises and frightful fun on halloween Day',	1,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	0,	3,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(199,	'bat_chuyen',	'November month came your way\r\nMake it an amazing one,\r\nit doesn\'t matter if the weather is bad,\r\nfor your mood is not good at all\r\nyou just have to stand tall\r\nand be happy.',	0,	1,	'#2B6EFF',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'1089',	'',	'',	'',	'0',	'0',	'0',	''),
-(200,	'bat_chuyen',	'November month came your way\r\nMake it an amazing one,\r\nit doesn\'t matter if the weather is bad,\r\nfor your mood is not good at all\r\nyou just have to stand tall\r\nand be happy.',	1,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'339',	'',	'',	'2',	'0',	'0',	'0',	''),
-(201,	'bat_chuyen',	'November month came your way\r\nMake it an amazing one,\r\nit doesn\'t matter if the weather is bad,\r\nfor your mood is not good at all\r\nyou just have to stand tall\r\nand be happy.',	1,	2,	'#FF242A',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'395',	'',	'',	'',	'0',	'0',	'0',	''),
+(199,	'bat_chuyen',	'November month came your way\r\nMake it an amazing one,\r\nit doesn\'t matter if the weather is bad,\r\nfor your mood is not good at all\r\nyou just have to stand tall\r\nand be happy.',	0,	1,	'#2B6EFF',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'1089',	'',	'',	'',	'0',	'0',	'0',	''),
+(200,	'bat_chuyen',	'November month came your way\r\nMake it an amazing one,\r\nit doesn\'t matter if the weather is bad,\r\nfor your mood is not good at all\r\nyou just have to stand tall\r\nand be happy.',	1,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'339',	'',	'',	'2',	'0',	'0',	'0',	''),
+(201,	'bat_chuyen',	'November month came your way\r\nMake it an amazing one,\r\nit doesn\'t matter if the weather is bad,\r\nfor your mood is not good at all\r\nyou just have to stand tall\r\nand be happy.',	1,	2,	'#FF242A',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'395',	'',	'',	'',	'0',	'0',	'0',	''),
 (202,	'hoi_tim_duong',	'What address do you want to find? I will guide you!',	0,	2,	'#FFB11F',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'2',	'0',	'0',	'0',	''),
 (203,	'hoi_tim_duong',	'What address do you want to find? I will guide you!',	1,	1,	'#FF2158',	'',	'',	'',	'',	'',	0,	20,	2,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1199',	'',	'',	'2',	'0',	'0',	'0',	''),
 (204,	'tra_loi_tim_duong',	'I have listed the related search locations!',	0,	1,	'#C4FFFA',	'',	'',	'',	'',	'',	43,	34,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'402',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -311,10 +311,10 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (268,	'dam',	'The world\'s favorite season is the spring. All things seem possible in May',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'',	'0',	'0',	'0',	''),
 (269,	'bat_chuyen',	'The month of May was come, when every lusty heart beginneth to blossom, and to bring forth fruit',	1,	1,	'#4DFF2B',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	1,	1,	0,	'',	1,	0,	5,	'826',	'',	'2',	'',	'0',	'0',	'0',	''),
 (270,	'dam',	'The world\'s favorite season is the spring. All things seem possible in May',	1,	3,	'#FF406B',	'',	'',	'',	'',	'',	0,	1,	4,	0,	'',	1,	1,	0,	'',	1,	0,	5,	'206',	'',	'2',	'',	'0',	'0',	'0',	''),
-(271,	'dam',	'I know well that the June rains just fall.   ',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(272,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(273,	'dam',	'I know well that the June rains just fall.   ',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(274,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(271,	'dam',	'I know well that the June rains just fall.   ',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(272,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(273,	'dam',	'I know well that the June rains just fall.   ',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'2',	'0',	'0',	'0',	''),
+(274,	'bat_chuyen',	'It is the month of June, The month of leaves and roses, When pleasant sights salute the eyes and pleasant scents the noses.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (275,	'dam',	'Whatever july is bringing for you, be it good or bad; always keep that smile on your face no matter what.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'',	'0',	'0',	'0',	''),
 (276,	'dam',	'Whatever july is bringing for you, be it good or bad. always keep that smile on your face no matter what.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (277,	'bat_chuyen',	'What good is the warmth of summer, without the cold of winter to give it sweetness. ',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'2',	'0',	'0',	'0',	''),
@@ -328,4 +328,4 @@ INSERT INTO `app_my_girl_msg_en` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (285,	'bat_chuyen',	'During the season of Covid 19, you have to be careful not to focus on crowded places and have to wear a mask wherever you go!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (286,	'bat_chuyen',	'During the season of Covid 19, you have to be careful not to focus on crowded places and have to wear a mask wherever you go!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'2',	'0',	'0',	'0',	'');
 
--- 2021-06-12 15:37:58
+-- 2021-11-29 09:28:06

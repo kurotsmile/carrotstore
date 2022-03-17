@@ -339,6 +339,7 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Chế độ ban ngày'),
 ('dark_mode_moon',	'Chế độ ban đêm'),
 ('ebook_download_link',	'Bấm vào đây để tải sách'),
-('seo_game',	'Tận hưởng những trò chơi thú vị và thịnh hành ở kho lưu trữ trò chơi carrotstore, chúng tôi cung cấp đầy đủ các bài giới thiệu về game cũng như liên kết tải để bạn có thể chơi trên máy tính,điện thoại, và các máy chơi game như xbox,ps4,playstation');
+('seo_game',	'Tận hưởng những trò chơi thú vị và thịnh hành ở kho lưu trữ trò chơi carrotstore, chúng tôi cung cấp đầy đủ các bài giới thiệu về game cũng như liên kết tải để bạn có thể chơi trên máy tính,điện thoại, và các máy chơi game như xbox,ps4,playstation'),
+('ebook_next_page',	'Đọc tiếp');
 
--- 2021-10-31 09:15:17
+-- 2021-11-29 09:47:02

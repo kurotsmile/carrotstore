@@ -1,9 +1,9 @@
 <?php
 $link_app=$row['slug'];
 if(trim($row['slug'])!=''){
-    $link_app=$url.'/p/'.$row['slug'].'/'.$lang;
+    $link_app=$url.'/p/'.$row['slug'];
 }else{
-    $link_app=$url.'/product/'.$row['id'].'/'.$lang;
+    $link_app=$url.'/product/'.$row['id'];
 }
 $query_type=mysqli_query($link,"SELECT `css_icon` FROM `type` WHERE `id` = '".$row['type']."' LIMIT 1");
 $data_type=mysqli_fetch_assoc($query_type);

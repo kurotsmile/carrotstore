@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -36,8 +36,8 @@ INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('chuparias',	'es'),
 ('mamamelo',	'es'),
 ('chupar',	'es'),
-('verga',	'es'),
-('verga',	'es'),
+('condom',	'en'),
+('put it',	'en'),
 ('bucetinha',	'pt'),
 ('mamas',	'pt'),
 ('pauzudo',	'pt'),
@@ -55,7 +55,7 @@ INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('salope',	'fr'),
 ('Schlampe',	'de'),
 ('tits',	'en'),
-('star',	'en'),
+('fucking',	'en'),
 ('sex',	'vi'),
 ('con cặc',	'vi'),
 ('lồn',	'vi'),
@@ -71,6 +71,11 @@ INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('chupa',	'pt'),
 ('chupamela',	'es'),
 ('ejacule',	'pt'),
-('muschi',	'de');
+('muschi',	'de'),
+('sik beni',	'tr'),
+('肏我',	'zh'),
+('slut',	'en'),
+('자지',	'ko'),
+('whore',	'en');
 
--- 2021-06-12 15:27:20
+-- 2021-11-29 08:05:47

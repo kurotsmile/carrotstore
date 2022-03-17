@@ -339,6 +339,7 @@ INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Tag-Modus'),
 ('dark_mode_moon',	'Nacht-Modus'),
 ('ebook_download_link',	'Klicken Sie hier, um das Buch herunterzuladen'),
-('seo_game',	'Genießen Sie die lustigen und trendigen Spiele im Carrotstore-Spielarchiv. Wir bieten vollständige Spielbeschreibungen sowie Download-Links, damit Sie sie auf Computern, Telefonen und anderen Geräten spielen können. Spiele wie Xbox, PS4, Playstation');
+('seo_game',	'Genießen Sie die lustigen und trendigen Spiele im Carrotstore-Spielarchiv. Wir bieten vollständige Spielbeschreibungen sowie Download-Links, damit Sie sie auf Computern, Telefonen und anderen Geräten spielen können. Spiele wie Xbox, PS4, Playstation'),
+('ebook_next_page',	'Weiterlesen');
 
--- 2021-10-31 09:34:04
+-- 2021-11-29 09:48:20

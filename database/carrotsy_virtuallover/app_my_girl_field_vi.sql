@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.5.5-10.4.22-MariaDB dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -87,4 +87,4 @@ INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('76890',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
 ('77008',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0');
 
--- 2021-08-17 16:08:20
+-- 2022-03-17 15:00:50

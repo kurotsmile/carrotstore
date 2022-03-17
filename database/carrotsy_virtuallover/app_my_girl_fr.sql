@@ -2982,6 +2982,17 @@ INSERT INTO `app_my_girl_fr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (3108,	'releves ta jupe',	'coquin tu veux voir mes fesses',	3,	0,	'#29E644',	'',	'',	'',	'',	0,	'',	'',	0,	40,	8,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'85',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (3109,	'jadore penetrer ton petit cul',	'tu m\'enculés bien mon salaud',	3,	0,	'#FFA53B',	'',	'',	'',	'',	0,	'',	'',	0,	35,	14,	'fr',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'882',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (3110,	'tu mas manqué',	'oui toi aussi mon chéri',	2,	0,	'#FF7AC8',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1066',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(3111,	'chanter une chanson',	'MHD feat. Tiakola - Pololo',	1,	1,	'#9F03FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'975',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mhd-feat-tiakola-pololo-3111',	'');
+(3111,	'chanter une chanson',	'MHD feat. Tiakola - Pololo',	1,	1,	'#9F03FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'975',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mhd-feat-tiakola-pololo-3111',	''),
+(3112,	'chanter une chanson',	'Je t\'aime - Lorie',	1,	0,	'#3066FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'770',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'je-t-aime-lorie-3112',	''),
+(3113,	'amour présence',	'je suis la juste pour toi',	3,	0,	'#D7FFAD',	'',	'',	'',	'',	0,	'',	'',	0,	0,	16,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'968',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3114,	'chanter une chanson',	'Marou Chenko - Laisse Tombew | Prod by Ku$hi',	1,	1,	'#FF0808',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'378',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'marou-chenko-laisse-tombew-prod-by-ku-hi-3114',	''),
+(3115,	'flatte moi',	'je te désire plus que tout au monde ',	3,	0,	'#9DFF54',	'',	'',	'',	'',	0,	'',	'',	0,	33,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'543',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3116,	'tu es sale',	'obsédé',	3,	1,	'#FFE159',	'',	'',	'',	'',	0,	'',	'',	0,	0,	11,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1463',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3117,	'chanter une chanson',	'Marwa Loud - Beau Parleur',	1,	0,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'304',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'marwa-loud-beau-parleur-3117',	''),
+(3118,	'chanter une chanson',	'Stromae - Santé',	1,	1,	'#FFE703',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'809',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stromae-sante-3118',	''),
+(3119,	'chanter une chanson',	'Larry - Question réponse',	1,	1,	'#FF91E0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1125',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'larry-question-reponse-3119',	''),
+(3120,	'chanter une chanson',	'Soolking feat. Ouled El Bahdja - Liberté',	1,	1,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'858',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'soolking-feat-ouled-el-bahdja-liberte-3120',	''),
+(3121,	'chanter une chanson',	'Tayc - Le Temps',	1,	1,	'#7263E6',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1113',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'tayc-le-temps-3121',	''),
+(3122,	'chanter une chanson',	'Kate Ryan - Désenchantée',	1,	0,	'#FFF536',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1192',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'kate-ryan-desenchantee-3122',	'');
 
--- 2021-11-10 01:30:41
+-- 2021-11-29 07:27:32

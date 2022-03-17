@@ -25,7 +25,7 @@ if (!isset($data_user)){
                 <b style="margin-top: 10px;"><?php echo lang($link,'warning');?></b>
                 <p><?php echo lang($link,'account_view_18');?></p>
                 <br/>
-                <a class="buttonPro green" href="#" onclick="window.location.replace('<?php echo $url; ?>/user/<?php echo $id_user;?>/<?php echo $lang;?>&sex_content=1');"><i class="fa fa-check-circle" aria-hidden="true"></i> <?php echo lang($link,'account_view_yes');?></a><br/>
+                <a class="buttonPro green" href="#" onclick="window.location.replace('<?php echo $url; ?>/user/<?php echo $id_user;?>/<?php echo $lang_contact;?>&sex_content=1');"><i class="fa fa-check-circle" aria-hidden="true"></i> <?php echo lang($link,'account_view_yes');?></a><br/>
                 <a class="buttonPro red" href="<?php echo $url; ?>/member"><i class="fa fa-times-circle" aria-hidden="true"></i> <?php echo lang($link,'account_view_no');?></a>
                 </a>
             </p>
@@ -38,12 +38,12 @@ include "phpqrcode/qrlib.php";
 $sdt = $data_user['sdt'];
 $name_account = $data_user['name'];
 $address_account = $data_user['address'];
-$url_cur_page = $url.'/user/'.$id_user.'/'.$lang;
+$url_cur_page = $url.'/user/'.$id_user.'/'.$lang_contact;
 
 include_once "page_member_header_account.php";
 
 $array_contact_same_name=array();
-$list_contact_same_name = mysqli_query($link,"SELECT id_device,name,sex,sdt,address,avatar_url FROM `app_my_girl_user_$lang` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user' AND `status`='0' ORDER BY RAND()  LIMIT 10");
+$list_contact_same_name = mysqli_query($link,"SELECT id_device,name,sex,sdt,address,avatar_url FROM `app_my_girl_user_$lang_contact` WHERE MATCH (`name`) AGAINST ('$name_account') AND `sdt` !='' AND `id_device`!='$id_user' AND `status`='0' ORDER BY RAND()  LIMIT 10");
 if($list_contact_same_name){
     while ($row_contact_same=mysqli_fetch_assoc($list_contact_same_name)){
         array_push($array_contact_same_name,$row_contact_same);
@@ -59,7 +59,7 @@ if($list_contact_same_name){
                 <?php if ($sdt != '') { ?><li><strong><i class="fa fa-phone-square"></i> <?php echo lang($link,'so_dien_thoai'); ?> :</strong> <a href="tel://<?php echo $sdt; ?>"><?php echo $sdt; ?></a></li><?php } ?>
                 <li>
                     <strong><i class="fa fa-globe" aria-hidden="true"></i> <?php echo lang($link,'quoc_gia'); ?>:</strong>
-                    <img style="height: 14px;"  src="<?php echo $url.'/app_mygirl/img/'.$lang.'.png'; ?>"/> <?php echo $lang; ?>
+                    <img style="height: 14px;"  src="<?php echo $url.'/app_mygirl/img/'.$lang_contact.'.png'; ?>"/> <?php echo $lang_contact; ?>
                 </li>
                 <li><strong><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo lang($link,'date_start'); ?> :</strong></strong> <?php echo $data_user['date_start']; ?></li>
                 <li><strong><i class="fa fa-calendar-o" aria-hidden="true"></i> <?php echo lang($link,'date_cur'); ?> :</strong> <?php echo $data_user['date_cur']; ?></li>
@@ -68,20 +68,20 @@ if($list_contact_same_name){
                 <li>
                     <strong><i class="fa fa-id-badge" aria-hidden="true"></i> ID carrot:</strong> <?php echo $data_user['id_device'] ?><br/>
                     <?php
-                    QRcode::png($url_cur_page, 'phpqrcode/img_account/'.$id_user.'_'.$lang.'.png', 'M', 4, 2);
+                    QRcode::png($url_cur_page, 'phpqrcode/img_account/'.$id_user.'_'.$lang_contact.'.png', 'M', 4, 2);
                     ?>
-                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang; ?>.png" class="box_get_info_contact" title="<?php echo lang($link,"qr_tip");?>"/>
-                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'download_vcf');?></span></div></a>
-                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'contact_open_app');?></span></div></a>
+                    <img src="<?php echo $url; ?>/phpqrcode/img_account/<?php echo $id_user; ?>_<?php echo $lang_contact; ?>.png" class="box_get_info_contact" title="<?php echo lang($link,"qr_tip");?>"/>
+                    <a href="<?php echo $url; ?>/download_vcf.php?id_user=<?php echo $id_user;?>&lang=<?php echo $lang_contact;?>" class="box_get_info_contact"> <i class="fa fa-download fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'download_vcf');?></span></div></a>
+                    <a href="contactstore://show/<?php echo $id_user;?>/<?php echo $lang_contact;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span><?php echo lang($link,'contact_open_app');?></span></div></a>
                     <div onclick="show_user_report();return false;" class="box_get_info_contact"> <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i><div class="txt"><span><?php echo lang($link,"account_report"); ?></span></div></div>
                 </li>
                 <?php
                 if($is_me){
-                    echo '<li><a class="buttonPro small yellow" href="'.$url.'/user_edit/'.$id_user.'/'.$lang.'"><i class="fa fa-wrench" aria-hidden="true"></i> '.lang($link,'chinh_sua_thong_tin').'</a></li>';
+                    echo '<li><a class="buttonPro small yellow" href="'.$url.'/user_edit/'.$id_user.'/'.$lang_contact.'"><i class="fa fa-wrench" aria-hidden="true"></i> '.lang($link,'chinh_sua_thong_tin').'</a></li>';
                 }
                 ?>
                 <?php
-                $contact_query=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`info_$lang` WHERE `user_id` = '$id_user' LIMIT 1");
+                $contact_query=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`info_$lang_contact` WHERE `user_id` = '$id_user' LIMIT 1");
                 if($contact_query){
                     $data_contact = mysqli_fetch_assoc($contact_query);
                     if($data_contact!=null){
@@ -97,7 +97,7 @@ if($list_contact_same_name){
                             else
                                 $field_icon_web=$data_info_field['icon_web'];
 
-                            $query_field_key_lang=mysqli_query($link,"SELECT `name`, `tip` FROM carrotsy_contacts.`field_lang` WHERE `name_id` = '$key_info' AND `lang` = '$lang_sel' LIMIT 1");
+                            $query_field_key_lang=mysqli_query($link,"SELECT `name`, `tip` FROM carrotsy_contacts.`field_lang` WHERE `name_id` = '$key_info' AND `lang` = '$lang_contact' LIMIT 1");
                             $data_field_key_lang=mysqli_fetch_assoc($query_field_key_lang);
                             if($data_field_key_lang!=null)$key_info=$data_field_key_lang['name'];
 
@@ -115,7 +115,7 @@ if($list_contact_same_name){
         <?php echo show_share($link,$url_cur_page); ?>
 
         <?php
-        $check_music_data = mysqli_query($link,"SELECT `id_chat`,`value` FROM `app_my_girl_music_data_$lang_sel` WHERE `device_id` = '$id_user' LIMIT 10");
+        $check_music_data = mysqli_query($link,"SELECT `id_chat`,`value` FROM `app_my_girl_music_data_$lang_contact` WHERE `device_id` = '$id_user' LIMIT 10");
         if (mysqli_num_rows($check_music_data)) {
             ?>
             <div style="width: 100%;float: left;">
@@ -128,11 +128,11 @@ if($list_contact_same_name){
                     '<i  class="fa fa-smile-o" aria-hidden="true"></i>');
                 while ($row_histore_music = mysqli_fetch_array($check_music_data)) {
                     $id_music = $row_histore_music['id_chat'];
-                    $query_music = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$lang_sel` WHERE `effect` = '2' AND `id`='$id_music' LIMIT 1");
+                    $query_music = mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$lang_contact` WHERE `effect` = '2' AND `id`='$id_music' LIMIT 1");
                     $data_music = mysqli_fetch_array($query_music);
                     ?>
                     <a style="display: block;"
-                       href="<?php echo $url; ?>/music/<?php echo $id_music; ?>/<?php echo $lang_sel; ?>"
+                       href="<?php echo $url; ?>/music/<?php echo $id_music; ?>/<?php echo $lang_contact; ?>"
                        class="track-details">
                         <i class="fa fa-headphones" aria-hidden="true"></i> <?php echo $data_music['chat']; ?>
                         <em><?php echo $arr_icon_face[intval($row_histore_music['value'])] ?></em>
@@ -171,7 +171,7 @@ if($list_contact_same_name){
             $row_contact = $array_contact_same_name[$i_contact];
             ?>
             <a style="width: 100%;display: block;"
-               href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang; ?>"
+               href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang_contact; ?>"
                class="track-details contacts">
                 <i class="fa fa-user" aria-hidden="true"></i> <?php echo $row_contact['name']; ?>
                 <em><?php echo $row_contact['sdt']; ?></em>
@@ -184,11 +184,11 @@ if($list_contact_same_name){
         <?php if ($sdt != '') { ?>
             <h3><i class="fa fa-plug" aria-hidden="true"></i> <?php echo lang($link,'lien_he_lien_quan'); ?></h3>
             <?php
-            $list_contact_same_phone = mysqli_query($link,"SELECT `id_device`,`name`,`sdt` FROM `app_my_girl_user_$lang` WHERE `sdt`= '$sdt'  LIMIT 5");
+            $list_contact_same_phone = mysqli_query($link,"SELECT `id_device`,`name`,`sdt` FROM `app_my_girl_user_$lang_contact` WHERE `sdt`= '$sdt'  LIMIT 5");
             while ($row_contact = mysqli_fetch_array($list_contact_same_phone)) {
                 ?>
                 <a style="width: 100%;display: block;"
-                   href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang; ?>"
+                   href="<?php echo $url; ?>/user/<?php echo $row_contact['id_device']; ?>/<?php echo $lang_contact; ?>"
                    class="track-details contacts">
                     <i class="fa fa-user" aria-hidden="true"></i> <?php echo $row_contact['name']; ?>
                     <em><?php echo $row_contact['sdt']; ?></em>
@@ -222,6 +222,7 @@ if (sizeof($array_contact_same_name)> 0) {
         $label_so_dien_thoai=lang($link,"so_dien_thoai");
         $label_dia_chi=lang($link,"dia_chi");
         $label_quoc_gia=lang($link,"quoc_gia");
+        $lang=$lang_contact;
 
         for($i_contact=0;$i_contact<sizeof($array_contact_same_name);$i_contact++){
             $row =$array_contact_same_name[$i_contact];
@@ -271,7 +272,7 @@ function submit_acc_report(sel_val,error_val){
     $.ajax({
         url: "<?php echo $url;?>/json/json_account.php",
         type: "post",
-        data: "function=report_account&lang=<?php echo $lang;?>&type="+sel_val+"&id_device=<?php echo $id_user;?>&error_txt="+error_val,
+        data: "function=report_account&lang=<?php echo $lang_contact;?>&type="+sel_val+"&id_device=<?php echo $id_user;?>&error_txt="+error_val,
         success: function (data, textStatus, jqXHR) {
             swal("<?php echo lang($link,"account_report"); ?>", "<?php echo lang($link,'account_report_success');?>", "success");
         }

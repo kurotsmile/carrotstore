@@ -16,7 +16,7 @@ if (isset($user_login)) {
     }
 }
 
-$url_image_background = get_url_avatar_user($link,$id_user,$lang,'300x300',false,$data_user['sex']);
+$url_image_background = get_url_avatar_user($link,$id_user,$lang_contact,'300x300',false,$data_user['sex']);
 $bk_size = 'auto 100%';
 
 ?>
@@ -28,9 +28,9 @@ $bk_size = 'auto 100%';
 
     <div id="account_menu">
         <ul style="margin: 0px;">
-            <li <?php if($sub_view_member=='page_member_view_account.php'){ echo 'class="active"';}?> ><a href="<?php echo $url.'/user/'.$id_user.'/'.$lang;?>"><i class="fa fa-cubes"></i> <?php echo lang($link,'tong_quan'); ?></a></li>
+            <li <?php if($sub_view_member=='page_member_view_account.php'){ echo 'class="active"';}?> ><a href="<?php echo $url.'/user/'.$id_user.'/'.$lang_contact;?>"><i class="fa fa-cubes"></i> <?php echo lang($link,'tong_quan'); ?></a></li>
             <?php if($is_me){?>
-                <li <?php if($sub_view_member=='page_member_edit_account.php'){ echo 'class="active"';}?> ><a href="<?php echo $url.'/user_edit/'.$id_user.'/'.$lang;?>"><i class="fa fa-wrench" aria-hidden="true"></i> <?php echo lang($link,'chinh_sua_thong_tin'); ?></a></li>
+                <li <?php if($sub_view_member=='page_member_edit_account.php'){ echo 'class="active"';}?> ><a href="<?php echo $url.'/user_edit/'.$id_user.'/'.$lang_contact;?>"><i class="fa fa-wrench" aria-hidden="true"></i> <?php echo lang($link,'chinh_sua_thong_tin'); ?></a></li>
             <?php }?>
         </ul>
     </div>

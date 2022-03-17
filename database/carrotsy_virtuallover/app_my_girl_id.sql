@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -143,6 +143,8 @@ INSERT INTO `app_my_girl_id` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (90,	'menyanyikan sebuah lagu',	'Cassandra - Cinta Terbaik',	1,	1,	'#0AFFF8',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'332',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'cassandra-cinta-terbaik-90',	''),
 (91,	'menyanyikan sebuah lagu',	'Repvblik - Selimut Tetangga',	1,	1,	'#3BFFF5',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1303',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'repvblik-selimut-tetangga-91',	''),
 (92,	'menyanyikan sebuah lagu',	'Gamma1 - Sayang',	1,	1,	'#D7C2FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'811',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gamma1-sayang-92',	''),
-(93,	'ngapain ih gajelas dasar bot',	'terserah gua lah kontol. ngapa lu pake download apk gaje ini puki',	2,	0,	'#19FF23',	'',	'',	'',	'',	0,	'',	'',	0,	31,	3,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'22',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
+(93,	'ngapain ih gajelas dasar bot',	'terserah gua lah kontol. ngapa lu pake download apk gaje ini puki',	2,	0,	'#19FF23',	'',	'',	'',	'',	0,	'',	'',	0,	31,	3,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'22',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(94,	'menyanyikan sebuah lagu',	'Stevan Pasaribu - Belum Siap Kehilangan',	1,	1,	'#00FF46',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'852',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stevan-pasaribu-belum-siap-kehilangan-94',	''),
+(95,	'menyanyikan sebuah lagu',	'Bulan Sutena - I Love Mama Mantu',	1,	0,	'#FFDC21',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'850',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'bulan-sutena-i-love-mama-mantu-95',	'');
 
--- 2021-08-17 16:10:30
+-- 2021-11-29 07:31:25

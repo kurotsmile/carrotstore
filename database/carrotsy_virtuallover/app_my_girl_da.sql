@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -145,4 +145,4 @@ INSERT INTO `app_my_girl_da` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (92,	'Syng en sang',	'SEREGA - Temná noc feat. AVIO ',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'',	''),
 (93,	'Syng en sang',	'Jahy & Shine Buteo - Wo ist unsere Liebe hin',	1,	0,	'#00FFFB',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'902',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jahy-shine-buteo-wo-ist-unsere-liebe-hin-93',	'');
 
--- 2021-10-18 20:33:56
+-- 2021-11-29 07:06:12

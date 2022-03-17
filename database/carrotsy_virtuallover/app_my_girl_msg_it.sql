@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -87,7 +87,7 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (42,	'bat_chuyen',	'Desiderando che ogni giorno dell\'anno nuovo sia pieno di successo, felicità e prosperità per te, felice anno nuovo.',	1,	2,	'#FFF369',	'',	'',	'',	'',	'',	0,	22,	17,	0,	'it',	0,	1,	0,	'',	1,	0,	1,	'1473',	'',	'',	'4',	'0',	'0',	'0',	''),
 (43,	'bat_chuyen',	'Buon anno nuovo, buona salute, buona fortuna ovunque, nuove cose',	1,	1,	'#6AE866',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'it',	0,	1,	0,	'',	1,	1,	1,	'447',	'',	'',	'4',	'0',	'0',	'0',	''),
 (44,	'bat_chuyen',	'Vuoi ascoltare musica sul Natale?',	1,	2,	'#ADFF87',	'[\"yes\", \"true\", \"correct\", \"sure\", \"okay\",\"ok\"]',	'',	'23991',	'',	'',	7,	18,	0,	0,	'it',	0,	1,	0,	'',	1,	0,	12,	'1269',	'',	'',	'4',	'0',	'0',	'0',	''),
-(45,	'bat_chuyen',	'Il mese di novembre è arrivato a modo tuo\r\nFanne uno straordinario,\r\nnon importa se il tempo è brutto,\r\nperché il tuo umore non è affatto buono\r\ndevi solo stare in piedi\r\ne sii felice.',	1,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'it',	0,	1,	0,	'',	1,	0,	11,	'339',	'',	'',	'4',	'0',	'0',	'0',	''),
+(45,	'bat_chuyen',	'Il mese di novembre è arrivato a modo tuo\r\nFanne uno straordinario,\r\nnon importa se il tempo è brutto,\r\nperché il tuo umore non è affatto buono\r\ndevi solo stare in piedi\r\ne sii felice.',	1,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'it',	0,	0,	0,	'',	1,	0,	11,	'339',	'',	'',	'4',	'0',	'0',	'0',	''),
 (46,	'bat_chuyen',	'Vi auguriamo un sacco di sorprese spettrali e spaventosamente divertente nel giorno di Halloween',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	5,	15,	0,	'it',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'4',	'0',	'0',	'0',	''),
 (47,	'bat_chuyen',	'Oggi è giovedì, ti auguro buona giornata di apprendimento e duro lavoro',	1,	2,	'#CCFF82',	'',	'',	'',	'',	'',	0,	6,	0,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'838',	'Thursday',	'',	'4',	'0',	'0',	'0',	''),
 (48,	'bat_chuyen',	'Spero che tu stia trascorrendo una giornata fantastica finora.',	1,	2,	'#FFF0A6',	'',	'',	'',	'',	'',	0,	39,	13,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'576',	'',	'',	'4',	'0',	'0',	'0',	''),
@@ -213,7 +213,7 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (168,	'bat_chuyen',	'Desiderando che ogni giorno dell\'anno nuovo sia pieno di successo, felicità e prosperità per te, felice anno nuovo.',	0,	2,	'#F7F0FF',	'',	'',	'',	'',	'',	0,	22,	2,	0,	'it',	1,	1,	0,	'',	1,	0,	1,	'918',	'',	'',	'4',	'0',	'0',	'0',	''),
 (169,	'bat_chuyen',	'Buon anno nuovo, buona salute, buona fortuna ovunque, nuove cose',	0,	2,	'#FFF369',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'it',	1,	1,	0,	'',	1,	1,	1,	'1473',	'',	'',	'4',	'0',	'0',	'0',	''),
 (170,	'bat_chuyen',	'Vuoi ascoltare musica sul Natale?',	0,	1,	'#FF0A0A',	'',	'',	'',	'',	'',	0,	29,	7,	0,	'it',	1,	1,	0,	'',	1,	0,	12,	'146',	'',	'',	'4',	'0',	'0',	'0',	''),
-(171,	'bat_chuyen',	'Il mese di novembre è arrivato a modo tuo\r\nFanne uno straordinario,\r\nnon importa se il tempo è brutto,\r\nperché il tuo umore non è affatto buono\r\ndevi solo stare in piedi\r\ne sii felice.',	0,	1,	'#2B6EFF',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'it',	1,	1,	0,	'',	1,	0,	11,	'1089',	'',	'',	'4',	'0',	'0',	'0',	''),
+(171,	'bat_chuyen',	'Il mese di novembre è arrivato a modo tuo\r\nFanne uno straordinario,\r\nnon importa se il tempo è brutto,\r\nperché il tuo umore non è affatto buono\r\ndevi solo stare in piedi\r\ne sii felice.',	0,	1,	'#2B6EFF',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	11,	'1089',	'',	'',	'4',	'0',	'0',	'0',	''),
 (172,	'bat_chuyen',	'Vi auguriamo un sacco di sorprese spettrali e divertimento spaventoso nel giorno di Halloween',	0,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	24,	3,	0,	'it',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'4',	'0',	'0',	'0',	''),
 (173,	'bat_chuyen',	'Oggi è giovedì, ti auguro buona giornata di apprendimento e duro lavoro',	0,	2,	'#DECCAF',	'',	'',	'',	'',	'',	0,	6,	1,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'732',	'Thursday',	'',	'4',	'0',	'0',	'0',	''),
 (174,	'bat_chuyen',	'Oggi è venerdì, un giorno di lavoro noioso, non vedo l\'ora di riposare domani.',	0,	3,	'#DDFFDB',	'',	'',	'',	'',	'',	0,	28,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'384',	'Friday',	'',	'4',	'0',	'0',	'0',	''),
@@ -259,10 +259,10 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (214,	'dam',	'Conosco il karate, ti colpirò',	0,	3,	'#00FFCC',	'',	'',	'',	'',	'',	0,	35,	8,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'300',	'',	'',	'4',	'0',	'0',	'0',	''),
 (215,	'dam',	'Per favore non farmi il prepotente {ten_user}',	0,	3,	'#FFE48C',	'',	'',	'',	'',	'',	1,	22,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'339',	'',	'',	'4',	'0',	'0',	'0',	''),
 (216,	'dam',	'perché mi hai colpito, mi odi?',	0,	3,	'#E6FF82',	'',	'',	'',	'',	'',	0,	1,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'371',	'',	'',	'4',	'0',	'0',	'0',	''),
-(217,	'dam',	'So bene che le piogge di giugno cadono.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(218,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(219,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(220,	'dam',	'So bene che le piogge di giugno cadono.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'it',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(217,	'dam',	'So bene che le piogge di giugno cadono.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'it',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(218,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(219,	'bat_chuyen',	'È il mese di giugno, il mese delle foglie e delle rose, quando le viste piacevoli salutano gli occhi e gli odori piacevoli al naso.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'it',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(220,	'dam',	'So bene che le piogge di giugno cadono.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'it',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (221,	'dam',	'Qualunque cosa ti porti a luglio, sii buona o cattiva; tieni sempre quel sorriso sulla tua faccia, non importa cosa.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'it',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (222,	'dam',	'Qualunque cosa ti porti a luglio, sii buona o cattiva. tieni sempre quel sorriso sulla tua faccia, non importa cosa.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'it',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (223,	'bat_chuyen',	'A che serve il calore dell\'estate, senza il freddo dell\'inverno a dargli dolcezza.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'it',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -275,4 +275,4 @@ INSERT INTO `app_my_girl_msg_it` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (230,	'bat_chuyen',	'Durante la stagione di Covid 19, devi stare attento a non concentrarti su luoghi affollati e devi indossare una maschera ovunque tu vada!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'it',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (231,	'bat_chuyen',	'Durante la stagione di Covid 19, devi stare attento a non concentrarti su luoghi affollati e devi indossare una maschera ovunque tu vada!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'it',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 16:46:10
+-- 2021-11-29 09:29:55

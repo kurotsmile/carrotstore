@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.37 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -339,6 +339,7 @@ INSERT INTO `lang_en` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Day mode'),
 ('dark_mode_moon',	'Night mode'),
 ('ebook_download_link',	'Click here to download the book'),
-('seo_game',	'Enjoy the fun and trending games in the carrotstore game archive, we provide full game descriptions as well as download links so you can play them on computers, phones, and other devices. play games like xbox,ps4,playstation');
+('seo_game',	'Enjoy the fun and trending games in the carrotstore game archive, we provide full game descriptions as well as download links so you can play them on computers, phones, and other devices. play games like xbox,ps4,playstation'),
+('ebook_next_page',	'Continue reading');
 
--- 2021-10-31 09:35:04
+-- 2022-03-17 14:50:02

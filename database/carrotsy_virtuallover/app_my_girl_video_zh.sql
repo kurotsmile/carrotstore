@@ -804,6 +804,14 @@ INSERT INTO `app_my_girl_video_zh` (`id_chat`, `link`) VALUES
 ('8467',	'https://www.youtube.com/watch?v=RYaPCh2iw_s'),
 ('8468',	'https://www.youtube.com/watch?v=wK4WSZ4Lav4'),
 ('8473',	'https://www.youtube.com/watch?v=I6hWXf-Ir1Y'),
-('8479',	'https://www.youtube.com/watch?v=kBVD8Sq_6Rs');
+('8479',	'https://www.youtube.com/watch?v=kBVD8Sq_6Rs'),
+('8482',	'https://www.youtube.com/watch?v=MLcBgje9jgA'),
+('8490',	'https://www.youtube.com/watch?v=DHPshvhQpEc'),
+('8491',	'https://www.youtube.com/watch?v=1UQQxGXeEaI'),
+('8493',	'https://www.youtube.com/watch?v=L43_l1NiCRU'),
+('8508',	'https://www.youtube.com/watch?v=_Ek7DKhpTbc'),
+('8509',	'https://www.youtube.com/watch?v=dsBbKG17nU4'),
+('8529',	'https://www.youtube.com/watch?v=hWwhuvlMhmI'),
+('8564',	'https://www.youtube.com/watch?v=yDJX23IDn98');
 
--- 2021-10-25 19:25:12
+-- 2021-11-29 11:40:01

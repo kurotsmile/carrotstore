@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -45,10 +45,10 @@ TRUNCATE `app_my_girl_msg_id`;
 INSERT INTO `app_my_girl_msg_id` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
 (1,	'bat_chuyen',	'Bulan Mei tiba, ketika setiap hati yang sehat mulai berbunga, dan menghasilkan buah',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'id',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (2,	'dam',	'Musim favorit dunia adalah musim semi. Semua hal tampak mungkin di bulan Mei',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'id',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(3,	'dam',	'Saya tahu betul bahwa hujan Juni baru saja turun.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'id',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(4,	'bat_chuyen',	'Ini adalah bulan Juni, Bulan daun dan mawar, Ketika pemandangan yang menyenangkan memberi hormat pada mata dan aroma yang menyenangkan.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'id',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(5,	'bat_chuyen',	'Ini adalah bulan Juni, Bulan daun dan mawar, Ketika pemandangan yang menyenangkan memberi hormat pada mata dan aroma yang menyenangkan.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'id',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(6,	'dam',	'Saya tahu betul bahwa hujan Juni baru saja turun.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'id',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(3,	'dam',	'Saya tahu betul bahwa hujan Juni baru saja turun.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'id',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(4,	'bat_chuyen',	'Ini adalah bulan Juni, Bulan daun dan mawar, Ketika pemandangan yang menyenangkan memberi hormat pada mata dan aroma yang menyenangkan.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'id',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(5,	'bat_chuyen',	'Ini adalah bulan Juni, Bulan daun dan mawar, Ketika pemandangan yang menyenangkan memberi hormat pada mata dan aroma yang menyenangkan.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'id',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(6,	'dam',	'Saya tahu betul bahwa hujan Juni baru saja turun.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'id',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (7,	'dam',	'Apa pun yang dibawa oleh Juli, baik atau buruk; selalu pertahankan senyuman itu di wajah Anda bagaimanapun caranya.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'id',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (8,	'dam',	'Apa pun yang dibawa oleh Juli, baik atau buruk. selalu pertahankan senyuman itu di wajah Anda bagaimanapun caranya.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'id',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (9,	'bat_chuyen',	'Apa yang baik adalah kehangatan musim panas, tanpa dinginnya musim dingin untuk memberikannya rasa manis.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'id',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -61,4 +61,4 @@ INSERT INTO `app_my_girl_msg_id` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (16,	'bat_chuyen',	'Selama musim Covid 19, Anda harus berhati-hati untuk tidak fokus pada tempat-tempat ramai dan harus mengenakan topeng ke mana pun Anda pergi!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'id',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (17,	'bat_chuyen',	'Selama musim Covid 19, Anda harus berhati-hati untuk tidak fokus pada tempat-tempat ramai dan harus mengenakan topeng ke mana pun Anda pergi!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'id',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 16:53:04
+-- 2021-11-29 09:29:18

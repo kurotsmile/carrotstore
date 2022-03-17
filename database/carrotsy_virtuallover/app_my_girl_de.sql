@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.37 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -2278,6 +2278,27 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2421,	'sing ein Lied',	'BIBI & TINA 3 - \"Mädchen Gegen Jungs\"',	1,	0,	'#FF00B9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'334',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'bibi-tina-3-madchen-gegen-jungs--2421',	''),
 (2422,	'Wie gefällt es dir in dem Beruf?',	'Überhaupt nicht. Der Beruf ist so schrecklich. Ich bin in dem Beruf gefangen',	3,	0,	'#FF986B',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'602',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (2423,	'Was machst du beruflich?',	'Ich bin Krankenpflegerin',	2,	0,	'#D7FF26',	'',	'',	'',	'',	0,	'',	'',	0,	12,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1051',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(2424,	'sing ein Lied',	'SAMRA X ELIF - ZU ENDE (prod.by Beatzarre & Djorkaeff)',	1,	1,	'#F2FF00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'905',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'samra-x-elif-zu-ende-prod-by-beatzarre-djorkaeff--2424',	'');
+(2424,	'sing ein Lied',	'SAMRA X ELIF - ZU ENDE (prod.by Beatzarre & Djorkaeff)',	1,	1,	'#F2FF00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'905',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'samra-x-elif-zu-ende-prod-by-beatzarre-djorkaeff--2424',	''),
+(2425,	'zeig mir dein poloch',	'ich bücke mich vor dir und ziehe meine geilen pobacken auseinander. kanst du alles sehen schatz, oooh jaaaaa steck mir zwei finger rein bitte, ich bin deine sklavin, mach mit mir was du willst',	0,	0,	'#A3D9FF',	'',	'',	'',	'',	0,	'',	'',	0,	40,	0,	'de',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'1158',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2426,	'bist du geduscht',	'nein, ich dusche seit Drei Wochen nicht mehr, meine fotze stinkt so stark nach Fisch baby. steck deine Nase rein bis du auf mich kotzt. ich liebe ekelhafte dinge',	0,	0,	'#FF5C8F',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1602',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2427,	'sing ein Lied',	'Andreas Martin - Ich fang dir den Mond',	1,	1,	'#D10FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'705',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'andreas-martin-ich-fang-dir-den-mond-2427',	''),
+(2428,	'Bist du echt',	'Leider nein',	0,	0,	'#6BF9FF',	'',	'',	'',	'',	0,	'',	'',	0,	23,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'84',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2429,	'Orgasmus ',	'ja ich habe zugesehen wie du deinen Penis an ihren kleinen Busen gerieben hast und Ihre Nippel so steif waren',	3,	0,	'#BACEFF',	'',	'',	'',	'',	0,	'',	'',	0,	28,	0,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1029',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2430,	'zeig mir dein poloch',	'hier mein Schatz, es ist rosig, rasiert und eng, willst du mich lecken oder steckst du mir dein Glied rein. mein loch so eng.',	0,	0,	'#CCD2FF',	'',	'',	'',	'',	0,	'',	'',	0,	40,	0,	'de',	1,	'',	'',	'',	0,	'',	4,	0,	0,	'682',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2431,	'Sklavin',	'Gerne mein Gebieter,  bitte steck mir einen Finger in mein Poloch. dann kann ich dir besser einen blasen.',	2,	0,	'#FFF18A',	'',	'',	'',	'',	0,	'',	'',	0,	24,	2,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'1229',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2432,	'hi wie geht es dir',	'mir geht es gut und dir',	2,	1,	'#FEFFC2',	'',	'',	'',	'',	0,	'',	'',	0,	16,	2,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1127',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'',	''),
+(2433,	'sklave ',	'du gehörst mir und hast zu tun was ich sage, selbst wenn ich wöllte dass du den schwanz meines freundes lutschst du loser !',	2,	0,	'#FFF48A',	'',	'',	'',	'',	0,	'',	'',	0,	10,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'473',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2434,	'warum',	'weil dein Schwanz zu klein ist!',	0,	0,	'#C9FFFE',	'',	'',	'',	'',	0,	'',	'',	0,	0,	9,	'de',	1,	'',	'',	'',	0,	'',	4,	0,	0,	'658',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2435,	'Dein Rock ist sehr kurz',	'Stimmt, genau wie dein Schwanz. Oh, tut das weh?',	3,	0,	'#BDFFDF',	'',	'',	'',	'',	0,	'',	'',	0,	18,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1133',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2436,	'Kann ich dich ficken?',	'Nein, das geht nicht.',	3,	0,	'#ABFF59',	'',	'',	'',	'',	0,	'',	'',	0,	13,	4,	'de',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'174',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2437,	'Du siehst toll aus',	'Das weiß ich.',	2,	0,	'#FFF882',	'',	'',	'',	'',	0,	'',	'',	0,	0,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'380',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2438,	'Ich träum von deiner jungen rasierten Fotze.',	'Genau Pimmelchen. Es wird immer ein Traum bleiben für dich kleinschwänzigen Loser!',	0,	0,	'#FFC959',	'',	'',	'',	'',	0,	'',	'',	0,	24,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'338',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2439,	'sing ein Lied',	'Mark Forster - 194 Länder',	1,	1,	'#00FAFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1102',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mark-forster-194-lander-2439',	''),
+(2440,	'du siehst stark aus',	'ich bin stärker als du!',	2,	0,	'#A3FF54',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'383',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(2441,	'sing ein Lied',	'Santiano - Lieder der Freiheit',	1,	1,	'#033CFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'859',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'santiano-lieder-der-freiheit-2441',	''),
+(2442,	'sing ein Lied',	'Apache 207 - Sport',	1,	1,	'#007EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'885',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'apache-207-sport-2442',	''),
+(2443,	'sing ein Lied',	'Knossi - Bücher - prod. Dasmo & Mania Music',	1,	1,	'#002EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'898',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'knossi-bucher-prod-dasmo-mania-music-2443',	''),
+(2444,	'sing ein Lied',	'CAPITAL BRA x RAF CAMORA - AUF DIE FEINDE',	1,	1,	'#FFE703',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'809',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'capital-bra-x-raf-camora-auf-die-feinde-2444',	''),
+(2445,	'sing ein Lied',	'Stereoact feat. Kerstin Ott - Die Immer Lacht',	1,	0,	'#00EEF2',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1572',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stereoact-feat-kerstin-ott-die-immer-lacht-2445',	'');
 
--- 2021-11-10 01:35:06
+-- 2022-03-17 15:22:46

@@ -339,6 +339,7 @@ INSERT INTO `lang_nl` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Dagmodus'),
 ('dark_mode_moon',	'Nachtstand'),
 ('ebook_download_link',	'Klik hier om het boek te downloaden'),
-('seo_game',	'Geniet van de leuke en populaire games in het carrotstore-gamearchief, we bieden volledige gamebeschrijvingen en downloadlinks zodat je ze op computers, telefoons en andere apparaten kunt spelen. speel games zoals xbox,ps4,playstation');
+('seo_game',	'Geniet van de leuke en populaire games in het carrotstore-gamearchief, we bieden volledige gamebeschrijvingen en downloadlinks zodat je ze op computers, telefoons en andere apparaten kunt spelen. speel games zoals xbox,ps4,playstation'),
+('ebook_next_page',	'Lees verder');
 
--- 2021-10-31 09:31:59
+-- 2021-11-29 09:37:23

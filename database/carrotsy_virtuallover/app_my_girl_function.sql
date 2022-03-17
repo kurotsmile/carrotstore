@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -29,7 +29,7 @@ INSERT INTO `app_my_girl_function` (`id`, `icon`, `name`, `describe`, `url`, `or
 (8,	'fa fa-plug',	'Chạy lệnh Mysql',	'Thực hiện các lệnh thao tác dữ liệu Mysql đối với các quốc gia (tham số quốc gia <strong>{lang}</strong>)',	'app_my_girl_handling.php?func=command_mysql',	17,	0),
 (9,	'fa fa-download',	'Sao lưu dữ liệu',	'Thực hiện sao lưu toàn bộ dữ liệu và các đối tượng mysql',	'app_my_girl_handling.php?func=backup',	36,	0),
 (10,	'fa fa-exclamation-circle',	'Xem lỗi hệ thống',	'Xem lỗi hệ thống và xóa các dữ liệu ghi lại lỗi',	'app_my_girl_handling.php?func=error',	11,	1),
-(11,	'fa fa-universal-access',	'Cảnh báo từ khóa nhạy cảm',	'Chức năng này giúp các biên tập viên lưu trữ các từ khóa nhạy cảm để đánh giá trò chuyện',	'app_my_girl_handling.php?func=keyword_warning',	19,	0),
+(11,	'fa fa-universal-access',	'Cảnh báo từ khóa nhạy cảm',	'Chức năng này giúp các biên tập viên lưu trữ các từ khóa nhạy cảm để đánh giá trò chuyện',	'app_my_girl_handling.php?func=keyword_warning',	19,	1),
 (12,	'fa fa-file-text',	'Xuất bản các bản nháp',	'Các bản nháp được quản trị viên chuyển giao cho người phát triễn nội dung xuất bản',	'app_my_girl_handling.php?func=draft_brain',	20,	1),
 (13,	'fa fa-ban',	'Xóa bản thứ hạng âm nhạc',	'Công cụ xóa các bản thứ hạng âm nhạc ở mỗi quốc gia',	'app_my_girl_handling.php?func=delete_rank_music',	14,	0),
 (14,	'fa fa-music',	'Thêm các từ khóa âm nhạc đã duyệt',	'Công cụ để biên tập viên đánh dấu từ khóa âm nhạc đã duyệt, để tránh thêm các bài hát đã có',	'app_my_girl_handling.php?func=remove_key_music',	21,	0),
@@ -69,4 +69,4 @@ INSERT INTO `app_my_girl_function` (`id`, `icon`, `name`, `describe`, `url`, `or
 (48,	'fa fa-gavel',	'Công cụ',	'Hiển thị các chức năng có trong hệ thống',	'app_my_girl_tool.php',	45,	1),
 (49,	'fa fa-pagelines',	'Đếm cừu',	'Duyệt dữ liệu cho ứng dụng đếm cừu',	'app_my_girl_handling.php?func=sheep',	0,	0);
 
--- 2021-06-12 15:31:56
+-- 2021-11-29 07:28:03

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -164,8 +164,8 @@ INSERT INTO `app_my_girl_msg_fi` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (119,	'thong_bao',	'mitä teet, tule ja puhu minulle',	1,	2,	'#A8FF85',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'471',	'',	'',	'',	'0',	'0',	'0',	''),
 (120,	'bat_chuyen',	'Toivotan teille paljon spooky yllätyksiä ja kamala hauskaa Halloween päivä',	0,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	22,	3,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (121,	'dam',	'Toivotan teille paljon spooky yllätyksiä ja kamala hauskaa Halloween päivä',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	32,	0,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(122,	'bat_chuyen',	'Marraskuun kuukausi tuli tiesi Tee se hämmästyttävä, ei ole väliä, jos sää on huono, sillä mielialasi ei ole hyvä ollenkaan, sinun on vain pidettävä korkeana ja olla onnellinen.',	0,	2,	'#FF0000',	'',	'',	'',	'',	'',	0,	5,	2,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'154',	'',	'',	'',	'0',	'0',	'0',	''),
-(123,	'bat_chuyen',	'Marraskuun kuukausi tuli tiesi Tee se hämmästyttävä, ei ole väliä, jos sää on huono, sillä mielialasi ei ole hyvä ollenkaan, sinun on vain pidettävä korkeana ja olla onnellinen.',	1,	1,	'#FFC7E3',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'67',	'',	'',	'',	'0',	'0',	'0',	''),
+(122,	'bat_chuyen',	'Marraskuun kuukausi tuli tiesi Tee se hämmästyttävä, ei ole väliä, jos sää on huono, sillä mielialasi ei ole hyvä ollenkaan, sinun on vain pidettävä korkeana ja olla onnellinen.',	0,	2,	'#FF0000',	'',	'',	'',	'',	'',	0,	5,	2,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'154',	'',	'',	'',	'0',	'0',	'0',	''),
+(123,	'bat_chuyen',	'Marraskuun kuukausi tuli tiesi Tee se hämmästyttävä, ei ole väliä, jos sää on huono, sillä mielialasi ei ole hyvä ollenkaan, sinun on vain pidettävä korkeana ja olla onnellinen.',	1,	1,	'#FFC7E3',	'',	'',	'',	'',	'',	0,	5,	3,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'67',	'',	'',	'',	'0',	'0',	'0',	''),
 (124,	'hoi_tim_duong',	'Mistä osoitteesta haluat löytää? Minä opastan sinut!',	0,	1,	'#FFB11F',	'',	'',	'',	'',	'',	0,	34,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'',	'0',	'0',	'0',	''),
 (125,	'hoi_tim_duong',	'Mistä osoitteesta haluat löytää? Minä opastan sinut!',	1,	1,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	13,	2,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'',	'0',	'0',	'0',	''),
 (126,	'tra_loi_tim_duong',	'Olen luetellut asiaan liittyvät hakukohteet!',	0,	2,	'#54BAFF',	'',	'',	'',	'',	'',	43,	20,	14,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'769',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -176,10 +176,10 @@ INSERT INTO `app_my_girl_msg_fi` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (131,	'dam',	'Tänään on maanantai, toivotan teille onnellista uutta viikkoa',	1,	2,	'#FDFF12',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'fi',	0,	0,	0,	'',	1,	0,	0,	'621',	'Monday',	'',	'2',	'0',	'0',	'0',	''),
 (132,	'bat_chuyen',	'Toukokuun kuukausi tuli, kun jokainen hermostunut sydän alkoi kukoistaa ja tuoda hedelmää',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'fi',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (133,	'dam',	'Maailman suosikki kausi on kevät. Kaikki näyttää olevan mahdollista toukokuussa',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fi',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(134,	'dam',	'Tiedän hyvin, että kesäkuun sateet laskevat.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'fi',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(135,	'bat_chuyen',	'Se on kesäkuu, lehtien ja ruusujen kuukausi, kun miellyttävät nähtävyydet tervehtivät silmiä ja miellyttävät tuoksut nenään.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fi',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(136,	'bat_chuyen',	'Se on kesäkuu, lehtien ja ruusujen kuukausi, kun miellyttävät nähtävyydet tervehtivät silmiä ja miellyttävät tuoksut nenään.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fi',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(137,	'dam',	'Tiedän hyvin, että kesäkuun sateet laskevat.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'fi',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(134,	'dam',	'Tiedän hyvin, että kesäkuun sateet laskevat.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'fi',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(135,	'bat_chuyen',	'Se on kesäkuu, lehtien ja ruusujen kuukausi, kun miellyttävät nähtävyydet tervehtivät silmiä ja miellyttävät tuoksut nenään.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fi',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(136,	'bat_chuyen',	'Se on kesäkuu, lehtien ja ruusujen kuukausi, kun miellyttävät nähtävyydet tervehtivät silmiä ja miellyttävät tuoksut nenään.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'fi',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(137,	'dam',	'Tiedän hyvin, että kesäkuun sateet laskevat.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'fi',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (138,	'dam',	'Mitä tahansa heinäkuu tuo sinulle, olipa se hyvä vai huono; Pidä aina hymy naamasi edessäsi.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'fi',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (139,	'dam',	'Mitä heinäkuu tuo sinulle, olipa se hyvä vai huono. Pidä aina hymy naamasi edessäsi.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'fi',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (140,	'bat_chuyen',	'Mikä hyvä on kesän lämpö ilman kylmää talvea, jotta se antaa makeutta.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'fi',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -192,4 +192,4 @@ INSERT INTO `app_my_girl_msg_fi` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (147,	'bat_chuyen',	'Covid 19 -kauden aikana sinun on oltava varovainen, ettet keskity keskittymään ruuhkaisiin paikkoihin ja käytä maskia minne ikinä menetkin!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fi',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (148,	'bat_chuyen',	'Covid 19 -kauden aikana sinun on oltava varovainen, ettet keskity keskittymään ruuhkaisiin paikkoihin ja käytä maskia minne ikinä menetkin!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fi',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 16:38:42
+-- 2021-11-29 09:28:33

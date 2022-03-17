@@ -339,6 +339,7 @@ INSERT INTO `lang_tr` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Gündüz modu'),
 ('dark_mode_moon',	'Gece modu'),
 ('ebook_download_link',	'Kitabı indirmek için buraya tıklayın'),
-('seo_game',	'Carrotstore oyun arşivindeki eğlenceli ve trend oyunların keyfini çıkarın, bilgisayarlarda, telefonlarda ve diğer cihazlarda oynayabilmeniz için tam oyun açıklamalarının yanı sıra indirme bağlantıları da sağlıyoruz. xbox,ps4,playstation gibi oyunlar oyna');
+('seo_game',	'Carrotstore oyun arşivindeki eğlenceli ve trend oyunların keyfini çıkarın, bilgisayarlarda, telefonlarda ve diğer cihazlarda oynayabilmeniz için tam oyun açıklamalarının yanı sıra indirme bağlantıları da sağlıyoruz. xbox,ps4,playstation gibi oyunlar oyna'),
+('ebook_next_page',	'okumaya devam et');
 
--- 2021-10-31 09:16:19
+-- 2021-11-29 09:47:21

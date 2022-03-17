@@ -339,6 +339,7 @@ INSERT INTO `lang_fr` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Mode jour'),
 ('dark_mode_moon',	'Mode nuit'),
 ('ebook_download_link',	'Cliquez ici pour télécharger le livre'),
-('seo_game',	'Profitez des jeux amusants et tendance dans les archives de jeux carottestore, nous fournissons des descriptions complètes des jeux ainsi que des liens de téléchargement afin que vous puissiez y jouer sur des ordinateurs, des téléphones et d\'autres appareils. jouer à des jeux comme xbox, ps4, playstation');
+('seo_game',	'Profitez des jeux amusants et tendance dans les archives de jeux carottestore, nous fournissons des descriptions complètes des jeux ainsi que des liens de téléchargement afin que vous puissiez y jouer sur des ordinateurs, des téléphones et d\'autres appareils. jouer à des jeux comme xbox, ps4, playstation'),
+('ebook_next_page',	'continuer la lecture');
 
--- 2021-10-31 09:33:28
+-- 2021-11-29 09:38:56

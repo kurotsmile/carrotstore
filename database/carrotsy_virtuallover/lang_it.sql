@@ -339,6 +339,7 @@ INSERT INTO `lang_it` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Modalità giorno'),
 ('dark_mode_moon',	'Modalità notturna'),
 ('ebook_download_link',	'Clicca qui per scaricare il libro'),
-('seo_game',	'Divertiti con i giochi divertenti e di tendenza nell\'archivio dei giochi di carotestore, forniamo descrizioni complete dei giochi e collegamenti per il download in modo da poterli giocare su computer, telefoni e altri dispositivi. giocare a giochi come xbox, ps4, playstation');
+('seo_game',	'Divertiti con i giochi divertenti e di tendenza nell\'archivio dei giochi di carotestore, forniamo descrizioni complete dei giochi e collegamenti per il download in modo da poterli giocare su computer, telefoni e altri dispositivi. giocare a giochi come xbox, ps4, playstation'),
+('ebook_next_page',	'Continua a leggere');
 
--- 2021-10-31 09:35:55
+-- 2021-11-29 09:50:44

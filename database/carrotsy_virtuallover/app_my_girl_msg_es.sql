@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -117,7 +117,7 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (72,	'chao_19',	'Buenas noches',	1,	1,	'#FF459C',	'',	'',	'',	'',	'',	1,	0,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'91',	'',	'',	'',	'0',	'0',	'0',	''),
 (73,	'chao_20',	'Buenas noches',	1,	2,	'#FF6BE6',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'47',	'',	'',	'',	'0',	'0',	'0',	''),
 (74,	'chao_21',	'Buenas noches',	1,	1,	'#52F3FF',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'50',	'',	'',	'',	'0',	'0',	'0',	''),
-(75,	'chao_22',	'Buenas noches',	1,	1,	'#B3FFB8',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'81',	'',	'',	'',	'0',	'0',	'0',	''),
+(75,	'chao_22',	'Buenas noches',	1,	1,	'#B3FFB8',	'',	'',	'',	'',	'',	0,	22,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'81',	'',	'',	'2',	'0',	'0',	'0',	''),
 (76,	'chao_23',	'Buenas noches',	1,	1,	'#CFD7FF',	'',	'',	'',	'',	'',	1,	0,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'85',	'',	'',	'',	'0',	'0',	'0',	''),
 (77,	'giai_toan',	'El resultado matemático es: \r\n\r\n{giai_toan}\r\n\r\n(* es multiplicación, / es división) ',	0,	1,	'#FFDC2E',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'99',	'',	'',	'',	'0',	'0',	'0',	''),
 (78,	'giai_toan',	'El resultado matemático es: \r\n\r\n{giai_toan}\r\n\r\n(* es multiplicación, / es división) ',	1,	1,	'#FFE499',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'99',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -186,8 +186,8 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (141,	'dam',	'Octubre no es para gente solitaria. Las lluvias otoñales nos harán sentir frío.',	1,	3,	'#AFE0CA',	'',	'',	'',	'',	'',	0,	8,	17,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'622',	'',	'',	'2',	'0',	'0',	'0',	''),
 (142,	'bat_chuyen',	'Te deseo muchas sorpresas espeluznantes y horribles en Halloween.',	0,	2,	'#D5E03C',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (143,	'bat_chuyen',	'Te deseo muchas sorpresas espeluznantes y terriblemente divertidas el día de Halloween',	1,	1,	'#E07160',	'',	'',	'',	'',	'',	0,	34,	3,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(144,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	0,	2,	'#85FF7D',	'',	'',	'',	'',	'',	0,	20,	15,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
-(145,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	1,	1,	'#C56BFF',	'',	'',	'',	'',	'',	0,	14,	2,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'16',	'',	'',	'2',	'0',	'0',	'0',	''),
+(144,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	0,	2,	'#85FF7D',	'',	'',	'',	'',	'',	0,	20,	15,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
+(145,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	1,	1,	'#C56BFF',	'',	'',	'',	'',	'',	0,	14,	2,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'16',	'',	'',	'2',	'0',	'0',	'0',	''),
 (146,	'hoi_tim_duong',	'¿Qué dirección quieres encontrar? ¡Yo te guiaré!',	0,	1,	'#FFB11F',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'2',	'0',	'0',	'0',	''),
 (147,	'tra_loi_tim_duong',	'He enumerado los lugares de búsqueda relacionados!',	0,	2,	'#54BAFF',	'',	'',	'',	'',	'',	43,	34,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'769',	'',	'',	'2',	'0',	'0',	'0',	''),
 (148,	'hoi_tim_duong',	'¿Qué dirección quieres encontrar? ¡Yo te guiaré!',	1,	2,	'#FF2158',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1199',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -218,10 +218,10 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (173,	'dam',	'La estación favorita del mundo es la primavera. Todo parece posible en mayo.',	0,	2,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	2,	0,	'es',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (174,	'bat_chuyen',	'Llegó el mes de mayo, cuando cada corazón lujurioso comienza a florecer y a dar fruto.',	1,	2,	'#F9FFC9',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'es',	0,	1,	0,	'',	1,	0,	5,	'649',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (175,	'dam',	'La estación favorita del mundo es la primavera. Todo parece posible en mayo.',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'es',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(176,	'dam',	'Sé bien que las lluvias de junio recién caen.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'es',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(177,	'bat_chuyen',	'Es el mes de junio, el mes de las hojas y las rosas, cuando las vistas agradables saludan a los ojos y los aromas agradables a las narices.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'es',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(179,	'bat_chuyen',	'Es el mes de junio, el mes de las hojas y las rosas, cuando las vistas agradables saludan a los ojos y los aromas agradables a las narices.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'es',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(180,	'dam',	'Sé bien que las lluvias de junio recién caen.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'es',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(176,	'dam',	'Sé bien que las lluvias de junio recién caen.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'es',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(177,	'bat_chuyen',	'Es el mes de junio, el mes de las hojas y las rosas, cuando las vistas agradables saludan a los ojos y los aromas agradables a las narices.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'es',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(179,	'bat_chuyen',	'Es el mes de junio, el mes de las hojas y las rosas, cuando las vistas agradables saludan a los ojos y los aromas agradables a las narices.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'es',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(180,	'dam',	'Sé bien que las lluvias de junio recién caen.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'es',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (181,	'dam',	'Lo que sea que traiga julio para ti, sea bueno o malo; siempre mantén esa sonrisa en tu cara, no importa qué.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'es',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (182,	'dam',	'Lo que sea que traiga julio, sea bueno o malo. siempre mantén esa sonrisa en tu cara, no importa qué.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'es',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (183,	'bat_chuyen',	'Lo bueno es el calor del verano, sin el frío del invierno para darle dulzura.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'es',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -233,4 +233,4 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (189,	'thong_bao',	'¡El invierno es tan frío, {ten_user}! Si sale, ¡póngase mucha ropa abrigada para evitarlo!',	0,	1,	'#FEFFC2',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'es',	1,	1,	0,	'',	1,	0,	12,	'1127',	'',	'',	'4',	'0',	'0',	'0',	''),
 (191,	'bat_chuyen',	'¡Durante la temporada de Covid 19, debes tener cuidado de no concentrarte en lugares abarrotados y usar una máscara donde sea que vayas!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'es',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 15:42:39
+-- 2021-11-29 09:21:16

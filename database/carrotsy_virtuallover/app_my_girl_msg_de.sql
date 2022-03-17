@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -181,8 +181,8 @@ INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (136,	'dam',	'Es ist leicht, im Oktober alleine unterwegs zu sein. Wenn Menschen Zeit haben, sich alleine zu fühlen, weil sie vergessen, zusätzliche Kleidung zu tragen. es begann kalt',	1,	3,	'#7AFFE7',	'',	'',	'',	'',	'',	5,	8,	4,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'936',	'',	'',	'',	'0',	'0',	'0',	''),
 (137,	'bat_chuyen',	'Ich wünsche dir viele gruselige Überraschungen und einen furchtbar spaßigen Halloween-Tag',	0,	2,	'#FFADE5',	'',	'',	'',	'',	'',	0,	20,	15,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'1149',	'',	'',	'',	'0',	'0',	'0',	''),
 (138,	'dam',	'Ich wünsche dir viele gruselige Überraschungen und einen furchtbar spaßigen Halloween-Tag',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	5,	17,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(139,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	0,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	33,	2,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'339',	'',	'',	'',	'0',	'0',	'0',	''),
-(140,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	1,	1,	'#1CFFE2',	'',	'',	'',	'',	'',	0,	21,	17,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'688',	'',	'',	'',	'0',	'0',	'0',	''),
+(139,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	0,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	33,	2,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'339',	'',	'',	'',	'0',	'0',	'0',	''),
+(140,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	1,	1,	'#1CFFE2',	'',	'',	'',	'',	'',	0,	21,	17,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'688',	'',	'',	'',	'0',	'0',	'0',	''),
 (141,	'hoi_tim_duong',	'Welche Adresse möchten Sie finden? Ich werde dich führen!',	0,	1,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	20,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'2',	'0',	'0',	'0',	''),
 (142,	'hoi_tim_duong',	'Welche Adresse möchten Sie finden? Ich werde dich führen!',	1,	1,	'#FF2158',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1199',	'',	'',	'2',	'0',	'0',	'0',	''),
 (143,	'tra_loi_tim_duong',	'Ich habe die entsprechenden Suchorte aufgelistet!',	0,	2,	'#9CFFF2',	'',	'',	'',	'',	'',	43,	22,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'44',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -213,10 +213,10 @@ INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (168,	'dam',	'Die beliebteste Jahreszeit der Welt ist der Frühling. Alles scheint im Mai möglich',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'de',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (169,	'bat_chuyen',	'Der Monat Mai war gekommen, als jedes lustvolle Herz zu blühen begann und Frucht hervorbrachte',	1,	2,	'#F9FFC9',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'de',	0,	1,	0,	'',	1,	0,	5,	'649',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (170,	'dam',	'Die beliebteste Jahreszeit der Welt ist der Frühling. Alles scheint im Mai möglich',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'de',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(171,	'dam',	'Ich weiß genau, dass der Juni-Regen gerade hereinbricht.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'de',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(172,	'bat_chuyen',	'Es ist der Monat Juni, Der Monat der Blätter und Rosen, Wenn angenehme Augen die Augen grüßen und angenehme Düfte die Nase.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'de',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(173,	'bat_chuyen',	'Es ist der Monat Juni, Der Monat der Blätter und Rosen, Wenn angenehme Augen die Augen grüßen und angenehme Düfte die Nase.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'de',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(174,	'dam',	'Ich weiß genau, dass der Juni-Regen gerade hereinbricht.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'de',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(171,	'dam',	'Ich weiß genau, dass der Juni-Regen gerade hereinbricht.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'de',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(172,	'bat_chuyen',	'Es ist der Monat Juni, Der Monat der Blätter und Rosen, Wenn angenehme Augen die Augen grüßen und angenehme Düfte die Nase.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'de',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(173,	'bat_chuyen',	'Es ist der Monat Juni, Der Monat der Blätter und Rosen, Wenn angenehme Augen die Augen grüßen und angenehme Düfte die Nase.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'de',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(174,	'dam',	'Ich weiß genau, dass der Juni-Regen gerade hereinbricht.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'de',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (175,	'dam',	'Was auch immer Juli für Sie bringt, sei es gut oder schlecht; Behalte dieses Lächeln immer im Gesicht, egal was passiert.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'de',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (176,	'dam',	'Was auch immer Juli für Sie bringt, sei es gut oder schlecht. Behalte dieses Lächeln immer im Gesicht, egal was passiert.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'de',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (177,	'bat_chuyen',	'Was nützt die Wärme des Sommers, ohne die Kälte des Winters, um ihm Süße zu verleihen.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'de',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -229,4 +229,4 @@ INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (184,	'bat_chuyen',	'Während der Saison von Covid 19 müssen Sie darauf achten, sich nicht auf überfüllte Orte zu konzentrieren und überall eine Maske tragen!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'de',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (185,	'bat_chuyen',	'Während der Saison von Covid 19 müssen Sie darauf achten, sich nicht auf überfüllte Orte zu konzentrieren und überall eine Maske tragen!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'de',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 16:14:18
+-- 2021-11-29 09:20:44

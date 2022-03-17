@@ -1,12 +1,11 @@
 <?php
 $id_quote=$_GET['id'];
-$lang=$_GET['lang'];
-$query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang."` WHERE `id` = '$id_quote' LIMIT 1");
+$query_quote=mysqli_query($link,"SELECT * FROM `app_my_girl_".$lang_quote."` WHERE `id` = '$id_quote' LIMIT 1");
 $data_quote=mysqli_fetch_assoc($query_quote);
-$query_like=mysqli_query($link,"SELECT * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
-$query_distlike=mysqli_query($link,"SELECT  * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
-$query_comment=mysqli_query($link,"SELECT * FROM carrotsy_flower.`flower_action_$lang` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
-$url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang.'/'.$data_quote['id'].'.mp3';
+$query_like=mysqli_query($link,"SELECT * FROM carrotsy_flower.`flower_action_$lang_quote` WHERE `id_maxim` = '$id_quote' AND `type` = 'like' ");
+$query_distlike=mysqli_query($link,"SELECT  * FROM carrotsy_flower.`flower_action_$lang_quote` WHERE `id_maxim` = '$id_quote' AND `type` = 'distlike' ");
+$query_comment=mysqli_query($link,"SELECT * FROM carrotsy_flower.`flower_action_$lang_quote` WHERE `id_maxim` = '$id_quote' AND `type` = 'comment' ");
+$url_mp3=$url.'/app_mygirl/app_my_girl_'.$lang_quote.'/'.$data_quote['id'].'.mp3';
 $img=$url.'/app_mygirl/obj_effect/927.png';
 if($data_quote['effect_customer']!=''){
     $img=$url.'/app_mygirl/obj_effect/'.$data_quote['effect_customer'].'.png';
@@ -16,7 +15,7 @@ if($data_quote['effect_customer']!=''){
 <div id="containt" style="width: 100%;float: left;">
     <div id="post_product">
     <p style="font-size:15px;">
-    <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang;?>"><img src="<?php echo  $img;?>" style="margin: 5px;" /></a>
+    <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang_quote;?>"><img src="<?php echo  $img;?>" style="margin: 5px;" /></a>
     <i class="fa fa-quote-left" aria-hidden="true"></i>
     <?php
         echo $data_quote['chat'];
@@ -26,14 +25,14 @@ if($data_quote['effect_customer']!=''){
     <div  style="width: 100%;float: left;"> 
             <?php 
                 include_once "phpqrcode/qrlib.php";
-                QRcode::png($url.'/quote/'.$id_quote.'/'.$lang, 'phpqrcode/img_quote/'.$id_quote.'.png', 'M', 4, 2);
+                QRcode::png($url.'/quote/'.$id_quote.'/'.$lang_quote, 'phpqrcode/img_quote/'.$id_quote.'.png', 'M', 4, 2);
             ?>
             <img alt="Get quote" src="<?php echo $url;?>/phpqrcode/img_quote/<?php echo $id_quote;?>.png" style="float: left;margin: 2px;" class="box_get_info_contact" title="<?php echo lang($link,"qr_tip");?>" />
-            <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
+            <a href="flower://show/<?php echo $id_quote;?>/<?php echo $lang_quote;?>" class="box_get_info_contact" title="<?php echo lang($link,"link_open_app_tip");?>"> <i class="fa fa-external-link-square fa-3x" aria-hidden="true" ></i><div class="txt"><span style="float:none"><?php echo lang($link,'link_open_app');?></span></div></a>
     </div>
 
     <?php
-    echo show_share($link,$url.'/quote/'.$id_quote.'/'.$lang);
+    echo show_share($link,$url.'/quote/'.$id_quote.'/'.$lang_quote);
     ?>
     </p>
     <br />

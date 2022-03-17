@@ -5,7 +5,7 @@ if($function=='show_list_ebook'){
     $list_book=array();
     $q_list_book=mysqli_query($link,"SELECT p.`id`,n.`data` as `name`,SUBSTRING(d.`data`, 1, 100) as `tip` FROM carrotsy_virtuallover.`products` as p , carrotsy_virtuallover.`product_name_$lang` as n , carrotsy_virtuallover.`product_desc_$lang` as d  WHERE n.id_product=p.id AND d.id_product=p.id  AND p.type='book' AND n.data!='' ORDER BY RAND() LIMIT 20");
     while($book=mysqli_fetch_assoc($q_list_book)){
-        $book['tip']=strip_tags(trim(html_entity_decode(($book['tip']),ENT_QUOTES, 'UTF-8'), "\xc2\xa0"));
+        $book['tip']=preg_replace('/\s\s+/', ' ',strip_tags(trim(html_entity_decode(($book['tip']),ENT_QUOTES, 'UTF-8'), "\xc2\xa0")));
         $book['icon']=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$book['id']."/icon.jpg&size=80x80&trim=1";
         $book['lang']=$lang;
         array_push($list_book,$book);
@@ -20,7 +20,7 @@ if($function=='search_book'){
     $list_book=array();
     $q_list_book=mysqli_query($link,"SELECT p.`id`,n.`data` as `name`,SUBSTRING(d.`data`, 1, 100) as `tip` FROM carrotsy_virtuallover.`products` as p , carrotsy_virtuallover.`product_name_$lang` as n , carrotsy_virtuallover.`product_desc_$lang` as d  WHERE n.id_product=p.id AND d.id_product=p.id  AND p.type='book' AND n.data LIKE '%$key_search%'  ORDER BY RAND() LIMIT 20");
     while($book=mysqli_fetch_assoc($q_list_book)){
-        $book['tip']=strip_tags($book['tip']);
+        $book['tip']=preg_replace('/\s\s+/', ' ',strip_tags(trim(html_entity_decode($book['tip'],ENT_QUOTES, 'UTF-8'), "\xc2\xa0")));
         $book['icon']=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$book['id']."/icon.jpg&size=80x80&trim=1";
         $book['lang']=$lang;
         array_push($list_book,$book);
@@ -42,9 +42,69 @@ if($function=='get_info_ebook'){
 	$ebook_toc=simplexml_load_file($url_ebook_path."/toc.ncx");
 	$navMap=$ebook_toc->navMap->navPoint;
 	$total_page=count($navMap);
+
+    $url_xml_page=$navMap[0]->content['src'];
+    $d = new DOMDocument;
+    $mock = new DOMDocument;
+	$arr_url=explode("#", $url_xml_page);
+    $d->loadHTML(file_get_contents($url_ebook_path."/".$arr_url[0]),LIBXML_NOERROR);
+    $body = $d->getElementsByTagName('body')->item(0);
+    foreach ($body->childNodes as $child){
+        $mock->appendChild($mock->importNode($child, true));
+    }
+    $data_ebook['html']=strip_tags($mock->saveHTML());
     
     $data_ebook['total_page']=$total_page;
     echo json_encode($data_ebook);
     exit;
+}
+
+if($function=='read_ebook'){
+    $id_ebook=$_POST['id_ebook'];
+
+    $data_ebook=new stdClass();
+    $arr_nav=array();
+    
+    $url_ebook_path="../../product_data/$id_ebook/ebook/OEBPS";
+	$xml=simplexml_load_file($url_ebook_path."/content.opf");
+	$ebook_toc=simplexml_load_file($url_ebook_path."/toc.ncx");
+	$navMap=$ebook_toc->navMap->navPoint;
+	foreach($navMap as $navo){
+        $nav_ebook=new stdClass();
+        $nav_ebook->{"name"}=$navo->navLabel->text;
+        $nav_ebook->{"src"}=$navo->content['src'];
+        array_push($arr_nav,$nav_ebook);
+    }
+    $data_ebook->{"nav"}=$arr_nav;
+
+    $url_xml_page=$navMap[0]->content['src'];
+    $d = new DOMDocument;
+    $mock = new DOMDocument;
+	$arr_url=explode("#", $url_xml_page);
+    $d->loadHTML(file_get_contents($url_ebook_path."/".$arr_url[0]),LIBXML_NOERROR);
+    $body = $d->getElementsByTagName('body')->item(0);
+    foreach ($body->childNodes as $child){
+        $mock->appendChild($mock->importNode($child, true));
+    }
+    $data_ebook->{"html"}=preg_replace('/[[:blank:]]+/', ' ',strip_tags(trim(html_entity_decode($mock->saveHTML(),ENT_QUOTES, 'UTF-8'), "\xc2\xa0")));
+    echo json_encode($data_ebook);
+    exit;
+}
+
+if($function=="read_ebook_page"){
+    $data_ebook=new stdClass();
+    $id_ebook=$_POST['id_ebook'];
+    $url_ebook_path="../../product_data/$id_ebook/ebook/OEBPS";
+    $url_xml_page=$_POST["url_page"];
+    $d = new DOMDocument;
+    $mock = new DOMDocument;
+	$arr_url=explode("#", $url_xml_page);
+    $d->loadHTML(file_get_contents("../../product_data/$id_ebook/ebook/OEBPS/".$arr_url[0]),LIBXML_NOERROR);
+    $body = $d->getElementsByTagName('body')->item(0);
+    foreach ($body->childNodes as $child){
+        $mock->appendChild($mock->importNode($child, true));
+    }
+    $data_ebook->{"html"}=preg_replace('/[[:blank:]]+/', ' ',strip_tags(trim(html_entity_decode($mock->saveHTML(),ENT_QUOTES, 'UTF-8'), "\xc2\xa0")));
+    echo json_encode($data_ebook);
 }
 ?>

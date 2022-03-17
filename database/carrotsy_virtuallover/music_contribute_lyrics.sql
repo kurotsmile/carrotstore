@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -14,4 +14,4 @@ CREATE TABLE `music_contribute_lyrics` (
 
 TRUNCATE `music_contribute_lyrics`;
 
--- 2021-07-01 04:19:52
+-- 2021-11-29 09:49:38

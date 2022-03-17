@@ -339,6 +339,7 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Päivätila'),
 ('dark_mode_moon',	'Yötila'),
 ('ebook_download_link',	'Lataa kirja napsauttamalla tätä'),
-('seo_game',	'Nauti hauskoista ja trendikkäistä peleistä porkkanakaupan peliarkistossa, tarjoamme täydelliset pelikuvaukset sekä latauslinkit, jotta voit pelata niitä tietokoneilla, puhelimilla ja muilla laitteilla. pelata pelejä, kuten xbox, ps4, playstation');
+('seo_game',	'Nauti hauskoista ja trendikkäistä peleistä porkkanakaupan peliarkistossa, tarjoamme täydelliset pelikuvaukset sekä latauslinkit, jotta voit pelata niitä tietokoneilla, puhelimilla ja muilla laitteilla. pelata pelejä, kuten xbox, ps4, playstation'),
+('ebook_next_page',	'Jatka lukemista');
 
--- 2021-10-31 09:35:20
+-- 2021-11-29 11:06:52

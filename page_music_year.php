@@ -39,5 +39,4 @@ $url_img_thumb=$url.'/images/bk_link.jpg';
         </div>
     <?php }?>
     </div>
-
 </div>

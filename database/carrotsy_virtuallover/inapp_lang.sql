@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -378,4 +378,4 @@ INSERT INTO `inapp_lang` (`key`, `title`, `tip`, `lang`) VALUES
 ('buyallplayer_football',	'Ontgrendel en gebruik alle voetballers',	'Gebruik alle voetballen in het spel zonder meerdere betalingen',	'nl'),
 ('buyallplayer_football',	'Odblokuj i używaj wszystkich piłkarzy',	'Korzystaj ze wszystkich piłek futbolowych zawartych w grze bez wielokrotnych płatności',	'pl');
 
--- 2021-09-11 19:51:39
+-- 2021-11-29 11:34:38

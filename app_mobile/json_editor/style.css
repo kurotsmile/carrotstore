@@ -1,0 +1,6 @@
+#box{border:solid 3px #effff9;width:200px;float:left;margin: 3px;}
+#box.active{border:solid 3px #a7fdd9}
+#box .header{float: left;width: 100%;height: 35px;background-color: aliceblue;}
+#box .header img{float: left;}
+#box .header .name{padding: 3px;margin-left: 5px;font-weight: bold;float: left;}
+#box ul{list-style: none;float: left;padding: 5px;}

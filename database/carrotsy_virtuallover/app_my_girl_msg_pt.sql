@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.34 dump
+-- Adminer 4.8.1 MySQL 5.7.36 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -156,8 +156,8 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (111,	'dam',	'Outubro na rua é fácil de pena. Quando o tempo é suficiente para as pessoas se sentirem sozinhas porque se esquecem de usar mais roupas.',	1,	3,	'#D1FFBF',	'',	'',	'',	'',	'',	0,	8,	17,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'1003',	'',	'',	'',	'0',	'0',	'0',	''),
 (112,	'dam',	'Desejo-lhe muitas surpresas assustadoras é muito divertido no dia de Halloween',	0,	2,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (113,	'dam',	'Desejo-lhe muitas surpresas assustadoras é muito divertido no dia de Halloween',	1,	2,	'#E8FFEF',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'895',	'',	'',	'',	'0',	'0',	'0',	''),
-(114,	'bat_chuyen',	'O mês de novembro veio do seu jeito Faça um incrível, não importa se o tempo está ruim, pois o seu humor não é bom de jeito nenhum, você só precisa ficar de pé e ser feliz.',	0,	2,	'#C7FFA3',	'',	'',	'',	'',	'',	0,	21,	15,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'377',	'',	'',	'',	'0',	'0',	'0',	''),
-(115,	'bat_chuyen',	'O mês de novembro veio do seu jeito Faça um incrível, não importa se o tempo está ruim, pois o seu humor não é bom de jeito nenhum, você só precisa ficar de pé e ser feliz.',	1,	1,	'#FFEACF',	'',	'',	'',	'',	'',	0,	0,	14,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'423',	'',	'',	'4',	'0',	'0',	'0',	''),
+(114,	'bat_chuyen',	'O mês de novembro veio do seu jeito Faça um incrível, não importa se o tempo está ruim, pois o seu humor não é bom de jeito nenhum, você só precisa ficar de pé e ser feliz.',	0,	2,	'#C7FFA3',	'',	'',	'',	'',	'',	0,	21,	15,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'377',	'',	'',	'',	'0',	'0',	'0',	''),
+(115,	'bat_chuyen',	'O mês de novembro veio do seu jeito Faça um incrível, não importa se o tempo está ruim, pois o seu humor não é bom de jeito nenhum, você só precisa ficar de pé e ser feliz.',	1,	1,	'#FFEACF',	'',	'',	'',	'',	'',	0,	0,	14,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'423',	'',	'',	'4',	'0',	'0',	'0',	''),
 (116,	'hoi_tim_duong',	'Qual endereço você quer encontrar? Vou te guiar!',	0,	2,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	14,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'2',	'0',	'0',	'0',	''),
 (117,	'hoi_tim_duong',	'Qual endereço você quer encontrar? Vou te guiar!',	1,	1,	'#FF2158',	'',	'',	'',	'',	'',	0,	31,	16,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1199',	'',	'',	'2',	'0',	'0',	'0',	''),
 (118,	'tra_loi_tim_duong',	'Eu listei os locais de pesquisa relacionados!',	0,	2,	'#C4FFFA',	'',	'',	'',	'',	'',	43,	21,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'402',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -188,10 +188,10 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (143,	'dam',	'A estação favorita do mundo é a primavera. Tudo parece possível em maio',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	2,	0,	'pt',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (144,	'bat_chuyen',	'O mês de maio chegou, quando todo coração vigoroso começa a desabrochar e a frutificar.',	1,	2,	'#F9FFC9',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'pt',	0,	1,	0,	'',	1,	0,	5,	'649',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (145,	'dam',	'A estação favorita do mundo é a primavera. Tudo parece possível em maio',	1,	3,	'#50FF47',	'',	'',	'',	'',	'',	0,	1,	15,	0,	'pt',	0,	1,	0,	'',	1,	0,	5,	'1270',	'',	'2',	'2',	'0',	'0',	'0',	''),
-(146,	'dam',	'Eu sei bem que as chuvas de junho caem.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'pt',	1,	0,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(147,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	1,	0,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(148,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	0,	0,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
-(149,	'dam',	'Eu sei bem que as chuvas de junho caem.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'pt',	0,	0,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(146,	'dam',	'Eu sei bem que as chuvas de junho caem.',	0,	3,	'#D7FF26',	'',	'',	'',	'',	'',	5,	1,	4,	0,	'pt',	1,	1,	0,	'',	1,	0,	6,	'1051',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(147,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	0,	2,	'#FF6200',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	1,	1,	0,	'',	1,	0,	6,	'1455',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(148,	'bat_chuyen',	'É o mês de junho, O mês das folhas e rosas, Quando as vistas agradáveis saúdam os olhos e os aromas agradáveis nos narizes.',	1,	2,	'#0DFF21',	'',	'',	'',	'',	'',	0,	7,	0,	0,	'pt',	0,	1,	0,	'',	1,	0,	6,	'1016',	'',	'2',	'4',	'0',	'0',	'0',	''),
+(149,	'dam',	'Eu sei bem que as chuvas de junho caem.',	1,	1,	'#29FFDF',	'',	'',	'',	'',	'',	5,	1,	0,	0,	'pt',	0,	1,	0,	'',	1,	0,	6,	'1594',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (150,	'dam',	'O que quer que julho esteja trazendo para você, seja bom ou ruim; mantenha sempre esse sorriso em seu rosto, não importa o quê.',	0,	1,	'#C1FF5E',	'',	'',	'',	'',	'',	0,	16,	1,	0,	'pt',	1,	1,	0,	'',	1,	0,	7,	'1004',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (151,	'dam',	'O que quer que julho esteja trazendo para você, seja bom ou ruim. mantenha sempre esse sorriso em seu rosto, não importa o quê.',	1,	2,	'#FF1205',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'pt',	0,	1,	0,	'',	1,	0,	7,	'1469',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (152,	'bat_chuyen',	'Que bom é o calor do verão, sem o frio do inverno para dar-lhe doçura.',	1,	2,	'#FBFF9C',	'',	'',	'',	'',	'',	0,	18,	2,	0,	'pt',	0,	1,	0,	'',	1,	0,	7,	'498',	'',	'2',	'4',	'0',	'0',	'0',	''),
@@ -204,4 +204,4 @@ INSERT INTO `app_my_girl_msg_pt` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (159,	'bat_chuyen',	'Durante a temporada de Covid 19, você deve ter cuidado para não se concentrar em lugares lotados e usar uma máscara onde quer que vá!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pt',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (160,	'bat_chuyen',	'Durante a temporada de Covid 19, você deve ter cuidado para não se concentrar em lugares lotados e usar uma máscara onde quer que vá!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'pt',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-06-12 15:48:04
+-- 2021-11-29 09:35:15

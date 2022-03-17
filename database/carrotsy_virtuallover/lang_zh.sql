@@ -339,6 +339,7 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('dark_mode_sun',	'日间模式'),
 ('dark_mode_moon',	'夜间模式'),
 ('ebook_download_link',	'点击这里下载本书'),
-('seo_game',	'享受胡萝卜商店游戏档案中有趣和流行的游戏，我们提供完整的游戏描述以及下载链接，以便您可以在计算机、手机和其他设备上玩它们。 玩游戏，如 xbox、ps4、playstation');
+('seo_game',	'享受胡萝卜商店游戏档案中有趣和流行的游戏，我们提供完整的游戏描述以及下载链接，以便您可以在计算机、手机和其他设备上玩它们。 玩游戏，如 xbox、ps4、playstation'),
+('ebook_next_page',	'继续阅读');
 
--- 2021-10-31 09:15:57
+-- 2021-11-29 09:38:37

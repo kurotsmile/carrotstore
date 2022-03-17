@@ -52,6 +52,7 @@ if(isset($_POST['func_user'])){
         $del_contact_info=$this->q("DELETE FROM carrotsy_contacts.`info_$user_lang` WHERE `user_id` = '$user_id'");
         $del_playlist_music=$this->q("DELETE FROM carrotsy_music.`playlist_$user_lang` WHERE `user_id`='$user_id'");
         $del_game_music=$this->q("DELETE FROM carrotsy_music.`game_scores_$user_lang` WHERE `user_id` = '$user_id'");
+        $del_project_json=$this->q("DELETE FROM carrotsy_json_editor.`json` WHERE `user_id` = '$user_id'");
     }
 }
 ?>
@@ -111,6 +112,17 @@ if($data_game_music!=null) $scores_game_music=$data_game_music['scores'];
 <table>
     <tr><td> Số danh sách âm nhạc đã tạo</td><td><?php echo $count_playlist_music;?></td></tr>
     <tr><td> Điểm số trò chơi âm nhạc</td><td><?php echo $scores_game_music;?></td></tr>
+</table>
+
+<br/>
+<?php
+$count_json_data=0;
+$data_count_json=$this->q_data("SELECT COUNT(`id`) as c FROM carrotsy_json_editor.`json` WHERE `user_id` = '$user_id' LIMIT 1");
+if($data_count_json!=null) $count_json_data=$data_count_json['c'];
+?>
+<strong><i class="fa fa-database" aria-hidden="true"></i> Dữ liệu liên quan tới ứng dụng Json Editor</strong>
+<table>
+    <tr><td> Số chuỗi json đã tạo</td><td><?php echo $count_json_data;?></td></tr>
 </table>
 
 <form id="frm_user" method="post" action="">

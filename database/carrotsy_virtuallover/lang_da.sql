@@ -339,6 +339,7 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('dark_mode_sun',	'Dagstilstand'),
 ('dark_mode_moon',	'Nattilstand'),
 ('ebook_download_link',	'Klik her for at downloade bogen'),
-('seo_game',	'Nyd de sjove og trending spil i gulerodsbutikkens spilarkiv, vi leverer komplette spilbeskrivelser samt downloadlinks, så du kan spille dem på computere, telefoner og andre enheder. spille spil som xbox, ps4, playstation');
+('seo_game',	'Nyd de sjove og trending spil i gulerodsbutikkens spilarkiv, vi leverer komplette spilbeskrivelser samt downloadlinks, så du kan spille dem på computere, telefoner og andre enheder. spille spil som xbox, ps4, playstation'),
+('ebook_next_page',	'Fortsæt med at læse');
 
--- 2021-10-31 09:34:43
+-- 2021-11-29 09:51:46
