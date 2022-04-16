@@ -90,6 +90,8 @@ INSERT INTO `cr_framework_lang_key` (`key`) VALUES
 ('delete_all_data_success'),
 ('lost_connect'),
 ('lost_connect_msg'),
-('lost_connect_try');
+('lost_connect_try'),
+('rate_thanks'),
+('send_feedback');
 
--- 2022-01-26 02:24:38
+-- 2022-03-18 18:33:16

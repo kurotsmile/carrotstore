@@ -2,7 +2,12 @@
 include "app_my_girl_template.php";
 $id_audio = '';
 $sex = '';
-$user_name = $data_user_carrot['user_id'];
+$user_name='';
+if(isset($_GET['user_id'])){
+    $user_name = $_GET['user_id'];
+}else{
+    $user_name = $data_user_carrot['user_id'];
+}
 
 if (isset($_GET['key'])) {
     $key = $_GET['key'];
@@ -23,12 +28,12 @@ if (isset($_GET['id_audio'])) {
 }
 
 if (isset($_GET['msg'])) {
-    $txt_table = 'app_my_girl_msg_' . $lang_sel;
-    $txt_title = 'Thêm câu thoại (' . $lang_sel . ')';
+    $txt_table = 'app_my_girl_msg_'.$lang_sel;
+    $txt_title = 'Thêm câu thoại ('.$lang_sel.')';
     $type_chat = 'msg';
 } else {
-    $txt_table = 'app_my_girl_' . $lang_sel;
-    $txt_title = 'Thêm câu trả lời (' . $lang_sel . ')';
+    $txt_table = 'app_my_girl_'.$lang_sel;
+    $txt_title = 'Thêm câu trả lời ('.$lang_sel.')';
     $type_chat = 'chat';
 }
 
@@ -56,7 +61,7 @@ if (isset($_POST['chat'])) {
     if(isset($_POST['id']))$id = $_POST['id'];
     $effect = $_POST['effect'];
     $vibrate = $_POST['vibrate'];
-    $color = '#' . $_POST['color'];
+    $color = '#'.$_POST['color'];
     if(isset($_POST['tip']))$tip = $_POST['tip'];
     if(isset($_POST['link']))$link_chat = $_POST['link'];
     $face = $_POST['face'];
@@ -91,15 +96,15 @@ if (isset($_POST['chat'])) {
     }
 
     if ($type_chat == "msg") {
-        $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (`func`, `chat`, `status`, `sex`, `color`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`disable`,`ver`,`limit_chat`,`effect_customer`,`limit_day`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$func', '$chat', '$status', '$sex', '$color', '$vibrate', '$effect','$face','$action','$character_sex',$txt_disable,$limit_ver,'$limit_chat','$effect_customer','$limit_day','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+        $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (`func`,`chat`,`status`,`sex`,`color`,`vibrate`,`effect`,`face`,`action`,`character_sex`,`disable`,`ver`,`limit_chat`,`effect_customer`,`limit_day`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$func', '$chat', '$status', '$sex', '$color', '$vibrate', '$effect','$face','$action','$character_sex',$txt_disable,$limit_ver,'$limit_chat','$effect_customer','$limit_day','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
     } else {
         $text = mysqli_real_escape_string($link,$_POST['text']);
         if (isset($_POST['id_question'])) {
             $id_question = $_POST['id_question'];
             $type_question = $_POST['type_question'];
-            $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (text, chat, status, sex, color, tip, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`pater`,`pater_type`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip','$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$id_question','$type_question','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+            $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (text, chat, status, sex, color, tip,`link`,`vibrate`,`effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`pater`,`pater_type`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip','$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$id_question','$type_question','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
         } else {
-            $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (text, chat, status, sex, color, tip, `link`, `vibrate`, `effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
+            $result_update = mysqli_query($link,"INSERT INTO `$txt_table` (text, chat, status, sex, color, tip,`link`,`vibrate`,`effect`,`face`,`action`,`character_sex`,`id_redirect`,`ver`,`limit_chat`,`effect_customer`,`func_sever`,`disable`,`limit_day`,`author`,`limit_month`,`user_create`,`os_window`,`os_ios`,`os_android`,`file_url`) VALUES ('$text', '$chat', '$status', '$sex', '$color', '$tip', '$link_chat', '$vibrate', '$effect','$face','$action','$character_sex','$id_redirect',$limit_ver,'$limit_chat','$effect_customer','$func_sever',$txt_disable,'$limit_day','$lang_sel','$limit_month','$user_name','$os_window','$os_ios','$os_android','$file_url');");
         }
     }
 	
@@ -113,26 +118,26 @@ if (isset($_POST['chat'])) {
         $storage_category = $_POST['storage_category'];
         $check_storage = mysqli_query($link,"SELECT * FROM `app_my_girl_storage` WHERE `id` = '$id' AND `lang` = '$lang_sel' AND `type`='$type_chat' LIMIT 1");
         if (mysqli_num_rows($check_storage) == 0) {
-            $add_storage = mysqli_query($link,"INSERT INTO `app_my_girl_storage` (`id`, `lang`,`type`,`category`) VALUES ('$id_new', '$lang_sel','$type_chat','$storage_category');");
+            $add_storage = mysqli_query($link,"INSERT INTO `app_my_girl_storage` (`id`,`lang`,`type`,`category`) VALUES ('$id_new', '$lang_sel','$type_chat','$storage_category');");
             mysqli_free_result($add_storage);
         }
         mysqli_free_result($check_storage);
     }
 
     $target_dir = "app_mygirl/$txt_table";
-    $target_file = $target_dir . '/' . $id_new . '.mp3';
+    $target_file = $target_dir.'/'.$id_new.'.mp3';
     if ($id_audio == '') {
         if (move_uploaded_file($_FILES["file_audio"]["tmp_name"], $target_file)) {
-            show_alert('Tải tập tin âm thanh ' . basename($_FILES["file_audio"]["name"]) . 'Thành công!', "aler");
+            show_alert('Tải tập tin âm thanh '.basename($_FILES["file_audio"]["name"]).'Thành công!', "aler");
         } else {
             if(get_key_lang($link,'voice_character_sex_'.$character_sex,$lang_sel)!='google'){
                 show_alert("Không thể tải tệp âm thanh trò chuyện vào hệ thống", "error");
             }
         }
     } else {
-        $txt_table_brain = 'app_mygirl/app_my_girl_' . $lang_sel . '_brain/' . $id_audio . '.mp3';
+        $txt_table_brain = 'app_mygirl/app_my_girl_'.$lang_sel.'_brain/'.$id_audio.'.mp3';
         if (rename($txt_table_brain, $target_file)) {
-            show_alert('Tải tập tin âm thanh ' . basename($txt_table_brain) . 'Thành công!', "aler");
+            show_alert('Tải tập tin âm thanh '.basename($txt_table_brain).'Thành công!', "aler");
         } else {
             show_alert("Không thể tải tệp âm thanh câu thoại vào hệ thống", "error");
         }
@@ -146,17 +151,17 @@ if (isset($_POST['chat'])) {
         $song_artist=addslashes(trim($_POST['song_artist']));
         $song_genre=addslashes(trim($_POST['song_genre']));
         $song_year=addslashes(trim($_POST['song_year']));
-        $query_add_lyrics = mysqli_query($link,"INSERT INTO `app_my_girl_" . $lang_sel . "_lyrics` (`id_music`, `lyrics`,`artist`,`album`,`year`,`genre`) VALUES ('$id_new', '" . addslashes($music_lyrics) . "','$song_artist','$song_album','$song_year','$song_genre');");
+        $query_add_lyrics = mysqli_query($link,"INSERT INTO `app_my_girl_".$lang_sel."_lyrics` (`id_music`,`lyrics`,`artist`,`album`,`year`,`genre`) VALUES ('$id_new', '".addslashes($music_lyrics)."','$song_artist','$song_album','$song_year','$song_genre');");
     }
 
     if (isset($_POST['link_ytb']) && $_POST['link_ytb'] != '') {
         $link_ytb = $_POST['link_ytb'];
-        $query_add_link = mysqli_query($link, "INSERT INTO `app_my_girl_video_$lang_sel` (`id_chat`, `link`)VALUES ('$id_new', '$link_ytb');");
+        $query_add_link = mysqli_query($link, "INSERT INTO `app_my_girl_video_$lang_sel` (`id_chat`,`link`)VALUES ('$id_new', '$link_ytb');");
 
         parse_str(parse_url($link_ytb, PHP_URL_QUERY), $my_array_of_vars);
         $id_ytb = $my_array_of_vars['v'];
         $url_avatrt_music = "http://img.youtube.com/vi/$id_ytb/sddefault.jpg";
-        $img_avatar_music = 'app_mygirl/app_my_girl_' . $lang_sel . '_img/' . $id_new . '.png';
+        $img_avatar_music = 'app_mygirl/app_my_girl_'.$lang_sel.'_img/'.$id_new.'.png';
 
         $ch = curl_init($url_avatrt_music);
         $fp = fopen($img_avatar_music, 'wb');
@@ -179,14 +184,14 @@ if (isset($_POST['chat'])) {
         }
         $data_field = json_encode($arr_data_field_chat, JSON_UNESCAPED_UNICODE);
         $author = "unclear";
-        $query_add_field = mysqli_query($link, "INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`, `type_chat`, `data`, `type`, `author`) VALUES ('$id_new', '$type_chat', '$data_field', 'field_chat', '$author');");
+        $query_add_field = mysqli_query($link, "INSERT INTO `app_my_girl_field_$lang_sel` (`id_chat`,`type_chat`,`data`,`type`,`author`) VALUES ('$id_new', '$type_chat', '$data_field', 'field_chat', '$author');");
     }
 
     if (mysqli_error($link) == '') {
         echo "<h2 style='width:100%;'>Thêm mới thành công !!!</h2><br/>";
         echo '<table>';
         foreach($result_chat as $key_chat=>$val_chat){
-            if($val_chat!='') echo field_table_data_chat($key_chat,$val_chat);
+            if($val_chat!='') echo field_table_data_chat($key_chat,$val_chat,$lang_sel);
         }
         echo '</table>';
 
@@ -224,15 +229,15 @@ if (isset($_POST['chat'])) {
 
 
         if ($type_chat == 'msg') {
-            echo "<br/><a href='" . $url . "/app_my_girl_msg.php?sex=$sex&character_sex=$character_sex&new_id=$id_new&lang=$lang_sel' class='buttonPro blue'><i class='fa fa-list' aria-hidden='true'></i> Xem câu thoại mới thêm vào</a>";
+            echo "<br/><a href='".$url."/app_my_girl_msg.php?sex=$sex&character_sex=$character_sex&new_id=$id_new&lang=$lang_sel' class='buttonPro blue'><i class='fa fa-list' aria-hidden='true'></i> Xem câu thoại mới thêm vào</a>";
         } else {
-            echo "<br/><a href='" . $url . "/app_my_girl_chat.php?sex=$sex&character_sex=$character_sex&new_id=$id_new&lang=$lang_sel' class='buttonPro blue'><i class='fa fa-list' aria-hidden='true'></i> Xem câu trò chuyện mới thêm vào</a>";
-            echo "<br/><a href='" . $url . "/app_my_girl_update.php?id=$id_new&lang=$lang_sel' class='buttonPro blue' target='_blank'><i class='fa fa-edit'></i> Chỉnh sửa nhanh câu trò chuyện</a>";
+            echo "<br/><a href='".$url."/app_my_girl_chat.php?sex=$sex&character_sex=$character_sex&new_id=$id_new&lang=$lang_sel' class='buttonPro blue'><i class='fa fa-list' aria-hidden='true'></i> Xem câu trò chuyện mới thêm vào</a>";
+            echo "<br/><a href='".$url."/app_my_girl_update.php?id=$id_new&lang=$lang_sel' class='buttonPro blue' target='_blank'><i class='fa fa-edit'></i> Chỉnh sửa nhanh câu trò chuyện</a>";
         }
 
         echo '</div>';
     } else {
-        show_alert("Thêm câu trò chuyện không thành công ! lỗi:" . mysqli_error($link), "error");
+        show_alert("Thêm câu trò chuyện không thành công ! lỗi:".mysqli_error($link), "error");
     }
 	unset($_GET);
     exit;
@@ -373,7 +378,7 @@ if (isset($_POST['chat'])) {
                             <td>
                                 <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 <label>Người tạo :</label>
-                                <strong><?php echo $data_user_carrot['user_name']; ?></strong>
+                                <strong><a href="<?php echo $url;?>/app_mobile/carrot_framework/?function=show_user&user_id=<?php echo $user_name;?>&user_lang=<?php echo $lang_sel;?>" target="_blank"><?php echo $user_name; ?></strong>
                             </td>
                         </tr>
                     </table>
@@ -562,7 +567,7 @@ if (isset($_POST['chat'])) {
                         <input type="file" id="file_audio" name="file_audio"/>
                         <?php
                         if ($id_audio != '') {
-                            $txt_table_brain = $url . '/app_mygirl/app_my_girl_' . $lang_sel . '_brain/' . $id_audio . '.mp3';
+                            $txt_table_brain = $url.'/app_mygirl/app_my_girl_'.$lang_sel.'_brain/'.$id_audio.'.mp3';
                             ?>
                             <audio controls="true">
                                 <source src="<?php echo $txt_table_brain; ?>" type="audio/ogg"/>
@@ -827,9 +832,9 @@ if ($key != '') {
 
         echo '<p>';
         if ($type_chat_same == '0') {
-            echo '<a class="buttonPro small yellow btn_type_chat_same" onClick="show_type_chat_same(\'' . $lang_sel . '\',\'' . $sex . '\',\'' . $character_sex . '\',\'' . $key . '\',\'0\',this);return false; ">Hiện toàn bộ (Mặt định chỉ hiện câu thoại cha)</a>  <a class="buttonPro small btn_type_chat_same" onClick="show_type_chat_same(\'' . $lang_sel . '\',\'' . $sex . '\',\'' . $character_sex . '\',\'' . $key . '\',\'1\',this);return false;">Chỉ hiện câu thoại cha</a>';
+            echo '<a class="buttonPro small yellow btn_type_chat_same" onClick="show_type_chat_same(\''.$lang_sel.'\',\''.$sex.'\',\''.$character_sex.'\',\''.$key.'\',\'0\',this);return false; ">Hiện toàn bộ (Mặt định chỉ hiện câu thoại cha)</a>  <a class="buttonPro small btn_type_chat_same" onClick="show_type_chat_same(\''.$lang_sel.'\',\''.$sex.'\',\''.$character_sex.'\',\''.$key.'\',\'1\',this);return false;">Chỉ hiện câu thoại cha</a>';
         } else {
-            echo '<a class="buttonPro small  btn_type_chat_same" onClick="show_type_chat_same(\'' . $lang_sel . '\',\'' . $sex . '\',\'' . $character_sex . '\',\'' . $key . '\',\'0\',this);return false; ">Hiện toàn bộ (Mặt định chỉ hiện câu thoại cha)</a>  <a class="buttonPro small btn_type_chat_same yellow" onClick="show_type_chat_same(\'' . $lang_sel . '\',\'' . $sex . '\',\'' . $character_sex . '\',\'' . $key . '\',\'1\',this);return false;">Chỉ hiện câu thoại cha</a>';
+            echo '<a class="buttonPro small  btn_type_chat_same" onClick="show_type_chat_same(\''.$lang_sel.'\',\''.$sex.'\',\''.$character_sex.'\',\''.$key.'\',\'0\',this);return false; ">Hiện toàn bộ (Mặt định chỉ hiện câu thoại cha)</a>  <a class="buttonPro small btn_type_chat_same yellow" onClick="show_type_chat_same(\''.$lang_sel.'\',\''.$sex.'\',\''.$character_sex.'\',\''.$key.'\',\'1\',this);return false;">Chỉ hiện câu thoại cha</a>';
         }
         echo '</p>';
 
@@ -873,7 +878,7 @@ if ($key != '') {
                             <?php
                             $get_child_chat = mysqli_query($link,"SELECT * FROM  `app_my_girl_$lang_sel`  WHERE `pater` = '$id_father' AND `pater_type`='$type_father'");
                             while ($row_child = mysqli_fetch_array($get_child_chat)) {
-                                $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\'' . $row_child['id'] . '\')">Gỡ bỏ</a><input type="hidden" value="' . $row_child['id'] . '" name="chat_child[]" />';
+                                $btn_remove = '<a href="#" class="buttonPro small red" onclick="remove_chat_same(\''.$row_child['id'].'\')">Gỡ bỏ</a><input type="hidden" value="'.$row_child['id'].'" name="chat_child[]" />';
                                 echo show_row_chat_prefab($link,$row_child, $lang_sel, $btn_remove);
                             }
                             ?>
@@ -1043,11 +1048,11 @@ if ($key != '') {
             for ($i = 0; $i < count($data_app->arr_action_name); $i++) {
                 if (isset($_GET['effect']) && $_GET['effect'] == '2') {
                     if ($i == 9) {
-                        $txt .= '<img src="' . $url . '/app_mygirl/img/action/' . $i . '.png" onclick="change_action(' . $i . ')" style="width:80px;"/>';
+                        $txt .= '<img src="'.$url.'/app_mygirl/img/action/'.$i.'.png" onclick="change_action('.$i.')" style="width:80px;"/>';
                     }
                 } else {
                     if ($i != 9) {
-                        $txt .= '<img src="' . $url . '/app_mygirl/img/action/' . $i . '.png" onclick="change_action(' . $i . ')" style="width:80px;"/>';
+                        $txt .= '<img src="'.$url.'/app_mygirl/img/action/'.$i.'.png" onclick="change_action('.$i.')" style="width:80px;"/>';
                     }
                 }
             }
@@ -1065,7 +1070,7 @@ if ($key != '') {
             <?php
             $txt = '<div style="display:inline-block;float:left;">';
             for ($i = 0; $i < count($data_app->arr_face_name); $i++) {
-                $txt .= '<img src="' . $url . '/app_mygirl/img/face/' . $i . '.png" onclick="change_face(' . $i . ')" style="width:80px;margin:2px;float:left;"/>';
+                $txt .= '<img src="'.$url.'/app_mygirl/img/face/'.$i.'.png" onclick="change_face('.$i.')" style="width:80px;margin:2px;float:left;"/>';
             }
             $txt .= '<div/>';
             ?>

@@ -10,6 +10,32 @@ if(isset($_POST['function']))$function=$_POST['function'];
 if(isset($_POST['id_device']))$id_device=$_POST['id_device'];
 if(isset($_POST['lang']))$lang=$_POST['lang'];
 
+function get_field_contacts($id_name_field,$lang){
+    global $link;
+    $query_field_type=mysqli_query($link,"SELECT `type` FROM carrotsy_contacts.`field` WHERE `name_id` = '$id_name_field' LIMIT 1");
+    $data_field_type=mysqli_fetch_assoc($query_field_type);
+
+    $query_field_title=mysqli_query($link,"SELECT `name` FROM carrotsy_contacts.`field_lang` WHERE `name_id` = '$id_name_field' AND `lang` = '$lang'");
+    $data_field_title=mysqli_fetch_assoc($query_field_title);
+
+    $data_field=new stdClass();
+    $data_field->{"title"}=$data_field_title["name"];
+    $data_field->{"title_en"}=$data_field_title["name"];
+    if($data_field_type["type"]=="2"){
+        $query_field_select=mysqli_query($link,"SELECT `name_key`,`val` FROM carrotsy_contacts.`field_data_lang` WHERE `name_id` = '$id_name_field' AND `lang` = '$lang' ORDER BY `order`");
+        $arr_val=array();
+        $arr_key=array();
+        while($field_val=mysqli_fetch_assoc($query_field_select)){
+            array_push($arr_key,$field_val["name_key"]);
+            array_push($arr_val,$field_val["val"]);
+        }
+        $data_field->{"val_update"}=$arr_key;
+        $data_field->{"val_update_en"}=$arr_val;
+    }
+    $data_field->{"type"}=$data_field_type["type"];
+    return $data_field;
+}
+
 function get_data_user($data_user){
     global $url_carrot_store;
     global $link;
@@ -23,6 +49,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Full name";
     $item_data->{"val"}=$data_user['name'];
     $item_data->{"type_update"}="1";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/name.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -30,7 +57,8 @@ function get_data_user($data_user){
     $item_data->{"title"}="user_phone";
     $item_data->{"title_en"}="Phone number";
     $item_data->{"val"}=$data_user['sdt'];
-    $item_data->{"type_update"}="4";
+    $item_data->{"type_update"}="8";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/phone.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -38,7 +66,8 @@ function get_data_user($data_user){
     $item_data->{"title"}="user_address";
     $item_data->{"title_en"}="Address";
     $item_data->{"val"}=$data_user['address'];
-    $item_data->{"type_update"}="1";
+    $item_data->{"type_update"}="9";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/address.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -47,6 +76,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Email (Email)";
     $item_data->{"val"}=$data_user['email'];
     $item_data->{"type_update"}="5";
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/email.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -57,6 +87,7 @@ function get_data_user($data_user){
     $item_data->{"type_update"}="2";
     $item_data->{"val_update"}=array("user_sex_boy","user_sex_girl");
     $item_data->{"val_update_en"}=array("Male","Female");
+    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/sex.png';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -89,14 +120,39 @@ function get_data_user($data_user){
 
     if($data_user['status']=="0"){
         $item_data=new stdClass();
+        $item_data->{"id_name"}="user_link";
         $item_data->{"title"}="user_link";
         $item_data->{"title_en"}="Contact link";
         $item_data->{"val"}=$url_carrot_store.'/user/'.$data_user['id_device'].'/'.$lang;
-        $item_data->{"type_update"}="0";
-        $item_data->{"act"}="2";
+        $item_data->{"type_update"}="7";
+        $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/web.png';
         array_push($arr_data,$item_data);
     }
 
+    $list_info_contact=mysqli_query($link,"SELECT `data` FROM carrotsy_contacts.`info_$lang` WHERE `user_id` = '".$data_user['id_device']."' LIMIT 1");
+    $list_data_contact=mysqli_fetch_assoc($list_info_contact);
+    if($list_data_contact!=null){
+        $list_data_contact=json_decode($list_data_contact['data']);
+        for($i=0;$i<count($list_data_contact);$i++){
+            $item_info=$list_data_contact[$i];
+
+            $key_field=$item_info->{"key"};
+            $data_field=get_field_contacts($key_field,$lang);
+
+            $item_data=new stdClass();
+            $item_data->{"id_name"}=$item_info->{"key"};
+            $item_data->{"title"}=$data_field->{"title"};
+            $item_data->{"title_en"}=$data_field->{"title_en"};
+            $item_data->{"val"}=$item_info->{"val"};
+            $item_data->{"type_update"}=$data_field->{"type"};
+            if(isset($data_field->{"val_update"})){
+                $item_data->{"val_update"}=$data_field->{"val_update"};
+                $item_data->{"val_update_en"}=$data_field->{"val_update_en"};
+            }
+            $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/'.$key_field.'.png';
+            array_push($arr_data,$item_data);
+        }
+    }
     return $arr_data;
 }
 
@@ -125,11 +181,36 @@ function get_url_avatar_user_thumb($id_user,$lang,$size){
 if($function=='list_app_carrot'){
     $arr_app=array();
     $os=$_POST['os'];
-    $query_list_ads=mysqli_query($link,"SELECT `id`,`name`,`$os` FROM carrotsy_virtuallover.`app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 10");
-    while($row_ads=mysqli_fetch_array($query_list_ads)){
-        $row_ads["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=80';
-        $row_ads["url"]=$row_ads[$os];
-        array_push($arr_app,$row_ads);
+    $store='';if(isset($_POST['store'])) $store=$_POST['store'];
+    if($store==''){
+        $query_list_ads=mysqli_query($link,"SELECT `id`,`name`,`$os`,`app_id` FROM carrotsy_virtuallover.`app_my_girl_ads` WHERE `$os` != '' ORDER BY RAND() LIMIT 12");
+        while($row_ads=mysqli_fetch_array($query_list_ads)){
+            $row_ads["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_ads/icon_'.$row_ads['id'].'.png&size=80';
+            $row_ads["url"]=$row_ads[$os];
+            $row_ads['link_carrot_app']=$url_carrot_store.'/product/'.$row_ads['app_id'];
+            array_push($arr_app,$row_ads);
+        }
+    }else{
+        $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 12");
+        while($row_ads=mysqli_fetch_array($query_list_ads)){
+            $id_app=$row_ads['id_app'];
+            $name_app='';
+            $q_name_app=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+            $data_name_app=mysqli_fetch_assoc($q_name_app);
+            if($data_name_app!=null){
+                $name_app=$data_name_app['data'];
+            }else{
+                $q_name_app=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_app' LIMIT 1");
+                $data_name_app=mysqli_fetch_assoc($q_name_app);
+                if($data_name_app!=null)$name_app=$data_name_app['data'];
+            }
+
+            $row_ads["name"]=$name_app;
+            $row_ads["icon"]=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$id_app."/icon.jpg&size=60&trim=1";
+            $row_ads["url"]=$row_ads[$store];
+            $row_ads['link_carrot_app']=$url_carrot_store.'/product/'.$id_app;
+            array_push($arr_app,$row_ads);
+        }  
     }
     echo json_encode($arr_app);
 }
@@ -541,6 +622,67 @@ if($function=='dowwnload_lang_by_key'){
     $data_lang_app->{"setting_url_sound_test_sex1"}=$url_carrot_store."/app_mygirl/app_my_girl_".$key."/-3.mp3";
     $data_lang->{"lang_app"}=json_encode($data_lang_app,JSON_UNESCAPED_UNICODE);
     echo json_encode($data_lang);
+    exit;
+}
+
+if($function=='list_share'){
+    $os=$_POST['os'];
+    $arr_share=array();
+    $query_share=mysqli_query($link,"SELECT `id`,`$os` FROM carrotsy_virtuallover.`share` WHERE `$os` != '' LIMIT 10");
+    while($share=mysqli_fetch_assoc($query_share)){
+        $item_share=new stdClass();
+        $item_share->url=$share[$os];
+        $item_share->icon=$url_carrot_store.'/app_mobile/carrot_framework/share_icon/'.$share['id'].'.png';
+        array_push($arr_share,$item_share);
+    }
+    echo json_encode($arr_share);
+    exit;
+}
+
+if($function=='submit_rate'){
+    $app_id=$_POST['app_id'];
+    $inp_review=$_POST['inp_review'];
+    $star_feedback=$_POST['star_feedback'];
+    $user_id=$_POST['user_id'];
+
+    if($star_feedback!="-1"){
+        $star_feedback=intval($star_feedback)+1;
+        $query_check_rate=mysqli_query($link,"SELECT `product` FROM carrotsy_virtuallover.`product_rate` WHERE `product` = '$app_id' AND `user` = '$user_id' LIMIT 1");
+        if(mysqli_num_rows($query_check_rate)>0){
+            mysqli_query($link,"UPDATE carrotsy_virtuallover.`product_rate` SET `rate` = '$star_feedback',`lang`='$lang' WHERE `product`='$app_id' AND `user`='$user_id' AND `lang`='$lang' LIMIT 1;");
+        }else{
+            mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`product_rate` (`product`, `user`, `rate`, `lang`) VALUES ('$app_id', '$user_id', '$star_feedback', '$lang');");
+        }
+    }
+
+    if($inp_review!=""){
+        $inp_review=addslashes($inp_review);
+        $id_c="c".uniqid();
+
+        $query_check_comment=mysqli_query($link,"SELECT `id` FROM carrotsy_virtuallover.`comment` WHERE `username` = '$user_id' AND `productid` = '$app_id' LIMIT 1");
+        if(mysqli_num_rows($query_check_comment)>0)
+            mysqli_query($link,"UPDATE carrotsy_virtuallover.`comment` SET `comment` = '$inp_review',`lang`='$lang' WHERE `username` = '$user_id' AND `productid` = '$app_id' ");
+        else
+            mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`comment` (`id_c`, `username`, `comment`, `productid`, `created`, `upvote_count`, `parent`, `type_comment`, `lang`) VALUES ('$id_c', '$user_id', '$inp_review', '$app_id', NOW(), '0', '0', 'products', '$lang');");
+    }
+    exit;
+}
+
+if($function=='get_rate'){
+    $user_id=$_POST['user_id'];
+    $app_id=$_POST['app_id'];
+
+    $query_rate=mysqli_query($link,"SELECT `rate` FROM carrotsy_virtuallover.`product_rate` WHERE `user` = '$user_id' AND `product` = '$app_id' LIMIT 1");
+    $data_rate=mysqli_fetch_assoc($query_rate);
+
+    $query_comment=mysqli_query($link,"SELECT `comment`  FROM carrotsy_virtuallover.`comment` WHERE `username` = '$user_id' AND `productid` = '$app_id' LIMIT 1");
+    $data_comment=mysqli_fetch_assoc($query_comment);
+
+    $obj_rate=new stdClass();
+    if($data_rate!=null) $obj_rate->{"star"}=$data_rate['rate'];
+    if($data_comment!=null) $obj_rate->{"comment"}=$data_comment['comment'];
+
+    echo json_encode($obj_rate);
     exit;
 }
 ?>

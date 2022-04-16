@@ -796,7 +796,7 @@ function btn_add_work($id_object,$lang,$type,$action){
     return $txt_html;
 }
 
-function field_table_data_chat($key,$val){
+function field_table_data_chat($key,$val,$lang='en'){
     $val_show=$val;
     if($key=='sex'||$key=='character_sex') $val_show='<img src="'.URL.'/app_mygirl/img/'.$val.'.png"/>';
     if($key=='file_url'||$key=='mp3') $val_show='<audio controls><source src="'.$val.'" type="audio/mpeg"></audio><br/><a href="'.$val.'" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i> Xem liên kết ('.$val.')</a>';
@@ -804,7 +804,14 @@ function field_table_data_chat($key,$val){
     if($key=='color') $val_show='<span style="background-color:'.$val.'">'.$val.'</span>';
     if($key=='effect_customer') $val_show='<a target="_blank" href="'.URL.'/app_my_girl_effect.php?edit='.$val.'"><img src="'.URL.'/app_mygirl/obj_effect/'.$val.'.png"/></a>';
     if($key=='avatar_music') $val_show='<img style="width:60px;" src="'.$val.'"/>';
-    if($key=='user_create') if($val_show!='') $val_show='<img src="'.URL.'/app_mobile/work/img.php?url=avatar_user/'.$val.'.png&size=50"/>';
+    if($key=='user_create') if($val_show!=''){
+        $filename_avatar='app_mygirl/app_my_girl_'.$lang.'_user/'.$val.'.png';
+        $txt_img_url = URL.'/images/avatar_default.png';
+        if (file_exists($filename_avatar)) {
+            $txt_img_url = thumb($filename_avatar, '60x60');
+        }
+        $val_show='<a href="'.URL.'/app_mobile/carrot_framework/?function=show_user&user_id='.$val.'&user_lang='.$lang.'"><img style="width:60px;" src="'.$txt_img_url.'"/></a>';
+    }
     if($key=='face') $val_show='<img style="width:50px;" src="'.URL.'/app_mygirl/img/face/'.$val.'.png"/>';
     if($key=='action') $val_show='<img style="width:50px;" src="'.URL.'/app_mygirl/img/action/'.$val.'.png"/>';
     if($key=='author') $val_show='<img style="width:20px;" src="'.URL.'/thumb.php?src='.URL.'/app_mygirl/img/'.$val.'.png&size=60&trim=1"/> ('.$val.')';

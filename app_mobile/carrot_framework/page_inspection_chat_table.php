@@ -9,8 +9,9 @@ while($chat=mysqli_fetch_assoc($list_chat)){
     $c_id_question=$chat['id_question'];
     $c_type_question=$chat['type_question'];
     $c_character_sex=$chat['character_sex'];
+    $c_user_id=$chat['id_device'];
 
-    $url_chat_add=$this->url_carrot_store.'/app_my_girl_add.php?key='.$c_question.'&lang='.$c_langs.'&answer='.$c_answer.'&sex='.$c_sex.'&effect=0&action=2&character_sex='.$c_character_sex.'&color=FFFFFF';
+    $url_chat_add=$this->url_carrot_store.'/app_my_girl_add.php?key='.$c_question.'&lang='.$c_langs.'&answer='.$c_answer.'&sex='.$c_sex.'&effect=0&action=2&character_sex='.$c_character_sex.'&color=FFFFFF&user_id='.$c_user_id;
     if($c_langs=='zh')$c_langs="zh-CN";
     $url_chat_translate='https://translate.google.com/?sl='.$c_langs.'&tl=vi&text='.$c_question."%0A%0A".$c_answer.'&op=translate';
 

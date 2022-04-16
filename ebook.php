@@ -28,17 +28,22 @@ if($data_book!=null){
 
 	$manifest=$xml->manifest;
 
-	foreach($manifest->item as $obj_ebook){
-		if($obj_ebook['media-type']=='text/css')array_push($arr_css,$obj_ebook['href']);
-		if($obj_ebook['media-type']=='image/jpeg')array_push($arr_img,$obj_ebook['href']);
+	if (is_array($manifest) || is_object($manifest))
+	{
+		foreach($manifest->item as $obj_ebook){
+			if($obj_ebook['media-type']=='text/css')array_push($arr_css,$obj_ebook['href']);
+			if($obj_ebook['media-type']=='image/jpeg')array_push($arr_img,$obj_ebook['href']);
+		}
+	}
+
+	$q_book_title=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_ebook' LIMIT 1");
+	if($q_book_title){
+		$data_book_title=mysqli_fetch_assoc($q_book_title);
+		$ebook_title=$data_book_title['data'];
 	}
 }
 
 $detect = new Mobile_Detect;
-
-$q_book_title=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_ebook' LIMIT 1");
-$data_book_title=mysqli_fetch_assoc($q_book_title);
-$ebook_title=$data_book_title['data'];
 
 $url_img_cover='';
 if(count($arr_img)>0) $url_img_cover=$url.'/'.$url_ebook_path.'/'.$arr_img[0];
@@ -216,18 +221,21 @@ if ($detect->isMobile()) {
     }
 }else{
 	$content=show_page_cover(2);
-    foreach($navMap as $nav){	
-        $url_xml_page=$nav->content['src'];
-        $style_show='';
-        $css_page='left';
-        if($x==1)$style_show='display: block;';
-        if(($x%2)!=0)$css_page='right'; 
-        $content.='<div class="page_two page_book '.$css_page.'" num_page="'.$x.'" src="'.$url_xml_page.'" style="'.$style_show.'" id="page_'.$x.'"><div class="contain_page_two">';
-        $content.=show_body_html($id_ebook,$url_xml_page);
-        $content=str_replace('../Images/',$url.'/'.$url_ebook_path.'/Images/',$content);
-        $content.="</div></div>\n";
-        $x++;
-    }
+	if (is_array($navMap) || is_object($navMap))
+	{
+		foreach($navMap as $nav){	
+			$url_xml_page=$nav->content['src'];
+			$style_show='';
+			$css_page='left';
+			if($x==1)$style_show='display: block;';
+			if(($x%2)!=0)$css_page='right'; 
+			$content.='<div class="page_two page_book '.$css_page.'" num_page="'.$x.'" src="'.$url_xml_page.'" style="'.$style_show.'" id="page_'.$x.'"><div class="contain_page_two">';
+			$content.=show_body_html($id_ebook,$url_xml_page);
+			$content=str_replace('../Images/',$url.'/'.$url_ebook_path.'/Images/',$content);
+			$content.="</div></div>\n";
+			$x++;
+		}
+	}
 }
 echo $content;
 ?>
@@ -321,32 +329,35 @@ if ($detect->isMobile()) {
 		<?php
 		$x=1;
 		$index_page=0;
-		foreach($navMap as $nav){
-			if ($detect->isMobile())
-				$index_page=$x;
-			else
-				if($x%2==0)$index_page++;
+		if (is_array($navMap) || is_object($navMap))
+		{
+			foreach($navMap as $nav){
+				if ($detect->isMobile())
+					$index_page=$x;
+				else
+					if($x%2==0)$index_page++;
 
-			$nav_sub=$nav->navPoint;
-			?>
-			html_book_menu=html_book_menu+"<li><a id='nav_menu_<?php echo $x;?>' onclick='book_menu_sel(<?php echo $index_page;?>)' class='item_menu_book'>";
-			html_book_menu=html_book_menu+"<i class='fa fa-circle' aria-hidden='true'></i> ";
-			html_book_menu=html_book_menu+" <?php echo str_replace('"',"",$nav->navLabel->text);?>";
-			html_book_menu=html_book_menu+"</a></li>";
-			<?php
-			if(count($nav_sub)>0){
+				$nav_sub=$nav->navPoint;
 				?>
-				html_book_menu=html_book_menu+'<ul id="list_book_menu_sub">';
-				<?php foreach($nav_sub as $navsub){ ?>
-					html_book_menu=html_book_menu+"<li><a id='nav_menu_<?php echo $x;?>' onclick='book_menu_sel(<?php echo $index_page;?>)' class='item_menu_book'>";
-					html_book_menu=html_book_menu+"<i class='fa fa-dot-circle-o' aria-hidden='true'></i> ";
-					html_book_menu=html_book_menu+" <?php echo str_replace('"',"",$navsub->navLabel->text);?>";
-					html_book_menu=html_book_menu+"</a></li>";
-				<?php $x++;} ?>
-				html_book_menu=html_book_menu+'</ul>';
+				html_book_menu=html_book_menu+"<li><a id='nav_menu_<?php echo $x;?>' onclick='book_menu_sel(<?php echo $index_page;?>)' class='item_menu_book'>";
+				html_book_menu=html_book_menu+"<i class='fa fa-circle' aria-hidden='true'></i> ";
+				html_book_menu=html_book_menu+" <?php echo str_replace('"',"",$nav->navLabel->text);?>";
+				html_book_menu=html_book_menu+"</a></li>";
 				<?php
+				if(count($nav_sub)>0){
+					?>
+					html_book_menu=html_book_menu+'<ul id="list_book_menu_sub">';
+					<?php foreach($nav_sub as $navsub){ ?>
+						html_book_menu=html_book_menu+"<li><a id='nav_menu_<?php echo $x;?>' onclick='book_menu_sel(<?php echo $index_page;?>)' class='item_menu_book'>";
+						html_book_menu=html_book_menu+"<i class='fa fa-dot-circle-o' aria-hidden='true'></i> ";
+						html_book_menu=html_book_menu+" <?php echo str_replace('"',"",$navsub->navLabel->text);?>";
+						html_book_menu=html_book_menu+"</a></li>";
+					<?php $x++;} ?>
+					html_book_menu=html_book_menu+'</ul>';
+					<?php
+				}
+				$x++;
 			}
-			$x++;
 		}
 		?>
 		html_book_menu=html_book_menu+'</ul></div>';

@@ -102,6 +102,7 @@ mysqli_free_result($count_status_3);
         <a href="<?php echo $url_song;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_chi_tiet; ?></a>
         <?php if($list_style=='list'){?>
             <a href="#" onclick="play_music_box_mini('<?php echo $count_item_music;?>');return false;" class="buttonPro blue small "><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $label_choi_nhac;?></a>
+            <a href="music://show/<?php echo $id_music;?>/<?php echo $lang_sel;?>" onclick="" class="buttonPro blue small "><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
             <?php if($url_video!=''){ ?><a href="#" onclick="stop_music_where_play_video();play_video('<?php echo $url_video ?>');return false;" class="buttonPro small light_blue"><i class="fa fa-video-camera" aria-hidden="true"></i></a><?php }?>
         <?php }?>
 

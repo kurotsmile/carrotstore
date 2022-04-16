@@ -240,7 +240,7 @@ if($function=='chat_act'){
      }
 
      if($fn=='reload'){
-          $list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY `date_pub` DESC LIMIT 50");
+          $list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question`,`id_device` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY `date_pub` DESC LIMIT 50");
           include_once("page_inspection_chat_table.php");
           $obj->{"table"}=$s_table;
           $obj->{"count_item"}=mysqli_num_rows($list_chat);

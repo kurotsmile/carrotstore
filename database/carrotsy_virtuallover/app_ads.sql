@@ -32,10 +32,10 @@ INSERT INTO `app_ads` (`id_app`, `google_Play`, `samsung_galaxy_store`, `microso
 ('133',	'https://play.google.com/store/apps/details?id=com.carrotstore.quickeye',	'https://galaxystore.samsung.com/detail/com.carrotstore.quickeye',	'https://www.microsoft.com/store/productId/9P2MFZJ17P7D',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.quickeye',	''),
 ('284',	'https://play.google.com/store/apps/details?id=com.carrotstore.fishofprey',	'https://galaxy.store/csn',	'https://www.microsoft.com/store/productId/9PHN8K0TFMGD',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.fishofprey',	''),
 ('138',	'https://play.google.com/store/apps/details?id=com.carrotstore.numbermagic',	'https://galaxystore.samsung.com/detail/com.carrotstore.numbermagic',	'https://www.microsoft.com/store/productId/9NXJJ258HZ48',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.numbermagic',	''),
-('282',	'',	'https://galaxystore.samsung.com/detail/com.carrotstore.appai',	'',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.appai',	''),
+('282',	'',	'https://galaxystore.samsung.com/detail/com.carrotstore.appai',	'https://www.microsoft.com/store/productId/9NWWDF8VL15P',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.appai',	''),
 ('122',	'https://play.google.com/store/apps/details?id=com.kurotsmile.demcuu3d',	'https://galaxystore.samsung.com/detail/com.kurotsmile.demcuu3d',	'https://www.microsoft.com/store/productId/9N94R9FNJNS3',	'https://www.amazon.com/gp/mas/dl/android?p=com.kurotsmile.demcuu3d',	''),
 ('283',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano',	'https://galaxystore.samsung.com/detail/com.carrotstore.midipiano',	'https://www.microsoft.com/store/productId/9PFQDFZ84JG0',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.midipiano',	'https://carrotstore.com/piano'),
-('132',	'https://play.google.com/store/apps/details?id=com.carrot.mylover',	'https://galaxystore.samsung.com/detail/com.carrot.mylover',	'',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrot.mylover',	''),
+('132',	'https://play.google.com/store/apps/details?id=com.carrot.mylover',	'https://galaxystore.samsung.com/detail/com.carrot.mylover',	'https://www.microsoft.com/store/productId/9P6MHM9JJ608',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrot.mylover',	''),
 ('128',	'https://play.google.com/store/apps/details?id=com.carrotstore.bible',	'',	'https://www.microsoft.com/store/productId/9N6M97BHKP1R',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.bible',	''),
 ('751',	'https://play.google.com/store/apps/details?id=com.carrotstore.supercalculator',	'https://galaxystore.samsung.com/detail/com.carrotstore.supercalculator',	'https://www.microsoft.com/store/productId/9NR8P55H4DCV',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.supercalculator',	''),
 ('752',	'https://play.google.com/store/apps/details?id=com.carrotstore.chemicalperiodic',	'https://galaxystore.samsung.com/detail/com.carrotstore.jsoneditor',	'https://www.microsoft.com/store/productId/9P1GMR2ZC3MN',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.chemicalperiodic',	''),
@@ -43,4 +43,4 @@ INSERT INTO `app_ads` (`id_app`, `google_Play`, `samsung_galaxy_store`, `microso
 ('755',	'https://play.google.com/store/apps/details?id=com.carrotstore.roundsquaretriangle',	'',	'https://www.microsoft.com/store/productId/9NRT8MV6FZ56',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.roundsquaretriangle',	''),
 ('756',	'https://play.google.com/store/apps/details?id=com.carrotstore.yeah10',	'',	'https://www.microsoft.com/store/productId/9P0WM7SVKF03',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.yeah10',	'');
 
--- 2022-03-17 14:52:40
+-- 2022-04-15 13:55:07

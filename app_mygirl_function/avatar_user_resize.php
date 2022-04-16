@@ -191,7 +191,7 @@ function smart_resize_image($file, $string = null, $width = 0, $height = 0, $pro
                     $datasize= getimagesize($file);
                     if($datasize[0]>$width||$datasize[1]>$width){
                         smart_resize_image($file,"",300,300,false,'file',true,false,90);
-                        echo 'Đã tối ưu kích thước ảnh : <a href="'.$url.'/user/'.$id_user_file.'/'.$sel_lang.'" target="_blank"><img src="'.$url.'/'.$file.'" style="float:left"></a><br/>';
+                        echo 'Đã tối ưu kích thước ảnh : <a href="'.$url.'/app_mobile/carrot_framework/?function=show_user&user_id='.$id_user_file.'&user_lang='.$sel_lang.'" target="_blank"><img src="'.$url.'/'.$file.'" style="float:left"></a><br/>';
                     }
                 }
 

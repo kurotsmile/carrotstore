@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.17-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.37 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -54,6 +54,7 @@ INSERT INTO `app_my_girl_skin` (`id`, `name`, `price`, `id_store`, `type`) VALUE
 (37,	'Boy school',	'0',	'',	'boy_school'),
 (38,	'Boy school',	'0',	'',	'boy_school'),
 (39,	'kaoru 1',	'0',	'',	'kaoru'),
-(40,	'kaoru 2',	'0',	'',	'kaoru');
+(40,	'kaoru 2',	'0',	'',	'kaoru'),
+(41,	'Paris Saint',	'0',	'',	'rin');
 
--- 2021-05-23 11:50:12
+-- 2022-04-02 17:45:08

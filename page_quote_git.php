@@ -53,6 +53,7 @@ if($row['effect_customer']!=''){
     
     <div class="app_action">
         <a href="<?php echo $url;?>/quote/<?php echo $row['id'];?>/<?php echo $lang;?>" class="buttonPro small "><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $label_detail; ?></a>
+        <a href="flower://show/<?php echo $row['id'];?>/<?php echo $lang;?>" onclick="" class="buttonPro blue small "><i class="fa fa-external-link-square" aria-hidden="true"></i></a>
         <a href="#"  class="btn_speed_quote_<?php echo $row['id'];?> buttonPro small grey btn_speed" onclick="speech_quote('<?php echo $row['id'];?>');return false;"><i class="fa fa-volume-up" aria-hidden="true"></i> <?php echo $label_speed_quote; ?></a>
     </div>
 

@@ -33,11 +33,11 @@ function special_keyword($txt_chat){
 
 function get_msg($link,$func,$lang,$sex,$character_sex,$limit_day,$limit_date,$limit_month){
     if($limit_day==''&&$limit_date==''){
-        $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0 AND `limit_month` = '$limit_month' ORDER BY RAND() LIMIT 1");
+        $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action`,`color` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0 AND `limit_month` = '$limit_month' ORDER BY RAND() LIMIT 1");
     }else if($limit_date==''&&$limit_month==''){
-        $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0 AND `limit_day`='$limit_day' ORDER BY RAND() LIMIT 1");
+        $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action`,`color` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0 AND `limit_day`='$limit_day' ORDER BY RAND() LIMIT 1");
     }else{
-        $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0  ORDER BY RAND() LIMIT 1");
+        $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action`,`color` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0  ORDER BY RAND() LIMIT 1");
     }
     $data_msg=mysqli_fetch_assoc($query_msg);
     if($data_msg!=null){
@@ -60,7 +60,7 @@ function get_chat($link,$txt_sqli_query,$lang){
     if($data_chat!=null){
         if($data_chat['id_redirect']!=""){
             $id_redirect=$data_chat['id_redirect'];
-            $txt_query_redirect="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `id`='$id_redirect'  AND `disable`=0  LIMIT 1";
+            $txt_query_redirect="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `id`='$id_redirect'  AND `disable`=0  LIMIT 1";
             $data_chat=get_chat($link,$txt_query_redirect,$lang);
         }
 
@@ -110,18 +110,18 @@ function get_chat($link,$txt_sqli_query,$lang){
 function get_new_song($link,$name_song,$lang){
     $data_song=null;
     if(trim($name_song)==''){
-        $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`effect_customer` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `id_redirect` = ''  ORDER BY RAND() LIMIT 1",$lang);
+        $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `effect` = '2' AND `id_redirect` = ''  ORDER BY RAND() LIMIT 1",$lang);
     }else{
-        $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`effect_customer` FROM `app_my_girl_$lang` WHERE `chat` LIKE '%$name_song%' AND `effect` = '2' AND `id_redirect` = ''  ORDER BY RAND() LIMIT 1",$lang);
+        $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `chat` LIKE '%$name_song%' AND `effect` = '2' AND `id_redirect` = ''  ORDER BY RAND() LIMIT 1",$lang);
         if($data_song==null){
-            $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`effect_customer` FROM `app_my_girl_$lang` WHERE MATCH (`chat`) AGAINST ('$name_song' IN BOOLEAN MODE) AND `effect` = '2' AND `id_redirect` = ''  LIMIT 1",$lang);
+            $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE MATCH (`chat`) AGAINST ('$name_song' IN BOOLEAN MODE) AND `effect` = '2' AND `id_redirect` = ''  LIMIT 1",$lang);
         }
 
         if($data_song==null){
             $query_list_lang=mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `key` != '$lang' AND `active` = '1'");
             while($item_lang=mysqli_fetch_array($query_list_lang)){
                 $lang_key=$item_lang['key'];
-                $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url` FROM `app_my_girl_$lang_key` WHERE MATCH (`chat`) AGAINST ('$name_song' IN BOOLEAN MODE) AND `effect` = '2' AND `id_redirect` = ''  LIMIT 1",$lang_key);
+                $data_song=get_chat($link,"SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`color` FROM `app_my_girl_$lang_key` WHERE MATCH (`chat`) AGAINST ('$name_song' IN BOOLEAN MODE) AND `effect` = '2' AND `id_redirect` = ''  LIMIT 1",$lang_key);
                 if($data_song!=null) break;
             }
         }
@@ -139,7 +139,7 @@ function get_lyrics_song($link,$text,$lang){
     $data_lyrics=mysqli_fetch_assoc($query_lyrics);
     if($data_lyrics!=null){
         $id_music=$data_lyrics['id_music'];
-        $txt_query_music="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `id`='$id_music'  AND `disable`=0  LIMIT 1";
+        $txt_query_music="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `id`='$id_music'  AND `disable`=0  LIMIT 1";
         $data_song=get_chat($link,$txt_query_music,$lang);
     }else{
         $query_list_lang=mysqli_query($link,"SELECT `key` FROM `app_my_girl_country` WHERE `key` != '$lang' AND `active` = '1'");
@@ -149,7 +149,7 @@ function get_lyrics_song($link,$text,$lang){
             $data_lyrics=mysqli_fetch_assoc($query_lyrics);
             if($data_lyrics!=null){
                 $id_music=$data_lyrics['id_music'];
-                $txt_query_music="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang_key` WHERE `id`='$id_music'  AND `disable`=0  LIMIT 1";
+                $txt_query_music="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang_key` WHERE `id`='$id_music'  AND `disable`=0  LIMIT 1";
                 $data_song=get_chat($link,$txt_query_music,$lang_key);
                 if($data_song!=null) break;
             }

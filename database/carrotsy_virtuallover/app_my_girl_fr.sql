@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.37 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -2993,6 +2993,13 @@ INSERT INTO `app_my_girl_fr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (3119,	'chanter une chanson',	'Larry - Question réponse',	1,	1,	'#FF91E0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1125',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'larry-question-reponse-3119',	''),
 (3120,	'chanter une chanson',	'Soolking feat. Ouled El Bahdja - Liberté',	1,	1,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'858',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'soolking-feat-ouled-el-bahdja-liberte-3120',	''),
 (3121,	'chanter une chanson',	'Tayc - Le Temps',	1,	1,	'#7263E6',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1113',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'tayc-le-temps-3121',	''),
-(3122,	'chanter une chanson',	'Kate Ryan - Désenchantée',	1,	0,	'#FFF536',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1192',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'kate-ryan-desenchantee-3122',	'');
+(3122,	'chanter une chanson',	'Kate Ryan - Désenchantée',	1,	0,	'#FFF536',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1192',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'kate-ryan-desenchantee-3122',	''),
+(3123,	'chanter une chanson',	'Djena Della - Juste une fois',	1,	0,	'#1DE300',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'502',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'djena-della-juste-une-fois-3123',	''),
+(3124,	'vous êtes parfaite',	'bien-sûr que je suis parfaite, pauvre merde, je suis supérieure à toi espèce de déchet inutile.',	0,	0,	'#70D8FF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	9,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'914',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3125,	'couche toi',	'à vos ordre',	2,	0,	'#FFC63D',	'',	'',	'',	'',	0,	'',	'',	0,	5,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'31',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3126,	'casse la gueule',	'Ça fair mal!',	3,	0,	'#72DB67',	'',	'',	'',	'',	0,	'',	'',	0,	25,	4,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'616',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3127,	'chanter une chanson',	'Imen Es feat. Alonzo - 1ère fois',	1,	0,	'#59FFE1',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1077',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'imen-es-feat-alonzo-1ere-fois-3127',	''),
+(3128,	'ouvre wattpad ',	'Ah oui faut continuer vos histoires ',	1,	0,	'#FFE9A6',	'',	'',	'',	'',	0,	'https://www.wattpad.com/',	'',	0,	18,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'964',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(3129,	'La météo ',	'oui a vos ordre',	1,	0,	'#FFCCF3',	'',	'',	'',	'',	0,	'',	'',	51,	18,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'257',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2021-11-29 07:27:32
+-- 2022-03-18 18:34:33

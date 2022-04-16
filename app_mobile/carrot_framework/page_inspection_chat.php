@@ -1,5 +1,5 @@
 <?php
-$list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY `date_pub` DESC LIMIT 50");
+$list_chat=$this->q("SELECT `question`, `answer`,`langs`,`md5`,`sex`,`character_sex`,`id_question`,`type_question`,`id_device` FROM carrotsy_virtuallover.`app_my_girl_brain` ORDER BY `date_pub` DESC LIMIT 50");
 $num_chat=mysqli_num_rows($list_chat);
 if($num_chat>0){
     $cont_all_chat=$this->q_data("SELECT COUNT(`md5`) as c FROM carrotsy_virtuallover.`app_my_girl_brain` LIMIT 1");

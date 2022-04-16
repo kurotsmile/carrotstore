@@ -23,7 +23,6 @@ if($function=='get_tip'){
 if($function=='hello'){
     $hours=$_POST['hours'];
     echo json_encode(get_msg($link,'chao_'.$hours,$lang,$sex,$character_sex,$limit_day,$limit_date,''));
-    echo mysqli_error($link);
     exit;
 }
 
@@ -61,34 +60,34 @@ if($function=='chat'){
             $data_chat=get_msg($link,'giai_toan',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
             $data_chat['chat']=str_replace('{giai_toan}',$math,$data_chat['chat']);
         }else{
-            $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
+            $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
             $data_chat=get_chat($link,$txt_query_pater,$lang);
             mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang','$sex','$date_cur','$os','0',$character_sex,'3','$pater','$pater_type','$id_device','','');");
         }
     }
 
     if($data_chat==null){
-        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
+        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_pater,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
+        $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_pater,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='' AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
+        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='' AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='' AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
+        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `text` LIKE '%$text%' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='' AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
     if($data_chat==null){
-        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`=''  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
+        $txt_query_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE MATCH (`text`) AGAINST ('$text' IN BOOLEAN MODE) AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`=''  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
         $data_chat=get_chat($link,$txt_query_chat,$lang);
     }
 
@@ -156,28 +155,51 @@ if($function=='hit'){
 if($function=='get_list_music'){
     $info_type='';
     $info_val='';
+    $search_music='';
 
     if(isset($_POST['info_type'])) $info_type=$_POST['info_type'];
     if(isset($_POST['info_val'])) $info_val=$_POST['info_val'];
+    if(isset($_POST['search'])) $search_music=$_POST['search'];
+
     $arr_music=array();
 
-    if($info_type!='')
-    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_".$lang." as m INNER JOIN app_my_girl_".$lang."_lyrics as l ON m.id= l.id_music WHERE l.$info_type='$info_val' ORDER BY RAND() LIMIT 20");
-    else
-    $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_".$lang." as m INNER JOIN app_my_girl_".$lang."_lyrics as l ON m.id= l.id_music WHERE l.year='2020' ORDER BY RAND() LIMIT 20");
-
-    while($music=mysqli_fetch_assoc($query_list_music)){
-        array_push($arr_music,$music);
+    if($search_music!=""){
+        $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM `app_my_girl_$lang` as m WHERE `chat` LIKE '%$search_music%' AND `effect` = '2' LIMIT 20");
+        if(mysqli_num_rows($query_list_music)==0){
+            $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM `app_my_girl_$lang` as m WHERE MATCH (`chat`) AGAINST ('$search_music')  AND `effect` = '2' LIMIT 20");
+        }
+    }else{
+        if($info_type!='')
+        $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_".$lang." as m INNER JOIN app_my_girl_".$lang."_lyrics as l ON m.id= l.id_music WHERE l.$info_type='$info_val' ORDER BY RAND() LIMIT 20");
+        else
+        $query_list_music=mysqli_query($link,"SELECT m.id,m.chat FROM app_my_girl_".$lang." as m INNER JOIN app_my_girl_".$lang."_lyrics as l ON m.id= l.id_music WHERE l.year='2020' ORDER BY RAND() LIMIT 20");
     }
+
+    if(mysqli_num_rows($query_list_music)>0){
+        while($music=mysqli_fetch_assoc($query_list_music)){
+            array_push($arr_music,$music);
+        }
+    }else{
+        if($search_music!='') mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music`(`key`, `lang`,`type`) VALUES ('$search_music', '$lang','1')");
+    }
+
     echo json_encode($arr_music);
 }
 
 if($function=='get_info_music_by_type'){
     $info_type=$_POST['info_type'];
     $arr_info_music=array();
-    $query_list_music=mysqli_query($link,"SELECT `$info_type` FROM `app_my_girl_".$lang."_lyrics` WHERE `$info_type` != '' GROUP BY `$info_type` ORDER BY RAND() LIMIT 30");
+    if($info_type=='year')
+        $query_list_music=mysqli_query($link,"SELECT `$info_type` FROM `app_my_girl_".$lang."_lyrics` WHERE `$info_type` != '' GROUP BY `$info_type` ORDER BY `year` DESC LIMIT 30");
+    else
+        $query_list_music=mysqli_query($link,"SELECT `$info_type` FROM `app_my_girl_".$lang."_lyrics` WHERE `$info_type` != '' GROUP BY `$info_type` ORDER BY RAND() LIMIT 30");
+
     while($music=mysqli_fetch_assoc($query_list_music)){
         $music['type']=$info_type;
+        if($info_type=='genre')
+        $music['link_share']=$url_carrot_store."/index.php?page_view=page_music.php&view=genre&lang=".$lang."&genre=".urldecode($music[$info_type]);
+        else
+        $music['link_share']=$url_carrot_store."/".$info_type."/".$lang."/".urldecode($music[$info_type]);
         array_push($arr_info_music,$music);
     }
     echo json_encode($arr_info_music);
@@ -211,7 +233,7 @@ if($function=='show_chat'){
     $id=$_POST['id'];
     $type=$_POST['type'];
     if($type=='chat'){
-        $txt_query_show_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer` FROM `app_my_girl_$lang` WHERE `id`='$id'  LIMIT 1";
+        $txt_query_show_chat="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `id`='$id'  LIMIT 1";
         $data_chat=get_chat($link,$txt_query_show_chat,$lang);
     }
     if($type=='msg'){
@@ -234,12 +256,44 @@ if($function=='add_command'){
     $pater=$_POST['pater'];
     $pater_type=$_POST['pater_type'];
     $link_chat=$_POST['link'];
-
+    $user_id='';if(isset($_POST['user_id'])) $user_id=$_POST['user_id']; else $user_id=$id_device;
     $md5=md5(uniqid(rand(), true));
     $color='ffffff';
+
     if($answer!=''&&$question!=''){
-        $query_add_command=mysqli_query($link,"INSERT INTO `app_my_girl_brain` (`question`, `answer`, `status`, `effect`, `sex`, `langs`, `face`, `action`, `author`, `character_sex`, `version`, `os`, `limit_chat`, `color_chat`, `id_question`, `type_question`, `md5`, `id_device`,`links`,`date_pub`) VALUES ('$question', '$answer', '0', '0', '$sex', '$lang', '0', '0', '0', '$character_sex', '2', '$os', '$limit_chat','$color', '$pater', '$pater_type', '$md5', '$id_device','$link_chat',NOW());");
+        $query_add_command=mysqli_query($link,"INSERT INTO `app_my_girl_brain` (`question`, `answer`, `status`, `effect`, `sex`, `langs`, `face`, `action`, `author`, `character_sex`, `version`, `os`, `limit_chat`, `color_chat`, `id_question`, `type_question`, `md5`, `id_device`,`links`,`date_pub`) VALUES ('$question', '$answer', '0', '0', '$sex', '$lang', '0', '0', '0', '$character_sex', '2', '$os', '$limit_chat','$color', '$pater', '$pater_type', '$md5', '$user_id','$link_chat',NOW());");
         echo "Add command success!!!";
+    }
+    exit;
+}
+
+if($function=='add_command_by_dev'){
+    $question=$_POST['question'];
+    $answer=$_POST['answer'];
+    $pater=$_POST['pater'];
+    $pater_type=$_POST['pater_type'];
+    $link_chat=$_POST['link'];
+    $action=$_POST['action'];
+    $face=$_POST['face'];
+    $cm_limit=$_POST['cm_limit'];
+    $user_id='';if(isset($_POST['user_id'])) $user_id=$_POST['user_id']; else $user_id=$id_device;
+    $color='';if(isset($_POST['color'])) $color=$_POST['color']; else $color='#FFFFFF';
+    $id_icon=$_POST['id_icon'];
+    $id_func=$_POST['id_func'];
+    $status='0';
+    if($face=='0') $status='1';
+    if($face=='1') $status='2';
+    if($face=='2') $status='3';
+    if($face=='3') $status='3';
+    if($face=='4') $status='1';
+    if($face=='5') $status='0';
+    if($face=='6') $status='0';
+    if($face=='7') $status='2';
+
+    if($answer!=''&&$question!=''){
+        mysqli_query($link,"INSERT INTO `app_my_girl_$lang` (`text`,`chat`,`author`,`sex`,`character_sex`,`color`,`user_create`,`link`,`pater`,`pater_type`,`action`,`face`,`limit_chat`,`effect_customer`,`effect`,`status`) VALUES ('$question','$answer','$lang','$sex','$character_sex','$color','$user_id','$link_chat','$pater','$pater_type','$action','$face','$cm_limit','$id_icon','$id_func','$status')");
+        echo "Development mode: Đã thêm câu trò chuyện vào hệ thống!\n";
+        echo "Face: ".$face." Status:".$status." func:".$id_func;
     }
     exit;
 }
@@ -252,6 +306,99 @@ if($function=='list_radio'){
         array_push($arr_radio,$radio);
     }
     echo json_encode($arr_radio);
+    exit;
+}
+
+if($function=='get_hello_and_notification_and_tip'){
+    $obj_data=new stdClass();
+    $hours=$_POST['hours'];
+
+    $arr_tip=array();
+    $query_list_tip_chat=mysqli_query($link,"SELECT `text` FROM `app_my_girl_$lang` WHERE `tip` = '1' AND `character_sex`='$character_sex' AND `sex`='$sex' LIMIT 50");
+    while($tip=mysqli_fetch_assoc($query_list_tip_chat)){
+        array_push($arr_tip,$tip['text']);
+    }
+
+    $obj_data->{"hello"}=get_msg($link,'chao_'.$hours,$lang,$sex,$character_sex,$limit_day,$limit_date,'');
+    $obj_data->{"list_tip"}=$arr_tip;
+    $obj_data->{"notification"}=get_msg($link,'thong_bao',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
+    echo json_encode($obj_data);
+    exit;
+}
+
+if($function=='get_notice_back'){
+    echo json_encode(get_msg($link,'tra_loi_thong_bao',$lang,$sex,$character_sex,$limit_day,$limit_date,''));
+    exit;
+}
+
+if($function=='list_command_pass'){
+    $user_id='';if(isset($_POST['user_id'])) $user_id=$_POST['user_id']; else $user_id=$id_device;
+    $key_search='';if(isset($_POST['search'])) $key_search=$_POST['search'];
+    $array_list=array();
+    if(trim($key_search)!="")
+        $query_list_command=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author` FROM `app_my_girl_$lang` WHERE `chat` LIKE '%$key_search%' ORDER BY `id` DESC LIMIT 30");
+    else
+        $query_list_command=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author` FROM `app_my_girl_$lang` WHERE (`user_create` = '$user_id') OR (`user_create` = '$id_device') ORDER BY `id` DESC LIMIT 30");
+
+    while($command=mysqli_fetch_assoc($query_list_command)){
+        array_push($array_list,$command);
+    }
+    echo json_encode($array_list);
+    echo var_dump($_POST);
+    exit;
+}
+
+if($function=='delete_command_pass'){
+    $id_chat=$_POST['id_chat'];
+    $lang_chat=$_POST['lang_chat'];
+    mysqli_query($link,"DELETE FROM `app_my_girl_$lang_chat` WHERE (`id` = '$id_chat');");
+    exit;
+}
+
+if($function=='list_emoji_and_color'){
+    $arr_icon=array();
+    $key_search='';if(isset($_POST['search'])) $key_search=$_POST['search'];
+    if($key_search=="")
+        $query_list_icon=mysqli_query($link,"SELECT `id`,`name`,`color` FROM `app_my_girl_effect` ORDER BY RAND() LIMIT 30");
+    else
+        $query_list_icon=mysqli_query($link,"SELECT `id`,`name`,`color` FROM `app_my_girl_effect` WHERE `id` LIKE '%$key_search%' OR `name` LIKE '%$key_search%' ORDER BY RAND() LIMIT 30");
+
+    while($emoj=mysqli_fetch_assoc($query_list_icon)){
+        $url_icon_emoj=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/app_mygirl/obj_effect/".$emoj["id"].".png&size=16&trim=1";
+        $emoj["url_icon"]=$url_icon_emoj;
+        $emoj["link_edit"]=$url.'/app_my_girl_effect.php?edit='.$emoj["id"];
+        array_push($arr_icon,$emoj);
+    }
+    echo json_encode($arr_icon);
+    exit;
+}
+
+if($function=='get_chat_info'){
+    $id_chat=$_POST['id_chat'];
+    $type_chat=$_POST['type_chat'];
+
+    $s_query="";
+    if($type_chat=="chat")
+        $s_query="SELECT `user_create`, `author`, `id`,`chat` FROM `app_my_girl_$lang` WHERE `id` = '$id_chat' LIMIT 1";
+    else
+        $s_query="SELECT `user_create`, `author`, `id`,`chat` FROM `app_my_girl_msg_$lang` WHERE `id` = '$id_chat' LIMIT 1";
+
+    $query_info=mysqli_query($link,$s_query);
+    $data_info=mysqli_fetch_assoc($query_info);
+
+    $id_user_chat=$data_info['user_create'];
+    if($id_user_chat!=""){
+        $query_user=mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_$lang` WHERE `id_device` = '$id_user_chat' AND `status` = '0'  LIMIT 1");
+        if(mysqli_num_rows($query_user)>0){
+            $data_user=mysqli_fetch_assoc($query_user);
+            $data_info["user_name"]=$data_user["name"];
+            $data_info["user_avatar"]=get_url_avatar_user_thumb($id_user_chat,$lang,"80x80");
+        }
+    }
+
+    $data_info["type_chat"]=$type_chat;
+    $data_info["link_share"]="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22".$lang."%22%2C%22id%22%3A%22".$id_chat."%22%2C%22type%22%3A%22".$type_chat."%22%2C%22host%22%3A%22carrotstore.com%22%7D";
+    echo json_encode($data_info);
     exit;
 }
 ?>

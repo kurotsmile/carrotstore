@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.37 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -633,6 +633,19 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('radio_error',	'0'),
 ('name_char_boy',	'0'),
 ('name_char_girl',	'0'),
-('setting_name_char',	'0');
+('setting_name_char',	'0'),
+('brain_add_success',	'3'),
+('share_music_playlist',	'3'),
+('share_song',	'3'),
+('search_song_tip',	'3'),
+('replay',	'3'),
+('command_pass',	'3'),
+('command_pass_tip',	'3'),
+('cm_test',	'3'),
+('cm_next',	'3'),
+('cm_prev',	'3'),
+('chat_creator',	'3'),
+('share_chat_tip',	'3'),
+('list_none',	'3');
 
--- 2021-11-29 07:07:27
+-- 2022-04-06 21:13:04
