@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,9 +15,8 @@ CREATE TABLE `app_my_girl_field_es` (
   `option` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_field_es`;
 INSERT INTO `app_my_girl_field_es` (`id_chat`, `type_chat`, `data`, `type`, `author`, `option`) VALUES
 ('50060',	'chat',	'[[\"983\",\"es\",\"show_chat\",\"música abierta\",\"000000\"],[\"42\",\"es\",\"show_chat\",\"abrir facebook\",\"000000\"],[\"2975\",\"es\",\"show_chat\",\"abrir whats app\",\"000000\"],[\"49375\",\"es\",\"show_chat\",\"abrir recordatorio\",\"000000\"],[\"29501\",\"es\",\"show_chat\",\"radio abierta\",\"000000\"],[\"53\",\"es\",\"show_chat\",\"abrir sms\",\"000000\"]]',	'field_chat',	'unclear',	'0'),
 ('50921',	'chat',	'[[\"3\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover\"]]',	'field_chat',	'unclear',	'0');
 
--- 2021-11-29 07:17:23
+-- 2022-08-20 03:44:05

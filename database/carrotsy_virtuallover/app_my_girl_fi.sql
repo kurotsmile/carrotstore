@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -37,7 +37,7 @@ CREATE TABLE `app_my_girl_fi` (
   `func_sever` varchar(20) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -49,7 +49,6 @@ CREATE TABLE `app_my_girl_fi` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_fi`;
 INSERT INTO `app_my_girl_fi` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (2,	'hei',	'Hei, kiva jutella kanssasi',	1,	0,	'#C7FFA3',	'',	'',	'',	'',	1,	'',	'',	0,	5,	17,	'fi',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'377',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (3,	'Mitä kuuluu?',	'Minä voin hyvin. Mitä kuuluu?',	2,	0,	'#C7FFA3',	'',	'',	'',	'',	1,	'',	'',	0,	32,	15,	'fi',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'377',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
@@ -438,4 +437,4 @@ INSERT INTO `app_my_girl_fi` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (388,	'Laula laulu',	'Robin - Boom Kah ft. Mikael Gabriel, Uniikki',	1,	1,	'#1DE300',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fi',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'502',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'robin-boom-kah-ft-mikael-gabriel-uniikki-388',	''),
 (389,	'Laula laulu',	'JVG - Ikuinen vappu',	1,	1,	'#FF9500',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fi',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'901',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jvg-ikuinen-vappu-389',	'');
 
--- 2021-11-29 07:14:50
+-- 2022-08-20 02:29:21

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -38,7 +38,7 @@ CREATE TABLE `app_my_girl_da` (
   `func_sever` varchar(20) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -50,7 +50,6 @@ CREATE TABLE `app_my_girl_da` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_da`;
 INSERT INTO `app_my_girl_da` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'åbne facebook',	'Jeg åbnede facebook for at hjælpe dig!',	1,	0,	'#E6ABFF',	'',	'',	'',	'',	1,	'https://www.facebook.com',	'',	0,	29,	0,	0,	'da',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'43',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
 (2,	'åben youtube',	'Jeg åbnede youtube hjælp ham, ønskede ham at se sjov video!',	0,	0,	'#FFA6A6',	'',	'',	'',	'',	1,	'https://www.youtube.com',	'',	3,	6,	3,	0,	'da',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'41',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
@@ -136,13 +135,13 @@ INSERT INTO `app_my_girl_da` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (83,	'Afspil musik fra min telefon',	'Jeg tændte for musikken fra din enhed, ønsker dig lykkelig musik',	2,	1,	'#FF196C',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'da',	0,	'',	'',	'',	1,	'',	1,	0,	0,	'851',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (84,	'chathistorie',	'Jeg har åbnet chathistorikken, du kan gennemgå mine og jeres samtaler',	1,	0,	'#70EBFF',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'da',	1,	'',	'',	'',	2,	'',	1,	0,	0,	'831',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
 (85,	'chathistorie',	'Jeg har åbnet chathistorikken, du kan gennemgå mine og jeres samtaler',	1,	1,	'#4FFF9C',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'da',	0,	'',	'',	'',	2,	'',	1,	0,	0,	'1014',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
-(86,	'Syng en sang',	'Marcus & Martinus - Elektrisk ft. Katastrofe\r\n',	1,	1,	'#FFE742',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'291',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-elektrisk-ft-katastrofe-86',	''),
-(87,	'Syng en sang',	'Marcus & Martinus - Elektrisk ft. Katastrofe\r\n',	1,	1,	'#FFE742',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'291',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-elektrisk-ft-katastrofe-87',	''),
-(88,	'Syng en sang',	'Marcus & Martinus - Elektrisk ft. Katastrofe\r\n',	1,	1,	'#FFCA78',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'296',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-elektrisk-ft-katastrofe-88',	''),
 (89,	'Syng en sang',	'Marcus & Martinus - Slalom',	1,	1,	'#D10FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'705',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-slalom-89',	''),
-(90,	'Syng en sang',	'Marcus & Martinus- Elektrisk (Voldsløkka, Oslo)\r\n',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'marcus-martinus-elektrisk-voldslokka-oslo--90',	''),
+(90,	'Syng en sang',	'Marcus & Martinus- Elektrisk (Voldsløkka, Oslo)\r\n',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'2',	'0',	'0',	'0',	'marcus-martinus-elektrisk-voldslokka-oslo--90',	''),
 (91,	'Syng en sang',	'SEREGA - NEZAPOMÍNÁM',	1,	1,	'#FF1420',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1188',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'',	''),
 (92,	'Syng en sang',	'SEREGA - Temná noc feat. AVIO ',	1,	1,	'#FF3D00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'857',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'',	''),
-(93,	'Syng en sang',	'Jahy & Shine Buteo - Wo ist unsere Liebe hin',	1,	0,	'#00FFFB',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'902',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jahy-shine-buteo-wo-ist-unsere-liebe-hin-93',	'');
+(93,	'Syng en sang',	'Jahy & Shine Buteo - Wo ist unsere Liebe hin',	1,	0,	'#00FFFB',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'902',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jahy-shine-buteo-wo-ist-unsere-liebe-hin-93',	''),
+(94,	'Syng en sang',	'Nixen - Beklager ',	1,	1,	'#FF00D0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1107',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nixen-beklager--94',	''),
+(95,	'Syng en sang',	'Nixen - Beklager ',	1,	1,	'#410FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'706',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nixen-beklager--95',	''),
+(96,	'Syng en sang',	'Nixen - Beklager ',	1,	1,	'#410FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'da',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'706',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nixen-beklager--96',	'');
 
--- 2021-11-29 07:06:12
+-- 2022-08-20 02:26:35

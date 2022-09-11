@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -38,7 +38,7 @@ CREATE TABLE `app_my_girl_nl` (
   `func_sever` varchar(20) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -50,7 +50,6 @@ CREATE TABLE `app_my_girl_nl` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_nl`;
 INSERT INTO `app_my_girl_nl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'open facebook',	'Ik heb Facebook geopend om je te helpen!',	1,	0,	'#E6ABFF',	'',	'',	'',	'',	1,	'https://www.facebook.com',	'',	0,	29,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'43',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
 (2,	'open youtube',	'Ik opende de youtube en hielp hem om grappige video\'s te bekijken!',	0,	0,	'#FFA6A6',	'',	'',	'',	'',	1,	'https://www.youtube.com',	'',	3,	6,	3,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'41',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
@@ -141,6 +140,9 @@ INSERT INTO `app_my_girl_nl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (88,	'zing een liedje',	'SLM - Kifesh',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'slm-kifesh-88',	''),
 (89,	'zing een liedje',	'Snelle - Smoorverliefd',	1,	1,	'#00FF81',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'123',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'snelle-smoorverliefd-89',	''),
 (90,	'zing een liedje',	'Suzan & Freek - Onderweg Naar Later ',	1,	0,	'#FF9921',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'581',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'suzan-freek-onderweg-naar-later--90',	''),
-(91,	'zing een liedje',	'Nielson - Sexy als ik dans',	1,	1,	'#FF00D0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1107',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nielson-sexy-als-ik-dans-91',	'');
+(91,	'zing een liedje',	'Nielson - Sexy als ik dans',	1,	1,	'#FF00D0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1107',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nielson-sexy-als-ik-dans-91',	''),
+(92,	'zing een liedje',	'Wac Toja - REJS',	1,	1,	'#FF6103',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'351',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'wac-toja-rejs-92',	''),
+(93,	'zing een liedje',	'STIP IT 2022 - Diamant - Camille',	1,	0,	'#FF196C',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'851',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stip-it-2022-diamant-camille-93',	''),
+(94,	'zing een liedje',	'Zeg Dat Niet - Elle Hollis ',	1,	0,	'#FFE703',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'nl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'809',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'zeg-dat-niet-elle-hollis--94',	'');
 
--- 2021-11-10 01:33:39
+-- 2022-08-20 02:44:53

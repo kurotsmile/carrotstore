@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_video_th` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_video_th`;
 INSERT INTO `app_my_girl_video_th` (`id_chat`, `link`) VALUES
 ('363',	'https://www.youtube.com/watch?v=hNapOnII1ZA'),
 ('264',	'https://www.youtube.com/watch?v=TMr6subvuQI'),
@@ -64,7 +63,6 @@ INSERT INTO `app_my_girl_video_th` (`id_chat`, `link`) VALUES
 ('522',	'https://www.youtube.com/watch?v=0GBdC2_Q18M'),
 ('526',	'https://www.youtube.com/watch?v=JLFDTAnwYFs'),
 ('527',	'https://www.youtube.com/watch?v=Tet6_BlStEM'),
-('456',	'https://www.youtube.com/watch?v=2BLzX2XOlWE'),
 ('532',	'https://www.youtube.com/watch?v=rMrTHasf4uk'),
 ('538',	'https://www.youtube.com/watch?v=1vK4UxJ4Wa8'),
 ('444',	'https://www.youtube.com/watch?v=KcWHeD4udAE'),
@@ -261,6 +259,19 @@ INSERT INTO `app_my_girl_video_th` (`id_chat`, `link`) VALUES
 ('1823',	'https://www.youtube.com/watch?v=3mYVyVY-lU4'),
 ('1877',	'https://www.youtube.com/watch?v=sS2zthEdhUo'),
 ('1960',	'https://www.youtube.com/watch?v=8V--VY8hYRo'),
-('1961',	'https://www.youtube.com/watch?v=hO0R0YTqnow');
+('1961',	'https://www.youtube.com/watch?v=hO0R0YTqnow'),
+('1967',	'https://www.youtube.com/watch?v=l55ItEeTpYA'),
+('1970',	'https://www.youtube.com/watch?v=jVI-NvEgkVI'),
+('1979',	'https://www.youtube.com/watch?v=Wk2BPFVzvlQ'),
+('1981',	'https://www.youtube.com/watch?v=LvPwvOsWSDE'),
+('1982',	'https://www.youtube.com/watch?v=1AlYrgAnFdw'),
+('1983',	'https://www.youtube.com/watch?v=IAmi_ANlEG8'),
+('1984',	'https://www.youtube.com/watch?v=G-KfJKLUq4g'),
+('1985',	'https://www.youtube.com/watch?v=8rZ5gE0LVew'),
+('1986',	'https://www.youtube.com/watch?v=wW2hm9WxF2E'),
+('1987',	'https://www.youtube.com/watch?v=wFOwgqnUhxI'),
+('1989',	'https://www.youtube.com/watch?v=inlYo5TzFAY'),
+('1990',	'https://www.youtube.com/watch?v=o2eeywfy06o'),
+('1994',	'https://www.youtube.com/watch?v=l-PAdpWkvEE');
 
--- 2021-10-18 20:48:48
+-- 2022-08-20 02:56:18

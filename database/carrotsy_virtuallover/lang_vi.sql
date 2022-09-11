@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_vi` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_vi`;
 INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('mua_sp',	'Sản phẩm'),
 ('tip_search',	'Bạn muốn tìm kiếm cái gì?'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_vi` (`key`, `value`) VALUES
 ('seo_game',	'Tận hưởng những trò chơi thú vị và thịnh hành ở kho lưu trữ trò chơi carrotstore, chúng tôi cung cấp đầy đủ các bài giới thiệu về game cũng như liên kết tải để bạn có thể chơi trên máy tính,điện thoại, và các máy chơi game như xbox,ps4,playstation'),
 ('ebook_next_page',	'Đọc tiếp');
 
--- 2021-11-29 09:47:02
+-- 2022-08-20 03:05:44

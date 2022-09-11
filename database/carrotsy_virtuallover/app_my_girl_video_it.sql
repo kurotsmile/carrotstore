@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_video_it` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_video_it`;
 INSERT INTO `app_my_girl_video_it` (`id_chat`, `link`) VALUES
 ('1',	'https://www.youtube.com/watch?v=ZZjnfWx0cvw'),
 ('3',	'https://www.youtube.com/watch?v=fxzonH9rDw4'),
@@ -66,6 +65,34 @@ INSERT INTO `app_my_girl_video_it` (`id_chat`, `link`) VALUES
 ('499',	'https://www.youtube.com/watch?v=CrKFI6ktBp4'),
 ('572',	'https://www.youtube.com/watch?v=CZEKKeW5ooA'),
 ('614',	'https://www.youtube.com/watch?v=_4AHfCa0USw'),
-('621',	'https://www.youtube.com/watch?v=7E9Ed9DUQoQ');
+('621',	'https://www.youtube.com/watch?v=7E9Ed9DUQoQ'),
+('634',	'https://www.youtube.com/watch?v=ky1C17tPbsc'),
+('635',	'https://www.youtube.com/watch?v=KyUMRz1-JFo'),
+('638',	'https://www.youtube.com/watch?v=Lmwe6AzVOuA'),
+('639',	'https://www.youtube.com/watch?v=gF1XRQGhe8s'),
+('681',	'https://www.youtube.com/watch?v=xzvkfUq2NKo'),
+('682',	'https://www.youtube.com/watch?v=_Q-TkT3RwJw'),
+('683',	'https://www.youtube.com/watch?v=CCQIGH6dl9U'),
+('684',	'https://www.youtube.com/watch?v=iKP0nEXpfrk'),
+('685',	'https://www.youtube.com/watch?v=MA_5P3u0apQ'),
+('686',	'https://www.youtube.com/watch?v=7o2HHcb08EI'),
+('687',	'https://www.youtube.com/watch?v=l5TMjYj-8MQ'),
+('689',	'https://www.youtube.com/watch?v=Z0PMq4XGtZ4'),
+('690',	'https://www.youtube.com/watch?v=-OyNGEskHCY'),
+('691',	'https://www.youtube.com/watch?v=8K8F7f3Nm6w'),
+('692',	'https://www.youtube.com/watch?v=Ro8PdDjKA3o'),
+('693',	'https://www.youtube.com/watch?v=Q6zjcg12kdg'),
+('694',	'https://www.youtube.com/watch?v=K4cPTgkYG9c'),
+('695',	'https://www.youtube.com/watch?v=ZdrRs8Bk2Hc'),
+('696',	'https://www.youtube.com/watch?v=i9TBOZTik88'),
+('697',	'https://www.youtube.com/watch?v=eNZJtY3h05k'),
+('698',	'https://www.youtube.com/watch?v=QN1odfjtMoo'),
+('699',	'https://www.youtube.com/watch?v=N3qxFptQbVA'),
+('700',	'https://www.youtube.com/watch?v=FKz4TtHCvh4'),
+('701',	'https://www.youtube.com/watch?v=dlVreMIaQao'),
+('702',	'https://www.youtube.com/watch?v=EuOGi6T-kPM'),
+('704',	'https://www.youtube.com/watch?v=8B49S5n5cc4'),
+('706',	'https://www.youtube.com/watch?v=AW236-Bkxw8'),
+('707',	'https://www.youtube.com/watch?v=QNrV-6RAsT0');
 
--- 2021-10-18 20:50:37
+-- 2022-08-20 02:56:59

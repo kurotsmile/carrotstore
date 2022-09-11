@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,31 +11,37 @@ CREATE TABLE `product_name_es` (
   `data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
 
-TRUNCATE `product_name_es`;
 INSERT INTO `product_name_es` (`id_product`, `data`) VALUES
 (95,	'Death note - Ryuk y Rem'),
 (95,	'Death note - Ryuk y Rem'),
 (119,	'amante virtual 3D'),
-(135,	'Guardar web sin conexión'),
 (104,	'Buscar contactos'),
 (128,	'Mundo bíblico'),
-(282,	'Mi amante virtual'),
 (121,	'Amante virtual 2'),
 (122,	'Contando ovejas - vete a la cama'),
-(132,	'Mi amante'),
 (138,	'Numero Magico'),
 (133,	'Ojo rápido'),
 (127,	'Pared de rompecabezas'),
-(284,	'Pez de presa'),
-(139,	'Gusano Maestro'),
 (105,	'Amor o no amor'),
-(134,	'Corre conmigo'),
 (120,	'Amante virtual'),
 (283,	'Editor de piano midi'),
 (136,	'Crear contraseña'),
 (131,	'Asistente virtual linda'),
-(285,	'Futbolín'),
 (123,	'Música para la vida'),
+(135,	'Guardar web sin conexión'),
+(648,	'Lee ahora'),
+(139,	'Gusano Maestro'),
+(134,	'Corre conmigo'),
+(751,	'Súper calculadora'),
+(284,	'Pez de presa'),
+(285,	'Futbolín'),
+(752,	'Tabla periódica química'),
+(753,	'Json Editor'),
+(754,	'Ajedrez de tomate'),
+(755,	'Redondo Cuadrado Triángulo'),
+(756,	'¡Sí, 10!'),
+(282,	'Mi amante virtual'),
+(132,	'Mi amante'),
 (130,	'Amante de la IA');
 
--- 2021-10-18 20:23:55
+-- 2022-08-20 03:48:39

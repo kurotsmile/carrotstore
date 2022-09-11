@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,15 +11,14 @@ CREATE TABLE `app_my_girl_video_da` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_video_da`;
 INSERT INTO `app_my_girl_video_da` (`id_chat`, `link`) VALUES
-('86',	'https://www.youtube.com/watch?v=ri5_fzndMBg'),
-('87',	'https://www.youtube.com/watch?v=ri5_fzndMBg'),
-('88',	'https://www.youtube.com/watch?v=ri5_fzndMBg'),
 ('89',	'https://www.youtube.com/watch?v=_BnnPLvS1zU'),
 ('90',	'https://www.youtube.com/watch?v=YM9utl1Qe6A'),
 ('91',	'https://www.youtube.com/watch?v=mHxhooUNey0'),
 ('92',	'https://www.youtube.com/watch?v=YuuX6f3WhF0'),
-('93',	'https://www.youtube.com/watch?v=dYwX8p34CiI');
+('93',	'https://www.youtube.com/watch?v=dYwX8p34CiI'),
+('94',	'https://www.youtube.com/watch?v=sW01UhMU7b8'),
+('95',	'https://www.youtube.com/watch?v=sW01UhMU7b8'),
+('96',	'https://www.youtube.com/watch?v=sW01UhMU7b8');
 
--- 2021-10-18 21:20:57
+-- 2022-08-20 02:59:26

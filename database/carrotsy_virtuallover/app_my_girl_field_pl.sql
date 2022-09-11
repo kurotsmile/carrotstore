@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,6 +15,5 @@ CREATE TABLE `app_my_girl_field_pl` (
   `option` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_field_pl`;
 
--- 2021-11-29 07:21:05
+-- 2022-08-20 02:35:58

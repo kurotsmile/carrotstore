@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -38,7 +38,7 @@ CREATE TABLE `app_my_girl_id` (
   `func_sever` varchar(20) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -50,7 +50,6 @@ CREATE TABLE `app_my_girl_id` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_id`;
 INSERT INTO `app_my_girl_id` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (2,	'buka facebook',	'Saya membuka facebook untuk membantu Anda!',	1,	0,	'#E6ABFF',	'',	'',	'',	'',	1,	'https://www.facebook.com',	'',	0,	29,	0,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'43',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
 (3,	'buka youtube',	'Saya membuka youtube membantunya, berharap dia menonton video lucu!',	0,	0,	'#FFA6A6',	'',	'',	'',	'',	1,	'https://www.youtube.com',	'',	3,	6,	3,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'41',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
@@ -147,4 +146,4 @@ INSERT INTO `app_my_girl_id` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (94,	'menyanyikan sebuah lagu',	'Stevan Pasaribu - Belum Siap Kehilangan',	1,	1,	'#00FF46',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'852',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stevan-pasaribu-belum-siap-kehilangan-94',	''),
 (95,	'menyanyikan sebuah lagu',	'Bulan Sutena - I Love Mama Mantu',	1,	0,	'#FFDC21',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'id',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'850',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'bulan-sutena-i-love-mama-mantu-95',	'');
 
--- 2021-11-29 07:31:25
+-- 2022-08-20 02:34:40

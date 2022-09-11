@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -19,7 +19,6 @@ CREATE TABLE `app_my_girl_function` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `app_my_girl_function`;
 INSERT INTO `app_my_girl_function` (`id`, `icon`, `name`, `describe`, `url`, `orders`, `menu_top`) VALUES
 (1,	'fa fa-language',	'Dịch thuật',	'Thay đổi ngôn ngữ dịch thứ hai sang nước được chọn',	'app_my_girl_handling.php?func=lang_2',	23,	0),
 (2,	'fa fa-cutlery',	'Quản lý các chức năng',	'Thêm mới,xóa hoặc Sắp xếp và quản lý các chức năng của hệ thống',	'app_my_girl_handling.php?func=manager_function',	30,	0),
@@ -69,4 +68,4 @@ INSERT INTO `app_my_girl_function` (`id`, `icon`, `name`, `describe`, `url`, `or
 (48,	'fa fa-gavel',	'Công cụ',	'Hiển thị các chức năng có trong hệ thống',	'app_my_girl_tool.php',	45,	1),
 (49,	'fa fa-pagelines',	'Đếm cừu',	'Duyệt dữ liệu cho ứng dụng đếm cừu',	'app_my_girl_handling.php?func=sheep',	0,	0);
 
--- 2021-11-29 07:28:03
+-- 2022-08-20 02:34:13

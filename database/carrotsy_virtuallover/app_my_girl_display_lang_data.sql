@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_display_lang_data` (
   `version` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_display_lang_data`;
 INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('sel_lang',	'0'),
 ('done',	'0'),
@@ -648,4 +647,4 @@ INSERT INTO `app_my_girl_display_lang_data` (`key`, `version`) VALUES
 ('share_chat_tip',	'3'),
 ('list_none',	'3');
 
--- 2022-04-06 21:13:04
+-- 2022-08-20 02:27:52

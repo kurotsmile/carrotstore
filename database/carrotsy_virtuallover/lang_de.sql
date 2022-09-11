@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_de` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_de`;
 INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('mua_sp',	'Produkte'),
 ('download_on',	'Laden Sie diese App auf'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_de` (`key`, `value`) VALUES
 ('seo_game',	'Genießen Sie die lustigen und trendigen Spiele im Carrotstore-Spielarchiv. Wir bieten vollständige Spielbeschreibungen sowie Download-Links, damit Sie sie auf Computern, Telefonen und anderen Geräten spielen können. Spiele wie Xbox, PS4, Playstation'),
 ('ebook_next_page',	'Weiterlesen');
 
--- 2021-11-29 09:48:20
+-- 2022-08-20 03:41:07

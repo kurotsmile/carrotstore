@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -13,7 +13,6 @@ CREATE TABLE `app_my_girl_storage` (
   `category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_storage`;
 INSERT INTO `app_my_girl_storage` (`id`, `lang`, `type`, `category`) VALUES
 ('58761',	'vi',	'chat',	'delete'),
 ('57669',	'vi',	'chat',	'delete'),
@@ -13037,4 +13036,4 @@ INSERT INTO `app_my_girl_storage` (`id`, `lang`, `type`, `category`) VALUES
 ('663',	'',	'chat',	'app'),
 ('663',	'',	'chat',	'app');
 
--- 2022-03-17 14:55:52
+-- 2022-08-20 03:50:20

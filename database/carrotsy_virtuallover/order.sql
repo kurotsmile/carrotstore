@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -18,7 +18,6 @@ CREATE TABLE `order` (
   `is_send` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `order`;
 INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `is_send`) VALUES
 ('5f151cf5146075f151cf514648',	'25877',	'en',	'hatchetrave@gmail.com',	'Janet',	'music',	1),
 ('5f191c84d87815f191c84d87be',	'25224',	'en',	'mmayoms@gmail.com',	'BOONCHITA',	'music',	1),
@@ -360,6 +359,77 @@ INSERT INTO `order` (`id_order`, `id`, `lang`, `pay_mail`, `pay_name`, `type`, `
 ('621c6b313790d621c6b3137949',	'829',	'ar',	'pay_mail',	'@@Uumlr',	'music',	0),
 ('6224525bd30406224525bd3083',	'28536',	'en',	'RadiantEnergy@optonline.net',	'Winston',	'music',	0),
 ('622b40438f109622b40438f145',	'30305',	'en',	'rigsby_joshua@yahoo.com',	'Joshua',	'music',	0),
-('622fa6091df99622fa6091dfd6',	'16072',	'en',	'paulafrago@gmail.com',	'Paula',	'music',	0);
+('622fa6091df99622fa6091dfd6',	'16072',	'en',	'paulafrago@gmail.com',	'Paula',	'music',	0),
+('623fa26736474623fa267364b1',	'34091',	'en',	'ashleymosko70@gmail.com',	'Ashley',	'music',	0),
+('62411710aa76862411710aa7a5',	'52312',	'vi',	'zumbajennie2020@aol.com',	'jennie',	'music',	0),
+('624387f4e45f5624387f4e4631',	'54429',	'es',	'juanpachecojr@hotmail.com',	'JUAN',	'music',	0),
+('6247a01b7a6746247a01b7a6b1',	'29095',	'en',	'flaredaddy@gmail.com',	'Kyle',	'music',	0),
+('624dae6d920be624dae6d920ff',	'9386',	'pt',	'lucagwatson@gmail.com',	'Luca',	'music',	0),
+('6252a4052b1496252a4052b186',	'27016',	'en',	'gatorvod@aol.com',	'brian',	'music',	0),
+('62588267d242562588267d2462',	'21839',	'en',	'fygh@hotmail.com',	'Edmund',	'music',	0),
+('6259839d367996259839d367da',	'90',	'nl',	'dekkerfrancoise@gmail.com',	'Françoise',	'music',	0),
+('625dcca6184be625dcca6184ff',	'25748',	'en',	'rlyptrson1602@gmail.com',	'riley',	'music',	0),
+('6260450d057c46260450d057f6',	'29140',	'en',	'rkddydwls88@gmail.com',	'yong jin',	'music',	0),
+('6261bf1419a5d6261bf1419a98',	'21012',	'en',	'itsjenoconnor@yahoo.com',	'Barry',	'music',	0),
+('62660c34ea5ba62660c34ea5f7',	'26666',	'en',	'a_bernot@hotmail.com',	'Amy',	'music',	0),
+('6270cee03b4d86270cee03b514',	'33597',	'en',	'entlemnguni@gmail.com',	'Entle',	'music',	0),
+('62714e4dcb89e62714e4dcb8da',	'22139',	'en',	'agivens@maltabend.k12.mo.us',	'Amy',	'music',	0),
+('6271b589972486271b58997287',	'22313',	'en',	'chantel_summerfield@hotmail.com',	'jennifer',	'music',	0),
+('6271f5752ddc66271f5752de02',	'120',	'en',	'pburgard@gmail.com',	'Phillip',	'product',	0),
+('627460e452237627460e452275',	'26029',	'en',	'carinblair@gmail.com',	'Carin',	'music',	0),
+('627dad1ec6d75627dad1ec6db2',	'17854',	'en',	'tlmueller516@gmail.com',	'Tracy',	'music',	0),
+('627f132413603627f13241363f',	'604ca184db89c604ca184db8d6',	'en',	'brownkenzie191@gmail.com',	'Kenzie',	'piano',	0),
+('627fde2b4171f627fde2b4175b',	'123',	'ja',	'openingyourownpath@gmail.com',	'寿依',	'music',	0),
+('628199f78034e628199f780399',	'120',	'en',	'tim.melden123@gmail.com',	'Tim',	'product',	0),
+('6284f2db0df786284f2db0dfba',	'33903',	'en',	'javierpagola@yahoo.com',	'Javier',	'music',	0),
+('628501e4030f5628501e403137',	'22036',	'en',	'jlwatkins84@gmail.com',	'Jennifer',	'music',	0),
+('6286f2cf824056286f2cf82442',	'27189',	'en',	'abbymiller40@yahoo.com',	'Abagail',	'music',	0),
+('6287a66e4b0016287a66e4b03f',	'28508',	'en',	'soria.bendoumia@yahoo.com',	'Soria',	'music',	0),
+('628a8f83a1f08628a8f83a1f4a',	'28504',	'en',	'dastill221@gmail.com',	'David',	'music',	0),
+('628e82cce1bae628e82cce1bea',	'27181',	'en',	'business@alifeauthentik.com',	'Matthew',	'music',	0),
+('6292dd098176c6292dd09817a7',	'34093',	'en',	'jkerr@jnrev.com',	'Jeremiah',	'music',	0),
+('6293829610feb6293829611027',	'48244',	'es',	'vanbasten_78@hotmail.com',	'Juan',	'music',	0),
+('62946fbc3cbb062946fbc3cbec',	'25042',	'en',	'info@lpdp.com.au',	'Daniel',	'music',	0),
+('62961c49d16ca62961c49d1706',	'25042',	'en',	'odanelbritosanchez@gmail.com',	'Odanel A.',	'music',	0),
+('629a9931acc5d629a9931acc9d',	'33616',	'en',	'jjonesdigital@gmail.com',	'Jason',	'music',	0),
+('629b014102f8f629b014102fd0',	'34843',	'en',	'andrew_le_19@hotmail.com',	'Andrew',	'music',	0),
+('629e7ffc9335d629e7ffc933a2',	'17854',	'en',	'laurencarbaugh.emp@gmail.com',	'Lauren',	'music',	0),
+('62a0a70e55fec62a0a70e56029',	'13838',	'pt',	'utaschulz@posteo.de',	'Uta',	'music',	0),
+('62a2d67a31a7962a2d67a31a98',	'1654',	'ja',	'arkhedgehog@gmail.com',	'Addison',	'music',	0),
+('62a78da8ccda062a78da8ccddd',	'28177',	'en',	'reg@kplan.ch',	'David',	'music',	0),
+('62a86cb95c0af62a86cb95c0ee',	'31203',	'en',	'chiyankosikhona78@gmail.com',	'Nkosikhona',	'music',	0),
+('62aa847b4fb6a62aa847b4fba6',	'49965',	'es',	'y_andelito@hotmail.com',	'Alvaro',	'music',	0),
+('62abdcd524e4a62abdcd524e7a',	'31890',	'en',	'Shane2730@aol.com',	'Leslie',	'music',	0),
+('62abddfc8a35d62abddfc8a396',	'31890',	'en',	'Shane2730@aol.com',	'Leslie',	'music',	0),
+('62aeaf9b612c462aeaf9b61307',	'61346',	'es',	'rmunozmora20@gmail.com',	'Yanela',	'music',	0),
+('62affc99d7bfa62affc99d7c37',	'23132',	'en',	'imnotbitter@163.com',	'Yusi',	'music',	0),
+('62b09708c705862b09708c7094',	'34206',	'en',	'kkhome@charter.net',	'Kathleen',	'music',	0),
+('62b23c82b7b7662b23c82b7bb2',	'23445',	'en',	'sim.betz@gmx.de',	'Simone',	'music',	0),
+('62b4968af306262b4968af30a1',	'27400',	'en',	'juliaaclaassen@gmail.com',	'Julia',	'music',	0),
+('62b74087e23e862b74087e2425',	'52929',	'es',	'andrewtylerrickards@gmail.com',	'Andrew',	'music',	0),
+('62b78e2fc746a62b78e2fc74a7',	'30137',	'en',	'drubalcava@gmail.com',	'David',	'music',	0),
+('62be82d9752a962be82d9752e5',	'28508',	'en',	'pepperlevain@live.com',	'Pepper',	'music',	0),
+('62bfbc66e6ccb62bfbc66e6d08',	'57886',	'es',	'bevetrano@gmail.com',	'Brianna',	'music',	0),
+('62c0b0b97d90a62c0b0b97d949',	'57057',	'es',	'wachcindi1@gmail.com',	'Cindi',	'music',	0),
+('62c1b4e2074b462c1b4e2074f4',	'860',	'de',	'gussfehler-entertainment@outlook.de',	'Kilian',	'music',	0),
+('62c4994e8b95862c4994e8b994',	'8258',	'pt',	'petermadjarov@hotmail.com',	'Peter',	'music',	0),
+('62c4a8030f6c262c4a8030f702',	'23726',	'en',	'malcglenn@yahoo.ca',	'Malcolm',	'music',	0),
+('62c5f203d6aee62c5f203d6b32',	'50262',	'es',	'friendspaweverpr@gmail.com',	'Miladis',	'music',	0),
+('62c9333718bcd62c9333718c09',	'1809',	'de',	'mail@tgeyer.de',	'Thomas',	'music',	0),
+('62c94ac38d76462c94ac38d7a8',	'35127',	'en',	'hannahdezoete@gmail.com',	'Hannah',	'music',	0),
+('62ca342808f3962ca342808f75',	'33614',	'en',	'michelleriggs73@yahoo.com',	'Michelle',	'music',	0),
+('62cd91268793062cd91268796f',	'647',	'ko',	'HwaHwaMyLove@gmail.com',	'Wai Lui',	'music',	0),
+('62ce52fab80d962ce52fab8117',	'30065',	'en',	'susanarres@arcor.de',	'Susanne',	'music',	0),
+('62d1aa9ab3d8e62d1aa9ab3dc9',	'26696',	'en',	'cmyeza3@gmail.com',	'Celani',	'music',	0),
+('62de0c71c31f362de0c71c3576',	'23286',	'en',	'l3abygirl25@yahoo.com',	'brittany',	'music',	0),
+('62e2939fb393d62e2939fb3981',	'26810',	'en',	'niko.harrison@gmail.com',	'Nicholas',	'music',	0),
+('62e4ac66a4cea62e4ac66a4d26',	'34166',	'en',	'rina3115@yahoo.com',	'Korina',	'music',	0),
+('62eb5285b3d8362eb5285b3dbe',	'33896',	'en',	'Ulli.hampel@gmail.com',	'Ulrike',	'music',	0),
+('62eca8552931f62eca85529362',	'25184',	'en',	'marygiulvezan@yahoo.com',	'mary',	'music',	0),
+('62ed09415c04f62ed09415c08e',	'29442',	'en',	'lisak85@hotmail.com',	'Lisa',	'music',	0),
+('62eda8c1e10dd62eda8c1e1119',	'21049',	'en',	'kylejf82799@gmail.com',	'Kyle',	'music',	0),
+('62fd1303e64f362fd1303e652e',	'35173',	'en',	'taschofield93@hotmail.com',	'Tyson',	'music',	0),
+('62fe7ec61f68662fe7ec61f6c3',	'13838',	'pt',	'SERAFIMDENIZE13@GMAIL.COM',	'DENIZE',	'music',	0),
+('63001b37c83f663001b37c843b',	'28508',	'en',	'HRBLANTZ2007@CHARTER.NET',	'RONDA',	'music',	0);
 
--- 2022-03-17 14:48:39
+-- 2022-08-20 02:41:33

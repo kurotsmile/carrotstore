@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_fi` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_fi`;
 INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('mua_sp',	'Tuotteet'),
 ('tip_search',	'Mitä haluat etsiä?'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_fi` (`key`, `value`) VALUES
 ('seo_game',	'Nauti hauskoista ja trendikkäistä peleistä porkkanakaupan peliarkistossa, tarjoamme täydelliset pelikuvaukset sekä latauslinkit, jotta voit pelata niitä tietokoneilla, puhelimilla ja muilla laitteilla. pelata pelejä, kuten xbox, ps4, playstation'),
 ('ebook_next_page',	'Jatka lukemista');
 
--- 2021-11-29 11:06:52
+-- 2022-08-20 03:44:54

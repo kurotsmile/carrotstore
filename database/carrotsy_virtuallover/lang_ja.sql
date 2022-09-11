@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_ja` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_ja`;
 INSERT INTO `lang_ja` (`key`, `value`) VALUES
 ('mua_sp',	'プロダクツ'),
 ('tip_search',	'何を検索しますか？'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_ja` (`key`, `value`) VALUES
 ('seo_game',	'キャロットストアゲームアーカイブで楽しくトレンドのゲームをお楽しみください。完全なゲームの説明とダウンロードリンクを提供しているため、コンピューター、電話、その他のデバイスでプレイできます。 xbox、ps4、playstationのようなゲームをプレイする'),
 ('ebook_next_page',	'読み続けて');
 
--- 2021-11-29 09:37:41
+-- 2022-08-20 03:42:41

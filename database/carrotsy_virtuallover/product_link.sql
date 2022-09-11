@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,7 +15,6 @@ CREATE TABLE `product_link` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `product_link`;
 INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (201,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/mutant-year-zero-road-to-eden/9nmp9b9kmklf'),
 (210,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/999660/SAMURAI_SHODOWN_NEOGEO_COLLECTION/'),
@@ -628,6 +627,13 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (282,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9NWWDF8VL15P'),
 (282,	'fa-arrow-circle-down',	'Uptodown',	'https://my-virtual-lover.en.uptodown.com/android'),
 (282,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105864965'),
+(132,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.mylover'),
+(132,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.mylover'),
+(132,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrot.mylover'),
+(132,	'fa-apple',	'Apple store',	'itms-services://?action=download-manifest&url=https://localhost/product_data/132/ios/manifest.plist'),
+(132,	'fa-arrow-circle-down',	'Uptodown',	'https://com-carrot-mylover.en.uptodown.com/android'),
+(132,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105943711'),
+(132,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P6MHM9JJ608'),
 (130,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.ailover'),
 (130,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.ailover'),
 (130,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9N4F0SQKPQC6'),
@@ -636,12 +642,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (130,	'fa-desktop',	'Exe Pc',	'https://drive.google.com/u/0/uc?id=1O9M9AHuGGBcu92OwoS4zWAcxDo1J6t_v&export=download'),
 (130,	'fa-arrow-circle-down',	'Uptodown',	'https://amante-de-la-ia.en.uptodown.com/android'),
 (130,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105914849'),
-(132,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrot.mylover'),
-(132,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.mylover'),
-(132,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrot.mylover'),
-(132,	'fa-apple',	'Apple store',	'itms-services://?action=download-manifest&url=https://localhost/product_data/132/ios/manifest.plist'),
-(132,	'fa-arrow-circle-down',	'Uptodown',	'https://com-carrot-mylover.en.uptodown.com/android'),
-(132,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105943711'),
-(132,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P6MHM9JJ608');
+(130,	'fa-grav',	'Mac',	'https://carrotstore.com/product_data/130/AI%20Lover.app.zip');
 
--- 2022-04-15 13:56:20
+-- 2022-08-20 02:49:28

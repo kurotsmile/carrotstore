@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -17,7 +17,6 @@ CREATE TABLE `app_ads` (
   `carrot_store` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `app_ads`;
 INSERT INTO `app_ads` (`id_app`, `google_Play`, `samsung_galaxy_store`, `microsoft_store`, `amazon_app_store`, `carrot_store`) VALUES
 ('121',	'',	'https://galaxystore.samsung.com/detail/com.kurotsmile.nguoiyeuao',	'',	'https://www.amazon.com/gp/mas/dl/android?p=com.kurotsmile.nguoiyeuao',	''),
 ('139',	'https://play.google.com/store/apps/details?id=com.carrotstore.wormmaster',	'',	'https://www.microsoft.com/store/productId/9NQPS9L58KZQ',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.wormmaster',	''),
@@ -43,4 +42,4 @@ INSERT INTO `app_ads` (`id_app`, `google_Play`, `samsung_galaxy_store`, `microso
 ('755',	'https://play.google.com/store/apps/details?id=com.carrotstore.roundsquaretriangle',	'',	'https://www.microsoft.com/store/productId/9NRT8MV6FZ56',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.roundsquaretriangle',	''),
 ('756',	'https://play.google.com/store/apps/details?id=com.carrotstore.yeah10',	'',	'https://www.microsoft.com/store/productId/9P0WM7SVKF03',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.yeah10',	'');
 
--- 2022-04-15 13:55:07
+-- 2022-08-20 02:30:30

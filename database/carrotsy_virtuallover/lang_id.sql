@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_id` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_id`;
 INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('mua_sp',	'Produk'),
 ('tip_search',	'Apa yang ingin Anda cari?'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_id` (`key`, `value`) VALUES
 ('seo_game',	'Nikmati game seru dan trending di arsip game wortelstore, kami menyediakan deskripsi game lengkap serta tautan unduhan sehingga Anda dapat memainkannya di komputer, ponsel, dan perangkat lainnya. mainkan game seperti xbox, ps4, playstation'),
 ('ebook_next_page',	'Lanjut membaca');
 
--- 2021-11-29 09:37:58
+-- 2022-08-20 03:42:28

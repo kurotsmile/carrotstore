@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,7 +15,6 @@ CREATE TABLE `app_my_girl_skin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE `app_my_girl_skin`;
 INSERT INTO `app_my_girl_skin` (`id`, `name`, `price`, `id_store`, `type`) VALUES
 (1,	'skin 1',	'0',	'com.product1.thanh',	'unitychan_girl'),
 (2,	'skin 2',	'0',	'com.product1.thanh',	'unitychan_girl'),
@@ -51,10 +50,12 @@ INSERT INTO `app_my_girl_skin` (`id`, `name`, `price`, `id_store`, `type`) VALUE
 (34,	'Bikini boy',	'0',	'',	'bikini_boy'),
 (35,	'Bikini boy',	'0',	'',	'bikini_boy'),
 (36,	'Bikini boy',	'0',	'',	'bikini_boy'),
-(37,	'Boy school',	'0',	'',	'boy_school'),
-(38,	'Boy school',	'0',	'',	'boy_school'),
+(37,	'Boy school',	'0',	'',	'school_boy'),
+(38,	'Boy school',	'0',	'',	'school_boy'),
 (39,	'kaoru 1',	'0',	'',	'kaoru'),
 (40,	'kaoru 2',	'0',	'',	'kaoru'),
-(41,	'Paris Saint',	'0',	'',	'rin');
+(41,	'Paris Saint',	'1',	'',	'rin'),
+(42,	'leaf',	'0',	'',	'kaoru'),
+(43,	'kaoru',	'1',	'',	'kaoru');
 
--- 2022-04-02 17:45:08
+-- 2022-08-20 03:40:26

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -14,10 +14,9 @@ CREATE TABLE `type` (
   PRIMARY KEY (`id_order`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-TRUNCATE `type`;
 INSERT INTO `type` (`id`, `css_icon`, `id_order`, `position`) VALUES
 ('mobile_application',	'fa fa-cube',	1,	0),
 ('book',	'fa fa-book',	10,	1),
 ('mobile_game',	'fa fa-gamepad',	9,	0);
 
--- 2021-10-06 15:16:49
+-- 2022-08-20 02:42:34

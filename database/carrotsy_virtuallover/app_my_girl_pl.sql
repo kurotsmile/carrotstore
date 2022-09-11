@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -38,7 +38,7 @@ CREATE TABLE `app_my_girl_pl` (
   `func_sever` varchar(20) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -50,7 +50,6 @@ CREATE TABLE `app_my_girl_pl` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_pl`;
 INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'Otwórz Facebooka',	'Otworzyłem facebook, aby ci pomóc!',	1,	0,	'#E6ABFF',	'',	'',	'',	'',	1,	'https://www.facebook.com',	'',	0,	29,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'43',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
 (2,	'otwórz youtube',	'Otworzyłem youtube, pomóż mu, chciałbym, żeby oglądał śmieszne wideo!',	0,	0,	'#FFA6A6',	'',	'',	'',	'',	1,	'https://www.youtube.com',	'',	3,	6,	3,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'41',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
@@ -128,7 +127,7 @@ INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (77,	'która godzina?',	'Jest {gio}: {phut} godzina, szanuj swój czas',	2,	1,	'#FFFF87',	'',	'',	'',	'',	1,	'',	'',	3,	20,	3,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'18',	'',	0,	'',	'',	'4',	'0',	'0',	'0',	'',	''),
 (79,	'Wirtualna rzeczywistość',	'Po otwarciu funkcji wirtualnej rzeczywistości pojawiłem się z tobą w prawdziwym życiu',	2,	1,	'#FFE587',	'',	'',	'',	'',	1,	'',	'',	50,	6,	2,	0,	'pl',	0,	'',	'',	'',	1,	'',	1,	0,	0,	'1146',	'',	0,	'',	'2',	'4',	'0',	'0',	'0',	'',	''),
 (80,	'Wirtualna rzeczywistość',	'Po otwarciu funkcji wirtualnej rzeczywistości pojawiłem się z tobą w prawdziwym życiu',	2,	0,	'#FDFF12',	'',	'',	'',	'',	1,	'',	'',	50,	6,	3,	0,	'pl',	1,	'',	'',	'',	1,	'',	1,	0,	0,	'621',	'',	0,	'',	'2',	'4',	'0',	'0',	'0',	'',	''),
-(81,	'Zaśpiewaj piosenkę',	'Puri x Jhorrmountain x Adje - Coño\r\n',	1,	1,	'#FF5700',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'297',	'',	0,	'',	'5',	'',	'0',	'0',	'0',	'puri-x-jhorrmountain-x-adje-co-o-81',	''),
+(81,	'Zaśpiewaj piosenkę',	'Puri x Jhorrmountain x Adje - Coño\r\n',	1,	1,	'#FF5700',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'297',	'',	0,	'',	'5',	'2',	'0',	'0',	'0',	'puri-x-jhorrmountain-x-adje-co-o-81',	''),
 (82,	'Odtwarzaj muzykę z mojego telefonu',	'Włączyłem muzykę z twojego urządzenia, życzę szczęśliwego słuchania muzyki',	2,	0,	'#D72EFF',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'pl',	1,	'',	'',	'',	1,	'',	1,	0,	0,	'379',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (83,	'Odtwarzaj muzykę z mojego telefonu',	'Włączyłem muzykę z twojego urządzenia, życzę szczęśliwego słuchania muzyki',	2,	1,	'#FF196C',	'',	'',	'',	'',	1,	'',	'',	47,	18,	0,	0,	'pl',	0,	'',	'',	'',	1,	'',	1,	0,	0,	'851',	'',	0,	'',	'2',	'4',	'1',	'0',	'1',	'',	''),
 (84,	'Historia czatu',	'Otworzyłem historię czatów, możesz przejrzeć moje i swoje rozmowy',	1,	0,	'#70EBFF',	'',	'',	'',	'',	0,	'',	'',	48,	18,	0,	0,	'pl',	1,	'',	'',	'',	2,	'',	1,	0,	0,	'831',	'',	0,	'',	'2',	'4',	'0',	'1',	'0',	'',	''),
@@ -137,6 +136,12 @@ INSERT INTO `app_my_girl_pl` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (87,	'Zaśpiewaj piosenkę',	'Alan Aztec - Polska',	1,	1,	'#FF00B9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'334',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'alan-aztec-polska-87',	''),
 (88,	'Zaśpiewaj piosenkę',	'sanah - Szampan',	1,	0,	'#FF6F0D',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'771',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sanah-szampan-88',	''),
 (89,	'Zaśpiewaj piosenkę',	'Dawid Kwiatkowski - Proste',	1,	1,	'#FF21B4',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'411',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'dawid-kwiatkowski-proste-89',	''),
-(90,	'Zaśpiewaj piosenkę',	'Sobel & sanah \"Cześć, jak się masz?\"',	1,	1,	'#FF0303',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'887',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'sobel-sanah-cze-jak-si-masz--90',	'');
+(90,	'Zaśpiewaj piosenkę',	'Sobel & sanah \"Cześć, jak się masz?\"',	1,	1,	'#FF0303',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'887',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'sobel-sanah-cze-jak-si-masz--90',	''),
+(91,	'jesteś słodki',	'dzięki uwu',	2,	1,	'#FF2626',	'',	'',	'',	'',	0,	'',	'',	0,	22,	2,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'417',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
+(92,	'Zaśpiewaj piosenkę',	'REMO ✖ GIMPSON ✖ MAMIKO - Bombsite A',	1,	1,	'#FF6F0D',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'771',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'remo-gimpson-mamiko-bombsite-a-92',	''),
+(93,	'Zaśpiewaj piosenkę',	'Cheatz x Squa - Białe Nike',	1,	0,	'#FF6103',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'351',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'cheatz-x-squa-bia-e-nike-93',	''),
+(94,	'Zaśpiewaj piosenkę',	'PALION - GRA',	1,	1,	'#D10FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'705',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'palion-gra-94',	''),
+(95,	'Zaśpiewaj piosenkę',	'Quebonafide feat. Daria Zawiałow - BUBBLETEA',	1,	0,	'#F2FF00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'905',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'quebonafide-feat-daria-zawia-ow-bubbletea-95',	''),
+(96,	'Zaśpiewaj piosenkę',	'Viki Gabor - Napad na serce',	1,	0,	'#FF6B9F',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	0,	'pl',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1144',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'viki-gabor-napad-na-serce-96',	'');
 
--- 2021-10-18 20:23:04
+-- 2022-08-20 02:44:03

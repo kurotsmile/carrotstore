@@ -1,4 +1,4 @@
--- Adminer 4.8.0 MySQL 5.7.33 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -12,7 +12,6 @@ CREATE TABLE `lang_value` (
   `lang` varchar(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_value`;
 INSERT INTO `lang_value` (`key`, `value`, `lang`) VALUES
 ('ngon_ngu_hien_thi',	'Chọn quốc gia và ngôn ngữ',	'vi'),
 ('ngon_ngu_hien_thi',	'Select country and language',	'en'),
@@ -4815,4 +4814,4 @@ INSERT INTO `lang_value` (`key`, `value`, `lang`) VALUES
 ('no_return_search',	'Geen resultaten voor de bovenstaande zoekwoorden',	'nl'),
 ('no_return_search',	'Brak wyników dla powyższych słów kluczowych',	'pl');
 
--- 2021-02-17 10:58:32
+-- 2022-08-20 02:55:44

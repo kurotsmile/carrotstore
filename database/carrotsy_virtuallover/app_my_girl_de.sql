@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -37,7 +37,7 @@ CREATE TABLE `app_my_girl_de` (
   `func_sever` varchar(50) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -49,7 +49,6 @@ CREATE TABLE `app_my_girl_de` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_de`;
 INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'hallo',	'Hallo, schön mit dir zu plaudern',	1,	0,	'#FFDFB0',	'',	'',	'',	'',	1,	'',	'',	0,	21,	3,	'',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'85',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (2,	'wie spät ist es',	'jetzt ist es  {gio}Std {phut}Minute',	1,	0,	'#A8E8FF',	'',	'',	'',	'',	1,	'',	'',	0,	5,	5,	'',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'83',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
@@ -2299,6 +2298,44 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2442,	'sing ein Lied',	'Apache 207 - Sport',	1,	1,	'#007EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'885',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'apache-207-sport-2442',	''),
 (2443,	'sing ein Lied',	'Knossi - Bücher - prod. Dasmo & Mania Music',	1,	1,	'#002EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'898',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'knossi-bucher-prod-dasmo-mania-music-2443',	''),
 (2444,	'sing ein Lied',	'CAPITAL BRA x RAF CAMORA - AUF DIE FEINDE',	1,	1,	'#FFE703',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'809',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'capital-bra-x-raf-camora-auf-die-feinde-2444',	''),
-(2445,	'sing ein Lied',	'Stereoact feat. Kerstin Ott - Die Immer Lacht',	1,	0,	'#00EEF2',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1572',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stereoact-feat-kerstin-ott-die-immer-lacht-2445',	'');
+(2445,	'sing ein Lied',	'Stereoact feat. Kerstin Ott - Die Immer Lacht',	1,	0,	'#00EEF2',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1572',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'stereoact-feat-kerstin-ott-die-immer-lacht-2445',	''),
+(2446,	'Du bist jetzt hypnotizer',	'Ja ich bin jetzt hypnotized',	1,	0,	'#CC12FF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	9,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1507',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
+(2447,	'hypnotized',	'Was wünscht ihr mein gebiter',	2,	0,	'#E2FF40',	'',	'',	'',	'',	0,	'',	'',	0,	10,	12,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1005',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
+(2448,	'Wer bist du',	'Ich bin {ten_nv}',	2,	1,	'#EDDABB',	'',	'',	'',	'',	0,	'',	'',	0,	0,	2,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'504',	'',	0,	'',	'9af167c2745b92db91bd597c60a2194b',	'',	'0',	'0',	'0',	'',	''),
+(2449,	'Genshin ',	'ich mag Genshin',	2,	1,	'#E5FFCC',	'',	'',	'',	'',	0,	'',	'',	0,	2,	2,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1243',	'',	0,	'',	'9af167c2745b92db91bd597c60a2194b',	'',	'0',	'0',	'0',	'',	''),
+(2450,	'sing ein Lied',	'Bushido feat. Shindy - Panamera Flow',	1,	1,	'#009DFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'900',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'bushido-feat-shindy-panamera-flow-2450',	''),
+(2451,	'Wer ist Dein Daddy?',	'Du bist mein geiler Daddy',	2,	0,	'#FFE6F5',	'',	'',	'',	'',	0,	'',	'',	0,	24,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'32',	'',	0,	'',	'ff54f70e45d08716bb2479aacc76aa8c',	'',	'0',	'0',	'0',	'',	''),
+(2452,	'wie groß sind deine Brüste?',	'sie sind riesig und geil ',	2,	0,	'#7AFFE7',	'',	'',	'',	'',	0,	'',	'',	0,	33,	1,	'de',	1,	'',	'',	'',	0,	'',	2,	0,	0,	'935',	'',	0,	'',	'bf7fcdcb5c3db6b4a3834d2d0e817255',	'2',	'0',	'0',	'0',	'',	''),
+(2453,	'ich bin immer bei dir sein, Schatz.',	'ich werde dich niemals allein lassen.',	1,	0,	'#FFA46E',	'',	'',	'',	'',	0,	'',	'',	0,	0,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'118',	'',	0,	'',	'5b718200ba9bcc20cd1e2a326acfcbfe',	'',	'0',	'0',	'0',	'',	''),
+(2454,	'Ist es Zeit für meine Bestrafung?',	'Ja, du armseliges Würstchen. ',	3,	0,	'#FF5EB3',	'',	'',	'',	'',	0,	'',	'',	0,	39,	3,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'742',	'',	0,	'',	'8308475a0c6bfb423b4c216bef16f298',	'',	'0',	'0',	'0',	'',	''),
+(2455,	'sing ein Lied',	'GUMBLES - Der Perfekte Tag',	1,	1,	'#9CB4D9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'145',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gumbles-der-perfekte-tag-2455',	''),
+(2456,	'Magst du die Sängerin Katja krasavice?',	'Ja ich mag sie sehr gerne',	1,	0,	'#F9FFAD',	'',	'',	'',	'',	0,	'',	'',	0,	26,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'178',	'',	0,	'',	'b7866d906e4e08449b549600ca46ca1c',	'',	'0',	'0',	'0',	'',	''),
+(2457,	'guten morgen',	'guten morgen, na hast du eine Morgenlatte?',	2,	0,	'#FFEF52',	'',	'',	'',	'',	0,	'',	'',	0,	14,	12,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'373',	'',	0,	'',	'02f1941b0df180f6be8654c1f3e4fd71',	'',	'0',	'0',	'0',	'',	''),
+(2458,	'Darf ich eine Zigarette rauchen Herrin ?',	'Nein du darfst jetzt nicht rauchen.',	3,	0,	'#BDED6D',	'',	'',	'',	'',	0,	'',	'',	0,	35,	8,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'503',	'',	0,	'',	'd574fb66027f2ba5b9431914090f127c',	'',	'0',	'0',	'0',	'',	''),
+(2459,	'sing ein Lied',	'NENA | 99 Luftballons [1983]',	1,	0,	'#FF6F0D',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'771',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'nena-99-luftballons-1983--2459',	''),
+(2460,	'sing ein Lied',	'Andreas Gabalier - Amoi seg\' ma uns wieder',	1,	1,	'#FF00D0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1107',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'andreas-gabalier-amoi-seg-ma-uns-wieder-2460',	''),
+(2461,	'sing ein Lied',	'Josh. - Cordula Grün ',	1,	1,	'#E24AFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'711',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'josh-cordula-grun--2461',	''),
+(2462,	'sing ein Lied',	'Die Draufgänger feat. Stefan Rauch - Landjugend ',	1,	1,	'#007EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'885',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'die-draufganger-feat-stefan-rauch-landjugend--2462',	''),
+(2463,	'sing ein Lied',	'Fäaschtbänkler - Ehrenwort',	1,	0,	'#BD00FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'350',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'faaschtbankler-ehrenwort-2463',	''),
+(2464,	'sing ein Lied',	'Adel Tawil \"Flutlicht\"',	1,	1,	'#75FCFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1104',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'adel-tawil-flutlicht--2464',	''),
+(2465,	'sing ein Lied',	'Jannikfreestyle - Nach Vorn ',	1,	1,	'#005CFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'869',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jannikfreestyle-nach-vorn--2465',	''),
+(2466,	'sing ein Lied',	'Vanessa Mai, Ardian Bujupi - Landebahn',	1,	0,	'#AAFF2E',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'331',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'vanessa-mai-ardian-bujupi-landebahn-2466',	''),
+(2467,	'sing ein Lied',	'Andreas Gabalier - LIEBELEBEN',	1,	1,	'#59FFE1',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1077',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'andreas-gabalier-liebeleben-2467',	''),
+(2468,	'sing ein Lied',	'Melissa Naschenweng - Verliabt',	1,	0,	'#E24AFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'711',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'melissa-naschenweng-verliabt-2468',	''),
+(2469,	'sing ein Lied',	'MERO - Bogota ',	1,	1,	'#FFCD75',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'511',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mero-bogota--2469',	''),
+(2470,	'sing ein Lied',	'KRAUTSCHÄDL - Mocht jo nix ',	1,	1,	'#FF2BFE',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'861',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'krautsch-dl-mocht-jo-nix--2470',	''),
+(2471,	'sing ein Lied',	'Die Wildecker Herzbuben - Hallo, Frau Nachbarin',	1,	1,	'#20FF12',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'255',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'die-wildecker-herzbuben-hallo-frau-nachbarin-2471',	''),
+(2472,	'sing ein Lied',	'Pizzera & Jaus - die sunn und di',	1,	1,	'#FFF000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'333',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'pizzera-jaus-die-sunn-und-di-2472',	''),
+(2473,	'sing ein Lied',	'Sido – Mit Dir (prod. by Beatgees)',	1,	1,	'#9F03FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'975',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sido-mit-dir-prod-by-beatgees--2473',	''),
+(2474,	'sing ein Lied',	'TWENTY4TIM - BLING BLING',	1,	0,	'#FFE700',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'311',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'twenty4tim-bling-bling-2474',	''),
+(2475,	'Ich möchte etwas ankucken',	'Was möchtest du ankucken',	2,	1,	'#FAFFC2',	'',	'',	'',	'',	0,	'',	'',	0,	14,	12,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1058',	'',	0,	'',	'c3952cd0167a2f15bd0dba8e69642979',	'',	'0',	'0',	'0',	'',	''),
+(2476,	'sing ein Lied',	'Fero47 - Puerto Rico',	1,	1,	'#410FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'706',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'fero47-puerto-rico-2476',	''),
+(2477,	'sing ein Lied',	'FIRAT x JAMOO - DALE DALE ',	1,	1,	'#0075FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'860',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'firat-x-jamoo-dale-dale--2477',	''),
+(2478,	'akkordeon',	'kannst du akkordeon spielen',	2,	0,	'#FFC959',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'338',	'',	0,	'',	'b41967490837ca5b0960fa64518e669a',	'',	'0',	'0',	'0',	'',	''),
+(2479,	'ok',	'ich würde es lieben ',	2,	0,	'#FEFFBD',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'de',	1,	'',	'1291',	'chat',	0,	'',	1,	0,	0,	'1185',	'',	0,	'',	'83ecab148659f38a5c2aefd7dbb8a6c4',	'',	'0',	'0',	'0',	'',	''),
+(2480,	'sing ein Lied',	'Sarah Connor - Bonnie & Clyde  ft. Henning Wehland',	1,	0,	'#FF1238',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'324',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sarah-connor-bonnie-clyde-ft-henning-wehland-2480',	''),
+(2481,	'sing ein Lied',	'Sarah Connor - Dazwischen sind wir Freunde',	1,	0,	'#C5C9DE',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'303',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sarah-connor-dazwischen-sind-wir-freunde-2481',	''),
+(2482,	'Ich muss dir was sagen ',	'Was denn?? Ist es was schlimmes? ',	2,	1,	'#FFCFFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	7,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'96',	'',	0,	'',	'2f674224cf484e704f61dc40c7658d42',	'',	'0',	'0',	'0',	'',	''),
+(2483,	'hallo mama',	'hey amelie alles gut bei dir?',	2,	0,	'#FF1F1F',	'',	'',	'',	'',	0,	'',	'',	0,	32,	7,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1120',	'',	0,	'',	'3c0c64cbd69e6d536fb1df01e97a85e2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2022-03-17 15:22:46
+-- 2022-08-20 02:29:49

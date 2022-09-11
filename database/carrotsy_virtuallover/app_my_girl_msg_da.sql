@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -41,7 +41,6 @@ CREATE TABLE `app_my_girl_msg_da` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_msg_da`;
 INSERT INTO `app_my_girl_msg_da` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
 (1,	'bat_chuyen',	'Maj måned var kommet, når hvert glædelig hjerte begynder at blomstre og frembringe frugt',	0,	2,	'#F21B1B',	'',	'',	'',	'',	'',	0,	7,	15,	0,	'da',	1,	1,	0,	'',	1,	0,	5,	'944',	'',	'2',	'2',	'0',	'0',	'0',	''),
 (2,	'dam',	'Verdens foretrukne sæson er foråret. Alle ting synes muligt i maj',	0,	3,	'#EAFFAB',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'da',	1,	1,	0,	'',	1,	0,	5,	'1614',	'',	'2',	'2',	'0',	'0',	'0',	''),
@@ -61,4 +60,4 @@ INSERT INTO `app_my_girl_msg_da` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (16,	'bat_chuyen',	'I sæsonen af Covid 19 skal du være forsigtig med ikke at fokusere på overfyldte steder og skal bære en maske, uanset hvor du går!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'da',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (17,	'bat_chuyen',	'Selama musim Covid 19, Anda harus berhati-hati untuk tidak fokus pada tempat-tempat ramai dan harus mengenakan topeng ke mana pun Anda pergi!...',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'da',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-11-29 09:27:46
+-- 2022-08-20 02:40:48

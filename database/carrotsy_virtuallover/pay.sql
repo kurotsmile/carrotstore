@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -12,7 +12,6 @@ CREATE TABLE `pay` (
   `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-TRUNCATE `pay`;
 INSERT INTO `pay` (`id_user`, `id_item`, `status`) VALUES
 ('e77294d98d84e697a2319f73a53dd037',	'obj_nude',	0),
 ('mailto:webmaster',	'product',	0),
@@ -29,4 +28,4 @@ INSERT INTO `pay` (`id_user`, `id_item`, `status`) VALUES
 ('4ba586e17e0e79b1e3c7901b141afec7',	'remove_ads',	0),
 ('154ccce6c78312f79f91ebd4a3258099',	'obj_nude',	0);
 
--- 2021-11-29 09:46:36
+-- 2022-08-20 02:43:42

@@ -39,7 +39,11 @@ function get_msg($link,$func,$lang,$sex,$character_sex,$limit_day,$limit_date,$l
     }else{
         $query_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action`,`color` FROM `app_my_girl_msg_$lang` WHERE `func` = '$func'  AND `character_sex`='$character_sex' AND `sex`='$sex' AND `disable`=0  ORDER BY RAND() LIMIT 1");
     }
-    $data_msg=mysqli_fetch_assoc($query_msg);
+    return get_msg_by_query($query_msg,$lang);
+}
+
+function get_msg_by_query($sql_query,$lang){
+    $data_msg=mysqli_fetch_assoc($sql_query);
     if($data_msg!=null){
         $id_msg=$data_msg['id'];
         $data_msg['chat']=special_keyword($data_msg['chat']);
@@ -51,7 +55,6 @@ function get_msg($link,$func,$lang,$sex,$character_sex,$limit_day,$limit_date,$l
     }else{
         return null;
     }
-
 }
 
 function get_chat($link,$txt_sqli_query,$lang){

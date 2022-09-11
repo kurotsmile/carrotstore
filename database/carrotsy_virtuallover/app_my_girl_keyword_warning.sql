@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_keyword_warning` (
   `lang` varchar(2) CHARACTER SET latin1 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_keyword_warning`;
 INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('vagina',	'es'),
 ('vagina',	'en'),
@@ -78,4 +77,4 @@ INSERT INTO `app_my_girl_keyword_warning` (`key`, `lang`) VALUES
 ('자지',	'ko'),
 ('whore',	'en');
 
--- 2021-11-29 08:05:47
+-- 2022-08-20 02:38:15

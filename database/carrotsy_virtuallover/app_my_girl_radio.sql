@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -14,7 +14,6 @@ CREATE TABLE `app_my_girl_radio` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_radio`;
 INSERT INTO `app_my_girl_radio` (`id`, `name_radio`, `stream`, `lang`) VALUES
 (3,	'香港電台第三台',	'http://202.177.192.119/radio3',	'zh'),
 (4,	'Billboard Radio China 重磅1',	'http://billboardradio.rastream.com/gfm-todaysmix',	'zh'),
@@ -1107,4 +1106,4 @@ INSERT INTO `app_my_girl_radio` (`id`, `name_radio`, `stream`, `lang`) VALUES
 (1132,	'xTLSgypS',	'1\0',	'1'),
 (1133,	'xTLSgypS',	'@@nGRvz',	'1');
 
--- 2022-03-17 14:53:46
+-- 2022-08-20 03:50:34

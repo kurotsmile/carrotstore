@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_ko` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_ko`;
 INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('mua_sp',	'프로덕트'),
 ('download_on',	'이 앱을 다운로드하십시오'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_ko` (`key`, `value`) VALUES
 ('seo_game',	'당근스토어 게임 아카이브에서 재미있고 최신 유행하는 게임을 즐기십시오. 컴퓨터, 휴대폰 및 기타 장치에서 게임을 즐길 수 있도록 전체 게임 설명과 다운로드 링크를 제공합니다. xbox, ps4, 플레이 스테이션과 같은 게임을 플레이'),
 ('ebook_next_page',	'계속 읽기');
 
--- 2021-11-29 09:50:24
+-- 2022-08-20 03:45:32

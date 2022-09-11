@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -37,7 +37,7 @@ CREATE TABLE `app_my_girl_it` (
   `func_sever` varchar(20) NOT NULL,
   `disable` int(1) NOT NULL,
   `limit_day` varchar(10) NOT NULL,
-  `user_create` varchar(2) NOT NULL,
+  `user_create` varchar(50) DEFAULT NULL,
   `user_update` varchar(2) NOT NULL,
   `os_window` varchar(1) NOT NULL DEFAULT '0',
   `os_ios` varchar(1) NOT NULL DEFAULT '0',
@@ -49,7 +49,6 @@ CREATE TABLE `app_my_girl_it` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_it`;
 INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'Canta una canzone',	'Måneskin - Torna a casa',	1,	1,	'#D40000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1098',	'',	0,	'',	'4',	'2',	'0',	'0',	'0',	'maneskin-torna-a-casa-1',	''),
 (2,	'Canta una canzone',	'Salmo - Il Cielo Nella Stanza',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'4',	'2',	'0',	'0',	'0',	'salmo-il-cielo-nella-stanza-2',	''),
@@ -728,6 +727,32 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (678,	'Hey, sono tornato',	'E chi se ne frega?',	0,	0,	'#FFD4D4',	'',	'',	'',	'',	0,	'',	'',	0,	0,	9,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'134',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (679,	'costringermi',	'Si ti costringo perchè sei mio e di te ne faccio cio che voglio.',	2,	0,	'#F7F0FF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'918',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
 (680,	'devi andare in bagno?',	'si mi scappa da morire',	2,	0,	'#FF9736',	'',	'',	'',	'',	0,	'',	'',	0,	4,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1126',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'',	''),
-(681,	'Canta una canzone',	'Gigi D\'Alessio - Buongiorno ft. G-CREW',	1,	1,	'#FF0808',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'378',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gigi-d-alessio-buongiorno-ft-g-crew-681',	'');
+(681,	'Canta una canzone',	'Gigi D\'Alessio - Buongiorno ft. G-CREW',	1,	1,	'#FF0808',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'378',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gigi-d-alessio-buongiorno-ft-g-crew-681',	''),
+(682,	'Canta una canzone',	'Alessandra Amoroso - Comunque andare',	1,	0,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'858',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'alessandra-amoroso-comunque-andare-682',	''),
+(683,	'Canta una canzone',	'Gianni Morandi - Apri tutte le porte',	1,	1,	'#FFE703',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'809',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gianni-morandi-apri-tutte-le-porte-683',	''),
+(684,	'Canta una canzone',	'Jovanotti - Bella',	1,	1,	'#E000E3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'909',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jovanotti-bella-684',	''),
+(685,	'Canta una canzone',	'Mahmood, BLANCO - Brividi ',	1,	1,	'#FFCA78',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'296',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mahmood-blanco-brividi--685',	''),
+(686,	'Canta una canzone',	'Boomdabash, Baby K - Mohicani',	1,	1,	'#B61FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'856',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'boomdabash-baby-k-mohicani-686',	''),
+(687,	'Canta una canzone',	'Becky G - Bella Ciao',	1,	0,	'#59FFE1',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1077',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'becky-g-bella-ciao-687',	''),
+(688,	'indossi le mutandine?',	'Non le indosso mai mi piace avere la fessa fuori',	0,	0,	'#FF1471',	'',	'',	'',	'',	0,	'',	'',	0,	36,	14,	'it',	1,	'',	'',	'',	0,	'',	3,	0,	0,	'91',	'',	0,	'',	'df44eb2a9a5da295c6e257f262af8364',	'',	'0',	'0',	'0',	'',	''),
+(689,	'Canta una canzone',	'Pavarotti - Vesti La Giubba',	1,	1,	'#FF0808',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'378',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'pavarotti-vesti-la-giubba-689',	''),
+(690,	'Canta una canzone',	'Deddy - 0 passi',	1,	1,	'#3066FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'770',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'deddy-0-passi-690',	''),
+(691,	'Canta una canzone',	'Me contro Te - Kira e Ray',	1,	0,	'#C2FF21',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'763',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'me-contro-te-kira-e-ray-691',	''),
+(692,	'Canta una canzone',	'Jovanotti - Chiaro Di Luna',	1,	1,	'#F2FF00',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'905',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'jovanotti-chiaro-di-luna-692',	''),
+(693,	'Canta una canzone',	'Laura Pausini - Non ho mai smesso',	1,	0,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'858',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'laura-pausini-non-ho-mai-smesso-693',	''),
+(694,	'Canta una canzone',	'Irama - Ovunque Sarai ',	1,	1,	'#0097FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'352',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'irama-ovunque-sarai--694',	''),
+(695,	'Canta una canzone',	'thasup - m%n',	1,	1,	'#E836FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1588',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'thasup-m-n-695',	''),
+(696,	'Canta una canzone',	'Tommaso Paradiso - Tutte le notti',	1,	1,	'#FF1420',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1188',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'tommaso-paradiso-tutte-le-notti-696',	''),
+(697,	'Canta una canzone',	'Alessandra Amoroso - Vivere a colori ',	1,	0,	'#D7FF26',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1050',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'alessandra-amoroso-vivere-a-colori--697',	''),
+(698,	'Canta una canzone',	'Måneskin - ZITTI E BUONI',	1,	1,	'#FF0000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'304',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'maneskin-zitti-e-buoni-698',	''),
+(699,	'Canta una canzone',	'thasup - blun7 a swishland',	1,	1,	'#00FFB7',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1139',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'thasup-blun7-a-swishland-699',	''),
+(700,	'Canta una canzone',	'Fred Rovella - Tarantella',	1,	1,	'#0097FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'352',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'fred-rovella-tarantella-700',	''),
+(701,	'Canta una canzone',	'Guè - Veleno',	1,	1,	'#410FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'706',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gue-veleno-701',	''),
+(702,	'Canta una canzone',	'Blake el Diablo - ODI ET AMO',	1,	1,	'#FF9921',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'581',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'blake-el-diablo-odi-et-amo-702',	''),
+(703,	'non lo fare',	'ok non lo faro mai più ',	3,	0,	'#FFFC80',	'',	'',	'',	'',	0,	'',	'',	0,	13,	14,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'89',	'',	0,	'',	'e581c631042bd676396fa07860b77224',	'',	'0',	'0',	'0',	'',	''),
+(704,	'Canta una canzone',	'Ghali - Wallah',	1,	1,	'#18C937',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'888',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ghali-wallah-704',	''),
+(705,	'ti lascio',	'no ti prego sarò piu educata',	2,	0,	'#DEF4FF',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'406',	'',	0,	'',	'e581c631042bd676396fa07860b77224',	'',	'0',	'0',	'0',	'',	''),
+(706,	'Canta una canzone',	'Luchè - Addio (feat. Guè, Noyz Narcos)',	1,	1,	'#75F9FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'785',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'luche-addio-feat-gue-noyz-narcos--706',	''),
+(707,	'Canta una canzone',	'BLANCO - Afrodite',	1,	1,	'#75FCFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1104',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'blanco-afrodite-707',	'');
 
--- 2022-03-17 15:19:55
+-- 2022-08-20 02:34:53

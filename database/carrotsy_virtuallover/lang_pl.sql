@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_pl` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_pl`;
 INSERT INTO `lang_pl` (`key`, `value`) VALUES
 ('mua_sp',	'Produkty'),
 ('tip_search',	'Czego chcesz szukać?'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_pl` (`key`, `value`) VALUES
 ('seo_game',	'Ciesz się zabawnymi i popularnymi grami w archiwum gier carrotstore, zapewniamy pełne opisy gier, a także linki do pobrania, dzięki czemu możesz grać w nie na komputerach, telefonach i innych urządzeniach. graj w gry takie jak xbox,ps4,playstation'),
 ('ebook_next_page',	'Kontynuuj czytanie');
 
--- 2021-11-29 09:47:57
+-- 2022-08-20 03:45:43

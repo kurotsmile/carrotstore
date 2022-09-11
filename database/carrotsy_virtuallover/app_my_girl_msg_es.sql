@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -41,7 +41,6 @@ CREATE TABLE `app_my_girl_msg_es` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_msg_es`;
 INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
 (1,	'chao_0',	'Por qué no duerme! Por favor Chatea conmigo!',	0,	1,	'#9CEBFF',	'',	'',	'',	'',	'',	3,	5,	7,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'',	'',	'',	'',	'0',	'0',	'0',	''),
 (2,	'bam_bay',	'¡No entiendo! Sigo siendo tan estúpida, usted puede enseñarme (haga clic en la función de enseñar en la pantalla)',	0,	1,	'#C0FF2B',	'',	'',	'',	'',	'',	0,	34,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'137',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -174,8 +173,8 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (129,	'dam',	'¡Hoy es domingo! ¡Es un día para descansar, háblame más!',	0,	2,	'#B5FFDB',	'',	'',	'',	'',	'',	0,	33,	17,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'919',	'Sunday',	'',	'',	'0',	'0',	'0',	''),
 (130,	'bat_chuyen',	'¿Ya tienes un plan para el verano?',	0,	2,	'#FEFFC2',	'',	'',	'',	'',	'',	0,	14,	12,	0,	'',	1,	1,	0,	'',	1,	0,	7,	'1127',	'',	'',	'',	'0',	'0',	'0',	''),
 (131,	'dam',	'¡Hoy es domingo! ¡Es un día para descansar, háblame más!',	1,	2,	'#50FF47',	'',	'',	'',	'',	'',	0,	16,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1270',	'Sunday',	'',	'',	'0',	'0',	'0',	''),
-(132,	'bat_chuyen',	'Este verano es genial tenerte',	0,	2,	'#A3FF0F',	'',	'',	'',	'',	'',	0,	6,	2,	0,	'',	1,	1,	0,	'',	1,	0,	8,	'1026',	'',	'',	'',	'0',	'0',	'0',	''),
-(133,	'bat_chuyen',	'Este verano es genial tenerte',	1,	2,	'#FAFFC2',	'',	'',	'',	'',	'',	0,	10,	2,	0,	'',	0,	1,	0,	'',	1,	0,	8,	'1058',	'',	'',	'',	'0',	'0',	'0',	''),
+(132,	'bat_chuyen',	'Este verano es genial tenerte',	0,	2,	'#A3FF0F',	'',	'',	'',	'',	'',	0,	6,	2,	0,	'',	1,	0,	0,	'',	1,	0,	8,	'1026',	'',	'',	'',	'0',	'0',	'0',	''),
+(133,	'bat_chuyen',	'Este verano es genial tenerte',	1,	2,	'#FAFFC2',	'',	'',	'',	'',	'',	0,	10,	2,	0,	'',	0,	0,	0,	'',	1,	0,	8,	'1058',	'',	'',	'',	'0',	'0',	'0',	''),
 (134,	'dam',	'El viernes es un día aburrido, ¡espero que pienses más sobre mí!',	0,	3,	'#F5FF38',	'',	'',	'',	'',	'',	0,	8,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1141',	'Friday',	'',	'',	'0',	'0',	'0',	''),
 (135,	'dam',	'El viernes es un día aburrido, ¡espero que pienses más sobre mí!',	1,	3,	'#FFC4FA',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'959',	'Friday',	'',	'',	'0',	'0',	'0',	''),
 (136,	'dam',	'Septiembre es el mes del amor',	0,	3,	'#FFAC38',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	1,	1,	0,	'',	1,	0,	9,	'921',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -186,8 +185,8 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (141,	'dam',	'Octubre no es para gente solitaria. Las lluvias otoñales nos harán sentir frío.',	1,	3,	'#AFE0CA',	'',	'',	'',	'',	'',	0,	8,	17,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'622',	'',	'',	'2',	'0',	'0',	'0',	''),
 (142,	'bat_chuyen',	'Te deseo muchas sorpresas espeluznantes y horribles en Halloween.',	0,	2,	'#D5E03C',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (143,	'bat_chuyen',	'Te deseo muchas sorpresas espeluznantes y terriblemente divertidas el día de Halloween',	1,	1,	'#E07160',	'',	'',	'',	'',	'',	0,	34,	3,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(144,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	0,	2,	'#85FF7D',	'',	'',	'',	'',	'',	0,	20,	15,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
-(145,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	1,	1,	'#C56BFF',	'',	'',	'',	'',	'',	0,	14,	2,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'16',	'',	'',	'2',	'0',	'0',	'0',	''),
+(144,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	0,	2,	'#85FF7D',	'',	'',	'',	'',	'',	0,	20,	15,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'453',	'',	'',	'',	'0',	'0',	'0',	''),
+(145,	'bat_chuyen',	'Noviembre es el mes del amor, ahora es el nuevo mes, el mes esperamos hacer el bien. Te deseo feliz noviembre.',	1,	1,	'#C56BFF',	'',	'',	'',	'',	'',	0,	14,	2,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'16',	'',	'',	'2',	'0',	'0',	'0',	''),
 (146,	'hoi_tim_duong',	'¿Qué dirección quieres encontrar? ¡Yo te guiaré!',	0,	1,	'#FFB11F',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'2',	'0',	'0',	'0',	''),
 (147,	'tra_loi_tim_duong',	'He enumerado los lugares de búsqueda relacionados!',	0,	2,	'#54BAFF',	'',	'',	'',	'',	'',	43,	34,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'769',	'',	'',	'2',	'0',	'0',	'0',	''),
 (148,	'hoi_tim_duong',	'¿Qué dirección quieres encontrar? ¡Yo te guiaré!',	1,	2,	'#FF2158',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1199',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -233,4 +232,4 @@ INSERT INTO `app_my_girl_msg_es` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (189,	'thong_bao',	'¡El invierno es tan frío, {ten_user}! Si sale, ¡póngase mucha ropa abrigada para evitarlo!',	0,	1,	'#FEFFC2',	'',	'',	'',	'',	'',	0,	18,	0,	0,	'es',	1,	1,	0,	'',	1,	0,	12,	'1127',	'',	'',	'4',	'0',	'0',	'0',	''),
 (191,	'bat_chuyen',	'¡Durante la temporada de Covid 19, debes tener cuidado de no concentrarte en lugares abarrotados y usar una máscara donde sea que vayas!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'es',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-11-29 09:21:16
+-- 2022-08-20 03:05:03

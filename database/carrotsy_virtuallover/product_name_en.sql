@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `product_name_en` (
   `data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
 
-TRUNCATE `product_name_en`;
 INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (126,	'Jigsaw wall'),
 (95,	'Death note - Ryuk & Rem'),
@@ -135,10 +134,8 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (119,	'virtual lover 3D'),
 (104,	'Contact store'),
 (128,	'Bible world'),
-(282,	'My virtual lover'),
 (121,	' Virtual lover 2 (Onichan)'),
 (122,	'Counting sheep - go to bed'),
-(132,	'My Lover'),
 (138,	'Number Magic'),
 (133,	'Quick eye'),
 (127,	'Jigsaw wall'),
@@ -148,7 +145,6 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (136,	'Create Password'),
 (131,	'Cute virtual assistant'),
 (123,	'Music for life'),
-(130,	'AI Lover'),
 (287,	'Church Warriors'),
 (297,	'Tối đa hóa năng lực nhân viên'),
 (340,	'Ma Sói – Fred Vargas'),
@@ -649,6 +645,9 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (753,	'Json Editor'),
 (754,	'Tomato Chess'),
 (755,	'Round Square Triangle'),
-(756,	'Yeah 10!');
+(756,	'Yeah 10!'),
+(282,	'My virtual lover'),
+(132,	'My Lover'),
+(130,	'AI Lover');
 
--- 2022-03-17 15:04:25
+-- 2022-08-20 03:46:39

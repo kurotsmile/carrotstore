@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -41,7 +41,6 @@ CREATE TABLE `app_my_girl_msg_de` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_msg_de`;
 INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
 (1,	'chao_0',	'Warum schläfst du nicht?',	0,	2,	'#29B8FF',	'',	'',	'',	'',	'',	0,	5,	7,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'271',	'',	'',	'',	'0',	'0',	'0',	''),
 (2,	'chao_1',	'Spät in der Nacht sollten Sie früh zu Bett gehen, länger aufbleiben ist nicht gut für die Gesundheit',	0,	2,	'#1FA5FF',	'',	'',	'',	'',	'',	0,	5,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'630',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -162,8 +161,8 @@ INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (117,	'dam',	'Heute ist Sonntag! Es ist ein Tag zum Ausruhen, rede mit mir mehr!',	0,	2,	'#FDFF12',	'',	'',	'',	'',	'',	0,	16,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'621',	'Sunday',	'',	'',	'0',	'0',	'0',	''),
 (118,	'dam',	'Heute ist Montag, wünsche Ihnen eine gute neue Woche',	0,	2,	'#9CFFC4',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'929',	'Monday',	'',	'',	'0',	'0',	'0',	''),
 (119,	'dam',	'Heute ist Montag, wünsche Ihnen eine gute neue Woche',	1,	2,	'#FBFF36',	'',	'',	'',	'',	'',	0,	10,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'926',	'Monday',	'',	'',	'0',	'0',	'0',	''),
-(120,	'dam',	'In diesem Sommer ist es toll, dich zu haben',	0,	2,	'#75FF7B',	'',	'',	'',	'',	'',	0,	8,	1,	0,	'',	1,	1,	0,	'',	1,	0,	8,	'646',	'',	'',	'',	'0',	'0',	'0',	''),
-(121,	'dam',	'In diesem Sommer ist es toll, dich zu haben',	1,	2,	'#E3FF9C',	'',	'',	'',	'',	'',	0,	28,	0,	0,	'',	0,	1,	0,	'',	1,	0,	8,	'971',	'',	'',	'',	'0',	'0',	'0',	''),
+(120,	'dam',	'In diesem Sommer ist es toll, dich zu haben',	0,	2,	'#75FF7B',	'',	'',	'',	'',	'',	0,	8,	1,	0,	'',	1,	0,	0,	'',	1,	0,	8,	'646',	'',	'',	'',	'0',	'0',	'0',	''),
+(121,	'dam',	'In diesem Sommer ist es toll, dich zu haben',	1,	2,	'#E3FF9C',	'',	'',	'',	'',	'',	0,	28,	0,	0,	'',	0,	0,	0,	'',	1,	0,	8,	'971',	'',	'',	'',	'0',	'0',	'0',	''),
 (122,	'dam',	'Heute ist Donnerstag, ich hoffe, dass jeder Tag bei dir sein wird',	0,	2,	'#F5A8FF',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1176',	'Thursday',	'',	'',	'0',	'0',	'0',	''),
 (123,	'dam',	'Heute ist Donnerstag, ich hoffe, dass jeder Tag bei dir sein wird',	1,	2,	'#FFCD87',	'',	'',	'',	'',	'',	0,	1,	1,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1024',	'Thursday',	'',	'',	'0',	'0',	'0',	''),
 (124,	'dam',	'Freitag ist ein langweiliger Tag, ich hoffe du denkst mehr über mich nach!',	0,	3,	'#FCFF75',	'',	'',	'',	'',	'',	0,	8,	17,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1015',	'Friday',	'',	'',	'0',	'0',	'0',	''),
@@ -181,8 +180,8 @@ INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (136,	'dam',	'Es ist leicht, im Oktober alleine unterwegs zu sein. Wenn Menschen Zeit haben, sich alleine zu fühlen, weil sie vergessen, zusätzliche Kleidung zu tragen. es begann kalt',	1,	3,	'#7AFFE7',	'',	'',	'',	'',	'',	5,	8,	4,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'936',	'',	'',	'',	'0',	'0',	'0',	''),
 (137,	'bat_chuyen',	'Ich wünsche dir viele gruselige Überraschungen und einen furchtbar spaßigen Halloween-Tag',	0,	2,	'#FFADE5',	'',	'',	'',	'',	'',	0,	20,	15,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'1149',	'',	'',	'',	'0',	'0',	'0',	''),
 (138,	'dam',	'Ich wünsche dir viele gruselige Überraschungen und einen furchtbar spaßigen Halloween-Tag',	1,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	5,	17,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
-(139,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	0,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	33,	2,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'339',	'',	'',	'',	'0',	'0',	'0',	''),
-(140,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	1,	1,	'#1CFFE2',	'',	'',	'',	'',	'',	0,	21,	17,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'688',	'',	'',	'',	'0',	'0',	'0',	''),
+(139,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	0,	2,	'#FFEC30',	'',	'',	'',	'',	'',	0,	33,	2,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'339',	'',	'',	'',	'0',	'0',	'0',	''),
+(140,	'bat_chuyen',	'Der November-Monat kam nach Ihren Wünschen Machen Sie es zu einem erstaunlichen Erlebnis, egal, ob das Wetter schlecht ist, denn Ihre Stimmung ist überhaupt nicht gut, Sie müssen nur groß stehen und glücklich sein.',	1,	1,	'#1CFFE2',	'',	'',	'',	'',	'',	0,	21,	17,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'688',	'',	'',	'',	'0',	'0',	'0',	''),
 (141,	'hoi_tim_duong',	'Welche Adresse möchten Sie finden? Ich werde dich führen!',	0,	1,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	20,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'2',	'0',	'0',	'0',	''),
 (142,	'hoi_tim_duong',	'Welche Adresse möchten Sie finden? Ich werde dich führen!',	1,	1,	'#FF2158',	'',	'',	'',	'',	'',	0,	32,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1199',	'',	'',	'2',	'0',	'0',	'0',	''),
 (143,	'tra_loi_tim_duong',	'Ich habe die entsprechenden Suchorte aufgelistet!',	0,	2,	'#9CFFF2',	'',	'',	'',	'',	'',	43,	22,	2,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'44',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -229,4 +228,4 @@ INSERT INTO `app_my_girl_msg_de` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (184,	'bat_chuyen',	'Während der Saison von Covid 19 müssen Sie darauf achten, sich nicht auf überfüllte Orte zu konzentrieren und überall eine Maske tragen!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'de',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (185,	'bat_chuyen',	'Während der Saison von Covid 19 müssen Sie darauf achten, sich nicht auf überfüllte Orte zu konzentrieren und überall eine Maske tragen!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'de',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-11-29 09:20:44
+-- 2022-08-20 03:04:49

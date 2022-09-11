@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.4.22-MariaDB dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,7 +15,6 @@ CREATE TABLE `app_my_girl_field_vi` (
   `option` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_field_vi`;
 INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `author`, `option`) VALUES
 ('57669',	'chat',	'[[\"5535\",\"vi\",\"show_chat\",\"Mở nhạc\",\"000000\"],[\"57665\",\"vi\",\"show_chat\",\"Mở ghi chú\",\"000000\"],[\"57667\",\"vi\",\"show_chat\",\"Mở lịch\",\"000000\"],[\"57666\",\"vi\",\"show_chat\",\"Mở danh bạ\",\"000000\"],[\"146\",\"vi\",\"show_chat\",\"Mở youtube\",\"000000\"],[\"19408\",\"vi\",\"show_chat\",\"Mở radio\",\"000000\"],[\"142\",\"vi\",\"show_chat\",\"Mở Faceebook\",\"000000\"],[\"57679\",\"vi\",\"show_chat\",\"Mở nhắc nhở\",\"000000\"],[\"419\",\"vi\",\"show_chat\",\"Mở tin nhắn\",\"000000\"],[\"266\",\"vi\",\"show_chat\",\"Mở zalo\",\"000000\"],[\"57690\",\"vi\",\"show_chat\",\"Mở skype\",\"000000\"],[\"58761\",\"vi\",\"show_chat\",\"Mở phim\",\"000000\"]]',	'field_chat',	'unclear',	'1'),
 ('779',	'chat',	'[[\"780\",\"vi\",\"show_chat\",\"đáp án a\",\"000000\"],[\"781\",\"vi\",\"show_chat\",\"đáp án b\",\"000000\"],[\"782\",\"vi\",\"show_chat\",\"đáp án c\",\"000000\"],[\"783\",\"vi\",\"show_chat\",\"đáp án d\",\"000000\"]]',	'field_chat',	'unclear',	'0'),
@@ -87,4 +86,4 @@ INSERT INTO `app_my_girl_field_vi` (`id_chat`, `type_chat`, `data`, `type`, `aut
 ('76890',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0'),
 ('77008',	'chat',	'[[\"12\",\"https://www.facebook.com/virtuallover/\",\"link\",\"Virtual lover Facebook\"]]',	'field_chat',	'unclear',	'0');
 
--- 2022-03-17 15:00:50
+-- 2022-08-20 02:33:54

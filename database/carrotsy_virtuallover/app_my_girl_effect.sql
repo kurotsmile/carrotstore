@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,7 +15,6 @@ CREATE TABLE `app_my_girl_effect` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE `app_my_girl_effect`;
 INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (14,	'skull',	1,	'',	'C4B5A7'),
 (15,	'love ping',	0,	'love',	'FFADC5'),
@@ -44,7 +43,7 @@ INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (38,	'fb msg',	0,	'',	'52BEFF'),
 (39,	'music',	0,	'music',	'C63DFF'),
 (40,	'shit',	0,	'',	'FFF887'),
-(41,	'youtube',	0,	'',	'FF4D4D'),
+(41,	'youtube',	0,	'app',	'FF4D4D'),
 (42,	'vibration',	0,	'sex girl',	'D4DDFF'),
 (43,	'facebook',	0,	'app',	'336FFF'),
 (44,	'earth',	0,	'',	'9CFFF2'),
@@ -580,7 +579,7 @@ INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (576,	'mail',	0,	'',	'F0FFA8'),
 (577,	'applegreen',	0,	'chat',	'6AFF21'),
 (578,	'hat',	0,	'',	'FFF6C7'),
-(579,	'cat_grey',	0,	'',	'B8E7FF'),
+(579,	'car_grey xe',	0,	'',	'B8E7FF'),
 (580,	'cat_red',	0,	'',	'FFB542'),
 (581,	'guitar_red',	0,	'music',	'FF9921'),
 (582,	'red',	0,	'',	'FF897A'),
@@ -816,7 +815,7 @@ INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (812,	'itune',	0,	'music',	'00D3FF'),
 (813,	'bray',	0,	'music',	'66DFFF'),
 (814,	'doc_love',	0,	'',	'FFC9E4'),
-(815,	'doc_love2',	0,	'',	'24FEFF'),
+(815,	'note sách',	0,	'',	'24FEFF'),
 (816,	'lolly',	0,	'love',	'FFD6F2'),
 (817,	'coffe3',	0,	'chat',	'FFF299'),
 (818,	'love',	0,	'love',	'FF1488'),
@@ -1644,6 +1643,8 @@ INSERT INTO `app_my_girl_effect` (`id`, `name`, `loop`, `tag`, `color`) VALUES
 (1656,	'cá ngừ',	0,	'animal',	'FFB9A3'),
 (1657,	'gà tây',	0,	'animal',	'6BFF75'),
 (1658,	'con rùa',	0,	'animal',	'77FFF7'),
-(1659,	'minecraft',	0,	'app',	'FFC280');
+(1659,	'minecraft',	0,	'app',	'FFC280'),
+(1660,	'tik tok',	0,	'app',	'FF056D'),
+(1661,	'soundcloud',	0,	'app',	'FF9A1F');
 
--- 2021-08-17 12:51:46
+-- 2022-08-20 02:31:15

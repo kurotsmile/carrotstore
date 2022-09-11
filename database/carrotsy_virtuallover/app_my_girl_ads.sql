@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -17,7 +17,6 @@ CREATE TABLE `app_my_girl_ads` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE `app_my_girl_ads`;
 INSERT INTO `app_my_girl_ads` (`id`, `name`, `android`, `ios`, `window`, `samsung`, `app_id`) VALUES
 (1,	'Love or No love',	'https://play.google.com/store/apps/details?id=com.kurotsmile.LoveorNoLove',	'https://itunes.apple.com/us/app/love-or-no-love/id1150774803',	'https://www.microsoft.com/store/productId/9NQQBL6NKM2V',	'https://galaxystore.samsung.com/detail/com.kurotsmile.LoveorNoLoveSS',	'105'),
 (2,	'Virtual lover',	'',	'',	'https://www.microsoft.com/store/productId/9NSG2344SGX8',	'',	'120'),
@@ -37,4 +36,4 @@ INSERT INTO `app_my_girl_ads` (`id`, `name`, `android`, `ios`, `window`, `samsun
 (20,	'Midi Piano Editor',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano',	'',	'https://www.microsoft.com/store/productId/9PFQDFZ84JG0',	'https://galaxystore.samsung.com/detail/com.carrotstore.midipiano',	'283'),
 (21,	' Worm Master',	'https://play.google.com/store/apps/details?id=com.carrotstore.wormmaster',	'',	'https://www.microsoft.com/store/productId/9NQPS9L58KZQ',	'https://galaxystore.samsung.com/detail/com.carrotstore.wormmaster',	'139');
 
--- 2021-08-15 05:46:31
+-- 2022-08-20 02:30:44

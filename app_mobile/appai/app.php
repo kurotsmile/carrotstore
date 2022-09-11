@@ -27,10 +27,9 @@ if($function=='hello'){
 }
 
 if($function=='get_ask'){
-    $data_msg=get_msg($link,'bat_chuyen',$lang,$sex,$character_sex,'','',$limit_month);
-    if($data_msg==null){
-        $data_msg=get_msg($link,'bat_chuyen',$lang,$sex,$character_sex,$limit_day,$limit_date,$limit_month);   
-    }
+    $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action`,`color` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE ((`limit_date`= '$limit_date' AND `limit_month` = '$limit_month' AND `limit_day`='') OR (`limit_month`='$limit_month' AND `limit_date`='0' AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='$limit_day')) AND `func`='bat_chuyen' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
+    $data_msg=get_msg_by_query($q_msg,$lang);   
+    if($data_msg==null) $data_msg=get_msg($link,'bat_chuyen',$lang,$sex,$character_sex,'','',$limit_month);
     echo json_encode($data_msg);
 }
 
@@ -62,7 +61,6 @@ if($function=='chat'){
         }else{
             $txt_query_pater="SELECT `id`, `chat`, `link`, `face`, `action`,`id_redirect`,`effect`,`slug`,`file_url`,`func_sever`,`effect_customer`,`color` FROM `app_my_girl_$lang` WHERE `text`='$text' AND `character_sex`='$character_sex' AND `sex`='$sex' AND `pater`='$pater' AND `pater_type`='$pater_type'  AND `limit_chat` <= $limit_chat AND `disable`=0 ORDER BY RAND() LIMIT 1";
             $data_chat=get_chat($link,$txt_query_pater,$lang);
-            mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang','$sex','$date_cur','$os','0',$character_sex,'3','$pater','$pater_type','$id_device','','');");
         }
     }
 
@@ -94,6 +92,8 @@ if($function=='chat'){
     if($data_chat==null) {
         $data_chat=get_msg($link,'bam_bay',$lang,$sex,$character_sex,$limit_day,$limit_date,'');
     }
+
+    mysqli_query($link,"INSERT INTO `app_my_girl_key` (`key`, `lang`,`sex`,`dates`,`os`,`character`,`character_sex`,`version`,`id_question`,`type_question`,`id_device`,`location_lon`,`location_lat`) VALUES ('$text', '$lang','$sex','$date_cur','$os','0',$character_sex,'3','$pater','$pater_type','$id_device','','');");
 
     echo json_encode($data_chat);
 }
@@ -148,7 +148,10 @@ if($function=='get_command_offline'){
 }
 
 if($function=='hit'){
-    echo json_encode(get_msg($link,'dam',$lang,$sex,$character_sex,$limit_day,$limit_date,$limit_month));
+    $q_msg=mysqli_query($link,"SELECT `id`, `chat`, `face`, `action`,`color` FROM carrotsy_virtuallover.`app_my_girl_msg_$lang` WHERE ((`limit_date`= '$limit_date' AND `limit_month` = '$limit_month' AND `limit_day`='') OR (`limit_month`='$limit_month' AND `limit_date`='0' AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='') OR (`limit_month`='0'  AND `limit_date`='0'  AND `limit_day`='$limit_day')) AND `func`='dam' AND `sex`='$sex' AND `character_sex`='$character_sex' AND `limit_chat` <= $limit_chat  AND `disable` = '0'  ORDER BY RAND() LIMIT 1");
+    $data_hit=get_msg_by_query($q_msg,$lang);
+    if($data_hit==null) $data_hit=get_msg($link,'dam',$lang,$sex,$character_sex,'','',$limit_month);
+    echo json_encode($data_hit);
     exit;
 }
 
@@ -399,6 +402,37 @@ if($function=='get_chat_info'){
     $data_info["type_chat"]=$type_chat;
     $data_info["link_share"]="mylover://data?%7B%22function%22%3A%22show_chat%22%2C%22lang%22%3A%22".$lang."%22%2C%22id%22%3A%22".$id_chat."%22%2C%22type%22%3A%22".$type_chat."%22%2C%22host%22%3A%22carrotstore.com%22%7D";
     echo json_encode($data_info);
+    exit;
+}
+
+if($function=='update_sapphire'){
+    $user_id='';if(isset($_POST['user_id'])) $user_id=$_POST['user_id']; else $user_id=$id_device;
+    $sapphire=$_POST["sapphire"];
+    $q_check_sapphire=mysqli_query($link,"SELECT COUNT(`user_id`) as c FROM `app_my_girl_user_".$lang."_data` WHERE `user_id` = '$user_id' LIMIT 1");
+    $c_count_user=mysqli_fetch_assoc($q_check_sapphire);
+    if(intval($c_count_user['c'])>0){
+        mysqli_query($link,"UPDATE `app_my_girl_user_".$lang."_data` SET `sapphire` = '$sapphire' WHERE `user_id` = '$user_id' LIMIT 1;");
+    }else{
+        mysqli_query($link,"INSERT INTO `app_my_girl_user_".$lang."_data` (`user_id`, `sapphire`) VALUES ('$user_id', '$sapphire')");
+    }
+    exit;
+}
+
+if($function=='list_social'){
+    $arr_sc=array();
+    $q_list_social=mysqli_query($link,"SELECT * FROM `app_my_girl_user_".$lang."_data` LIMIT 50");
+    $num_top=0;
+    while($sc=mysqli_fetch_assoc($q_list_social)){
+        $q_user=mysqli_query($link,"SELECT `name` FROM `app_my_girl_user_vi` WHERE `id_device` = '730a8bef7874ba6f7b72baf5491f0eb390616970' LIMIT 1");
+        $data_user=mysqli_fetch_assoc($q_user);
+        if($data_user!=null){
+            $num_top++;
+            $sc["num_top"]=$num_top;
+            $sc["user_name"]=$data_user["name"];
+            array_push($arr_sc,$sc);
+        }
+    }
+    echo json_encode($arr_sc);
     exit;
 }
 ?>

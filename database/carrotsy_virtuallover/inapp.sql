@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -16,7 +16,6 @@ CREATE TABLE `inapp` (
   `protocol` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `inapp`;
 INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotstore.wormmaster.removeads',	'139',	'2.0',	'remove_adss',	'wormmaster'),
 ('com.carrotstore.wormmaster.musicbk',	'139',	'3.0',	'musicbk',	'wormmaster'),
@@ -66,4 +65,4 @@ INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotstore.jsoneditor.removeads',	'753',	'3.0',	'remove_adss',	'json'),
 ('com.carrotstore.chemicalperiodic.removeads',	'752',	'3.0',	'remove_adss',	'periodic');
 
--- 2022-03-17 14:48:04
+-- 2022-08-20 02:46:43

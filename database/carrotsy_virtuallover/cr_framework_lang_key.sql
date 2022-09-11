@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -12,7 +12,6 @@ CREATE TABLE `cr_framework_lang_key` (
   `key` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `cr_framework_lang_key`;
 INSERT INTO `cr_framework_lang_key` (`key`) VALUES
 ('login'),
 ('register'),
@@ -94,4 +93,4 @@ INSERT INTO `cr_framework_lang_key` (`key`) VALUES
 ('rate_thanks'),
 ('send_feedback');
 
--- 2022-03-18 18:33:16
+-- 2022-08-20 02:48:12

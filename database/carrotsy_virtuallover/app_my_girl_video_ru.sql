@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_video_ru` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_video_ru`;
 INSERT INTO `app_my_girl_video_ru` (`id_chat`, `link`) VALUES
 ('47',	'https://www.youtube.com/watch?v=tt2k8PGm-TI'),
 ('46',	'https://www.youtube.com/watch?v=uGhKqb2Ow3E'),
@@ -823,6 +822,30 @@ INSERT INTO `app_my_girl_video_ru` (`id_chat`, `link`) VALUES
 ('14194',	'https://www.youtube.com/watch?v=JGLZbBK5wTw'),
 ('14196',	'https://www.youtube.com/watch?v=aETEDgDpRlA'),
 ('14198',	'https://www.youtube.com/watch?v=vmLSJljmF2Q'),
-('14242',	'https://www.youtube.com/watch?v=MF_cYq4EixU');
+('14242',	'https://www.youtube.com/watch?v=MF_cYq4EixU'),
+('14287',	'https://www.youtube.com/watch?v=EsX-0VBb0j0'),
+('14288',	'https://www.youtube.com/watch?v=sRTB5nfF5Cc'),
+('14289',	'https://www.youtube.com/watch?v=VljpP4csbOc'),
+('14290',	'https://www.youtube.com/watch?v=HwMhPDvZ4mI'),
+('14291',	'https://www.youtube.com/watch?v=9Y2IokM62U4'),
+('14293',	'https://www.youtube.com/watch?v=nQO5OQbDffc'),
+('14294',	'https://www.youtube.com/watch?v=CAGlI_2vQpg'),
+('14331',	'https://www.youtube.com/watch?v=7T82Z7BwYfM'),
+('14332',	'https://www.youtube.com/watch?v=eMFcFnAo4E4'),
+('14334',	'https://www.youtube.com/watch?v=VWD40cBmEME'),
+('14335',	'https://www.youtube.com/watch?v=BMdcG7m0gCo'),
+('14348',	'https://www.youtube.com/watch?v=IgXyKTkgmkc'),
+('14364',	'https://www.youtube.com/watch?v=bOXyApXc9gs'),
+('14369',	'https://www.youtube.com/watch?v=iONNF7hDEfM'),
+('14440',	'https://www.youtube.com/watch?v=bTM4KFFPU00'),
+('14444',	'https://www.youtube.com/watch?v=NqM032dnPtk'),
+('14451',	'https://www.youtube.com/watch?v=zf99kdFw9b8'),
+('14456',	'https://www.youtube.com/watch?v=y13sm8OJTf4'),
+('14457',	'https://www.youtube.com/watch?v=Cf2ASJCa_Iw'),
+('14458',	'https://www.youtube.com/watch?v=Xb-FCMZ_FT4'),
+('14480',	'https://www.youtube.com/watch?v=TSyI0r2kO4E'),
+('14491',	'https://www.youtube.com/watch?v=KHye8y_MbEE'),
+('14492',	'https://www.youtube.com/watch?v=mF2mJQ-_s6A'),
+('14493',	'https://www.youtube.com/watch?v=LQaYHh5qmR4');
 
--- 2021-10-18 20:58:22
+-- 2022-08-20 02:54:57

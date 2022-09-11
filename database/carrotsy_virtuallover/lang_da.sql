@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_da` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_da`;
 INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('mua_sp',	'Produkter'),
 ('tip_search',	'Czego chcesz szukać?'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_da` (`key`, `value`) VALUES
 ('seo_game',	'Nyd de sjove og trending spil i gulerodsbutikkens spilarkiv, vi leverer komplette spilbeskrivelser samt downloadlinks, så du kan spille dem på computere, telefoner og andre enheder. spille spil som xbox, ps4, playstation'),
 ('ebook_next_page',	'Fortsæt med at læse');
 
--- 2021-11-29 09:51:46
+-- 2022-08-20 03:44:30

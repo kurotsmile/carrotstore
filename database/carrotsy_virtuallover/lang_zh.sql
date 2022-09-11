@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_zh` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_zh`;
 INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('mua_sp',	'制品'),
 ('tip_search',	'您想要寻找什么？'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_zh` (`key`, `value`) VALUES
 ('seo_game',	'享受胡萝卜商店游戏档案中有趣和流行的游戏，我们提供完整的游戏描述以及下载链接，以便您可以在计算机、手机和其他设备上玩它们。 玩游戏，如 xbox、ps4、playstation'),
 ('ebook_next_page',	'继续阅读');
 
--- 2021-11-29 09:38:37
+-- 2022-08-20 02:41:46

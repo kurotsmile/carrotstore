@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -20,7 +20,6 @@ CREATE TABLE `share` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `share`;
 INSERT INTO `share` (`id`, `icon_css`, `name`, `order`, `web`, `android`, `window`, `ios`) VALUES
 (4,	'fa-facebook-square',	'Facebook',	0,	'https://www.facebook.com/sharer/sharer.php?u={url}',	'https://www.facebook.com/sharer/sharer.php?u={url}',	'https://www.facebook.com/sharer/sharer.php?u={url}',	''),
 (5,	'fa-twitter-square',	'Twitter',	1,	'https://twitter.com/intent/tweet?url={url}&text=Carrot store &via=carrotstore1&original_referer={url}',	'twitter://post?message={url}',	'https://twitter.com/intent/tweet?url={url}&text=Carrot store &via=carrotstore1&original_referer={url}',	''),
@@ -39,4 +38,4 @@ INSERT INTO `share` (`id`, `icon_css`, `name`, `order`, `web`, `android`, `windo
 (20,	'fa-bookmark',	'Google Book marks',	11,	'https://www.google.com/bookmarks/mark?op=edit&bkmk={url}',	'',	'https://www.google.com/bookmarks/mark?op=edit&bkmk={url}',	''),
 (21,	'fa-commenting',	'sms',	0,	'',	'sms:0?body={url}',	'',	'');
 
--- 2021-07-30 11:01:29
+-- 2022-08-20 02:42:21

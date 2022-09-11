@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -12,6 +12,7 @@ CREATE TABLE `music_contribute_lyrics` (
   `lang` varchar(2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-TRUNCATE `music_contribute_lyrics`;
+INSERT INTO `music_contribute_lyrics` (`id_music`, `lyrics`, `lang`) VALUES
+(35290,	'Oir dei dyear ou bwoi ey eor ay dya o or a ay ee bwaa ai eea pa o da a day ee dee a dyer aa bway',	'pl');
 
--- 2021-11-29 09:49:38
+-- 2022-08-20 03:13:17

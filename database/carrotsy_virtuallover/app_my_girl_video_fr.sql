@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_video_fr` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_video_fr`;
 INSERT INTO `app_my_girl_video_fr` (`id_chat`, `link`) VALUES
 ('3',	'https://www.youtube.com/watch?v=5UV1aEkBgAk'),
 ('824',	'https://www.youtube.com/watch?v=Izz6XAFYl6Y'),
@@ -304,6 +303,55 @@ INSERT INTO `app_my_girl_video_fr` (`id_chat`, `link`) VALUES
 ('3097',	'https://www.youtube.com/watch?v=rs40yxHjTxQ'),
 ('3098',	'https://www.youtube.com/watch?v=SASWnVYToKE'),
 ('3100',	'https://www.youtube.com/watch?v=Aq1PsFGssOg'),
-('3101',	'https://www.youtube.com/watch?v=hY4LO6b2RMA');
+('3101',	'https://www.youtube.com/watch?v=hY4LO6b2RMA'),
+('3105',	'https://www.youtube.com/watch?v=8QymRjbCJTY'),
+('3106',	'https://www.youtube.com/watch?v=rGlXOWJEOBU'),
+('3107',	'https://www.youtube.com/watch?v=St4Kv0RBRWo'),
+('3111',	'https://www.youtube.com/watch?v=jj0xIgP8VHk'),
+('3112',	'https://www.youtube.com/watch?v=raDRQzotnVc'),
+('3114',	'https://www.youtube.com/watch?v=yFJp0Kwc8Cw'),
+('3117',	'https://www.youtube.com/watch?v=tO4T5sEvqB4'),
+('3118',	'https://www.youtube.com/watch?v=P3QS83ubhHE'),
+('3119',	'https://www.youtube.com/watch?v=JIJJ6HShUS0'),
+('3120',	'https://www.youtube.com/watch?v=CTAH-AqYm48'),
+('3121',	'https://www.youtube.com/watch?v=mUTsvbridvM'),
+('3122',	'https://www.youtube.com/watch?v=tmPws7eXcVk'),
+('3123',	'https://www.youtube.com/watch?v=s1GHT17Hnxs'),
+('3127',	'https://www.youtube.com/watch?v=6pTOUP4eQ-I'),
+('3133',	'https://www.youtube.com/watch?v=9N3D2OMpr6U'),
+('3134',	'https://www.youtube.com/watch?v=kHX4vr4k7H8'),
+('3135',	'https://www.youtube.com/watch?v=lLkmhA_rSC0'),
+('3141',	'https://www.youtube.com/watch?v=mA3nlLNVW5k'),
+('3142',	'https://www.youtube.com/watch?v=OC2R5fvJsxo'),
+('3144',	'https://www.youtube.com/watch?v=rjcqtocnWic'),
+('3148',	'https://www.youtube.com/watch?v=29gOHmidswU'),
+('3150',	'https://www.youtube.com/watch?v=QA9FIrdaO7Q'),
+('3151',	'https://www.youtube.com/watch?v=EelX_LwPHbA'),
+('3152',	'https://www.youtube.com/watch?v=KyXW64L-XZA'),
+('3153',	'https://www.youtube.com/watch?v=Z2y-P1nC1MQ'),
+('3154',	'https://www.youtube.com/watch?v=LHYoq44pmO4'),
+('3155',	'https://www.youtube.com/watch?v=-rKFhv15a-M'),
+('3156',	'https://www.youtube.com/watch?v=_qQeJLSYz_M'),
+('3157',	'https://www.youtube.com/watch?v=-wGB2Pyrqkc'),
+('3158',	'https://www.youtube.com/watch?v=DS8Hkf_aOr4'),
+('3159',	'https://www.youtube.com/watch?v=5lzbP4ddQz8'),
+('3164',	'https://www.youtube.com/watch?v=nflOro68LtQ'),
+('3165',	'https://www.youtube.com/watch?v=rMTfM28wAf8'),
+('3166',	'https://www.youtube.com/watch?v=VadTd3uYCg4'),
+('3167',	'https://www.youtube.com/watch?v=HX5l5DxmmBw'),
+('3168',	'https://www.youtube.com/watch?v=-BnLnsAEyR8'),
+('3169',	'https://www.youtube.com/watch?v=FZT71q41iUk'),
+('3170',	'https://www.youtube.com/watch?v=2KmtSK6HwEw'),
+('3171',	'https://www.youtube.com/watch?v=te71pbfpuFY'),
+('3172',	'https://www.youtube.com/watch?v=AVV7xkqU84g'),
+('3173',	'https://www.youtube.com/watch?v=IrVzCgwF2n8'),
+('3174',	'https://www.youtube.com/watch?v=xccQADzqMeo'),
+('3176',	'https://www.youtube.com/watch?v=ZSbuikMdgqA'),
+('3177',	'https://www.youtube.com/watch?v=_T2cU0TA9hE'),
+('3194',	'https://www.youtube.com/watch?v=9Oh3knWDBnA'),
+('3215',	'https://www.youtube.com/watch?v=9f8wc1-EcpU'),
+('3217',	'https://www.youtube.com/watch?v=EaP0j6SZvBM'),
+('3227',	'https://www.youtube.com/watch?v=u02dukVZtaU'),
+('3229',	'https://www.youtube.com/watch?v=4qje7Fklj80');
 
--- 2021-10-18 20:45:16
+-- 2022-08-20 03:02:04

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `lang_hi` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `lang_hi`;
 INSERT INTO `lang_hi` (`key`, `value`) VALUES
 ('mua_sp',	'उत्पाद'),
 ('tip_search',	'आप किसके लिए सर्च करना चाहते हैं?'),
@@ -342,4 +341,4 @@ INSERT INTO `lang_hi` (`key`, `value`) VALUES
 ('seo_game',	'गाजरस्टोर गेम संग्रह में मजेदार और ट्रेंडिंग गेम्स का आनंद लें, हम पूर्ण गेम विवरण के साथ-साथ डाउनलोड लिंक भी प्रदान करते हैं ताकि आप उन्हें कंप्यूटर, फोन और अन्य उपकरणों पर खेल सकें। Xbox, ps4, playstation जैसे गेम खेलें'),
 ('ebook_next_page',	'जारी रखें पढ़ रहे हैं');
 
--- 2021-11-29 09:58:56
+-- 2022-08-20 03:45:05

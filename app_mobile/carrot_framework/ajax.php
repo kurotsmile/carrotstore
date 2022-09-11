@@ -158,7 +158,14 @@ if($function=='key_music_act'){
 }
 
 if($function=='unactive_music_key_check'){
+     $this->q("DELETE FROM carrotsy_music.`log_key` WHERE CHAR_LENGTH(`key`)>40");
+     $this->q("UPDATE carrotsy_music.`log_key` set `key`=REPLACE(`key`,char(39),'')");
+     $this->q("UPDATE carrotsy_music.`log_key` set `key`=REPLACE(`key`,char(43),'')");
+     $this->q("UPDATE carrotsy_music.`log_key` set `key`=REPLACE(`key`,char(34),'')");
+     $this->q("DELETE FROM carrotsy_virtuallover.`app_my_girl_log_key_music` WHERE CHAR_LENGTH(`key`)>40");
      $this->q("UPDATE carrotsy_virtuallover.`app_my_girl_log_key_music` set `key`=REPLACE(`key`,char(39),'')");
+     $this->q("UPDATE carrotsy_virtuallover.`app_my_girl_log_key_music` set `key`=REPLACE(`key`,char(43),'')");
+     $this->q("UPDATE carrotsy_virtuallover.`app_my_girl_log_key_music` set `key`=REPLACE(`key`,char(34),'')");
      $obj=new stdClass();
      $list_key_waring=$this->q("SELECT `key` FROM `carrotsy_virtuallover`.`app_my_girl_remove_key_music`");
      $count_k=0;

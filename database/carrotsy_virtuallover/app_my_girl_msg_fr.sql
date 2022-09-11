@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -41,7 +41,6 @@ CREATE TABLE `app_my_girl_msg_fr` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_msg_fr`;
 INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`, `q1`, `q2`, `r1`, `r2`, `vibrate`, `effect`, `action`, `face`, `certify`, `author`, `character_sex`, `disable`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `file_url`) VALUES
 (1,	'chao_0',	'Bonsoir, pourquoi ne dors-tu toujours pas?',	0,	3,	'#2E7BFF',	'',	'',	'',	'',	'',	0,	5,	7,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'403',	'',	'',	'',	'0',	'0',	'0',	''),
 (2,	'chao_1',	'Bonsoir, pourquoi ne dors-tu toujours pas?',	0,	1,	'#0A2BFF',	'',	'',	'',	'',	'',	0,	5,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'271',	'',	'',	'',	'0',	'0',	'0',	''),
@@ -139,8 +138,8 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (94,	'dam',	'Aujourd\'hui c\'est dimanche! C\'est un jour de repos, parle-moi plus!',	1,	2,	'#FFE1A3',	'',	'',	'',	'',	'',	0,	16,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'787',	'Sunday',	'',	'',	'0',	'0',	'0',	''),
 (95,	'bat_chuyen',	'Today is Monday, wish you a happy new week',	0,	3,	'#92FF1F',	'',	'',	'',	'',	'',	0,	13,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1212',	'Monday',	'',	'',	'0',	'0',	'0',	''),
 (96,	'bat_chuyen',	'Today is Monday, wish you a happy new week',	1,	2,	'#FFB11F',	'',	'',	'',	'',	'',	0,	10,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1076',	'Monday',	'',	'',	'0',	'0',	'0',	''),
-(97,	'dam',	'Cet été c\'est super de t\'avoir',	0,	2,	'#F7FF3B',	'',	'',	'',	'',	'',	0,	1,	2,	0,	'',	1,	1,	0,	'',	1,	0,	8,	'619',	'',	'',	'',	'0',	'0',	'0',	''),
-(98,	'dam',	'Cet été c\'est super de t\'avoir',	1,	2,	'#FFA747',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	0,	1,	0,	'',	1,	0,	8,	'957',	'',	'',	'',	'0',	'0',	'0',	''),
+(97,	'dam',	'Cet été c\'est super de t\'avoir',	0,	2,	'#F7FF3B',	'',	'',	'',	'',	'',	0,	1,	2,	0,	'',	1,	0,	0,	'',	1,	0,	8,	'619',	'',	'',	'',	'0',	'0',	'0',	''),
+(98,	'dam',	'Cet été c\'est super de t\'avoir',	1,	2,	'#FFA747',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	0,	0,	0,	'',	1,	0,	8,	'957',	'',	'',	'',	'0',	'0',	'0',	''),
 (99,	'dam',	'Aujourd\'hui c\'est jeudi, j\'espère que chaque jour sera avec toi',	0,	3,	'#FFCC7D',	'',	'',	'',	'',	'',	0,	8,	4,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'664',	'Thursday',	'',	'',	'0',	'0',	'0',	''),
 (100,	'dam',	'Aujourd\'hui c\'est jeudi, j\'espère que chaque jour sera avec toi',	1,	0,	'#E5FF94',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'846',	'Thursday',	'',	'',	'0',	'0',	'0',	''),
 (101,	'dam',	'Le vendredi est une journée ennuyeuse, j\'espère que vous pensez plus à mon sujet!',	0,	3,	'#FEA8FF',	'',	'',	'',	'',	'',	0,	8,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1208',	'Friday',	'',	'',	'0',	'0',	'0',	''),
@@ -155,8 +154,8 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (110,	'dam',	'Octobre dans la rue est facile d\'être seul. Quand les gens ont le temps de se sentir seuls parce qu’ils oublient de porter des vêtements de rechange.',	1,	3,	'#DEC7FF',	'',	'',	'',	'',	'',	5,	8,	0,	0,	'',	0,	1,	0,	'',	1,	0,	10,	'945',	'',	'',	'2',	'0',	'0',	'0',	''),
 (111,	'dam',	'Je vous souhaite beaucoup de surprises effrayantes, c\'est très amusant le jour de l\'Halloween',	0,	1,	'#A6C9E0',	'',	'',	'',	'',	'',	0,	29,	3,	0,	'',	1,	1,	0,	'',	1,	30,	10,	'874',	'',	'',	'',	'0',	'0',	'0',	''),
 (112,	'bat_chuyen',	'Je vous souhaite beaucoup de surprises effrayantes, c\'est très amusant le jour de l\'Halloween',	1,	1,	'#4DFFA0',	'',	'',	'',	'',	'',	0,	32,	2,	0,	'',	0,	1,	0,	'',	1,	30,	10,	'895',	'',	'',	'',	'0',	'0',	'0',	''),
-(113,	'bat_chuyen',	'Le mois de novembre est arrivé à votre façon. Faites-en un incroyable, peu importe si le temps est mauvais, car votre humeur n\'est pas bonne du tout, vous devez simplement vous tenir debout et être heureux.',	0,	1,	'#FFA747',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	1,	0,	0,	'',	1,	0,	11,	'957',	'',	'',	'4',	'0',	'0',	'0',	''),
-(114,	'bat_chuyen',	'Le mois de novembre est arrivé à votre façon. Faites-en un incroyable, peu importe si le temps est mauvais, car votre humeur n\'est pas bonne du tout, vous devez simplement vous tenir debout et être heureux.',	1,	2,	'#FF808A',	'',	'',	'',	'',	'',	0,	33,	15,	0,	'',	0,	0,	0,	'',	1,	0,	11,	'997',	'',	'',	'4',	'0',	'0',	'0',	''),
+(113,	'bat_chuyen',	'Le mois de novembre est arrivé à votre façon. Faites-en un incroyable, peu importe si le temps est mauvais, car votre humeur n\'est pas bonne du tout, vous devez simplement vous tenir debout et être heureux.',	0,	1,	'#FFA747',	'',	'',	'',	'',	'',	0,	34,	2,	0,	'',	1,	1,	0,	'',	1,	0,	11,	'957',	'',	'',	'4',	'0',	'0',	'0',	''),
+(114,	'bat_chuyen',	'Le mois de novembre est arrivé à votre façon. Faites-en un incroyable, peu importe si le temps est mauvais, car votre humeur n\'est pas bonne du tout, vous devez simplement vous tenir debout et être heureux.',	1,	2,	'#FF808A',	'',	'',	'',	'',	'',	0,	33,	15,	0,	'',	0,	1,	0,	'',	1,	0,	11,	'997',	'',	'',	'4',	'0',	'0',	'0',	''),
 (115,	'hoi_tim_duong',	'Quelle adresse voulez-vous trouver? Je vous guiderai!',	0,	2,	'#C4FFFE',	'',	'',	'',	'',	'',	0,	0,	0,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'1236',	'',	'',	'2',	'0',	'0',	'0',	''),
 (116,	'tra_loi_tim_duong',	'J\'ai énuméré les lieux concernés',	0,	2,	'#C4FFFA',	'',	'',	'',	'',	'',	43,	34,	15,	0,	'',	1,	0,	0,	'',	1,	0,	0,	'402',	'',	'',	'2',	'0',	'0',	'0',	''),
 (117,	'hoi_tim_duong',	'Quelle adresse voulez-vous trouver? Je vous guiderai!',	1,	1,	'#FFB11F',	'',	'',	'',	'',	'',	0,	22,	15,	0,	'',	0,	0,	0,	'',	1,	0,	0,	'1076',	'',	'',	'2',	'0',	'0',	'0',	''),
@@ -203,4 +202,4 @@ INSERT INTO `app_my_girl_msg_fr` (`id`, `func`, `chat`, `sex`, `status`, `color`
 (159,	'bat_chuyen',	'Pendant la saison de Covid 19, vous devez faire attention à ne pas vous concentrer sur les endroits bondés et porter un masque partout où vous allez!',	0,	3,	'#FFFBD1',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	1,	0,	0,	'',	1,	0,	0,	'1615',	'',	'2',	'4',	'0',	'0',	'0',	''),
 (160,	'bat_chuyen',	'Pendant la saison de Covid 19, vous devez faire attention à ne pas vous concentrer sur les endroits bondés et porter un masque partout où vous allez!',	1,	3,	'#E6C9FF',	'',	'',	'',	'',	'',	0,	10,	4,	0,	'fr',	0,	0,	0,	'',	1,	0,	0,	'179',	'',	'2',	'4',	'0',	'0',	'0',	'');
 
--- 2021-11-29 08:05:09
+-- 2022-08-20 03:05:16

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.36 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,28 +15,7 @@ CREATE TABLE `inapp_lang` (
   `lang` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-TRUNCATE `inapp_lang`;
 INSERT INTO `inapp_lang` (`key`, `title`, `tip`, `lang`) VALUES
-('remove_ads',	'Gỡ quảng cáo',	'Không hiện quảng cáo trong ứng dụng',	'vi'),
-('remove_ads',	'Remove ads',	'No ads in the app, block all ads',	'en'),
-('remove_ads',	'Quitar anuncios',	'No hay anuncios en la aplicación, bloquea todos los anuncios.',	'es'),
-('remove_ads',	'Remover propagandas',	'Nenhum anúncio no aplicativo, bloquear todos os anúncios',	'pt'),
-('remove_ads',	'Supprimez la pub',	'Aucune publicité dans l\'application, bloquez toutes les publicités',	'fr'),
-('remove_ads',	'विज्ञापन हटाएँ',	'ऐप में कोई विज्ञापन नहीं, सभी विज्ञापनों को ब्लॉक करें',	'hi'),
-('remove_ads',	'移除广告',	'应用内无广告，屏蔽所有广告',	'zh'),
-('remove_ads',	'Удалить объявления',	'В приложении нет рекламы, заблокируйте всю рекламу',	'ru'),
-('remove_ads',	'Anzeigen entfernen',	'Keine Werbung in der App, alle Werbung blockieren',	'de'),
-('remove_ads',	'ลบโฆษณา',	'ไม่มีโฆษณาในแอป บล็อกโฆษณาทั้งหมด',	'th'),
-('remove_ads',	'광고를 제거하다',	'앱에 광고 없음, 모든 광고 차단',	'ko'),
-('remove_ads',	'広告を削除',	'アプリに広告がありません、すべての広告をブロックします',	'ja'),
-('remove_ads',	'ازالة الاعلانات',	'لا توجد إعلانات في التطبيق ، منع جميع الإعلانات',	'ar'),
-('remove_ads',	'Reklamları kaldırmak',	'Uygulamada reklam yok, tüm reklamları engelle',	'tr'),
-('remove_ads',	'Poista mainokset',	'Ei mainoksia sovelluksessa, estä kaikki mainokset',	'fi'),
-('remove_ads',	'Rimuovere gli annunci',	'Nessuna pubblicità nell\'app, blocca tutte le pubblicità',	'it'),
-('remove_ads',	'Hilangkan iklan',	'Tidak ada iklan di aplikasi, blokir semua iklan',	'id'),
-('remove_ads',	'Fjern annoncer',	'Ingen annoncer i appen, bloker alle annoncer',	'da'),
-('remove_ads',	'Verwijder advertenties',	'Geen advertenties in de app, blokkeer alle advertenties',	'nl'),
-('remove_ads',	'Usuń reklamy',	'Brak reklam w aplikacji, zablokuj wszystkie reklamy',	'pl'),
 ('midi',	'Mua bài soạn nhạc midi',	'Mua bảng soạn nhạc midi để sáng tác',	'vi'),
 ('midi',	'Buy midi songs',	'Buy a midi composer board to compose',	'en'),
 ('midi',	'Comprar canciones midi',	'Compra una placa midi composer para componer',	'es'),
@@ -376,6 +355,26 @@ INSERT INTO `inapp_lang` (`key`, `title`, `tip`, `lang`) VALUES
 ('buyallplayer_football',	'Buka kunci dan gunakan semua pemain sepak bola',	'Gunakan semua bola sepak yang termasuk dalam permainan tanpa pembayaran ganda',	'id'),
 ('buyallplayer_football',	'Lås op og brug alle fodboldspillere',	'Brug alle de fodboldbolde, der er inkluderet i spillet, uden flere betalinger',	'da'),
 ('buyallplayer_football',	'Ontgrendel en gebruik alle voetballers',	'Gebruik alle voetballen in het spel zonder meerdere betalingen',	'nl'),
-('buyallplayer_football',	'Odblokuj i używaj wszystkich piłkarzy',	'Korzystaj ze wszystkich piłek futbolowych zawartych w grze bez wielokrotnych płatności',	'pl');
+('buyallplayer_football',	'Odblokuj i używaj wszystkich piłkarzy',	'Korzystaj ze wszystkich piłek futbolowych zawartych w grze bez wielokrotnych płatności',	'pl'),
+('remove_adss',	'Gỡ quảng cáo',	'Không hiện quảng cáo trong ứng dụng',	'vi'),
+('remove_adss',	'Remove ads',	'No ads in the app, block all ads',	'en'),
+('remove_adss',	'Quitar anuncios',	'No hay anuncios en la aplicación, bloquea todos los anuncios.',	'es'),
+('remove_adss',	'Remover propagandas',	'Nenhum anúncio no aplicativo, bloquear todos os anúncios',	'pt'),
+('remove_adss',	'Supprimez la pub',	'Aucune publicité dans l\'application, bloquez toutes les publicités',	'fr'),
+('remove_adss',	'विज्ञापन हटाएँ',	'ऐप में कोई विज्ञापन नहीं, सभी विज्ञापनों को ब्लॉक करें',	'hi'),
+('remove_adss',	'移除广告',	'应用内无广告，屏蔽所有广告',	'zh'),
+('remove_adss',	'Удалить объявления',	'В приложении нет рекламы, заблокируйте всю рекламу',	'ru'),
+('remove_adss',	'Anzeigen entfernen',	'Keine Werbung in der App, alle Werbung blockieren',	'de'),
+('remove_adss',	'ลบโฆษณา',	'ไม่มีโฆษณาในแอป บล็อกโฆษณาทั้งหมด',	'th'),
+('remove_adss',	'광고를 제거하다',	'앱에 광고 없음, 모든 광고 차단',	'ko'),
+('remove_adss',	'広告を削除',	'アプリに広告がありません、すべての広告をブロックします',	'ja'),
+('remove_adss',	'ازالة الاعلانات',	'لا توجد إعلانات في التطبيق ، منع جميع الإعلانات',	'ar'),
+('remove_adss',	'Reklamları kaldırmak',	'Uygulamada reklam yok, tüm reklamları engelle',	'tr'),
+('remove_adss',	'Poista mainokset',	'Ei mainoksia sovelluksessa, estä kaikki mainokset',	'fi'),
+('remove_adss',	'Rimuovere gli annunci',	'Nessuna pubblicità nell\'app, blocca tutte le pubblicità',	'it'),
+('remove_adss',	'Hilangkan iklan',	'Tidak ada iklan di aplikasi, blokir semua iklan',	'id'),
+('remove_adss',	'Fjern annoncer',	'Ingen annoncer i appen, bloker alle annoncer',	'da'),
+('remove_adss',	'Verwijder advertenties',	'Geen advertenties in de app, blokkeer alle advertenties',	'nl'),
+('remove_adss',	'Usuń reklamy',	'Brak reklam w aplikacji, zablokuj wszystkie reklamy',	'pl');
 
--- 2021-11-29 11:34:38
+-- 2022-08-20 03:40:43

@@ -7,5 +7,6 @@ $cms=new Carrot_CMS("Flower",$link);
 $cms->url_carrot_store=$url_carrot_store;
 $cms->url=$url_carrot_store."/app_mobile/appai";
 $cms->database_mysql=$mysql_database;
+$cms->add_menu_page("Khiểm duyệt","fa-umbrella","page_inspection.php");
 $cms->html_show();
 ?>

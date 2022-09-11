@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.35 dump
+-- Adminer 4.8.1 MySQL 5.7.39 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,7 +11,6 @@ CREATE TABLE `app_my_girl_video_tr` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-TRUNCATE `app_my_girl_video_tr`;
 INSERT INTO `app_my_girl_video_tr` (`id_chat`, `link`) VALUES
 ('114',	'https://www.youtube.com/watch?v=yPcQ3nAs2sQ'),
 ('115',	'https://www.youtube.com/watch?v=U66ixhdbxEI'),
@@ -138,6 +137,28 @@ INSERT INTO `app_my_girl_video_tr` (`id_chat`, `link`) VALUES
 ('2400',	'https://www.youtube.com/watch?v=3sTdlLqFkzE'),
 ('2403',	'https://www.youtube.com/watch?v=XBqJ2FbS7sQ'),
 ('2404',	'https://www.youtube.com/watch?v=M19aq08sMfY'),
-('2405',	'https://www.youtube.com/watch?v=OUWF_ZVll94');
+('2405',	'https://www.youtube.com/watch?v=OUWF_ZVll94'),
+('2434',	'https://www.youtube.com/watch?v=cOewK9n9WIM'),
+('2436',	'https://www.youtube.com/watch?v=KlK-Q1hk2wk'),
+('2441',	'https://www.youtube.com/watch?v=YlQ9BT9g0po'),
+('2447',	'https://www.youtube.com/watch?v=tUDD7LA_sJQ'),
+('2452',	'https://www.youtube.com/watch?v=YbI6J338xxw'),
+('2453',	'https://www.youtube.com/watch?v=SIIsLTFT_AU'),
+('2455',	'https://www.youtube.com/watch?v=2YYLr6yVruQ'),
+('2456',	'https://www.youtube.com/watch?v=_xTTGwS5wiY'),
+('2457',	'https://www.youtube.com/watch?v=Icv8f5cUdFE'),
+('2465',	'https://www.youtube.com/watch?v=ySCEGdiU2yQ'),
+('2471',	'https://www.youtube.com/watch?v=g9lUIcnpRB8'),
+('2472',	'https://www.youtube.com/watch?v=WA2hqcSm7gU'),
+('2473',	'https://www.youtube.com/watch?v=idqdUopJazc'),
+('2474',	'https://www.youtube.com/watch?v=o9oQOqe3vqc'),
+('2475',	'https://www.youtube.com/watch?v=fZsUFpB3LzU'),
+('2478',	'https://www.youtube.com/watch?v=SpJ96ZRj9dk'),
+('2491',	'https://www.youtube.com/watch?v=4SKQT9QF-a4'),
+('2499',	'https://www.youtube.com/watch?v=Now1tNZj26k'),
+('2503',	'https://www.youtube.com/watch?v=kmzOyu0s-4M'),
+('2505',	'https://www.youtube.com/watch?v=vyXOEGyjQ0Q'),
+('2511',	'https://www.youtube.com/watch?v=eFutYdmi2gc'),
+('2512',	'https://www.youtube.com/watch?v=iCgti6ahrM0');
 
--- 2021-10-18 20:58:41
+-- 2022-08-20 02:49:12
