@@ -1,0 +1,11 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.carrotstore.midipiano",
+        "sha256_cert_fingerprints":
+          ["42:A3:4E:D0:54:A4:5E:90:05:79:88:96:78:41:90:D9:96:3A:C7:C8:6B:96:E1:52:F9:B2:5C:AE:73:03:CB:61"]
+      }
+    }
+  ]

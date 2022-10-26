@@ -580,4 +580,45 @@ if($function=='restore_inapp'){
     echo json_encode($inapp);
     exit;
 }
+
+if($function=='list_share'){
+    $os=$_POST['os'];
+    $arr_share=array();
+    $query_share=mysqli_query($link,"SELECT `id`,`$os` FROM carrotsy_virtuallover.`share` WHERE `$os` != '' LIMIT 10");
+    while($share=mysqli_fetch_assoc($query_share)){
+        $item_share=new stdClass();
+        $item_share->url=$share[$os];
+        $item_share->icon=$url_carrot_store.'/app_mobile/carrot_framework/share_icon/'.$share['id'].'.png';
+        array_push($arr_share,$item_share);
+    }
+    echo json_encode($arr_share);
+    exit;
+}
+
+if($function=='load_ads'){
+    $store='google_Play';if(isset($_POST['store'])) $store=$_POST['store'];
+    $q_app=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 1");
+    $data_ads=mysqli_fetch_assoc($q_app);
+    $id_app=$data_ads["id_app"];
+
+    $q_app_name=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+    $data_app_name=mysqli_fetch_assoc($q_app_name);
+    if($data_app_name==null){
+        $q_app_name=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_app' LIMIT 1");
+        $data_app_name=mysqli_fetch_assoc($q_app_name);
+    }
+
+    $q_app_tip=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 160) as tip FROM carrotsy_virtuallover.`product_desc_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+    $data_app_tip=mysqli_fetch_assoc($q_app_tip);
+    if($data_app_tip==null){
+        $q_app_tip=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 160) as tip FROM carrotsy_virtuallover.`product_desc_en` WHERE `id_product` = '$id_app' LIMIT 50");
+        $data_app_tip=mysqli_fetch_assoc($q_app_tip);
+    }
+    $data_ads['name']=$data_app_name['data'];
+    $data_ads['tip']=preg_replace( "/\r|\n/", "",strip_tags($data_app_tip['tip']))."...";
+    $data_ads['icon']=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$id_app."/icon.jpg&size=200x200&trim=1";
+    $data_ads['url']=$data_ads[$store];
+    echo json_encode($data_ads);
+    exit;
+}
 ?>

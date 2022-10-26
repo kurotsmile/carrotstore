@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -49,6 +49,7 @@ CREATE TABLE `app_my_girl_de` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `app_my_girl_de`;
 INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'hallo',	'Hallo, schön mit dir zu plaudern',	1,	0,	'#FFDFB0',	'',	'',	'',	'',	1,	'',	'',	0,	21,	3,	'',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'85',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (2,	'wie spät ist es',	'jetzt ist es  {gio}Std {phut}Minute',	1,	0,	'#A8E8FF',	'',	'',	'',	'',	1,	'',	'',	0,	5,	5,	'',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'83',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
@@ -2336,6 +2337,23 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2480,	'sing ein Lied',	'Sarah Connor - Bonnie & Clyde  ft. Henning Wehland',	1,	0,	'#FF1238',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'324',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sarah-connor-bonnie-clyde-ft-henning-wehland-2480',	''),
 (2481,	'sing ein Lied',	'Sarah Connor - Dazwischen sind wir Freunde',	1,	0,	'#C5C9DE',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'303',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sarah-connor-dazwischen-sind-wir-freunde-2481',	''),
 (2482,	'Ich muss dir was sagen ',	'Was denn?? Ist es was schlimmes? ',	2,	1,	'#FFCFFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	7,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'96',	'',	0,	'',	'2f674224cf484e704f61dc40c7658d42',	'',	'0',	'0',	'0',	'',	''),
-(2483,	'hallo mama',	'hey amelie alles gut bei dir?',	2,	0,	'#FF1F1F',	'',	'',	'',	'',	0,	'',	'',	0,	32,	7,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1120',	'',	0,	'',	'3c0c64cbd69e6d536fb1df01e97a85e2',	'',	'0',	'0',	'0',	'',	'');
+(2483,	'hallo mama',	'hey amelie alles gut bei dir?',	2,	0,	'#FF1F1F',	'',	'',	'',	'',	0,	'',	'',	0,	32,	7,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1120',	'',	0,	'',	'3c0c64cbd69e6d536fb1df01e97a85e2',	'',	'0',	'0',	'0',	'',	''),
+(2484,	'sing ein Lied',	'Finnel - Erste Million',	1,	1,	'#009DFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'900',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'finnel-erste-million-2484',	''),
+(2485,	'sing ein Lied',	'RAF Camora feat. Bonez MC – Blaues Licht',	1,	1,	'#FFCC63',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'335',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'raf-camora-feat-bonez-mc-blaues-licht-2485',	''),
+(2486,	'sing ein Lied',	'Falco - Rock Me Amadeus',	1,	1,	'#FFF300',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1103',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'falco-rock-me-amadeus-2486',	''),
+(2487,	'wie alt bist du ',	'Ich bin 18 Jahre alt ',	2,	0,	'#81EB4D',	'',	'',	'',	'',	0,	'',	'',	0,	12,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'173',	'',	0,	'',	'aea4c02aa741f114f0c24735afbc909f',	'',	'0',	'0',	'0',	'',	''),
+(2488,	'sing ein Lied',	'Kontra K - Hoch',	1,	0,	'#007EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'885',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'kontra-k-hoch-2488',	''),
+(2489,	'spiele bitte musik',	'Musik wird abgespielt',	2,	0,	'#FFEA5C',	'',	'',	'',	'',	0,	'',	'',	30,	16,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'837',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2490,	'Playliste öffnen',	'Playliste wird geöffnet',	2,	0,	'#C2FF87',	'',	'',	'',	'',	0,	'',	'',	11,	18,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'896',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2491,	'Das glaub ich dir',	'Schön wenn du mir glaubst',	2,	0,	'#FF6C3D',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'916',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2492,	'Das glaub ich dir',	'Schön wenn du mir glaubst',	2,	0,	'#FF96ED',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'98',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2493,	'was möchtest du tun',	'Ich fende es schön mit dir zu essen',	2,	0,	'#FFE499',	'',	'',	'',	'',	0,	'',	'',	0,	7,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'192',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2494,	'könntest du was für mich tun',	'Um was geht es',	2,	0,	'#DAFFAD',	'',	'',	'',	'',	0,	'',	'',	0,	13,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1059',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2495,	'kenne ich dich',	'Noch nicht können uns aber kennenlernen',	2,	0,	'#F0FFA8',	'',	'',	'',	'',	0,	'',	'',	0,	12,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'659',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2496,	'was sind deine Funktion',	'ich bin eine Künstliche Intelligenz und ich lerne mit Eurer Hilfe',	2,	0,	'#ABFEFF',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'670',	'',	0,	'',	'6cf82e64082c52c10e1a81cfef2f9994',	'',	'0',	'0',	'0',	'',	''),
+(2497,	'Ich bin euer Treuer Diener',	'Das ist richtig und du wirst mir jeden Wünch erfüllen den ich deine gebiterin',	2,	0,	'#FFE3E8',	'',	'',	'',	'',	0,	'',	'',	0,	16,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'220',	'',	0,	'',	'e87b5f9a4b58b9d2515cf619ba4faf06',	'',	'0',	'0',	'0',	'',	''),
+(2498,	'Was wünscht ihr meine gebitern',	'los bete mich erst mal an',	3,	0,	'#05FF28',	'',	'',	'',	'',	0,	'',	'',	0,	38,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'272',	'',	0,	'',	'e87b5f9a4b58b9d2515cf619ba4faf06',	'',	'0',	'0',	'0',	'',	''),
+(2499,	'hypnotic',	'Ja du gehörst nun meinen Willen',	3,	0,	'#66B0FF',	'',	'',	'',	'',	0,	'',	'',	0,	35,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1262',	'',	0,	'',	'e87b5f9a4b58b9d2515cf619ba4faf06',	'',	'0',	'0',	'0',	'',	''),
+(2500,	'Deine titten müssen größer werden ',	'Ja meister entschuldigung',	2,	0,	'#42FCFF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1456',	'',	0,	'',	'aea4c02aa741f114f0c24735afbc909f',	'',	'0',	'0',	'0',	'',	'');
 
--- 2022-08-20 02:29:49
+-- 2022-10-23 06:22:10

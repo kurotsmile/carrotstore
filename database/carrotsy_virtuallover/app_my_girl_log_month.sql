@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,6 +11,7 @@ CREATE TABLE `app_my_girl_log_month` (
   `data` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `app_my_girl_log_month`;
 INSERT INTO `app_my_girl_log_month` (`month`, `data`) VALUES
 ('2019-06-01',	'5117168'),
 ('2019-07-01',	'5833912'),
@@ -50,6 +51,8 @@ INSERT INTO `app_my_girl_log_month` (`month`, `data`) VALUES
 ('2022-05-01',	'1360335'),
 ('2022-06-01',	'1492957'),
 ('2022-07-01',	'1474707'),
-('2022-08-01',	'2048097');
+('2022-08-01',	'2048097'),
+('2022-09-01',	'2142024'),
+('2022-10-01',	'1480523');
 
--- 2022-08-20 02:40:31
+-- 2022-10-23 06:27:02

@@ -35,7 +35,7 @@ table tr:hover td{background-color:#ffff9b}
 .cms_tool{float:left;width:300px;margin:8px;height:34px;padding:6px;border-radius:8px}
 .cms_tool .icon{font-size:25px;float:left;margin-right:6px}
 .cms_tool:hover{background-color:#f1f1f1}
-input[type=password],input[type=text],select,textarea{width:auto;padding:5px 5px;margin:0 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
+input[type=password],input[type=text],input[type=url],select,textarea{width:auto;padding:5px 5px;margin:0 0;display:inline-block;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
 #btn_edit_bk{color:#fff;font-size:35px;text-shadow:1px 1px 8px #000;position:absolute;right:20px;bottom:20px;z-index:300}
 .db_table{width:50%;float:left}
 .db_table .count{color:#e87e00;background:#faebd7;border-radius:10px;padding:3px}

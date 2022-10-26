@@ -1,0 +1,200 @@
+.carrot_form{
+    background-color: aliceblue;
+    float: left;
+    width: auto;
+}
+
+.carrot_form fieldset{
+    margin: 6px;
+    border: solid 2px #759fd7;
+}
+
+.carrot_form fieldset legend{
+    padding-left: 3px;
+    padding-right: 3px;
+    color:#759fd7;
+}
+
+.carrot_form .form_title{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.carrot_form .form_alert{
+    background-color: #ffeebc;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.carrot_form .form_contain{
+    width: auto;
+    margin: 20px;
+    float: left;
+}
+
+.form_row{
+    float: left;
+    width: 100%;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form_row.tip{
+    color: rgb(180, 96, 0);
+    margin-bottom: 10px;
+    margin-top: 0px;
+    cursor: help;
+}
+
+.form_row .form_col{
+    float: left;
+    width: 100%;
+}
+
+.form_row .form_col.col12{
+    width: 100%;
+}
+
+.form_row .form_col.col6{
+    width: 50%;
+}
+
+.form_row .form_col.col4{
+    width: 30%;
+}
+.form_row .form_col.col8{
+    width: 70%;
+}
+
+.form_row .form_col.col8 .col10{
+    width: 90%;
+    float:left;
+}
+.form_row .form_col.col8 .col2{
+    width: 10%;
+    float:left;
+}
+
+.form_row .form_col.col8 .col4{
+    width: 30%;
+    float:left;
+}
+.form_row .form_col.col8 .col8{
+    width: 70%;
+    float:left;
+}
+
+.form_row .form_col input,select,.btn_submit{
+    width: 100%;
+}
+.form_row .form_col textarea{
+    width: 100%;
+    height: 120px;
+}
+
+.tip_label{
+    color: #759fd7;
+    font-style: italic;
+}
+
+.cr_field_color .item_color{
+    float:left;
+    background-color: #759fd7;
+    margin: 3px;
+    cursor: pointer;
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+    border: solid 2px #759fd7;
+}
+
+.cr_field_color .item_color.select{
+    border: solid 2px black;
+}
+
+.cr_field_radio .item_radio{
+    float:left;
+    width: auto;
+    margin-right: 15px;
+}
+
+.cr_field_radio .item_radio input{
+    width: auto;
+    margin-right: 5px;
+}
+
+.cr_field_radio .item_radio label{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.cr_field_listimg .item_listimg{
+    width: 60px;
+    height: 90px;
+    margin:3px;
+    float:left;
+    border: solid 2px #759fd7;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #c4ddff;
+}
+
+.cr_field_listimg .item_listimg img{
+    width: 100%;
+    float:left;
+}
+
+.cr_field_listimg .item_listimg span{
+    width: 100%;
+    font-size: 80%;
+    text-align: center;
+    float:left;
+    margin-top: 3px;
+}
+
+
+
+.cr_field_listuser .item_user{
+    float:left;
+    width: 60px;
+    height: 90px;
+    text-align: center;
+    padding: 2px;
+    border: solid 2px #759fd7;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #c4ddff;
+    margin:2px;
+}
+
+.cr_field_listuser .item_user img{
+    width: 100%;
+    float:left; 
+}
+
+.cr_field_listuser .item_user .buttonPro{
+    width: 100%;
+    float: left;
+    font-size: 9px;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 5px;
+    color: unset;
+    text-shadow: none;
+}
+
+.cr_field_listimg .item_listimg.select,.cr_field_listuser .item_user.select{
+    border: solid 2px black;
+    filter: contrast(160%);
+    filter: brightness(0.25);
+    filter: saturate(3);
+    color: white;
+    background-color: #1e3149;
+}

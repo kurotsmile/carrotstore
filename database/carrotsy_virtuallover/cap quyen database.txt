@@ -1,2 +1,2 @@
-GRANT ALL PRIVILEGES ON `carrotsy_number_magic`.* TO 'carrotsy_carrot'@'localhost'
+GRANT ALL PRIVILEGES ON `carrotsy_happy_diary`.* TO 'carrotsy_carrot'@'localhost'
 FLUSH PRIVILEGES;

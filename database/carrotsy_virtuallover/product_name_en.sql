@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,6 +11,7 @@ CREATE TABLE `product_name_en` (
   `data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
 
+TRUNCATE `product_name_en`;
 INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (126,	'Jigsaw wall'),
 (95,	'Death note - Ryuk & Rem'),
@@ -141,7 +142,6 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (127,	'Jigsaw wall'),
 (105,	'Love or No love'),
 (120,	'Virtual lover'),
-(283,	'Midi Piano Editor'),
 (136,	'Create Password'),
 (131,	'Cute virtual assistant'),
 (123,	'Music for life'),
@@ -635,7 +635,6 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (748,	'Chiếc Hộp Giáng Sinh'),
 (749,	'Những câu chuyện biển'),
 (750,	'Hỡi Người Tình'),
-(648,	'ERead Now'),
 (139,	'Worm Master'),
 (134,	'Run With Me'),
 (751,	'Super Calculator'),
@@ -643,11 +642,16 @@ INSERT INTO `product_name_en` (`id_product`, `data`) VALUES
 (285,	'Table Soccer'),
 (752,	'Chemical Periodic Table'),
 (753,	'Json Editor'),
-(754,	'Tomato Chess'),
 (755,	'Round Square Triangle'),
 (756,	'Yeah 10!'),
 (282,	'My virtual lover'),
 (132,	'My Lover'),
-(130,	'AI Lover');
+(130,	'AI Lover'),
+(754,	'Tomato Chess'),
+(757,	' Taxi time meter'),
+(648,	'ERead Now'),
+(758,	'Happy Diary'),
+(283,	'Midi Piano Editor'),
+(759,	'Herro Pig');
 
--- 2022-08-20 03:46:39
+-- 2022-10-23 06:16:18

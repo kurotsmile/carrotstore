@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,6 +15,7 @@ CREATE TABLE `product_link` (
   `link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `product_link`;
 INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (201,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/mutant-year-zero-road-to-eden/9nmp9b9kmklf'),
 (210,	'fa-steam',	'Steam',	'https://store.steampowered.com/app/999660/SAMURAI_SHODOWN_NEOGEO_COLLECTION/'),
@@ -240,15 +241,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (120,	'fa-desktop',	'Exe Pc',	'https://drive.google.com/u/0/uc?id=1F3pK2qmxVggNbmqD7c6B9EwqQevhr6YQ&export=download'),
 (120,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.kurotsmile.mygirl'),
 (120,	'fa-arrow-circle-down',	'Uptodown',	'https://virtual-lover-2d.en.uptodown.com/android'),
-(283,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano'),
-(283,	'fa-play',	'Carrot store',	'https://carrotstore.com/piano'),
-(283,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.midipiano'),
-(283,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.midipiano'),
-(283,	'fa-github-alt',	'QooApp',	'https://apps.qoo-app.com/en/app/17815'),
-(283,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9PFQDFZ84JG0'),
-(283,	'fa-arrow-circle-down',	'Uptodown',	'https://midi-piano-editor.en.uptodown.com/android'),
-(283,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C104540067'),
-(283,	'fa-shopping-bag',	'itch.io',	'https://carrotstore.itch.io/midi-piano-editor'),
 (136,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.kurotsmile.createpassword'),
 (136,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.kurotsmile.createpassword'),
 (136,	'fa-chrome',	'Chrome Web Store',	'https://chrome.google.com/webstore/detail/create-password/ndhnlbbbdmmepbechjapigogodaggbop'),
@@ -553,11 +545,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (741,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/Blood-Elves-Andrzej-Sapkowski/dp/031602919X'),
 (742,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/If-Never-Met-You-Novel-ebook/dp/B07TD5CV8S'),
 (743,	'fa-amazon',	'Amazon app store',	'https://www.amazon.cn/dp/B07BK3V557'),
-(648,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.EReadNow'),
-(648,	'fa-play',	'Carrot store',	'https://carrotstore.com/type/book'),
-(648,	'fa-leaf',	'Apk link',	'https://carrotstore.com/product_data/648/appEReadNow.apk'),
-(648,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9PM7538L58CF'),
-(648,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.EReadNow'),
 (139,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.wormmaster'),
 (139,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.wormmaster'),
 (139,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9NQPS9L58KZQ'),
@@ -601,13 +588,6 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (753,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9N9ZRZX827RF'),
 (753,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.jsoneditor'),
 (753,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105384999'),
-(754,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.tomatochess'),
-(754,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105518343'),
-(754,	'fa-arrow-circle-down',	'Uptodown',	'https://tomato-chess.en.uptodown.com/android'),
-(754,	'fa-github-alt',	'QooApp',	'https://apps.qoo-app.com/app/19810?preview=4b61a186'),
-(754,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/tomato-chess/9nnxrvglfz0r'),
-(754,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.tomatochess'),
-(754,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.tomatochess'),
 (755,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.roundsquaretriangle'),
 (755,	'fa-arrow-circle-down',	'Uptodown',	'https://round-square-triangle.en.uptodown.com/android'),
 (755,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9NRT8MV6FZ56'),
@@ -642,6 +622,38 @@ INSERT INTO `product_link` (`id_product`, `icon`, `name`, `link`) VALUES
 (130,	'fa-desktop',	'Exe Pc',	'https://drive.google.com/u/0/uc?id=1O9M9AHuGGBcu92OwoS4zWAcxDo1J6t_v&export=download'),
 (130,	'fa-arrow-circle-down',	'Uptodown',	'https://amante-de-la-ia.en.uptodown.com/android'),
 (130,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105914849'),
-(130,	'fa-grav',	'Mac',	'https://carrotstore.com/product_data/130/AI%20Lover.app.zip');
+(130,	'fa-grav',	'Mac',	'https://carrotstore.com/product_data/130/AI%20Lover.app.zip'),
+(754,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.tomatochess'),
+(754,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C105518343'),
+(754,	'fa-arrow-circle-down',	'Uptodown',	'https://tomato-chess.en.uptodown.com/android'),
+(754,	'fa-github-alt',	'QooApp',	'https://apps.qoo-app.com/app/19810?preview=4b61a186'),
+(754,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/en-us/p/tomato-chess/9nnxrvglfz0r'),
+(754,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.tomatochess'),
+(754,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.tomatochess'),
+(754,	'fa-shopping-bag',	'itch.io',	'https://carrotstore.itch.io/tomato-chess'),
+(757,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.taxitimemeter'),
+(757,	'fa-arrow-circle-down',	'Uptodown',	'https://taxi-time-meter.en.uptodown.com/android'),
+(757,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/dp/B0BCKBLPB7/'),
+(757,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9N2S72B8QCX7'),
+(757,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C107067381'),
+(757,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.taxitimemeter'),
+(648,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.EReadNow'),
+(648,	'fa-play',	'Carrot store',	'https://carrotstore.com/type/book'),
+(648,	'fa-leaf',	'Apk link',	'https://carrotstore.com/product_data/648/appEReadNow.apk'),
+(648,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9PM7538L58CF'),
+(648,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.EReadNow'),
+(648,	'fa-shopping-bag',	'itch.io',	'https://carrotstore.itch.io/eread-now'),
+(758,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.happydiary'),
+(758,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9P238CH9FJPL'),
+(283,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrotstore.midipiano'),
+(283,	'fa-play',	'Carrot store',	'https://carrotstore.com/piano'),
+(283,	'fa-scribd',	'Samsung Galaxy Store',	'https://galaxystore.samsung.com/detail/com.carrotstore.midipiano'),
+(283,	'fa-amazon',	'Amazon app store',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.midipiano'),
+(283,	'fa-github-alt',	'QooApp',	'https://apps.qoo-app.com/en/app/17815'),
+(283,	'fa-windows',	'Microsoft Store',	'https://www.microsoft.com/store/productId/9PFQDFZ84JG0'),
+(283,	'fa-arrow-circle-down',	'Uptodown',	'https://midi-piano-editor.en.uptodown.com/android'),
+(283,	'fa-pagelines',	'Huawei AppGallery',	'https://appgallery.huawei.com/#/app/C104540067'),
+(283,	'fa-shopping-bag',	'itch.io',	'https://carrotstore.itch.io/midi-piano-editor'),
+(759,	'fa-android',	'Google Play',	'https://play.google.com/store/apps/details?id=com.carrot.heroping');
 
--- 2022-08-20 02:49:28
+-- 2022-10-23 06:18:42

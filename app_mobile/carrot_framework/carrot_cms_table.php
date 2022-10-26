@@ -25,7 +25,7 @@ if($total_page>1){
 <?php }?>
 <div class="cms_tool_page">
     <a class="btn" href="<?php echo $this->url;?>?function=add_obj&table=<?php echo $name_table;?>"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm mới</a>
-    <a class="btn" href="<?php echo $this->url;?>?function=empty_obj&table=<?php echo $name_table;?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa toàn bộ dữ liệu</a>
+    <a class="btn" href="<?php echo $this->url;?>?function=empty_obj&table=<?php echo $name_table;?>" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa toàn bộ dữ liệu</a>
 </div>
 <table>
 <?php

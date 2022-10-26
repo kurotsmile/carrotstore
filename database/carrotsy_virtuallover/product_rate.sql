@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -13,6 +13,7 @@ CREATE TABLE `product_rate` (
   `lang` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `product_rate`;
 INSERT INTO `product_rate` (`product`, `user`, `rate`, `lang`) VALUES
 (22,	'kurotsmile@gmail.com',	5,	'vi'),
 (22,	'thuton92@gmail.com',	5,	'vi'),
@@ -121,6 +122,17 @@ INSERT INTO `product_rate` (`product`, `user`, `rate`, `lang`) VALUES
 (120,	'181.115.141.126',	5,	'en'),
 (283,	'41.139.133.163',	4,	'en'),
 (120,	'14.167.116.54',	5,	'vi'),
-(130,	'45adeb93623abe471be8878621f0647a',	5,	'es');
+(130,	'45adeb93623abe471be8878621f0647a',	5,	'es'),
+(120,	'24.46.179.1',	1,	'en'),
+(130,	'24d4e72a7e1294c376028d705be47d39',	5,	'vi'),
+(120,	'98.224.168.61',	5,	'en'),
+(130,	'9f8f148705980cff3c1cd1ff3fb77d80',	4,	'vi'),
+(130,	'7f6c4be32628df6ee22229e10a42b6f5',	5,	'en'),
+(130,	'af64bf89c73f268bfb8f0c4cd208be6c',	4,	'en'),
+(104,	'147.235.206.172',	3,	'en'),
+(130,	'dd8fde29d7f5de74ccafdf33a9e4e234',	5,	'es'),
+(283,	'bfbb36180aba654f3665964a5872300f',	4,	'vi'),
+(282,	'634e5053e174a634e5053e1785',	5,	'en'),
+(759,	'b3ee82bafceb3b5fc20824146b44ff2a',	3,	'en');
 
--- 2022-08-20 02:43:09
+-- 2022-10-23 06:06:19

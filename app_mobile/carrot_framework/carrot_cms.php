@@ -16,7 +16,7 @@ class Carrot_CMS{
     private $css=array();
     private $icon;
 
-    function __construct($name_cms,$link_mysql,$path="")
+    function __construct($name_cms,$link_mysql="",$path="")
     {
         session_start();
         $this->name=$name_cms;
@@ -124,15 +124,15 @@ class Carrot_CMS{
         return '<div class="buttonPro small" onclick="paste_tag(\''.$emp.'\');$(this).addClass(\'yellow\')"><i class="fa fa-paste" aria-hidden="true"></i></div>';
     }
 
-    private function cp($emp){
+    public function cp($emp){
         return $this->copy($emp).''.$this->paste($emp);
     }
 
-    private function thumb($url,$size){
+    public function thumb($url,$size){
         return $this->url_carrot_store.'/thumb.php?src='.$this->url_carrot_store.'/'.$url.'&size='.$size;
     }
 
-    private function user($user_id,$user_lang){
+    public function user($user_id,$user_lang){
         $user_name='<i class="fa fa-user" aria-hidden="true"></i>';
         if($user_id!=""){
             $data_user=$this->q_data("SELECT `name`,`sex` FROM carrotsy_virtuallover.`app_my_girl_user_$user_lang` WHERE `id_device` = '$user_id' LIMIT 1");
@@ -185,6 +185,16 @@ class Carrot_CMS{
     private function msg($msg,$type='alert'){
         $html='<script>swal("'.$msg.'");</script>';
         return $html;
+    }
+
+    public function url_exists($url){
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if( $httpCode == 200 ){return true;}
+        return false;
     }
 
     public function ajax($data,$out=''){
@@ -241,9 +251,13 @@ class Carrot_CMS{
         return $html_menu;
     }
 
-    private function get_field_in_table($name_table){
+    public function get_field_in_table($name_table,$name_database=''){
         $array_field=array();
-        $query_field=mysqli_query($this->link_mysql,"SELECT `COLUMN_NAME` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='$name_table' AND `TABLE_SCHEMA`='".$this->database_mysql."'");
+        if($name_database!="")
+            $query_field=mysqli_query($this->link_mysql,"SELECT `COLUMN_NAME` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='$name_table' AND `TABLE_SCHEMA`='".$name_database."'");
+        else
+            $query_field=mysqli_query($this->link_mysql,"SELECT `COLUMN_NAME` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='$name_table' AND `TABLE_SCHEMA`='".$this->database_mysql."'");
+
         while($field_data=mysqli_fetch_assoc($query_field)){
            array_push($array_field,$field_data['COLUMN_NAME']);
         }
@@ -391,6 +405,15 @@ class Carrot_CMS{
 
     private function btn_function($name_function,$object_table,$id="",$filed_main=""){
         return $this->url."?function=$name_function&table=$object_table&id=$id&filed_main=$filed_main";
+    }
+
+    private function empty_obj(){
+        $table=$_GET['table'];
+        $query_empty=mysqli_query($this->link_mysql,"TRUNCATE TABLE `$table`");
+        if($query_empty)
+            echo 'Delete all item success!';
+        else
+            echo 'Delete all item fail!'.mysqli_error($this->link_mysql);
     }
 
     public function html_show(){

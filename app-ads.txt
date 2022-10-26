@@ -54,3 +54,4 @@ meitu.com, 282, RESELLER
 google.com, pub-3279610737475307, RESELLER
 telaria.com, rwd19-1036857, RESELLER, 1a4e959a1b50034a
 tremorhub.com, rwd19-1036857, RESELLER, 1a4e959a1b50034a
+google.com, pub-5388516931803092, DIRECT, f08c47fec0942fa0

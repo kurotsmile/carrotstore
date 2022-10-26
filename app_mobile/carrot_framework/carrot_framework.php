@@ -178,6 +178,16 @@ function get_url_avatar_user_thumb($id_user,$lang,$size){
     }
 }
 
+function check_table_exit($table_app){
+    global $link;
+    $q_check_table=mysqli_query($link,"SELECT count(*) as c FROM information_schema.TABLES WHERE (TABLE_SCHEMA = 'carrotsy_work') AND (TABLE_NAME = '$table_app')");
+    $data_count=mysqli_fetch_assoc($q_check_table);
+    if($data_count['c']>0)
+        return true;
+    else
+        return false;
+}
+
 if($function=='list_app_carrot'){
     $arr_app=array();
     $os=$_POST['os'];
@@ -191,7 +201,12 @@ if($function=='list_app_carrot'){
             array_push($arr_app,$row_ads);
         }
     }else{
-        $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 12");
+        $type_app='';if(isset($_POST['type'])) $type_app=$_POST['type'];
+        if($type_app=='')
+            $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 12");
+        else
+            $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' AND `type`='$type_app' ORDER BY RAND() LIMIT 12");
+            
         while($row_ads=mysqli_fetch_array($query_list_ads)){
             $id_app=$row_ads['id_app'];
             $name_app='';
@@ -295,16 +310,24 @@ if($function=='login'){
         $login->{"msg"}="error_username";
         $login->{"msg_en"}="Phone number (or email) and password cannot be left blank";
     }else{
-        $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE (`email` = '$login_username' OR `sdt` = '$login_username') AND (`password`='$login_password') LIMIT 1");
-        $data_user=mysqli_fetch_assoc($query_user);
+        $query_country=mysqli_query($link,"SELECT `key` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `ver0`=1");
+        $key_lang="en";
+        while($item_country=mysqli_fetch_assoc($query_country)){
+            $key_lang=$item_country['key'];
+            $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$key_lang` WHERE (`email` = '$login_username' OR `sdt` = '$login_username') AND (`password`='$login_password') LIMIT 1");
+            $data_user=mysqli_fetch_assoc($query_user);
+            $lang=$key_lang;
+            if($data_user!=null) break;
+        }
 
         if($data_user!=null){
             $login->{"error"}="0";
             $login->{"list_info"}=get_data_user($data_user);
             $login->{"user_id"}=$data_user['id_device'];
-            $login->{"user_lang"}=$lang;
+            $login->{"user_lang"}=$key_lang;
             $login->{"user_password"}=$data_user['password'];
-            $login->{"avatar"}=get_url_avatar_user($data_user['id_device'],$lang);
+            $login->{"avatar"}=get_url_avatar_user_thumb($data_user['id_device'],$lang,'50x50');
+            mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `date_cur`=NOW() WHERE `id_device`='".$data_user['id_device']."' LIMIT 1");
         }else{
             $login->{"error"}="1";
             $login->{"msg"}="error_password_login";
@@ -599,13 +622,26 @@ if($function=='dowwnload_lang_by_key'){
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
     $query_data_lang_app=mysqli_query($link,"SELECT `data` FROM  carrotsy_table_soccer.`lang_val` WHERE `lang` = '$key' LIMIT 1");
-    $data_lang_app=mysqli_fetch_assoc($query_data_lang_app);
+    if($query_data_lang_app){
+        $data_lang_app=mysqli_fetch_assoc($query_data_lang_app);
+        $data_lang->{"lang_app"}=$data_lang_app["data"];
+    }
 
-    $data_lang->{"lang_app"}=$data_lang_app["data"];
     $data_lang->{"lang_key"}=$key;
     $data_lang->{"lang_icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$key.'.png&size=50&trim=1';;
     $data_lang->{"lang_name"}=$data_country['name'];
     echo json_encode($data_lang);
+    exit;
+}
+
+if($function=='list_music_game'){
+    $arr_list_music=array();
+    $query_list_music=mysqli_query($link,"SELECT * FROM carrotsy_sheep.`sound` ORDER BY RAND() LIMIT 25");
+    while ($row=mysqli_fetch_assoc($query_list_music)) {
+        $row["link"]=$url_carrot_store."/app_mobile/sheep/music/".$row['id'].".mp3";
+        array_push($arr_list_music,$row);
+    }
+    echo json_encode($arr_list_music);
     exit;
 }
 
@@ -676,5 +712,129 @@ if($function=='list_share'){
     }
     echo json_encode($arr_share);
     exit;
+}
+
+if($function=='submit_rate'){
+    $app_id=$_POST['app_id'];
+    $inp_review=$_POST['inp_review'];
+    $star_feedback=$_POST['star_feedback'];
+    $user_id=$_POST['user_id'];
+
+    if($star_feedback!="-1"){
+        $star_feedback=intval($star_feedback)+1;
+        $query_check_rate=mysqli_query($link,"SELECT `product` FROM carrotsy_virtuallover.`product_rate` WHERE `product` = '$app_id' AND `user` = '$user_id' LIMIT 1");
+        if(mysqli_num_rows($query_check_rate)>0){
+            mysqli_query($link,"UPDATE carrotsy_virtuallover.`product_rate` SET `rate` = '$star_feedback',`lang`='$lang' WHERE `product`='$app_id' AND `user`='$user_id' AND `lang`='$lang' LIMIT 1;");
+        }else{
+            mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`product_rate` (`product`, `user`, `rate`, `lang`) VALUES ('$app_id', '$user_id', '$star_feedback', '$lang');");
+        }
+    }
+
+    if($inp_review!=""){
+        $inp_review=addslashes($inp_review);
+        $id_c="c".uniqid();
+
+        $query_check_comment=mysqli_query($link,"SELECT `id` FROM carrotsy_virtuallover.`comment` WHERE `username` = '$user_id' AND `productid` = '$app_id' LIMIT 1");
+        if(mysqli_num_rows($query_check_comment)>0)
+            mysqli_query($link,"UPDATE carrotsy_virtuallover.`comment` SET `comment` = '$inp_review',`lang`='$lang' WHERE `username` = '$user_id' AND `productid` = '$app_id' ");
+        else
+            mysqli_query($link,"INSERT INTO carrotsy_virtuallover.`comment` (`id_c`, `username`, `comment`, `productid`, `created`, `upvote_count`, `parent`, `type_comment`, `lang`) VALUES ('$id_c', '$user_id', '$inp_review', '$app_id', NOW(), '0', '0', 'products', '$lang');");
+    }
+    exit;
+}
+
+if($function=='get_rate'){
+    $user_id=$_POST['user_id'];
+    $app_id=$_POST['app_id'];
+
+    $query_rate=mysqli_query($link,"SELECT `rate` FROM carrotsy_virtuallover.`product_rate` WHERE `user` = '$user_id' AND `product` = '$app_id' LIMIT 1");
+    $data_rate=mysqli_fetch_assoc($query_rate);
+
+    $query_comment=mysqli_query($link,"SELECT `comment`  FROM carrotsy_virtuallover.`comment` WHERE `username` = '$user_id' AND `productid` = '$app_id' LIMIT 1");
+    $data_comment=mysqli_fetch_assoc($query_comment);
+
+    $obj_rate=new stdClass();
+    if($data_rate!=null) $obj_rate->{"star"}=$data_rate['rate'];
+    if($data_comment!=null) $obj_rate->{"comment"}=$data_comment['comment'];
+
+    echo json_encode($obj_rate);
+    exit;
+}
+
+if($function=='load_ads'){
+    $store='google_Play';if(isset($_POST['store'])) $store=$_POST['store'];
+    $q_app=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 1");
+    $data_ads=mysqli_fetch_assoc($q_app);
+    $id_app=$data_ads["id_app"];
+
+    $q_app_name=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+    $data_app_name=mysqli_fetch_assoc($q_app_name);
+    if($data_app_name==null){
+        $q_app_name=mysqli_query($link,"SELECT `data` FROM carrotsy_virtuallover.`product_name_en` WHERE `id_product` = '$id_app' LIMIT 1");
+        $data_app_name=mysqli_fetch_assoc($q_app_name);
+    }
+
+    $q_app_tip=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 160) as tip FROM carrotsy_virtuallover.`product_desc_$lang` WHERE `id_product` = '$id_app' LIMIT 1");
+    $data_app_tip=mysqli_fetch_assoc($q_app_tip);
+    if($data_app_tip==null){
+        $q_app_tip=mysqli_query($link,"SELECT SUBSTRING(`data`, 1, 160) as tip FROM carrotsy_virtuallover.`product_desc_en` WHERE `id_product` = '$id_app' LIMIT 50");
+        $data_app_tip=mysqli_fetch_assoc($q_app_tip);
+    }
+    $data_ads['name']=$data_app_name['data'];
+    $data_ads['tip']=preg_replace( "/\r|\n/", "",strip_tags($data_app_tip['tip']))."...";
+    $data_ads['icon']=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/product_data/".$id_app."/icon.jpg&size=200x200&trim=1";
+    $data_ads['url']=$data_ads[$store];
+    echo json_encode($data_ads);
+    exit;
+}
+
+if($function=='list_top_player'){
+    $id_app=$_POST["id_app"];
+    $table_app="app_".$id_app."_scores";
+
+    if(check_table_exit($table_app)){
+        $q_list_top_player=mysqli_query($link,"SELECT `user_id`,`lang`,`scores` FROM carrotsy_work.`$table_app` ORDER BY `scores` DESC LIMIT 20");
+        $list_top_player=array();
+        while($t_player=mysqli_fetch_assoc($q_list_top_player)){
+            $p_user_id=$t_player['user_id'];
+            $p_user_lang=$t_player['lang'];
+            $query_name_user=mysqli_query($link,"SELECT `name` FROM carrotsy_virtuallover.`app_my_girl_user_$p_user_lang` WHERE `id_device` = '$p_user_id' LIMIT 1");
+            $data_name=mysqli_fetch_assoc($query_name_user);
+            if($data_name['name']!=null){
+                $t_player['name']=$data_name['name'];
+                $t_player['avatar']=get_url_avatar_user_thumb($p_user_id,$p_user_lang,'50');
+                array_push($list_top_player,$t_player);
+            }
+        }
+        echo json_encode($list_top_player);
+    }else{
+        echo 'create_top_player';
+        $q_create_table=mysqli_query($link,"CREATE TABLE carrotsy_work.`app_".$id_app."_scores` (`user_id` varchar(100) NOT NULL,`lang` varchar(2) NOT NULL,`scores` int NOT NULL,`type` int(2) NOT NULL,`date_update` date NOT NULL);");
+    }
+    exit;
+}
+
+if($function=='update_scores_player'){
+    $id_app=$_POST["id_app"];
+    $id_user=$_POST['id_user'];
+    $lang_user=$_POST['lang_user'];
+    $scores=$_POST['scores'];
+    $table_app="app_".$id_app."_scores";
+
+    $q_scores=mysqli_query($link,"SELECT `scores` FROM carrotsy_work.`".$table_app."` WHERE `user_id` = '".$id_user."' AND `lang` = '".$lang_user."' LIMIT 1");
+    if($q_scores){
+        $data_scores=mysqli_fetch_assoc($q_scores);
+        if($data_scores==null){
+            mysqli_query($link,"INSERT INTO carrotsy_work.`".$table_app."` (`user_id`, `lang`, `scores`, `type`, `date_update`) VALUES ('".$id_user."', '".$lang_user."', '".$scores."', '0', NOW());");
+        }
+        else{
+            $user_scores=$data_scores['scores'];
+            if(intval($scores)>intval($user_scores)){
+                mysqli_query($link,"UPDATE carrotsy_work.`".$table_app."` SET `scores` = '$scores',`date_update` = NOW() WHERE `user_id` = '$id_user' AND  `lang` = '$lang_user' LIMIT 1;");
+            }
+        }
+    }else{
+        echo mysqli_error($link);
+    }
 }
 ?>

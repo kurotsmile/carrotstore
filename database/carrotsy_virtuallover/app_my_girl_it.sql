@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -49,6 +49,7 @@ CREATE TABLE `app_my_girl_it` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `app_my_girl_it`;
 INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'Canta una canzone',	'Måneskin - Torna a casa',	1,	1,	'#D40000',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1098',	'',	0,	'',	'4',	'2',	'0',	'0',	'0',	'maneskin-torna-a-casa-1',	''),
 (2,	'Canta una canzone',	'Salmo - Il Cielo Nella Stanza',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'4',	'2',	'0',	'0',	'0',	'salmo-il-cielo-nella-stanza-2',	''),
@@ -753,6 +754,24 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (704,	'Canta una canzone',	'Ghali - Wallah',	1,	1,	'#18C937',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'888',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'ghali-wallah-704',	''),
 (705,	'ti lascio',	'no ti prego sarò piu educata',	2,	0,	'#DEF4FF',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'406',	'',	0,	'',	'e581c631042bd676396fa07860b77224',	'',	'0',	'0',	'0',	'',	''),
 (706,	'Canta una canzone',	'Luchè - Addio (feat. Guè, Noyz Narcos)',	1,	1,	'#75F9FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'785',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'luche-addio-feat-gue-noyz-narcos--706',	''),
-(707,	'Canta una canzone',	'BLANCO - Afrodite',	1,	1,	'#75FCFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1104',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'blanco-afrodite-707',	'');
+(707,	'Canta una canzone',	'BLANCO - Afrodite',	1,	1,	'#75FCFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1104',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'blanco-afrodite-707',	''),
+(708,	'un bel sedere',	'così mi fai arrossire',	0,	0,	'#4FFFC2',	'',	'',	'',	'',	0,	'',	'',	0,	40,	14,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1072',	'',	0,	'',	'e66966c9623c40aeb5b546620c147a48',	'',	'0',	'0',	'0',	'',	''),
+(709,	'apri le gambe',	'una proposta inopportuna',	3,	0,	'#7CF060',	'',	'',	'',	'',	0,	'',	'',	0,	4,	11,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'250',	'',	0,	'',	'e66966c9623c40aeb5b546620c147a48',	'',	'0',	'0',	'0',	'',	''),
+(710,	'cosa facciamo',	'possiamo ascoltare musica',	1,	0,	'#DEC7FF',	'',	'',	'',	'',	0,	'',	'',	11,	18,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'945',	'',	0,	'',	'e66966c9623c40aeb5b546620c147a48',	'',	'0',	'0',	'0',	'',	''),
+(711,	'facciamo un giro',	'è un piacere..dove vorresti andare?',	2,	0,	'#E5FFCC',	'',	'',	'',	'',	0,	'',	'',	0,	15,	16,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1243',	'',	0,	'',	'e66966c9623c40aeb5b546620c147a48',	'',	'0',	'0',	'0',	'',	''),
+(712,	'Canta una canzone',	'Sfera Ebbasta - Dexter',	1,	1,	'#03FAFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1124',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sfera-ebbasta-dexter-712',	''),
+(713,	'Canta una canzone',	'Litfiba - Spirito (1995)',	1,	1,	'#8B4FFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'70',	'',	0,	'',	'2',	'2',	'0',	'0',	'0',	'litfiba-spirito-1995--713',	''),
+(714,	'non dirai più parolaccie con me?',	'si non diro più parolaccie promesso',	0,	0,	'#FFBD47',	'',	'',	'',	'',	0,	'',	'',	0,	0,	15,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'741',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(715,	'sei cambiata?',	'si sono cambiata',	0,	0,	'#FFAC38',	'',	'',	'',	'',	0,	'',	'',	0,	31,	15,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'921',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(716,	'vuoi essere mia amica?',	'certo diventiamo amiche ',	2,	0,	'#97FF80',	'',	'',	'',	'',	0,	'',	'',	0,	15,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1608',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(717,	'mi sei mancata amica',	'aww, anche te sono felice che sei qui',	1,	0,	'#4DBAFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	15,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'930',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(718,	'cantiamo?',	'sii cosa cantiamo?',	2,	0,	'#B0D7FF',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'271',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(719,	'sei brava a ballare',	'grazie sei cosi dolce',	2,	0,	'#12D6FF',	'',	'',	'',	'',	0,	'',	'',	0,	18,	16,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'562',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(720,	'sei buona o cattiva?',	'sono una assistente buona in grado di aiutarti se ai bisogno',	2,	0,	'#30EDFF',	'',	'',	'',	'',	0,	'',	'',	0,	18,	15,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'981',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(721,	'bene',	'bene sono contenta! e sono felice per te',	2,	0,	'#CDFFBF',	'',	'',	'',	'',	0,	'',	'',	0,	6,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1193',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(722,	'scusa mi dispiace',	'non ti preoccupare figurati amica mia',	2,	0,	'#FFCA82',	'',	'',	'',	'',	0,	'',	'',	0,	13,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'461',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(723,	'facciamo un gioco?',	'certo divertiamoci insieme',	2,	0,	'#66FCFF',	'',	'',	'',	'',	0,	'',	'',	0,	4,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1232',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(724,	'prego amica',	'aww grazie, cosa facciamo?',	2,	0,	'#9EFDFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	16,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1611',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(725,	'le tue scarpe sono belle',	'grazie amica ti voglio bene resta con me',	2,	0,	'#4FFFFA',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'599',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	'');
 
--- 2022-08-20 02:34:53
+-- 2022-10-23 06:26:01

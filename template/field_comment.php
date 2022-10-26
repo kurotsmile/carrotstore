@@ -44,7 +44,7 @@ $(document).ready(function(){
             {
                 id: '<?php echo $row['id']; ?>',
                 created: '<?php echo $row['created']; ?>',
-                content: '<?php echo trim($row['comment']); ?>',
+                content: '<?php echo addslashes(trim($row['comment'])); ?>',
                 fullname: '<?php echo $comment_user_name;?>',
                 profile_picture_url: '<?php  echo $comment_user_avatar; ?>',
                 upvote_count: <?php echo $row['upvote_count']; ?>,

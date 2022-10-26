@@ -12,6 +12,8 @@ while($chat=mysqli_fetch_assoc($list_chat)){
     $c_user_id=$chat['id_device'];
 
     $url_chat_add=$this->url_carrot_store.'/app_my_girl_add.php?key='.$c_question.'&lang='.$c_langs.'&answer='.$c_answer.'&sex='.$c_sex.'&effect=0&action=2&character_sex='.$c_character_sex.'&color=FFFFFF&user_id='.$c_user_id;
+    $url_chat_add_cr=$this->url_carrot_store.'/app_mobile/appai/index.php?menu=0&key='.$c_question.'&lang='.$c_langs.'&answer='.$c_answer.'&sex='.$c_sex.'&effect=0&action=2&character_sex='.$c_character_sex.'&color=FFFFFF&user_id='.$c_user_id;
+    
     if($c_langs=='zh')$c_langs="zh-CN";
     $url_chat_translate='https://translate.google.com/?sl='.$c_langs.'&tl=vi&text='.$c_question."%0A%0A".$c_answer.'&op=translate';
 
@@ -27,7 +29,7 @@ while($chat=mysqli_fetch_assoc($list_chat)){
     $s_table.='<a class="buttonPro small black" onclick="$(this).removeClass(\'black\').addClass(\'yellow\');" target="_blank" href="'.$url_chat_translate.'" ><i class="fa fa-arrow-right" aria-hidden="true"></i></a> <a onclick="$(this).css(\'color\', \'red\');" target="_blank" href="'.$url_chat_translate.'">'.$chat['answer'].'</a>';
     $s_table.='</td>';
     $s_table.='<td>';
-    $s_table.='<a onclick="$(this).addClass(\'blue\');" target="_blank" href="'.$url_chat_add.'" class="buttonPro small"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>';
+    $s_table.='<a onclick="$(this).addClass(\'blue\');" target="_blank" href="'.$url_chat_add.'" oncontextmenu="window.open(\''.$url_chat_add_cr.'\');return false;" class="buttonPro small"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>';
     $s_table.='<a href="#" class="buttonPro small red" onclick="chat_act(\'del\',\''.$c_id.'\')"><i class="fa fa-trash" aria-hidden="true"></i></a>';
     $s_table.='</td>';
     $s_table.='</tr>';

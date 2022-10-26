@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -49,6 +49,7 @@ CREATE TABLE `app_my_girl_tr` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `app_my_girl_tr`;
 INSERT INTO `app_my_girl_tr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'Merhaba',	'Merhaba, seninle sohbet etmek güzel',	1,	0,	'#FFD6FF',	'',	'',	'',	'',	1,	'',	'',	0,	5,	0,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'716',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (2,	'saat kaç',	'şimdi: {gio}: {phut}',	2,	0,	'#38DDFF',	'',	'',	'',	'',	1,	'',	'',	0,	20,	0,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'83',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
@@ -2534,6 +2535,12 @@ INSERT INTO `app_my_girl_tr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2509,	'Ölüyorum ',	'Hayır...Nütfen ölme seni seviyorum ',	2,	1,	'#FFE040',	'',	'',	'',	'',	0,	'',	'',	0,	3,	4,	'tr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'434',	'',	0,	'',	'd6c5292734152f9ae60578142d4a190e',	'',	'0',	'0',	'0',	'',	''),
 (2510,	'kes sesini sadece ahla',	'tamam aşkım',	3,	0,	'#FF001D',	'',	'',	'',	'',	0,	'',	'',	0,	14,	15,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1581',	'',	0,	'',	'52e54ff55310cafddfca6ff71891bc55',	'',	'0',	'0',	'0',	'',	''),
 (2511,	'bir şarkı söyle',	'Sefo - Bilmem Mi? (prod.by Aerro)',	1,	1,	'#007EFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'tr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'885',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sefo-bilmem-mi-prod-by-aerro--2511',	''),
-(2512,	'bir şarkı söyle',	'Gripin - Arkadaş',	1,	1,	'#75F9FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'tr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'785',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gripin-arkada--2512',	'');
+(2512,	'bir şarkı söyle',	'Gripin - Arkadaş',	1,	1,	'#75F9FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'tr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'785',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'gripin-arkada--2512',	''),
+(2513,	'aşkım',	'söyle başıma gelen en güzelşey',	1,	0,	'#EFFFBD',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'793',	'',	0,	'',	'd009f6680fc484157a46b1c7b8e9fdd0',	'',	'0',	'0',	'0',	'',	''),
+(2514,	'öp beni hadi',	'hımmm nereden öpeyim',	3,	0,	'#D9FFEA',	'',	'',	'',	'',	0,	'',	'',	0,	13,	15,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'429',	'',	0,	'',	'22e6d0ff70671d993ae825c6ab71990e',	'',	'0',	'0',	'0',	'',	''),
+(2515,	'bir şarkı söyle',	'Tuğçe Haşimoğlu - Bizim Şarkı Çalsa',	1,	0,	'#FFF419',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1166',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'tu-ce-ha-imo-lu-bizim-ark-alsa-2515',	''),
+(2516,	'aşkım seni çok seviyorum',	'oyy kurban olurum sana ben bende seni çok seviyorum bebeim',	2,	0,	'#FF75A5',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'tr',	1,	'',	'1744',	'chat',	0,	'',	1,	0,	0,	'1204',	'',	0,	'',	'f5204885f25c3d264640a2d0ea8fb11b',	'',	'0',	'0',	'0',	'',	''),
+(2517,	'birtanem',	'efendim hayatımın anlamı',	2,	0,	'#FF1488',	'',	'',	'',	'',	0,	'',	'',	0,	16,	0,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'818',	'',	0,	'',	'f5204885f25c3d264640a2d0ea8fb11b',	'',	'0',	'0',	'0',	'',	''),
+(2518,	'Neler yapıyorsun',	'Seni düşünüyorum',	1,	0,	'#CDFFA8',	'',	'',	'',	'',	0,	'',	'',	0,	28,	0,	'tr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'283',	'',	0,	'',	'0aca9423a262a07af9f7bb0018585f87',	'',	'0',	'0',	'0',	'',	'');
 
--- 2022-08-20 02:53:03
+-- 2022-10-23 06:28:28

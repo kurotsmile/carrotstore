@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -13,6 +13,7 @@ CREATE TABLE `app_my_girl_remove_key_music` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `app_my_girl_remove_key_music`;
 INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 (''),
 (' Angry too'),
@@ -75,6 +76,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('30 de febrero'),
 ('38 special'),
 ('4 Minutes'),
+('40 metros'),
 ('4k'),
 ('5 fingure death punch'),
 ('5 seconds of summer'),
@@ -290,6 +292,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('alzate'),
 ('Am I Supposed to Apologize'),
 ('âm thầm bên em'),
+('amadeus'),
 ('amado batista'),
 ('Amanda'),
 ('amanda miguel'),
@@ -506,6 +509,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('ataque'),
 ('atencion'),
 ('atlantic star'),
+('Atlantis'),
 ('atlas falls'),
 ('Atoladinha'),
 ('Atrévete'),
@@ -549,6 +553,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('bab buny'),
 ('baby'),
 ('Baby ariel'),
+('Baby Baby'),
 ('Baby Hotline'),
 ('baby lilnasx'),
 ('baby one more time'),
@@ -625,6 +630,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('Banda MS'),
 ('banda tierra sagrada'),
 ('bande organisé'),
+('bandido'),
 ('bang - anitta'),
 ('Bâng Khuâng'),
 ('Bang kieu'),
@@ -640,6 +646,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('barak'),
 ('barbie'),
 ('Barbie and ken'),
+('Barbie dream'),
 ('barbie girl'),
 ('barracuda'),
 ('bartender'),
@@ -1069,6 +1076,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('canwekissforever'),
 ('Can’t hold us'),
 ('Cao Bá Hưng'),
+('Capital'),
 ('Capital bra'),
 ('Capital bra flieg hoch'),
 ('caramel o girls song'),
@@ -1163,6 +1171,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('chase atlantic'),
 ('chasing cars'),
 ('chata'),
+('châu dương'),
 ('Chau khai phong'),
 ('chạy ngay đi'),
 ('chayanes'),
@@ -1531,6 +1540,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('Datkaa'),
 ('datmaniac'),
 ('dấu mưa'),
+('dau vay du roi'),
 ('Daughter'),
 ('david'),
 ('david archuleta'),
@@ -3472,6 +3482,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('masked wolf'),
 ('master'),
 ('MẤT BAO LÂU'),
+('mặt mộc'),
 ('Mắt Ngọc'),
 ('Mắt tím môi đỏ'),
 ('mặt trái của sự thật'),
@@ -3723,6 +3734,7 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('mỗi người một nơi'),
 ('molinos de viento'),
 ('Molotov'),
+('Moment in time'),
 ('mommae'),
 ('MOMOLAND'),
 ('Mon laferte'),
@@ -6642,4 +6654,4 @@ INSERT INTO `app_my_girl_remove_key_music` (`key`) VALUES
 ('안녕하세요.'),
 ('올라');
 
--- 2022-08-20 03:40:13
+-- 2022-10-23 06:25:01

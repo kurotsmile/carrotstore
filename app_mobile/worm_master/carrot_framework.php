@@ -191,7 +191,12 @@ if($function=='list_app_carrot'){
             array_push($arr_app,$row_ads);
         }
     }else{
-        $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 12");
+        $type_app='';if(isset($_POST['type'])) $type_app=$_POST['type'];
+        if($type_app=='')
+            $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' ORDER BY RAND() LIMIT 12");
+        else
+            $query_list_ads=mysqli_query($link,"SELECT `$store`,`id_app` FROM carrotsy_virtuallover.`app_ads` WHERE `$store` != '' AND `type`='$type_app' ORDER BY RAND() LIMIT 12");
+            
         while($row_ads=mysqli_fetch_array($query_list_ads)){
             $id_app=$row_ads['id_app'];
             $name_app='';

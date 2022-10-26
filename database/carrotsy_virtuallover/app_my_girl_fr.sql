@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -49,6 +49,7 @@ CREATE TABLE `app_my_girl_fr` (
   FULLTEXT KEY `chat` (`chat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `app_my_girl_fr`;
 INSERT INTO `app_my_girl_fr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q1`, `q2`, `r1`, `r2`, `tip`, `link`, `vibrate`, `effect`, `action`, `face`, `author`, `character_sex`, `id_redirect`, `pater`, `pater_type`, `ver`, `os`, `limit_chat`, `limit_date`, `limit_month`, `effect_customer`, `func_sever`, `disable`, `limit_day`, `user_create`, `user_update`, `os_window`, `os_ios`, `os_android`, `slug`, `file_url`) VALUES
 (1,	'Au revoir!',	'À bientôt!  {ten_user}',	1,	0,	'#FFEFAD',	'',	'',	'',	'',	1,	'',	'',	4,	20,	3,	'',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
 (2,	'Au revoir!',	'À bientôt!  {ten_user}',	1,	1,	'#FFDE70',	'',	'',	'',	'',	1,	'',	'',	4,	20,	0,	'',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'',	'',	0,	'',	'',	'',	'0',	'0',	'0',	'',	''),
@@ -3099,6 +3100,11 @@ INSERT INTO `app_my_girl_fr` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (3226,	'oui ?',	'je peux avoir une augmentation ?',	2,	0,	'#38C9FF',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'17',	'',	0,	'',	'a4000d4d6232584c24a9e30a65071f72',	'',	'0',	'0',	'0',	'',	''),
 (3227,	'chanter une chanson',	'Alonzo - Binta',	1,	1,	'#2BFFB3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'327',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'alonzo-binta-3227',	''),
 (3228,	'Bonjour mon ange ',	'Bonjour mon amour ',	2,	0,	'#FF5959',	'',	'',	'',	'',	0,	'',	'',	0,	5,	2,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1027',	'',	0,	'',	'960bb2d3ff5b3cc15d7173ab0d4db51d',	'',	'0',	'0',	'0',	'',	''),
-(3229,	'chanter une chanson',	'Indila - Ainsi Bas La Vida',	1,	0,	'#6745FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'889',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'indila-ainsi-bas-la-vida-3229',	'');
+(3229,	'chanter une chanson',	'Indila - Ainsi Bas La Vida',	1,	0,	'#6745FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'889',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'indila-ainsi-bas-la-vida-3229',	''),
+(3230,	'chanter une chanson',	'Emkal - J\'la connais, Pt. 1 ',	1,	1,	'#A300E3',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'908',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'emkal-j-la-connais-pt-1--3230',	''),
+(3231,	'chanter une chanson',	'Tayc - D O D O',	1,	0,	'#E24AFF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'711',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'tayc-d-o-d-o-3231',	''),
+(3232,	'tu délires',	'pourquoi dis tu ça ?',	2,	0,	'#E0DEFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	15,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'836',	'',	0,	'',	'1bfe738bae4da0274fa86c4991cc3b0e',	'',	'0',	'0',	'0',	'',	''),
+(3233,	'bah rien la routine tu sais',	'mais du coup tu la pècho la meuf que tu me parles',	1,	0,	'#FFF061',	'',	'',	'',	'',	0,	'',	'',	0,	0,	16,	'fr',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'445',	'',	0,	'',	'9ae12b5dcc0989916ac6f2daf0961a8a',	'',	'0',	'0',	'0',	'',	''),
+(3234,	'dormir, dort, dors',	'Oui bien sur allons dormir',	2,	1,	'#EDDABB',	'',	'',	'',	'',	0,	'',	'',	0,	27,	1,	'fr',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'504',	'',	0,	'',	'c1af74ceefdb252247e69fa144f94aa2',	'',	'0',	'0',	'0',	'',	'');
 
--- 2022-08-20 02:33:41
+-- 2022-10-23 06:25:36

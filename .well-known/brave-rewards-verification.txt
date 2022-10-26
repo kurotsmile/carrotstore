@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: carrotstore.com
+Token: 116dcb984fa93d1507bf851812d194b36c58be24df866d2ea1a9b61aa6fd5948

@@ -1,6 +1,19 @@
 <?php
+include_once("carrot_cms_form.php"); 
+
 $func='view';if(isset($_REQUEST['func'])) $func=$_REQUEST['func'];
 $url_cur=$this->cur_url;
+
+$cr_frm=new carrot_form("help",$this);
+$cr_frm->set_title("Thêm mới hàm hoặc phương thức và biến");
+$cr_frm->paser_table_mysql("work_code",$_POST,'carrotsy_work');
+$cr_frm->set_type("add");
+
+$id_field=$cr_frm->get_field_by_id("id");
+$id_field->set_is_field_update();
+
+echo $cr_frm->show();
+
 ?>
 <div style="float:left;padding:10px;">
 <?php if($func=='add'||$func=='edit'){

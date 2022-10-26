@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -11,6 +11,7 @@ CREATE TABLE `product_name_vi` (
   `data` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
 
+TRUNCATE `product_name_vi`;
 INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (95,	'Sổ tay tử thần - Ryuk và Rem'),
 (95,	'Sổ tay tử thần - Ryuk và Rem'),
@@ -24,7 +25,6 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (127,	'Ghép hình thần tượng'),
 (105,	'Yêu hay không yêu'),
 (120,	'Người yêu ảo'),
-(283,	'Trình soạn thảo piano Midi'),
 (136,	'Tạo mật khẩu'),
 (131,	'Trợ lý ảo dễ thương'),
 (123,	'Âm nhạc cho cuộc sống'),
@@ -377,7 +377,6 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (748,	'Chiếc Hộp Giáng Sinh'),
 (749,	'Những câu chuyện biển'),
 (750,	'Hỡi Người Tình'),
-(648,	'Đọc sách eBook'),
 (139,	'Con sâu háu ăn'),
 (134,	'Chạy cùng em'),
 (751,	'Máy tính bỏ túi siêu việt'),
@@ -385,11 +384,16 @@ INSERT INTO `product_name_vi` (`id_product`, `data`) VALUES
 (285,	'Đá Ra Tông (Bi lắc)'),
 (752,	'Bảng tuần hoàn hóa học'),
 (753,	'Json Editor'),
-(754,	'Ván cờ cà chua'),
 (755,	'Tam giác vuông tròn'),
 (756,	'Yeah 10!'),
 (282,	'Người yêu ảo Pro'),
 (132,	'Người yêu của tôi'),
-(130,	'Người yêu AI');
+(130,	'Người yêu AI'),
+(754,	'Ván cờ cà chua'),
+(757,	'Đồng hồ đo thời gian taxi'),
+(648,	'Đọc sách eBook'),
+(758,	'Nhật ký hạnh phúc'),
+(283,	'Trình soạn thảo piano Midi'),
+(759,	'Con heo đất bị mất');
 
--- 2022-08-20 03:04:09
+-- 2022-10-23 06:07:11

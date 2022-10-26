@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -22,9 +22,10 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `comment`;
 INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `created`, `upvote_count`, `parent`, `type_comment`, `lang`) VALUES
 (23,	'c1',	'andanh@gmail.com',	'Nên phát triển app này trên PC nữa thì tốt quá,tim để tải trên laptop cảm ứng win 10 mà không có,nếu có cách nào dowload được mong ad giúp đỡ ',	120,	'2018-09-19T04:05:10.934Z',	1,	0,	'products',	'vi'),
-(24,	'c1',	'andanh@gmail.com',	'Please send me an add on that will allow me to remove my girls clothing i would really like that and send a fix for the english text thank you',	121,	'2018-11-03T03:32:26.963Z',	1,	0,	'products',	'en'),
+(24,	'c1',	'andanh@gmail.com',	'Please send me an add on that will allow me to remove my girls clothing i would really like that and send a fix for the english text thank you',	121,	'2018-11-03T03:32:26.963Z',	2,	0,	'products',	'en'),
 (28,	'c1',	'andanh@gmail.com',	'Cần thêm vào báo thức nữa thì tuyệt',	119,	'2019-08-03T17:36:41.314Z',	1,	0,	'products',	'vi'),
 (29,	'c3',	'andanh@gmail.com',	'Ad thêm vào báo thức nữa thì tuyệt cảm ơn nhà làm ra game này',	120,	'2019-08-03T17:42:17.194Z',	1,	0,	'products',	'vi'),
 (30,	'c4',	'2d0cf55bdd8a4848131c04524cd7bb6e',	'he he',	120,	'2019-08-06T17:36:46.195Z',	1,	0,	'products',	'vi'),
@@ -59,6 +60,16 @@ INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `create
 (59,	'c62dcc8cde2ab1',	'9deea2ce5bbdedfc91c0bb03c33ce37d',	'i cant access all characters even though ive paid for them....it keeps saying...you own this then ERROR.',	130,	'2022-07-24 04:21:33',	0,	0,	'products',	'en'),
 (60,	'c6',	'andanh@gmail.com',	'Game cho tính năng chịch nhau với bú cu đi đảm bảo 5 Sao\n',	120,	'2022-07-27T11:56:59.703Z',	1,	0,	'products',	'vi'),
 (61,	'c7',	'andanh@gmail.com',	'Nice ',	120,	'2022-08-14T14:46:54.776Z',	0,	0,	'products',	'vi'),
-(62,	'c62fb2b5e6457b',	'45adeb93623abe471be8878621f0647a',	'muy buena app me dijo una verdad pero es cierta jajaja me agrada. ',	130,	'2022-08-16 05:30:06',	0,	0,	'products',	'es');
+(62,	'c62fb2b5e6457b',	'45adeb93623abe471be8878621f0647a',	'muy buena app me dijo una verdad pero es cierta jajaja me agrada. ',	130,	'2022-08-16 05:30:06',	0,	0,	'products',	'es'),
+(63,	'c2',	'andanh@gmail.com',	'Too much repetition in chats. Character can not speak what you teach her to say.',	120,	'2022-08-25T22:32:10.978Z',	0,	0,	'products',	'en'),
+(64,	'c2',	'andanh@gmail.com',	'just play ai lover creep its rated m and not teen',	121,	'2022-08-26T18:31:53.248Z',	0,	0,	'products',	'en'),
+(65,	'c3',	'andanh@gmail.com',	'just play ai lover',	121,	'2022-08-26T18:32:24.518Z',	0,	24,	'products',	'en'),
+(66,	'c630e99f2da76a',	'24d4e72a7e1294c376028d705be47d39',	'tôi cảm thấy bất cô đơn hơn có người trò chuyện với tôi ',	130,	'2022-08-30 23:14:58',	0,	0,	'products',	'vi'),
+(67,	'c63216e59cb6c0',	'7f6c4be32628df6ee22229e10a42b6f5',	'And kids will love this, it\'s the best.',	130,	'2022-09-14 06:02:01',	0,	0,	'products',	'en'),
+(68,	'c2',	'andanh@gmail.com',	'vbb',	104,	'2022-10-06T20:45:19.372Z',	0,	55,	'products',	'en'),
+(69,	'c634077de7e915',	'dd8fde29d7f5de74ccafdf33a9e4e234',	'aunque le falta afinar algunos detalles y permitir que uno ingrese su propia lista de música: aún así le doy 5 estrellas ',	130,	'2022-10-07 19:02:54',	0,	0,	'products',	'es'),
+(70,	'c63466d1e54f9a',	'bfbb36180aba654f3665964a5872300f',	'hay',	283,	'2022-10-12 07:30:38',	0,	0,	'products',	'vi'),
+(71,	'c1',	'634e5053e174a634e5053e1785',	'Stehen vs. Sitzen bei der Arbeit?\n\nIst Stehen besser als Sitzen? Aber Sie müssen überwachen, wie viel Sie den ganzen Tag über stehen. Die Verwendung eines höhenverstellbarer schreibtisch bei der Arbeit kann helfen, Muskelschm',	282,	'2022-10-18T07:11:24.427Z',	0,	0,	'products',	'en'),
+(72,	'c6352cd3403c58',	'b3ee82bafceb3b5fc20824146b44ff2a',	'game vui nhộn',	759,	'2022-10-21 16:47:48',	0,	0,	'products',	'en');
 
--- 2022-08-20 02:47:54
+-- 2022-10-23 06:14:52
