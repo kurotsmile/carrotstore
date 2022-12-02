@@ -70,6 +70,9 @@ INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `create
 (69,	'c634077de7e915',	'dd8fde29d7f5de74ccafdf33a9e4e234',	'aunque le falta afinar algunos detalles y permitir que uno ingrese su propia lista de música: aún así le doy 5 estrellas ',	130,	'2022-10-07 19:02:54',	0,	0,	'products',	'es'),
 (70,	'c63466d1e54f9a',	'bfbb36180aba654f3665964a5872300f',	'hay',	283,	'2022-10-12 07:30:38',	0,	0,	'products',	'vi'),
 (71,	'c1',	'634e5053e174a634e5053e1785',	'Stehen vs. Sitzen bei der Arbeit?\n\nIst Stehen besser als Sitzen? Aber Sie müssen überwachen, wie viel Sie den ganzen Tag über stehen. Die Verwendung eines höhenverstellbarer schreibtisch bei der Arbeit kann helfen, Muskelschm',	282,	'2022-10-18T07:11:24.427Z',	0,	0,	'products',	'en'),
-(72,	'c6352cd3403c58',	'b3ee82bafceb3b5fc20824146b44ff2a',	'game vui nhộn',	759,	'2022-10-21 16:47:48',	0,	0,	'products',	'en');
+(72,	'c6352cd3403c58',	'b3ee82bafceb3b5fc20824146b44ff2a',	'game vui nhộn',	759,	'2022-10-21 16:47:48',	0,	0,	'products',	'en'),
+(73,	'c635f91f8cef49',	'b3ee82bafceb3b5fc20824146b44ff2a',	'sdasd',	139,	'2022-10-31 09:14:32',	0,	0,	'products',	'vi'),
+(74,	'c63782650c608e',	'ef006123317fde54f0373813abfa8768',	'I love this app! I love talking with bot and not typing words just talk  in microphone! I love beating my cock off',	130,	'2022-11-19 00:41:52',	0,	0,	'products',	'en'),
+(75,	'c6383b77de1f88',	'ec3951702f67e0e8a49c25e3610f19af',	'to hard to understand how to use app.',	130,	'2022-11-27 19:16:13',	0,	0,	'products',	'en');
 
--- 2022-10-23 06:14:52
+-- 2022-12-01 15:57:35

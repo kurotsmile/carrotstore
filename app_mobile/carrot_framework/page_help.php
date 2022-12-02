@@ -1,74 +1,43 @@
 <?php
-include_once("carrot_cms_form.php"); 
+include_once("carrot_form.php"); 
 
 $func='view';if(isset($_REQUEST['func'])) $func=$_REQUEST['func'];
 $url_cur=$this->cur_url;
 
-$cr_frm=new carrot_form("help",$this);
-$cr_frm->set_title("Thêm mới hàm hoặc phương thức và biến");
-$cr_frm->paser_table_mysql("work_code",$_POST,'carrotsy_work');
-$cr_frm->set_type("add");
-
-$id_field=$cr_frm->get_field_by_id("id");
-$id_field->set_is_field_update();
-
-echo $cr_frm->show();
-
 ?>
 <div style="float:left;padding:10px;">
-<?php if($func=='add'||$func=='edit'){
-    $code_name='';
-    $code_tip='';
-    $code_id='';
+<?php 
 
-    if(isset($_POST['code_name'])){
-        $code_name=$_POST['code_name'];
-        $code_tip=$_POST['code_tip'];
-        $code_id=$_POST['code_id'];
-        if($func=='add'){
-            $q_add_code=$this->q("INSERT INTO carrotsy_work.`work_code` (`name`, `type`, `tip`, `return`) VALUES ('$code_name', '0', '$code_tip', '0');");
-            if($q_add_code)
-                echo $this->msg("Thêm mới thành công!");
-            else
-                echo $this->msg("Thêm mới thất bại!");
-        }else{
-            $q_update_code=$this->q("UPDATE carrotsy_work.`work_code` SET `name` = '$code_name', `tip` = '$code_tip' WHERE `id` = '$code_id';");
-            if($q_update_code)
-                echo $this->msg("Cập nhật thành công!");
-            else
-                echo $this->msg("Cập nhật không thành công!");
-        }
-    }
+if($func=='add'||$func=='edit'){
+    $code_id='';if(isset($_GET['id'])) $code_id=$_GET['id'];
 
-    if($func=='edit'){
-        $code_id=$_GET['id'];
+    $cr_frm=new carrot_form("help",$this);
+    $cr_frm->set_title("Thêm mới hàm hoặc phương thức và biến");
+    unset($_POST["func"]);
+    $cr_frm->handle_post();
+    if($code_id!=""){
         $data_code=$this->q_data("SELECT * FROM carrotsy_work.`work_code` WHERE `id` = '$code_id' LIMIT 1");
-        $code_name=$data_code['name'];
-        $code_tip=$data_code['tip'];
+        $cr_frm->paser_table_mysql("work_code",$data_code,'carrotsy_work');
+        $cr_frm->set_type("edit");
+    }else{
+        $cr_frm->paser_table_mysql("work_code",$_POST,'carrotsy_work');
+        $cr_frm->set_type("add");
     }
-?>
-<h3>Thêm mới hàm hoặc phương thức và biến</h3>
-<form method="post" action="">
-    <table>
-        <tr>
-            <td>Tên hàm</td>
-            <td><input type="text" style="width:100%" id="code_name" name="code_name" value="<?php echo $code_name;?>" /></td>
-        </tr>
-        <tr>
-            <td>Mô tả</td>
-            <td><textarea style="width:100%;height:150px;"  type="text" id="code_tip" name="code_tip"/><?php echo $code_tip;?></textarea></td>
-        </tr>
-    </table>
-    <input name="func" type="hidden" value="<?php echo $func;?>"/>
-    <input name="code_id" type="hidden" value="<?php echo $code_id;?>"/>
-    <a href="<?php echo $url_cur;?>&func=view" class="buttonPro blue"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Trở về</a>
-    <?php if($func=='add'){?>
-        <button class="buttonPro green"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</button>
-    <?php }else{?>
-        <button class="buttonPro yellow"><i class="fa fa-edit" aria-hidden="true"></i> Cập nhật</button>
-    <?php }?>
-</form>
-<?php }?>
+
+    $id_field=$cr_frm->get_field_by_id("id");
+    $id_field->set_is_field_update();
+
+    $func_field=new carrot_field('func');
+    $func_field->set_val($func);
+    $func_field->hide();
+    $cr_frm->add_field($func_field);
+
+    $name_field=$cr_frm->get_field_by_id("name");
+    $name_field->set_title("Tên phương thức, biến");
+    $name_field->set_required();
+
+    echo $cr_frm->show();
+}?>
 
 <?php 
 if($func=='view'||$func=='view_edit'){

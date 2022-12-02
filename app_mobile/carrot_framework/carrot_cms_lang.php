@@ -9,24 +9,14 @@ $field_data=$data_page->field_data;
 $field_data_lang_id=$data_page->field_data_lang_id;
 
 $this->data_temp=$data_page;
+$lang='vi';if(isset($_GET['lang']))$lang=$_GET['lang'];
 $lang_to="";if(isset($_GET['lang_to']))$lang_to=$_GET['lang_to'];
 $field_empty="";if(isset($_GET['empty']))$field_empty=$_GET['empty'];
-$list_country=$this->get_list_lang();
-?>
-<div class="cms_menu_lang">
-<?php
-    $item_country=$list_country[0];
-    $lang=$item_country['key'];if(isset($_GET['lang']))$lang=$_GET['lang'];
-    for($i=0;$i<count($list_country);$i++){
-        $item_country=$list_country[$i];
-        if($lang==$item_country['key'])$style_active='class="active"';else $style_active="";
-        $url_cur_func=$this->cur_url."&lang=".$item_country["key"];
-        echo '<a href="'.$url_cur_func.'" '.$style_active.'><i class="fa fa-globe" aria-hidden="true"></i> '.$item_country["name"].'</a>';
-    }
-?>
-</div>
 
-<?php
+echo $this->show_list_lang();
+
+$list_country=$this->get_list_lang();
+
         if(isset($_POST['lang'])){
             $lang=$_POST['lang'];
             $data_key=$_POST['key'];

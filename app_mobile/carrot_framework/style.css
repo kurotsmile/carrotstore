@@ -8,3 +8,13 @@
 .app_ins .body .box_user{float: left;}
 .app_ins .body .box_user img{float: left;width: 50px;margin: 3px;}
 .img_chek_user{border: solid 3px yellow;width: 74px;height: 74px;}
+.app_ins .body::-webkit-scrollbar
+{
+	width: 3px;
+	background-color: #d6d6d6;
+}
+.app_ins .body::-webkit-scrollbar-thumb
+{
+	border-radius: 3px;
+	background-color: #555;
+}

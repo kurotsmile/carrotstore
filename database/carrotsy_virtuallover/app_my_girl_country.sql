@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -19,6 +19,7 @@ CREATE TABLE `app_my_girl_country` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+TRUNCATE `app_my_girl_country`;
 INSERT INTO `app_my_girl_country` (`key`, `name`, `ver0`, `ver1`, `ver2`, `ver3`, `active`, `id`, `country_code`) VALUES
 ('vi',	'Vietnamese',	'1',	'1',	'1',	'1',	1,	0,	'vn'),
 ('en',	'English',	'1',	'1',	'1',	'1',	1,	1,	'us'),
@@ -41,4 +42,4 @@ INSERT INTO `app_my_girl_country` (`key`, `name`, `ver0`, `ver1`, `ver2`, `ver3`
 ('nl',	'Nederland',	'0',	'0',	'0',	'',	1,	18,	'nl'),
 ('pl',	'Poland',	'0',	'0',	'0',	'',	1,	19,	'pl');
 
--- 2022-08-20 02:27:17
+-- 2022-10-28 13:20:22

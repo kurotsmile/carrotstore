@@ -315,8 +315,13 @@ if($function=='login'){
         while($item_country=mysqli_fetch_assoc($query_country)){
             $key_lang=$item_country['key'];
             $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$key_lang` WHERE (`email` = '$login_username' OR `sdt` = '$login_username') AND (`password`='$login_password') LIMIT 1");
-            $data_user=mysqli_fetch_assoc($query_user);
-            $lang=$key_lang;
+            if($query_user){
+                $data_user=mysqli_fetch_assoc($query_user);
+                $lang=$key_lang;
+            }else{
+                $data_user=null;
+            }
+            
             if($data_user!=null) break;
         }
 
@@ -389,6 +394,7 @@ if($function=='update_account'){
     $email=$_POST['email'];
     $sex=$_POST['sex'];
     $status=$_POST['status'];
+    if(isset($_POST['user_lang'])) $lang=$_POST['user_lang'];
 
     if(isset($_FILES['avatar'])){
         $target_file = '../../app_mygirl/app_my_girl_'.$lang.'_user/'.$user_id.'.png';
@@ -533,6 +539,7 @@ if($function=='change_password'){
     $password_new=$_POST['password_new'];
     $password_re_new=$_POST['password_re_new'];
     $user_id=$_POST['user_id'];
+    if(isset($_POST['user_lang'])) $lang=$_POST['user_lang'];
 
     if((strlen($password_new)<6)){
         $user->{"error"}="1";
@@ -580,7 +587,7 @@ if($function=='change_password'){
 
 if($function=='list_country'){
     $lang_sys=$_POST['lang_sys'];
-    $query_country=mysqli_query($link,"SELECT vl.`id`,vl.`name`,vl.`key` FROM carrotsy_virtuallover.app_my_girl_country as vl , carrotsy_table_soccer.country as p WHERE p.`key`=vl.`key`");
+    $query_country=mysqli_query($link,"SELECT `id`,`name`,`key` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `ver0`=1");
     $arr_data=array();
     while($item_country=mysqli_fetch_assoc($query_country)){
         $item_country["icon"]=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/img/'.$item_country['key'].'.png&size=50&trim=1';
@@ -603,9 +610,10 @@ if($function=='download_lang'){
     $data_lang->{"lang_framework"}=$data_lang_framework["data"];
 
     $query_data_lang_app=mysqli_query($link,"SELECT `data` FROM  carrotsy_table_soccer.`lang_val` WHERE `lang` = '$key' LIMIT 1");
-    $data_lang_app=mysqli_fetch_assoc($query_data_lang_app);
-    $data_lang->{"lang_app"}=$data_lang_app['data'];
-
+    if($query_data_lang_app){
+        $data_lang_app=mysqli_fetch_assoc($query_data_lang_app);
+        $data_lang->{"lang_app"}=$data_lang_app['data'];
+    }
     echo json_encode($data_lang);
     exit;
 }
@@ -719,6 +727,7 @@ if($function=='submit_rate'){
     $inp_review=$_POST['inp_review'];
     $star_feedback=$_POST['star_feedback'];
     $user_id=$_POST['user_id'];
+    if(isset($_POST['user_lang'])) $lang=$_POST['user_lang'];
 
     if($star_feedback!="-1"){
         $star_feedback=intval($star_feedback)+1;

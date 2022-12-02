@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -16,6 +16,7 @@ CREATE TABLE `inapp` (
   `protocol` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `inapp`;
 INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotstore.wormmaster.removeads',	'139',	'2.0',	'remove_adss',	'wormmaster'),
 ('com.carrotstore.wormmaster.musicbk',	'139',	'3.0',	'musicbk',	'wormmaster'),
@@ -63,6 +64,12 @@ INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotstore.ereadnow.removeads',	'648',	'3.0',	'remove_adss',	'ebook'),
 ('com.carrotstore.supercalculator.removeads',	'751',	'3.0',	'remove_adss',	'cal'),
 ('com.carrotstore.jsoneditor.removeads',	'753',	'3.0',	'remove_adss',	'json'),
-('com.carrotstore.chemicalperiodic.removeads',	'752',	'3.0',	'remove_adss',	'periodic');
+('com.carrotstore.chemicalperiodic.removeads',	'752',	'3.0',	'remove_adss',	'periodic'),
+('com.carrotstore.tomatochess.skin',	'754',	'1.0',	'fruit_item',	'tomatochess'),
+('com.carrotstore.tomatochess.musicbk',	'754',	'2.0',	'musicbk',	'tomatochess'),
+('com.carrotstore.tomatochess.removeads',	'754',	'3.0',	'remove_adss',	'tomatochess'),
+('com.carrot.heroping.item',	'759',	'2',	'fish',	'heropig'),
+('com.carrot.heroping.removeads',	'759',	'3.0',	'remove_adss',	'heropig'),
+('com.carrot.heroping.coin',	'759',	'5.0',	'all_fish',	'heropig');
 
--- 2022-08-20 02:46:43
+-- 2022-10-26 17:58:11

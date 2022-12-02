@@ -7,6 +7,7 @@ $cms=new Carrot_CMS("Ai Lover",$link,dirname(__FILE__));
 $cms->url_carrot_store=$url_carrot_store;
 $cms->url=$url_carrot_store."/app_mobile/appai";
 $cms->database_mysql=$mysql_database;
-$cms->add_menu_page("Khiểm duyệt","fa-umbrella","page_inspection.php");
+$cms->add_menu_page("Danh sách trò chuyện","fa-list","page_list_chat.php");
+$cms->add_menu_page("Tạo mới trò chuyện","fa-plus-circle","page_inspection.php");
 $cms->html_show();
 ?>

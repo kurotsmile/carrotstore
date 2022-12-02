@@ -22,19 +22,9 @@ if(isset($_GET['del'])){
         echo $this->msg("Xóa thành công đài phát thanh $id_del !");
     }
 }
-?>
-<div class="cms_menu_lang">
-<?php
-    for($i=0;$i<count($list_country);$i++){
-        $item_country=$list_country[$i];
-        if($lang==$item_country['key'])$style_active='class="active"';else $style_active="";
-        $url_cur_func=$this->cur_url."&lang=".$item_country["key"];
-        echo '<a href="'.$url_cur_func.'" '.$style_active.'><i class="fa fa-globe" aria-hidden="true"></i> '.$item_country["name"].'</a>';
-    }
-?>
-</div>
 
-<?php
+echo $this->show_list_lang();
+
 $list_radio=$this->q("SELECT * FROM carrotsy_virtuallover.`app_my_girl_radio` WHERE `lang` = '$lang'");
 ?>
 <table>

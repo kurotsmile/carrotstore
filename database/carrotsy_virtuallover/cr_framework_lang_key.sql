@@ -93,6 +93,8 @@ INSERT INTO `cr_framework_lang_key` (`key`) VALUES
 ('lost_connect_try'),
 ('rate_thanks'),
 ('send_feedback'),
-('msg_yes');
+('msg_yes'),
+('del_tip'),
+('buy_bk_success');
 
--- 2022-10-23 06:16:45
+-- 2022-12-01 15:59:27

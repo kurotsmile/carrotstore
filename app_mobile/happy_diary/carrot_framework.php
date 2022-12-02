@@ -294,16 +294,29 @@ if($function=='login'){
         $login->{"msg"}="error_username";
         $login->{"msg_en"}="Phone number (or email) and password cannot be left blank";
     }else{
-        $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE (`email` = '$login_username' OR `sdt` = '$login_username') AND (`password`='$login_password') LIMIT 1");
-        $data_user=mysqli_fetch_assoc($query_user);
+        $query_country=mysqli_query($link,"SELECT `key` FROM carrotsy_virtuallover.`app_my_girl_country` WHERE `ver0`=1");
+        $key_lang="en";
+        while($item_country=mysqli_fetch_assoc($query_country)){
+            $key_lang=$item_country['key'];
+            $query_user=mysqli_query($link,"SELECT * FROM carrotsy_virtuallover.`app_my_girl_user_$key_lang` WHERE (`email` = '$login_username' OR `sdt` = '$login_username') AND (`password`='$login_password') LIMIT 1");
+            if($query_user){
+                $data_user=mysqli_fetch_assoc($query_user);
+                $lang=$key_lang;
+            }else{
+                $data_user=null;
+            }
+            
+            if($data_user!=null) break;
+        }
 
         if($data_user!=null){
             $login->{"error"}="0";
             $login->{"list_info"}=get_data_user($data_user);
             $login->{"user_id"}=$data_user['id_device'];
-            $login->{"user_lang"}=$lang;
+            $login->{"user_lang"}=$key_lang;
             $login->{"user_password"}=$data_user['password'];
-            $login->{"avatar"}=get_url_avatar_user($data_user['id_device'],$lang);
+            $login->{"avatar"}=get_url_avatar_user_thumb($data_user['id_device'],$lang,'50x50');
+            mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$lang` SET `date_cur`=NOW() WHERE `id_device`='".$data_user['id_device']."' LIMIT 1");
         }else{
             $login->{"error"}="1";
             $login->{"msg"}="error_password_login";

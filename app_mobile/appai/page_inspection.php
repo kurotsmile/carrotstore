@@ -1,5 +1,5 @@
 <?php
-include_once("../carrot_framework/carrot_cms_form.php"); 
+include_once("../carrot_framework/carrot_form.php"); 
 
 $id_chat='';if(isset($_GET["id"])) $id_chat=$_GET["id"];
 $lang_chat='';if(isset($_GET["lang"])) $lang_chat=$_GET["lang"];
@@ -10,6 +10,31 @@ if($lang_chat==''){
     echo $this->msg("Không tìm thấy tham số quốc gia");
     $url_cur=$this->cur_url;
     $cr_lang=new carrot_form("form_list_lang",$this);
+
+    if($key_chat!=""){
+        $url_cur=$url_cur.'&key='.$key_chat;
+        $text_field=new carrot_field('key');
+        $text_field->set_title("Từ khóa trò chuyện");
+        $text_field->set_required();
+        $text_field->set_type("inp");
+        $text_field->set_val($key_chat);
+        $text_field->set_lang('vi');
+        $cr_lang->set_msg("Chọn một quốc gia dưới đây để thêm trò chuyện");
+        $cr_lang->add_field($text_field);
+    }
+
+    $answer_chat='';if(isset($_GET['answer']))$answer_chat=$_GET['answer'];
+    if($answer_chat!=""){
+        $url_cur=$url_cur.'&answer='.urlencode($answer_chat);
+        $chat_field=new carrot_field('answer');
+        $chat_field->set_title("Phản hồi của nhân vật");
+        $chat_field->set_type("textarea");
+        $chat_field->set_val($answer_chat);
+        $chat_field->set_tip("câu trả lời nhân vật đối với từ khóa trò chuyện");
+        $chat_field->set_lang('vi');
+        $cr_lang->add_field($chat_field);
+    }
+
     $list_country=$this->get_list_lang();
     foreach($list_country as $c){
         $col_left="<img width='15px' src='".$c['icon']."'/> ".$c['name'];
@@ -86,6 +111,8 @@ $text_field=$cr_form->get_field_by_id("text");
 if($text_field!=null){
     $text_field->set_title("Từ khóa trò chuyện");
     $text_field->set_required();
+    $text_field->set_type("inp");
+    $text_field->set_lang($lang_chat);
 }
 
 $chat_field=$cr_form->get_field_by_id("chat");
@@ -93,6 +120,7 @@ $chat_field->set_title("Phản hồi của nhân vật");
 $chat_field->set_type("textarea");
 $chat_field->set_tip("câu trả lời nhân vật đối với từ khóa trò chuyện");
 $chat_field->set_required();
+$chat_field->set_lang($lang_chat);
 
 $sex_field=$cr_form->get_field_by_id("sex");
 $sex_field->set_title("Giới tính người dùng");
@@ -277,6 +305,9 @@ $os_field->add_val("","Hiển thị trên tất cả nền tảng");
 $os_field->add_val("android","Không hiển thị trên android");
 $os_field->add_val("ios","Không hiển thị trên ios");
 $os_field->add_val("window","Không hiển thị trên window");
+
+$file_url_field=$cr_form->get_field_by_id("file_url");
+$file_url_field->set_type("file");
 
 $cr_form->delete_field_by_id("q1");
 $cr_form->delete_field_by_id("q2");

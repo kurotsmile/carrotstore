@@ -4,9 +4,8 @@ class Carrot_CMS{
     public $url_carrot_store="";
     public $url_syn="https://carrotstore.com";
     public $name="Name App";
-    public $link_mysql="";
+    public $link_mysql=null;
     public $database_mysql="";
-
     private $menu=array();
     private $user_login=null;
     private $msg_login_error;
@@ -16,7 +15,7 @@ class Carrot_CMS{
     private $css=array();
     private $icon;
 
-    function __construct($name_cms,$link_mysql="",$path="")
+    function __construct($name_cms,$link_mysql=null,$path="")
     {
         session_start();
         $this->name=$name_cms;
@@ -76,7 +75,7 @@ class Carrot_CMS{
         array_push($this->css,$name_file);
     }
 
-    private function q($string_query){
+    public function q($string_query){
         return mysqli_query($this->link_mysql,$string_query);
     }
 
@@ -104,9 +103,7 @@ class Carrot_CMS{
         $html.='<link rel="stylesheet" href="'.$this->url.'/'.$this->css[$i].'"/>';
         $html.='<script src="'.$this->url_carrot_store.'/js/jquery.js"></script>';
         $html.='<script src="'.$this->url_carrot_store.'/dist/sweetalert.min.js"></script>';
-        $html.='<script>function copy_tag(name_tag) {var $temp = $("<input>");$("body").append($temp);var s_copy=$("#" + name_tag).val();s_copy=s_copy.replace("{ten_user}", "");$temp.val(s_copy).select();document.execCommand("copy");$temp.remove();}';
-        $html.='function paste_tag(name_tag) {navigator.clipboard.readText().then(text => {$("#"+name_tag).val(text.trim());});}';
-        $html.='</script>';
+        $html.='<script src="'.$this->url_carrot_store.'/app_mobile/carrot_framework/carrot_framework.js"></script>';
         $html.='</head>';
         $html.='<body>';
         return $html;
@@ -126,6 +123,10 @@ class Carrot_CMS{
 
     public function cp($emp){
         return $this->copy($emp).''.$this->paste($emp);
+    }
+
+    public function tr($emp,$lang_cur){
+        return '<div class="buttonPro small" lang_cur="'.$lang_cur.'" onclick="translate_tag(\''.$emp.'\',this);"><i class="fa fa-language" aria-hidden="true"></i></div>';
     }
 
     public function thumb($url,$size){
@@ -253,6 +254,8 @@ class Carrot_CMS{
 
     public function get_field_in_table($name_table,$name_database=''){
         $array_field=array();
+        $query_field=null;
+
         if($name_database!="")
             $query_field=mysqli_query($this->link_mysql,"SELECT `COLUMN_NAME` FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='$name_table' AND `TABLE_SCHEMA`='".$name_database."'");
         else
@@ -274,12 +277,38 @@ class Carrot_CMS{
         return $list_lang;
     }
 
+    public function show_list_lang($lang_cur="",$parameter=""){
+        if($lang_cur==''){
+            if(isset($_REQUEST['lang'])) $lang_cur=$_REQUEST['lang'];
+            else $lang_cur='vi';
+        }
+
+        $html='<div class="cms_menu_lang">';
+        foreach($this->get_list_lang() as $c){
+            if($lang_cur==$c["key"])
+                $html.='<a href="'.$this->cur_url.'&lang='.$c["key"].$parameter.'" class="active"><i class="fa fa-globe" aria-hidden="true"></i> '.$c['name'].'</a>';
+            else
+                $html.='<a href="'.$this->cur_url.'&lang='.$c["key"].$parameter.'" ><i class="fa fa-globe" aria-hidden="true"></i> '.$c['name'].'</a>';
+        }
+        $html.='</div>';
+        return $html;
+    }
+
     private function show_lang($data_page){
         include_once("carrot_cms_lang.php");
     }
 
     private function show_setting_lang_by_field(){
         include_once("carrot_cms_lang_field.php");
+    }
+
+    private function show_page(){
+        $p=$_REQUEST["p"];
+        include_once($p.'.php');
+    }
+
+    public function p($name_page){
+        return $this->cur_url.'&function=show_page&p='.$name_page;
     }
 
     public function html_table($name_table){

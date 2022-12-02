@@ -9,7 +9,7 @@ $xml.='<urlset
 $xml.='<!-- carrotstore.com -->'.PHP_EOL;
 
 $date_now = date('Y-m-d\TH:i:s+00:00', time());
-$urls=str_replace("http","https",$url);
+$urls=str_replace("http:","https:",$url);
 
 function write_url_seo($url_seo,$priority,$date_seo){
     $txt='<url>'.PHP_EOL;

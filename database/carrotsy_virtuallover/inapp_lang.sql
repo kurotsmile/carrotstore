@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.40 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,6 +15,7 @@ CREATE TABLE `inapp_lang` (
   `lang` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `inapp_lang`;
 INSERT INTO `inapp_lang` (`key`, `title`, `tip`, `lang`) VALUES
 ('midi',	'Mua bài soạn nhạc midi',	'Mua bảng soạn nhạc midi để sáng tác',	'vi'),
 ('midi',	'Buy midi songs',	'Buy a midi composer board to compose',	'en'),
@@ -375,6 +376,26 @@ INSERT INTO `inapp_lang` (`key`, `title`, `tip`, `lang`) VALUES
 ('remove_adss',	'Hilangkan iklan',	'Tidak ada iklan di aplikasi, blokir semua iklan',	'id'),
 ('remove_adss',	'Fjern annoncer',	'Ingen annoncer i appen, bloker alle annoncer',	'da'),
 ('remove_adss',	'Verwijder advertenties',	'Geen advertenties in de app, blokkeer alle advertenties',	'nl'),
-('remove_adss',	'Usuń reklamy',	'Brak reklam w aplikacji, zablokuj wszystkie reklamy',	'pl');
+('remove_adss',	'Usuń reklamy',	'Brak reklam w aplikacji, zablokuj wszystkie reklamy',	'pl'),
+('fruit_item',	'Mua loại hoa quả',	'Sử dụng giao diện trái cây cho trò chơi',	'vi'),
+('fruit_item',	'Buy fruit',	'Use fruit skins for the game',	'en'),
+('fruit_item',	'Comprar fruta',	'Usa pieles de frutas para el juego.',	'es'),
+('fruit_item',	'Compre frutas',	'Use cascas de frutas para o jogo',	'pt'),
+('fruit_item',	'Acheter des fruits',	'Utilisez des peaux de fruits pour le jeu',	'fr'),
+('fruit_item',	'फल खरीदें',	'खेल के लिए फलों की खाल का प्रयोग करें',	'hi'),
+('fruit_item',	'买水果',	'使用水果皮进行游戏',	'zh'),
+('fruit_item',	'Купить фрукты',	'Используйте кожуры фруктов для игры',	'ru'),
+('fruit_item',	'Obst kaufen',	'Verwenden Sie Fruchtschalen für das Spiel',	'de'),
+('fruit_item',	'ซื้อผลไม้',	'ใช้สกินผลไม้สำหรับเกม',	'th'),
+('fruit_item',	'과일 구입',	'게임에 과일 스킨 사용',	'ko'),
+('fruit_item',	'果物を買う',	'ゲームにフルーツ スキンを使用する',	'ja'),
+('fruit_item',	'قم بشراء الفاكهة',	'استخدم جلود الفاكهة للعبة',	'ar'),
+('fruit_item',	'Meyve satın al',	'Oyun için meyve derileri kullanın',	'tr'),
+('fruit_item',	'Osta hedelmiä',	'Käytä pelissä hedelmäkuoria',	'fi'),
+('fruit_item',	'Compra frutta',	'Usa bucce di frutta per il gioco',	'it'),
+('fruit_item',	'Beli buah',	'Gunakan kulit buah untuk permainan',	'id'),
+('fruit_item',	'Køb frugt',	'Brug frugtskind til spillet',	'da'),
+('fruit_item',	'Fruit kopen',	'Gebruik fruitschillen voor het spel',	'nl'),
+('fruit_item',	'Kup owoce',	'Użyj skórek owocowych do gry',	'pl');
 
--- 2022-08-20 03:40:43
+-- 2022-10-26 17:58:38

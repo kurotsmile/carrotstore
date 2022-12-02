@@ -644,6 +644,7 @@ if($function=='submit_rate'){
     $inp_review=$_POST['inp_review'];
     $star_feedback=$_POST['star_feedback'];
     $user_id=$_POST['user_id'];
+    if(isset($_POST['user_lang'])) $lang=$_POST['user_lang'];
 
     if($star_feedback!="-1"){
         $star_feedback=intval($star_feedback)+1;
