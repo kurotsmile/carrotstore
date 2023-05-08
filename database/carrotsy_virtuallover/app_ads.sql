@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.40 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -45,6 +45,18 @@ INSERT INTO `app_ads` (`id_app`, `google_Play`, `samsung_galaxy_store`, `microso
 ('756',	'https://play.google.com/store/apps/details?id=com.carrotstore.yeah10',	'',	'https://www.microsoft.com/store/productId/9P0WM7SVKF03',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.yeah10',	'',	'mobile_game'),
 ('757',	'https://play.google.com/store/apps/details?id=com.carrotstore.taxitimemeter',	'https://galaxystore.samsung.com/detail/com.carrotstore.taxitimemeter',	'https://www.microsoft.com/store/productId/9N2S72B8QCX7',	'https://www.amazon.com/dp/B0BCKBLPB7/',	'',	'mobile_application'),
 ('758',	'https://play.google.com/store/apps/details?id=com.carrotstore.happydiary',	'',	'https://www.microsoft.com/store/productId/9P238CH9FJPL',	'',	'',	'mobile_application'),
-('759',	'https://play.google.com/store/apps/details?id=com.carrot.heroping',	'',	'',	'',	'',	'mobile_game');
+('759',	'https://play.google.com/store/apps/details?id=com.carrot.heroping',	'',	'https://www.microsoft.com/store/productId/9P1XCZS1NJHR',	'https://www.amazon.com/dp/B0BQRTJ8D3/',	'',	'mobile_game'),
+('761',	'https://play.google.com/store/apps/details?id=com.carrotstore.Lines98Fruta',	'',	'https://www.microsoft.com/store/productId/9NHP82N059G7',	'https://www.amazon.com/dp/B0BQQ7P4BH/',	'',	'mobile_game'),
+('762',	'https://play.google.com/store/apps/details?id=com.carrotstore.pickupeggs',	'',	'https://www.microsoft.com/store/productId/9P7HN16384RF',	'https://www.amazon.com/dp/B0BQQP4W4S',	'',	'mobile_game'),
+('773',	'https://play.google.com/store/apps/details?id=com.carrotstore.dicepuzzle',	'',	'https://www.microsoft.com/store/productId/9NCFSX3R8GB3',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.dicepuzzle',	'',	'mobile_game'),
+('767',	'https://play.google.com/store/apps/details?id=com.CarrotStore.FruitShoot',	'',	'https://www.microsoft.com/store/productId/9PGR9SHJJ0PB',	'https://www.amazon.com/dp/B0BQHDSX33/',	'',	'mobile_game'),
+('774',	'https://play.google.com/store/apps/details?id=com.carrotstore.sortilaire',	'',	'https://www.microsoft.com/store/productId/9P6S9WM6J2GM',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.sortilaire',	'',	'mobile_game'),
+('775',	'https://play.google.com/store/apps/details?id=com.carrotstore.domino',	'',	'https://www.microsoft.com/store/productId/9NJ3KSVRT0M9',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.domino',	'',	'mobile_game'),
+('776',	'https://play.google.com/store/apps/details?id=com.carrotstore.checkers',	'',	'https://www.microsoft.com/store/productId/9NCDVSRT9XT8',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.checkers',	'',	'mobile_game'),
+('777',	'https://play.google.com/store/apps/details?id=com.carrotstore.gardengem',	'',	'https://www.microsoft.com/store/productId/9NHGNSC4Q1D1',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.gardengem',	'',	'mobile_game'),
+('778',	'https://play.google.com/store/apps/details?id=com.carrotstore.penguindice',	'',	'https://www.microsoft.com/store/productId/9NS7FC89CXLX',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.penguindice',	'',	'mobile_game'),
+('779',	'https://play.google.com/store/apps/details?id=com.carrotstore.coloring',	'',	'https://www.microsoft.com/store/productId/9P2SDVDSVZH0',	'https://www.amazon.com/gp/mas/dl/android?p=com.carrotstore.coloring',	'',	'mobile_application'),
+('780',	'https://play.google.com/store/apps/details?id=com.carrotstore.pomodoro',	'',	'',	'',	'',	'mobile_application'),
+('781',	'https://play.google.com/store/apps/details?id=com.carrotstore.findobj',	'',	'',	'',	'',	'mobile_game');
 
--- 2022-10-23 06:03:14
+-- 2023-04-12 19:58:40

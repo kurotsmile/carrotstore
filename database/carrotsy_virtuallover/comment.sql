@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.40 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -73,6 +73,17 @@ INSERT INTO `comment` (`id`, `id_c`, `username`, `comment`, `productid`, `create
 (72,	'c6352cd3403c58',	'b3ee82bafceb3b5fc20824146b44ff2a',	'game vui nhộn',	759,	'2022-10-21 16:47:48',	0,	0,	'products',	'en'),
 (73,	'c635f91f8cef49',	'b3ee82bafceb3b5fc20824146b44ff2a',	'sdasd',	139,	'2022-10-31 09:14:32',	0,	0,	'products',	'vi'),
 (74,	'c63782650c608e',	'ef006123317fde54f0373813abfa8768',	'I love this app! I love talking with bot and not typing words just talk  in microphone! I love beating my cock off',	130,	'2022-11-19 00:41:52',	0,	0,	'products',	'en'),
-(75,	'c6383b77de1f88',	'ec3951702f67e0e8a49c25e3610f19af',	'to hard to understand how to use app.',	130,	'2022-11-27 19:16:13',	0,	0,	'products',	'en');
+(75,	'c6383b77de1f88',	'ec3951702f67e0e8a49c25e3610f19af',	'to hard to understand how to use app.',	130,	'2022-11-27 19:16:13',	1,	0,	'products',	'en'),
+(76,	'c63964df251e86',	'75bb6675e80eff7f5653cafae4626722',	'es una buena aplicasion para personas solas',	130,	'2022-12-11 21:38:58',	0,	0,	'products',	'es'),
+(77,	'c63a456eae34e6',	'ca97e6beb4eea5c11c5fc30bf04ccadd',	'bom app',	130,	'2022-12-22 13:08:58',	0,	0,	'products',	'pt'),
+(78,	'c63b6636492fb3',	'030044d308002c8305000e590500d0d00600010004009c7404',	'Can\'t get chat to work',	131,	'2023-01-05 05:43:00',	0,	0,	'products',	'en'),
+(79,	'c63c0a119c6efc',	'37a2d5f8c714775548edb6fb7a5b32a3',	'its good',	130,	'2023-01-13 00:08:57',	0,	0,	'products',	'en'),
+(80,	'c1',	'63cff11c342b863cff11c342ca',	'This standing gaming desk https://www.fezibo.com/collections/gaming-desks was easy to build, following the included instructions. I was able to complete the build by myself although some may need an extra person to flip the t',	754,	'2023-01-24T14:55:28.200Z',	0,	0,	'products',	'en'),
+(81,	'c1',	'andanh@gmail.com',	'Vernal höhenverstellbarer schreibtisch https://www.vernalspace.de/ können Monitore, Laptops, kleine Lautsprecher, kleine Pflanzen, Spielekonsolen usw. Bücher, etc... Diese geschichtete Anordnung macht den Schreibtisch ordentl',	616,	'2023-01-27T04:26:51.776Z',	0,	0,	'products',	'en'),
+(82,	'c63d5ba24be821',	'2878566e338d4e4f05b336ebf7238693',	'me encanta ',	130,	'2023-01-29 00:13:24',	0,	0,	'products',	'es'),
+(83,	'c63e09b08301a6',	'94e19ae83225679effa88fadc3b4024e',	'làm cách nào để loại bỏ cách nói chuyện thô tục và dâm đãng của nhân viên ',	130,	'2023-02-06 06:15:36',	0,	0,	'products',	'vi'),
+(84,	'c3',	'andanh@gmail.com',	'I like it',	120,	'2023-02-23T14:39:56.255Z',	0,	0,	'products',	'en'),
+(85,	'c8',	'andanh@gmail.com',	'cc ảo sẽ',	120,	'2023-04-05T09:38:56.597Z',	0,	60,	'products',	'vi'),
+(86,	'c642d8351a5541',	'fd04bc77ae1bf0c97630ef40a1df37f2',	'Bom dia, onde posso salvar meus videos?',	130,	'2023-04-05 14:18:57',	0,	0,	'products',	'pt');
 
--- 2022-12-01 15:57:35
+-- 2023-04-12 20:12:02

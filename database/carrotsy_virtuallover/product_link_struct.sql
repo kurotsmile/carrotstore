@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,6 +15,7 @@ CREATE TABLE `product_link_struct` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `product_link_struct`;
 INSERT INTO `product_link_struct` (`id`, `name`, `icon`) VALUES
 (2,	'Google Play',	'fa-android'),
 (3,	'Steam',	'fa-steam'),
@@ -33,6 +34,7 @@ INSERT INTO `product_link_struct` (`id`, `name`, `icon`) VALUES
 (16,	'itch.io',	'fa-shopping-bag'),
 (17,	'Wattpad',	'fa-google-wallet'),
 (19,	'Apple',	'fa-apple'),
-(20,	'Mac',	'fa-grav');
+(20,	'Mac',	'fa-grav'),
+(21,	'Facebook Gaming',	'fa-facebook');
 
--- 2022-08-20 03:00:51
+-- 2023-02-02 04:38:32

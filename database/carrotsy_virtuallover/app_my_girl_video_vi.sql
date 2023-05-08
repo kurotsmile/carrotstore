@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.40 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -5552,6 +5552,32 @@ INSERT INTO `app_my_girl_video_vi` (`id_chat`, `link`) VALUES
 ('79191',	'https://www.youtube.com/watch?v=KI6TFG0-mTY'),
 ('79193',	'https://www.youtube.com/watch?v=iUFKHNSfWJQ'),
 ('79237',	'https://www.youtube.com/watch?v=zAdDD5G9iXk'),
-('79240',	'https://www.youtube.com/watch?v=n6Pnzi6r9NU');
+('79240',	'https://www.youtube.com/watch?v=n6Pnzi6r9NU'),
+('79245',	'https://www.youtube.com/watch?v=N3qv-R5ZQWg'),
+('79255',	'https://www.youtube.com/watch?v=xS8hBELdkqc'),
+('79256',	'https://www.youtube.com/watch?v=zeBkb1HwiBc'),
+('79257',	'https://www.youtube.com/watch?v=Gos85xoO5o8'),
+('79260',	'https://www.youtube.com/watch?v=DvD8cwr-PqA'),
+('79262',	'https://www.youtube.com/watch?v=WH9C6oLEtOg'),
+('79263',	'https://www.youtube.com/watch?v=-38V4vMedcg'),
+('79265',	'https://www.youtube.com/watch?v=nqwxeS-X3P4'),
+('79266',	'https://www.youtube.com/watch?v=QjVaFC11970'),
+('79291',	'https://www.youtube.com/watch?v=fLsbkrT0LYY'),
+('79306',	'https://www.youtube.com/watch?v=lZsHC5gcPu4'),
+('79322',	'https://www.youtube.com/watch?v=gVlYxmdbYqM'),
+('79333',	'https://www.youtube.com/watch?v=rlPNGIAszzc'),
+('79340',	'https://www.youtube.com/watch?v=EC6Q__iGN0Q'),
+('79341',	'https://www.youtube.com/watch?v=TZ2pCDOWSL4'),
+('79343',	'https://www.youtube.com/watch?v=PcCQtskpDQk'),
+('79344',	'https://www.youtube.com/watch?v=w68MGL20Mf0'),
+('79347',	'https://www.youtube.com/watch?v=q3HSr-Hfbag'),
+('79366',	'https://www.youtube.com/watch?v=AsnbMRqwdfQ'),
+('79390',	'https://www.youtube.com/watch?v=1OJQdxT6WHE'),
+('79545',	'https://www.youtube.com/watch?v=LxNzRN8EMcw'),
+('54403',	'https://www.youtube.com/watch?v=qI5uqfmTBCE'),
+('79624',	'https://www.youtube.com/watch?v=tiM2ZWLXKT4'),
+('79641',	'https://www.youtube.com/watch?v=0yHtYPeK2Jg'),
+('79642',	'https://www.youtube.com/watch?v=bhnh9sRlMCo'),
+('79643',	'https://www.youtube.com/watch?v=6-LmZLjS5WI');
 
--- 2022-12-01 15:58:02
+-- 2023-04-12 20:18:41

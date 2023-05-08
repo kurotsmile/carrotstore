@@ -96,9 +96,10 @@ if($function=='scroll_load_data'){
             $sub_type='';
             if(isset($_POST['sub_type'])) $sub_type=$_POST['sub_type'];
             if(isset($_POST['lang'])) $lang=$_POST['lang'];
-            
+
             $txt_sql_sub_type='';
             if($sub_type!='') $txt_sql_sub_type=" AND `type`='$sub_type' ";
+            else $txt_sql_sub_type="  AND `type`!='book' ";
             $query_load_data = mysqli_query($link,"SELECT `id`,`type`,`slug` FROM `products` LEFT JOIN `product_desc_$lang` ON `id`=`id_product` WHERE `id` NOT IN (".implode(",",$data_json).") $txt_sql_sub_type AND `data`!='' ORDER BY RAND()  LIMIT 15");
             $label_click_de_xem=lang($link,'click_de_xem');
             $label_download_on=lang($link,'download_on');

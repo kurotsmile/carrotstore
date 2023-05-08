@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 include "carrot_framework.php";
 
 if($function=='list_midi_online'){

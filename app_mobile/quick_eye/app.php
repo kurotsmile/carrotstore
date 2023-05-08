@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 include_once "carrot_framework.php";
 
 if($function=="list_rank"){
@@ -47,6 +48,24 @@ if($function=='get_list_image'){
     while($icon=mysqli_fetch_assoc($query_list_icon)){
         $url_icon=$url_carrot_store."/app_mygirl/obj_effect/".$icon["id"].".png";
         array_push($arr_icon,$url_icon);
+    }
+    echo json_encode($arr_icon);
+    exit;
+}
+
+if($function=='get_list_image_game'){
+    $length=$_POST['limit'];
+    $level_type=intval($_POST['level_type']);
+    $array_type=array('chat','love','animal','emoji','foods','music');
+    $arr_icon=array();
+    $tag_icon=$array_type[$level_type];
+    $query_list_icon=mysqli_query($link,"SELECT `id` FROM carrotsy_virtuallover.`app_my_girl_effect` WHERE `tag`='$tag_icon' ORDER BY RAND() LIMIT $length");
+    while($icon=mysqli_fetch_assoc($query_list_icon)){
+        $item_icon=new stdClass();
+        $item_icon->{"id"}=$icon["id"];
+        $item_icon->{"type"}=$level_type;
+        $item_icon->{"url"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mygirl/obj_effect/'.$icon["id"].'.png&size=64';
+        array_push($arr_icon,$item_icon);
     }
     echo json_encode($arr_icon);
     exit;

@@ -1,5 +1,5 @@
 <?php
-include_once "carrot_framework.php";
+include_once "carrot_framework_game.php";
 
 if($function=='list_song'){
     $arr_list_song=array();
@@ -65,33 +65,4 @@ if($function=='list_song'){
 
     echo json_encode($arr_list_song);
 }
-
-if($function=='upload_scores'){
-    $scores=$_POST['scores'];
-    $user_id=$_POST['user_id'];
-    $query_check_user=mysqli_query($link,"SELECT `scores` FROM `game_scores_".$lang."` WHERE `user_id` = '$user_id' LIMIT 1");
-    if(mysqli_num_rows($query_check_user)>0){
-        $query_update_scores=mysqli_query($link,"UPDATE `game_scores_".$lang."` SET `scores` = '$scores'  WHERE `user_id` = '$user_id'  LIMIT 1;");
-    }else{
-        $query_add_scores=mysqli_query($link,"INSERT INTO `game_scores_".$lang."` (`user_id`, `scores`) VALUES ('$user_id', '$scores');");
-    }
-}
-
-if($function=='list_ranking'){
-    $arr_rank=array();
-    $query_list_rank=mysqli_query($link,"SELECT * FROM `game_scores_$lang` ");
-    while ($s=mysqli_fetch_assoc($query_list_rank)) {
-        $user_id=$s["user_id"];
-        $query_name_user=mysqli_query($link,"SELECT `name` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device` = '$user_id' LIMIT 1");
-        $data_name_user=mysqli_fetch_assoc($query_name_user);
-        if($data_name_user!=null){
-            $item=new stdClass();
-            $item->{"user_id"}=$user_id;
-            $item->{"user_name"}=$data_name_user['name'];
-            $item->{"scores"}=$s["scores"];
-            $item->{"user_avatar"}=get_url_avatar_user($user_id,$lang);
-            array_push($arr_rank,$item);
-        }
-    }
-    echo json_encode($arr_rank);
-}
+?>

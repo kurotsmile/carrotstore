@@ -446,6 +446,10 @@ $item_data->name = "chạy chức năng ở máy chủ (Thay thế từ khóa v�
 $item_data->key = "52";
 array_push($data_app->arr_function_app, $item_data);
 
+$item_data = new item_data();
+$item_data->name = "Rung máy";
+$item_data->key = "53";
+array_push($data_app->arr_function_app, $item_data);
 
 $array_category_store = array();
 

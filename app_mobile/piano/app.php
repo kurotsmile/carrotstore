@@ -201,7 +201,6 @@ if($function=='update_account'){
         $error=1;
     }
 
-
     if($error==0){
         $query_update=mysqli_query($link,"UPDATE carrotsy_virtuallover.`app_my_girl_user_$key_lang` SET `name` = '$name',`sex` = '$sex',`address` = '$address',`sdt` = '$sdt',`status` = '$status',`email` = '$email' WHERE `id_device` = '$user_id' LIMIT 1;");
         

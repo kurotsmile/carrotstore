@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.39 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -20,6 +20,7 @@ CREATE TABLE `share` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `share`;
 INSERT INTO `share` (`id`, `icon_css`, `name`, `order`, `web`, `android`, `window`, `ios`) VALUES
 (4,	'fa-facebook-square',	'Facebook',	0,	'https://www.facebook.com/sharer/sharer.php?u={url}',	'https://www.facebook.com/sharer/sharer.php?u={url}',	'https://www.facebook.com/sharer/sharer.php?u={url}',	''),
 (5,	'fa-twitter-square',	'Twitter',	1,	'https://twitter.com/intent/tweet?url={url}&text=Carrot store &via=carrotstore1&original_referer={url}',	'twitter://post?message={url}',	'https://twitter.com/intent/tweet?url={url}&text=Carrot store &via=carrotstore1&original_referer={url}',	''),
@@ -35,7 +36,6 @@ INSERT INTO `share` (`id`, `icon_css`, `name`, `order`, `web`, `android`, `windo
 (17,	'fa-vk',	'Vk',	8,	'http://vk.com/share.php?url={url}',	'',	'http://vk.com/share.php?url={url}',	''),
 (18,	'fa-xing-square',	'Xing',	9,	'https://www.xing.com/spi/shares/new?url={url}',	'',	'https://www.xing.com/spi/shares/new?url={url}',	''),
 (19,	'fa-get-pocket',	'GetPocket',	10,	'https://getpocket.com/edit?url={url}',	'',	'https://getpocket.com/edit?url={url}',	''),
-(20,	'fa-bookmark',	'Google Book marks',	11,	'https://www.google.com/bookmarks/mark?op=edit&bkmk={url}',	'',	'https://www.google.com/bookmarks/mark?op=edit&bkmk={url}',	''),
 (21,	'fa-commenting',	'sms',	0,	'',	'sms:0?body={url}',	'',	'');
 
--- 2022-08-20 02:42:21
+-- 2023-04-12 20:01:36

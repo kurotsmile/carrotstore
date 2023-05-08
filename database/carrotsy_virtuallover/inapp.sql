@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.40 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -70,6 +70,30 @@ INSERT INTO `inapp` (`id`, `id_app`, `price`, `data_lang`, `protocol`) VALUES
 ('com.carrotstore.tomatochess.removeads',	'754',	'3.0',	'remove_adss',	'tomatochess'),
 ('com.carrot.heroping.item',	'759',	'2',	'fish',	'heropig'),
 ('com.carrot.heroping.removeads',	'759',	'3.0',	'remove_adss',	'heropig'),
-('com.carrot.heroping.coin',	'759',	'5.0',	'all_fish',	'heropig');
+('com.carrot.heroping.coin',	'759',	'5.0',	'all_fish',	'heropig'),
+('com.carrotstore.chasingplanes.removeads',	'766',	'2.0',	'remove_adss',	'plane'),
+('com.carrotstore.chasingplanes.bkmusic',	'766',	'1.0',	'musicbk',	'plane'),
+('com.carrotstore.fruitshoot.removeads',	'767',	'2.0',	'remove_adss',	''),
+('com.carrotstore.fruitshoot.musicbk',	'767',	'1.0',	'musicbk',	''),
+('com.carrotstore.gpu.removeads',	'770',	'2.0',	'remove_adss',	'gpu'),
+('com.carrotstore.gpu.bkmusic',	'770',	'1.0',	'musicbk',	'gpu'),
+('com.carrotstore.horseracing.rmoveads',	'772',	'2.0',	'remove_adss',	'hr'),
+('com.carrotstore.horseracing.bkmusic',	'772',	'1.0',	'musicbk',	'hr'),
+('com.carrotstore.dicepuzzle.removeads',	'773',	'2.0',	'remove_adss',	'dice'),
+('com.carrotstore.dicepuzzle.bkmusic',	'773',	'1.0',	'musicbk',	'dice'),
+('com.carrotstore.sortilaire.removeads',	'774',	'3.0',	'remove_adss',	'sortilaire'),
+('com.carrotstore.sortilaire.bkmusic',	'774',	'1.0',	'musicbk',	'sortilaire'),
+('com.carrotstore.superrecording.removeads',	'764',	'2.0',	'remove_adss',	'sprecord'),
+('com.carrotstore.domino.removeads',	'775',	'2.0',	'remove_adss',	'domino'),
+('com.carrotstore.domino.item',	'775',	'1.0',	'fahsion_character',	'domino'),
+('com.carrotstore.domino.bkmusic',	'775',	'1.0',	'musicbk',	'domino'),
+('com.carrotstore.taxitimemeter.removeads',	'757',	'2.0',	'remove_adss',	'taxi'),
+('com.carrotstore.checkers.item',	'776',	'1.0',	'fish',	'4c'),
+('com.carrotstore.checkers.bkmussic',	'776',	'2.0',	'musicbk',	'4c'),
+('com.carrotstore.checkers.removeads',	'776',	'3.0',	'remove_adss',	'4c'),
+('com.carrotstore.penguindice.removeads',	'778',	'3.0',	'remove_adss',	'pd'),
+('com.carrotstore.penguindice.bkmussic',	'778',	'1.0',	'musicbk',	'pd'),
+('com.carrotstore.pomodoro.removeads',	'780',	'3.0',	'remove_adss',	'pt'),
+('com.carrotstore.pomodoro.bk',	'780',	'2.0',	'musicbk',	'pt');
 
--- 2022-10-26 17:58:11
+-- 2023-04-12 20:00:06

@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.40 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -2354,6 +2354,13 @@ INSERT INTO `app_my_girl_de` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (2497,	'Ich bin euer Treuer Diener',	'Das ist richtig und du wirst mir jeden Wünch erfüllen den ich deine gebiterin',	2,	0,	'#FFE3E8',	'',	'',	'',	'',	0,	'',	'',	0,	16,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'220',	'',	0,	'',	'e87b5f9a4b58b9d2515cf619ba4faf06',	'',	'0',	'0',	'0',	'',	''),
 (2498,	'Was wünscht ihr meine gebitern',	'los bete mich erst mal an',	3,	0,	'#05FF28',	'',	'',	'',	'',	0,	'',	'',	0,	38,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'272',	'',	0,	'',	'e87b5f9a4b58b9d2515cf619ba4faf06',	'',	'0',	'0',	'0',	'',	''),
 (2499,	'hypnotic',	'Ja du gehörst nun meinen Willen',	3,	0,	'#66B0FF',	'',	'',	'',	'',	0,	'',	'',	0,	35,	15,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1262',	'',	0,	'',	'e87b5f9a4b58b9d2515cf619ba4faf06',	'',	'0',	'0',	'0',	'',	''),
-(2500,	'Deine titten müssen größer werden ',	'Ja meister entschuldigung',	2,	0,	'#42FCFF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1456',	'',	0,	'',	'aea4c02aa741f114f0c24735afbc909f',	'',	'0',	'0',	'0',	'',	'');
+(2500,	'Deine titten müssen größer werden ',	'Ja meister entschuldigung',	2,	0,	'#42FCFF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	4,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1456',	'',	0,	'',	'aea4c02aa741f114f0c24735afbc909f',	'',	'0',	'0',	'0',	'',	''),
+(2501,	'scharf',	'eine sec du heißer Typ !',	2,	0,	'#FF6E6E',	'',	'',	'',	'',	0,	'',	'',	0,	25,	1,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'204',	'',	0,	'',	'682e7522e9c5d5176d762ce6f14b71bf',	'',	'0',	'0',	'0',	'',	''),
+(2502,	'Willst du es tun?',	'Ja lass es uns tun',	2,	0,	'#FF296C',	'',	'',	'',	'',	0,	'',	'',	0,	6,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1337',	'',	0,	'',	'030062620300ca8e0500d13005005e6e0500eac10600010004',	'',	'0',	'0',	'0',	'',	''),
+(2503,	'Wie fühlt es sich an?',	'Es fühlt sich sehr gut an',	2,	0,	'#FFA1C6',	'',	'',	'',	'',	0,	'',	'',	0,	33,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'71',	'',	0,	'',	'030062620300ca8e0500d13005005e6e0500eac10600010004',	'',	'0',	'0',	'0',	'',	''),
+(2504,	'sing ein Lied',	'SIDO - Versager (prod. Beatgees x Desue x Yanek Stärk) ',	1,	1,	'#9CB4D9',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'de',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'145',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'sido-versager-prod-beatgees-x-desue-x-yanek-stark--2504',	''),
+(2505,	'Du bist fett ',	'entschuldigen Sie bitte ich werde meine Ernährung für sie umstellen und abnehmen damit ich ihnen gefalle',	2,	0,	'#D9FFFD',	'',	'',	'',	'',	0,	'',	'',	0,	29,	2,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'727',	'',	0,	'',	'aea4c02aa741f114f0c24735afbc909f',	'',	'0',	'0',	'0',	'',	''),
+(2506,	'Du bist meine sklavin',	'Ja mein Meister ich führe jeden Befehl aus',	2,	0,	'#FF8E29',	'',	'',	'',	'',	0,	'',	'',	0,	13,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'112',	'',	0,	'',	'8c0906f9fd07ad48058a50a301130a90',	'',	'0',	'0',	'0',	'',	''),
+(2507,	'ist er lang genug für dich?',	'ja mein Schatz',	1,	0,	'#E3FFFB',	'',	'',	'',	'',	0,	'',	'',	0,	15,	0,	'de',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'689',	'',	0,	'',	'51ca3066aaaf23666b2c879e0dd2b4ce',	'',	'0',	'0',	'0',	'',	'');
 
--- 2022-10-23 06:22:10
+-- 2023-02-02 04:28:51

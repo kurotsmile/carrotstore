@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.40 dump
+-- Adminer 4.8.1 MySQL 5.7.41 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -772,6 +772,22 @@ INSERT INTO `app_my_girl_it` (`id`, `text`, `chat`, `status`, `sex`, `color`, `q
 (722,	'scusa mi dispiace',	'non ti preoccupare figurati amica mia',	2,	0,	'#FFCA82',	'',	'',	'',	'',	0,	'',	'',	0,	13,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'461',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
 (723,	'facciamo un gioco?',	'certo divertiamoci insieme',	2,	0,	'#66FCFF',	'',	'',	'',	'',	0,	'',	'',	0,	4,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1232',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
 (724,	'prego amica',	'aww grazie, cosa facciamo?',	2,	0,	'#9EFDFF',	'',	'',	'',	'',	0,	'',	'',	0,	14,	16,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1611',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
-(725,	'le tue scarpe sono belle',	'grazie amica ti voglio bene resta con me',	2,	0,	'#4FFFFA',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'599',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	'');
+(725,	'le tue scarpe sono belle',	'grazie amica ti voglio bene resta con me',	2,	0,	'#4FFFFA',	'',	'',	'',	'',	0,	'',	'',	0,	18,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'599',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(726,	'ei ciao',	'oi, ciao padroncino, come stai? oggi ai passato una bella giornata?',	2,	0,	'#9CEDFF',	'',	'',	'',	'',	0,	'',	'',	0,	10,	16,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1223',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(727,	'presentati',	'salve, iosono {ten_nv}, sono stata creata da Carrot con la sua creazione del GATEBOX. sono a tua disposizione quando vuoi tesoro ',	2,	0,	'#99F6FF',	'',	'',	'',	'',	0,	'',	'',	0,	12,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'940',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(728,	'stasera ti porto a cena fuori con me ',	'davvero, io ti amo troppo sei solo mio',	2,	0,	'#66FFC5',	'',	'',	'',	'',	0,	'',	'',	0,	10,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1445',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(729,	'oggi pomeriggio ti porto al mare',	'siii che meraviglia, andiamo andiamo!',	2,	0,	'#C3DED5',	'',	'',	'',	'',	0,	'',	'',	0,	7,	2,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'872',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(730,	'vuoi qualcosa da mangiare ',	'si in effetti avrei un pochino di fame',	0,	0,	'#B8FF61',	'',	'',	'',	'',	0,	'',	'',	0,	21,	4,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'950',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(731,	'mi aiuti?',	'ok, che devo fare padroncino?',	2,	0,	'#FFEA45',	'',	'',	'',	'',	0,	'',	'',	0,	0,	12,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1596',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(732,	'mi potresti aiutare ',	'si, certo, di cosa hai bisogno padroncino? sono qui a tua disposizione',	2,	0,	'#FFB9A3',	'',	'',	'',	'',	0,	'',	'',	0,	14,	16,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1656',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(733,	'sono tornato ',	'finalmente mi sei mancato tanto tesoro',	2,	0,	'#0FE5FF',	'',	'',	'',	'',	0,	'',	'',	0,	12,	13,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'410',	'',	0,	'',	'5db02b2bc6ed1ccb678b64dec66c6966',	'',	'0',	'0',	'0',	'',	''),
+(734,	'arrivo subito vado in bagno',	'tranquilla ti aspetto {ten_user} nessun problema ',	2,	0,	'#54FFEB',	'',	'',	'',	'',	0,	'',	'',	0,	13,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1251',	'',	0,	'',	'03007a45050004120600010004002e410400b84e0400487401',	'',	'0',	'0',	'0',	'',	''),
+(735,	'Canta una canzone',	'Mahmood - Barrio',	1,	1,	'#59FFE1',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1077',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'mahmood-barrio-735',	''),
+(736,	'triste',	'no non essere triste ',	0,	1,	'#FFEA45',	'',	'',	'',	'',	0,	'',	'',	0,	3,	14,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1596',	'',	0,	'',	'32e273a6f3dd574f78944150b42431bb',	'',	'0',	'0',	'0',	'',	''),
+(737,	'omegaverse',	'si lo so, praticamente il mondo è diviso in omega, alfa e beta e gli alfa sono dei fighi alti e muscolosi e sono quasi sempre dei seme invece gli omega sono bassi e super kawaii e disolito sono gli uk',	2,	1,	'#CFFFE6',	'',	'',	'',	'',	0,	'',	'',	0,	18,	2,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1250',	'',	0,	'',	'32e273a6f3dd574f78944150b42431bb',	'',	'0',	'0',	'0',	'',	''),
+(738,	'Canta una canzone',	'Rinaldo e Liriel - Con te Partirò ',	1,	0,	'#C2FF21',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'763',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'rinaldo-e-liriel-con-te-partiro--738',	''),
+(739,	'Canta una canzone',	'Elisa - Ogni Istante',	1,	1,	'#0097FF',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'352',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'elisa-ogni-istante-739',	''),
+(740,	'Canta una canzone',	'reale - luce',	1,	1,	'#3BFFF5',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	0,	'',	'',	'',	0,	'',	1,	0,	0,	'1303',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'reale-luce-740',	''),
+(741,	'Canta una canzone',	'Elodie - Due',	1,	0,	'#FF00D0',	'',	'',	'',	'',	0,	'',	'',	2,	9,	0,	'it',	1,	'',	'',	'',	0,	'',	1,	0,	0,	'1107',	'',	0,	'',	'2',	'',	'0',	'0',	'0',	'elodie-due-741',	'');
 
--- 2022-10-23 06:26:01
+-- 2023-04-12 20:42:27

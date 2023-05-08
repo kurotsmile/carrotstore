@@ -33,6 +33,7 @@ RewriteRule    ^pay/([^/]*)/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.p
 RewriteRule    ^pay/([^/]*)/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1&status=$2  [NC,L]
 RewriteRule    ^pay/([^/]*)/?$    index.php?page_view=page_pay.php&item=$1  [NC,L] 
 RewriteRule    ^pay_inapp/([^/]*)/([^/]*)/([^/]*)/?$     index.php?page_view=page_pay_inapp.php&id_inapp=$1&user_id=$2&lang=$3  [NC,L] 
+RewriteRule    ^pay_inapp/([^/]*)/([^/]*)/([^/]*)/([^/]*)/?$     index.php?page_view=page_pay_inapp.php&id_inapp=$1&user_id=$2&lang=$4  [NC,L] 
 RewriteRule    ^pay_piano/([^/]*)/?$    index.php?page_view=page_pay_piano.php&id_midi=$1  [NC,L] 
 RewriteRule    ^pay    index.php?page_view=page_pay.php  [NC,L]
 RewriteRule    ^order    index.php?page_view=page_order.php  [NC,L]   

@@ -49,7 +49,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Full name";
     $item_data->{"val"}=$data_user['name'];
     $item_data->{"type_update"}="1";
-    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/name.png';
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/name.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -58,7 +58,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Phone number";
     $item_data->{"val"}=$data_user['sdt'];
     $item_data->{"type_update"}="8";
-    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/phone.png';
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/phone.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -67,7 +67,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Address";
     $item_data->{"val"}=$data_user['address'];
     $item_data->{"type_update"}="9";
-    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/address.png';
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/address.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -76,7 +76,7 @@ function get_data_user($data_user){
     $item_data->{"title_en"}="Email (Email)";
     $item_data->{"val"}=$data_user['email'];
     $item_data->{"type_update"}="5";
-    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/email.png';
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/email.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -87,7 +87,7 @@ function get_data_user($data_user){
     $item_data->{"type_update"}="2";
     $item_data->{"val_update"}=array("user_sex_boy","user_sex_girl");
     $item_data->{"val_update_en"}=array("Male","Female");
-    $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/sex.png';
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/sex.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -125,7 +125,7 @@ function get_data_user($data_user){
         $item_data->{"title_en"}="Contact link";
         $item_data->{"val"}=$url_carrot_store.'/user/'.$data_user['id_device'].'/'.$lang;
         $item_data->{"type_update"}="7";
-        $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/web.png';
+        $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/web.png&size=64';
         array_push($arr_data,$item_data);
     }
 
@@ -149,7 +149,7 @@ function get_data_user($data_user){
                 $item_data->{"val_update"}=$data_field->{"val_update"};
                 $item_data->{"val_update_en"}=$data_field->{"val_update_en"};
             }
-            $item_data->{"icon"}=$url_carrot_store.'/app_mobile/contactstore/field_data/'.$key_field.'.png';
+            $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/'.$key_field.'.png&size=64';
             array_push($arr_data,$item_data);
         }
     }
@@ -715,7 +715,7 @@ if($function=='list_share'){
     while($share=mysqli_fetch_assoc($query_share)){
         $item_share=new stdClass();
         $item_share->url=$share[$os];
-        $item_share->icon=$url_carrot_store.'/app_mobile/carrot_framework/share_icon/'.$share['id'].'.png';
+        $item_share->icon=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/carrot_framework/share_icon/'.$share['id'].'.png&size=64';
         array_push($arr_share,$item_share);
     }
     echo json_encode($arr_share);
