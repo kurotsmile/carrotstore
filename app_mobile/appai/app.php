@@ -140,7 +140,7 @@ if($function=='send_report'){
 
 if($function=='get_command_offline'){
     $arr_data_offline=array();
-    $query_get_command_offline=mysqli_query($link,"SELECT `text`,`chat`,`effect`,`action`,`face` FROM `app_my_girl_$lang` WHERE `id_redirect` = '' AND `pater` = '' AND `pater_type` = '' AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `limit_day` <=$limit_chat AND `effect`!='2' ORDER BY RAND() LIMIT 50");
+    $query_get_command_offline=mysqli_query($link,"SELECT `text`,`chat`,`effect`,`action`,`face`,`color`,`effect_customer`,`link` FROM `app_my_girl_$lang` WHERE `id_redirect` = '' AND `pater` = '' AND `pater_type` = '' AND `sex` = '$sex' AND `character_sex` = '$character_sex' AND `limit_day` <=$limit_chat AND `effect`!='2' ORDER BY RAND() LIMIT 50");
     while($data_offline=mysqli_fetch_assoc($query_get_command_offline)){
         array_push($arr_data_offline,$data_offline);
     }
@@ -180,6 +180,9 @@ if($function=='get_list_music'){
 
     if(mysqli_num_rows($query_list_music)>0){
         while($music=mysqli_fetch_assoc($query_list_music)){
+            $id_song=$music["id"];
+            if(file_exists("../../app_mygirl/app_my_girl_".$lang."_img/".$id_song.".png")) $music['avatar']=$url_carrot_store."/app_mygirl/app_my_girl_".$lang."_img/".$id_song.".png";
+            $music["url_edit"]=$url_carrot_store."/app_my_girl_update.php?id=".$id_song."&lang=".$lang;
             array_push($arr_music,$music);
         }
     }else{
@@ -223,10 +226,12 @@ if($function=='list_background'){
     $arr_background=array();
     $query_list_background=mysqli_query($link,"SELECT `id` FROM `app_my_girl_background` ORDER BY RAND() LIMIT 20");
     while ($bk=mysqli_fetch_assoc($query_list_background)) {
-        $item=new stdClass();
-        $item->{"icon"}=$url."/thumb.php?src=".$url."/app_mygirl/obj_background/icon_".$bk['id'].".png&size=50x80&trim=1";
-        $item->{"link"}=$url."/app_mygirl/obj_background/icon_".$bk['id'].".png";
-        array_push($arr_background,$item);
+        if(file_exists("../../app_mygirl/obj_background/icon_".$bk['id'].".png")){
+            $item=new stdClass();
+            $item->{"icon"}=$url."/thumb.php?src=".$url."/app_mygirl/obj_background/icon_".$bk['id'].".png&size=50x80&trim=1";
+            $item->{"link"}=$url."/app_mygirl/obj_background/icon_".$bk['id'].".png";
+            array_push($arr_background,$item);
+        }
     }
     echo json_encode($arr_background);
     exit;
@@ -305,7 +310,7 @@ if($function=='list_radio'){
     $arr_radio=array();
     $query_list_radio=mysqli_query($link,"SELECT * FROM `app_my_girl_radio` WHERE `lang`='$lang' ORDER BY RAND()  LIMIT 20");
     while ($radio=mysqli_fetch_assoc($query_list_radio)) {
-        $radio["icon"]=$url."/thumb.php?src=".$url."/app_mygirl/obj_radio/icon_".$radio['id'].".png&size=50x50&trim=1";
+        if(file_exists("../../app_mygirl/obj_radio/icon_".$radio['id'].".png")) $radio["icon"]=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/app_mygirl/obj_radio/icon_".$radio['id'].".png&size=50x50";
         array_push($arr_radio,$radio);
     }
     echo json_encode($arr_radio);
@@ -339,22 +344,94 @@ if($function=='list_command_pass'){
     $key_search='';if(isset($_POST['search'])) $key_search=$_POST['search'];
     $array_list=array();
     if(trim($key_search)!="")
-        $query_list_command=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author` FROM `app_my_girl_$lang` WHERE `chat` LIKE '%$key_search%' ORDER BY `id` DESC LIMIT 30");
+        $query_list_command=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author`,`action`,`face`,`limit_chat`,`link`,`color`,`effect_customer`,`pater`,`pater_type` FROM `app_my_girl_$lang` WHERE `chat` LIKE '%$key_search%' ORDER BY `id` DESC LIMIT 30");
     else
-        $query_list_command=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author` FROM `app_my_girl_$lang` WHERE (`user_create` = '$user_id') OR (`user_create` = '$id_device') ORDER BY `id` DESC LIMIT 30");
+        $query_list_command=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author`,`action`,`face`,`limit_chat`,`link`,`color`,`effect_customer`,`pater`,`pater_type` FROM `app_my_girl_$lang` WHERE (`user_create` = '$user_id') OR (`user_create` = '$id_device') ORDER BY `id` DESC LIMIT 30");
 
     while($command=mysqli_fetch_assoc($query_list_command)){
         array_push($array_list,$command);
     }
     echo json_encode($array_list);
-    echo var_dump($_POST);
+    exit;
+}
+
+if($function=='list_command_pending'){
+    $array_list=array();
+
+    $query_list_command=mysqli_query($link,"SELECT `md5`,`question`,`answer`,`links`,`id_question`,`type_question`,`color_chat` FROM `app_my_girl_brain` WHERE `langs`='$lang' AND `sex`='$sex' AND `character_sex`='$character_sex' LIMIT 20");
+
+    while($command=mysqli_fetch_assoc($query_list_command)){
+        if($command['id_question']!=""){
+            $id_question=$command['id_question'];
+            $type_question=$command['type_question'];
+            if($type_question=='chat')
+                $query_chat_by_id=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_$lang` WHERE `id` = '$id_question' LIMIT 1");
+            else
+                $query_chat_by_id=mysqli_query($link,"SELECT `chat` FROM `app_my_girl_msg_$lang` WHERE `id` = '$id_question' LIMIT 1");
+
+            $data_chat=mysqli_fetch_assoc($query_chat_by_id);
+            $command['msg_question']=$data_chat["chat"];
+        }
+        array_push($array_list,$command);
+    }
+    echo json_encode($array_list);
+    exit;
+}
+
+if($function=='frm_list_same'){
+    $list_command_same=array();
+    $key_same=$_POST['key'];
+    $query_list_command_same=mysqli_query($link,"SELECT `id`,`chat`,`text`,`author`,`action`,`face`,`limit_chat`,`link`,`color`,`effect_customer`,`pater`,`pater_type` FROM `app_my_girl_$lang` WHERE `text`='$key_same' AND `sex`='$sex' AND `character_sex`='$character_sex' LIMIT 1");
+    while($command=mysqli_fetch_assoc($query_list_command_same)){
+        array_push($list_command_same,$command);
+    }
+    echo json_encode($list_command_same);
+    exit;
+}
+
+if($function=='delete_pending'){
+    $id_pedding=$_POST['id_pedding'];
+    $query_command=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `md5`='$id_pedding'");
+    if($query_command) echo 'Delete Success';
+    else echo 'Delete Fail';
     exit;
 }
 
 if($function=='delete_command_pass'){
     $id_chat=$_POST['id_chat'];
     $lang_chat=$_POST['lang_chat'];
-    mysqli_query($link,"DELETE FROM `app_my_girl_$lang_chat` WHERE (`id` = '$id_chat');");
+    $query_command=mysqli_query($link,"DELETE FROM `app_my_girl_$lang_chat` WHERE (`id` = '$id_chat');");
+    if($query_command) echo 'Delete Command Pass Success!!!';
+    else echo 'Delete Command Pass Fail!!!';
+    exit;
+}
+
+if($function=='update_command_pass'){
+    $id_chat=$_POST['id_chat'];
+    $question=$_POST['question'];
+    $answer=$_POST['answer'];
+    $pater=$_POST['pater'];
+    $pater_type=$_POST['pater_type'];
+    $link_chat=$_POST['link'];
+    $action=$_POST['action'];
+    $face=$_POST['face'];
+    $cm_limit=$_POST['cm_limit'];
+    $color='';if(isset($_POST['color'])) $color=$_POST['color']; else $color='#FFFFFF';
+    $id_icon=$_POST['id_icon'];
+    $status='0';
+    if($face=='0') $status='1';
+    if($face=='1') $status='2';
+    if($face=='2') $status='3';
+    if($face=='3') $status='3';
+    if($face=='4') $status='1';
+    if($face=='5') $status='0';
+    if($face=='6') $status='0';
+    if($face=='7') $status='2';
+
+    if($answer!=''&&$question!=''){
+        mysqli_query($link,"UPDATE `app_my_girl_$lang` SET `text`='$question',`chat`='$answer',`color`='$color',`effect_customer`='$id_icon',`limit_chat`='$cm_limit',`link`='$link_chat' WHERE `id`='$id_chat' LIMIT 1;");
+        echo "Update Success!!!\n";
+    }
     exit;
 }
 
@@ -414,6 +491,42 @@ if($function=='update_sapphire'){
         mysqli_query($link,"UPDATE `app_my_girl_user_".$lang."_data` SET `sapphire` = '$sapphire' WHERE `user_id` = '$user_id' LIMIT 1;");
     }else{
         mysqli_query($link,"INSERT INTO `app_my_girl_user_".$lang."_data` (`user_id`, `sapphire`) VALUES ('$user_id', '$sapphire')");
+    }
+    exit;
+}
+
+if($function=='add_pending_pass'){
+    $id_chat_brain=$_POST['id_chat_brain'];
+    $question=$_POST['question'];
+    $answer=$_POST['answer'];
+    $pater=$_POST['pater'];
+    $pater_type=$_POST['pater_type'];
+    $link_chat=$_POST['link'];
+    $action=$_POST['action'];
+    $face=$_POST['face'];
+    $cm_limit=$_POST['cm_limit'];
+    $user_id='';if(isset($_POST['user_id'])) $user_id=$_POST['user_id']; else $user_id=$id_device;
+    $color='';if(isset($_POST['color'])) $color=$_POST['color']; else $color='#FFFFFF';
+    $id_icon=$_POST['id_icon'];
+    $id_func=$_POST['id_func'];
+    $status='0';
+    if($face=='0') $status='1';
+    if($face=='1') $status='2';
+    if($face=='2') $status='3';
+    if($face=='3') $status='3';
+    if($face=='4') $status='1';
+    if($face=='5') $status='0';
+    if($face=='6') $status='0';
+    if($face=='7') $status='2';
+
+    if($answer!=''&&$question!=''){
+        $query_add=mysqli_query($link,"INSERT INTO `app_my_girl_$lang` (`text`,`chat`,`author`,`sex`,`character_sex`,`color`,`user_create`,`link`,`pater`,`pater_type`,`action`,`face`,`limit_chat`,`effect_customer`,`effect`,`status`) VALUES ('$question','$answer','$lang','$sex','$character_sex','$color','$user_id','$link_chat','$pater','$pater_type','$action','$face','$cm_limit','$id_icon','$id_func','$status')");
+        if($query_add) echo 'Add Command Pending Success!!!\n';
+        else echo 'Add Command Pending Fail!\n';
+
+        $query_del=mysqli_query($link,"DELETE FROM `app_my_girl_brain` WHERE `md5` = '$id_chat_brain'  LIMIT 1;");
+        if($query_del) echo "Delete Brain success!";
+        else echo "Delete Brain success!";
     }
     exit;
 }
