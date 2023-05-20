@@ -1,4 +1,3 @@
-const.php
 cache/
 product_data/
 phpqrcode/
@@ -109,3 +108,5 @@ app_mygirl/app_my_girl_it/
 
 app_mobile/appai/AssetBundles
 
+const.php
+const.php
