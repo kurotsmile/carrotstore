@@ -248,8 +248,8 @@ if($function=='show_register'){
     $item_data->{"title"}="user_name";
     $item_data->{"title_en"}="Full name";
     $item_data->{"val"}=$data_user['name'];
-
     $item_data->{"type_update"}="1";
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/name.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -258,6 +258,7 @@ if($function=='show_register'){
     $item_data->{"title_en"}="Phone number";
     $item_data->{"val"}=$data_user['sdt'];
     $item_data->{"type_update"}="4";
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/phone.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -266,6 +267,7 @@ if($function=='show_register'){
     $item_data->{"title_en"}="Email (Email)";
     $item_data->{"val"}=$data_user['email'];
     $item_data->{"type_update"}="5";
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/email.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -276,6 +278,7 @@ if($function=='show_register'){
     $item_data->{"type_update"}="2";
     $item_data->{"val_update"}=array("user_sex_boy","user_sex_girl");
     $item_data->{"val_update_en"}=array("Male","Female");
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/sex.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();

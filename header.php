@@ -208,6 +208,7 @@ if($page_view=='page_view.php'){
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="<?php echo $seo_desc; ?>"/>
     <meta name="keywords" content="<?php echo $title_page; ?>,carrot,carrot store,carrot app,carrot company,store carrot,carrot game,virtual lover"/>
+    <meta name="facebook-domain-verification" content="mryqk18ytsl7yv7ug4vk7o1os5en15" />
     
     <meta name="title" content="<?php echo $title_page; ?>" />
     <link rel="stylesheet" href="<?php echo $url; ?>/assets/css/font-awesome.min.css" />
