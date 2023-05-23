@@ -287,6 +287,7 @@ if($function=='show_register'){
     $item_data->{"title_en"}="Password";
     $item_data->{"val"}='';
     $item_data->{"type_update"}="3";
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/password.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
@@ -295,6 +296,7 @@ if($function=='show_register'){
     $item_data->{"title_en"}="Enter the password";
     $item_data->{"val"}='';
     $item_data->{"type_update"}="3";
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/rep_password.png&size=64';
     array_push($arr_data,$item_data);
 
     $user->{"list_info"}=$arr_data;

@@ -444,10 +444,12 @@ if($function=='list_emoji_and_color'){
         $query_list_icon=mysqli_query($link,"SELECT `id`,`name`,`color` FROM `app_my_girl_effect` WHERE `id` LIKE '%$key_search%' OR `name` LIKE '%$key_search%' ORDER BY RAND() LIMIT 30");
 
     while($emoj=mysqli_fetch_assoc($query_list_icon)){
-        $url_icon_emoj=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/app_mygirl/obj_effect/".$emoj["id"].".png&size=16&trim=1";
-        $emoj["url_icon"]=$url_icon_emoj;
-        $emoj["link_edit"]=$url.'/app_my_girl_effect.php?edit='.$emoj["id"];
-        array_push($arr_icon,$emoj);
+        if(file_exists("../../app_mygirl/obj_effect/".$emoj["id"].".png")){
+            $url_icon_emoj=$url_carrot_store."/thumb.php?src=".$url_carrot_store."/app_mygirl/obj_effect/".$emoj["id"].".png&size=16&trim=1";
+            $emoj["url_icon"]=$url_icon_emoj;
+            $emoj["link_edit"]=$url.'/app_my_girl_effect.php?edit='.$emoj["id"];
+            array_push($arr_icon,$emoj);
+        }
     }
     echo json_encode($arr_icon);
     exit;

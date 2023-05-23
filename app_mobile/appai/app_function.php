@@ -6,6 +6,7 @@ function arithmetic($expression)
 	foreach ($temp_op as $key => $val) if ($val) $operators[] = $val;
 	$numbers = preg_replace('([^0-9])', ' ', trim($expression));
 	$numbers = explode(' ', $numbers);$i = 0;
+    $answer=null;
 	foreach ($numbers AS $key => $val)
 	{
 		if ($key == 0){ $answer = $val;continue;}
@@ -130,7 +131,7 @@ function get_new_song($link,$name_song,$lang){
         }
 
         if($data_song==null){
-            $query_add_key_music=mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music`(`key`, `lang`,`type`) VALUES ('$name_song', '$lang','1')");
+            mysqli_query($link,"INSERT INTO `app_my_girl_log_key_music`(`key`, `lang`,`type`) VALUES ('$name_song', '$lang','1')");
         }
     }
     return $data_song;
