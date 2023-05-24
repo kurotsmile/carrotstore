@@ -1,6 +1,8 @@
 # carrotstore
 Dự án kho lưu trữ các ứng dụng và các dịch vụ số giải trí
 
+![Logo](https://carrotstore.com/images/logo.png)
+
 ## Cách thiết lập sau khi clone về:
 Thiết lập lại file `config.php` ở localhost
 
