@@ -231,7 +231,7 @@ if($function=='list_app_carrot'){
 }
 
 if($function=='show_register'){
-    $check_user=mysqli_query($link,"SELECT `name`,`sdt`,`email`,`sex` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device` = '$id_device' LIMIT 1");
+    $check_user=mysqli_query($link,"SELECT `name`,`sdt`,`email`,`sex`,`address`,`status`,`avatar_url` FROM carrotsy_virtuallover.`app_my_girl_user_$lang` WHERE `id_device` = '$id_device' LIMIT 1");
     $data_user=mysqli_fetch_assoc($check_user);
     if($data_user==null){
         $data_user=array();
@@ -239,6 +239,9 @@ if($function=='show_register'){
         $data_user['sdt']='';
         $data_user['email']='';
         $data_user['sex']='0';
+        $data_user['status']='2';
+        $data_user['address']='';
+        $data_user['avatar_url']='';
     }
     $user=new stdClass();
     $arr_data=array();
@@ -279,6 +282,26 @@ if($function=='show_register'){
     $item_data->{"val_update"}=array("user_sex_boy","user_sex_girl");
     $item_data->{"val_update_en"}=array("Male","Female");
     $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/sex.png&size=64';
+    array_push($arr_data,$item_data);
+
+    $item_data=new stdClass();
+    $item_data->{"id_name"}="address";
+    $item_data->{"title"}="user_address";
+    $item_data->{"title_en"}="Address";
+    $item_data->{"val"}=$data_user['address'];
+    $item_data->{"type_update"}="9";
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/address.png&size=64';
+    array_push($arr_data,$item_data);
+
+    $item_data=new stdClass();
+    $item_data->{"id_name"}="status";
+    $item_data->{"title"}="user_info_status";
+    $item_data->{"title_en"}="Information status";
+    $item_data->{"val"}=$data_user['status'];
+    $item_data->{"type_update"}="2";
+    $item_data->{"val_update"}=array("user_info_status_yes","user_info_status_no");
+    $item_data->{"val_update_en"}=array("Share information","Do not share information");
+    $item_data->{"icon"}=$url_carrot_store.'/thumb.php?src='.$url_carrot_store.'/app_mobile/contactstore/field_data/status.png&size=64';
     array_push($arr_data,$item_data);
 
     $item_data=new stdClass();
