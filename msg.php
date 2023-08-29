@@ -25,6 +25,9 @@ $u3->{"id"}="xUktUS1cT1MuDjPqi9aCsOo0Wfo2";
 $array_u=Array($u1,$u2,$u3);
 
 $limit=500;
+if(isset($_POST["lang"])){
+    $lang=$_POST["lang"];
+}
 
 if(isset($_POST["page"])){
 
@@ -80,10 +83,16 @@ if(isset($_POST["page"])){
     $page=round($count_chat/$limit);
     ?>
     <form name="frm_download" method="post">
+        <p>
+            <input name="lang" value="<?php echo $lang;?>">
+        </p>
+        <p>
         <select name="page" >
         <?php for($i=0;$i<$page;$i++){?><option value="<?php echo $i;?>">Json <?php echo $i;?></option><?php }?>
         </select>
+        </p>
         <button>Done</button>
+
     </form>
 <?php
     }
