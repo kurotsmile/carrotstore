@@ -1,7 +1,7 @@
 <?php
 include "const.php";
 include "database.php";
-
+session_start();
 $lang='vi';
 
 $u1=new stdClass();
@@ -25,8 +25,14 @@ $u3->{"id"}="xUktUS1cT1MuDjPqi9aCsOo0Wfo2";
 $array_u=Array($u1,$u2,$u3);
 
 $limit=500;
+
+if(isset($_SESSION["lang"])){
+    $lang=$_SESSION["lang"];
+}
+
 if(isset($_POST["lang"])){
     $lang=$_POST["lang"];
+    $_SESSION["lang"]=$lang;
 }
 
 if(isset($_POST["page"])){
@@ -77,23 +83,34 @@ if(isset($_POST["page"])){
     echo $json;
 }else{
 
-    $query_count_chat=mysqli_query($link,"SELECT count('id') as c FROM `app_my_girl_vi` WHERE `pater_type` != 'msg' AND `id_redirect` = '' AND `effect` != '2' AND `disable` = '0' LIMIT 1");
-    $data_count_chat=mysqli_fetch_array($query_count_chat);
-    $count_chat=intval($data_count_chat['c']);
-    $page=round($count_chat/$limit);
-    ?>
-    <form name="frm_download" method="post">
-        <p>
-            <input name="lang" value="<?php echo $lang;?>">
-        </p>
-        <p>
-        <select name="page" >
-        <?php for($i=0;$i<$page;$i++){?><option value="<?php echo $i;?>">Json <?php echo $i;?></option><?php }?>
-        </select>
-        </p>
-        <button>Done</button>
+$query_country=mysqli_query($link,"SELECT `key` FROM `carrotsy_virtuallover`.`app_my_girl_country`");
 
-    </form>
+$query_count_chat=mysqli_query($link,"SELECT count('id') as c FROM `app_my_girl_$lang` WHERE `pater_type` != 'msg' AND `id_redirect` = '' AND `effect` != '2' AND `disable` = '0' LIMIT 1");
+$data_count_chat=mysqli_fetch_array($query_count_chat);
+$count_chat=intval($data_count_chat['c']);
+$page=round($count_chat/$limit);
+?>
+<form name="frm_download" method="post">
+    <p>
+        <select name="lang" >
+        <?php 
+            while($c=mysqli_fetch_array($query_country)){
+                if($c["key"]==$lang)
+                    echo '<option value="'.$c["key"].'" selected>'.$c["key"].'</option>';
+                else
+                    echo '<option value="'.$c["key"].'">'.$c["key"].'</option>';
+            }
+        ?>
+        </select>
+    </p>
+    <p>
+    <select name="page" >
+    <?php for($i=0;$i<$page;$i++){?><option value="<?php echo $i;?>">Json <?php echo $i;?></option><?php }?>
+    </select>
+    </p>
+    <button>Done</button>
+
+</form>
 <?php
-    }
+}
 ?>
